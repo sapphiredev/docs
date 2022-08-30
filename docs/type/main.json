@@ -1,1 +1,692 @@
-{}
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/type",
+  "version": "2.2.4",
+  "classes": [
+    {
+      "id": 7,
+      "name": "Type",
+      "comment": {
+        "description": "The class for deep checking Types",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 19,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "construct": {
+        "id": 14,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 49,
+          "file": "index.ts",
+          "path": "."
+        },
+        "parameters": [
+          {
+            "id": 16,
+            "name": "value",
+            "type": {
+              "kind": "intrinsic",
+              "type": "unknown"
+            }
+          },
+          {
+            "id": 17,
+            "name": "parent",
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "literal",
+                  "value": "null"
+                },
+                {
+                  "kind": "reference",
+                  "id": 7,
+                  "name": "Type",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 21,
+          "name": "childKeys",
+          "comment": {
+            "description": "The child keys of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 38,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "reference",
+                "id": 7,
+                "name": "Type",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 22,
+          "name": "childValues",
+          "comment": {
+            "description": "The child values of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 43,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "reference",
+                "id": 7,
+                "name": "Type",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 19,
+          "name": "is",
+          "comment": {
+            "description": "The shallow type of this",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 28,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 20,
+          "name": "parent",
+          "comment": {
+            "description": "The parent of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 33,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": 7,
+                "name": "Type",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 18,
+          "name": "value",
+          "comment": {
+            "description": "The value to generate a deep Type of",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 23,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "unknown"
+          }
+        },
+        {
+          "id": 24,
+          "name": "childTypes",
+          "comment": {
+            "description": "The type string for the children of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 58,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 34,
+          "name": "addEntry",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 101,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 35,
+              "name": "addEntry",
+              "comment": {
+                "description": "The subtype to create based on this.value's entries.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 36,
+                  "name": "entry",
+                  "type": {
+                    "kind": "tuple",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "unknown"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "addValue",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 92,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 32,
+              "name": "addValue",
+              "comment": {
+                "description": "The subtype to create based on this.value's sub value.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 33,
+                  "name": "value",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "check",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 110,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 38,
+              "name": "check",
+              "comment": {
+                "description": "Get the deep type name that defines the input.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "isCircular",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 83,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 30,
+              "name": "isCircular",
+              "comment": {
+                "description": "Checks if the value of this Type is a circular reference to any parent.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "parents",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 74,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 28,
+              "name": "parents",
+              "comment": {
+                "description": "Walks the linked list backwards, for checking circulars.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "IterableIterator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 7,
+                    "name": "Type",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "name": "toString",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 66,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 26,
+              "name": "toString",
+              "comment": {
+                "description": "The full type string generated.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "name": "list",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 157,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 12,
+              "name": "list",
+              "comment": {
+                "description": "Joins the list of child types.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 13,
+                  "name": "values",
+                  "type": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "Map",
+                    "packageName": "typescript",
+                    "typeArguments": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "reference",
+                        "id": 7,
+                        "name": "Type",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "name": "resolve",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 139,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 9,
+              "name": "resolve",
+              "comment": {
+                "description": "Resolves the type name that defines the input.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 10,
+                  "name": "value",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 1,
+      "name": "getPromiseDetails",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 14,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 2,
+          "name": "getPromiseDetails",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 3,
+              "name": "thing",
+              "type": {
+                "kind": "intrinsic",
+                "type": "any"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "getProxyDetails",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 14,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 5,
+          "name": "getProxyDetails",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 6,
+              "name": "thing",
+              "type": {
+                "kind": "intrinsic",
+                "type": "any"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": []
+}
