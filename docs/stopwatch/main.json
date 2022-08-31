@@ -1,0 +1,366 @@
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/stopwatch",
+  "version": "1.4.1",
+  "classes": [
+    {
+      "id": 1,
+      "name": "Stopwatch",
+      "comment": {
+        "description": "Stopwatch class, uses native node to replicate/extend performance-now dependency.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "construct": {
+        "id": 2,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 25,
+          "file": "index.ts",
+          "path": "."
+        },
+        "parameters": [
+          {
+            "id": 4,
+            "name": "digits",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 7,
+          "name": "#end",
+          "comment": {
+            "description": "The end time of this stopwatch",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 20,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "#start",
+          "comment": {
+            "description": "The start time of this stopwatch",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 15,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 5,
+          "name": "digits",
+          "comment": {
+            "description": "The number of digits to appear after the decimal point when returning the friendly duration.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 10,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 9,
+          "name": "duration",
+          "comment": {
+            "description": "The duration of this stopwatch since start or start to end if this stopwatch has stopped.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 34,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 11,
+          "name": "running",
+          "comment": {
+            "description": "If the stopwatch is running or not.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 41,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 14,
+          "name": "reset",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 57,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 15,
+              "name": "reset",
+              "comment": {
+                "description": "Resets the Stopwatch to 0 duration (Returns a stopped state)",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "Stopwatch",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "restart",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 48,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 13,
+              "name": "restart",
+              "comment": {
+                "description": "Restarts the stopwatch (Returns a running state)",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "Stopwatch",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "start",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 66,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 17,
+              "name": "start",
+              "comment": {
+                "description": "Starts the Stopwatch",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "Stopwatch",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "name": "stop",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 78,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 19,
+              "name": "stop",
+              "comment": {
+                "description": "Stops the Stopwatch, freezing the duration",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "Stopwatch",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "toString",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 86,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 21,
+              "name": "toString",
+              "comment": {
+                "description": "Defines toString behavior",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": [],
+  "functions": [],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": []
+}
