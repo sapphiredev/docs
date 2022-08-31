@@ -1,0 +1,746 @@
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/snowflake",
+  "version": "3.2.2",
+  "classes": [
+    {
+      "id": 2,
+      "name": "Snowflake",
+      "comment": {
+        "description": "A class for generating and deconstructing Twitter snowflakes.\n\nA \nTwitter snowflake\n\nis a 64-bit unsigned integer with 4 fields that have a fixed epoch value.\n\nIf we have a snowflake \n`266241948824764416`\n we can represent it as binary:\n\n```\n64                                          22     17     12          0\n 000000111011000111100001101001000101000000  00001  00000  000000000000\n          number of ms since epoch           worker  pid    increment\n```",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 17,
+        "file": "Snowflake.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "construct": {
+        "id": 3,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 39,
+          "file": "Snowflake.ts",
+          "path": "lib"
+        },
+        "parameters": [
+          {
+            "id": 5,
+            "name": "epoch",
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "intrinsic",
+                  "type": "number"
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "bigint"
+                },
+                {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "Date",
+                  "packageName": "typescript",
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 7,
+          "name": "#epoch",
+          "comment": {
+            "description": "Internal reference of the epoch passed in the constructor",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "source": {
+            "line": 28,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 6,
+          "name": "#increment",
+          "comment": {
+            "description": "Internal incrementor for generating snowflakes",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "source": {
+            "line": 22,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 8,
+          "name": "decode",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 34,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 9,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/Snowflake.ts",
+                  "line": 89,
+                  "character": 8,
+                  "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/snowflake/src/lib/Snowflake.ts#L89"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 10,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "comment": {
+                    "summary": [
+                      {
+                        "kind": "text",
+                        "text": "Deconstructs a snowflake given a snowflake ID"
+                      }
+                    ],
+                    "blockTags": [
+                      {
+                        "tag": "@returns",
+                        "content": [
+                          {
+                            "kind": "text",
+                            "text": "a deconstructed snowflake"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@example",
+                        "content": [
+                          {
+                            "kind": "code",
+                            "text": "```typescript\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\nconst snowflake = new Snowflake(epoch).deconstruct('3971046231244935168');\n```"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "parameters": [
+                    {
+                      "id": 11,
+                      "name": "id",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {},
+                      "comment": {
+                        "summary": [
+                          {
+                            "kind": "text",
+                            "text": "the snowflake to deconstruct"
+                          }
+                        ]
+                      },
+                      "type": {
+                        "type": "union",
+                        "types": [
+                          {
+                            "type": "intrinsic",
+                            "name": "string"
+                          },
+                          {
+                            "type": "intrinsic",
+                            "name": "bigint"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "reference",
+                    "id": 28,
+                    "name": "DeconstructedSnowflake"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 13,
+          "name": "epoch",
+          "comment": {
+            "description": "The epoch for this snowflake.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 46,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 17,
+          "name": "deconstruct",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 89,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 18,
+              "name": "deconstruct",
+              "comment": {
+                "description": "Deconstructs a snowflake given a snowflake ID",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "a deconstructed snowflake"
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\nconst snowflake = new Snowflake(epoch).deconstruct('3971046231244935168');\n```"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 19,
+                  "name": "id",
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "bigint"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 28,
+                "name": "DeconstructedSnowflake",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "generate",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 62,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 15,
+              "name": "generate",
+              "comment": {
+                "description": "Generates a snowflake given an epoch and optionally a timestamp",
+                "blockTags": [
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\nconst snowflake = new Snowflake(epoch).generate();\n```"
+                  },
+                  {
+                    "name": "returns",
+                    "text": "A unique snowflake"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 16,
+                  "name": "options",
+                  "type": {
+                    "kind": "reference",
+                    "id": 23,
+                    "name": "SnowflakeGenerateOptions",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "bigint"
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "name": "timestampFrom",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 106,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 21,
+              "name": "timestampFrom",
+              "comment": {
+                "description": "Retrieves the timestamp field's value from a snowflake.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The UNIX timestamp that is stored in \n`id`\n."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 22,
+                  "name": "id",
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "bigint"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": [
+    {
+      "id": 1,
+      "name": "DiscordSnowflake",
+      "comment": {
+        "description": "A class for parsing snowflake ids using Discord's snowflake epoch\n\nWhich is 2015-01-01 at 00:00:00.000 UTC+0, \nhttps://discord.com/developers/docs/reference#snowflakes",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "DiscordSnowflake.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 2,
+        "name": "Snowflake",
+        "packageName": null,
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 35,
+      "name": "TwitterSnowflake",
+      "comment": {
+        "description": "A class for parsing snowflake ids using Twitter's snowflake epoch\n\nWhich is 2006-03-21 at 20:50:14.000 UTC+0, the time and date of the first tweet ever made \nhttps://twitter.com/jack/status/20",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "TwitterSnowflake.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 2,
+        "name": "Snowflake",
+        "packageName": null,
+        "typeArguments": []
+      },
+      "value": "..."
+    }
+  ],
+  "enums": [],
+  "functions": [],
+  "interfaces": [
+    {
+      "id": 28,
+      "name": "DeconstructedSnowflake",
+      "comment": {
+        "description": "Object returned by Snowflake#deconstruct",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 144,
+        "file": "Snowflake.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 34,
+          "name": "epoch",
+          "comment": {
+            "description": "The epoch to use in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 173,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 29,
+          "name": "id",
+          "comment": {
+            "description": "The id in BigInt form",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 148,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 33,
+          "name": "increment",
+          "comment": {
+            "description": "The increment stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 168,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 32,
+          "name": "processId",
+          "comment": {
+            "description": "The process id stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 163,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 30,
+          "name": "timestamp",
+          "comment": {
+            "description": "The timestamp stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 153,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 31,
+          "name": "workerId",
+          "comment": {
+            "description": "The worker id stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 158,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "SnowflakeGenerateOptions",
+      "comment": {
+        "description": "Options for Snowflake#generate",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 114,
+        "file": "Snowflake.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 25,
+          "name": "increment",
+          "comment": {
+            "description": "The increment to use",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "0n"
+              },
+              {
+                "name": "remark",
+                "text": "keep in mind that this bigint is auto-incremented between generate calls"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 126,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 27,
+          "name": "processId",
+          "comment": {
+            "description": "The process ID to use, will be truncated to 5 bits (0-31)",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "1n"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 138,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 24,
+          "name": "timestamp",
+          "comment": {
+            "description": "Timestamp or date of the snowflake to generate",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "Date.now()"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 119,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "number"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "bigint"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Date",
+                "packageName": "typescript",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 26,
+          "name": "workerId",
+          "comment": {
+            "description": "The worker ID to use, will be truncated to 5 bits (0-31)",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "0n"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 132,
+            "file": "Snowflake.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        }
+      ]
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": []
+}
