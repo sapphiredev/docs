@@ -1,0 +1,5408 @@
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/utilities",
+  "version": "3.9.2",
+  "classes": [],
+  "constants": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 29,
+      "name": "arrayStrictEquals",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "arrayStrictEquals.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 30,
+          "name": "arrayStrictEquals",
+          "comment": {
+            "description": "Compare if both arrays are strictly equal",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 31,
+              "name": "T",
+              "type": {
+                "kind": "typeOperator",
+                "operator": "readonly",
+                "type": {
+                  "kind": "array",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 32,
+              "name": "arr1",
+              "type": {
+                "kind": "reference",
+                "id": 31,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 33,
+              "name": "arr2",
+              "type": {
+                "kind": "reference",
+                "id": 31,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "name": "cast",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 10,
+        "file": "cast.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 35,
+          "name": "cast",
+          "comment": {
+            "description": "Casts any value to \n`T`\n\n\nNote that this function is not type-safe, and may cause runtime errors if used incorrectly.\nAlso note that this function is effectively useless in a JavaScript project, it only serves a purpose for TypeScript projects.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "The value but as type \n`T`"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 36,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 37,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": 36,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "name": "chunk",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "chunk.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 39,
+          "name": "chunk",
+          "comment": {
+            "description": "Splits up an array into chunks",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 40,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 41,
+              "name": "array",
+              "type": {
+                "kind": "typeOperator",
+                "operator": "readonly",
+                "type": {
+                  "kind": "array",
+                  "type": {
+                    "kind": "reference",
+                    "id": 40,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              }
+            },
+            {
+              "id": 42,
+              "name": "chunkSize",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "reference",
+                "id": 40,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "name": "classExtends",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "classExtends.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 44,
+          "name": "classExtends",
+          "comment": {
+            "description": "Checks whether or not the value class extends the base class.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 45,
+              "name": "T",
+              "type": {
+                "kind": "reference",
+                "id": 215,
+                "name": "Ctor",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "intrinsic",
+                        "type": "any"
+                      }
+                    }
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                ]
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 46,
+              "name": "value",
+              "type": {
+                "kind": "reference",
+                "id": 215,
+                "name": "Ctor",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "intrinsic",
+                        "type": "any"
+                      }
+                    }
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 47,
+              "name": "base",
+              "type": {
+                "kind": "reference",
+                "id": 45,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "reference",
+              "id": 45,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "codeBlock",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "codeBlock.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 49,
+          "name": "codeBlock",
+          "comment": {
+            "description": "Wraps text in a markdown codeblock with optionally a language indicator for syntax highlighting",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 50,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 51,
+              "name": "language",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 52,
+              "name": "expression",
+              "type": {
+                "kind": "reference",
+                "id": 50,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "name": "cutText",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 10,
+        "file": "cutText.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 54,
+          "name": "cutText",
+          "comment": {
+            "description": "Split a text by its latest space character in a range from the character 0 to the selected one.",
+            "blockTags": [
+              {
+                "name": "copyright",
+                "text": "2019 Antonio Román"
+              },
+              {
+                "name": "license",
+                "text": "Apache-2.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 55,
+              "name": "str",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 56,
+              "name": "length",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "name": "debounce",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 68,
+        "file": "index.ts",
+        "path": "lib/debounce"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 58,
+          "name": "debounce",
+          "comment": {
+            "description": "Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since\nthe last time the debounced function was invoked. The debounced function comes with a cancel method to\ncancel delayed invocations and a flush method to immediately invoke them. Provide an options object to\nindicate that func should be invoked on the leading and/or trailing edge of the wait timeout. Subsequent\ncalls to the debounced function return the result of the last func invocation.\n\nNote: If leading and trailing options are true, func is invoked on the trailing edge of the timeout only\nif the the debounced function is invoked more than once during the wait timeout.\n\nSee David Corbacho’s article for details over the differences between _.debounce and _.throttle.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "Returns the new debounced function."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 59,
+              "name": "FnArgumentsType",
+              "type": {
+                "kind": "array",
+                "type": {
+                  "kind": "intrinsic",
+                  "type": "any"
+                }
+              },
+              "default": null
+            },
+            {
+              "id": 60,
+              "name": "FnReturnType",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 61,
+              "name": "func",
+              "type": {
+                "kind": "reflection",
+                "reflection": {
+                  "id": 62,
+                  "name": "__type",
+                  "kind": 65536,
+                  "kindString": "Type literal",
+                  "flags": {},
+                  "sources": [
+                    {
+                      "fileName": "lib/debounce/index.ts",
+                      "line": 69,
+                      "character": 7,
+                      "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/debounce/index.ts#L69"
+                    }
+                  ],
+                  "signatures": [
+                    {
+                      "id": 63,
+                      "name": "__type",
+                      "kind": 4096,
+                      "kindString": "Call signature",
+                      "flags": {},
+                      "parameters": [
+                        {
+                          "id": 64,
+                          "name": "args",
+                          "kind": 32768,
+                          "kindString": "Parameter",
+                          "flags": {
+                            "isRest": true
+                          },
+                          "type": {
+                            "type": "reference",
+                            "id": 59,
+                            "name": "FnArgumentsType"
+                          }
+                        }
+                      ],
+                      "type": {
+                        "type": "reference",
+                        "id": 60,
+                        "name": "FnReturnType"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": 65,
+              "name": "options",
+              "type": {
+                "kind": "reference",
+                "id": 66,
+                "name": "DebounceSettings",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": 69,
+            "name": "DebouncedFunc",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 59,
+                "name": "FnArgumentsType",
+                "packageName": null,
+                "typeArguments": []
+              },
+              {
+                "kind": "reference",
+                "id": 60,
+                "name": "FnReturnType",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "name": "deepClone",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "deepClone.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 79,
+          "name": "deepClone",
+          "comment": {
+            "description": "Deep clone an object",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 80,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 81,
+              "name": "source",
+              "type": {
+                "kind": "reference",
+                "id": 80,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": 80,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "filterNullish",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 19,
+        "file": "filterNullAndUndefined.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 2,
+          "name": "filterNullish",
+          "comment": {
+            "description": "Checks whether a value is not \n`null`\n nor \n`undefined`\n.\nThis can be used in \nArray.filter\n to remove \n`null`\n and \n`undefined`\n from the array type",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "A boolean that is \n`true`\n if the value is neither \n`null`\n nor \n`undefined`\n, false otherwise."
+              },
+              {
+                "name": "example",
+                "text": "```typescript\n// TypeScript Type: (string | undefined | null)[]\nconst someArray = ['one', 'two', undefined, null, 'five'];\n\n// TypeScript Type: string[]\nconst filteredArray = someArray.filter(filterNullAndUndefined);\n// Result: ['one', 'two', 'five']\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 3,
+              "name": "TValue",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 4,
+              "name": "value",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "reference",
+                    "id": 252,
+                    "name": "Nullish",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 3,
+                    "name": "TValue",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "reference",
+              "id": 3,
+              "name": "TValue",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "filterNullishOrEmpty",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 19,
+        "file": "filterNullAndUndefinedAndEmpty.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 6,
+          "name": "filterNullishOrEmpty",
+          "comment": {
+            "description": "Checks whether a value is not \n`null`\n nor \n`undefined`\n nor \n`''`\n (empty string).\nThis can be used in \nArray.filter\n to remove \n`null`\n, \n`undefined`\n from the array type",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "A boolean that is \n`true`\n if the value is neither \n`null`\n, \n`undefined`\n nor \n`''`\n (empty string), false otherwise."
+              },
+              {
+                "name": "example",
+                "text": "```typescript\n// TypeScript Type: (string | undefined | null)[]\nconst someArray = ['one', 'two', undefined, null, ''];\n\n// TypeScript Type: string[]\nconst filteredArray = someArray.filter(filterNullAndUndefinedAndEmpty);\n// Result: ['one', 'two']\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 7,
+              "name": "TValue",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 8,
+              "name": "value",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "literal",
+                    "value": ""
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 252,
+                    "name": "Nullish",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 7,
+                    "name": "TValue",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "reference",
+              "id": 7,
+              "name": "TValue",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "filterNullishOrZero",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 19,
+        "file": "filterNullAndUndefinedAndZero.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 10,
+          "name": "filterNullishOrZero",
+          "comment": {
+            "description": "Checks whether a value is not \n`null`\n nor \n`undefined`\n nor \n`0`\n.\nThis can be used in \nArray.filter\n to remove \n`null`\n, \n`undefined`\n from the array type",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "A boolean that is \n`true`\n if the value is neither \n`null`\n, \n`undefined`\n nor \n`0`\n, false otherwise."
+              },
+              {
+                "name": "example",
+                "text": "```typescript\n// TypeScript Type: (string | number | undefined | null)[]\nconst someArray = ['one', 'two', undefined, null, 0, 1];\n\n// TypeScript Type: (string | number)[]\nconst filteredArray = someArray.filter(filterNullAndUndefinedAndZero);\n// Result: ['one', 'two', 1]\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 11,
+              "name": "TValue",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 12,
+              "name": "value",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "literal",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 252,
+                    "name": "Nullish",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 11,
+                    "name": "TValue",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "reference",
+              "id": 11,
+              "name": "TValue",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "name": "getDeepObjectKeys",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 15,
+        "file": "getDeepObjectKeys.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 86,
+          "name": "getDeepObjectKeys",
+          "comment": {
+            "description": "Flattens an object to a list of its keys, traversing deeply into nested objects and arrays of objects.",
+            "blockTags": [
+              {
+                "name": "note",
+                "text": "By default Nested array values are flattened to \n`arrayKey.${index}.subKey`\n.\nThis can be changed to \n`arrayKey[${index}].subKey`\n by setting \n`options.arrayKeysIndexStyle`\n to \n`'braces-with-dot'`\n.\nOr it can also be changed to \n`arrayKey[${index}]subKey`\n by setting \n`options.arrayKeysIndexStyle`\n to \n`'braces'`\n."
+              },
+              {
+                "name": "returns",
+                "text": "An array of strings holding the keys of the object"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 87,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 88,
+              "name": "obj",
+              "type": {
+                "kind": "reference",
+                "id": 257,
+                "name": "AnyObject",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 87,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            },
+            {
+              "id": 89,
+              "name": "options",
+              "type": {
+                "kind": "reference",
+                "id": 90,
+                "name": "GetDeepObjectKeysOptions",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "name": "hasAtLeastOneKeyInMap",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "hasAtLeastOneKeyInMap.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 93,
+          "name": "hasAtLeastOneKeyInMap",
+          "comment": {
+            "description": "Checks whether any of the \nkeys\n are in the \nmap",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "`true`\n if at least one of the \nkeys\n is in the \nmap\n, \n`false`\n otherwise."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 94,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 95,
+              "name": "map",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "ReadonlyMap",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 94,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 96,
+              "name": "keys",
+              "type": {
+                "kind": "typeOperator",
+                "operator": "readonly",
+                "type": {
+                  "kind": "array",
+                  "type": {
+                    "kind": "reference",
+                    "id": 94,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "name": "inlineCodeBlock",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "inlineCodeBlock.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 98,
+          "name": "inlineCodeBlock",
+          "comment": {
+            "description": "Wraps text in a markdown inline codeblock",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 99,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "name": "isClass",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "isClass.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 101,
+          "name": "isClass",
+          "comment": {
+            "description": "Verify if the input is a class constructor.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 102,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "reference",
+              "id": 215,
+              "name": "Ctor",
+              "packageName": null,
+              "typeArguments": [
+                {
+                  "kind": "typeOperator",
+                  "operator": "readonly",
+                  "type": {
+                    "kind": "array",
+                    "type": {
+                      "kind": "intrinsic",
+                      "type": "any"
+                    }
+                  }
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "any"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "name": "isFunction",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "isFunction.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 104,
+          "name": "isFunction",
+          "comment": {
+            "description": "Verify if the input is a function.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 105,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "reference",
+              "id": null,
+              "name": "Function",
+              "packageName": "typescript",
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "isNullish",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "isNullOrUndefined.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 14,
+          "name": "isNullish",
+          "comment": {
+            "description": "Checks whether or not a value is \n`null`\n or \n`undefined`",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 15,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "reference",
+              "id": 252,
+              "name": "Nullish",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "isNullishOrEmpty",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "isNullOrUndefinedOrEmpty.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 17,
+          "name": "isNullishOrEmpty",
+          "comment": {
+            "description": "Checks whether or not a value is \n`null`\n, \n`undefined`\n or \n`''`\n, \n`[]`",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 18,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "literal",
+                  "value": ""
+                },
+                {
+                  "kind": "reference",
+                  "id": 252,
+                  "name": "Nullish",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "isNullishOrZero",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "isNullOrUndefinedOrZero.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 20,
+          "name": "isNullishOrZero",
+          "comment": {
+            "description": "Checks whether or not a value is \n`null`\n, \n`undefined`\n or \n`0`",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 21,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "value",
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "literal",
+                  "value": "0"
+                },
+                {
+                  "kind": "reference",
+                  "id": 252,
+                  "name": "Nullish",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "name": "isNumber",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 5,
+        "file": "isNumber.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 110,
+          "name": "isNumber",
+          "comment": {
+            "description": "Verify if a number is a finite number.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 111,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "name": "isObject",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "isObject.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 113,
+          "name": "isObject",
+          "comment": {
+            "description": "Verify if the input is an object literal (or class).",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 114,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            },
+            {
+              "id": 115,
+              "name": "constructorType",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "ObjectConstructor",
+                "packageName": "typescript",
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "intrinsic",
+              "type": "object"
+            }
+          }
+        },
+        {
+          "id": 116,
+          "name": "isObject",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 117,
+              "name": "T",
+              "type": {
+                "kind": "reference",
+                "id": 227,
+                "name": "Constructor",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                ]
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 118,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            },
+            {
+              "id": 119,
+              "name": "constructorType",
+              "type": {
+                "kind": "reference",
+                "id": 117,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "reference",
+              "id": null,
+              "name": "InstanceType",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": 117,
+                  "name": "T",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "name": "isPrimitive",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "isPrimitive.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 121,
+          "name": "isPrimitive",
+          "comment": {
+            "description": "Check whether a value is a primitive",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 122,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "intrinsic",
+                  "type": "string"
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "number"
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "bigint"
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "boolean"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "name": "isThenable",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 21,
+        "file": "isThenable.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 124,
+          "name": "isThenable",
+          "comment": {
+            "description": "Verify if an object is a promise.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 125,
+              "name": "input",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "predicate",
+            "asserts": false,
+            "name": "input",
+            "type": {
+              "kind": "reference",
+              "id": 126,
+              "name": "Thenable",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "name": "lazy",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "lazy.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 130,
+          "name": "lazy",
+          "comment": {
+            "description": "Lazily creates a constant or load a module and caches it internally",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "The value returned by the callback, or the cached value if it was already initialised once."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 131,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 132,
+              "name": "cb",
+              "type": {
+                "kind": "reflection",
+                "reflection": {
+                  "id": 133,
+                  "name": "__type",
+                  "kind": 65536,
+                  "kindString": "Type literal",
+                  "flags": {},
+                  "sources": [
+                    {
+                      "fileName": "lib/lazy.ts",
+                      "line": 6,
+                      "character": 28,
+                      "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/lazy.ts#L6"
+                    }
+                  ],
+                  "signatures": [
+                    {
+                      "id": 134,
+                      "name": "__type",
+                      "kind": 4096,
+                      "kindString": "Call signature",
+                      "flags": {},
+                      "type": {
+                        "type": "reference",
+                        "id": 131,
+                        "name": "T"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 135,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/lazy.ts",
+                  "line": 9,
+                  "character": 8,
+                  "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/lazy.ts#L9"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 136,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "type": {
+                    "type": "reference",
+                    "id": 131,
+                    "name": "T"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "name": "makeObject",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "makeObject.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 138,
+          "name": "makeObject",
+          "comment": {
+            "description": "Turn a dotted path into a json object.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 139,
+              "name": "path",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 140,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            },
+            {
+              "id": 141,
+              "name": "obj",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Record",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Record",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "unknown"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "name": "mergeDefault",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 43,
+        "file": "mergeDefault.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 143,
+          "name": "mergeDefault",
+          "comment": {
+            "description": "Deep merges 2 objects. Properties from the second parameter are applied to the first.",
+            "blockTags": [
+              {
+                "name": "remark",
+                "text": "`overwrites`\n is also mutated!"
+              },
+              {
+                "name": "remark",
+                "text": "If the value of a key in \n`overwrites`\n is \n`undefined`\n then the value of that same key in \n`base`\n is used instead!"
+              },
+              {
+                "name": "remark",
+                "text": "This is essentially \n`{ ...base, ...overwrites }`\n but recursively"
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nconst base = { a: 0, b: 1 };\nconst overwrites = {}; // will be { a: 0, b: 1 } after merge\nmergeDefault(base, overwrites) // { a: 0, b: 1 }\n```"
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nconst base = { a: 0, b: 1 };\nconst overwrites = { a: 2, i: 3 };\nmergeDefault(base, overwrites) // { a: 2, i: 3, b: 1 };\n```"
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nconst base = { a: 0, b: 1 };\nconst overwrites = { a: null };\nmergeDefault(base, overwrites) // { a: null, b: 1 };\n```"
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nconst base = { a: 0, b: 1 };\nconst overwrites = { a: undefined };\nmergeDefault(base, overwrites) // { a: 0, b: 1 };\n```"
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nconst base = { a: null };\nconst overwrites = { a: { b: 5 } };\nmergeDefault(base, overwrites) // { a: { b: 5 } };\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 144,
+              "name": "A",
+              "type": {
+                "kind": "intrinsic",
+                "type": "object"
+              },
+              "default": null
+            },
+            {
+              "id": 145,
+              "name": "B",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Partial",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 144,
+                    "name": "A",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 146,
+              "name": "base",
+              "type": {
+                "kind": "reference",
+                "id": 144,
+                "name": "A",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 147,
+              "name": "overwrites",
+              "type": {
+                "kind": "reference",
+                "id": 145,
+                "name": "B",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": 195,
+            "name": "DeepRequired",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "intersection",
+                "types": [
+                  {
+                    "kind": "reference",
+                    "id": 144,
+                    "name": "A",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 145,
+                    "name": "B",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "name": "mergeObjects",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 9,
+        "file": "mergeObjects.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 149,
+          "name": "mergeObjects",
+          "comment": {
+            "description": "Merges two objects",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 150,
+              "name": "A",
+              "type": {
+                "kind": "intrinsic",
+                "type": "object"
+              },
+              "default": null
+            },
+            {
+              "id": 151,
+              "name": "B",
+              "type": {
+                "kind": "intrinsic",
+                "type": "object"
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 152,
+              "name": "objTarget",
+              "type": {
+                "kind": "reference",
+                "id": 150,
+                "name": "A",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 153,
+              "name": "objSource",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Readonly",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 151,
+                    "name": "B",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intersection",
+            "types": [
+              {
+                "kind": "reference",
+                "id": 150,
+                "name": "A",
+                "packageName": null,
+                "typeArguments": []
+              },
+              {
+                "kind": "reference",
+                "id": 151,
+                "name": "B",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 154,
+      "name": "noop",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 2,
+        "file": "noop.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 155,
+          "name": "noop",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "void"
+          }
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "name": "objectToTuples",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 9,
+        "file": "objectToTuples.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 157,
+          "name": "objectToTuples",
+          "comment": {
+            "description": "Convert an object to a tuple",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 158,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 159,
+              "name": "obj",
+              "type": {
+                "kind": "reference",
+                "id": 257,
+                "name": "AnyObject",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 158,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            },
+            {
+              "id": 160,
+              "name": "prefix",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "tuple",
+              "types": [
+                {
+                  "kind": "typeOperator",
+                  "operator": "keyof",
+                  "type": {
+                    "kind": "reference",
+                    "id": 158,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                },
+                {
+                  "kind": "indexedAccess",
+                  "objectType": {
+                    "kind": "reference",
+                    "id": 158,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  "indexType": {
+                    "kind": "typeOperator",
+                    "operator": "keyof",
+                    "type": {
+                      "kind": "reference",
+                      "id": 158,
+                      "name": "T",
+                      "packageName": null,
+                      "typeArguments": []
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "name": "parseURL",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "parseUrl.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 162,
+          "name": "parseURL",
+          "comment": {
+            "description": "Parses an URL, returns null if invalid.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 163,
+              "name": "url",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "URL",
+                "packageName": "@types/node",
+                "typeArguments": []
+              },
+              {
+                "kind": "literal",
+                "value": "null"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "name": "partition",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 12,
+        "file": "partition.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 165,
+          "name": "partition",
+          "comment": {
+            "description": "Partitions \n`array`\n into a tuple of two arrays,\nwhere one array contains all elements that satisfies \n`predicate`\n,\nand the other contains all elements that do not satisfy \n`predicate`\n.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "A tuple of two arrays."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 166,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 167,
+              "name": "array",
+              "type": {
+                "kind": "array",
+                "type": {
+                  "kind": "reference",
+                  "id": 166,
+                  "name": "T",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              }
+            },
+            {
+              "id": 168,
+              "name": "predicate",
+              "type": {
+                "kind": "reflection",
+                "reflection": {
+                  "id": 169,
+                  "name": "__type",
+                  "kind": 65536,
+                  "kindString": "Type literal",
+                  "flags": {},
+                  "sources": [
+                    {
+                      "fileName": "lib/partition.ts",
+                      "line": 12,
+                      "character": 52,
+                      "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/partition.ts#L12"
+                    }
+                  ],
+                  "signatures": [
+                    {
+                      "id": 170,
+                      "name": "__type",
+                      "kind": 4096,
+                      "kindString": "Call signature",
+                      "flags": {},
+                      "parameters": [
+                        {
+                          "id": 171,
+                          "name": "value",
+                          "kind": 32768,
+                          "kindString": "Parameter",
+                          "flags": {},
+                          "type": {
+                            "type": "reference",
+                            "id": 166,
+                            "name": "T"
+                          }
+                        },
+                        {
+                          "id": 172,
+                          "name": "index",
+                          "kind": 32768,
+                          "kindString": "Parameter",
+                          "flags": {},
+                          "type": {
+                            "type": "intrinsic",
+                            "name": "number"
+                          }
+                        }
+                      ],
+                      "type": {
+                        "type": "intrinsic",
+                        "name": "boolean"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "reference",
+                "id": 166,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "name": "range",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "range.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 174,
+          "name": "range",
+          "comment": {
+            "description": "Get an array of numbers with the selected range",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 175,
+              "name": "min",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            },
+            {
+              "id": 176,
+              "name": "max",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            },
+            {
+              "id": 177,
+              "name": "step",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "name": "regExpEsc",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "regExpEsc.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 179,
+          "name": "regExpEsc",
+          "comment": {
+            "description": "Cleans a string from regex injection",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 180,
+              "name": "str",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "name": "roundNumber",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 7,
+        "file": "roundNumber.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 182,
+          "name": "roundNumber",
+          "comment": {
+            "description": "Properly rounds up or down a number.\nAlso supports strings using an exponent to indicate large or small numbers.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 183,
+              "name": "num",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "number"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 184,
+              "name": "scale",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "name": "splitText",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 9,
+        "file": "splitText.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 186,
+          "name": "splitText",
+          "comment": {
+            "description": "Split a string by its latest space character in a range from the character 0 to the selected one.",
+            "blockTags": [
+              {
+                "name": "copyright",
+                "text": "2019 Antonio Román"
+              },
+              {
+                "name": "license",
+                "text": "Apache-2.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 187,
+              "name": "str",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 188,
+              "name": "length",
+              "type": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            },
+            {
+              "id": 189,
+              "name": "char",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "toTitleCase",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 35,
+        "file": "toTitleCase.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 23,
+          "name": "toTitleCase",
+          "comment": {
+            "description": "Converts a string to Title Case",
+            "blockTags": [
+              {
+                "name": "description",
+                "text": "This is designed to also ensure common Discord PascalCased strings\nare put in their TitleCase \nbaseVariants\n.\n\nYou can also provide your own variants to merge with the \nbaseVariants\n for\nyour own functionality use."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 24,
+              "name": "str",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 25,
+              "name": "options",
+              "type": {
+                "kind": "reference",
+                "id": 26,
+                "name": "ToTitleCaseOptions",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "name": "tryParse",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "tryParse.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 191,
+          "name": "tryParse",
+          "comment": {
+            "description": "Try parse a stringified JSON string.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 192,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "object"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 66,
+      "name": "DebounceSettings",
+      "comment": {
+        "description": "lodash (Custom Build) <https://lodash.com/>\nBuild: \n`lodash modularize exports=\"npm\" -o ./`\n\nCopyright jQuery Foundation and other contributors <https://jquery.org/>\nReleased under MIT license <https://lodash.com/license>\nBased on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>\nCopyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 10,
+        "file": "index.ts",
+        "path": "lib/debounce"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 68,
+          "name": "maxWait",
+          "comment": {
+            "description": "The maximum time \n`func`\n is allowed to be delayed before it's invoked",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "null"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 21,
+            "file": "index.ts",
+            "path": "lib/debounce"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            ]
+          }
+        },
+        {
+          "id": 67,
+          "name": "wait",
+          "comment": {
+            "description": "The number of milliseconds to delay.",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 15,
+            "file": "index.ts",
+            "path": "lib/debounce"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "name": "DebouncedFunc",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 24,
+        "file": "index.ts",
+        "path": "lib/debounce"
+      },
+      "external": false,
+      "properties": []
+    },
+    {
+      "id": 90,
+      "name": "GetDeepObjectKeysOptions",
+      "comment": {
+        "description": "The options for \ngetDeepObjectKeys",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 68,
+        "file": "getDeepObjectKeys.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 91,
+          "name": "arrayKeysIndexStyle",
+          "comment": {
+            "description": "Whether to use \n`.${index}.`\n (\n`'dotted'`\n), \n`[${index}].`\n, (\n`'braces-with-dot'`\n) or \n`[${index}]`\n (\n`'braces'`\n) to separate array keys",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "'dotted'"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 73,
+            "file": "getDeepObjectKeys.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "dotted"
+              },
+              {
+                "kind": "literal",
+                "value": "braces-with-dot"
+              },
+              {
+                "kind": "literal",
+                "value": "braces"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "name": "Thenable",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 4,
+        "file": "isThenable.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 128,
+          "name": "catch",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 6,
+            "file": "isThenable.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Function",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 127,
+          "name": "then",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 5,
+            "file": "isThenable.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Function",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "ToTitleCaseOptions",
+      "comment": {
+        "description": "The options to use when converting a string to title case",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 56,
+        "file": "toTitleCase.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 27,
+          "name": "additionalVariants",
+          "comment": {
+            "description": "The optional additional variants to use when converting the string",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 60,
+            "file": "toTitleCase.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Record",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "id": 28,
+          "name": "caseSensitive",
+          "comment": {
+            "description": "Whether to convert the string to title case in a case sensitive manner.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 65,
+            "file": "toTitleCase.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": [
+    {
+      "id": 232,
+      "name": "AbstractConstructor",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 64,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 236,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 233,
+          "name": "__type",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "lib/utilityTypes.ts",
+              "line": 64,
+              "character": 37,
+              "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L64"
+            }
+          ],
+          "signatures": [
+            {
+              "id": 234,
+              "name": "__type",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {
+                "isAbstract": true
+              },
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "A generic abstract constructor without parameters"
+                  }
+                ]
+              },
+              "parameters": [
+                {
+                  "id": 235,
+                  "name": "args",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isRest": true
+                  },
+                  "type": {
+                    "type": "array",
+                    "elementType": {
+                      "type": "intrinsic",
+                      "name": "any"
+                    }
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 236,
+                "name": "T"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 221,
+      "name": "AbstractCtor",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 54,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 225,
+          "name": "A",
+          "type": {
+            "kind": "reference",
+            "id": 214,
+            "name": "Arr",
+            "packageName": null,
+            "typeArguments": []
+          },
+          "default": {
+            "kind": "typeOperator",
+            "operator": "readonly",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "intrinsic",
+                "type": "any"
+              }
+            }
+          }
+        },
+        {
+          "id": 226,
+          "name": "R",
+          "type": null,
+          "default": {
+            "kind": "intrinsic",
+            "type": "any"
+          }
+        }
+      ],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 222,
+          "name": "__type",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "lib/utilityTypes.ts",
+              "line": 54,
+              "character": 68,
+              "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L54"
+            }
+          ],
+          "signatures": [
+            {
+              "id": 223,
+              "name": "__type",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {
+                "isAbstract": true
+              },
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "A generic abstract constructor with parameters"
+                  }
+                ]
+              },
+              "parameters": [
+                {
+                  "id": 224,
+                  "name": "args",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isRest": true
+                  },
+                  "type": {
+                    "type": "reference",
+                    "id": 225,
+                    "name": "A"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 226,
+                "name": "R"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 257,
+      "name": "AnyObject",
+      "comment": {
+        "description": "An object that can have any structure, this is an alternative to \nNonNullObject\n for situations where\nthat leads to unexpected type resolutions.\n\nNote that this is still a strictly typed type, it is not simply aliasing \n`any`",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 106,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 258,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "mapped",
+        "parameter": "K",
+        "parameterType": {
+          "kind": "typeOperator",
+          "operator": "keyof",
+          "type": {
+            "kind": "reference",
+            "id": 258,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        "nameType": null,
+        "templateType": {
+          "kind": "indexedAccess",
+          "objectType": {
+            "kind": "reference",
+            "id": 258,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          },
+          "indexType": {
+            "kind": "reference",
+            "id": null,
+            "name": "K",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        "readonly": null,
+        "optional": null
+      }
+    },
+    {
+      "id": 206,
+      "name": "ArgumentTypes",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 38,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 213,
+          "name": "F",
+          "type": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 210,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/utilityTypes.ts",
+                  "line": 38,
+                  "character": 36,
+                  "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L38"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 211,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "parameters": [
+                    {
+                      "id": 212,
+                      "name": "args",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {
+                        "isRest": true
+                      },
+                      "type": {
+                        "type": "array",
+                        "elementType": {
+                          "type": "intrinsic",
+                          "name": "any"
+                        }
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "unknown"
+                  }
+                }
+              ]
+            }
+          },
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": 213,
+          "name": "F",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "reflection",
+          "reflection": {
+            "id": 207,
+            "name": "__type",
+            "kind": 65536,
+            "kindString": "Type literal",
+            "flags": {},
+            "sources": [
+              {
+                "fileName": "lib/utilityTypes.ts",
+                "line": 38,
+                "character": 77,
+                "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L38"
+              }
+            ],
+            "signatures": [
+              {
+                "id": 208,
+                "name": "__type",
+                "kind": 4096,
+                "kindString": "Call signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 209,
+                    "name": "args",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {
+                      "isRest": true
+                    },
+                    "type": {
+                      "type": "inferred",
+                      "name": "A"
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "any"
+                }
+              }
+            ]
+          }
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": null,
+          "name": "A",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "falseType": {
+          "kind": "intrinsic",
+          "type": "never"
+        }
+      }
+    },
+    {
+      "id": 214,
+      "name": "Arr",
+      "comment": {
+        "description": "A readonly array of any values.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 44,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "typeOperator",
+        "operator": "readonly",
+        "type": {
+          "kind": "array",
+          "type": {
+            "kind": "intrinsic",
+            "type": "any"
+          }
+        }
+      }
+    },
+    {
+      "id": 266,
+      "name": "ArrayElementType",
+      "comment": {
+        "description": "Gets a union type of all the keys that are in an array.",
+        "blockTags": [
+          {
+            "name": "example",
+            "text": "```typescript\nconst sample = [1, 2, '3', true];\n\ntype arrayUnion = ArrayElementType<typeof sample>;\n// Expected: string | number | boolean\n```"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 186,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 267,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": 267,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "array",
+          "type": {
+            "kind": "inferred",
+            "type": "K"
+          }
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": null,
+          "name": "K",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "falseType": {
+          "kind": "conditional",
+          "checkType": {
+            "kind": "reference",
+            "id": 267,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          },
+          "extendsType": {
+            "kind": "typeOperator",
+            "operator": "readonly",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "inferred",
+                "type": "RK"
+              }
+            }
+          },
+          "trueType": {
+            "kind": "reference",
+            "id": null,
+            "name": "RK",
+            "packageName": null,
+            "typeArguments": []
+          },
+          "falseType": {
+            "kind": "reference",
+            "id": 267,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        }
+      }
+    },
+    {
+      "id": 250,
+      "name": "Awaitable",
+      "comment": {
+        "description": "ReturnType for a function that can return either a value or a \n`Promise`\n with that value",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 79,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 251,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "PromiseLike",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 251,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          },
+          {
+            "kind": "reference",
+            "id": 251,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 194,
+      "name": "Builtin",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 4,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": 193,
+            "name": "Primitive",
+            "packageName": null,
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Function",
+            "packageName": "typescript",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Date",
+            "packageName": "typescript",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Error",
+            "packageName": "typescript",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "RegExp",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 227,
+      "name": "Constructor",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 59,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 231,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 228,
+          "name": "__type",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "lib/utilityTypes.ts",
+              "line": 59,
+              "character": 29,
+              "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L59"
+            }
+          ],
+          "signatures": [
+            {
+              "id": 229,
+              "name": "__type",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "A generic constructor without parameters"
+                  }
+                ]
+              },
+              "parameters": [
+                {
+                  "id": 230,
+                  "name": "args",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isRest": true
+                  },
+                  "type": {
+                    "type": "array",
+                    "elementType": {
+                      "type": "intrinsic",
+                      "name": "any"
+                    }
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 231,
+                "name": "T"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 215,
+      "name": "Ctor",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 49,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 219,
+          "name": "A",
+          "type": {
+            "kind": "reference",
+            "id": 214,
+            "name": "Arr",
+            "packageName": null,
+            "typeArguments": []
+          },
+          "default": {
+            "kind": "typeOperator",
+            "operator": "readonly",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "intrinsic",
+                "type": "any"
+              }
+            }
+          }
+        },
+        {
+          "id": 220,
+          "name": "R",
+          "type": null,
+          "default": {
+            "kind": "intrinsic",
+            "type": "any"
+          }
+        }
+      ],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 216,
+          "name": "__type",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "lib/utilityTypes.ts",
+              "line": 49,
+              "character": 60,
+              "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L49"
+            }
+          ],
+          "signatures": [
+            {
+              "id": 217,
+              "name": "__type",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "A generic constructor with parameters"
+                  }
+                ]
+              },
+              "parameters": [
+                {
+                  "id": 218,
+                  "name": "args",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {
+                    "isRest": true
+                  },
+                  "type": {
+                    "type": "reference",
+                    "id": 219,
+                    "name": "A"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 220,
+                "name": "R"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 204,
+      "name": "DeepPartial",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 30,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 205,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "mapped",
+        "parameter": "P",
+        "parameterType": {
+          "kind": "typeOperator",
+          "operator": "keyof",
+          "type": {
+            "kind": "reference",
+            "id": 205,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        "nameType": null,
+        "templateType": {
+          "kind": "conditional",
+          "checkType": {
+            "kind": "indexedAccess",
+            "objectType": {
+              "kind": "reference",
+              "id": 205,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            },
+            "indexType": {
+              "kind": "reference",
+              "id": null,
+              "name": "P",
+              "packageName": null,
+              "typeArguments": []
+            }
+          },
+          "extendsType": {
+            "kind": "array",
+            "type": {
+              "kind": "inferred",
+              "type": "U"
+            }
+          },
+          "trueType": {
+            "kind": "array",
+            "type": {
+              "kind": "reference",
+              "id": 204,
+              "name": "DeepPartial",
+              "packageName": null,
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "U",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          },
+          "falseType": {
+            "kind": "conditional",
+            "checkType": {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": 205,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "reference",
+                "id": null,
+                "name": "P",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            "extendsType": {
+              "kind": "reference",
+              "id": null,
+              "name": "ReadonlyArray",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "inferred",
+                  "type": "U"
+                }
+              ]
+            },
+            "trueType": {
+              "kind": "reference",
+              "id": null,
+              "name": "ReadonlyArray",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": 204,
+                  "name": "DeepPartial",
+                  "packageName": null,
+                  "typeArguments": [
+                    {
+                      "kind": "reference",
+                      "id": null,
+                      "name": "U",
+                      "packageName": null,
+                      "typeArguments": []
+                    }
+                  ]
+                }
+              ]
+            },
+            "falseType": {
+              "kind": "reference",
+              "id": 204,
+              "name": "DeepPartial",
+              "packageName": null,
+              "typeArguments": [
+                {
+                  "kind": "indexedAccess",
+                  "objectType": {
+                    "kind": "reference",
+                    "id": 205,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  "indexType": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "P",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "readonly": "+",
+        "optional": null
+      }
+    },
+    {
+      "id": 195,
+      "name": "DeepRequired",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 197,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": 197,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "reference",
+          "id": 194,
+          "name": "Builtin",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": null,
+          "name": "NonNullable",
+          "packageName": "typescript",
+          "typeArguments": [
+            {
+              "kind": "reference",
+              "id": 197,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            }
+          ]
+        },
+        "falseType": {
+          "kind": "conditional",
+          "checkType": {
+            "kind": "reference",
+            "id": 197,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          },
+          "extendsType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "inferred",
+                "type": "K"
+              },
+              {
+                "kind": "inferred",
+                "type": "V"
+              }
+            ]
+          },
+          "trueType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 195,
+                "name": "DeepRequired",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              },
+              {
+                "kind": "reference",
+                "id": 195,
+                "name": "DeepRequired",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "V",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          },
+          "falseType": {
+            "kind": "conditional",
+            "checkType": {
+              "kind": "reference",
+              "id": 197,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            },
+            "extendsType": {
+              "kind": "reference",
+              "id": null,
+              "name": "ReadonlyMap",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "inferred",
+                  "type": "K"
+                },
+                {
+                  "kind": "inferred",
+                  "type": "V"
+                }
+              ]
+            },
+            "trueType": {
+              "kind": "reference",
+              "id": null,
+              "name": "ReadonlyMap",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": 195,
+                  "name": "DeepRequired",
+                  "packageName": null,
+                  "typeArguments": [
+                    {
+                      "kind": "reference",
+                      "id": null,
+                      "name": "K",
+                      "packageName": null,
+                      "typeArguments": []
+                    }
+                  ]
+                },
+                {
+                  "kind": "reference",
+                  "id": 195,
+                  "name": "DeepRequired",
+                  "packageName": null,
+                  "typeArguments": [
+                    {
+                      "kind": "reference",
+                      "id": null,
+                      "name": "V",
+                      "packageName": null,
+                      "typeArguments": []
+                    }
+                  ]
+                }
+              ]
+            },
+            "falseType": {
+              "kind": "conditional",
+              "checkType": {
+                "kind": "reference",
+                "id": 197,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "extendsType": {
+                "kind": "reference",
+                "id": null,
+                "name": "WeakMap",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "inferred",
+                    "type": "K"
+                  },
+                  {
+                    "kind": "inferred",
+                    "type": "V"
+                  }
+                ]
+              },
+              "trueType": {
+                "kind": "reference",
+                "id": null,
+                "name": "WeakMap",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 195,
+                    "name": "DeepRequired",
+                    "packageName": null,
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": null,
+                        "name": "K",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 195,
+                    "name": "DeepRequired",
+                    "packageName": null,
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": null,
+                        "name": "V",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              "falseType": {
+                "kind": "conditional",
+                "checkType": {
+                  "kind": "reference",
+                  "id": 197,
+                  "name": "T",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "extendsType": {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "Set",
+                  "packageName": "typescript",
+                  "typeArguments": [
+                    {
+                      "kind": "inferred",
+                      "type": "U"
+                    }
+                  ]
+                },
+                "trueType": {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "Set",
+                  "packageName": "typescript",
+                  "typeArguments": [
+                    {
+                      "kind": "reference",
+                      "id": 195,
+                      "name": "DeepRequired",
+                      "packageName": null,
+                      "typeArguments": [
+                        {
+                          "kind": "reference",
+                          "id": null,
+                          "name": "U",
+                          "packageName": null,
+                          "typeArguments": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "falseType": {
+                  "kind": "conditional",
+                  "checkType": {
+                    "kind": "reference",
+                    "id": 197,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  "extendsType": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "ReadonlySet",
+                    "packageName": "typescript",
+                    "typeArguments": [
+                      {
+                        "kind": "inferred",
+                        "type": "U"
+                      }
+                    ]
+                  },
+                  "trueType": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "ReadonlySet",
+                    "packageName": "typescript",
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 195,
+                        "name": "DeepRequired",
+                        "packageName": null,
+                        "typeArguments": [
+                          {
+                            "kind": "reference",
+                            "id": null,
+                            "name": "U",
+                            "packageName": null,
+                            "typeArguments": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "falseType": {
+                    "kind": "conditional",
+                    "checkType": {
+                      "kind": "reference",
+                      "id": 197,
+                      "name": "T",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "extendsType": {
+                      "kind": "reference",
+                      "id": null,
+                      "name": "WeakSet",
+                      "packageName": "typescript",
+                      "typeArguments": [
+                        {
+                          "kind": "inferred",
+                          "type": "U"
+                        }
+                      ]
+                    },
+                    "trueType": {
+                      "kind": "reference",
+                      "id": null,
+                      "name": "WeakSet",
+                      "packageName": "typescript",
+                      "typeArguments": [
+                        {
+                          "kind": "reference",
+                          "id": 195,
+                          "name": "DeepRequired",
+                          "packageName": null,
+                          "typeArguments": [
+                            {
+                              "kind": "reference",
+                              "id": null,
+                              "name": "U",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "falseType": {
+                      "kind": "conditional",
+                      "checkType": {
+                        "kind": "reference",
+                        "id": 197,
+                        "name": "T",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      "extendsType": {
+                        "kind": "reference",
+                        "id": null,
+                        "name": "Promise",
+                        "packageName": "typescript",
+                        "typeArguments": [
+                          {
+                            "kind": "inferred",
+                            "type": "U"
+                          }
+                        ]
+                      },
+                      "trueType": {
+                        "kind": "reference",
+                        "id": null,
+                        "name": "Promise",
+                        "packageName": "typescript",
+                        "typeArguments": [
+                          {
+                            "kind": "reference",
+                            "id": 195,
+                            "name": "DeepRequired",
+                            "packageName": null,
+                            "typeArguments": [
+                              {
+                                "kind": "reference",
+                                "id": null,
+                                "name": "U",
+                                "packageName": null,
+                                "typeArguments": []
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "falseType": {
+                        "kind": "conditional",
+                        "checkType": {
+                          "kind": "reference",
+                          "id": 197,
+                          "name": "T",
+                          "packageName": null,
+                          "typeArguments": []
+                        },
+                        "extendsType": {
+                          "kind": "reflection",
+                          "reflection": {
+                            "id": 196,
+                            "name": "__type",
+                            "kind": 65536,
+                            "kindString": "Type literal",
+                            "flags": {},
+                            "sources": [
+                              {
+                                "fileName": "lib/utilityTypes.ts",
+                                "line": 22,
+                                "character": 13,
+                                "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L22"
+                              }
+                            ]
+                          }
+                        },
+                        "trueType": {
+                          "kind": "mapped",
+                          "parameter": "K",
+                          "parameterType": {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": 197,
+                              "name": "T",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          "nameType": null,
+                          "templateType": {
+                            "kind": "reference",
+                            "id": 195,
+                            "name": "DeepRequired",
+                            "packageName": null,
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": 197,
+                                  "name": "T",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "reference",
+                                  "id": null,
+                                  "name": "K",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                }
+                              }
+                            ]
+                          },
+                          "readonly": "-",
+                          "optional": null
+                        },
+                        "falseType": {
+                          "kind": "reference",
+                          "id": null,
+                          "name": "NonNullable",
+                          "packageName": "typescript",
+                          "typeArguments": [
+                            {
+                              "kind": "reference",
+                              "id": 197,
+                              "name": "T",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 237,
+      "name": "FirstArgument",
+      "comment": {
+        "description": "Gets the first argument of any given function",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 69,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 242,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": 242,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "reflection",
+          "reflection": {
+            "id": 238,
+            "name": "__type",
+            "kind": 65536,
+            "kindString": "Type literal",
+            "flags": {},
+            "sources": [
+              {
+                "fileName": "lib/utilityTypes.ts",
+                "line": 69,
+                "character": 41,
+                "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L69"
+              }
+            ],
+            "signatures": [
+              {
+                "id": 239,
+                "name": "__type",
+                "kind": 4096,
+                "kindString": "Call signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 240,
+                    "name": "arg1",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "inferred",
+                      "name": "U"
+                    }
+                  },
+                  {
+                    "id": 241,
+                    "name": "args",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {
+                      "isRest": true
+                    },
+                    "type": {
+                      "type": "array",
+                      "elementType": {
+                        "type": "intrinsic",
+                        "name": "unknown"
+                      }
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "unknown"
+                }
+              }
+            ]
+          }
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": null,
+          "name": "U",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "falseType": {
+          "kind": "intrinsic",
+          "type": "unknown"
+        }
+      }
+    },
+    {
+      "id": 262,
+      "name": "Mutable",
+      "comment": {
+        "description": "Transforms a \n`readonly`\n type to be mutable",
+        "blockTags": [
+          {
+            "name": "example",
+            "text": "```typescript\ninterface Sample {\n\tid: string;\n\thobbies: readonly string[];\n}\n\ntype BB = Mutable<Sample>;\n// Expected:\n// {\n//    id: string;\n//    hobbies: string[];\n// }\n```"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 149,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 263,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "mapped",
+        "parameter": "P",
+        "parameterType": {
+          "kind": "typeOperator",
+          "operator": "keyof",
+          "type": {
+            "kind": "reference",
+            "id": 263,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        "nameType": null,
+        "templateType": {
+          "kind": "conditional",
+          "checkType": {
+            "kind": "indexedAccess",
+            "objectType": {
+              "kind": "reference",
+              "id": 263,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            },
+            "indexType": {
+              "kind": "reference",
+              "id": null,
+              "name": "P",
+              "packageName": null,
+              "typeArguments": []
+            }
+          },
+          "extendsType": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "array",
+                "type": {
+                  "kind": "intrinsic",
+                  "type": "unknown"
+                }
+              },
+              {
+                "kind": "reference",
+                "id": 255,
+                "name": "NonNullObject",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          },
+          "trueType": {
+            "kind": "reference",
+            "id": 262,
+            "name": "Mutable",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "indexedAccess",
+                "objectType": {
+                  "kind": "reference",
+                  "id": 263,
+                  "name": "T",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "indexType": {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "P",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              }
+            ]
+          },
+          "falseType": {
+            "kind": "indexedAccess",
+            "objectType": {
+              "kind": "reference",
+              "id": 263,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            },
+            "indexType": {
+              "kind": "reference",
+              "id": null,
+              "name": "P",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        },
+        "readonly": null,
+        "optional": "-"
+      }
+    },
+    {
+      "id": 255,
+      "name": "NonNullObject",
+      "comment": {
+        "description": "An object that is non nullable, to bypass TypeScript not easily working with \nRecord\n<\nPropertyKey\n, unknown> in various instances.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 98,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "intersection",
+        "types": [
+          {
+            "kind": "reflection",
+            "reflection": {
+              "id": 256,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/utilityTypes.ts",
+                  "line": 98,
+                  "character": 28,
+                  "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L98"
+                }
+              ]
+            }
+          },
+          {
+            "kind": "intrinsic",
+            "type": "object"
+          }
+        ]
+      }
+    },
+    {
+      "id": 253,
+      "name": "NonNullableProperties",
+      "comment": {
+        "description": "Similar to the built in \nNonNullable\n, but properly removes \n`null`\n from all keys in the class or interface\nThis does not recurse deeply, for that use \nDeepRequired",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 90,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 254,
+          "name": "T",
+          "type": null,
+          "default": {
+            "kind": "intrinsic",
+            "type": "unknown"
+          }
+        }
+      ],
+      "type": {
+        "kind": "mapped",
+        "parameter": "P",
+        "parameterType": {
+          "kind": "typeOperator",
+          "operator": "keyof",
+          "type": {
+            "kind": "reference",
+            "id": 254,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        "nameType": null,
+        "templateType": {
+          "kind": "reference",
+          "id": null,
+          "name": "NonNullable",
+          "packageName": "typescript",
+          "typeArguments": [
+            {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": 254,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "reference",
+                "id": null,
+                "name": "P",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        "readonly": null,
+        "optional": null
+      }
+    },
+    {
+      "id": 252,
+      "name": "Nullish",
+      "comment": {
+        "description": "Type union for the full 2 billion dollar mistake in the JavaScript ecosystem",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 84,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "literal",
+            "value": "null"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "undefined"
+          }
+        ]
+      }
+    },
+    {
+      "id": 201,
+      "name": "PartialRequired",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 28,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 202,
+          "name": "T",
+          "type": null,
+          "default": null
+        },
+        {
+          "id": 203,
+          "name": "K",
+          "type": {
+            "kind": "typeOperator",
+            "operator": "keyof",
+            "type": {
+              "kind": "reference",
+              "id": 202,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            }
+          },
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "intersection",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Partial",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Omit",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 202,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 203,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Required",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Pick",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 202,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 203,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 259,
+      "name": "PickByValue",
+      "comment": {
+        "description": "Gets all the keys (as a string union) from a type \n`T`\n that match value \n`V`",
+        "blockTags": [
+          {
+            "name": "example",
+            "text": "```typescript\ninterface Sample {\n\tid: string;\n\tname: string | null;\n\tmiddleName?: string;\n\tlastName: string;\n\thobbies: readonly string[];\n}\n\ntype BB = PickByValue<Sample, string>;\n// Expected:\n// \"id\" | \"lastName\"\n```"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 127,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 260,
+          "name": "T",
+          "type": null,
+          "default": null
+        },
+        {
+          "id": 261,
+          "name": "V",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "intersection",
+        "types": [
+          {
+            "kind": "indexedAccess",
+            "objectType": {
+              "kind": "mapped",
+              "parameter": "P",
+              "parameterType": {
+                "kind": "typeOperator",
+                "operator": "keyof",
+                "type": {
+                  "kind": "reference",
+                  "id": 260,
+                  "name": "T",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              },
+              "nameType": null,
+              "templateType": {
+                "kind": "conditional",
+                "checkType": {
+                  "kind": "indexedAccess",
+                  "objectType": {
+                    "kind": "reference",
+                    "id": 260,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  "indexType": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "P",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                },
+                "extendsType": {
+                  "kind": "reference",
+                  "id": 261,
+                  "name": "V",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "trueType": {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "P",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "falseType": {
+                  "kind": "intrinsic",
+                  "type": "never"
+                }
+              },
+              "readonly": null,
+              "optional": null
+            },
+            "indexType": {
+              "kind": "typeOperator",
+              "operator": "keyof",
+              "type": {
+                "kind": "reference",
+                "id": 260,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          },
+          {
+            "kind": "typeOperator",
+            "operator": "keyof",
+            "type": {
+              "kind": "reference",
+              "id": 260,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 193,
+      "name": "Primitive",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 1,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "intrinsic",
+            "type": "string"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "number"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "boolean"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "bigint"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "symbol"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "undefined"
+          },
+          {
+            "kind": "literal",
+            "value": "null"
+          }
+        ]
+      }
+    },
+    {
+      "id": 198,
+      "name": "RequiredExcept",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 26,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 199,
+          "name": "T",
+          "type": null,
+          "default": null
+        },
+        {
+          "id": 200,
+          "name": "K",
+          "type": {
+            "kind": "typeOperator",
+            "operator": "keyof",
+            "type": {
+              "kind": "reference",
+              "id": 199,
+              "name": "T",
+              "packageName": null,
+              "typeArguments": []
+            }
+          },
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "intersection",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Partial",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Pick",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 199,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 200,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Required",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Omit",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 199,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 200,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 243,
+      "name": "SecondArgument",
+      "comment": {
+        "description": "Gets the second argument of any given function",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 74,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 249,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": 249,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "reflection",
+          "reflection": {
+            "id": 244,
+            "name": "__type",
+            "kind": 65536,
+            "kindString": "Type literal",
+            "flags": {},
+            "sources": [
+              {
+                "fileName": "lib/utilityTypes.ts",
+                "line": 74,
+                "character": 42,
+                "url": "https://github.com/sapphiredev/utilities/blob/e41b4e0/packages/utilities/src/lib/utilityTypes.ts#L74"
+              }
+            ],
+            "signatures": [
+              {
+                "id": 245,
+                "name": "__type",
+                "kind": 4096,
+                "kindString": "Call signature",
+                "flags": {},
+                "parameters": [
+                  {
+                    "id": 246,
+                    "name": "arg1",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "intrinsic",
+                      "name": "unknown"
+                    }
+                  },
+                  {
+                    "id": 247,
+                    "name": "arg2",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {},
+                    "type": {
+                      "type": "inferred",
+                      "name": "U"
+                    }
+                  },
+                  {
+                    "id": 248,
+                    "name": "args",
+                    "kind": 32768,
+                    "kindString": "Parameter",
+                    "flags": {
+                      "isRest": true
+                    },
+                    "type": {
+                      "type": "array",
+                      "elementType": {
+                        "type": "intrinsic",
+                        "name": "unknown"
+                      }
+                    }
+                  }
+                ],
+                "type": {
+                  "type": "intrinsic",
+                  "name": "unknown"
+                }
+              }
+            ]
+          }
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": null,
+          "name": "U",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "falseType": {
+          "kind": "intrinsic",
+          "type": "unknown"
+        }
+      }
+    },
+    {
+      "id": 264,
+      "name": "StrictRequired",
+      "comment": {
+        "description": "Transforms every key in an object to be strictly required, essentially removing \n`undefined`\n and \n`null`\n from the type.",
+        "blockTags": [
+          {
+            "name": "example",
+            "text": "```typescript\ninterface Sample {\n\tid: string;\n\tname: string | null;\n\tmiddleName?: string;\n}\n\ntype BB = StrictRequired<Sample>;\n// Expected:\n// {\n//    id: string;\n//    name: string;\n//    middleName: string;\n// }\n```"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 172,
+        "file": "utilityTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 265,
+          "name": "T",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "mapped",
+        "parameter": "P",
+        "parameterType": {
+          "kind": "typeOperator",
+          "operator": "keyof",
+          "type": {
+            "kind": "reference",
+            "id": 265,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        "nameType": null,
+        "templateType": {
+          "kind": "reference",
+          "id": null,
+          "name": "NonNullable",
+          "packageName": "typescript",
+          "typeArguments": [
+            {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": 265,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "reference",
+                "id": null,
+                "name": "P",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        "readonly": "-",
+        "optional": null
+      }
+    }
+  ]
+}
