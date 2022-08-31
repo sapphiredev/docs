@@ -1,1 +1,369 @@
-{}
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/plugin-editable-commands",
+  "version": "2.0.1",
+  "classes": [],
+  "constants": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 1,
+      "name": "free",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 14,
+        "file": "index.d.ts",
+        "path": "node_modules/@skyra/editable-commands/dist"
+      },
+      "external": true,
+      "signatures": [
+        {
+          "id": 2,
+          "name": "free",
+          "comment": {
+            "description": "Removes the tracked response for \n`message`\n.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "Whether the message was tracked."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 3,
+              "name": "message",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "get",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 20,
+        "file": "index.d.ts",
+        "path": "node_modules/@skyra/editable-commands/dist"
+      },
+      "external": true,
+      "signatures": [
+        {
+          "id": 5,
+          "name": "get",
+          "comment": {
+            "description": "Gets the tracked response to \n`message`\n, if any was tracked and was not deleted.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "The replied message, if any."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 6,
+              "name": "message",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": []
+              },
+              {
+                "kind": "literal",
+                "value": "null"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "reply",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 34,
+        "file": "index.d.ts",
+        "path": "node_modules/@skyra/editable-commands/dist"
+      },
+      "external": true,
+      "signatures": [
+        {
+          "id": 8,
+          "name": "reply",
+          "comment": {
+            "description": "Sends a reply message as a response for \n`message`\n, and tracks it.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "The response message."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 9,
+              "name": "message",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 10,
+              "name": "options",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "ReplyMessageOptions",
+                    "packageName": "discord.js",
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "send",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 27,
+        "file": "index.d.ts",
+        "path": "node_modules/@skyra/editable-commands/dist"
+      },
+      "external": true,
+      "signatures": [
+        {
+          "id": 12,
+          "name": "send",
+          "comment": {
+            "description": "Sends a message as a response for \n`message`\n, and tracks it.",
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "The response message."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 13,
+              "name": "message",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 14,
+              "name": "options",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "MessageOptions",
+                    "packageName": "discord.js",
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "track",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "index.d.ts",
+        "path": "node_modules/@skyra/editable-commands/dist"
+      },
+      "external": true,
+      "signatures": [
+        {
+          "id": 16,
+          "name": "track",
+          "comment": {
+            "description": "Tracks a response with a message, in a way that if \nsend\n is called with \n`message`\n, \n`response`\n will be edited.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 17,
+              "name": "message",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            },
+            {
+              "id": 18,
+              "name": "response",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "Message",
+                "packageName": "discord.js",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "void"
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": []
+}
