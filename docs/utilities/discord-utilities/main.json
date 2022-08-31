@@ -1,1 +1,2964 @@
-{}
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/discord-utilities",
+  "version": "2.11.6",
+  "classes": [],
+  "constants": [
+    {
+      "id": 32,
+      "name": "ApplicationCommandLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord application commands (slash commands).",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 129,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 33,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 35,
+              "name": "MaximumDescriptionCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in an application command description."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 138,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L138"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 34,
+              "name": "MaximumNameCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in an application command name."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 133,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L133"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 32
+              },
+              "defaultValue": "32"
+            },
+            {
+              "id": 36,
+              "name": "MaximumOptionsLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum options allowed in an application command."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 143,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L143"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                35,
+                34,
+                36
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 129,
+              "character": 40,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L129"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 37,
+      "name": "ApplicationCommandOptionLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Choices of Discord Application Commands.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 149,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 38,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 41,
+              "name": "MaximumChoicesLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum length of choices allowed in the option of an application command."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 163,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L163"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 40,
+              "name": "MaximumDescriptionCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the description of an option of an application command."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 158,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L158"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 39,
+              "name": "MaximumNameCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the name of an option of an application command."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 153,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L153"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 32
+              },
+              "defaultValue": "32"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                41,
+                40,
+                39
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 149,
+              "character": 46,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L149"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 74,
+      "name": "AutoCompleteLimits",
+      "comment": {
+        "description": "Namespace container limits related to Discord autocomplete interactions.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 302,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 75,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 76,
+              "name": "MaximumAmountOfOptions",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum options allowed in a single autocomplete response."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 306,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L306"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 77,
+              "name": "MaximumLengthOfNameOfOption",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a select menu option's name."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 311,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L311"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                76,
+                77
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 302,
+              "character": 34,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L302"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 42,
+      "name": "ButtonLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Message Buttons.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 169,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 43,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 45,
+              "name": "MaximumCustomIdCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a button custom ID."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 178,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L178"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 44,
+              "name": "MaximumLabelCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a button label."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 173,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L173"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 80
+              },
+              "defaultValue": "80"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                45,
+                44
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 169,
+              "character": 28,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L169"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 1,
+      "name": "ChannelLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord channels.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 4,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 2,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 3,
+              "name": "MaximumDescriptionLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a channel description."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 8,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L8"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 1024
+              },
+              "defaultValue": "1024"
+            },
+            {
+              "id": 4,
+              "name": "MaximumNameLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a channel name."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 13,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L13"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 5,
+              "name": "MaximumViewersPerScreenShare",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum viewers allowed per screen share."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 18,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L18"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 50
+              },
+              "defaultValue": "50"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                3,
+                4,
+                5
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 4,
+              "character": 29,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L4"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 89,
+      "name": "ChannelMentionRegex",
+      "comment": {
+        "description": "Regex that can capture the ID in Discord Channel mentions",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^<#(?<id>\\d{17,20})>$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the ID of the channel. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 90,
+      "name": "ChannelMessageRegex",
+      "comment": {
+        "description": "Regex that can capture the channel and message IDs in a channelId-messageId pattern\nThis pattern can be found when you hold Shift and hover over a message, and click the \"ID\" button",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^(?<channelId>\\d{17,20})-(?<messageId>\\d{17,20})$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the ID of the channel, named \n`channelId`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the ID of the message, named \n`messageId`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 15,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 91,
+      "name": "DiscordHostnameRegex",
+      "comment": {
+        "description": "Regex that matches links on the known Discord host names",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/(?<subdomain>\\w+)\\.?(?<hostname>dis(?:cord)?(?:app|merch|status)?)\\.(?<tld>com|g(?:d|g|ift)|(?:de(?:sign|v))|media|new|store|net)/i`"
+          },
+          {
+            "name": "remark",
+            "text": "The regex is case insensitive"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the subdomain for this URL. It is named \n`subdomain`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the hostname for this URL, primarily \n`discord`\n but can also be \n`discordmerch`\n, \n`discordstatus`\n, \n`dis`\n, and \n`discordapp`\n. It is named \n`hostname`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 3 is the Top-Level Domain *without* \n`.`\n. It is named \n`tld`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 25,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 92,
+      "name": "DiscordInviteLinkRegex",
+      "comment": {
+        "description": "Regex that can can capture the code of Discord invite links",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/(?:^|\\b)discord(?:(?:app)?\\.com/invite|\\.gg(?:/invite)?)/(?<code>[\\w-]{2,255})(?:$|\\b)/gi`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the invite URL's unique code. It is named \n`code`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 33,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 6,
+      "name": "EmbedLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord embeds.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 24,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 7,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 8,
+              "name": "MaximumAuthorNameLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the author field of an embed."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 28,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L28"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 256
+              },
+              "defaultValue": "256"
+            },
+            {
+              "id": 9,
+              "name": "MaximumDescriptionLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in an embed description."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 33,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L33"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 4096
+              },
+              "defaultValue": "4096"
+            },
+            {
+              "id": 10,
+              "name": "MaximumFieldNameLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the name of a field in an embed."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 38,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L38"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 256
+              },
+              "defaultValue": "256"
+            },
+            {
+              "id": 12,
+              "name": "MaximumFieldValueLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the value of a field in an embed."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 48,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L48"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 1024
+              },
+              "defaultValue": "1024"
+            },
+            {
+              "id": 11,
+              "name": "MaximumFields",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum fields allowed in an embed."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 43,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L43"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 13,
+              "name": "MaximumFooterLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a footer of an embed."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 53,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L53"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 2048
+              },
+              "defaultValue": "2048"
+            },
+            {
+              "id": 14,
+              "name": "MaximumTitleLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the title of an embed."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 58,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L58"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 256
+              },
+              "defaultValue": "256"
+            },
+            {
+              "id": 15,
+              "name": "MaximumTotalCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in an embed, in total."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 63,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L63"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 6000
+              },
+              "defaultValue": "6000"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                8,
+                9,
+                10,
+                12,
+                11,
+                13,
+                14,
+                15
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 24,
+              "character": 27,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L24"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 16,
+      "name": "EmojiLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord emojis.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 69,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 17,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 18,
+              "name": "MaximumEmojiNameLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a custom guild emoji."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 73,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L73"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 32
+              },
+              "defaultValue": "32"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                18
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 69,
+              "character": 27,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L69"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 93,
+      "name": "EmojiRegex",
+      "comment": {
+        "description": "Regex that can capture the ID of any animated or non-animated custom Discord emoji",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^(?:<(?<animated>a)?:(?<name>\\w{2,32}):)?(?<id>\\d{17,21})>?$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 can be used to determine whether the emoji is animated or not. It is named \n`animated`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the name of the emoji as it is typed in a message. It is named \n`name`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 3 is the ID of the emoji. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 42,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 94,
+      "name": "FormattedCustomEmoji",
+      "comment": {
+        "description": "Regex that matches any animated or non-animated custom Discord emoji.\nUnlike \nEmojiRegex\n It can be a substring of a larger string.",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/<a?:\\w{2,32}:\\d{17,20}>/`"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 49,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 95,
+      "name": "FormattedCustomEmojiWithGroups",
+      "comment": {
+        "description": "Regex that can capture any animated or non-animated custom Discord emoji.\nSimilar to \nFormattedCustomEmoji\n and unlike \nEmojiRegex\n can also be a substring of a larger string.",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/(?<animated>a?):(?<name>[^:]+):(?<id>\\d{17,20})/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 can be used to determine whether the emoji is animated or not. It is named \n`animated`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the name of the emoji as it is typed in a message. It is named \n`name`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 3 is the ID of the emoji. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 59,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 19,
+      "name": "GuildLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord guilds.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 79,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 20,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 21,
+              "name": "MaximumChannels",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum channels allowed per guild, including category channels."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 83,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L83"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 500
+              },
+              "defaultValue": "500"
+            },
+            {
+              "id": 22,
+              "name": "MaximumRoles",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum roles allowed in a guild."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 88,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L88"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 250
+              },
+              "defaultValue": "250"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                21,
+                22
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 79,
+              "character": 27,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L79"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 23,
+      "name": "GuildMemberLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord guild members.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 94,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 24,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 25,
+              "name": "MaximumDisplayNameLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in the display name of a guild member."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 98,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L98"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 32
+              },
+              "defaultValue": "32"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                25
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 94,
+              "character": 33,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L94"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 96,
+      "name": "HttpUrlRegex",
+      "comment": {
+        "description": "Regex that matches any URL starting with \n`http`\n or \n`https`",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^https?:///`"
+          },
+          {
+            "name": "remark",
+            "text": "for WebSocket URLs see \nWebsocketGenericUrlRegex"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 66,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 26,
+      "name": "InteractionLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord interactions.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 104,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 27,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 28,
+              "name": "MaximumButtonsPerActionRow",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum buttons allowed in a single action row."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 108,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L108"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 5
+              },
+              "defaultValue": "5"
+            },
+            {
+              "id": 31,
+              "name": "MaximumOptionsInSelectMenus",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum options allowed in a single select menu."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 123,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L123"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 29,
+              "name": "MaximumSelectMenusPerActionRow",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum select menus allowed in a single action row."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 113,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L113"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 1
+              },
+              "defaultValue": "1"
+            },
+            {
+              "id": 30,
+              "name": "MaximumTextInputsPerActionRow",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum text inputs allowed in a single action row."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 118,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L118"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 1
+              },
+              "defaultValue": "1"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                28,
+                31,
+                29,
+                30
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 104,
+              "character": 33,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L104"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 54,
+      "name": "MessageLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord messages.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 219,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 55,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 57,
+              "name": "MaximumActionRows",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum action rows allowed in a single message."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 228,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L228"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 5
+              },
+              "defaultValue": "5"
+            },
+            {
+              "id": 56,
+              "name": "MaximumEmbeds",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum embeds allowed in a single message."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 223,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L223"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 10
+              },
+              "defaultValue": "10"
+            },
+            {
+              "id": 58,
+              "name": "MaximumLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a single message for a user."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 233,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L233"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 2000
+              },
+              "defaultValue": "2000"
+            },
+            {
+              "id": 59,
+              "name": "MaximumNitroLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a single message for a nitro user."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 238,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L238"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 4000
+              },
+              "defaultValue": "4000"
+            },
+            {
+              "id": 62,
+              "name": "MaximumNitroUploadSize",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum upload size for a nitro user, in any guild or in DMs.\nSize is in bytes, and correspond to 10MB."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 255,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L255"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100000000
+              },
+              "defaultValue": "100_000_000"
+            },
+            {
+              "id": 60,
+              "name": "MaximumReactions",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum numbers of reactions allowed for a message."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 243,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L243"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 20
+              },
+              "defaultValue": "20"
+            },
+            {
+              "id": 61,
+              "name": "MaximumUploadSize",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum upload size for a free user in a guild of tier 1 or below, or in DMs.\nSize is in bytes, and correspond to 8MB."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 249,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L249"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 8000000
+              },
+              "defaultValue": "8_000_000"
+            },
+            {
+              "id": 63,
+              "name": "MaximumUploadSizeInGuild",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum upload size for a free user for all different boost levels available in a guild.\nSizes are in bytes, and correspond to 8MB, 8MB, 50MB, and 100MB."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 261,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L261"
+                }
+              ],
+              "type": {
+                "type": "typeOperator",
+                "operator": "readonly",
+                "target": {
+                  "type": "tuple",
+                  "elements": [
+                    {
+                      "type": "literal",
+                      "value": 8000000
+                    },
+                    {
+                      "type": "literal",
+                      "value": 8000000
+                    },
+                    {
+                      "type": "literal",
+                      "value": 50000000
+                    },
+                    {
+                      "type": "literal",
+                      "value": 100000000
+                    }
+                  ]
+                }
+              },
+              "defaultValue": "..."
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                57,
+                56,
+                58,
+                59,
+                62,
+                60,
+                61,
+                63
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 219,
+              "character": 29,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L219"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 97,
+      "name": "MessageLinkRegex",
+      "comment": {
+        "description": "Regex that can capture the Guild, Channel, and Message ID based on a shareable Discord message link.",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^(?:https://)?(?:ptb\\.|canary\\.)?discord(?:app)?\\.com/channels/(?<guildId>(?:\\d{17,20}|@me))/(?<channelId>\\d{17,20})/(?<messageId>\\d{17,20})$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the ID of the guild the message was sent in. It is named \n`guildId`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the ID of the channel in that guild the message was sent in. It is named \n`channelId`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 3 is the ID of the message itself. It is named \n`messageId`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 75,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 78,
+      "name": "ModalLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord Modals.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 317,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 79,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 82,
+              "name": "MaximumComponents",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum components allowed in a modal."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 331,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L331"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 5
+              },
+              "defaultValue": "5"
+            },
+            {
+              "id": 80,
+              "name": "MaximumCustomIdCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a modal custom ID."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 321,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L321"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 81,
+              "name": "MaximumTitleCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a modal title."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 326,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L326"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 45
+              },
+              "defaultValue": "45"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                82,
+                80,
+                81
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 317,
+              "character": 27,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L317"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 64,
+      "name": "ModerationLimits",
+      "comment": {
+        "description": "Namespace containing limits related to built-in moderation features.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 267,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 65,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 66,
+              "name": "MaximumTimeoutDuration",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum duration of a guild timeout, in seconds (corresponds to 28 days)."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 271,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L271"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 2419200
+              },
+              "defaultValue": "2_419_200"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                66
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 267,
+              "character": 32,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L267"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 98,
+      "name": "ParsedCustomEmoji",
+      "comment": {
+        "description": "Regex that matches any animated or non-animated custom Discord emoji *without the wrapping \n`<...>`\n symbols.\nThis means that a string that matches this regex can directly be send inside a Discord message.\nOther than this difference it is similar to \nFormattedCustomEmoji\n.",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/a?:\\w{2,32}:\\d{17,20}/`"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 84,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 99,
+      "name": "ParsedCustomEmojiWithGroups",
+      "comment": {
+        "description": "Regex that matches any animated or non-animated custom Discord emoji *without the wrapping \n`<...>`\n symbols.\nThis means that a string that matches this regex can directly be send inside a Discord message.\nOther than this difference it is similar to \nFormattedCustomEmojiWithGroups\n.",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/(?<animated>a?):(?<name>[^:]+):(?<id>\\d{17,20})/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 can be used to determine whether the emoji is animated or not. It is named \n`animated`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the name of the emoji as it is typed in a message. It is named \n`name`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 3 is the ID of the emoji. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 95,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 67,
+      "name": "RoleLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord roles.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 277,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 68,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 69,
+              "name": "MaximumNameLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a role name."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 281,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L281"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                69
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 277,
+              "character": 26,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L277"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 100,
+      "name": "RoleMentionRegex",
+      "comment": {
+        "description": "Regex that can capture the ID in Discord Role mentions",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^<@&(?<id>\\d{17,20})>$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the ID of the role. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 102,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 46,
+      "name": "SelectMenuLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Select Menus.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 184,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 47,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 48,
+              "name": "MaximumCustomIdCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a select menu custom ID."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 188,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L188"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 53,
+              "name": "MaximumLengthOfNameOfOption",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a select menu option's name."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 213,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L213"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 52,
+              "name": "MaximumMaxValuesSize",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum \"maximum\" values allowed in a select menu."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 208,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L208"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 51,
+              "name": "MaximumMinValuesSize",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum \"minimum\" values allowed in a select menu."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 203,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L203"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 49,
+              "name": "MaximumOptionsLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum amount of options allowed in a select menu."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 193,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L193"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 25
+              },
+              "defaultValue": "25"
+            },
+            {
+              "id": 50,
+              "name": "MaximumPlaceholderCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a select menu placeholder."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 198,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L198"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 150
+              },
+              "defaultValue": "150"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                48,
+                53,
+                52,
+                51,
+                49,
+                50
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 184,
+              "character": 32,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L184"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 101,
+      "name": "SnowflakeRegex",
+      "comment": {
+        "description": "Regex that can capture any Discord Snowflake ID",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^(?<id>\\d{17,20})$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the Snowflake. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 109,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 83,
+      "name": "TextInputLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord Modal Text Input component.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 337,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 84,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 85,
+              "name": "MaximumCustomIdCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a text input custom ID."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 341,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L341"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 86,
+              "name": "MaximumLabelCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a text input label."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 346,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L346"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 45
+              },
+              "defaultValue": "45"
+            },
+            {
+              "id": 87,
+              "name": "MaximumPlaceholderCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a text input placeholder."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 351,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L351"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 100
+              },
+              "defaultValue": "100"
+            },
+            {
+              "id": 88,
+              "name": "MaximumValueCharacters",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a text input value."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 356,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L356"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 4000
+              },
+              "defaultValue": "4000"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                85,
+                86,
+                87,
+                88
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 337,
+              "character": 31,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L337"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 102,
+      "name": "TokenRegex",
+      "comment": {
+        "description": "Regex that can capture a Discord Token",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/(?<mfaToken>mfa\\.[a-z0-9_-]{20,})|(?<basicToken>[a-z0-9_-]{23,28}\\.[a-z0-9_-]{6,7}\\.[a-z0-9_-]{27})/i`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 can be used to retrieve a token for a User that has Multi-Factor Authentication enabled. It is named \n`mfaToken`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 can be used to retrieve a token for a User that doesn't have Multi-Factor Authentication enabled, or a Bot application. It is named \n`basicToken`\n."
+          },
+          {
+            "name": "remark",
+            "text": "For a valid token, either Capture group 1 or Capture group 2 will always be undefined, whereas the other group will then be defined and\ncontain the matched token.\nYou can use the name of the capture group to determine if the validated token was configured for a user with Multi-Factor Authentication, for a user without Multi-Factor Authentication, or for a bot application.\nIf both capture groups are undefined, then the token is invalid."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 121,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 106,
+      "name": "TwemojiRegex",
+      "comment": {
+        "description": "Regex that can capture a Twemoji (Twitter Emoji)",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "See official source code"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 5,
+        "file": "TwemojiRegex.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 70,
+      "name": "UserLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord users and Direct Messages.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 287,
+        "file": "limits.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 71,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 73,
+              "name": "MaximumBiographyLength",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum characters allowed in a user's biography (the \"About Me\" section)."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 296,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L296"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 190
+              },
+              "defaultValue": "190"
+            },
+            {
+              "id": 72,
+              "name": "MaximumUsersPerDMGroup",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Maximum numbers of users in a DM group."
+                  }
+                ]
+              },
+              "sources": [
+                {
+                  "fileName": "lib/limits.ts",
+                  "line": 291,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L291"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 10
+              },
+              "defaultValue": "10"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                73,
+                72
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/limits.ts",
+              "line": 287,
+              "character": 26,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/discord-utilities/src/lib/limits.ts#L287"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 103,
+      "name": "UserOrMemberMentionRegex",
+      "comment": {
+        "description": "Regex that can capture the ID of a user in Discord user mentions",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^<@!?(?<id>\\d{17,20})>$/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the ID of the user. It is named \n`id`\n."
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 128,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 104,
+      "name": "WebSocketUrlRegex",
+      "comment": {
+        "description": "Regex that matches any WebSocket URL starting with \n`ws`\n or \n`wss`",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/^wss?:///`"
+          },
+          {
+            "name": "remark",
+            "text": "for regular HTTP URLs see \nHttpUrlRegex"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 135,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 105,
+      "name": "WebhookRegex",
+      "comment": {
+        "description": "Regex that captures the Webhook ID and token from a Discord Webhook URL.",
+        "blockTags": [
+          {
+            "name": "raw",
+            "text": "`/(?<url>^https://(?:(?:canary|ptb).)?discord(?:app)?.com/api(?:/v\\d+)?/webhooks/(?<id>\\d+)/(?<token>[\\w-]+)/?$)/`"
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 1 is the full URL of the Discord Webhook. It is named \n`url`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 2 is the ID of the Discord Webhook. It is named \n`id`\n."
+          },
+          {
+            "name": "remark",
+            "text": "Capture group 3 is the token of the Discord Webhook. It is named \n`token`\n."
+          },
+          {
+            "name": "remark",
+            "text": "for regular HTTP URLs see \nHttpUrlRegex"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 145,
+        "file": "regexes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    }
+  ],
+  "enums": [],
+  "functions": [],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": []
+}
