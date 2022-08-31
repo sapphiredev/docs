@@ -1,0 +1,683 @@
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/phisherman",
+  "version": "1.4.1",
+  "classes": [],
+  "constants": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 12,
+      "name": "checkDomain",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 17,
+        "file": "Phisherman.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 13,
+          "name": "checkDomain",
+          "comment": {
+            "description": "Checks if a link is detected as a scam or phishing link by phisherman.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 14,
+              "name": "domain",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 15,
+              "name": "apiKey",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reflection",
+                "reflection": {
+                  "id": 16,
+                  "name": "__type",
+                  "kind": 65536,
+                  "kindString": "Type literal",
+                  "flags": {},
+                  "children": [
+                    {
+                      "id": 19,
+                      "name": "classification",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "sources": [
+                        {
+                          "fileName": "lib/PhishermanTypes.ts",
+                          "line": 7,
+                          "character": 1,
+                          "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
+                        }
+                      ],
+                      "type": {
+                        "type": "union",
+                        "types": [
+                          {
+                            "type": "literal",
+                            "value": "unknown"
+                          },
+                          {
+                            "type": "literal",
+                            "value": "malicious"
+                          },
+                          {
+                            "type": "literal",
+                            "value": "suspicious"
+                          },
+                          {
+                            "type": "literal",
+                            "value": "safe"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 17,
+                      "name": "isScam",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "sources": [
+                        {
+                          "fileName": "lib/Phisherman.ts",
+                          "line": 33,
+                          "character": 2,
+                          "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/phisherman/src/lib/Phisherman.ts#L33"
+                        }
+                      ],
+                      "type": {
+                        "type": "intrinsic",
+                        "name": "boolean"
+                      },
+                      "defaultValue": "..."
+                    },
+                    {
+                      "id": 18,
+                      "name": "verifiedPhish",
+                      "kind": 1024,
+                      "kindString": "Property",
+                      "flags": {},
+                      "sources": [
+                        {
+                          "fileName": "lib/PhishermanTypes.ts",
+                          "line": 6,
+                          "character": 1,
+                          "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
+                        }
+                      ],
+                      "type": {
+                        "type": "intrinsic",
+                        "name": "boolean"
+                      }
+                    }
+                  ],
+                  "groups": [
+                    {
+                      "title": "Properties",
+                      "children": [
+                        19,
+                        17,
+                        18
+                      ]
+                    }
+                  ],
+                  "sources": [
+                    {
+                      "fileName": "lib/Phisherman.ts",
+                      "line": 31,
+                      "character": 8,
+                      "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/phisherman/src/lib/Phisherman.ts#L31"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "getDomainInfo",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 68,
+        "file": "Phisherman.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 25,
+          "name": "getDomainInfo",
+          "comment": {
+            "description": "Returns information for a domain.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.1.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 26,
+              "name": "domain",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 27,
+              "name": "apiKey",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "PhishermanInfo",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "reportCaughtPhish",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 91,
+        "file": "Phisherman.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 29,
+          "name": "reportCaughtPhish",
+          "comment": {
+            "description": "Report a caught phish back to phisherman to improve their analytics.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.1.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 30,
+              "name": "domain",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 31,
+              "name": "apiKey",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 32,
+              "name": "guildId",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "number"
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 6,
+                "name": "PhishermanReportType",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "reportDomain",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 43,
+        "file": "Phisherman.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 21,
+          "name": "reportDomain",
+          "comment": {
+            "description": "Report a domain that is confirmed to be a scam or phishing domain to phisherman, to enhance their API.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 22,
+              "name": "domain",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 23,
+              "name": "apiKey",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 6,
+                "name": "PhishermanReportType",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "name": "setApiKey",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 114,
+        "file": "Phisherman.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 34,
+          "name": "setApiKey",
+          "comment": {
+            "description": "Set the phisherman's API key.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 35,
+              "name": "key",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 4,
+      "name": "PhishermanOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 1,
+        "file": "PhishermanTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 5,
+          "name": "apiKey",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 2,
+            "file": "PhishermanTypes.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "PhishermanReportType",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 14,
+        "file": "PhishermanTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 8,
+          "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 16,
+            "file": "PhishermanTypes.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 7,
+          "name": "success",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 15,
+            "file": "PhishermanTypes.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "PhishermanReturnType",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 5,
+        "file": "PhishermanTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 11,
+          "name": "classification",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 7,
+            "file": "PhishermanTypes.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "unknown"
+              },
+              {
+                "kind": "literal",
+                "value": "malicious"
+              },
+              {
+                "kind": "literal",
+                "value": "suspicious"
+              },
+              {
+                "kind": "literal",
+                "value": "safe"
+              }
+            ]
+          }
+        },
+        {
+          "id": 10,
+          "name": "verifiedPhish",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 6,
+            "file": "PhishermanTypes.ts",
+            "path": "lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": [
+    {
+      "id": 1,
+      "name": "CheckReturnType",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 10,
+        "file": "PhishermanTypes.ts",
+        "path": "lib"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "intersection",
+        "types": [
+          {
+            "kind": "reference",
+            "id": 9,
+            "name": "PhishermanReturnType",
+            "packageName": null,
+            "typeArguments": []
+          },
+          {
+            "kind": "reflection",
+            "reflection": {
+              "id": 2,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "children": [
+                {
+                  "id": 3,
+                  "name": "isScam",
+                  "kind": 1024,
+                  "kindString": "Property",
+                  "flags": {},
+                  "sources": [
+                    {
+                      "fileName": "lib/PhishermanTypes.ts",
+                      "line": 11,
+                      "character": 1,
+                      "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/phisherman/src/lib/PhishermanTypes.ts#L11"
+                    }
+                  ],
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "boolean"
+                  }
+                }
+              ],
+              "groups": [
+                {
+                  "title": "Properties",
+                  "children": [
+                    3
+                  ]
+                }
+              ],
+              "sources": [
+                {
+                  "fileName": "lib/PhishermanTypes.ts",
+                  "line": 10,
+                  "character": 53,
+                  "url": "https://github.com/sapphiredev/utilities/blob/c03d992/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
