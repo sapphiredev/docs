@@ -1,1 +1,889 @@
-{}
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/decorators",
+  "version": "5.0.0",
+  "classes": [],
+  "constants": [],
+  "enums": [
+    {
+      "id": 17,
+      "name": "DecoratorIdentifiers",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "djs-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 18,
+          "name": "RequiresClientPermissionsGuildOnly",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 7,
+            "file": "djs-decorators.ts",
+            "path": "."
+          },
+          "value": "requiresClientPermissionsGuildOnly"
+        },
+        {
+          "id": 19,
+          "name": "RequiresClientPermissionsMissingPermissions",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 8,
+            "file": "djs-decorators.ts",
+            "path": "."
+          },
+          "value": "requiresClientPermissionsMissingPermissions"
+        },
+        {
+          "id": 20,
+          "name": "RequiresUserPermissionsGuildOnly",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 9,
+            "file": "djs-decorators.ts",
+            "path": "."
+          },
+          "value": "requiresUserPermissionsGuildOnly"
+        },
+        {
+          "id": 21,
+          "name": "RequiresUserPermissionsMissingPermissions",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 10,
+            "file": "djs-decorators.ts",
+            "path": "."
+          },
+          "value": "requiresUserPermissionsMissingPermissions"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "id": 28,
+      "name": "ApplyOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 52,
+        "file": "piece-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 29,
+          "name": "ApplyOptions",
+          "comment": {
+            "description": "Decorator function that applies given options to any Sapphire piece",
+            "blockTags": [
+              {
+                "name": "example",
+                "text": "```typescript\nimport { ApplyOptions } from '@sapphire/decorators';\nimport { Command } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\n@ApplyOptions<Command.Options>({\n  description: 'ping pong',\n  enabled: true\n})\nexport class UserCommand extends Command {\n  public override async messageRun(message: Message) {\n    const msg = await message.channel.send('Ping?');\n\n    return msg.edit(\n      `Pong! Client Latency ${Math.round(this.container.client.ws.ping)}ms. API Latency ${msg.createdTimestamp - message.createdTimestamp}ms.`\n    );\n  }\n}\n```"
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nimport { ApplyOptions } from '@sapphire/decorators';\nimport { Listener } from '@sapphire/framework';\nimport { GatewayDispatchEvents, GatewayMessageDeleteDispatch } from 'discord-api-types/v9';\n\n@ApplyOptions<Listener.Options>(({ container }) => ({\n  description: 'Handle Raw Message Delete events',\n  emitter: container.client.ws,\n  event: GatewayDispatchEvents.MessageDelete\n}))\nexport class UserListener extends Listener {\n  public override run(data: GatewayMessageDeleteDispatch['d']): void {\n    if (!data.guild_id) return;\n\n    const guild = this.container.client.guilds.cache.get(data.guild_id);\n    if (!guild || !guild.channels.cache.has(data.channel_id)) return;\n\n    // Do something with the data\n  }\n}\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 30,
+              "name": "T",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "PieceOptions",
+                "packageName": "@sapphire/pieces",
+                "typeArguments": []
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 31,
+              "name": "optionsOrFn",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "reference",
+                    "id": 30,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "reflection",
+                    "reflection": {
+                      "id": 32,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "sources": [
+                        {
+                          "fileName": "piece-decorators.ts",
+                          "line": 52,
+                          "character": 72,
+                          "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/decorators/src/piece-decorators.ts#L52"
+                        }
+                      ],
+                      "signatures": [
+                        {
+                          "id": 33,
+                          "name": "__type",
+                          "kind": 4096,
+                          "kindString": "Call signature",
+                          "flags": {},
+                          "parameters": [
+                            {
+                              "id": 34,
+                              "name": "parameters",
+                              "kind": 32768,
+                              "kindString": "Parameter",
+                              "flags": {},
+                              "type": {
+                                "type": "reference",
+                                "id": 35,
+                                "name": "ApplyOptionsCallbackParameters"
+                              }
+                            }
+                          ],
+                          "type": {
+                            "type": "reference",
+                            "id": 30,
+                            "name": "T"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "ClassDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Enumerable",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 8,
+        "file": "base-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 2,
+          "name": "Enumerable",
+          "comment": {
+            "description": "Decorator that sets the enumerable property of a class field to the desired value.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 3,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 4,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "base-decorators.ts",
+                  "line": 9,
+                  "character": 8,
+                  "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/decorators/src/base-decorators.ts#L9"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 5,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "parameters": [
+                    {
+                      "id": 6,
+                      "name": "target",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {},
+                      "type": {
+                        "type": "intrinsic",
+                        "name": "unknown"
+                      }
+                    },
+                    {
+                      "id": 7,
+                      "name": "key",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {},
+                      "type": {
+                        "type": "intrinsic",
+                        "name": "string"
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "void"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "EnumerableMethod",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 28,
+        "file": "base-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 9,
+          "name": "EnumerableMethod",
+          "comment": {
+            "description": "Decorator that sets the enumerable property of a class method to the desired value.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 10,
+              "name": "value",
+              "type": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "RequiresClientPermissions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 79,
+        "file": "djs-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 23,
+          "name": "RequiresClientPermissions",
+          "comment": {
+            "description": "Allows you to set permissions required for individual methods. This is particularly useful for subcommands that require specific permissions.",
+            "blockTags": [
+              {
+                "name": "remark",
+                "text": "This decorator applies to the client that is to execute the command. For setting permissions required user of the command see \nRequiresUserPermissions"
+              },
+              {
+                "name": "remark",
+                "text": "This decorator makes the decorated function asynchronous, so any result should be \n`await`\ned."
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nimport { ApplyOptions, RequiresClientPermissions } from '@sapphire/decorators';\nimport { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<SubCommandPluginCommandOptions>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends SubCommandPluginCommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 24,
+              "name": "permissionsResolvable",
+              "type": {
+                "kind": "array",
+                "type": {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "PermissionResolvable",
+                  "packageName": "discord.js",
+                  "typeArguments": []
+                }
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "RequiresDMContext",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 192,
+        "file": "djs-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 15,
+          "name": "RequiresDMContext",
+          "comment": {
+            "description": "Requires the message to be run in a dm context, this decorator requires the first argument to be a \n`Message`\n instance",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 16,
+              "name": "fallback",
+              "type": {
+                "kind": "reference",
+                "id": 60,
+                "name": "FunctionFallback",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "RequiresGuildContext",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 183,
+        "file": "djs-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 12,
+          "name": "RequiresGuildContext",
+          "comment": {
+            "description": "Requires the message to be run in a guild context, this decorator requires the first argument to be a \n`Message`\n instance",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 13,
+              "name": "fallback",
+              "type": {
+                "kind": "reference",
+                "id": 60,
+                "name": "FunctionFallback",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "RequiresUserPermissions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 148,
+        "file": "djs-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 26,
+          "name": "RequiresUserPermissions",
+          "comment": {
+            "description": "Allows you to set permissions required for individual methods. This is particularly useful for subcommands that require specific permissions.",
+            "blockTags": [
+              {
+                "name": "remark",
+                "text": "This decorator applies to the user of the command. For setting permissions required for the client see \nRequiresClientPermissions"
+              },
+              {
+                "name": "remark",
+                "text": "This decorator makes the decorated function asynchronous, so any result should be \n`await`\ned."
+              },
+              {
+                "name": "example",
+                "text": "```typescript\nimport { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';\nimport { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<SubCommandPluginCommandOptions>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends SubCommandPluginCommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 27,
+              "name": "permissionsResolvable",
+              "type": {
+                "kind": "array",
+                "type": {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "PermissionResolvable",
+                  "packageName": "discord.js",
+                  "typeArguments": []
+                }
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "name": "createClassDecorator",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 43,
+        "file": "utils.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 42,
+          "name": "createClassDecorator",
+          "comment": {
+            "description": "Utility to make a class decorator with lighter syntax and inferred types.",
+            "blockTags": [
+              {
+                "name": "see",
+                "text": "ApplyOptions"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 46,
+              "name": "TFunction",
+              "type": {
+                "kind": "reflection",
+                "reflection": {
+                  "id": 43,
+                  "name": "__type",
+                  "kind": 65536,
+                  "kindString": "Type literal",
+                  "flags": {},
+                  "sources": [
+                    {
+                      "fileName": "utils.ts",
+                      "line": 43,
+                      "character": 55,
+                      "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/decorators/src/utils.ts#L43"
+                    }
+                  ],
+                  "signatures": [
+                    {
+                      "id": 44,
+                      "name": "__type",
+                      "kind": 4096,
+                      "kindString": "Call signature",
+                      "flags": {},
+                      "parameters": [
+                        {
+                          "id": 45,
+                          "name": "args",
+                          "kind": 32768,
+                          "kindString": "Parameter",
+                          "flags": {
+                            "isRest": true
+                          },
+                          "type": {
+                            "type": "array",
+                            "elementType": {
+                              "type": "intrinsic",
+                              "name": "any"
+                            }
+                          }
+                        }
+                      ],
+                      "type": {
+                        "type": "intrinsic",
+                        "name": "void"
+                      }
+                    }
+                  ]
+                }
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 47,
+              "name": "fn",
+              "type": {
+                "kind": "reference",
+                "id": 46,
+                "name": "TFunction",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "ClassDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "createFunctionPrecondition",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 73,
+        "file": "utils.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 49,
+          "name": "createFunctionPrecondition",
+          "comment": {
+            "description": "Utility to make function preconditions.\n\n\n```typescript\n// No fallback (returns undefined)\nfunction requireGuild(value: number) {\n  return createFunctionPrecondition((message: Message) =>\n    message.guild !== null\n  );\n}\n\n// With fallback\nfunction requireGuild(\n  value: number,\n  fallback: () => unknown = () => undefined\n) {\n  return createFunctionPrecondition(\n    (message: Message) => message.guild !== null,\n    fallback\n  );\n}\n```",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 50,
+              "name": "precondition",
+              "type": {
+                "kind": "reference",
+                "id": 57,
+                "name": "FunctionPrecondition",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 51,
+              "name": "fallback",
+              "type": {
+                "kind": "reference",
+                "id": 60,
+                "name": "FunctionFallback",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "name": "createMethodDecorator",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 34,
+        "file": "utils.ts",
+        "path": "."
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 39,
+          "name": "createMethodDecorator",
+          "comment": {
+            "description": "Utility to make a method decorator with lighter syntax and inferred types.\n\n\n```typescript\n// Enumerable function\n\tfunction enumerableMethod(value: boolean) {\n\t\treturn createMethodDecorator((_target, _propertyKey, descriptor) => {\n\t\t\tdescriptor.enumerable = value;\n\t\t});\n\t}\n```",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 40,
+              "name": "fn",
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "MethodDecorator",
+                "packageName": "typescript",
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 35,
+      "name": "ApplyOptionsCallbackParameters",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 64,
+        "file": "piece-decorators.ts",
+        "path": "."
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 36,
+          "name": "container",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 65,
+            "file": "piece-decorators.ts",
+            "path": "."
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Container",
+            "packageName": "@sapphire/pieces",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 37,
+          "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 66,
+            "file": "piece-decorators.ts",
+            "path": "."
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "PieceContext",
+            "packageName": "@sapphire/pieces",
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "name": "FunctionFallback",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 14,
+        "file": "utils.ts",
+        "path": "."
+      },
+      "external": false,
+      "properties": []
+    },
+    {
+      "id": 57,
+      "name": "FunctionPrecondition",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 4,
+        "file": "utils.ts",
+        "path": "."
+      },
+      "external": false,
+      "properties": []
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": []
+}
