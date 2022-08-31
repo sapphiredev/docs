@@ -1,1 +1,423 @@
-{}
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/plugin-hmr",
+  "version": "2.0.0",
+  "classes": [],
+  "constants": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 1,
+      "name": "start",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 20,
+        "file": "hmr.ts",
+        "path": "packages/hmr/src/lib"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 2,
+          "name": "start",
+          "comment": {
+            "description": "Starts HMR for all registered \nStore Stores\n in \ncontainer.stores the main container\n.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 3,
+              "name": "__namedParameter",
+              "type": {
+                "kind": "reference",
+                "id": 4,
+                "name": "HMROptions",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "void"
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 4,
+      "name": "HMROptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 5,
+        "file": "hmr.ts",
+        "path": "packages/hmr/src/lib"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 15,
+          "name": "alwaysStat",
+          "comment": {
+            "description": "If relying upon the [\n`fs.Stats`\n](https://nodejs.org/api/fs.html#fs_class_fs_stats) object that\nmay get passed with \n`add`\n, \n`addDir`\n, and \n`change`\n events, set this to \n`true`\n to ensure it is\nprovided even in cases where it wasn't already available from the underlying watch events.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 130,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 20,
+          "name": "atomic",
+          "comment": {
+            "description": "`true`\n if \n`useFsEvents`\n and \n`usePolling`\n are \n`false`\n). Automatically filters out artifacts\nthat occur when using editors that use \"atomic writes\" instead of writing directly to the\nsource file. If a file is re-added within 100 ms of being deleted, Chokidar emits a \n`change`\n\nevent rather than \n`unlink`\n then \n`add`\n. If the default of 100 ms does not work well for you,\nyou can override it by setting \n`atomic`\n to a custom value, in milliseconds.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 162,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "number"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        {
+          "id": 21,
+          "name": "awaitWriteFinish",
+          "comment": {
+            "description": "can be set to an object in order to adjust timing params:",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 167,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "boolean"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "AwaitWriteFinishOptions",
+                "packageName": "chokidar",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 18,
+          "name": "binaryInterval",
+          "comment": {
+            "description": "Interval of file system polling for binary files. ([see list of binary extensions](https://gi\nthub.com/sindresorhus/binary-extensions/blob/master/binary-extensions.json))",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 146,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 11,
+          "name": "cwd",
+          "comment": {
+            "description": "The base directory from which watch \n`paths`\n are to be derived. Paths emitted with events will\nbe relative to this.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 101,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 16,
+          "name": "depth",
+          "comment": {
+            "description": "If set, limits how many levels of subdirectories will be traversed.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 135,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 12,
+          "name": "disableGlobbing",
+          "comment": {
+            "description": "If set to true then the strings passed to .watch() and .add() are treated as literal path\n names, even if they look like globs. Default: false.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 107,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 5,
+          "name": "enabled",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 6,
+            "file": "hmr.ts",
+            "path": "packages/hmr/src/lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 10,
+          "name": "followSymlinks",
+          "comment": {
+            "description": "When \n`false`\n, only the symlinks themselves will be watched for changes instead of following\nthe link references and bubbling events through the link's path.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 95,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 9,
+          "name": "ignoreInitial",
+          "comment": {
+            "description": "If set to \n`false`\n then \n`add`\n/\n`addDir`\n events are also emitted for matching paths while\ninstantiating the watching as chokidar discovers these file paths (before the \n`ready`\n event).",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 89,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 19,
+          "name": "ignorePermissionErrors",
+          "comment": {
+            "description": "Indicates whether to watch files that don't have read permissions if possible. If watching\n fails due to \n`EPERM`\n or \n`EACCES`\n with this set to \n`true`\n, the errors will be suppressed\n silently.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 153,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 8,
+          "name": "ignored",
+          "comment": {
+            "description": "([anymatch](https://github.com/micromatch/anymatch)-compatible definition) Defines files/paths to\nbe ignored. The whole relative or absolute path is tested, not just filename. If a function\nwith two arguments is provided, it gets called twice per path - once with a single argument\n(the path), second time with two arguments (the path and the\n[\n`fs.Stats`\n](https://nodejs.org/api/fs.html#fs_class_fs_stats) object of that path).",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 83,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "AnymatchMatcher",
+            "packageName": "anymatch",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 17,
+          "name": "interval",
+          "comment": {
+            "description": "Interval of file system polling.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 140,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 7,
+          "name": "persistent",
+          "comment": {
+            "description": "Indicates whether the process should continue to run as long as files are being watched. If\nset to \n`false`\n when using \n`fsevents`\n to watch, no more events will be emitted after \n`ready`\n,\neven if the process continues to run.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 74,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 6,
+          "name": "silent",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 7,
+            "file": "hmr.ts",
+            "path": "packages/hmr/src/lib"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 14,
+          "name": "useFsEvents",
+          "comment": {
+            "description": "Whether to use the \n`fsevents`\n watching interface if available. When set to \n`true`\n explicitly\nand \n`fsevents`\n is available this supercedes the \n`usePolling`\n setting. When set to \n`false`\n on\nOS X, \n`usePolling: true`\n becomes the default.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 123,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 13,
+          "name": "usePolling",
+          "comment": {
+            "description": "Whether to use fs.watchFile (backed by polling), or fs.watch. If polling leads to high CPU\nutilization, consider setting this to \n`false`\n. It is typically necessary to **set this to\n\n`true`\n to successfully watch files over a network**, and it may be necessary to successfully\nwatch files in other non-standard situations. Setting to \n`true`\n explicitly on OS X overrides\nthe \n`useFsEvents`\n default.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 116,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types"
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ]
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": []
+}
