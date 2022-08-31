@@ -1,1 +1,920 @@
-{}
+{
+  "typeDocJsonParserVersion": "2.3.2",
+  "id": 0,
+  "name": "@sapphire/event-iterator",
+  "version": "1.6.1",
+  "classes": [
+    {
+      "id": 11,
+      "name": "EventIterator",
+      "comment": {
+        "description": "An EventIterator, used for asynchronously iterating over received values.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 31,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [
+        {
+          "kind": "reference",
+          "id": null,
+          "name": "AsyncIterableIterator",
+          "packageName": "typescript",
+          "typeArguments": [
+            {
+              "kind": "reference",
+              "id": 14,
+              "name": "V",
+              "packageName": null,
+              "typeArguments": []
+            }
+          ]
+        }
+      ],
+      "construct": {
+        "id": 12,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 88,
+          "file": "index.ts",
+          "path": "."
+        },
+        "parameters": [
+          {
+            "id": 15,
+            "name": "emitter",
+            "type": {
+              "kind": "reference",
+              "id": null,
+              "name": "EventEmitter",
+              "packageName": "@types/node",
+              "typeArguments": []
+            }
+          },
+          {
+            "id": 16,
+            "name": "event",
+            "type": {
+              "kind": "intrinsic",
+              "type": "string"
+            }
+          },
+          {
+            "id": 17,
+            "name": "options",
+            "type": {
+              "kind": "reference",
+              "id": 6,
+              "name": "EventIteratorOptions",
+              "packageName": null,
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": 14,
+                  "name": "V",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 21,
+          "name": "#ended",
+          "comment": {
+            "description": "Whether or not the EventIterator has ended.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 50,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 22,
+          "name": "#idle",
+          "comment": {
+            "description": "The amount of idle time in ms before moving on.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 55,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": true,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 26,
+          "name": "#idleTimer",
+          "comment": {
+            "description": "The timer to track when this will idle out.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 75,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "global.NodeJS.Timer",
+                "packageName": "@types/node",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 25,
+          "name": "#limit",
+          "comment": {
+            "description": "The limit before ending the EventIterator.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 70,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 24,
+          "name": "#passed",
+          "comment": {
+            "description": "The amount of events that have passed the filter.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 65,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 27,
+          "name": "#push",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 80,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 28,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "index.ts",
+                  "line": 80,
+                  "character": 8,
+                  "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/event-iterator/src/index.ts#L80"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 29,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "comment": {
+                    "summary": [
+                      {
+                        "kind": "text",
+                        "text": "The push handler with context bound to the instance."
+                      }
+                    ]
+                  },
+                  "parameters": [
+                    {
+                      "id": 30,
+                      "name": "this",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {},
+                      "type": {
+                        "type": "reference",
+                        "id": 11,
+                        "typeArguments": [
+                          {
+                            "type": "reference",
+                            "id": 14,
+                            "name": "V"
+                          }
+                        ],
+                        "name": "EventIterator"
+                      }
+                    },
+                    {
+                      "id": 31,
+                      "name": "value",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {
+                        "isRest": true
+                      },
+                      "type": {
+                        "type": "reference",
+                        "id": 14,
+                        "name": "V"
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "intrinsic",
+                    "name": "void"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 23,
+          "name": "#queue",
+          "comment": {
+            "description": "The queue of received values.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 60,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "reference",
+              "id": 14,
+              "name": "V",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        },
+        {
+          "id": 18,
+          "name": "emitter",
+          "comment": {
+            "description": "The emitter to listen to.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 35,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "EventEmitter",
+            "packageName": "@types/node",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 19,
+          "name": "event",
+          "comment": {
+            "description": "The event the event iterator is listening for to receive values from.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 40,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 20,
+          "name": "filter",
+          "comment": {
+            "description": "The filter used to filter out values.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 45,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": 1,
+            "name": "EventIteratorFilter",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 14,
+                "name": "V",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 33,
+          "name": "ended",
+          "comment": {
+            "description": "Whether or not the EventIterator has ended.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 109,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 45,
+          "name": "[asyncIterator]",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 187,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 46,
+              "name": "[asyncIterator]",
+              "comment": {
+                "description": "The symbol allowing EventIterators to be used in for-await-of loops.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "AsyncIterableIterator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 14,
+                    "name": "V",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "name": "end",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 116,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 35,
+              "name": "end",
+              "comment": {
+                "description": "Ends the EventIterator.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "name": "next",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 130,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 37,
+              "name": "next",
+              "comment": {
+                "description": "The next value that's received from the EventEmitter.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Promise",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "IteratorResult",
+                    "packageName": "typescript",
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 14,
+                        "name": "V",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "any"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "push",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 194,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "protected",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 43,
+              "name": "push",
+              "comment": {
+                "description": "Pushes a value into the queue.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 44,
+                  "name": "value",
+                  "type": {
+                    "kind": "reference",
+                    "id": 14,
+                    "name": "V",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "return",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 171,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 39,
+              "name": "return",
+              "comment": {
+                "description": "Handles what happens when you break or return from a loop.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Promise",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "IteratorResult",
+                    "packageName": "typescript",
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 14,
+                        "name": "V",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "any"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "name": "throw",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 179,
+            "file": "index.ts",
+            "path": "."
+          },
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 41,
+              "name": "throw",
+              "comment": {
+                "description": "Handles what happens when you encounter an error in a loop.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Promise",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "IteratorResult",
+                    "packageName": "typescript",
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 14,
+                        "name": "V",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "any"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": [],
+  "functions": [],
+  "interfaces": [
+    {
+      "id": 6,
+      "name": "EventIteratorOptions",
+      "comment": {
+        "description": "Options to be passed to an EventIterator.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 11,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 7,
+          "name": "filter",
+          "comment": {
+            "description": "The filter.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 15,
+            "file": "index.ts",
+            "path": "."
+          },
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": 1,
+            "name": "EventIteratorFilter",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 10,
+                "name": "V",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 8,
+          "name": "idle",
+          "comment": {
+            "description": "The timeout in ms before ending the EventIterator.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 20,
+            "file": "index.ts",
+            "path": "."
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 9,
+          "name": "limit",
+          "comment": {
+            "description": "The limit of events that pass the filter to iterate.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 25,
+            "file": "index.ts",
+            "path": "."
+          },
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        }
+      ]
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": [
+    {
+      "id": 1,
+      "name": "EventIteratorFilter",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 6,
+        "file": "index.ts",
+        "path": "."
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 5,
+          "name": "V",
+          "type": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 2,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "index.ts",
+              "line": 6,
+              "character": 37,
+              "url": "https://github.com/sapphiredev/utilities/blob/3ddc636/packages/event-iterator/src/index.ts#L6"
+            }
+          ],
+          "signatures": [
+            {
+              "id": 3,
+              "name": "__type",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "A filter for an EventIterator."
+                  }
+                ]
+              },
+              "parameters": [
+                {
+                  "id": 4,
+                  "name": "value",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "reference",
+                    "id": 5,
+                    "name": "V"
+                  }
+                }
+              ],
+              "type": {
+                "type": "intrinsic",
+                "name": "boolean"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
