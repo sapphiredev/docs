@@ -1,8 +1,9 @@
 {
-  "typeDocJsonParserVersion": "2.3.2",
+  "typeDocJsonParserVersion": "3.0.0",
   "id": 0,
   "name": "@sapphire/phisherman",
   "version": "1.4.1",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/phisherman\n\n**Wrapper around [Phisherman](https://phisherman.gg) to easily check and report domains**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/phisherman?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/phisherman)\n[![npm](https://img.shields.io/npm/v/@sapphire/phisherman?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/phisherman)\n\n</div>\n\n## Description\n\nWith @sapphire/phisherman, you can have an out of the box integration with [Phisherman](https://phisherman.gg). Phisherman is a centralised database of phishing and scam links. It is designed for use with Discord bots, allowing them to utilise the Phisherman API to cross-check URLs against our known phishing links.\n\nNote: Phisherman is currently in early access. For more information or to request access, please visit their [discord server](https://discord.gg/QwrpmTgvWy).\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Easy to use\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/phisherman\n```\n\n---\n\n## Usage\n\n**Note:** While this section uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { checkDomain } from '@sapphire/phisherman'` is the same as `const { checkDomain } = require('@sapphire/phisherman')`.\n\nBefore you do anything make sure to set the apiKey like this:\n\n```typescript\nimport { setApiKey } from '@sapphire/phisherman';\n\nsetApiKey('your-api-key');\n```\n\nThe main use you will have for phisherman is checking whether an URL is safe or not. You can do so with:\n\n```typescript\nimport { checkDomain } from '@sapphire/phisherman';\n\ncheckDomain('some-domain');\n```\n\nIf you have an URL that didn't pass the check, but you are sure is actually a phishing site, you can use the following to report it to phisherman:\n\n```typescript\nimport { reportDomain } from '@sapphire/phisherman';\n\nreportDomain('some-domain');\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Code\">💻</a> <a href=\"#projectManagement-kyranet\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Akyranet\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars2.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3APyroTechniac\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Avladfrangu\" title=\"Bug reports\">🐛</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"#userTesting-vladfrangu\" title=\"User Testing\">📓</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars0.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"#projectManagement-Stitch07\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Alcremie\"><img src=\"https://avatars0.githubusercontent.com/u/54785334?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ivan Lieder</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Alcremie\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AAlcremie\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars3.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=RealShadowNova\" title=\"Code\">💻</a> <a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Vetlix\"><img src=\"https://avatars.githubusercontent.com/u/31412314?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vetlix</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Vetlix\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ethamitc\"><img src=\"https://avatars.githubusercontent.com/u/27776796?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ethan Mitchell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ethamitc\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://fanoulis.dev/\"><img src=\"https://avatars.githubusercontent.com/u/38255093?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Charalampos Fanoulis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=cfanoulis\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app/\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kaname-png\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/nandhagk\"><img src=\"https://avatars.githubusercontent.com/u/62976649?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>nandhagk</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Anandhagk\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://gitlab.com/DavidPH/\"><img src=\"https://avatars.githubusercontent.com/u/44669930?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>David</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=DavidPHH\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=FC5570\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Tokipudi\"><img src=\"https://avatars.githubusercontent.com/u/29551076?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jérémy de Saint Denis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Tokipudi\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ItsMrCube\"><img src=\"https://avatars.githubusercontent.com/u/25201357?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>MrCube</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ItsMrCube\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/bitomic\"><img src=\"https://avatars.githubusercontent.com/u/35199700?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>bitomic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=bitomic\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://c43721.dev/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://commandtechno.com/\"><img src=\"https://avatars.githubusercontent.com/u/68407783?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Commandtechno</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Commandtechno\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/dhruv-kaushikk\"><img src=\"https://avatars.githubusercontent.com/u/73697546?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=dhruv-kaushikk\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://axis.moe/\"><img src=\"https://avatars.githubusercontent.com/u/54381371?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jonathan</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=axisiscool\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"#maintenance-imranbarbhuiya\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/NotKaskus\"><img src=\"https://avatars.githubusercontent.com/u/75168528?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Paul Andrew</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=NotKaskus\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Mzato0001\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AMzato0001\" title=\"Bug reports\">🐛</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=MajesticString\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/EvolutionX-10\"><img src=\"https://avatars.githubusercontent.com/u/85353424?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Evo</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=EvolutionX-10\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://enes.ovh/\"><img src=\"https://avatars.githubusercontent.com/u/61084101?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Enes Genç</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=enxg\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/muchnameless\"><img src=\"https://avatars.githubusercontent.com/u/12682826?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>muchnameless</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=muchnameless\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "classes": [],
   "constants": [],
   "enums": [],
@@ -18,7 +19,8 @@
       "source": {
         "line": 17,
         "file": "Phisherman.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L17"
       },
       "external": false,
       "signatures": [
@@ -80,7 +82,7 @@
                           "fileName": "lib/PhishermanTypes.ts",
                           "line": 7,
                           "character": 1,
-                          "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
+                          "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
                         }
                       ],
                       "type": {
@@ -116,7 +118,7 @@
                           "fileName": "lib/Phisherman.ts",
                           "line": 33,
                           "character": 2,
-                          "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/phisherman/src/lib/Phisherman.ts#L33"
+                          "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L33"
                         }
                       ],
                       "type": {
@@ -136,7 +138,7 @@
                           "fileName": "lib/PhishermanTypes.ts",
                           "line": 6,
                           "character": 1,
-                          "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
+                          "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
                         }
                       ],
                       "type": {
@@ -160,7 +162,7 @@
                       "fileName": "lib/Phisherman.ts",
                       "line": 31,
                       "character": 8,
-                      "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/phisherman/src/lib/Phisherman.ts#L31"
+                      "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L31"
                     }
                   ]
                 }
@@ -181,7 +183,8 @@
       "source": {
         "line": 68,
         "file": "Phisherman.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L68"
       },
       "external": false,
       "signatures": [
@@ -246,7 +249,8 @@
       "source": {
         "line": 91,
         "file": "Phisherman.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L91"
       },
       "external": false,
       "signatures": [
@@ -328,7 +332,8 @@
       "source": {
         "line": 43,
         "file": "Phisherman.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L43"
       },
       "external": false,
       "signatures": [
@@ -393,7 +398,8 @@
       "source": {
         "line": 114,
         "file": "Phisherman.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/Phisherman.ts#L114"
       },
       "external": false,
       "signatures": [
@@ -449,7 +455,8 @@
       "source": {
         "line": 1,
         "file": "PhishermanTypes.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L1"
       },
       "external": false,
       "properties": [
@@ -464,7 +471,8 @@
           "source": {
             "line": 2,
             "file": "PhishermanTypes.ts",
-            "path": "lib"
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L2"
           },
           "readonly": false,
           "type": {
@@ -485,7 +493,8 @@
       "source": {
         "line": 14,
         "file": "PhishermanTypes.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L14"
       },
       "external": false,
       "properties": [
@@ -500,7 +509,8 @@
           "source": {
             "line": 16,
             "file": "PhishermanTypes.ts",
-            "path": "lib"
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L16"
           },
           "readonly": false,
           "type": {
@@ -519,7 +529,8 @@
           "source": {
             "line": 15,
             "file": "PhishermanTypes.ts",
-            "path": "lib"
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L15"
           },
           "readonly": false,
           "type": {
@@ -540,7 +551,8 @@
       "source": {
         "line": 5,
         "file": "PhishermanTypes.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L5"
       },
       "external": false,
       "properties": [
@@ -555,7 +567,8 @@
           "source": {
             "line": 7,
             "file": "PhishermanTypes.ts",
-            "path": "lib"
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
           },
           "readonly": false,
           "type": {
@@ -591,7 +604,8 @@
           "source": {
             "line": 6,
             "file": "PhishermanTypes.ts",
-            "path": "lib"
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
           },
           "readonly": false,
           "type": {
@@ -615,7 +629,8 @@
       "source": {
         "line": 10,
         "file": "PhishermanTypes.ts",
-        "path": "lib"
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
       },
       "external": false,
       "typeParameters": [],
@@ -649,7 +664,7 @@
                       "fileName": "lib/PhishermanTypes.ts",
                       "line": 11,
                       "character": 1,
-                      "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/phisherman/src/lib/PhishermanTypes.ts#L11"
+                      "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L11"
                     }
                   ],
                   "type": {
@@ -671,7 +686,7 @@
                   "fileName": "lib/PhishermanTypes.ts",
                   "line": 10,
                   "character": 53,
-                  "url": "https://github.com/sapphiredev/utilities/blob/6ecbf3f/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
+                  "url": "https://github.com/sapphiredev/utilities/blob/ad0c3e1/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
                 }
               ]
             }
