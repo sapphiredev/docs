@@ -1,14 +1,15 @@
 {
-  "typeDocJsonParserVersion": "2.3.2",
+  "typeDocJsonParserVersion": "3.0.0",
   "id": 0,
   "name": "@sapphire/plugin-i18next",
   "version": "3.0.0",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-i18next\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to support i18next based internationalization.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-in17n?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-in17n)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-in17n?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-in17n)\n\n</div>\n\n## Description\n\nAn implementation of i18next's [filesystem backend] for Sapphire. It allows you to use a JSON-based `languages` directory to add internationalization for your bot using `SapphireClient`'s `fetchLanguage` hook and a custom message extension, adding features such as `sendTranslated` and `resolveKey`.\n\n[filesystem backend]: https://github.com/i18next/i18next-fs-backend\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Framework agnostic\n-   Includes convenience register for discord.js\n\n## Installation\n\n`@sapphire/plugin-i18next` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-i18next @sapphire/framework discord.js\n```\n\n---\n\n## Usage\n\nThis registers the methods and options necessary for message translations in the Sapphire client.\n\n```typescript\n// Main bot file\n// Be sure to register the plugin before instantiating the client.\nimport '@sapphire/plugin-i18next/register';\n```\n\nThe basic structure of a translation file is as follows:\n\n```jsonc\n// languages/en-US/commands/ping.json\n{\n\t\"success\": \"Pong!\",\n\t\"success_with_args\": \"Pong! Took me {{latency}}ms to reply\"\n}\n```\n\nThe `resolveKey` function can be used anywhere to get translated text by its key. In this example, it is used in a method to send a message.\n\n```typescript\nimport { resolveKey } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait message.channel.send(await resolveKey('commands/ping:success'));\n\t}\n}\n```\n\n`sendLocalized` will send translated text resolved from a key to a specified channel.\n\n```typescript\nimport { sendLocalized } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait sendLocalized(message, 'commands/ping:success');\n\t}\n}\n```\n\n`editLocalized` edits a message, replacing its content with translated text resolved from its key.\n\n```typescript\nimport { editLocalized } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait editLocalized(message, 'commands/ping:success_args', { latency: ws.ping });\n\t}\n}\n```\n\n`fetchLanguage` returns the guild-specific language that the client is using.\n\n```typescript\nimport { fetchLanguage } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\treturn message.channel.send(await fetchLanguage(message));\n\t\t// ===> en-US\n\t}\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "classes": [
     {
       "id": 67,
       "name": "InternationalizationHandler",
       "comment": {
-        "description": "A generalized class for handling \n`i18next`\n JSON files and their discovery.",
+        "description": "A generalized class for handling `i18next` JSON files and their discovery.",
         "blockTags": [
           {
             "name": "since",
@@ -20,7 +21,8 @@
       "source": {
         "line": 15,
         "file": "InternationalizationHandler.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L15"
       },
       "external": false,
       "abstract": false,
@@ -37,7 +39,8 @@
         "source": {
           "line": 58,
           "file": "InternationalizationHandler.ts",
-          "path": "packages/i18next/src/lib"
+          "path": "packages/i18next/src/lib",
+          "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L58"
         },
         "parameters": [
           {
@@ -58,7 +61,7 @@
           "id": 76,
           "name": "backendOptions",
           "comment": {
-            "description": "The backend options for \n`@skyra/i18next-backend`\n used by \n`i18next`\n.",
+            "description": "The backend options for `@skyra/i18next-backend` used by `i18next`.",
             "blockTags": [
               {
                 "name": "since",
@@ -70,7 +73,8 @@
           "source": {
             "line": 51,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L51"
           },
           "accessibility": "protected",
           "abstract": false,
@@ -96,7 +100,8 @@
           "source": {
             "line": 117,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L117"
           },
           "accessibility": "public",
           "abstract": false,
@@ -116,7 +121,7 @@
                   "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
                   "line": 117,
                   "character": 23,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4f5f06a/packages/i18next/src/lib/InternationalizationHandler.ts#L117"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L117"
                 }
               ],
               "signatures": [
@@ -264,7 +269,7 @@
           "id": 73,
           "name": "languages",
           "comment": {
-            "description": "A \n`Map`\n of \n`i18next`\n language functions keyed by their language code.",
+            "description": "A `Map` of `i18next` language functions keyed by their language code.",
             "blockTags": [
               {
                 "name": "since",
@@ -276,7 +281,8 @@
           "source": {
             "line": 32,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L32"
           },
           "accessibility": "public",
           "abstract": false,
@@ -307,7 +313,7 @@
           "id": 75,
           "name": "languagesDirectory",
           "comment": {
-            "description": "The director passed to \n`@skyra/i18next-backend`\n.\nAlso used in \nInternationalizationHandler.walkLanguageDirectory\n.",
+            "description": "The director passed to `@skyra/i18next-backend`.\nAlso used in {@link InternationalizationHandler.walkLanguageDirectory}.",
             "blockTags": [
               {
                 "name": "since",
@@ -319,7 +325,8 @@
           "source": {
             "line": 45,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L45"
           },
           "accessibility": "public",
           "abstract": false,
@@ -335,7 +342,7 @@
           "id": 71,
           "name": "languagesLoaded",
           "comment": {
-            "description": "Describes whether \ninit\n has been run and languages are loaded in \nlanguages\n.",
+            "description": "Describes whether {@link init} has been run and languages are loaded in {@link languages}.",
             "blockTags": [
               {
                 "name": "since",
@@ -347,7 +354,8 @@
           "source": {
             "line": 20,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L20"
           },
           "accessibility": "public",
           "abstract": false,
@@ -363,7 +371,7 @@
           "id": 72,
           "name": "namespaces",
           "comment": {
-            "description": "A \n`Set`\n of initially loaded namespaces.",
+            "description": "A `Set` of initially loaded namespaces.",
             "blockTags": [
               {
                 "name": "since",
@@ -375,7 +383,8 @@
           "source": {
             "line": 26,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L26"
           },
           "accessibility": "public",
           "abstract": false,
@@ -411,7 +420,8 @@
           "source": {
             "line": 38,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L38"
           },
           "accessibility": "public",
           "abstract": false,
@@ -439,7 +449,8 @@
           "source": {
             "line": 181,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L181"
           },
           "accessibility": "public",
           "abstract": false,
@@ -457,7 +468,7 @@
                   },
                   {
                     "name": "see",
-                    "text": "https://www.i18next.com/overview/api#t"
+                    "text": "{@link https://www.i18next.com/overview/api#t}"
                   },
                   {
                     "name": "returns",
@@ -589,7 +600,8 @@
           "source": {
             "line": 164,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L164"
           },
           "accessibility": "public",
           "abstract": false,
@@ -640,7 +652,8 @@
           "source": {
             "line": 123,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L123"
           },
           "accessibility": "public",
           "abstract": false,
@@ -650,7 +663,7 @@
               "id": 82,
               "name": "init",
               "comment": {
-                "description": "Initializes the handler by loading in the namespaces, passing the data to i18next, and filling in the \nlanguages\n.",
+                "description": "Initializes the handler by loading in the namespaces, passing the data to i18next, and filling in the {@link languages}.",
                 "blockTags": [
                   {
                     "name": "since",
@@ -687,7 +700,8 @@
           "source": {
             "line": 222,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L222"
           },
           "accessibility": "public",
           "abstract": false,
@@ -729,7 +743,8 @@
           "source": {
             "line": 245,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L245"
           },
           "accessibility": "private",
           "abstract": false,
@@ -743,7 +758,7 @@
                 "blockTags": [
                   {
                     "name": "description",
-                    "text": "Skips any files that don't end with \n`.json`\n."
+                    "text": "Skips any files that don't end with `.json`."
                   },
                   {
                     "name": "since",
@@ -805,7 +820,8 @@
           "source": {
             "line": 202,
             "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L202"
           },
           "accessibility": "public",
           "abstract": false,
@@ -864,7 +880,7 @@
                               "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
                               "line": 219,
                               "character": 40,
-                              "url": "https://github.com/sapphiredev/plugins/blob/4f5f06a/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
+                              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
                             }
                           ],
                           "type": {
@@ -887,7 +903,7 @@
                               "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
                               "line": 219,
                               "character": 11,
-                              "url": "https://github.com/sapphiredev/plugins/blob/4f5f06a/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
+                              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
                             }
                           ],
                           "type": {
@@ -914,7 +930,7 @@
                           "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
                           "line": 219,
                           "character": 9,
-                          "url": "https://github.com/sapphiredev/plugins/blob/4f5f06a/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
+                          "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
                         }
                       ]
                     }
@@ -941,7 +957,8 @@
       "source": {
         "line": 19,
         "file": "functions.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/functions.ts#L19"
       },
       "external": false,
       "signatures": [
@@ -949,7 +966,7 @@
           "id": 54,
           "name": "fetchLanguage",
           "comment": {
-            "description": "Retrieves the language name for a specific target, using \nfetchLanguage\n.\nIf \nfetchLanguage\n is not defined or this function returns a nullish value,\nthen there will be a series of fallback attempts in the following descending order:\n1. Returns \nGuild.preferredLocale\n.\n2. Returns \ndefaultName\n if no guild was provided.\n3. Returns \n`'en-US'`\n if nothing else was found.",
+            "description": "Retrieves the language name for a specific target, using {@link fetchLanguage}.\nIf {@link fetchLanguage} is not defined or this function returns a nullish value,\nthen there will be a series of fallback attempts in the following descending order:\n1. Returns {@link Guild.preferredLocale}.\n2. Returns {@link defaultName} if no guild was provided.\n3. Returns `'en-US'` if nothing else was found.",
             "blockTags": [
               {
                 "name": "since",
@@ -957,7 +974,7 @@
               },
               {
                 "name": "see",
-                "text": "resolveLanguage"
+                "text": "{@link resolveLanguage}"
               },
               {
                 "name": "returns",
@@ -1006,7 +1023,8 @@
       "source": {
         "line": 56,
         "file": "functions.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/functions.ts#L56"
       },
       "external": false,
       "signatures": [
@@ -1070,7 +1088,8 @@
       "source": {
         "line": 68,
         "file": "functions.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/functions.ts#L68"
       },
       "external": false,
       "signatures": [
@@ -1086,7 +1105,7 @@
               },
               {
                 "name": "returns",
-                "text": "The data that \n`key`\n held, processed by i18next."
+                "text": "The data that `key` held, processed by i18next."
               }
             ],
             "modifierTags": []
@@ -1220,7 +1239,7 @@
       "id": 106,
       "name": "HMROptions",
       "comment": {
-        "description": "Configure whether to use Hot-Module-Replacement (HMR) for your i18next resources using these options. The minimum config to enable HMR is to set \n`enabled`\n to true. Any other properties are optional.",
+        "description": "Configure whether to use Hot-Module-Replacement (HMR) for your i18next resources using these options. The minimum config to enable HMR is to set `enabled` to true. Any other properties are optional.",
         "blockTags": [
           {
             "name": "since",
@@ -1232,7 +1251,8 @@
       "source": {
         "line": 21,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L21"
       },
       "external": false,
       "properties": [
@@ -1252,7 +1272,8 @@
           "source": {
             "line": 26,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L26"
           },
           "readonly": false,
           "type": {
@@ -1276,7 +1297,8 @@
           "source": {
             "line": 32,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L32"
           },
           "readonly": false,
           "type": {
@@ -1312,7 +1334,8 @@
           "source": {
             "line": 38,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L38"
           },
           "readonly": false,
           "type": {
@@ -1343,7 +1366,8 @@
           "source": {
             "line": 43,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L43"
           },
           "readonly": false,
           "type": {
@@ -1367,7 +1391,8 @@
       "source": {
         "line": 148,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L148"
       },
       "external": false,
       "properties": [
@@ -1382,7 +1407,8 @@
           "source": {
             "line": 149,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L149"
           },
           "readonly": false,
           "type": {
@@ -1403,7 +1429,8 @@
       "source": {
         "line": 144,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L144"
       },
       "external": false,
       "properties": [
@@ -1418,7 +1445,8 @@
           "source": {
             "line": 145,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L145"
           },
           "readonly": false,
           "type": {
@@ -1435,14 +1463,15 @@
       "id": 132,
       "name": "InternationalizationContext",
       "comment": {
-        "description": "Context for \nfetchLanguage\n functions.\nThis context enables implementation of per-guild, per-channel, and per-user localization.",
+        "description": "Context for {@link fetchLanguage} functions.\nThis context enables implementation of per-guild, per-channel, and per-user localization.",
         "blockTags": [],
         "modifierTags": []
       },
       "source": {
         "line": 133,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L133"
       },
       "external": false,
       "properties": [
@@ -1450,14 +1479,15 @@
           "id": 134,
           "name": "channel",
           "comment": {
-            "description": "The \nDiscordChannel\n object to fetch the preferred language for.",
+            "description": "The {@link DiscordChannel} object to fetch the preferred language for.",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 137,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L137"
           },
           "readonly": false,
           "type": {
@@ -1481,14 +1511,15 @@
           "id": 133,
           "name": "guild",
           "comment": {
-            "description": "The \nGuild\n object to fetch the preferred language for, or \n`null`\n if the language is to be fetched in a DM.",
+            "description": "The {@link Guild} object to fetch the preferred language for, or `null` if the language is to be fetched in a DM.",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 135,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L135"
           },
           "readonly": false,
           "type": {
@@ -1519,7 +1550,8 @@
           "source": {
             "line": 140,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L140"
           },
           "readonly": false,
           "type": {
@@ -1547,7 +1579,8 @@
           "source": {
             "line": 141,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L141"
           },
           "readonly": false,
           "type": {
@@ -1566,7 +1599,8 @@
           "source": {
             "line": 139,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L139"
           },
           "readonly": false,
           "type": {
@@ -1592,7 +1626,7 @@
       "id": 117,
       "name": "InternationalizationOptions",
       "comment": {
-        "description": "The options used in \nInternationalizationHandler\n.",
+        "description": "The options used in {@link InternationalizationHandler}.",
         "blockTags": [
           {
             "name": "since",
@@ -1604,7 +1638,8 @@
       "source": {
         "line": 57,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L57"
       },
       "external": false,
       "properties": [
@@ -1612,7 +1647,7 @@
           "id": 119,
           "name": "backend",
           "comment": {
-            "description": "The options passed to \n`backend`\n in \n`i18next.init`\n.",
+            "description": "The options passed to `backend` in `i18next.init`.",
             "blockTags": [
               {
                 "name": "since",
@@ -1624,7 +1659,8 @@
           "source": {
             "line": 69,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L69"
           },
           "readonly": false,
           "type": {
@@ -1655,7 +1691,8 @@
           "source": {
             "line": 82,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L82"
           },
           "readonly": false,
           "type": {
@@ -1679,7 +1716,8 @@
           "source": {
             "line": 89,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L89"
           },
           "readonly": false,
           "type": {
@@ -1703,7 +1741,8 @@
           "source": {
             "line": 96,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L96"
           },
           "readonly": false,
           "type": {
@@ -1727,7 +1766,8 @@
           "source": {
             "line": 63,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L63"
           },
           "readonly": false,
           "type": {
@@ -1746,7 +1786,8 @@
           "source": {
             "line": 123,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L123"
           },
           "readonly": false,
           "type": {
@@ -1762,7 +1803,7 @@
                   "fileName": "packages/i18next/src/lib/types.ts",
                   "line": 123,
                   "character": 17,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4f5f06a/packages/i18next/src/lib/types.ts#L123"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L123"
                 }
               ],
               "signatures": [
@@ -1898,7 +1939,8 @@
           "source": {
             "line": 104,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L104"
           },
           "readonly": false,
           "type": {
@@ -1928,7 +1970,8 @@
           "source": {
             "line": 111,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L111"
           },
           "readonly": false,
           "type": {
@@ -1943,7 +1986,7 @@
           "id": 120,
           "name": "i18next",
           "comment": {
-            "description": "The options passed to \n`i18next.init`\n.",
+            "description": "The options passed to `i18next.init`.",
             "blockTags": [
               {
                 "name": "since",
@@ -1955,7 +1998,8 @@
           "source": {
             "line": 75,
             "file": "types.ts",
-            "path": "packages/i18next/src/lib"
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L75"
           },
           "readonly": false,
           "type": {
@@ -1999,7 +2043,8 @@
       "source": {
         "line": 691,
         "file": "index.d.ts",
-        "path": "node_modules/i18next"
+        "path": "node_modules/i18next",
+        "url": null
       },
       "external": true,
       "properties": []
@@ -2018,7 +2063,8 @@
       "source": {
         "line": 153,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L153"
       },
       "external": false,
       "typeParameters": [],
@@ -2053,7 +2099,8 @@
       "source": {
         "line": 127,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L127"
       },
       "external": false,
       "typeParameters": [],
@@ -2102,7 +2149,8 @@
       "source": {
         "line": 51,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L51"
       },
       "external": false,
       "typeParameters": [
@@ -2132,7 +2180,7 @@
               "fileName": "packages/i18next/src/lib/types.ts",
               "line": 51,
               "character": 52,
-              "url": "https://github.com/sapphiredev/plugins/blob/4f5f06a/packages/i18next/src/lib/types.ts#L51"
+              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L51"
             }
           ],
           "signatures": [
@@ -2222,7 +2270,8 @@
       "source": {
         "line": 633,
         "file": "index.d.ts",
-        "path": "node_modules/i18next"
+        "path": "node_modules/i18next",
+        "url": null
       },
       "external": true,
       "typeParameters": [],
@@ -2284,7 +2333,8 @@
       "source": {
         "line": 690,
         "file": "index.d.ts",
-        "path": "node_modules/i18next"
+        "path": "node_modules/i18next",
+        "url": null
       },
       "external": true,
       "typeParameters": [],
@@ -2316,7 +2366,8 @@
       "source": {
         "line": 683,
         "file": "index.d.ts",
-        "path": "node_modules/i18next"
+        "path": "node_modules/i18next",
+        "url": null
       },
       "external": true,
       "typeParameters": [],
@@ -2376,7 +2427,8 @@
       "source": {
         "line": 638,
         "file": "index.d.ts",
-        "path": "node_modules/i18next"
+        "path": "node_modules/i18next",
+        "url": null
       },
       "external": true,
       "typeParameters": [
@@ -2427,7 +2479,8 @@
       "source": {
         "line": 154,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L154"
       },
       "external": false,
       "typeParameters": [],
@@ -2476,7 +2529,8 @@
       "source": {
         "line": 126,
         "file": "types.ts",
-        "path": "packages/i18next/src/lib"
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/i18next/src/lib/types.ts#L126"
       },
       "external": false,
       "typeParameters": [],
