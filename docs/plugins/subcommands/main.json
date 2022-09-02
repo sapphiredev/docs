@@ -1,8 +1,9 @@
 {
-  "typeDocJsonParserVersion": "2.3.2",
+  "typeDocJsonParserVersion": "3.0.0",
   "id": 0,
   "name": "@sapphire/plugin-subcommands",
   "version": "3.2.0",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-subcommands\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> so your commands can have subcommands.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-subcommands?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-subcommands)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-subcommands?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-subcommands)\n\n</div>\n\n## Description\n\nSubcommands are a way to split 1 command into multiple. This can in particular be very useful for configuration commands with subcommands such as `set`, `reset` and `remove`.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Type generics for easy extension in TypeScript\n-   Input/Output mapping\n\n## Installation\n\n`@sapphire/plugin-subcommands` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`@sapphire/utilities`](https://www.npmjs.com/package/@sapphire/utilities)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-subcommands @sapphire/framework @sapphire/utilities discord.js\n```\n\n---\n\n## Usage\n\nStart by importing the registration file in your project to use the plugins error loggers:\n\n**JavaScript**\n\n```js\nrequire('@sapphire/plugin-subcommands/register');\n```\n\n**TypeScript**\n\n```typescript\nimport '@sapphire/plugin-subcommands/register';\n```\n\nThen, you can create new subcommands by extending the Subcommand class.\n_With TypeScript:_\n\n```typescript\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport { ApplyOptions } from '@sapphire/decorators';\nimport type { Args } from '@sapphire/framework';\nimport type { Message, CommandInteraction } from 'discord.js';\n\n// Using ApplyOptions decorator makes it easy to configure\n@ApplyOptions<Subcommand.Options>({\n\tsubcommands: [\n\t\t{\n\t\t\tname: 'add',\n\t\t\tmessageRun: 'messageAdd',\n\t\t\tchatInputRun: 'chatInputAdd'\n\t\t},\n\t\t{\n\t\t\tname: 'remove',\n\t\t\tmessageRun: 'messageRemove',\n\t\t\tchatInputRun: 'chatInputRemove'\n\t\t},\n\t\t{\n\t\t\tname: 'list',\n\t\t\tmessageRun: 'messageList',\n\t\t\tchatInputRun: 'chatInputList'\n\t\t}\n\t]\n})\n// Extend `Subcommand` instead of `Command`\nexport class UserCommand extends Subcommand {\n\tpublic async messageAdd(message: Message, args: Args) {}\n\n\tpublic async messageRemove(message: Message, args: Args) {}\n\n\tpublic async messageList(message: Message, args: Args) {}\n\n\tpublic async chatInputAdd(interaction: Subcommand.ChatInputInteraction) {}\n\n\tpublic async chatInputRemove(interaction: Subcommand.ChatInputInteraction) {}\n\n\tpublic async chatInputList(interaction: Subcommand.ChatInputInteraction) {}\n}\n```\n\n_With JavaScript:_\n\n```javascript\nconst { Subcommand } = require('@sapphire/plugin-subcommands');\n\n// Extend `Subcommand` instead of `Command`\nmodule.exports = class UserCommand extends Subcommand {\n\tconstructor(context, options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tsubcommands: [\n\t\t\t\t{\n\t\t\t\t\tname: 'add',\n\t\t\t\t\tmessageRun: 'messageAdd',\n\t\t\t\t\tchatInputRun: 'chatInputAdd'\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tname: 'remove',\n\t\t\t\t\tmessageRun: 'messageRemove',\n\t\t\t\t\tchatInputRun: 'chatInputRemove'\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tname: 'list',\n\t\t\t\t\tmessageRun: 'messageList',\n\t\t\t\t\tchatInputRun: 'chatInputList'\n\t\t\t\t}\n\t\t\t]\n\t\t});\n\t}\n\n\tasync messageAdd(message, args) {}\n\n\tasync messageRemove(message, args) {}\n\n\tasync messageList(message, args) {}\n\n\tasync chatInputAdd(interaction) {}\n\n\tasync chatInputRemove(interaction) {}\n\n\tasync chatInputList(interaction) {}\n};\n```\n\nFor more documentation please refer to [guide](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started)\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "classes": [
     {
       "id": 1,
@@ -15,7 +16,8 @@
       "source": {
         "line": 17,
         "file": "Subcommand.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L17"
       },
       "external": false,
       "abstract": false,
@@ -53,7 +55,8 @@
         "source": {
           "line": 21,
           "file": "Subcommand.ts",
-          "path": "packages/subcommands/src/lib"
+          "path": "packages/subcommands/src/lib",
+          "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L21"
         },
         "parameters": [
           {
@@ -92,7 +95,8 @@
           "source": {
             "line": 687,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -127,7 +131,8 @@
           "source": {
             "line": 2005,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -153,7 +158,8 @@
           "source": {
             "line": 19,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L19"
           },
           "accessibility": "public",
           "abstract": false,
@@ -181,7 +187,8 @@
           "source": {
             "line": 1970,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -209,7 +216,8 @@
           "source": {
             "line": 1980,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -235,7 +243,8 @@
           "source": {
             "line": 450,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -251,7 +260,7 @@
           "id": 45,
           "name": "fullCategory",
           "comment": {
-            "description": "The full category for the command. Either an array of strings that denote every (sub)folder the command is in,\nor \n`null`\n if it could not be resolved automatically.\n\nIf this is \n`null`\n for how you setup your code then you can overwrite how the \n`fullCategory`\n is resolved by\nextending this class and overwriting the assignment in the constructor.",
+            "description": "The full category for the command. Either an array of strings that denote every (sub)folder the command is in,\nor `null` if it could not be resolved automatically.\n\nIf this is `null` for how you setup your code then you can overwrite how the `fullCategory` is resolved by\nextending this class and overwriting the assignment in the constructor.",
             "blockTags": [
               {
                 "name": "since",
@@ -263,7 +272,8 @@
           "source": {
             "line": 1989,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -298,7 +308,8 @@
           "source": {
             "line": 2011,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "private",
           "abstract": false,
@@ -324,7 +335,8 @@
           "source": {
             "line": 442,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -350,7 +362,8 @@
           "source": {
             "line": 446,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -366,14 +379,15 @@
           "id": 106,
           "name": "options",
           "comment": {
-            "description": "The raw options passed to this \nPiece",
+            "description": "The raw options passed to this {@link Piece}",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 454,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -399,7 +413,8 @@
           "source": {
             "line": 18,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L18"
           },
           "accessibility": "public",
           "abstract": false,
@@ -430,7 +445,8 @@
           "source": {
             "line": 1975,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -456,7 +472,8 @@
           "source": {
             "line": 438,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -503,7 +520,8 @@
           "source": {
             "line": 1994,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -522,7 +540,7 @@
           "id": 47,
           "name": "typing",
           "comment": {
-            "description": "If \nSapphireClient.typing\n is true, it can be overridden for a specific command using this property, set via its options.\nOtherwise, this property will be ignored.",
+            "description": "If {@link SapphireClient.typing} is true, it can be overridden for a specific command using this property, set via its options.\nOtherwise, this property will be ignored.",
             "blockTags": [
               {
                 "name": "default",
@@ -534,7 +552,8 @@
           "source": {
             "line": 2000,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -550,11 +569,11 @@
           "id": 56,
           "name": "category",
           "comment": {
-            "description": "The main category for the command, if any.\n\nThis getter retrieves the first value of \nCommand.fullCategory\n, if it has at least one item, otherwise it\nreturns \n`null`\n.",
+            "description": "The main category for the command, if any.\n\nThis getter retrieves the first value of {@link Command.fullCategory}, if it has at least one item, otherwise it\nreturns `null`.",
             "blockTags": [
               {
                 "name": "note",
-                "text": "You can set \nCommand.Options.fullCategory\n to override the built-in category resolution."
+                "text": "You can set {@link Command.Options.fullCategory} to override the built-in category resolution."
               }
             ],
             "modifierTags": []
@@ -562,7 +581,8 @@
           "source": {
             "line": 2033,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -587,7 +607,7 @@
           "id": 108,
           "name": "container",
           "comment": {
-            "description": "A reference to the \nContainer\n object for ease of use.",
+            "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
               {
                 "name": "see",
@@ -599,7 +619,8 @@
           "source": {
             "line": 460,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -618,11 +639,11 @@
           "id": 60,
           "name": "parentCategory",
           "comment": {
-            "description": "The parent category for the command.\n\nThis getter retrieves the last value of \nCommand.fullCategory\n, if it has at least one item, otherwise it\nreturns \n`null`\n.",
+            "description": "The parent category for the command.\n\nThis getter retrieves the last value of {@link Command.fullCategory}, if it has at least one item, otherwise it\nreturns `null`.",
             "blockTags": [
               {
                 "name": "note",
-                "text": "You can set \nCommand.Options.fullCategory\n to override the built-in category resolution."
+                "text": "You can set {@link Command.Options.fullCategory} to override the built-in category resolution."
               }
             ],
             "modifierTags": []
@@ -630,7 +651,8 @@
           "source": {
             "line": 2051,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -655,11 +677,11 @@
           "id": 58,
           "name": "subCategory",
           "comment": {
-            "description": "The sub-category for the command, if any.\n\nThis getter retrieves the second value of \nCommand.fullCategory\n, if it has at least two items, otherwise\nit returns \n`null`\n.",
+            "description": "The sub-category for the command, if any.\n\nThis getter retrieves the second value of {@link Command.fullCategory}, if it has at least two items, otherwise\nit returns `null`.",
             "blockTags": [
               {
                 "name": "note",
-                "text": "You can set \nCommand.Options.fullCategory\n to override the built-in category resolution."
+                "text": "You can set {@link Command.Options.fullCategory} to override the built-in category resolution."
               }
             ],
             "modifierTags": []
@@ -667,7 +689,8 @@
           "source": {
             "line": 2042,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -701,7 +724,8 @@
           "source": {
             "line": 335,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L335"
           },
           "accessibility": "private",
           "abstract": false,
@@ -763,7 +787,7 @@
                               "fileName": "packages/subcommands/src/lib/Subcommand.ts",
                               "line": 346,
                               "character": 22,
-                              "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/Subcommand.ts#L346"
+                              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L346"
                             }
                           ],
                           "type": {
@@ -783,7 +807,7 @@
                               "fileName": "packages/subcommands/src/lib/Subcommand.ts",
                               "line": 346,
                               "character": 13,
-                              "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/Subcommand.ts#L346"
+                              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L346"
                             }
                           ],
                           "type": {
@@ -807,7 +831,7 @@
                           "fileName": "packages/subcommands/src/lib/Subcommand.ts",
                           "line": 346,
                           "character": 11,
-                          "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/Subcommand.ts#L346"
+                          "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L346"
                         }
                       ]
                     }
@@ -832,7 +856,7 @@
                               "fileName": "packages/subcommands/src/lib/Subcommand.ts",
                               "line": 350,
                               "character": 34,
-                              "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/Subcommand.ts#L350"
+                              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L350"
                             }
                           ],
                           "type": {
@@ -852,7 +876,7 @@
                               "fileName": "packages/subcommands/src/lib/Subcommand.ts",
                               "line": 350,
                               "character": 11,
-                              "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/Subcommand.ts#L350"
+                              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L350"
                             }
                           ],
                           "type": {
@@ -886,7 +910,7 @@
                           "fileName": "packages/subcommands/src/lib/Subcommand.ts",
                           "line": 350,
                           "character": 9,
-                          "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/Subcommand.ts#L350"
+                          "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L350"
                         }
                       ]
                     }
@@ -907,7 +931,8 @@
           "source": {
             "line": 287,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L287"
           },
           "accessibility": "private",
           "abstract": false,
@@ -991,7 +1016,8 @@
           "source": {
             "line": 248,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L248"
           },
           "accessibility": "private",
           "abstract": false,
@@ -1083,7 +1109,8 @@
           "source": {
             "line": 2081,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1093,7 +1120,7 @@
               "id": 66,
               "name": "autocompleteRun",
               "comment": {
-                "description": "Executes the autocomplete logic.\n\n:::tip\n\nYou may use this, or alternatively create an \nInteractionHandler interaction handler\n to handle autocomplete interactions.\nKeep in mind that commands take precedence over interaction handlers.\n\n:::",
+                "description": "Executes the autocomplete logic.\n\n:::tip\n\nYou may use this, or alternatively create an {@link InteractionHandler interaction handler} to handle autocomplete interactions.\nKeep in mind that commands take precedence over interaction handlers.\n\n:::",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -1137,7 +1164,8 @@
           "source": {
             "line": 211,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L211"
           },
           "accessibility": "public",
           "abstract": false,
@@ -1210,7 +1238,8 @@
           "source": {
             "line": 2068,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1275,7 +1304,8 @@
           "source": {
             "line": 2024,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1356,7 +1386,8 @@
           "source": {
             "line": 119,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L119"
           },
           "accessibility": "public",
           "abstract": false,
@@ -1437,7 +1468,8 @@
           "source": {
             "line": 108,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L108"
           },
           "accessibility": "public",
           "abstract": false,
@@ -1471,7 +1503,8 @@
           "source": {
             "line": 470,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1505,7 +1538,8 @@
           "source": {
             "line": 2116,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "protected",
           "abstract": false,
@@ -1515,7 +1549,7 @@
               "id": 84,
               "name": "parseConstructorPreConditions",
               "comment": {
-                "description": "Parses the command's options and processes them, calling \nCommand#parseConstructorPreConditionsRunIn\n,\n\nCommand#parseConstructorPreConditionsNsfw\n,\n\nCommand#parseConstructorPreConditionsRequiredClientPermissions\n, and\n\nCommand#parseConstructorPreConditionsCooldown\n.",
+                "description": "Parses the command's options and processes them, calling {@link Command#parseConstructorPreConditionsRunIn},\n{@link Command#parseConstructorPreConditionsNsfw},\n{@link Command#parseConstructorPreConditionsRequiredClientPermissions}, and\n{@link Command#parseConstructorPreConditionsCooldown}.",
                 "blockTags": [
                   {
                     "name": "since",
@@ -1556,7 +1590,8 @@
           "source": {
             "line": 2146,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "protected",
           "abstract": false,
@@ -1566,7 +1601,7 @@
               "id": 99,
               "name": "parseConstructorPreConditionsCooldown",
               "comment": {
-                "description": "Appends the \n`Cooldown`\n precondition when \nCommand.Options.cooldownLimit\n and\n\nCommand.Options.cooldownDelay\n are both non-zero.",
+                "description": "Appends the `Cooldown` precondition when {@link Command.Options.cooldownLimit} and\n{@link Command.Options.cooldownDelay} are both non-zero.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -1602,7 +1637,8 @@
           "source": {
             "line": 2121,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "protected",
           "abstract": false,
@@ -1612,7 +1648,7 @@
               "id": 87,
               "name": "parseConstructorPreConditionsNsfw",
               "comment": {
-                "description": "Appends the \n`NSFW`\n precondition if \nCommand.Options.nsfw\n is set to true.",
+                "description": "Appends the `NSFW` precondition if {@link Command.Options.nsfw} is set to true.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -1648,7 +1684,8 @@
           "source": {
             "line": 2134,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "protected",
           "abstract": false,
@@ -1658,7 +1695,7 @@
               "id": 93,
               "name": "parseConstructorPreConditionsRequiredClientPermissions",
               "comment": {
-                "description": "Appends the \n`ClientPermissions`\n precondition when \nCommand.Options.requiredClientPermissions\n resolves to a\nnon-zero bitfield.",
+                "description": "Appends the `ClientPermissions` precondition when {@link Command.Options.requiredClientPermissions} resolves to a\nnon-zero bitfield.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -1694,7 +1731,8 @@
           "source": {
             "line": 2140,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "protected",
           "abstract": false,
@@ -1704,7 +1742,7 @@
               "id": 96,
               "name": "parseConstructorPreConditionsRequiredUserPermissions",
               "comment": {
-                "description": "Appends the \n`UserPermissions`\n precondition when \nCommand.Options.requiredUserPermissions\n resolves to a\nnon-zero bitfield.",
+                "description": "Appends the `UserPermissions` precondition when {@link Command.Options.requiredUserPermissions} resolves to a\nnon-zero bitfield.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -1740,7 +1778,8 @@
           "source": {
             "line": 2128,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "protected",
           "abstract": false,
@@ -1750,7 +1789,7 @@
               "id": 90,
               "name": "parseConstructorPreConditionsRunIn",
               "comment": {
-                "description": "Appends the \n`DMOnly`\n, \n`GuildOnly`\n, \n`NewsOnly`\n, and \n`TextOnly`\n preconditions based on the values passed in\n\nCommand.Options.runIn\n, optimizing in specific cases (\n`NewsOnly`\n + \n`TextOnly`\n = \n`GuildOnly`\n; \n`DMOnly`\n +\n\n`GuildOnly`\n = \n`null`\n), defaulting to \n`null`\n, which doesn't add a precondition.",
+                "description": "Appends the `DMOnly`, `GuildOnly`, `NewsOnly`, and `TextOnly` preconditions based on the values passed in\n{@link Command.Options.runIn}, optimizing in specific cases (`NewsOnly` + `TextOnly` = `GuildOnly`; `DMOnly` +\n`GuildOnly` = `null`), defaulting to `null`, which doesn't add a precondition.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -1786,7 +1825,8 @@
           "source": {
             "line": 2090,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1840,7 +1880,8 @@
           "source": {
             "line": 2107,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1882,7 +1923,8 @@
           "source": {
             "line": 2106,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1924,7 +1966,8 @@
           "source": {
             "line": 2098,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -1966,7 +2009,8 @@
           "source": {
             "line": 2102,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -2008,7 +2052,8 @@
           "source": {
             "line": 2094,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -2050,7 +2095,8 @@
           "source": {
             "line": 2085,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -2087,7 +2133,8 @@
           "source": {
             "line": 474,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "accessibility": "public",
           "abstract": false,
@@ -2133,7 +2180,8 @@
       "source": {
         "line": 6,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L6"
       },
       "external": false,
       "type": {
@@ -2156,7 +2204,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 10,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L10"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L10"
                 }
               ],
               "type": {
@@ -2176,7 +2224,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 9,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L9"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L9"
                 }
               ],
               "type": {
@@ -2196,7 +2244,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 7,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L7"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L7"
                 }
               ],
               "type": {
@@ -2216,7 +2264,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 8,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L8"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L8"
                 }
               ],
               "type": {
@@ -2236,7 +2284,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 15,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L15"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L15"
                 }
               ],
               "type": {
@@ -2256,7 +2304,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 14,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L14"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L14"
                 }
               ],
               "type": {
@@ -2276,7 +2324,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 12,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L12"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L12"
                 }
               ],
               "type": {
@@ -2296,7 +2344,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 13,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L13"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L13"
                 }
               ],
               "type": {
@@ -2316,7 +2364,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 18,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L18"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L18"
                 }
               ],
               "type": {
@@ -2336,7 +2384,7 @@
                   "fileName": "packages/subcommands/src/lib/types/Events.ts",
                   "line": 17,
                   "character": 1,
-                  "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L17"
+                  "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L17"
                 }
               ],
               "type": {
@@ -2368,7 +2416,7 @@
               "fileName": "packages/subcommands/src/lib/types/Events.ts",
               "line": 6,
               "character": 38,
-              "url": "https://github.com/sapphiredev/plugins/blob/4ab92be/packages/subcommands/src/lib/types/Events.ts#L6"
+              "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L6"
             }
           ]
         }
@@ -2388,7 +2436,8 @@
       "source": {
         "line": 21,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L21"
       },
       "external": false,
       "properties": [
@@ -2403,7 +2452,8 @@
           "source": {
             "line": 23,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L23"
           },
           "value": "chatInputSubcommandNoMatch"
         },
@@ -2418,7 +2468,8 @@
           "source": {
             "line": 22,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L22"
           },
           "value": "messageSubcommandNoMatch"
         },
@@ -2433,7 +2484,8 @@
           "source": {
             "line": 24,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L24"
           },
           "value": "subcommandNotFound"
         }
@@ -2453,7 +2505,8 @@
       "source": {
         "line": 55,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L55"
       },
       "external": false,
       "properties": [
@@ -2468,7 +2521,8 @@
           "source": {
             "line": 52,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L52"
           },
           "readonly": false,
           "type": {
@@ -2505,7 +2559,8 @@
           "source": {
             "line": 56,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L56"
           },
           "readonly": false,
           "type": {
@@ -2527,7 +2582,8 @@
           "source": {
             "line": 51,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L51"
           },
           "readonly": false,
           "type": {
@@ -2557,7 +2613,8 @@
           "source": {
             "line": 57,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L57"
           },
           "readonly": false,
           "type": {
@@ -2581,7 +2638,8 @@
       "source": {
         "line": 62,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L62"
       },
       "external": false,
       "properties": [
@@ -2596,7 +2654,8 @@
           "source": {
             "line": 52,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L52"
           },
           "readonly": false,
           "type": {
@@ -2633,7 +2692,8 @@
           "source": {
             "line": 56,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L56"
           },
           "readonly": false,
           "type": {
@@ -2655,7 +2715,8 @@
           "source": {
             "line": 51,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L51"
           },
           "readonly": false,
           "type": {
@@ -2685,7 +2746,8 @@
           "source": {
             "line": 57,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L57"
           },
           "readonly": false,
           "type": {
@@ -2709,7 +2771,8 @@
       "source": {
         "line": 60,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L60"
       },
       "external": false,
       "properties": [
@@ -2724,7 +2787,8 @@
           "source": {
             "line": 52,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L52"
           },
           "readonly": false,
           "type": {
@@ -2761,7 +2825,8 @@
           "source": {
             "line": 56,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L56"
           },
           "readonly": false,
           "type": {
@@ -2783,7 +2848,8 @@
           "source": {
             "line": 51,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L51"
           },
           "readonly": false,
           "type": {
@@ -2813,7 +2879,8 @@
           "source": {
             "line": 57,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L57"
           },
           "readonly": false,
           "type": {
@@ -2837,7 +2904,8 @@
       "source": {
         "line": 64,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L64"
       },
       "external": false,
       "properties": [
@@ -2852,7 +2920,8 @@
           "source": {
             "line": 52,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L52"
           },
           "readonly": false,
           "type": {
@@ -2889,7 +2958,8 @@
           "source": {
             "line": 56,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L56"
           },
           "readonly": false,
           "type": {
@@ -2911,7 +2981,8 @@
           "source": {
             "line": 51,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L51"
           },
           "readonly": false,
           "type": {
@@ -2941,7 +3012,8 @@
           "source": {
             "line": 57,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L57"
           },
           "readonly": false,
           "type": {
@@ -2963,7 +3035,8 @@
           "source": {
             "line": 65,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L65"
           },
           "readonly": false,
           "type": {
@@ -2984,7 +3057,8 @@
       "source": {
         "line": 50,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L50"
       },
       "external": false,
       "properties": [
@@ -2999,7 +3073,8 @@
           "source": {
             "line": 52,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L52"
           },
           "readonly": false,
           "type": {
@@ -3036,7 +3111,8 @@
           "source": {
             "line": 51,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L51"
           },
           "readonly": false,
           "type": {
@@ -3068,7 +3144,8 @@
       "source": {
         "line": 32,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L32"
       },
       "external": false,
       "properties": [
@@ -3083,7 +3160,8 @@
           "source": {
             "line": 34,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L34"
           },
           "readonly": false,
           "type": {
@@ -3120,7 +3198,8 @@
           "source": {
             "line": 33,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L33"
           },
           "readonly": false,
           "type": {
@@ -3149,7 +3228,8 @@
       "source": {
         "line": 37,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L37"
       },
       "external": false,
       "properties": [
@@ -3164,7 +3244,8 @@
           "source": {
             "line": 34,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L34"
           },
           "readonly": false,
           "type": {
@@ -3201,7 +3282,8 @@
           "source": {
             "line": 38,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L38"
           },
           "readonly": false,
           "type": {
@@ -3223,7 +3305,8 @@
           "source": {
             "line": 39,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L39"
           },
           "readonly": false,
           "type": {
@@ -3245,7 +3328,8 @@
           "source": {
             "line": 33,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L33"
           },
           "readonly": false,
           "type": {
@@ -3274,7 +3358,8 @@
       "source": {
         "line": 44,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L44"
       },
       "external": false,
       "properties": [
@@ -3289,7 +3374,8 @@
           "source": {
             "line": 34,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L34"
           },
           "readonly": false,
           "type": {
@@ -3326,7 +3412,8 @@
           "source": {
             "line": 38,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L38"
           },
           "readonly": false,
           "type": {
@@ -3348,7 +3435,8 @@
           "source": {
             "line": 39,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L39"
           },
           "readonly": false,
           "type": {
@@ -3370,7 +3458,8 @@
           "source": {
             "line": 33,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L33"
           },
           "readonly": false,
           "type": {
@@ -3399,7 +3488,8 @@
       "source": {
         "line": 27,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L27"
       },
       "external": false,
       "properties": [
@@ -3414,7 +3504,8 @@
           "source": {
             "line": 1923,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -3426,14 +3517,15 @@
           "id": 196,
           "name": "commandPrefix",
           "comment": {
-            "description": "The matched prefix, this will always be the same as \nMessageCommand.RunContext.prefix\n if it was a string, otherwise it is\nthe result of doing \n`prefix.exec(content)[0]`\n.",
+            "description": "The matched prefix, this will always be the same as {@link MessageCommand.RunContext.prefix} if it was a string, otherwise it is\nthe result of doing `prefix.exec(content)[0]`.",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 1928,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -3452,7 +3544,8 @@
           "source": {
             "line": 29,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L29"
           },
           "readonly": false,
           "type": {
@@ -3480,7 +3573,8 @@
           "source": {
             "line": 28,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L28"
           },
           "readonly": false,
           "type": {
@@ -3501,14 +3595,15 @@
           "id": 194,
           "name": "prefix",
           "comment": {
-            "description": "The prefix used to run this command.\n\nThis is a string for the mention and default prefix, and a RegExp for the \n`regexPrefix`\n.",
+            "description": "The prefix used to run this command.\n\nThis is a string for the mention and default prefix, and a RegExp for the `regexPrefix`.",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 1919,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -3541,7 +3636,8 @@
       "source": {
         "line": 42,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L42"
       },
       "external": false,
       "properties": [
@@ -3556,7 +3652,8 @@
           "source": {
             "line": 34,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L34"
           },
           "readonly": false,
           "type": {
@@ -3593,7 +3690,8 @@
           "source": {
             "line": 38,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L38"
           },
           "readonly": false,
           "type": {
@@ -3615,7 +3713,8 @@
           "source": {
             "line": 39,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L39"
           },
           "readonly": false,
           "type": {
@@ -3637,7 +3736,8 @@
           "source": {
             "line": 33,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L33"
           },
           "readonly": false,
           "type": {
@@ -3666,7 +3766,8 @@
       "source": {
         "line": 46,
         "file": "Events.ts",
-        "path": "packages/subcommands/src/lib/types"
+        "path": "packages/subcommands/src/lib/types",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L46"
       },
       "external": false,
       "properties": [
@@ -3681,7 +3782,8 @@
           "source": {
             "line": 34,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L34"
           },
           "readonly": false,
           "type": {
@@ -3718,7 +3820,8 @@
           "source": {
             "line": 38,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L38"
           },
           "readonly": false,
           "type": {
@@ -3740,7 +3843,8 @@
           "source": {
             "line": 39,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L39"
           },
           "readonly": false,
           "type": {
@@ -3762,7 +3866,8 @@
           "source": {
             "line": 33,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L33"
           },
           "readonly": false,
           "type": {
@@ -3789,7 +3894,8 @@
           "source": {
             "line": 47,
             "file": "Events.ts",
-            "path": "packages/subcommands/src/lib/types"
+            "path": "packages/subcommands/src/lib/types",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/types/Events.ts#L47"
           },
           "readonly": false,
           "type": {
@@ -3810,7 +3916,8 @@
       "source": {
         "line": 82,
         "file": "SubcommandMappings.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L82"
       },
       "external": false,
       "properties": [
@@ -3818,14 +3925,15 @@
           "id": 171,
           "name": "entries",
           "comment": {
-            "description": "The \nSubcommandMappingMethod\ns that are contained within this subcommand group.",
+            "description": "The {@link SubcommandMappingMethod}s that are contained within this subcommand group.",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 90,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L90"
           },
           "readonly": false,
           "type": {
@@ -3850,7 +3958,8 @@
           "source": {
             "line": 14,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
           },
           "readonly": false,
           "type": {
@@ -3862,14 +3971,15 @@
           "id": 170,
           "name": "type",
           "comment": {
-            "description": "This subcommand mapping describes a subcommand group and can therefore only ever be \n`'group'`",
+            "description": "This subcommand mapping describes a subcommand group and can therefore only ever be `'group'`",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 86,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L86"
           },
           "readonly": false,
           "type": {
@@ -3890,7 +4000,8 @@
       "source": {
         "line": 25,
         "file": "SubcommandMappings.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L25"
       },
       "external": false,
       "properties": [
@@ -3914,7 +4025,8 @@
           "source": {
             "line": 79,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L79"
           },
           "readonly": false,
           "type": {
@@ -4013,14 +4125,15 @@
           "id": 156,
           "name": "default",
           "comment": {
-            "description": "Whether this is the default subcommand when none is provided.\n\nNote that this is effectively only used for Message based subcommand\n(those implementing \nmessageRun\n)\nbecause the subcommand is always provided for chat input commands.",
+            "description": "Whether this is the default subcommand when none is provided.\n\nNote that this is effectively only used for Message based subcommand\n(those implementing {@link messageRun})\nbecause the subcommand is always provided for chat input commands.",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 37,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L37"
           },
           "readonly": false,
           "type": {
@@ -4048,7 +4161,8 @@
           "source": {
             "line": 58,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L58"
           },
           "readonly": false,
           "type": {
@@ -4199,7 +4313,8 @@
           "source": {
             "line": 14,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
           },
           "readonly": false,
           "type": {
@@ -4211,14 +4326,15 @@
           "id": 155,
           "name": "type",
           "comment": {
-            "description": "This subcommand mapping describes a subcommand method and can therefore only ever be \n`'method'`",
+            "description": "This subcommand mapping describes a subcommand method and can therefore only ever be `'method'`",
             "blockTags": [],
             "modifierTags": []
           },
           "source": {
             "line": 29,
             "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L29"
           },
           "readonly": false,
           "type": {
@@ -4239,7 +4355,8 @@
       "source": {
         "line": 354,
         "file": "Subcommand.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L354"
       },
       "external": false,
       "properties": [
@@ -4259,7 +4376,8 @@
           "source": {
             "line": 671,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "readonly": true,
           "type": {
@@ -4278,7 +4396,7 @@
           "id": 138,
           "name": "cooldownDelay",
           "comment": {
-            "description": "The time in milliseconds for the cooldown entries to reset, if set to a non-zero value alongside \nCommand.Options.cooldownLimit\n, the \n`Cooldown`\n precondition will be added to the list.",
+            "description": "The time in milliseconds for the cooldown entries to reset, if set to a non-zero value alongside {@link Command.Options.cooldownLimit}, the `Cooldown` precondition will be added to the list.",
             "blockTags": [
               {
                 "name": "since",
@@ -4294,7 +4412,8 @@
           "source": {
             "line": 1827,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4322,7 +4441,8 @@
           "source": {
             "line": 1840,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4337,7 +4457,7 @@
           "id": 137,
           "name": "cooldownLimit",
           "comment": {
-            "description": "The amount of entries the cooldown can have before filling up, if set to a non-zero value alongside \nCommand.Options.cooldownDelay\n, the \n`Cooldown`\n precondition will be added to the list.",
+            "description": "The amount of entries the cooldown can have before filling up, if set to a non-zero value alongside {@link Command.Options.cooldownDelay}, the `Cooldown` precondition will be added to the list.",
             "blockTags": [
               {
                 "name": "since",
@@ -4353,7 +4473,8 @@
           "source": {
             "line": 1821,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4381,7 +4502,8 @@
           "source": {
             "line": 1833,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4412,7 +4534,8 @@
           "source": {
             "line": 1770,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4440,7 +4563,8 @@
           "source": {
             "line": 1776,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4467,7 +4591,8 @@
           "source": {
             "line": 420,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "readonly": true,
           "type": {
@@ -4479,7 +4604,7 @@
           "id": 148,
           "name": "flags",
           "comment": {
-            "description": "The accepted flags. Flags are key-only identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [\n`silent`\n].\n* A boolean defining whether the strategy should accept all keys (\n`true`\n) or none at all (\n`false`\n).",
+            "description": "The accepted flags. Flags are key-only identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [`silent`].\n* A boolean defining whether the strategy should accept all keys (`true`) or none at all (`false`).",
             "blockTags": [
               {
                 "name": "default",
@@ -4491,7 +4616,8 @@
           "source": {
             "line": 1651,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4539,7 +4665,8 @@
           "source": {
             "line": 1790,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4554,7 +4681,7 @@
           "id": 129,
           "name": "generateDashLessAliases",
           "comment": {
-            "description": "Whether to add aliases for subcommands with dashes in them\n\nWhen this option is enabled *and* the subcommand implements \n`messageRun`\n, dashless aliases will be added.\n\nFor subcommands groups both the group itself and all subcommands within the group will have dashless aliases added.",
+            "description": "Whether to add aliases for subcommands with dashes in them\n\nWhen this option is enabled *and* the subcommand implements `messageRun`, dashless aliases will be added.\n\nFor subcommands groups both the group itself and all subcommands within the group will have dashless aliases added.",
             "blockTags": [
               {
                 "name": "since",
@@ -4570,7 +4697,8 @@
           "source": {
             "line": 366,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L366"
           },
           "readonly": false,
           "type": {
@@ -4598,7 +4726,8 @@
           "source": {
             "line": 1764,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4622,7 +4751,8 @@
           "source": {
             "line": 415,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist"
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
           },
           "readonly": true,
           "type": {
@@ -4634,7 +4764,7 @@
           "id": 136,
           "name": "nsfw",
           "comment": {
-            "description": "Sets whether or not the command should be treated as NSFW. If set to true, the \n`NSFW`\n precondition will be added to the list.",
+            "description": "Sets whether or not the command should be treated as NSFW. If set to true, the `NSFW` precondition will be added to the list.",
             "blockTags": [
               {
                 "name": "since",
@@ -4650,7 +4780,8 @@
           "source": {
             "line": 1815,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4662,7 +4793,7 @@
           "id": 149,
           "name": "options",
           "comment": {
-            "description": "The accepted options. Options are key-value identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [\n`silent`\n].\n* A boolean defining whether the strategy should accept all keys (\n`true`\n) or none at all (\n`false`\n).",
+            "description": "The accepted options. Options are key-value identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [`silent`].\n* A boolean defining whether the strategy should accept all keys (`true`) or none at all (`false`).",
             "blockTags": [
               {
                 "name": "default",
@@ -4674,7 +4805,8 @@
           "source": {
             "line": 1658,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4702,11 +4834,11 @@
           "id": 134,
           "name": "preconditions",
           "comment": {
-            "description": "The \nPrecondition\ns to be run, accepts an array of their names.",
+            "description": "The {@link Precondition}s to be run, accepts an array of their names.",
             "blockTags": [
               {
                 "name": "seealso",
-                "text": "PreconditionContainerArray"
+                "text": "{@link PreconditionContainerArray}"
               },
               {
                 "name": "since",
@@ -4722,7 +4854,8 @@
           "source": {
             "line": 1797,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4756,7 +4889,8 @@
           "source": {
             "line": 1663,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4771,7 +4905,7 @@
           "id": 135,
           "name": "quotes",
           "comment": {
-            "description": "The quotes accepted by this command, pass \n`[]`\n to disable them.",
+            "description": "The quotes accepted by this command, pass `[]` to disable them.",
             "blockTags": [
               {
                 "name": "since",
@@ -4787,7 +4921,8 @@
           "source": {
             "line": 1809,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4827,7 +4962,8 @@
           "source": {
             "line": 1846,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4858,7 +4994,8 @@
           "source": {
             "line": 1852,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4873,7 +5010,7 @@
           "id": 143,
           "name": "runIn",
           "comment": {
-            "description": "The channels the command should run in. If set to \n`null`\n, no precondition entry will be added. Some optimizations are applied when given an array to reduce the amount of preconditions run (e.g. \n`'GUILD_TEXT'`\n and \n`'GUILD_NEWS'`\n becomes \n`'GUILD_ANY'`\n, and if both \n`'DM'`\n and \n`'GUILD_ANY'`\n are defined, then no precondition entry is added as it runs in all channels).",
+            "description": "The channels the command should run in. If set to `null`, no precondition entry will be added. Some optimizations are applied when given an array to reduce the amount of preconditions run (e.g. `'GUILD_TEXT'` and `'GUILD_NEWS'` becomes `'GUILD_ANY'`, and if both `'DM'` and `'GUILD_ANY'` are defined, then no precondition entry is added as it runs in all channels).",
             "blockTags": [
               {
                 "name": "since",
@@ -4889,7 +5026,8 @@
           "source": {
             "line": 1858,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4958,7 +5096,8 @@
           "source": {
             "line": 1668,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -4980,7 +5119,8 @@
           "source": {
             "line": 355,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L355"
           },
           "readonly": false,
           "type": {
@@ -4995,7 +5135,7 @@
           "id": 144,
           "name": "typing",
           "comment": {
-            "description": "If \nSapphireClient.typing\n is true, this option will override it.\nOtherwise, this option has no effect - you may call \nChannel#sendTyping\n` in the run method if you want specific commands to display the typing status.",
+            "description": "If {@link SapphireClient.typing} is true, this option will override it.\nOtherwise, this option has no effect - you may call {@link Channel#sendTyping}` in the run method if you want specific commands to display the typing status.",
             "blockTags": [
               {
                 "name": "default",
@@ -5007,7 +5147,8 @@
           "source": {
             "line": 1864,
             "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist"
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
           },
           "readonly": false,
           "type": {
@@ -5030,7 +5171,8 @@
       "source": {
         "line": 17,
         "file": "Subcommand.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L17"
       },
       "external": false,
       "classes": [],
@@ -5051,7 +5193,8 @@
           "source": {
             "line": 376,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L376"
           },
           "external": false,
           "typeParameters": [
@@ -5101,7 +5244,8 @@
           "source": {
             "line": 374,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L374"
           },
           "external": false,
           "typeParameters": [
@@ -5151,7 +5295,8 @@
           "source": {
             "line": 372,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L372"
           },
           "external": false,
           "typeParameters": [],
@@ -5174,7 +5319,8 @@
           "source": {
             "line": 375,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L375"
           },
           "external": false,
           "typeParameters": [
@@ -5224,7 +5370,8 @@
           "source": {
             "line": 371,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L371"
           },
           "external": false,
           "typeParameters": [],
@@ -5247,7 +5394,8 @@
           "source": {
             "line": 370,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L370"
           },
           "external": false,
           "typeParameters": [],
@@ -5270,7 +5418,8 @@
           "source": {
             "line": 377,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L377"
           },
           "external": false,
           "typeParameters": [],
@@ -5293,7 +5442,8 @@
           "source": {
             "line": 373,
             "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib"
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/Subcommand.ts#L373"
           },
           "external": false,
           "typeParameters": [],
@@ -5320,7 +5470,8 @@
       "source": {
         "line": 96,
         "file": "SubcommandMappings.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L96"
       },
       "external": false,
       "typeParameters": [],
@@ -5387,7 +5538,8 @@
       "source": {
         "line": 94,
         "file": "SubcommandMappings.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L94"
       },
       "external": false,
       "typeParameters": [],
@@ -5454,7 +5606,8 @@
       "source": {
         "line": 3,
         "file": "SubcommandMappings.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L3"
       },
       "external": false,
       "typeParameters": [],
@@ -5489,7 +5642,8 @@
       "source": {
         "line": 5,
         "file": "SubcommandMappings.ts",
-        "path": "packages/subcommands/src/lib"
+        "path": "packages/subcommands/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/2ccd860/packages/subcommands/src/lib/SubcommandMappings.ts#L5"
       },
       "external": false,
       "typeParameters": [],
