@@ -1,8 +1,9 @@
 {
-  "typeDocJsonParserVersion": "2.3.2",
+  "typeDocJsonParserVersion": "3.0.0",
   "id": 0,
   "name": "@sapphire/plugin-editable-commands",
   "version": "2.0.1",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-editable-commands\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to have editable commands.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-editable_commands?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-editable-commands)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-editable-commands?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-editable-commands)\n\n</div>\n\n## Description\n\nA lightweight wrapper on top of [`@skyra/editable-commands`](https://www.npmjs.com/package/@skyra/editable-commands) that re-exports everything and registers an event to make commands also run on message edit.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Full editable commands, attachments included!\n\n## Installation\n\n`@sapphire/plugin-editable-commands` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-editable-commands @sapphire/framework\n```\n\n---\n\n## Usage\n\n### JavaScript\n\nIn your main or setup file, register the plugin:\n\n```javascript\nrequire('@sapphire/plugin-editable-commands/register');\n```\n\nThen use `send` or `reply` from the package, as shown below:\n\n```javascript\nconst { Command } = require('@sapphire/framework');\nconst { MessageEmbed } = require('discord.js');\nconst { send } = require('@sapphire/plugin-editable-commands');\n\nmodule.exports = class UserCommand extends Command {\n\tconstructor(context, options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'A very cool command',\n\t\t\trequiredClientPermissions: ['EMBED_LINKS']\n\t\t});\n\t}\n\n\tmessageRun(message) {\n\t\tconst embed = new MessageEmbed()\n\t\t\t.setURL('https://github.com/skyra-project/editable-commands')\n\t\t\t.setColor('#7586D8')\n\t\t\t.setDescription('Example description')\n\t\t\t.setTimestamp();\n\n\t\treturn send(message, { embeds: [embed] });\n\t}\n};\n```\n\n### TypeScript\n\nIn your main or setup file, register the plugin:\n\n```typescript\nimport '@sapphire/plugin-editable-commands/register';\n```\n\nThen use `send` or `reply` from the package, as shown below:\n\n```typescript\nimport { ApplyOptions } from '@sapphire/decorators';\nimport { Command } from '@sapphire/framework';\nimport { Message, MessageEmbed } from 'discord.js';\nimport { send } from '@sapphire/plugin-editable-commands';\n\n@ApplyOptions<Command.Options>({\n\tdescription: 'A very cool command',\n\trequiredClientPermissions: ['EMBED_LINKS']\n})\nexport class UserCommand extends Command {\n\tpublic messageRun(message: Message) {\n\t\tconst embed = new MessageEmbed()\n\t\t\t.setURL('https://github.com/sapphiredev/plugins')\n\t\t\t.setColor('#7586D8')\n\t\t\t.setDescription('Example description')\n\t\t\t.setTimestamp();\n\n\t\treturn send(message, { embeds: [embed] });\n\t}\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "classes": [],
   "constants": [],
   "enums": [],
@@ -18,7 +19,8 @@
       "source": {
         "line": 14,
         "file": "index.d.ts",
-        "path": "node_modules/@skyra/editable-commands/dist"
+        "path": "node_modules/@skyra/editable-commands/dist",
+        "url": null
       },
       "external": true,
       "signatures": [
@@ -26,7 +28,7 @@
           "id": 2,
           "name": "free",
           "comment": {
-            "description": "Removes the tracked response for \n`message`\n.",
+            "description": "Removes the tracked response for `message`.",
             "blockTags": [
               {
                 "name": "returns",
@@ -72,7 +74,8 @@
       "source": {
         "line": 20,
         "file": "index.d.ts",
-        "path": "node_modules/@skyra/editable-commands/dist"
+        "path": "node_modules/@skyra/editable-commands/dist",
+        "url": null
       },
       "external": true,
       "signatures": [
@@ -80,7 +83,7 @@
           "id": 5,
           "name": "get",
           "comment": {
-            "description": "Gets the tracked response to \n`message`\n, if any was tracked and was not deleted.",
+            "description": "Gets the tracked response to `message`, if any was tracked and was not deleted.",
             "blockTags": [
               {
                 "name": "returns",
@@ -138,7 +141,8 @@
       "source": {
         "line": 34,
         "file": "index.d.ts",
-        "path": "node_modules/@skyra/editable-commands/dist"
+        "path": "node_modules/@skyra/editable-commands/dist",
+        "url": null
       },
       "external": true,
       "signatures": [
@@ -146,7 +150,7 @@
           "id": 8,
           "name": "reply",
           "comment": {
-            "description": "Sends a reply message as a response for \n`message`\n, and tracks it.",
+            "description": "Sends a reply message as a response for `message`, and tracks it.",
             "blockTags": [
               {
                 "name": "returns",
@@ -223,7 +227,8 @@
       "source": {
         "line": 27,
         "file": "index.d.ts",
-        "path": "node_modules/@skyra/editable-commands/dist"
+        "path": "node_modules/@skyra/editable-commands/dist",
+        "url": null
       },
       "external": true,
       "signatures": [
@@ -231,7 +236,7 @@
           "id": 12,
           "name": "send",
           "comment": {
-            "description": "Sends a message as a response for \n`message`\n, and tracks it.",
+            "description": "Sends a message as a response for `message`, and tracks it.",
             "blockTags": [
               {
                 "name": "returns",
@@ -308,7 +313,8 @@
       "source": {
         "line": 8,
         "file": "index.d.ts",
-        "path": "node_modules/@skyra/editable-commands/dist"
+        "path": "node_modules/@skyra/editable-commands/dist",
+        "url": null
       },
       "external": true,
       "signatures": [
@@ -316,7 +322,7 @@
           "id": 16,
           "name": "track",
           "comment": {
-            "description": "Tracks a response with a message, in a way that if \nsend\n is called with \n`message`\n, \n`response`\n will be edited.",
+            "description": "Tracks a response with a message, in a way that if {@link send} is called with `message`, `response` will be edited.",
             "blockTags": [],
             "modifierTags": []
           },
