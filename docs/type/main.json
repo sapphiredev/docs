@@ -1,8 +1,9 @@
 {
-  "typeDocJsonParserVersion": "2.3.2",
+  "typeDocJsonParserVersion": "3.1.0",
   "id": 0,
   "name": "@sapphire/type",
   "version": "2.2.4",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/type\n\n**A type detection utility for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/type)](https://github.com/sapphiredev/type/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/type/branch/main/graph/badge.svg?token=hygqPZuVZ5)](https://codecov.io/gh/sapphiredev/type)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/type?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/type)\n[![npm](https://img.shields.io/npm/v/@sapphire/type?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/type)\n\n</div>\n\n**Table of Contents**\n\n-   [@sapphire/type](#sapphiretype)\n    -   [Description](#description)\n    -   [Features](#features)\n    -   [Installation](#installation)\n    -   [Usage](#usage)\n        -   [Basic Usage](#basic-usage)\n    -   [Buy us some doughnuts](#buy-us-some-doughnuts)\n    -   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nSometimes there is a need to know what a value's type of something is, this package exists to satisfy those needs by implementing a parser that can retrieve the type of the value recursively and process a string similar to TypeScript's types.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with Rollup so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\n```sh\nyarn add @sapphire/type\n# npm install @sapphire/type\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Type } = require('@sapphire/type')` equals `import { Type } from '@sapphire/type'`.\n\n**Note:** When using ESM syntax you can also default-import `Type` class: `import Type from '@sapphire/type'`.\n\n**Note:** The internal functions of `getPromiseDetails` and `getProxyDetails` are also exported. If you don't know what these are, then you need not be concerned about this.\n\n### Basic Usage\n\n```typescript\n// Import the Type class\nconst { Type } = require('@sapphire/type');\n\n// Define a Type with an array of two numbers\nconst type = new Type([1, 2]);\n\nconsole.log(type.toString());\n// Logs: Array<number>\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=favna\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=PyroTechniac\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/VoltrexMaster\"><img src=\"https://avatars.githubusercontent.com/u/62040526?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Voltrex</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=VoltrexMaster\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"#maintenance-vladfrangu\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "classes": [
     {
       "id": 7,
@@ -15,7 +16,8 @@
       "source": {
         "line": 19,
         "file": "index.ts",
-        "path": "."
+        "path": ".",
+        "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L19"
       },
       "external": false,
       "abstract": false,
@@ -32,7 +34,8 @@
         "source": {
           "line": 49,
           "file": "index.ts",
-          "path": "."
+          "path": ".",
+          "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L49"
         },
         "parameters": [
           {
@@ -77,7 +80,8 @@
           "source": {
             "line": 38,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L38"
           },
           "accessibility": "private",
           "abstract": false,
@@ -115,7 +119,8 @@
           "source": {
             "line": 43,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L43"
           },
           "accessibility": "private",
           "abstract": false,
@@ -153,7 +158,8 @@
           "source": {
             "line": 28,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L28"
           },
           "accessibility": "public",
           "abstract": false,
@@ -176,7 +182,8 @@
           "source": {
             "line": 33,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L33"
           },
           "accessibility": "private",
           "abstract": false,
@@ -211,7 +218,8 @@
           "source": {
             "line": 23,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L23"
           },
           "accessibility": "public",
           "abstract": false,
@@ -234,7 +242,8 @@
           "source": {
             "line": 58,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L58"
           },
           "accessibility": "public",
           "abstract": false,
@@ -259,7 +268,8 @@
           "source": {
             "line": 101,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L101"
           },
           "accessibility": "private",
           "abstract": false,
@@ -311,7 +321,8 @@
           "source": {
             "line": 92,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L92"
           },
           "accessibility": "private",
           "abstract": false,
@@ -354,7 +365,8 @@
           "source": {
             "line": 110,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L110"
           },
           "accessibility": "private",
           "abstract": false,
@@ -388,7 +400,8 @@
           "source": {
             "line": 83,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L83"
           },
           "accessibility": "private",
           "abstract": false,
@@ -422,7 +435,8 @@
           "source": {
             "line": 74,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L74"
           },
           "accessibility": "private",
           "abstract": false,
@@ -467,7 +481,8 @@
           "source": {
             "line": 66,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L66"
           },
           "accessibility": "public",
           "abstract": false,
@@ -501,7 +516,8 @@
           "source": {
             "line": 157,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L157"
           },
           "accessibility": "private",
           "abstract": false,
@@ -559,7 +575,8 @@
           "source": {
             "line": 139,
             "file": "index.ts",
-            "path": "."
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L139"
           },
           "accessibility": "public",
           "abstract": false,
@@ -608,7 +625,8 @@
       "source": {
         "line": 14,
         "file": "index.ts",
-        "path": "."
+        "path": ".",
+        "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L14"
       },
       "external": false,
       "signatures": [
@@ -652,7 +670,8 @@
       "source": {
         "line": 14,
         "file": "index.ts",
-        "path": "."
+        "path": ".",
+        "url": "https://github.com/sapphiredev/type/blob/bb77c49/src/index.ts#L14"
       },
       "external": false,
       "signatures": [
