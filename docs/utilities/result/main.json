@@ -1,9 +1,10 @@
 {
-  "typeDocJsonParserVersion": "3.1.0",
+  "typeDocJsonParserVersion": "3.2.0",
   "id": 0,
   "name": "@sapphire/result",
   "version": "2.4.1",
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/result\n\n**A TypeScript port of Nightly Rust's Result and Option structs**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/result?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/result)\n[![npm](https://img.shields.io/npm/v/@sapphire/result?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/result)\n\n</div>\n\n## Description\n\nWhen having many `try-catch` blocks after one another, or multiple `try-catch` blocks nested in one another then code can become very chaotic very quickly. To alleviate that issue we have made the `@sapphire/result` which offers two structures based on Rust's [`Result<T, E>`](https://doc.rust-lang.org/std/result/index.html) and [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html) with full Nightly coverage and extra convenience methods. This code has been branched off of `@sapphire/framework` into its own package after we saw great success with the code there.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Full feature parity with Nightly Rust's `Result<T, E>` and `Option<T>`\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/result\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Result } = require('@sapphire/result')` equals `import { Result } from '@sapphire/result'`.\n\n### Wrapping synchronous `try-catch` blocks\n\n**Old code without `Result.from`:**\n\n```typescript\ntry {\n\tconst returnCode = someFunctionThatMightThrow();\n\n\treturn returnCode;\n} catch (error) {\n\t// Handle the error:\n\tconsole.error(error);\n\treturn null;\n}\n```\n\n**New Code with `Result.from`:**\n\n```typescript\nconst { Result } = require('@sapphire/result');\n\nconst returnCode = Result.from(() => someFunctionThatMightThrow());\n\nreturn returnCode.unwrapOrElse((error) => {\n\tconsole.error(error);\n\treturn null;\n});\n```\n\n### Wrapping asynchronous `try-catch` blocks\n\n**Old code without `Result.fromAsync`:**\n\n```typescript\ntry {\n\tconst returnCode = await someFunctionThatReturnsAPromiseAndMightReject();\n\n\treturn returnCode;\n} catch (error) {\n\t// Handle the error:\n\tconsole.error(error);\n\treturn null;\n}\n```\n\n**New Code with `Result.fromAsync`:**\n\n```typescript\nconst { Result } = require('@sapphire/result');\n\nconst returnCode = await Result.fromAsync(async () => someFunctionThatReturnsAPromiseAndMightReject());\n\nreturn returnCode.unwrapOrElse((error) => {\n\tconsole.error(error);\n\treturn null;\n});\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Code\">💻</a> <a href=\"#projectManagement-kyranet\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Akyranet\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars2.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3APyroTechniac\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Avladfrangu\" title=\"Bug reports\">🐛</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"#userTesting-vladfrangu\" title=\"User Testing\">📓</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars0.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"#projectManagement-Stitch07\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Alcremie\"><img src=\"https://avatars0.githubusercontent.com/u/54785334?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ivan Lieder</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Alcremie\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AAlcremie\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars3.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=RealShadowNova\" title=\"Code\">💻</a> <a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Vetlix\"><img src=\"https://avatars.githubusercontent.com/u/31412314?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vetlix</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Vetlix\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ethamitc\"><img src=\"https://avatars.githubusercontent.com/u/27776796?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ethan Mitchell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ethamitc\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://fanoulis.dev/\"><img src=\"https://avatars.githubusercontent.com/u/38255093?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Charalampos Fanoulis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=cfanoulis\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app/\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kaname-png\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/nandhagk\"><img src=\"https://avatars.githubusercontent.com/u/62976649?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>nandhagk</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Anandhagk\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://gitlab.com/DavidPH/\"><img src=\"https://avatars.githubusercontent.com/u/44669930?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>David</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=DavidPHH\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=FC5570\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Tokipudi\"><img src=\"https://avatars.githubusercontent.com/u/29551076?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jérémy de Saint Denis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Tokipudi\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ItsMrCube\"><img src=\"https://avatars.githubusercontent.com/u/25201357?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>MrCube</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ItsMrCube\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/bitomic\"><img src=\"https://avatars.githubusercontent.com/u/35199700?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>bitomic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=bitomic\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://c43721.dev/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://commandtechno.com/\"><img src=\"https://avatars.githubusercontent.com/u/68407783?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Commandtechno</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Commandtechno\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/dhruv-kaushikk\"><img src=\"https://avatars.githubusercontent.com/u/73697546?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=dhruv-kaushikk\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://axis.moe/\"><img src=\"https://avatars.githubusercontent.com/u/54381371?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jonathan</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=axisiscool\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"#maintenance-imranbarbhuiya\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/NotKaskus\"><img src=\"https://avatars.githubusercontent.com/u/75168528?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Paul Andrew</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=NotKaskus\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Mzato0001\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AMzato0001\" title=\"Bug reports\">🐛</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=MajesticString\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/EvolutionX-10\"><img src=\"https://avatars.githubusercontent.com/u/85353424?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Evo</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=EvolutionX-10\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://enes.ovh/\"><img src=\"https://avatars.githubusercontent.com/u/61084101?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Enes Genç</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=enxg\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/muchnameless\"><img src=\"https://avatars.githubusercontent.com/u/12682826?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>muchnameless</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=muchnameless\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n\n[lexure]: https://github.com/1Computer1/lexure\n[1computer1]: https://github.com/1Computer1\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/result@2.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.4.0...@sapphire/result@2.4.1) - (2022-08-29)\n\n## 🧪 Testing\n\n- **result:** Add full coverage (#436) ([3f06ac5](https://github.com/sapphiredev/utilities/commit/3f06ac500b8e96312a5fe04be2817753ce219d37))\n\n# [@sapphire/result@2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.3...@sapphire/result@2.4.0) - (2022-08-19)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 🚀 Features\n\n- Add `intoPromise` (#430) ([715315e](https://github.com/sapphiredev/utilities/commit/715315eb8c3e6bc8e47379a486bac7c737620f92))\n\n# [@sapphire/result@2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.3...@sapphire/result@2.4.0) - (2022-08-19)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 🚀 Features\n\n- Add `intoPromise` (#430) ([715315e](https://github.com/sapphiredev/utilities/commit/715315eb8c3e6bc8e47379a486bac7c737620f92))\n\n# [@sapphire/result@2.3.3](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.2...@sapphire/result@2.3.3) - (2022-08-06)\n\n## 🐛 Bug Fixes\n\n- **result:** Better `unwrapOr*`, added more tests (#416) ([ec088a8](https://github.com/sapphiredev/utilities/commit/ec088a88a878c7d230c51b148593a85d258075f9))\n\n# [@sapphire/result@2.3.2](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.1...@sapphire/result@2.3.2) - (2022-08-05)\n\n## 🐛 Bug Fixes\n\n- Revert \"make unwrap methods generic (#415) (v2.3.1)\" ([a963396](https://github.com/sapphiredev/utilities/commit/a9633967d5c4659f26c54fa660796bae18fdaf07))\n\n# [@sapphire/result@2.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.0...@sapphire/result@2.3.1) - (2022-08-05)\n\n## 🐛 Bug Fixes\n\n- **result:** Make unwrap methods generic (#415) ([76e95b3](https://github.com/sapphiredev/utilities/commit/76e95b3c18ecdff53bfa07d541ed1bc1809c7f72))\n\n# [@sapphire/result@2.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.2.0...@sapphire/result@2.3.0) - (2022-08-05)\n\n## 🚀 Features\n\n- **result:** Add `inspect*Async` methods (#414) ([fca7a80](https://github.com/sapphiredev/utilities/commit/fca7a8010ae8c368513de2eca56f9f5bfe2756a3))\n\n# [@sapphire/result@2.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.1.1...@sapphire/result@2.2.0) - (2022-08-04)\n\n## 🐛 Bug Fixes\n\n- **result:** Resolve Unwrap type issues (#411) ([3c2159c](https://github.com/sapphiredev/utilities/commit/3c2159cac18df0925cd71393698ed7d9f98fd6ef))\n\n## 🚀 Features\n\n- **result:** Export `ok`, `err`, `some`, `none`, and improve docs (#412) ([c978864](https://github.com/sapphiredev/utilities/commit/c978864d91d950c611c073a5c34ef01311e9d8f0))\n\n# [@sapphire/result@2.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.1.0...@sapphire/result@2.1.1) - (2022-07-29)\n\n## 🐛 Bug Fixes\n\n- **Result:** Type `IResult.mapInto`'s return correctly (#405) ([14ddf5f](https://github.com/sapphiredev/utilities/commit/14ddf5fc35d1186f9fdc78a3d2b3b465acbd36ac))\n\n# [@sapphire/result@2.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.0.1...@sapphire/result@2.1.0) - (2022-07-29)\n\n## 📝 Documentation\n\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n\n## 🚀 Features\n\n- **Result:** Add new convenience methods (#404) ([7c3ec61](https://github.com/sapphiredev/utilities/commit/7c3ec6168dde544578e5016120c9975009889391))\n\n# [@sapphire/result@2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.0.0...@sapphire/result@2.0.1) - (2022-07-03)\n\n## 🏠 Refactor\n\n- **result:** Fixed types (#391) ([a1934e1](https://github.com/sapphiredev/utilities/commit/a1934e10cc7d81c71354deb153a4f3bb83e50e65))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n\n# [@sapphire/result@2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@1.1.1...@sapphire/result@2.0.0) - (2022-06-26)\n\n## 🏠 Refactor\n\n- Rewrite @sapphire/result from scratch (#364) ([d5b57ff](https://github.com/sapphiredev/utilities/commit/d5b57ff52402bfd261372bf4486e46f39bb41b6d))\n\n   ### 💥 Breaking Changes:\n   - Removed `Maybe` type, the substitute is `Option`\n   - Removed `maybe` function, the substitute is `Option.from`\n   - Removed `some` function, the substitute is `Option.some`\n   - Removed `none` function, the substitute is `Option.none`\n   - Removed `isSome` function, the substitute is `option.isSome`\n   - Removed `isNone` function, the substitute is `option.isNone`\n   - Removed `isMaybe` function, the substitute is `Option.is`\n   - Removed `UnwrapMaybeValue` type, the substitute is `Option.UnwrapSome`\n   - Removed `None` type, the substitute is `Option.None`\n   - Removed `Some` type, the substitute is `Option.Some`\n   - Removed `Err` type, the substitute is `Result.Err`\n   - Removed `Ok` type, the substitute is `Result.Ok`\n   - Removed `from` function, the substitute is `Result.from`\n   - Removed `fromAsync` function, the substitute is `Result.fromAsync`\n\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n## [1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@1.1.0...@sapphire/result@1.1.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/result\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@1.0.0...@sapphire/result@1.1.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n\n# 1.0.0 (2022-02-06)\n\n### Features\n\n-   **package:** add @sapphire/result package ([#274](https://github.com/sapphiredev/utilities/issues/274)) ([8a86826](https://github.com/sapphiredev/utilities/commit/8a8682607c2aa4c845e814816fa2b4478c23aa84))\n",
   "classes": [
     {
       "id": 208,
@@ -17,7 +18,7 @@
         "line": 1,
         "file": "OptionError.ts",
         "path": "packages/result/src/lib/Option",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/OptionError.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/OptionError.ts#L1"
       },
       "external": false,
       "abstract": false,
@@ -263,7 +264,7 @@
             "line": 2,
             "file": "OptionError.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/OptionError.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/OptionError.ts#L2"
           },
           "accessibility": "public",
           "abstract": false,
@@ -346,7 +347,7 @@
         "line": 1,
         "file": "ResultError.ts",
         "path": "packages/result/src/lib/Result",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/ResultError.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/ResultError.ts#L1"
       },
       "external": false,
       "abstract": false,
@@ -370,7 +371,7 @@
           "line": 4,
           "file": "ResultError.ts",
           "path": "packages/result/src/lib/Result",
-          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/ResultError.ts#L4"
+          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/ResultError.ts#L4"
         },
         "parameters": [
           {
@@ -479,7 +480,7 @@
             "line": 2,
             "file": "ResultError.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/ResultError.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/ResultError.ts#L2"
           },
           "accessibility": "public",
           "abstract": false,
@@ -630,7 +631,7 @@
             "line": 9,
             "file": "ResultError.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/ResultError.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/ResultError.ts#L9"
           },
           "accessibility": "public",
           "abstract": false,
@@ -715,7 +716,7 @@
         "line": 169,
         "file": "None.ts",
         "path": "packages/result/src/lib/Option",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/None.ts#L169"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/None.ts#L169"
       },
       "external": false,
       "type": {
@@ -742,7 +743,7 @@
         "line": 186,
         "file": "Err.ts",
         "path": "packages/result/src/lib/Result",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/Err.ts#L186"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/Err.ts#L186"
       },
       "external": false,
       "signatures": [
@@ -842,7 +843,7 @@
         "line": 193,
         "file": "Ok.ts",
         "path": "packages/result/src/lib/Result",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/Ok.ts#L193"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/Ok.ts#L193"
       },
       "external": false,
       "signatures": [
@@ -942,7 +943,7 @@
         "line": 186,
         "file": "Some.ts",
         "path": "packages/result/src/lib/Option",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/Some.ts#L186"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/Some.ts#L186"
       },
       "external": false,
       "signatures": [
@@ -1007,7 +1008,7 @@
         "line": 7,
         "file": "IOption.ts",
         "path": "packages/result/src/lib/Option",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L7"
       },
       "external": false,
       "properties": [],
@@ -1024,7 +1025,7 @@
             "line": 738,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L738"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L738"
           },
           "signatures": [
             {
@@ -1088,7 +1089,7 @@
             "line": 397,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L397"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L397"
           },
           "signatures": [
             {
@@ -1179,7 +1180,7 @@
             "line": 418,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L418"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L418"
           },
           "signatures": [
             {
@@ -1224,7 +1225,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 418,
                           "character": 16,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L418"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L418"
                         }
                       ],
                       "signatures": [
@@ -1296,7 +1297,7 @@
             "line": 550,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L550"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L550"
           },
           "signatures": [
             {
@@ -1357,7 +1358,7 @@
             "line": 680,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L680"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L680"
           },
           "signatures": [
             {
@@ -1414,7 +1415,7 @@
             "line": 89,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L89"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L89"
           },
           "signatures": [
             {
@@ -1471,7 +1472,7 @@
             "line": 526,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L526"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L526"
           },
           "signatures": [
             {
@@ -1509,7 +1510,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 526,
                           "character": 19,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L526"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L526"
                         }
                       ],
                       "signatures": [
@@ -1573,7 +1574,7 @@
             "line": 659,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L659"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L659"
           },
           "signatures": [
             {
@@ -1668,7 +1669,7 @@
             "line": 276,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L276"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L276"
           },
           "signatures": [
             {
@@ -1714,7 +1715,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 276,
                           "character": 13,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L276"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L276"
                         }
                       ],
                       "signatures": [
@@ -1778,7 +1779,7 @@
             "line": 296,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L296"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L296"
           },
           "signatures": [
             {
@@ -1824,7 +1825,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 296,
                           "character": 18,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L296"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L296"
                         }
                       ],
                       "signatures": [
@@ -1902,7 +1903,7 @@
             "line": 672,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L672"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L672"
           },
           "signatures": [
             {
@@ -1970,7 +1971,7 @@
             "line": 66,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L66"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L66"
           },
           "signatures": [
             {
@@ -2023,7 +2024,7 @@
             "line": 24,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L24"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L24"
           },
           "signatures": [
             {
@@ -2084,7 +2085,7 @@
             "line": 48,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L48"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L48"
           },
           "signatures": [
             {
@@ -2130,7 +2131,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 48,
                           "character": 15,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L48"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L48"
                         }
                       ],
                       "signatures": [
@@ -2183,7 +2184,7 @@
             "line": 364,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L364"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L364"
           },
           "signatures": [
             {
@@ -2247,7 +2248,7 @@
             "line": 165,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L165"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L165"
           },
           "signatures": [
             {
@@ -2292,7 +2293,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 165,
                           "character": 12,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L165"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L165"
                         }
                       ],
                       "signatures": [
@@ -2357,7 +2358,7 @@
             "line": 189,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L189"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L189"
           },
           "signatures": [
             {
@@ -2406,7 +2407,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 189,
                           "character": 20,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L189"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L189"
                         }
                       ],
                       "signatures": [
@@ -2478,7 +2479,7 @@
             "line": 256,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L256"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L256"
           },
           "signatures": [
             {
@@ -2527,7 +2528,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 256,
                           "character": 24,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L256"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L256"
                         }
                       ],
                       "signatures": [
@@ -2597,7 +2598,7 @@
             "line": 212,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L212"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L212"
           },
           "signatures": [
             {
@@ -2657,7 +2658,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 212,
                           "character": 31,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L212"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L212"
                         }
                       ],
                       "signatures": [
@@ -2714,7 +2715,7 @@
             "line": 232,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L232"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L232"
           },
           "signatures": [
             {
@@ -2763,7 +2764,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 232,
                           "character": 28,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L232"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L232"
                         }
                       ],
                       "signatures": [
@@ -2799,7 +2800,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 232,
                           "character": 41,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L232"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L232"
                         }
                       ],
                       "signatures": [
@@ -2856,7 +2857,7 @@
             "line": 711,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L711"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L711"
           },
           "signatures": [
             {
@@ -2914,7 +2915,7 @@
                               "fileName": "packages/result/src/lib/Option/IOption.ts",
                               "line": 711,
                               "character": 68,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L711"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L711"
                             }
                           ],
                           "signatures": [
@@ -2943,7 +2944,7 @@
                               "fileName": "packages/result/src/lib/Option/IOption.ts",
                               "line": 711,
                               "character": 41,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L711"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L711"
                             }
                           ],
                           "signatures": [
@@ -2990,7 +2991,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 711,
                           "character": 39,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L711"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L711"
                         }
                       ]
                     }
@@ -3031,7 +3032,7 @@
             "line": 688,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L688"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L688"
           },
           "signatures": [
             {
@@ -3088,7 +3089,7 @@
             "line": 318,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L318"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L318"
           },
           "signatures": [
             {
@@ -3170,7 +3171,7 @@
             "line": 337,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L337"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L337"
           },
           "signatures": [
             {
@@ -3219,7 +3220,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 337,
                           "character": 17,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L337"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L337"
                         }
                       ],
                       "signatures": [
@@ -3277,7 +3278,7 @@
             "line": 451,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L451"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L451"
           },
           "signatures": [
             {
@@ -3361,7 +3362,7 @@
             "line": 471,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L471"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L471"
           },
           "signatures": [
             {
@@ -3399,7 +3400,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 471,
                           "character": 12,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L471"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L471"
                         }
                       ],
                       "signatures": [
@@ -3457,7 +3458,7 @@
             "line": 636,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L636"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L636"
           },
           "signatures": [
             {
@@ -3572,7 +3573,7 @@
             "line": 114,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L114"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L114"
           },
           "signatures": [
             {
@@ -3628,7 +3629,7 @@
             "line": 133,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L133"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L133"
           },
           "signatures": [
             {
@@ -3707,7 +3708,7 @@
             "line": 149,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L149"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L149"
           },
           "signatures": [
             {
@@ -3756,7 +3757,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 149,
                           "character": 21,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L149"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L149"
                         }
                       ],
                       "signatures": [
@@ -3811,7 +3812,7 @@
             "line": 620,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L620"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L620"
           },
           "signatures": [
             {
@@ -3936,7 +3937,7 @@
             "line": 504,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L504"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L504"
           },
           "signatures": [
             {
@@ -4020,7 +4021,7 @@
             "line": 570,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L570"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L570"
           },
           "signatures": [
             {
@@ -4111,7 +4112,7 @@
             "line": 600,
             "file": "IOption.ts",
             "path": "packages/result/src/lib/Option",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L600"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L600"
           },
           "signatures": [
             {
@@ -4181,7 +4182,7 @@
                           "fileName": "packages/result/src/lib/Option/IOption.ts",
                           "line": 600,
                           "character": 36,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option/IOption.ts#L600"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option/IOption.ts#L600"
                         }
                       ],
                       "signatures": [
@@ -4273,7 +4274,7 @@
         "line": 17,
         "file": "IResult.ts",
         "path": "packages/result/src/lib/Result",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L17"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L17"
       },
       "external": false,
       "properties": [],
@@ -4290,7 +4291,7 @@
             "line": 821,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L821"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L821"
           },
           "signatures": [
             {
@@ -4354,7 +4355,7 @@
             "line": 559,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L559"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L559"
           },
           "signatures": [
             {
@@ -4455,7 +4456,7 @@
             "line": 580,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L580"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L580"
           },
           "signatures": [
             {
@@ -4500,7 +4501,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 580,
                           "character": 16,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L580"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L580"
                         }
                       ],
                       "signatures": [
@@ -4584,7 +4585,7 @@
             "line": 661,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L661"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L661"
           },
           "signatures": [
             {
@@ -4645,7 +4646,7 @@
             "line": 685,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L685"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L685"
           },
           "signatures": [
             {
@@ -4706,7 +4707,7 @@
             "line": 763,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L763"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L763"
           },
           "signatures": [
             {
@@ -4770,7 +4771,7 @@
             "line": 139,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L139"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L139"
           },
           "signatures": [
             {
@@ -4826,7 +4827,7 @@
             "line": 419,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L419"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L419"
           },
           "signatures": [
             {
@@ -4883,7 +4884,7 @@
             "line": 444,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L444"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L444"
           },
           "signatures": [
             {
@@ -4940,7 +4941,7 @@
             "line": 724,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L724"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L724"
           },
           "signatures": [
             {
@@ -5056,7 +5057,7 @@
             "line": 308,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L308"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L308"
           },
           "signatures": [
             {
@@ -5102,7 +5103,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 308,
                           "character": 13,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L308"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L308"
                         }
                       ],
                       "signatures": [
@@ -5173,7 +5174,7 @@
             "line": 328,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L328"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L328"
           },
           "signatures": [
             {
@@ -5219,7 +5220,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 328,
                           "character": 18,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L328"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L328"
                         }
                       ],
                       "signatures": [
@@ -5304,7 +5305,7 @@
             "line": 348,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L348"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L348"
           },
           "signatures": [
             {
@@ -5350,7 +5351,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 348,
                           "character": 16,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L348"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L348"
                         }
                       ],
                       "signatures": [
@@ -5421,7 +5422,7 @@
             "line": 368,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L368"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L368"
           },
           "signatures": [
             {
@@ -5467,7 +5468,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 368,
                           "character": 21,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L368"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L368"
                         }
                       ],
                       "signatures": [
@@ -5552,7 +5553,7 @@
             "line": 742,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L742"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L742"
           },
           "signatures": [
             {
@@ -5612,7 +5613,7 @@
             "line": 755,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L755"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L755"
           },
           "signatures": [
             {
@@ -5695,7 +5696,7 @@
             "line": 75,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L75"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L75"
           },
           "signatures": [
             {
@@ -5756,7 +5757,7 @@
             "line": 99,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L99"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L99"
           },
           "signatures": [
             {
@@ -5812,7 +5813,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 99,
                           "character": 33,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L99"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L99"
                         }
                       ],
                       "signatures": [
@@ -5894,7 +5895,7 @@
             "line": 34,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L34"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L34"
           },
           "signatures": [
             {
@@ -5955,7 +5956,7 @@
             "line": 57,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L57"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L57"
           },
           "signatures": [
             {
@@ -6011,7 +6012,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 57,
                           "character": 32,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L57"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L57"
                         }
                       ],
                       "signatures": [
@@ -6093,7 +6094,7 @@
             "line": 394,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L394"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L394"
           },
           "signatures": [
             {
@@ -6157,7 +6158,7 @@
             "line": 159,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L159"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L159"
           },
           "signatures": [
             {
@@ -6206,7 +6207,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 159,
                           "character": 12,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L159"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L159"
                         }
                       ],
                       "signatures": [
@@ -6278,7 +6279,7 @@
             "line": 258,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L258"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L258"
           },
           "signatures": [
             {
@@ -6327,7 +6328,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 258,
                           "character": 15,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L258"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L258"
                         }
                       ],
                       "signatures": [
@@ -6399,7 +6400,7 @@
             "line": 288,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L288"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L288"
           },
           "signatures": [
             {
@@ -6458,7 +6459,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 288,
                           "character": 24,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L288"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L288"
                         }
                       ],
                       "signatures": [
@@ -6554,7 +6555,7 @@
             "line": 190,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L190"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L190"
           },
           "signatures": [
             {
@@ -6613,7 +6614,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 190,
                           "character": 21,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L190"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L190"
                         }
                       ],
                       "signatures": [
@@ -6709,7 +6710,7 @@
             "line": 213,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L213"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L213"
           },
           "signatures": [
             {
@@ -6769,7 +6770,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 213,
                           "character": 31,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L213"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L213"
                         }
                       ],
                       "signatures": [
@@ -6826,7 +6827,7 @@
             "line": 236,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L236"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L236"
           },
           "signatures": [
             {
@@ -6875,7 +6876,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 236,
                           "character": 18,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L236"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L236"
                         }
                       ],
                       "signatures": [
@@ -6925,7 +6926,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 236,
                           "character": 39,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L236"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L236"
                         }
                       ],
                       "signatures": [
@@ -6982,7 +6983,7 @@
             "line": 794,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L794"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L794"
           },
           "signatures": [
             {
@@ -7040,7 +7041,7 @@
                               "fileName": "packages/result/src/lib/Result/IResult.ts",
                               "line": 794,
                               "character": 61,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L794"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L794"
                             }
                           ],
                           "signatures": [
@@ -7083,7 +7084,7 @@
                               "fileName": "packages/result/src/lib/Result/IResult.ts",
                               "line": 794,
                               "character": 38,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L794"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L794"
                             }
                           ],
                           "signatures": [
@@ -7130,7 +7131,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 794,
                           "character": 36,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L794"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L794"
                         }
                       ]
                     }
@@ -7171,7 +7172,7 @@
             "line": 771,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L771"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L771"
           },
           "signatures": [
             {
@@ -7235,7 +7236,7 @@
             "line": 119,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L119"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L119"
           },
           "signatures": [
             {
@@ -7291,7 +7292,7 @@
             "line": 616,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L616"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L616"
           },
           "signatures": [
             {
@@ -7396,7 +7397,7 @@
             "line": 637,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L637"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L637"
           },
           "signatures": [
             {
@@ -7441,7 +7442,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 637,
                           "character": 15,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L637"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L637"
                         }
                       ],
                       "signatures": [
@@ -7525,7 +7526,7 @@
             "line": 701,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L701"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L701"
           },
           "signatures": [
             {
@@ -7634,7 +7635,7 @@
             "line": 470,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L470"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L470"
           },
           "signatures": [
             {
@@ -7690,7 +7691,7 @@
             "line": 494,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L494"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L494"
           },
           "signatures": [
             {
@@ -7738,7 +7739,7 @@
             "line": 516,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L516"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L516"
           },
           "signatures": [
             {
@@ -7817,7 +7818,7 @@
             "line": 532,
             "file": "IResult.ts",
             "path": "packages/result/src/lib/Result",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L532"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L532"
           },
           "signatures": [
             {
@@ -7862,7 +7863,7 @@
                           "fileName": "packages/result/src/lib/Result/IResult.ts",
                           "line": 532,
                           "character": 21,
-                          "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result/IResult.ts#L532"
+                          "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result/IResult.ts#L532"
                         }
                       ],
                       "signatures": [
@@ -7935,7 +7936,7 @@
         "line": 13,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L13"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L13"
       },
       "external": false,
       "classes": [],
@@ -7952,7 +7953,7 @@
             "line": 55,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L55"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L55"
           },
           "external": false,
           "type": {
@@ -7979,7 +7980,7 @@
             "line": 33,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L33"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L33"
           },
           "external": false,
           "signatures": [
@@ -8039,7 +8040,7 @@
                               "fileName": "packages/result/src/lib/Option.ts",
                               "line": 33,
                               "character": 46,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L33"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L33"
                             }
                           ],
                           "signatures": [
@@ -8099,7 +8100,7 @@
             "line": 47,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L47"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L47"
           },
           "external": false,
           "signatures": [
@@ -8167,7 +8168,7 @@
                               "fileName": "packages/result/src/lib/Option.ts",
                               "line": 47,
                               "character": 68,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L47"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L47"
                             }
                           ],
                           "signatures": [
@@ -8241,7 +8242,7 @@
             "line": 23,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L23"
           },
           "external": false,
           "signatures": [
@@ -8338,7 +8339,7 @@
             "line": 56,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L56"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L56"
           },
           "external": false,
           "signatures": [
@@ -8405,7 +8406,7 @@
             "line": 59,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L59"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L59"
           },
           "external": false,
           "typeParameters": [],
@@ -8429,7 +8430,7 @@
             "line": 16,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L16"
           },
           "external": false,
           "typeParameters": [
@@ -8488,7 +8489,7 @@
             "line": 58,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L58"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L58"
           },
           "external": false,
           "typeParameters": [
@@ -8519,7 +8520,7 @@
             "line": 61,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L61"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L61"
           },
           "external": false,
           "typeParameters": [
@@ -8589,7 +8590,7 @@
         "line": 14,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L14"
       },
       "external": false,
       "classes": [],
@@ -8608,7 +8609,7 @@
             "line": 57,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L57"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L57"
           },
           "external": false,
           "signatures": [
@@ -8708,7 +8709,7 @@
             "line": 34,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L34"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L34"
           },
           "external": false,
           "signatures": [
@@ -8788,7 +8789,7 @@
                               "fileName": "packages/result/src/lib/Result.ts",
                               "line": 34,
                               "character": 62,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L34"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L34"
                             }
                           ],
                           "signatures": [
@@ -8860,7 +8861,7 @@
             "line": 49,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L49"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L49"
           },
           "external": false,
           "signatures": [
@@ -8948,7 +8949,7 @@
                               "fileName": "packages/result/src/lib/Result.ts",
                               "line": 49,
                               "character": 84,
-                              "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L49"
+                              "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L49"
                             }
                           ],
                           "signatures": [
@@ -9034,7 +9035,7 @@
             "line": 23,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L23"
           },
           "external": false,
           "signatures": [
@@ -9148,7 +9149,7 @@
             "line": 58,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L58"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L58"
           },
           "external": false,
           "signatures": [
@@ -9252,7 +9253,7 @@
             "line": 60,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L60"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L60"
           },
           "external": false,
           "typeParameters": [
@@ -9283,7 +9284,7 @@
             "line": 61,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L61"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L61"
           },
           "external": false,
           "typeParameters": [
@@ -9314,7 +9315,7 @@
             "line": 17,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L17"
           },
           "external": false,
           "typeParameters": [
@@ -9378,7 +9379,7 @@
             "line": 64,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L64"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L64"
           },
           "external": false,
           "typeParameters": [
@@ -9450,7 +9451,7 @@
             "line": 63,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L63"
+            "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L63"
           },
           "external": false,
           "typeParameters": [
@@ -9531,7 +9532,7 @@
         "line": 13,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Option.ts#L13"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Option.ts#L13"
       },
       "external": false,
       "typeParameters": [
@@ -9591,7 +9592,7 @@
         "line": 14,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/df4fdef/packages/result/src/lib/Result.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/e20f299/packages/result/src/lib/Result.ts#L14"
       },
       "external": false,
       "typeParameters": [
