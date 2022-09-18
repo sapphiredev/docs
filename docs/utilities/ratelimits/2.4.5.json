@@ -1,0 +1,1543 @@
+{
+  "typeDocJsonParserVersion": "4.0.0",
+  "id": 0,
+  "name": "@sapphire/ratelimits",
+  "version": "2.4.5",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/ratelimits\n\n**Bucket implementation for Ratelimits.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/ratelimits?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/ratelimits)\n[![npm](https://img.shields.io/npm/v/@sapphire/ratelimits?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/ratelimits)\n\n</div>\n\n**Table of Contents**\n\n-   [Description](#description)\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Token RateLimitManager](#token-ratelimitmanager)\n    -   [Leaky RateLimitManager](#leaky-ratelimitmanager)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nThere is often a need to apply ratelimits to protect a network from excessive traffic levels on connections routed through it, or limit bot command usages in your Discord bot, or similar things. This package offers two different techniques in the same implementation: the [Token Bucket](https://en.wikipedia.org/wiki/Token_bucket), and the [Leaky Bucket](https://en.wikipedia.org/wiki/Leaky_bucket).\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/ratelimits\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { RateLimitManager } = require('@sapphire/ratelimits')` equals `import { RateLimitManager } from '@sapphire/ratelimits'`.\n\n### Token RateLimitManager\n\n```typescript\n// Import the Bucket class\nconst { RateLimitManager } = require('@sapphire/ratelimits');\n\n// Define a bucket with 1 usage every 5 seconds\nconst rateLimitManager = new RateLimitManager(5000);\n\n// Acquire the rate limit. The ID can be something like `'global'`, a Discord channel/server/user ID, or anything else.\nconst ratelimit = rateLimitManager.acquire('some-unique-id-here');\n\n// Check if there is a rate limit right now\nif (ratelimit.limited) {\n\t// Do something when limited, such as throwing an error\n}\n\n// We're not rate limited so we drip the bucket. After consuming once, the second run through we'll be rate limited.\nratelimit.consume();\n\n// And now we can finish the flow by returning some form of \"success\" state.\n```\n\n### Leaky RateLimitManager\n\n```typescript\n// Import the Bucket class\nconst { RateLimitManager } = require('@sapphire/ratelimits');\n\n// Define a bucket with 2 usages every 5 seconds\nconst rateLimitManager = new RateLimitManager(5000, 2);\n\n// Acquire the rate limit. The ID can be something like `'global'`, a Discord channel/server/user ID, or anything else.\nconst ratelimit = rateLimitManager.acquire('some-unique-id-here');\n\n// Check if there is a rate limit right now\nif (ratelimit.limited) {\n\t// Do something when limited, such as throwing an error\n}\n\n// We're not rate limited so we drip the bucket. After consuming twice, the third run through we'll be rate limited.\nratelimit.consume();\n\n// And now we can finish the flow by returning some form of \"success\" state.\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Code\">💻</a> <a href=\"#projectManagement-kyranet\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Akyranet\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars2.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3APyroTechniac\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Avladfrangu\" title=\"Bug reports\">🐛</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"#userTesting-vladfrangu\" title=\"User Testing\">📓</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars0.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"#projectManagement-Stitch07\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Alcremie\"><img src=\"https://avatars0.githubusercontent.com/u/54785334?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ivan Lieder</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Alcremie\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AAlcremie\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars3.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=RealShadowNova\" title=\"Code\">💻</a> <a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Vetlix\"><img src=\"https://avatars.githubusercontent.com/u/31412314?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vetlix</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Vetlix\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ethamitc\"><img src=\"https://avatars.githubusercontent.com/u/27776796?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ethan Mitchell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ethamitc\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://fanoulis.dev/\"><img src=\"https://avatars.githubusercontent.com/u/38255093?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Charalampos Fanoulis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=cfanoulis\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app/\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kaname-png\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/nandhagk\"><img src=\"https://avatars.githubusercontent.com/u/62976649?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>nandhagk</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Anandhagk\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://gitlab.com/DavidPH/\"><img src=\"https://avatars.githubusercontent.com/u/44669930?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>David</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=DavidPHH\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=FC5570\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Tokipudi\"><img src=\"https://avatars.githubusercontent.com/u/29551076?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jérémy de Saint Denis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Tokipudi\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ItsMrCube\"><img src=\"https://avatars.githubusercontent.com/u/25201357?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>MrCube</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ItsMrCube\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/bitomic\"><img src=\"https://avatars.githubusercontent.com/u/35199700?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>bitomic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=bitomic\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://c43721.dev/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://commandtechno.com/\"><img src=\"https://avatars.githubusercontent.com/u/68407783?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Commandtechno</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Commandtechno\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/dhruv-kaushikk\"><img src=\"https://avatars.githubusercontent.com/u/73697546?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=dhruv-kaushikk\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://axis.moe/\"><img src=\"https://avatars.githubusercontent.com/u/54381371?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jonathan</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=axisiscool\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"#maintenance-imranbarbhuiya\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/NotKaskus\"><img src=\"https://avatars.githubusercontent.com/u/75168528?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Paul Andrew</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=NotKaskus\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Mzato0001\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AMzato0001\" title=\"Bug reports\">🐛</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=MajesticString\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/EvolutionX-10\"><img src=\"https://avatars.githubusercontent.com/u/85353424?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Evo</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=EvolutionX-10\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://enes.ovh/\"><img src=\"https://avatars.githubusercontent.com/u/61084101?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Enes Genç</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=enxg\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/muchnameless\"><img src=\"https://avatars.githubusercontent.com/u/12682826?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>muchnameless</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=muchnameless\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/ratelimits@2.4.5](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.4.4...@sapphire/ratelimits@2.4.5) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n## [2.4.4](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.4.3...@sapphire/ratelimits@2.4.4) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.4.3](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.4.2...@sapphire/ratelimits@2.4.3) (2022-03-20)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.4.2](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.4.1...@sapphire/ratelimits@2.4.2) (2022-03-20)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.4.0...@sapphire/ratelimits@2.4.1) (2022-03-11)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n# [2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.3.1...@sapphire/ratelimits@2.4.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n\n## [2.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.3.0...@sapphire/ratelimits@2.3.1) (2022-02-18)\n\n### Bug Fixes\n\n-   **RateLimit:** add default type to `RateLimit`'s type parameter to match its usage in `RateLimitManager` ([#296](https://github.com/sapphiredev/utilities/issues/296)) ([b6799a7](https://github.com/sapphiredev/utilities/commit/b6799a7c5a420f416ca9972c9abf3ba0a95f7974))\n\n# [2.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.2.0...@sapphire/ratelimits@2.3.0) (2022-02-03)\n\n### Features\n\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [2.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.12...@sapphire/ratelimits@2.2.0) (2022-01-28)\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n## [2.1.12](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.11...@sapphire/ratelimits@2.1.12) (2022-01-21)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.11](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.10...@sapphire/ratelimits@2.1.11) (2022-01-10)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.10](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.9...@sapphire/ratelimits@2.1.10) (2021-11-29)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.9](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.8...@sapphire/ratelimits@2.1.9) (2021-11-19)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.8](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.7...@sapphire/ratelimits@2.1.8) (2021-11-15)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.7](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.6...@sapphire/ratelimits@2.1.7) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.6](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.5...@sapphire/ratelimits@2.1.6) (2021-10-28)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.5](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.4...@sapphire/ratelimits@2.1.5) (2021-10-26)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.4](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.3...@sapphire/ratelimits@2.1.4) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [2.1.3](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.2...@sapphire/ratelimits@2.1.3) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.1...@sapphire/ratelimits@2.1.2) (2021-10-08)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [2.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.1.0...@sapphire/ratelimits@2.1.1) (2021-10-04)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n# [2.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.0.1...@sapphire/ratelimits@2.1.0) (2021-10-04)\n\n### Bug Fixes\n\n-   **ratelimits:** fixed docs in readme ([#170](https://github.com/sapphiredev/utilities/issues/170)) ([f6bcb67](https://github.com/sapphiredev/utilities/commit/f6bcb67f453e8167237bf0b6c03514b14092fda7))\n\n### Features\n\n-   **ratelimits:** set minimum NodeJS to v14 ([5c2fb29](https://github.com/sapphiredev/utilities/commit/5c2fb29a8db614a2a7583b74948ca99c193039de))\n\n## [2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@2.0.0...@sapphire/ratelimits@2.0.1) (2021-07-20)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n# [2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.2.5...@sapphire/ratelimits@2.0.0) (2021-07-17)\n\n### Code Refactoring\n\n-   **rateLimits:** rewrite all of it ([#130](https://github.com/sapphiredev/utilities/issues/130)) ([320778c](https://github.com/sapphiredev/utilities/commit/320778ca65cbf3591bd1ce0b1f2eb430693eef9a))\n\n### BREAKING CHANGES\n\n-   **rateLimits:** Removed `Bucket`\n\n## [1.2.5](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.2.4...@sapphire/ratelimits@1.2.5) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.2.4](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.2.3...@sapphire/ratelimits@1.2.4) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.2.3](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.2.2...@sapphire/ratelimits@1.2.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n\n## [1.2.2](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.2.1...@sapphire/ratelimits@1.2.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **ratelimits:** mark package as side effect free ([22334e1](https://github.com/sapphiredev/utilities/commit/22334e1b1786b29d2b4c90dbdb3fc5e988f90e5b))\n\n## [1.2.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.2.0...@sapphire/ratelimits@1.2.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# [1.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.8...@sapphire/ratelimits@1.2.0) (2021-04-21)\n\n### Features\n\n-   add @sapphire/embed-jsx ([#100](https://github.com/sapphiredev/utilities/issues/100)) ([7277a23](https://github.com/sapphiredev/utilities/commit/7277a236015236ed8e81b7882875410facc4ce17))\n\n## [1.1.8](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.7...@sapphire/ratelimits@1.1.8) (2021-04-19)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#102](https://github.com/sapphiredev/utilities/issues/102)) ([835b408](https://github.com/sapphiredev/utilities/commit/835b408e8e57130c3787aca2e32613346ff23e4d))\n\n## [1.1.7](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.6...@sapphire/ratelimits@1.1.7) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.1.6](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.5...@sapphire/ratelimits@1.1.6) (2021-03-16)\n\n### Bug Fixes\n\n-   remove terser from all packages ([#79](https://github.com/sapphiredev/utilities/issues/79)) ([1cfe4e7](https://github.com/sapphiredev/utilities/commit/1cfe4e7c804e62c142495686d2b83b81d0026c02))\n\n## [1.1.5](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.4...@sapphire/ratelimits@1.1.5) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.1.4](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.3...@sapphire/ratelimits@1.1.4) (2021-01-16)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.1.3](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.2...@sapphire/ratelimits@1.1.3) (2021-01-01)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.1...@sapphire/ratelimits@1.1.2) (2020-12-26)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n## [1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.1.0...@sapphire/ratelimits@1.1.1) (2020-12-22)\n\n**Note:** Version bump only for package @sapphire/ratelimits\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.0.1...@sapphire/ratelimits@1.1.0) (2020-11-15)\n\n### Bug Fixes\n\n-   **ratelimits:** pass keep_classnames to terser ([83cd79f](https://github.com/sapphiredev/utilities/commit/83cd79fe0347d443d1ca7abf0d89169b848363dc))\n-   **ratelimits:** pass keep_fnames to terser ([f69d2d1](https://github.com/sapphiredev/utilities/commit/f69d2d1eb3211c40f00150bb113b2c1e34fd1c48))\n\n### Features\n\n-   added time-utilities package ([#26](https://github.com/sapphiredev/utilities/issues/26)) ([f17a333](https://github.com/sapphiredev/utilities/commit/f17a3339667a452e8745fad7884272176e5d65e8))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/ratelimits@1.0.0...@sapphire/ratelimits@1.0.1) (2020-11-04)\n\n### Bug Fixes\n\n-   **ratelimits:** properly specify ESM and CommonJS exports ([6355d3e](https://github.com/sapphiredev/utilities/commit/6355d3e5876cf64e3c71e89f213e66c8990778ae))\n\n# 1.0.0 (2020-10-11)\n\n### Bug Fixes\n\n-   **ratelimits,snowflake,utilities:** fixed esm output target ([9fdab3f](https://github.com/sapphiredev/utilities/commit/9fdab3fca283c8c0b47cc32661c5cf8e0a5e583c))\n\n### Features\n\n-   added ratelimits package ([#15](https://github.com/sapphiredev/utilities/issues/15)) ([e0ae18c](https://github.com/sapphiredev/utilities/commit/e0ae18c5e1d0ae4e68a982829f1cf251fddfc80d))\n",
+  "classes": [
+    {
+      "id": 1,
+      "name": "RateLimit",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 3,
+        "file": "RateLimit.ts",
+        "path": "packages/ratelimits/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L3"
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "construct": {
+        "id": 2,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 22,
+          "file": "RateLimit.ts",
+          "path": "packages/ratelimits/src/lib",
+          "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L22"
+        },
+        "parentId": 1,
+        "parameters": [
+          {
+            "id": 5,
+            "name": "manager",
+            "type": {
+              "kind": "reference",
+              "id": 24,
+              "name": "RateLimitManager",
+              "packageName": null,
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": 4,
+                  "name": "K",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 7,
+          "name": "expires",
+          "comment": {
+            "description": "The timestamp that represents when this entry will reset back to a available state.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 12,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L12"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 8,
+          "name": "manager",
+          "comment": {
+            "description": "The {@link RateLimitManager} this entry is for.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 17,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L17"
+          },
+          "parentId": 1,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": 24,
+            "name": "RateLimitManager",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 4,
+                "name": "K",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "remaining",
+          "comment": {
+            "description": "The remaining amount of times this entry can be dripped before the bucket is empty.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 7,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L7"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 10,
+          "name": "expired",
+          "comment": {
+            "description": "Whether this entry is expired or not, allowing the bucket to be reset.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 30,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L30"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 12,
+          "name": "limited",
+          "comment": {
+            "description": "Whether this entry is limited or not.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 37,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L37"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 14,
+          "name": "remainingTime",
+          "comment": {
+            "description": "The remaining time in milliseconds before resetting.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 44,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L44"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 15,
+          "name": "consume",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 51,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L51"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 16,
+              "name": "consume",
+              "comment": {
+                "description": "Consumes {@link remaining} by one if it's not limited, calling {@link reset} first if {@link expired} is true.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "RateLimit",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 4,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "reset",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 62,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L62"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 18,
+              "name": "reset",
+              "comment": {
+                "description": "Resets the entry back to it's full state.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "RateLimit",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 4,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "name": "resetRemaining",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 69,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L69"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 20,
+              "name": "resetRemaining",
+              "comment": {
+                "description": "Resets the entry's {@link remaining} uses back to full state.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "RateLimit",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 4,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "resetTime",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 77,
+            "file": "RateLimit.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimit.ts#L77"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 22,
+              "name": "resetTime",
+              "comment": {
+                "description": "Resets the entry's {@link expires} to the current time plus {@link time}.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "RateLimit",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 4,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "RateLimitManager",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 4,
+        "file": "RateLimitManager.ts",
+        "path": "packages/ratelimits/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L4"
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": {
+        "kind": "reference",
+        "id": null,
+        "name": "Map",
+        "packageName": "typescript",
+        "typeArguments": [
+          {
+            "kind": "reference",
+            "id": 29,
+            "name": "K",
+            "packageName": null,
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": 1,
+            "name": "RateLimit",
+            "packageName": null,
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 29,
+                "name": "K",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        ]
+      },
+      "implementsType": [],
+      "construct": {
+        "id": 27,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 24,
+          "file": "RateLimitManager.ts",
+          "path": "packages/ratelimits/src/lib",
+          "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L24"
+        },
+        "parentId": 24,
+        "parameters": [
+          {
+            "id": 30,
+            "name": "time",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          },
+          {
+            "id": 31,
+            "name": "limit",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 76,
+          "name": "[toStringTag]",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 135,
+            "file": "lib.es2015.symbol.wellknown.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 33,
+          "name": "limit",
+          "comment": {
+            "description": "The amount of times a {@link RateLimit} can drip before it's limited.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 13,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L13"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 67,
+          "name": "size",
+          "comment": {
+            "description": null,
+            "blockTags": [
+              {
+                "name": "returns",
+                "text": "the number of elements in the Map."
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 48,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 34,
+          "name": "sweepInterval",
+          "comment": {
+            "description": "The interval to sweep expired {@link ratelimits}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 18,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L18"
+          },
+          "parentId": 24,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "global.NodeJS.Timer",
+                "packageName": "@types/node",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 32,
+          "name": "time",
+          "comment": {
+            "description": "The amount of milliseconds for the {@link ratelimits} from this manager to expire.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 8,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L8"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 26,
+          "name": "[species]",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 317,
+            "file": "lib.es2015.symbol.wellknown.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": true,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "MapConstructor",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 25,
+          "name": "sweepIntervalDuration",
+          "comment": {
+            "description": "The delay in milliseconds for {@link sweepInterval}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 76,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L76"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": true,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 74,
+          "name": "[iterator]",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 121,
+            "file": "lib.es2015.iterable.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 75,
+              "name": "[iterator]",
+              "comment": {
+                "description": "Returns an iterable of entries in the map.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "IterableIterator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "tuple",
+                    "types": [
+                      {
+                        "kind": "reference",
+                        "id": 29,
+                        "name": "K",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      {
+                        "kind": "reference",
+                        "id": 1,
+                        "name": "RateLimit",
+                        "packageName": null,
+                        "typeArguments": [
+                          {
+                            "kind": "reference",
+                            "id": 29,
+                            "name": "K",
+                            "packageName": null,
+                            "typeArguments": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "acquire",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 35,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L35"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 36,
+              "name": "acquire",
+              "comment": {
+                "description": "Gets a {@link RateLimit} from this manager or creates it if it does not exist.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 37,
+                  "name": "id",
+                  "type": {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "RateLimit",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "name": "clear",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 23,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 48,
+              "name": "clear",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "name": "create",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 43,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L43"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 39,
+              "name": "create",
+              "comment": {
+                "description": "Creates a {@link RateLimit} for this manager.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 40,
+                  "name": "id",
+                  "type": {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 1,
+                "name": "RateLimit",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "name": "delete",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 27,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 50,
+              "name": "delete",
+              "comment": {
+                "description": null,
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "true if an element in the Map existed and has been removed, or false if the element does not exist."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 51,
+                  "name": "key",
+                  "type": {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "id": 68,
+          "name": "entries",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 126,
+            "file": "lib.es2015.iterable.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 69,
+              "name": "entries",
+              "comment": {
+                "description": "Returns an iterable of key, value pairs for every entry in the map.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "IterableIterator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "tuple",
+                    "types": [
+                      {
+                        "kind": "reference",
+                        "id": 29,
+                        "name": "K",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      {
+                        "kind": "reference",
+                        "id": 1,
+                        "name": "RateLimit",
+                        "packageName": null,
+                        "typeArguments": [
+                          {
+                            "kind": "reference",
+                            "id": 29,
+                            "name": "K",
+                            "packageName": null,
+                            "typeArguments": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "forEach",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 31,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 53,
+              "name": "forEach",
+              "comment": {
+                "description": "Executes a provided function once per each key/value pair in the Map, in insertion order.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 54,
+                  "name": "callbackfn",
+                  "type": {
+                    "kind": "reflection",
+                    "reflection": {
+                      "id": 55,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {
+                        "isExternal": true
+                      },
+                      "sources": [
+                        {
+                          "fileName": "node_modules/typescript/lib/lib.es2015.collection.d.ts",
+                          "line": 31,
+                          "character": 24
+                        }
+                      ],
+                      "signatures": [
+                        {
+                          "id": 56,
+                          "name": "__type",
+                          "kind": 4096,
+                          "kindString": "Call signature",
+                          "flags": {
+                            "isExternal": true
+                          },
+                          "parameters": [
+                            {
+                              "id": 57,
+                              "name": "value",
+                              "kind": 32768,
+                              "kindString": "Parameter",
+                              "flags": {
+                                "isExternal": true
+                              },
+                              "type": {
+                                "type": "reference",
+                                "id": 1,
+                                "typeArguments": [
+                                  {
+                                    "type": "reference",
+                                    "id": 29,
+                                    "name": "K"
+                                  }
+                                ],
+                                "name": "RateLimit"
+                              }
+                            },
+                            {
+                              "id": 58,
+                              "name": "key",
+                              "kind": 32768,
+                              "kindString": "Parameter",
+                              "flags": {
+                                "isExternal": true
+                              },
+                              "type": {
+                                "type": "reference",
+                                "id": 29,
+                                "name": "K"
+                              }
+                            },
+                            {
+                              "id": 59,
+                              "name": "map",
+                              "kind": 32768,
+                              "kindString": "Parameter",
+                              "flags": {
+                                "isExternal": true
+                              },
+                              "type": {
+                                "type": "reference",
+                                "typeArguments": [
+                                  {
+                                    "type": "reference",
+                                    "id": 29,
+                                    "name": "K"
+                                  },
+                                  {
+                                    "type": "reference",
+                                    "id": 1,
+                                    "typeArguments": [
+                                      {
+                                        "type": "reference",
+                                        "id": 29,
+                                        "name": "K"
+                                      }
+                                    ],
+                                    "name": "RateLimit"
+                                  }
+                                ],
+                                "name": "Map",
+                                "qualifiedName": "Map",
+                                "package": "typescript"
+                              }
+                            }
+                          ],
+                          "type": {
+                            "type": "intrinsic",
+                            "name": "void"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": 60,
+                  "name": "thisArg",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "name": "get",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 36,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 62,
+              "name": "get",
+              "comment": {
+                "description": "Returns a specified element from the Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "Returns the element associated with the specified key. If no element is associated with the specified key, undefined is returned."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 63,
+                  "name": "key",
+                  "type": {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "undefined"
+                  },
+                  {
+                    "kind": "reference",
+                    "id": 1,
+                    "name": "RateLimit",
+                    "packageName": null,
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 29,
+                        "name": "K",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 64,
+          "name": "has",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 40,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 65,
+              "name": "has",
+              "comment": {
+                "description": null,
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "boolean indicating whether an element with the specified key exists or not."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 66,
+                  "name": "key",
+                  "type": {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "id": 70,
+          "name": "keys",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 131,
+            "file": "lib.es2015.iterable.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 71,
+              "name": "keys",
+              "comment": {
+                "description": "Returns an iterable of keys in the map",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "IterableIterator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "name": "set",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 54,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L54"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 42,
+              "name": "set",
+              "comment": {
+                "description": "Wraps Collection's set method to set interval to sweep inactive {@link RateLimit}s.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 43,
+                  "name": "id",
+                  "type": {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                },
+                {
+                  "id": 44,
+                  "name": "value",
+                  "type": {
+                    "kind": "reference",
+                    "id": 1,
+                    "name": "RateLimit",
+                    "packageName": null,
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 29,
+                        "name": "K",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 24,
+                "name": "RateLimitManager",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 29,
+                    "name": "K",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "name": "sweep",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 62,
+            "file": "RateLimitManager.ts",
+            "path": "packages/ratelimits/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/78a79ca/packages/ratelimits/src/lib/RateLimitManager.ts#L62"
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 46,
+              "name": "sweep",
+              "comment": {
+                "description": "Wraps Collection's sweep method to clear the interval when this manager is empty.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 72,
+          "name": "values",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 136,
+            "file": "lib.es2015.iterable.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 24,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 73,
+              "name": "values",
+              "comment": {
+                "description": "Returns an iterable of values in the map",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "IterableIterator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 1,
+                    "name": "RateLimit",
+                    "packageName": null,
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 29,
+                        "name": "K",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": [],
+  "functions": [],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": []
+}
