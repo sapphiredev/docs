@@ -1,0 +1,2662 @@
+{
+  "typeDocJsonParserVersion": "5.0.1",
+  "id": 0,
+  "name": "@sapphire/plugin-i18next",
+  "version": "3.0.1",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-i18next\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to support i18next based internationalization.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-in17n?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-in17n)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-in17n?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-in17n)\n\n</div>\n\n## Description\n\nAn implementation of i18next's [filesystem backend] for Sapphire. It allows you to use a JSON-based `languages` directory to add internationalization for your bot using `SapphireClient`'s `fetchLanguage` hook and a custom message extension, adding features such as `sendTranslated` and `resolveKey`.\n\n[filesystem backend]: https://github.com/i18next/i18next-fs-backend\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Framework agnostic\n-   Includes convenience register for discord.js\n\n## Installation\n\n`@sapphire/plugin-i18next` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-i18next @sapphire/framework discord.js\n```\n\n---\n\n## Usage\n\nThis registers the methods and options necessary for message translations in the Sapphire client.\n\n```typescript\n// Main bot file\n// Be sure to register the plugin before instantiating the client.\nimport '@sapphire/plugin-i18next/register';\n```\n\nThe basic structure of a translation file is as follows:\n\n```jsonc\n// languages/en-US/commands/ping.json\n{\n\t\"success\": \"Pong!\",\n\t\"success_with_args\": \"Pong! Took me {{latency}}ms to reply\"\n}\n```\n\nThe `resolveKey` function can be used anywhere to get translated text by its key. In this example, it is used in a method to send a message.\n\n```typescript\nimport { resolveKey } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait message.channel.send(await resolveKey('commands/ping:success'));\n\t}\n}\n```\n\n`sendLocalized` will send translated text resolved from a key to a specified channel.\n\n```typescript\nimport { sendLocalized } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait sendLocalized(message, 'commands/ping:success');\n\t}\n}\n```\n\n`editLocalized` edits a message, replacing its content with translated text resolved from its key.\n\n```typescript\nimport { editLocalized } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait editLocalized(message, 'commands/ping:success_args', { latency: ws.ping });\n\t}\n}\n```\n\n`fetchLanguage` returns the guild-specific language that the client is using.\n\n```typescript\nimport { fetchLanguage } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\treturn message.channel.send(await fetchLanguage(message));\n\t\t// ===> en-US\n\t}\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://shadownova.dev/\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/yuansheng1549\"><img src=\"https://avatars.githubusercontent.com/u/75909450?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>yuansheng1549</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=yuansheng1549\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/BenSegal855\"><img src=\"https://avatars.githubusercontent.com/u/34194692?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ben</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=BenSegal855\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-i18next@3.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@3.0.0...@sapphire/plugin-i18next@3.0.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Bump dependencies ([666b0f4](https://github.com/sapphiredev/plugins/commit/666b0f4418ead5f29ea124bb61c4c5550c33cf1d))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n## 🧪 Testing\n\n- Migrate to vitest ([94a182e](https://github.com/sapphiredev/plugins/commit/94a182ea0d03f79616c66983695caf64e93cb6c3))\n\n# [@sapphire/plugin-i18next@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.4...@sapphire/plugin-i18next@3.0.0) - (2022-08-20)\n\n## 🏠 Refactor\n\n- **i18next:** Remove `sendLocalized`, `replyLocalized`, and `editLocalized` (#335) ([e53558f](https://github.com/sapphiredev/plugins/commit/e53558f4982d1afad74dd3239d078f0013855242))\n  - 💥 **BREAKING CHANGE:** `sendLocalized`, `replyLocalized`, and `editLocalized` have been removed as these methods never properly supported all i18next and DiscordJS options and were extremely hard to maintain. The replacement is using either `fetchT` or `resolveKey` and implementing your own `message.channel.send` / `interaction.reply`\n  - 💥 **BREAKING CHANGE:** `InternationalizationContext.author` has been removed as per the deprecation notice in the previous version. Please switch to `InternationalizationContext.user`.\n\n## 🐛 Bug Fixes\n\n- **i18next:** Fixed replyLocalized types (#334) ([d55295f](https://github.com/sapphiredev/plugins/commit/d55295f1364265ac9777d117df301cd663868272))\n- **i18next:** Bump sapphire utilities ([41237ec](https://github.com/sapphiredev/plugins/commit/41237ec5fda671166e1fc0cee908521a0460a85d))\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n- Type cast `baseUserDirectory` ([c76b008](https://github.com/sapphiredev/plugins/commit/c76b0087aa99d3643109e1399bef94d7e94c0cb8))\n\n## 🚀 Features\n\n- **subcommands:** Lowercase subcommands and dashless aliases (#337) ([31ea70c](https://github.com/sapphiredev/plugins/commit/31ea70caae38988ca395dd3e934822c26e6df4f6))\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-i18next@2.5.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.2...@sapphire/plugin-i18next@2.5.4) - (2022-07-11)\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n- **deps:** Update dependency @sapphire/utilities to ^3.7.0 ([6ec8b75](https://github.com/sapphiredev/plugins/commit/6ec8b75dbd09d70f1015f1a032eb105a42b9e0f4))\n- **deps:** Update dependency i18next to ^21.8.5 (#301) ([be8f6ed](https://github.com/sapphiredev/plugins/commit/be8f6ed3ef3aada738531ca26d44d61e023c1b64))\n\n# [@sapphire/plugin-i18next@2.5.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.1...@sapphire/plugin-i18next@2.5.2) - (2022-05-18)\n\n## 🏠 Refactor\n\n- **i18next:** Improve language discovery (#291) ([ece5a46](https://github.com/sapphiredev/plugins/commit/ece5a467d212da318558898f251a2dd6a821e0ac))\n\n# [@sapphire/plugin-i18next@2.5.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.0...@sapphire/plugin-i18next@2.5.1) - (2022-05-15)\n\n## 🏃 Performance\n\n- **i18next:** Switch to new backend library ([21cd166](https://github.com/sapphiredev/plugins/commit/21cd1665c3bcba9c3dbc9711e9d57153ad768276))\n- **i18next:** Skip fetch language if locale is provided (#284) ([3bc645f](https://github.com/sapphiredev/plugins/commit/3bc645f02a7d8cb6fbfef7577ba0eb1ffd6a61db))\n\n# [@sapphire/plugin-i18next@2.5.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.4.2...@sapphire/plugin-i18next@2.5.0) - (2022-04-19)\n\n## Bug Fixes\n\n- **i18next:** Edit a reply when an already deferred or edited reply is passed into `replyLocalized` ([fab3db9](https://github.com/sapphiredev/plugins/commit/fab3db9212d19ddeda2cec1e92ded7dfa561385d))\n- **i18next:** Ensure an interaction is deferred or replied before editing ([34f6057](https://github.com/sapphiredev/plugins/commit/34f605739ec335f205a6ddbb36fd811eac2f7a77))\n\n## Features\n\n- **i18next:** Add `guildLocale` and `locale` to `fetchLanguage` context ([d1e09f4](https://github.com/sapphiredev/plugins/commit/d1e09f47e659c1b296e07dd6805606af302ee6ed))\n\n# [@sapphire/plugin-i18next@2.4.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.4.1...@sapphire/plugin-i18next@2.4.2) - (2022-04-18)\n\n## Bug Fixes\n\n- **i18next:** Actually fix files array ([81debfc](https://github.com/sapphiredev/plugins/commit/81debfc53bfa7e16ba429d74276ebd531aeae8d9))\n\n# [@sapphire/plugin-i18next@2.4.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.4.0...@sapphire/plugin-i18next@2.4.1) - (2022-04-18)\n\n## Bug Fixes\n\n- Fixed files array ([1e13a35](https://github.com/sapphiredev/plugins/commit/1e13a3502b9d909ba9c349ab078a763d2bee0c58))\n\n# [@sapphire/plugin-i18next@2.4.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.3.1...@sapphire/plugin-i18next@2.4.0) - (2022-04-18)\n\n## Bug Fixes\n\n- **deps:** Update dependency i18next to ^21.6.15 ([5a5995c](https://github.com/sapphiredev/plugins/commit/5a5995cb7afa7691a889968519abf716c8e2f5ec))\n\n## Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n## Features\n\n- **i18next:** Support interaction (#272) ([8681e7d](https://github.com/sapphiredev/plugins/commit/8681e7d4f649216ae63a24a3f18a45d78279bd50))\n\n## [2.3.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.3.0...@sapphire/plugin-i18next@2.3.1) (2022-04-01)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2377eb9](https://github.com/sapphiredev/plugins/commit/2377eb90c7a5efb65e2be242d492f06bd4841a2e))\n\n# [2.3.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.3...@sapphire/plugin-i18next@2.3.0) (2022-03-06)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2016134](https://github.com/sapphiredev/plugins/commit/201613418babe93748e74064cf66d4ea0582725c))\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n## [2.2.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.2...@sapphire/plugin-i18next@2.2.3) (2022-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.1...@sapphire/plugin-i18next@2.2.2) (2022-01-16)\n\n### Performance Improvements\n\n-   **i18next:** \"add\" event is not necessary in chokidar ([#229](https://github.com/sapphiredev/plugins/issues/229)) ([138764c](https://github.com/sapphiredev/plugins/commit/138764cc140f74d2f2b3745ed838cac63ea97e4c))\n\n## [2.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.0...@sapphire/plugin-i18next@2.2.1) (2022-01-14)\n\n### Bug Fixes\n\n-   **i18next:** postLogin hook register ([#228](https://github.com/sapphiredev/plugins/issues/228)) ([c67035e](https://github.com/sapphiredev/plugins/commit/c67035ef457ff390edfb30b8e2a664d4daeb7d9d))\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.6...@sapphire/plugin-i18next@2.2.0) (2022-01-13)\n\n### Features\n\n-   **i18next:** add hot-module-replacement to reload i18next resources ([#224](https://github.com/sapphiredev/plugins/issues/224)) ([26a8c41](https://github.com/sapphiredev/plugins/commit/26a8c41bfcee9a2be9fc319df2ec8e542d8cb370))\n\n## [2.1.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.5...@sapphire/plugin-i18next@2.1.6) (2022-01-09)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.4...@sapphire/plugin-i18next@2.1.5) (2021-12-29)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.3...@sapphire/plugin-i18next@2.1.4) (2021-12-28)\n\n### Bug Fixes\n\n-   **i18next:** bump i18next dependency ([ebc32b0](https://github.com/sapphiredev/plugins/commit/ebc32b03288260359744810d8905b77fd7fc458c))\n\n## [2.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.2...@sapphire/plugin-i18next@2.1.3) (2021-12-21)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.1...@sapphire/plugin-i18next@2.1.2) (2021-12-06)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.0...@sapphire/plugin-i18next@2.1.1) (2021-11-25)\n\n### Bug Fixes\n\n-   **i18next:** bumped i18next dependendency to ensure transient dependency has latest fixes ([7cafdfc](https://github.com/sapphiredev/plugins/commit/7cafdfc1876d9d28af3c1b8decf047ab75f3f0bf))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.0.2...@sapphire/plugin-i18next@2.1.0) (2021-11-21)\n\n### Features\n\n-   expose and use namespaces for options, context, etc ([#176](https://github.com/sapphiredev/plugins/issues/176)) ([33452da](https://github.com/sapphiredev/plugins/commit/33452da808d91313a5d3bf680e11b5208ac67442))\n-   **i18n:** add `replyLocalized` ([#168](https://github.com/sapphiredev/plugins/issues/168)) ([4c51f52](https://github.com/sapphiredev/plugins/commit/4c51f52411d3a4f368db912dd840504622e4a373))\n-   **plugin-i18n:** add new syntax for formatters in i18next ([#167](https://github.com/sapphiredev/plugins/issues/167)) ([d0f01d9](https://github.com/sapphiredev/plugins/commit/d0f01d99a8e25929a819ae0d210596afdd208b62))\n\n## [2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.0.1...@sapphire/plugin-i18next@2.0.2) (2021-11-06)\n\n### Bug Fixes\n\n-   **docs:** replace command usage of `run` to `messageRun` ([#160](https://github.com/sapphiredev/plugins/issues/160)) ([415adb8](https://github.com/sapphiredev/plugins/commit/415adb85b884da5d0f1f2ce07a9d46134f2bcb12))\n\n## [2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.0.0...@sapphire/plugin-i18next@2.0.1) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([ce5b12f](https://github.com/sapphiredev/plugins/commit/ce5b12f8142297bceda49b85574a95a3cf9112ab))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.7...@sapphire/plugin-i18next@2.0.0) (2021-10-16)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([#149](https://github.com/sapphiredev/plugins/issues/149)) ([1fe5598](https://github.com/sapphiredev/plugins/commit/1fe55980434b19bb024773a1878366320fa96004))\n-   **deps:** update dependency i18next to ^21.2.0 ([#146](https://github.com/sapphiredev/plugins/issues/146)) ([2509ee4](https://github.com/sapphiredev/plugins/commit/2509ee4c8d53cc8bf23f7b7b618d5a4be3f7c24b))\n-   **i18next:** change `Awaited` for `Awaitable` ([0e2e6ef](https://github.com/sapphiredev/plugins/commit/0e2e6ef104e66344608ca62f779829411122e84c))\n-   **i18next:** change how `fetchLanguage` is implemented ([#107](https://github.com/sapphiredev/plugins/issues/107)) ([30c8f7f](https://github.com/sapphiredev/plugins/commit/30c8f7f2ea4911c79ecb241e182500516e958fc5))\n-   **i18next:** remove @sapphire/pieces from install instructions ([7c17a92](https://github.com/sapphiredev/plugins/commit/7c17a925b7c66fdd5422d75a3674e420ddc474ce))\n-   **plugin-i18next:** re-added support for guild target ([#103](https://github.com/sapphiredev/plugins/issues/103)) ([a7152a8](https://github.com/sapphiredev/plugins/commit/a7152a8ba3baf0a5bee10e80bc7c33e11b03d4d3))\n\n### Code Refactoring\n\n-   **plugin-i18next:** updated for discord.js@13 and framework@2 ([e041864](https://github.com/sapphiredev/plugins/commit/e04186461071179b96b918294b3f3085c328ede6))\n\n### Features\n\n-   bump to discordjs v13.2.0 ([3d0e484](https://github.com/sapphiredev/plugins/commit/3d0e484eb9a5adb7fef3bb642e304e27072ed2b1))\n-   **i18next:** add `baseUserDirectory` as alternative path for the `languages` directory (takes precedence over root scan) ([#159](https://github.com/sapphiredev/plugins/issues/159)) ([f8621b0](https://github.com/sapphiredev/plugins/commit/f8621b088f0382221968dfefe4a48092c83cd73f))\n-   **i18next:** bump i18next dependency to v20 ([#125](https://github.com/sapphiredev/plugins/issues/125)) ([0023809](https://github.com/sapphiredev/plugins/commit/0023809ee73fd2cee6828d30a782d67a44e31bbf))\n-   **i18next:** update i18next dependency ([#129](https://github.com/sapphiredev/plugins/issues/129)) ([96519de](https://github.com/sapphiredev/plugins/commit/96519de5de253db390ed9a76ed073ffe1eabd187))\n-   **plugin-editable-commands:** added first version ([#106](https://github.com/sapphiredev/plugins/issues/106)) ([9af3e85](https://github.com/sapphiredev/plugins/commit/9af3e85a8641f852eaf114679ceed1e71034d16c))\n-   **subcommands:** migrate `Command#run` to `Command#messageRun` ([#157](https://github.com/sapphiredev/plugins/issues/157)) ([2960711](https://github.com/sapphiredev/plugins/commit/29607111c4e4f61ece463e10854982f205879996))\n\n### BREAKING CHANGES\n\n-   **i18next:** i18next has been updated to v21.0.1. Please also seee the breaking changes for i18next [here](https://github.com/i18next/i18next/blob/master/CHANGELOG.md#2100) and their migration guide [here](https://www.i18next.com/misc/migration-guide#v-20-x-x-to-v-21-0-0)\n\n-   chore: activate renovate\n-   **i18next:** i18next dependency has been bumped to v20.x. As opposed to what the library does, this plugin will default the new option `ignoreJSONStructure` to `false`\n-   **i18next:** `fetchLanguage` has been moved from `ClientOptions` to `ClientOptions.i18n`\n-   **plugin-i18next:** Changed `InternationalizationHandler#options` to not be optional.\n-   **plugin-i18next:** Increase `@sapphire/framework` requirement to v2.\n-   **plugin-i18next:** Increase `discord.js` requirement to v13.\n-   **plugin-i18next:** Removed `I18nextClient#fetchLanguage` in favor of `InternationalizationHandler#fetchLanguage`.\n-   **plugin-i18next:** Removed `I18nextClient#i18n` in favor of `Context#i18n`.\n-   **plugin-i18next:** Removed `I18nextClient`.\n-   **plugin-i18next:** Removed `Message#editLocalized` in favor of `editLocalized(message, options)`.\n-   **plugin-i18next:** Removed `Structure#fetchLanguage` in favor of `fetchLanguage(structure)`.\n-   **plugin-i18next:** Removed `Structure#fetchT` in favor of `fetchT(structure)`.\n-   **plugin-i18next:** Removed `Structure#resolveKey` in favor of `resolveKey(structure, keys, options)`.\n-   **plugin-i18next:** Removed `Structure#sendLocalized` in favor of `sendLocalized(structure, options)`.\n-   **plugin-i18next:** Renamed `I18nextClientOptions` to `InternationalizationClientOptions`.\n-   **plugin-i18next:** Renamed `I18nextHandler` to `InternationalizationHandler`.\n-   **plugin-i18next:** Renamed `InternationalizationHandler.fetchLocale` to `format`.\n-   **plugin-i18next:** Renamed `InternationalizationHandler.fetchT` to `getT`.\n-   **plugin-i18next:** Require `discord.js` in `/register`.\n-   **plugin-i18next:** Simplified `editLocalized`'s overloads.\n-   **plugin-i18next:** Simplified `sendLocalized`'s overloads.\n\n## [1.3.7](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.6...@sapphire/plugin-i18next@1.3.7) (2021-06-19)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#91](https://github.com/sapphiredev/plugins/issues/91)) ([3489b1d](https://github.com/sapphiredev/plugins/commit/3489b1dc1e8a7c64c255595b3d441cd0b5bac936))\n-   **i18next:** specify package side effects ([33fd1ec](https://github.com/sapphiredev/plugins/commit/33fd1ec86c671ef7419c709793d28c326d21ada7))\n\n## [1.3.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.5...@sapphire/plugin-i18next@1.3.6) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([a86049f](https://github.com/sapphiredev/plugins/commit/a86049f185f0ccb12d61379dd82255b36d4fa145))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([c5fd156](https://github.com/sapphiredev/plugins/commit/c5fd15691abb9a9712dc4b8aebd8400f6d91f719))\n\n## [1.3.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.4...@sapphire/plugin-i18next@1.3.5) (2021-04-21)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#75](https://github.com/sapphiredev/plugins/issues/75)) ([e437dc4](https://github.com/sapphiredev/plugins/commit/e437dc45fcd4d22ab2dcdb0e70c67cc5856883c0))\n\n## [1.3.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.3...@sapphire/plugin-i18next@1.3.4) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [1.3.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.2...@sapphire/plugin-i18next@1.3.3) (2021-03-16)\n\n### Bug Fixes\n\n-   update dependencies, add tslib, bump framework to v1.0.0 ([880b761](https://github.com/sapphiredev/plugins/commit/880b7614d857f23fcbcd351e69795c451a95f49c))\n\n## [1.3.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.1...@sapphire/plugin-i18next@1.3.2) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [1.3.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.0...@sapphire/plugin-i18next@1.3.1) (2021-02-07)\n\n### Bug Fixes\n\n-   **i18n:** update dependencies in package.json ([8d0381b](https://github.com/sapphiredev/plugins/commit/8d0381be7b5ecc837fd9883c6035d4a16c065448))\n-   **i18next:** properly augment Discord.js extensions ([#56](https://github.com/sapphiredev/plugins/issues/56)) ([6f5b1a9](https://github.com/sapphiredev/plugins/commit/6f5b1a9a05a6d0508e05a33ef23ec1027160df79))\n\n# [1.3.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.2.1...@sapphire/plugin-i18next@1.3.0) (2021-02-03)\n\n### Features\n\n-   **i18next:** respect alternative default handling ([#54](https://github.com/sapphiredev/plugins/issues/54)) ([5b12ba8](https://github.com/sapphiredev/plugins/commit/5b12ba8b4a321f73dd6b93c57ddd92143b796f08))\n\n## [1.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.2.0...@sapphire/plugin-i18next@1.2.1) (2021-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n# [1.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.1.0...@sapphire/plugin-i18next@1.2.0) (2021-01-12)\n\n### Features\n\n-   **i18next:** store loaded namespaces ([#42](https://github.com/sapphiredev/plugins/issues/42)) ([978f0ad](https://github.com/sapphiredev/plugins/commit/978f0ad59a708ffabc02dda3f82fc84a69abf54d))\n\n# [1.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.0.0...@sapphire/plugin-i18next@1.1.0) (2021-01-11)\n\n### Features\n\n-   **i18next:** allow creating i18next options using namespaces and languages ([#41](https://github.com/sapphiredev/plugins/issues/41)) ([3efa231](https://github.com/sapphiredev/plugins/commit/3efa231421c590d8706afba5b066daaa51b5d175))\n\n# 1.0.0 (2021-01-09)\n\n### Bug Fixes\n\n-   **i18next:** add missing tslib dependency ([5687397](https://github.com/sapphiredev/plugins/commit/568739718dd028ba713f022404b94374729e398a))\n\n### Features\n\n-   **i18next:** implement context and editing ([#35](https://github.com/sapphiredev/plugins/issues/35)) ([1849831](https://github.com/sapphiredev/plugins/commit/18498311766433bc6d2ad9956ca73b39d11b9139)), closes [#29](https://github.com/sapphiredev/plugins/issues/29) [#29](https://github.com/sapphiredev/plugins/issues/29)\n-   add plugin-i18next ([#29](https://github.com/sapphiredev/plugins/issues/29)) ([41e6581](https://github.com/sapphiredev/plugins/commit/41e6581199c971db4422fbc6fb411dfca2614dec))\n\n### BREAKING CHANGES\n\n-   **i18next:** All aforementioned changes are breaking.\n",
+  "classes": [
+    {
+      "id": 67,
+      "name": "InternationalizationHandler",
+      "comment": {
+        "description": "A generalized class for handling `i18next` JSON files and their discovery.",
+        "blockTags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 15,
+        "file": "InternationalizationHandler.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L15"
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "construct": {
+        "id": 68,
+        "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "source": {
+          "line": 58,
+          "file": "InternationalizationHandler.ts",
+          "path": "packages/i18next/src/lib",
+          "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L58"
+        },
+        "parentId": 67,
+        "parameters": [
+          {
+            "id": 70,
+            "name": "options",
+            "type": {
+              "kind": "reference",
+              "id": 117,
+              "name": "InternationalizationOptions",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 76,
+          "name": "backendOptions",
+          "comment": {
+            "description": "The backend options for `@skyra/i18next-backend` used by `i18next`.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 51,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L51"
+          },
+          "parentId": 67,
+          "accessibility": "protected",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Backend.Options",
+            "packageName": "@skyra/i18next-backend",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 77,
+          "name": "fetchLanguage",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 117,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L117"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 78,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
+                  "line": 117,
+                  "character": 23,
+                  "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L117"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 79,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "comment": {
+                    "summary": [
+                      {
+                        "kind": "text",
+                        "text": "The method to be overridden by the developer."
+                      }
+                    ],
+                    "blockTags": [
+                      {
+                        "tag": "@note",
+                        "content": [
+                          {
+                            "kind": "text",
+                            "text": "In the event that fetchLanguage is not defined or returns null / undefined, the defaulting from "
+                          },
+                          {
+                            "kind": "inline-tag",
+                            "tag": "@link",
+                            "text": "fetchLanguage",
+                            "target": 53
+                          },
+                          {
+                            "kind": "text",
+                            "text": " will be used."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@since",
+                        "content": [
+                          {
+                            "kind": "text",
+                            "text": "2.0.0"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@returns",
+                        "content": [
+                          {
+                            "kind": "text",
+                            "text": "A string for the desired language or null for no match."
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@see",
+                        "content": [
+                          {
+                            "kind": "inline-tag",
+                            "tag": "@link",
+                            "text": "fetchLanguage",
+                            "target": 53
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@example",
+                        "content": [
+                          {
+                            "kind": "code",
+                            "text": "```typescript\n// Always use the same language (no per-guild configuration):\ncontainer.i18n.fetchLanguage = () => 'en-US';\n```"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@example",
+                        "content": [
+                          {
+                            "kind": "code",
+                            "text": "```typescript\n// Retrieving the language from an SQL database:\ncontainer.i18n.fetchLanguage = async (context) => {\n  const guild = await driver.getOne('SELECT language FROM public.guild WHERE id = $1', [context.guild.id]);\n  return guild?.language ?? 'en-US';\n};\n```"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@example",
+                        "content": [
+                          {
+                            "kind": "code",
+                            "text": "```typescript\n// Retrieving the language from an ORM:\ncontainer.i18n.fetchLanguage = async (context) => {\n  const guild = await driver.getRepository(GuildEntity).findOne({ id: context.guild.id });\n  return guild?.language ?? 'en-US';\n};\n```"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@example",
+                        "content": [
+                          {
+                            "kind": "code",
+                            "text": "```typescript\n// Retrieving the language on a per channel basis, e.g. per user or guild channel (ORM example but same principles apply):\ncontainer.i18n.fetchLanguage = async (context) => {\n  const channel = await driver.getRepository(ChannelEntity).findOne({ id: context.channel.id });\n  return channel?.language ?? 'en-US';\n};\n```"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "parameters": [
+                    {
+                      "id": 80,
+                      "name": "context",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {},
+                      "type": {
+                        "type": "reference",
+                        "id": 132,
+                        "name": "InternationalizationContext"
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "reference",
+                    "typeArguments": [
+                      {
+                        "type": "union",
+                        "types": [
+                          {
+                            "type": "literal",
+                            "value": null
+                          },
+                          {
+                            "type": "intrinsic",
+                            "name": "string"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "Awaitable",
+                    "qualifiedName": "Awaitable",
+                    "package": "@sapphire/utilities"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 73,
+          "name": "languages",
+          "comment": {
+            "description": "A `Map` of `i18next` language functions keyed by their language code.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 32,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L32"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "reference",
+                "id": 5,
+                "name": "TFunction",
+                "packageName": "i18next",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 75,
+          "name": "languagesDirectory",
+          "comment": {
+            "description": "The director passed to `@skyra/i18next-backend`.\nAlso used in {@link InternationalizationHandler.walkLanguageDirectory}.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.2.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 45,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L45"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 71,
+          "name": "languagesLoaded",
+          "comment": {
+            "description": "Describes whether {@link init} has been run and languages are loaded in {@link languages}.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 20,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L20"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 72,
+          "name": "namespaces",
+          "comment": {
+            "description": "A `Set` of initially loaded namespaces.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.2.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 26,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L26"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Set",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "id": 74,
+          "name": "options",
+          "comment": {
+            "description": "The options InternationalizationHandler was initialized with in the client.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 38,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L38"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": 117,
+            "name": "InternationalizationOptions",
+            "packageName": null,
+            "typeArguments": []
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 86,
+          "name": "format",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 181,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L181"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 87,
+              "name": "format",
+              "comment": {
+                "description": "Localizes a content given one or more keys and i18next options.",
+                "blockTags": [
+                  {
+                    "name": "since",
+                    "text": "2.0.0"
+                  },
+                  {
+                    "name": "see",
+                    "text": "{@link https://www.i18next.com/overview/api#t}"
+                  },
+                  {
+                    "name": "returns",
+                    "text": "The localized content."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [
+                {
+                  "id": 88,
+                  "name": "TResult",
+                  "type": {
+                    "kind": "reference",
+                    "id": 50,
+                    "name": "TFunctionResult",
+                    "packageName": "i18next",
+                    "typeArguments": []
+                  },
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                },
+                {
+                  "id": 89,
+                  "name": "TKeys",
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "TFunctionKeys",
+                    "packageName": "i18next",
+                    "typeArguments": []
+                  },
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                },
+                {
+                  "id": 90,
+                  "name": "TInterpolationMap",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "object"
+                  },
+                  "default": {
+                    "kind": "reference",
+                    "id": 1,
+                    "name": "StringMap",
+                    "packageName": "i18next",
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "parameters": [
+                {
+                  "id": 91,
+                  "name": "locale",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                },
+                {
+                  "id": 92,
+                  "name": "key",
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "reference",
+                        "id": 89,
+                        "name": "TKeys",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      {
+                        "kind": "array",
+                        "type": {
+                          "kind": "reference",
+                          "id": 89,
+                          "name": "TKeys",
+                          "packageName": null,
+                          "typeArguments": []
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 93,
+                  "name": "options",
+                  "type": {
+                    "kind": "reference",
+                    "id": 51,
+                    "name": "TOptions",
+                    "packageName": "i18next",
+                    "typeArguments": [
+                      {
+                        "kind": "reference",
+                        "id": 90,
+                        "name": "TInterpolationMap",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 88,
+                "name": "TResult",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 83,
+          "name": "getT",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 164,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L164"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 84,
+              "name": "getT",
+              "comment": {
+                "description": "Retrieve a raw TFunction from the passed locale.",
+                "blockTags": [
+                  {
+                    "name": "since",
+                    "text": "1.0.0"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 85,
+                  "name": "locale",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 5,
+                "name": "TFunction",
+                "packageName": "i18next",
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 81,
+          "name": "init",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 123,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L123"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 82,
+              "name": "init",
+              "comment": {
+                "description": "Initializes the handler by loading in the namespaces, passing the data to i18next, and filling in the {@link languages}.",
+                "blockTags": [
+                  {
+                    "name": "since",
+                    "text": "1.0.0"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Promise",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "void"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 100,
+          "name": "reloadResources",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 222,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L222"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 101,
+              "name": "reloadResources",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Promise",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "void"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "name": "walkLocaleDirectory",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 245,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L245"
+          },
+          "parentId": 67,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 103,
+              "name": "walkLocaleDirectory",
+              "comment": {
+                "description": null,
+                "blockTags": [
+                  {
+                    "name": "description",
+                    "text": "Skips any files that don't end with `.json`."
+                  },
+                  {
+                    "name": "since",
+                    "text": "3.0.0"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 104,
+                  "name": "directory",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                },
+                {
+                  "id": 105,
+                  "name": "ns",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "AsyncGenerator",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 94,
+          "name": "walkRootDirectory",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 202,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L202"
+          },
+          "parentId": 67,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 95,
+              "name": "walkRootDirectory",
+              "comment": {
+                "description": null,
+                "blockTags": [
+                  {
+                    "name": "since",
+                    "text": "3.0.0"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 96,
+                  "name": "directory",
+                  "type": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "PathLike",
+                    "packageName": "@types/node",
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Promise",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "reflection",
+                    "reflection": {
+                      "id": 97,
+                      "name": "__type",
+                      "kind": 65536,
+                      "kindString": "Type literal",
+                      "flags": {},
+                      "children": [
+                        {
+                          "id": 99,
+                          "name": "languages",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "sources": [
+                            {
+                              "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
+                              "line": 219,
+                              "character": 40,
+                              "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
+                            }
+                          ],
+                          "type": {
+                            "type": "array",
+                            "elementType": {
+                              "type": "intrinsic",
+                              "name": "string"
+                            }
+                          },
+                          "defaultValue": "..."
+                        },
+                        {
+                          "id": 98,
+                          "name": "namespaces",
+                          "kind": 1024,
+                          "kindString": "Property",
+                          "flags": {},
+                          "sources": [
+                            {
+                              "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
+                              "line": 219,
+                              "character": 11,
+                              "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
+                            }
+                          ],
+                          "type": {
+                            "type": "array",
+                            "elementType": {
+                              "type": "intrinsic",
+                              "name": "string"
+                            }
+                          },
+                          "defaultValue": "..."
+                        }
+                      ],
+                      "groups": [
+                        {
+                          "title": "Properties",
+                          "children": [
+                            99,
+                            98
+                          ]
+                        }
+                      ],
+                      "sources": [
+                        {
+                          "fileName": "packages/i18next/src/lib/InternationalizationHandler.ts",
+                          "line": 219,
+                          "character": 9,
+                          "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/InternationalizationHandler.ts#L219"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "constants": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 53,
+      "name": "fetchLanguage",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 19,
+        "file": "functions.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/functions.ts#L19"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 54,
+          "name": "fetchLanguage",
+          "comment": {
+            "description": "Retrieves the language name for a specific target, using {@link fetchLanguage}.\nIf {@link fetchLanguage} is not defined or this function returns a nullish value,\nthen there will be a series of fallback attempts in the following descending order:\n1. Returns {@link Guild.preferredLocale}.\n2. Returns {@link defaultName} if no guild was provided.\n3. Returns `'en-US'` if nothing else was found.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "2.0.0"
+              },
+              {
+                "name": "see",
+                "text": "{@link resolveLanguage}"
+              },
+              {
+                "name": "returns",
+                "text": "The name of the language key."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 55,
+              "name": "target",
+              "type": {
+                "kind": "reference",
+                "id": 148,
+                "name": "Target",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "name": "fetchT",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 56,
+        "file": "functions.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/functions.ts#L56"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 57,
+          "name": "fetchT",
+          "comment": {
+            "description": "Retrieves the language-assigned function from i18next designated to a target's preferred language code.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "2.0.0"
+              },
+              {
+                "name": "returns",
+                "text": "The language function from i18next."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 58,
+              "name": "target",
+              "type": {
+                "kind": "reference",
+                "id": 148,
+                "name": "Target",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 5,
+                "name": "TFunction",
+                "packageName": "i18next",
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "name": "resolveKey",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 68,
+        "file": "functions.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/functions.ts#L68"
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 60,
+          "name": "resolveKey",
+          "comment": {
+            "description": "Resolves a key and its parameters.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "2.0.0"
+              },
+              {
+                "name": "returns",
+                "text": "The data that `key` held, processed by i18next."
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 61,
+              "name": "TResult",
+              "type": {
+                "kind": "reference",
+                "id": 50,
+                "name": "TFunctionResult",
+                "packageName": "i18next",
+                "typeArguments": []
+              },
+              "default": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 62,
+              "name": "TKeys",
+              "type": {
+                "kind": "reference",
+                "id": 49,
+                "name": "TFunctionKeys",
+                "packageName": "i18next",
+                "typeArguments": []
+              },
+              "default": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            },
+            {
+              "id": 63,
+              "name": "TInterpolationMap",
+              "type": {
+                "kind": "intrinsic",
+                "type": "object"
+              },
+              "default": {
+                "kind": "reference",
+                "id": 1,
+                "name": "StringMap",
+                "packageName": "i18next",
+                "typeArguments": []
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "id": 64,
+              "name": "target",
+              "type": {
+                "kind": "reference",
+                "id": 148,
+                "name": "Target",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 65,
+              "name": "key",
+              "type": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "reference",
+                    "id": 62,
+                    "name": "TKeys",
+                    "packageName": null,
+                    "typeArguments": []
+                  },
+                  {
+                    "kind": "array",
+                    "type": {
+                      "kind": "reference",
+                      "id": 62,
+                      "name": "TKeys",
+                      "packageName": null,
+                      "typeArguments": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": 66,
+              "name": "options",
+              "type": {
+                "kind": "reference",
+                "id": 51,
+                "name": "TOptions",
+                "packageName": "i18next",
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 63,
+                    "name": "TInterpolationMap",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "Promise",
+            "packageName": "typescript",
+            "typeArguments": [
+              {
+                "kind": "reference",
+                "id": 61,
+                "name": "TResult",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 106,
+      "name": "HMROptions",
+      "comment": {
+        "description": "Configure whether to use Hot-Module-Replacement (HMR) for your i18next resources using these options. The minimum config to enable HMR is to set `enabled` to true. Any other properties are optional.",
+        "blockTags": [
+          {
+            "name": "since",
+            "text": "2.2.0"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 21,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L21"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 107,
+          "name": "enabled",
+          "comment": {
+            "description": "HMR status for the i18next plugin.",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "false"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 26,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L26"
+          },
+          "parentId": 106,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 108,
+          "name": "languages",
+          "comment": {
+            "description": "Languages that will be reloaded when updating the languages directory.",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "All languages that are automatically resolved from your folder setup"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 32,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L32"
+          },
+          "parentId": 106,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "array",
+                "type": {
+                  "kind": "intrinsic",
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": 109,
+          "name": "namespaces",
+          "comment": {
+            "description": "Namespaces that will be reloaded when updating the languages directory.",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "All namespaces that are automatically resolved from your languages folder setup"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 38,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L38"
+          },
+          "parentId": 106,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "array",
+                "type": {
+                  "kind": "intrinsic",
+                  "type": "string"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": 110,
+          "name": "options",
+          "comment": {
+            "description": "HMR options",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 43,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L43"
+          },
+          "parentId": 106,
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "WatchOptions",
+            "packageName": "chokidar",
+            "typeArguments": []
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 140,
+      "name": "I18nextFormatters",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 148,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L148"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 141,
+          "name": "name",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 149,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L149"
+          },
+          "parentId": 140,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 142,
+          "name": "format",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 150,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L150"
+          },
+          "parentId": 140,
+          "signatures": [
+            {
+              "id": 143,
+              "name": "format",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 144,
+                  "name": "value",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                },
+                {
+                  "id": 145,
+                  "name": "lng",
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "undefined"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 146,
+                  "name": "options",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "name": "InternationalizationClientOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 144,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L144"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 139,
+          "name": "i18n",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 145,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L145"
+          },
+          "parentId": 138,
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": 117,
+            "name": "InternationalizationOptions",
+            "packageName": null,
+            "typeArguments": []
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 132,
+      "name": "InternationalizationContext",
+      "comment": {
+        "description": "Context for {@link fetchLanguage} functions.\nThis context enables implementation of per-guild, per-channel, and per-user localization.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 133,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L133"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 134,
+          "name": "channel",
+          "comment": {
+            "description": "The {@link DiscordChannel} object to fetch the preferred language for.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 137,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L137"
+          },
+          "parentId": 132,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": 131,
+                "name": "DiscordChannel",
+                "packageName": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 133,
+          "name": "guild",
+          "comment": {
+            "description": "The {@link Guild} object to fetch the preferred language for, or `null` if the language is to be fetched in a DM.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 135,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L135"
+          },
+          "parentId": 132,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Guild",
+                "packageName": "discord.js",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 136,
+          "name": "interactionGuildLocale",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 140,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L140"
+          },
+          "parentId": 132,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        {
+          "id": 137,
+          "name": "interactionLocale",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 141,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L141"
+          },
+          "parentId": 132,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 135,
+          "name": "user",
+          "comment": {
+            "description": "The user to fetch the preferred language for.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 139,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L139"
+          },
+          "parentId": 132,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "User",
+                "packageName": "discord.js",
+                "typeArguments": []
+              }
+            ]
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 117,
+      "name": "InternationalizationOptions",
+      "comment": {
+        "description": "The options used in {@link InternationalizationHandler}.",
+        "blockTags": [
+          {
+            "name": "since",
+            "text": "1.0.0"
+          }
+        ],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 57,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L57"
+      },
+      "external": false,
+      "properties": [
+        {
+          "id": 119,
+          "name": "backend",
+          "comment": {
+            "description": "The options passed to `backend` in `i18next.init`.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 69,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L69"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Backend.Options",
+            "packageName": "@skyra/i18next-backend",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 121,
+          "name": "defaultLanguageDirectory",
+          "comment": {
+            "description": "The directory in which \"i18next-fs-backend\" should search for files.",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "`rootDirectory/language`"
+              },
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 82,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L82"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 122,
+          "name": "defaultMissingKey",
+          "comment": {
+            "description": "The default value to be used if a specific language key isn't found.\nDefaults to \"default:default\".",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 89,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L89"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 123,
+          "name": "defaultNS",
+          "comment": {
+            "description": "The default NS that is prefixed to all keys that don't specify it.\nDefaults to \"default\".",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 96,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L96"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 118,
+          "name": "defaultName",
+          "comment": {
+            "description": "Used as the default 2nd to last fallback locale if no other is found.\nIt's only followed by \"en-US\".",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 63,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L63"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 126,
+          "name": "fetchLanguage",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 123,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L123"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 127,
+              "name": "__type",
+              "kind": 65536,
+              "kindString": "Type literal",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "packages/i18next/src/lib/types.ts",
+                  "line": 123,
+                  "character": 17,
+                  "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L123"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 128,
+                  "name": "__type",
+                  "kind": 4096,
+                  "kindString": "Call signature",
+                  "flags": {},
+                  "comment": {
+                    "summary": [
+                      {
+                        "kind": "text",
+                        "text": "A function that is to be used to retrieve the language for the current context.\nContext exists of a "
+                      },
+                      {
+                        "kind": "inline-tag",
+                        "tag": "@link",
+                        "text": "Guild `guild`"
+                      },
+                      {
+                        "kind": "text",
+                        "text": ", a "
+                      },
+                      {
+                        "kind": "inline-tag",
+                        "tag": "@link",
+                        "text": "`channel`",
+                        "target": 131
+                      },
+                      {
+                        "kind": "text",
+                        "text": " and a "
+                      },
+                      {
+                        "kind": "inline-tag",
+                        "tag": "@link",
+                        "text": "User `user`"
+                      },
+                      {
+                        "kind": "text",
+                        "text": ".\n\nIf this is not set, then the language will always be the default language.\n\nThis will be inserted for "
+                      },
+                      {
+                        "kind": "inline-tag",
+                        "tag": "@link",
+                        "text": "fetchLanguage",
+                        "target": 77
+                      },
+                      {
+                        "kind": "text",
+                        "text": "."
+                      }
+                    ],
+                    "blockTags": [
+                      {
+                        "tag": "@since",
+                        "content": [
+                          {
+                            "kind": "text",
+                            "text": "2.0.0"
+                          }
+                        ]
+                      },
+                      {
+                        "tag": "@default",
+                        "content": [
+                          {
+                            "kind": "text",
+                            "text": "() => InternationalizationOptions.defaultName"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "parameters": [
+                    {
+                      "id": 129,
+                      "name": "context",
+                      "kind": 32768,
+                      "kindString": "Parameter",
+                      "flags": {},
+                      "type": {
+                        "type": "reference",
+                        "id": 132,
+                        "name": "InternationalizationContext"
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "reference",
+                    "typeArguments": [
+                      {
+                        "type": "union",
+                        "types": [
+                          {
+                            "type": "literal",
+                            "value": null
+                          },
+                          {
+                            "type": "intrinsic",
+                            "name": "string"
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "Awaitable",
+                    "qualifiedName": "Awaitable",
+                    "package": "@sapphire/utilities"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 124,
+          "name": "formatters",
+          "comment": {
+            "description": "Array of formatters to add to i18n.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "2.0.0"
+              },
+              {
+                "name": "default",
+                "text": "[]"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 104,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L104"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "reference",
+              "id": 140,
+              "name": "I18nextFormatters",
+              "packageName": null,
+              "typeArguments": []
+            }
+          }
+        },
+        {
+          "id": 125,
+          "name": "hmr",
+          "comment": {
+            "description": "Reload languages and namespaces when updating the languages directory.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "2.2.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 111,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L111"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": 106,
+            "name": "HMROptions",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 120,
+          "name": "i18next",
+          "comment": {
+            "description": "The options passed to `i18next.init`.",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "source": {
+            "line": 75,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L75"
+          },
+          "parentId": 117,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "InitOptions",
+                "packageName": "i18next",
+                "typeArguments": []
+              },
+              {
+                "kind": "reference",
+                "id": 111,
+                "name": "DynamicOptions",
+                "packageName": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "InitOptions",
+                    "packageName": "i18next",
+                    "typeArguments": []
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 5,
+      "name": "TFunction",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 691,
+        "file": "index.d.ts",
+        "path": "node_modules/i18next",
+        "url": null
+      },
+      "external": true,
+      "properties": [],
+      "methods": []
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": [
+    {
+      "id": 147,
+      "name": "ChannelTarget",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 153,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L153"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Message",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": 131,
+            "name": "DiscordChannel",
+            "packageName": null,
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 131,
+      "name": "DiscordChannel",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 127,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L127"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": 130,
+            "name": "TextBasedDiscordChannel",
+            "packageName": null,
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "StoreChannel",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "StageChannel",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "VoiceChannel",
+            "packageName": "discord.js",
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 111,
+      "name": "DynamicOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 51,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L51"
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 116,
+          "name": "T",
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "InitOptions",
+            "packageName": "i18next",
+            "typeArguments": []
+          },
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 112,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "sources": [
+            {
+              "fileName": "packages/i18next/src/lib/types.ts",
+              "line": 51,
+              "character": 52,
+              "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L51"
+            }
+          ],
+          "signatures": [
+            {
+              "id": 113,
+              "name": "__type",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "comment": {
+                "summary": [
+                  {
+                    "kind": "text",
+                    "text": "Used to dynamically add options based on found languages in "
+                  },
+                  {
+                    "kind": "inline-tag",
+                    "tag": "@link",
+                    "text": "init",
+                    "target": 81
+                  },
+                  {
+                    "kind": "text",
+                    "text": "."
+                  }
+                ],
+                "blockTags": [
+                  {
+                    "tag": "@since",
+                    "content": [
+                      {
+                        "kind": "text",
+                        "text": "1.1.0"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "parameters": [
+                {
+                  "id": 114,
+                  "name": "namespaces",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "array",
+                    "elementType": {
+                      "type": "intrinsic",
+                      "name": "string"
+                    }
+                  }
+                },
+                {
+                  "id": 115,
+                  "name": "languages",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "array",
+                    "elementType": {
+                      "type": "intrinsic",
+                      "name": "string"
+                    }
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "id": 116,
+                "name": "T"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 1,
+      "name": "StringMap",
+      "comment": {
+        "description": "indexer that is open to any value",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 633,
+        "file": "index.d.ts",
+        "path": "node_modules/i18next",
+        "url": null
+      },
+      "external": true,
+      "typeParameters": [],
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 2,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {
+            "isExternal": true
+          },
+          "sources": [
+            {
+              "fileName": "node_modules/i18next/index.d.ts",
+              "line": 633,
+              "character": 24
+            }
+          ],
+          "indexSignature": {
+            "id": 3,
+            "name": "__index",
+            "kind": 8192,
+            "kindString": "Index signature",
+            "flags": {
+              "isExternal": true
+            },
+            "parameters": [
+              {
+                "id": 4,
+                "name": "key",
+                "kind": 32768,
+                "flags": {
+                  "isExternal": true
+                },
+                "type": {
+                  "type": "intrinsic",
+                  "name": "string"
+                }
+              }
+            ],
+            "type": {
+              "type": "intrinsic",
+              "name": "any"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 49,
+      "name": "TFunctionKeys",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 690,
+        "file": "index.d.ts",
+        "path": "node_modules/i18next",
+        "url": null
+      },
+      "external": true,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "intrinsic",
+            "type": "string"
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "TemplateStringsArray",
+            "packageName": "typescript",
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "name": "TFunctionResult",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 683,
+        "file": "index.d.ts",
+        "path": "node_modules/i18next",
+        "url": null
+      },
+      "external": true,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "intrinsic",
+            "type": "string"
+          },
+          {
+            "kind": "intrinsic",
+            "type": "object"
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "TFunctionDetailedResult",
+            "packageName": "i18next",
+            "typeArguments": []
+          },
+          {
+            "kind": "array",
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "intrinsic",
+                  "type": "string"
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "object"
+                }
+              ]
+            }
+          },
+          {
+            "kind": "intrinsic",
+            "type": "undefined"
+          },
+          {
+            "kind": "literal",
+            "value": "null"
+          }
+        ]
+      }
+    },
+    {
+      "id": 51,
+      "name": "TOptions",
+      "comment": {
+        "description": "Options that allow open ended values for interpolation unless type is provided.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 638,
+        "file": "index.d.ts",
+        "path": "node_modules/i18next",
+        "url": null
+      },
+      "external": true,
+      "typeParameters": [
+        {
+          "id": 52,
+          "name": "TInterpolationMap",
+          "type": {
+            "kind": "intrinsic",
+            "type": "object"
+          },
+          "default": {
+            "kind": "reference",
+            "id": 1,
+            "name": "StringMap",
+            "packageName": "i18next",
+            "typeArguments": []
+          }
+        }
+      ],
+      "type": {
+        "kind": "intersection",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "TOptionsBase",
+            "packageName": "i18next",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": 52,
+            "name": "TInterpolationMap",
+            "packageName": "i18next",
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 148,
+      "name": "Target",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 154,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L154"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "BaseCommandInteraction",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": 147,
+            "name": "ChannelTarget",
+            "packageName": null,
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "Guild",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "MessageComponentInteraction",
+            "packageName": "discord.js",
+            "typeArguments": []
+          }
+        ]
+      }
+    },
+    {
+      "id": 130,
+      "name": "TextBasedDiscordChannel",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "source": {
+        "line": 126,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/3183f0e/packages/i18next/src/lib/types.ts#L126"
+      },
+      "external": false,
+      "typeParameters": [],
+      "type": {
+        "kind": "indexedAccess",
+        "objectType": {
+          "kind": "reference",
+          "id": null,
+          "name": "Message",
+          "packageName": "discord.js",
+          "typeArguments": []
+        },
+        "indexType": {
+          "kind": "literal",
+          "value": "channel"
+        }
+      }
+    }
+  ]
+}
