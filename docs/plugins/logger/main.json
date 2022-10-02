@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/plugin-logger",
   "version": "3.0.1",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-logger\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to have pretty console output.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-logger?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-logger)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-logger?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-logger)\n\n</div>\n\n## Description\n\nA Logger implementation that implements Sapphire's `ILogger` interface and implements timestamp and style formatting\nwith the blazing fast [`colorette`](https://www.npmjs.com/package/colorette) library.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   [`NO_COLOR`](https://no-color.org) friendly, inherited by colorette\n\n## Installation\n\n`@sapphire/plugin-logger` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-logger @sapphire/framework\n```\n\n---\n\n## Usage\n\nThis registers the necessary options and methods in the Sapphire client to be able to use the log plugin.\n\n```typescript\n// Main bot file\n// Be sure to register the plugin before instantiating the client.\nimport '@sapphire/plugin-logger/register';\n```\n\nIn order to use the Logger in any place other than a piece (commands, arguments, preconditions, etc.), you must first import the `container` property of `@sapphire/framework`. For pieces, you can simply use `this.container.logger` to access Logger methods.\n\n```typescript\nimport { container } from '@sapphire/framework';\n\nexport class MyAwesomeService {\n\tpublic printAwesomeLog() {\n\t\tcontainer.logger.info('log message');\n\t}\n}\n```\n\nHere is an example ping command, demonstrating the use of `this.container.logger` from within a piece by omitting the explicit import.\n\n```typescript\n// ping command\n\nimport { Command } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tthis.container.logger.warn('warning message');\n\t}\n}\n```\n\n## Types of logs\n\n1. `trace`\n1. `debug`\n1. `info`\n1. `warn`\n1. `error`\n1. `fatal`\n\n> Example: `container.logger.debug('log debug message');`\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-logger\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to have pretty console output.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-logger?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-logger)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-logger?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-logger)\n\n</div>\n\n## Description\n\nA Logger implementation that implements Sapphire's `ILogger` interface and implements timestamp and style formatting\nwith the blazing fast [`colorette`](https://www.npmjs.com/package/colorette) library.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   [`NO_COLOR`](https://no-color.org) friendly, inherited by colorette\n\n## Installation\n\n`@sapphire/plugin-logger` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-logger @sapphire/framework\n```\n\n---\n\n## Usage\n\nThis registers the necessary options and methods in the Sapphire client to be able to use the log plugin.\n\n```typescript\n// Main bot file\n// Be sure to register the plugin before instantiating the client.\nimport '@sapphire/plugin-logger/register';\n```\n\nIn order to use the Logger in any place other than a piece (commands, arguments, preconditions, etc.), you must first import the `container` property of `@sapphire/framework`. For pieces, you can simply use `this.container.logger` to access Logger methods.\n\n```typescript\nimport { container } from '@sapphire/framework';\n\nexport class MyAwesomeService {\n\tpublic printAwesomeLog() {\n\t\tcontainer.logger.info('log message');\n\t}\n}\n```\n\nHere is an example ping command, demonstrating the use of `this.container.logger` from within a piece by omitting the explicit import.\n\n```typescript\n// ping command\n\nimport { Command } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.Context, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tthis.container.logger.warn('warning message');\n\t}\n}\n```\n\n## Types of logs\n\n1. `trace`\n1. `debug`\n1. `info`\n1. `warn`\n1. `error`\n1. `fatal`\n\n> Example: `container.logger.debug('log debug message');`\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://shadownova.dev/\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/yuansheng1549\"><img src=\"https://avatars.githubusercontent.com/u/75909450?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>yuansheng1549</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=yuansheng1549\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/BenSegal855\"><img src=\"https://avatars.githubusercontent.com/u/34194692?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ben</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=BenSegal855\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-logger@3.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@3.0.0...@sapphire/plugin-logger@3.0.1) - (2022-09-18)\n\n## 🏠 Refactor\n\n- **logger:** Switch from time-utilities to timestamp package ([345769b](https://github.com/sapphiredev/plugins/commit/345769b34fe7c3397d5f6cecbe2ab64cf89be600))\n\n## 🧪 Testing\n\n- Migrate to vitest ([94a182e](https://github.com/sapphiredev/plugins/commit/94a182ea0d03f79616c66983695caf64e93cb6c3))\n\n# [@sapphire/plugin-logger@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.2.3...@sapphire/plugin-logger@3.0.0) - (2022-08-20)\n\n## 🐛 Bug Fixes\n\n- Manually set version to 3.0.0 to cover @sapphire/framework@3.0.0 ([b6b05f4](https://github.com/sapphiredev/plugins/commit/b6b05f4d56d3e2f9d0b54a545d6ef6904f5006bf))\n- **deps:** Update dependency @sapphire/time-utilities to ^1.7.5 ([e43644d](https://github.com/sapphiredev/plugins/commit/e43644d22dc5440c6c5dede05211fd648b07cf99))\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n# [@sapphire/plugin-logger@2.2.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.2.1...@sapphire/plugin-logger@2.2.3) - (2022-07-11)\n\n## 🏃 Performance\n\n- **i18next:** Switch to new backend library ([21cd166](https://github.com/sapphiredev/plugins/commit/21cd1665c3bcba9c3dbc9711e9d57153ad768276))\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n## [2.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.2.0...@sapphire/plugin-logger@2.2.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.1.3...@sapphire/plugin-logger@2.2.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n## [2.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.1.2...@sapphire/plugin-logger@2.1.3) (2022-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [2.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.1.1...@sapphire/plugin-logger@2.1.2) (2022-01-13)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.1.0...@sapphire/plugin-logger@2.1.1) (2021-12-06)\n\n### Bug Fixes\n\n-   **deps:** update dependency @sapphire/time-utilities to ^1.5.0 ([d4cf912](https://github.com/sapphiredev/plugins/commit/d4cf912f1e77ad4ce74e9caa4ed427e60ad4b889))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.0.2...@sapphire/plugin-logger@2.1.0) (2021-11-21)\n\n### Features\n\n-   expose and use namespaces for options, context, etc ([#176](https://github.com/sapphiredev/plugins/issues/176)) ([33452da](https://github.com/sapphiredev/plugins/commit/33452da808d91313a5d3bf680e11b5208ac67442))\n\n## [2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.0.1...@sapphire/plugin-logger@2.0.2) (2021-11-06)\n\n### Bug Fixes\n\n-   **docs:** replace command usage of `run` to `messageRun` ([#160](https://github.com/sapphiredev/plugins/issues/160)) ([415adb8](https://github.com/sapphiredev/plugins/commit/415adb85b884da5d0f1f2ce07a9d46134f2bcb12))\n\n## [2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@2.0.0...@sapphire/plugin-logger@2.0.1) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([ce5b12f](https://github.com/sapphiredev/plugins/commit/ce5b12f8142297bceda49b85574a95a3cf9112ab))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.13...@sapphire/plugin-logger@2.0.0) (2021-10-16)\n\n### Bug Fixes\n\n-   **api:** update to Discord API v9 ([#124](https://github.com/sapphiredev/plugins/issues/124)) ([b194fe6](https://github.com/sapphiredev/plugins/commit/b194fe613ec04f327a2aa5ae8d051c400ed105c8))\n-   **deps:** update dependency colorette to v2 ([#142](https://github.com/sapphiredev/plugins/issues/142)) ([5ee876b](https://github.com/sapphiredev/plugins/commit/5ee876b3c43c688861168063b92fb343ba184fc9))\n\n### Features\n\n-   **i18next:** update i18next dependency ([#129](https://github.com/sapphiredev/plugins/issues/129)) ([96519de](https://github.com/sapphiredev/plugins/commit/96519de5de253db390ed9a76ed073ffe1eabd187))\n-   **subcommands:** migrate `Command#run` to `Command#messageRun` ([#157](https://github.com/sapphiredev/plugins/issues/157)) ([2960711](https://github.com/sapphiredev/plugins/commit/29607111c4e4f61ece463e10854982f205879996))\n\n### BREAKING CHANGES\n\n-   **i18next:** i18next has been updated to v21.0.1. Please also seee the breaking changes for i18next [here](https://github.com/i18next/i18next/blob/master/CHANGELOG.md#2100) and their migration guide [here](https://www.i18next.com/misc/migration-guide#v-20-x-x-to-v-21-0-0)\n\n-   chore: activate renovate\n\n## [1.0.13](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.12...@sapphire/plugin-logger@1.0.13) (2021-06-19)\n\n### Bug Fixes\n\n-   **docs:** update-tsdoc-for-vscode-may-2021 ([#92](https://github.com/sapphiredev/plugins/issues/92)) ([ac52451](https://github.com/sapphiredev/plugins/commit/ac52451f3cf5560a8b93931411cc04497c00d4a9))\n-   remove peer deps, update dev deps, update READMEs ([#91](https://github.com/sapphiredev/plugins/issues/91)) ([3489b1d](https://github.com/sapphiredev/plugins/commit/3489b1dc1e8a7c64c255595b3d441cd0b5bac936))\n-   **logger:** specify package side effects ([03e04d2](https://github.com/sapphiredev/plugins/commit/03e04d2751f1897e8e2cb6043ceac72681ce1049))\n\n## [1.0.12](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.11...@sapphire/plugin-logger@1.0.12) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([a86049f](https://github.com/sapphiredev/plugins/commit/a86049f185f0ccb12d61379dd82255b36d4fa145))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([c5fd156](https://github.com/sapphiredev/plugins/commit/c5fd15691abb9a9712dc4b8aebd8400f6d91f719))\n\n## [1.0.11](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.10...@sapphire/plugin-logger@1.0.11) (2021-04-21)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#75](https://github.com/sapphiredev/plugins/issues/75)) ([e437dc4](https://github.com/sapphiredev/plugins/commit/e437dc45fcd4d22ab2dcdb0e70c67cc5856883c0))\n\n## [1.0.10](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.9...@sapphire/plugin-logger@1.0.10) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [1.0.9](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.8...@sapphire/plugin-logger@1.0.9) (2021-03-16)\n\n### Bug Fixes\n\n-   update dependencies, add tslib, bump framework to v1.0.0 ([880b761](https://github.com/sapphiredev/plugins/commit/880b7614d857f23fcbcd351e69795c451a95f49c))\n\n## [1.0.8](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.7...@sapphire/plugin-logger@1.0.8) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [1.0.7](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.6...@sapphire/plugin-logger@1.0.7) (2021-02-07)\n\n### Bug Fixes\n\n-   **logger:** update dependencies in package.json ([9386b3a](https://github.com/sapphiredev/plugins/commit/9386b3a30773e34ac1a50fe3d4ad0452a93a9fc1))\n\n## [1.0.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.5...@sapphire/plugin-logger@1.0.6) (2021-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [1.0.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.4...@sapphire/plugin-logger@1.0.5) (2021-01-09)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [1.0.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.3...@sapphire/plugin-logger@1.0.4) (2020-12-28)\n\n### Bug Fixes\n\n-   **api,logger:** add type augments to index.ts ([ae1f4da](https://github.com/sapphiredev/plugins/commit/ae1f4da9671a531edf10555242e21f39eb3b0d17))\n-   **api,logger:** properly export ESM register ([7cf7ea9](https://github.com/sapphiredev/plugins/commit/7cf7ea9a9c91f73874035b0512292cc08d93e38e))\n-   **api,logger:** third attempt at fixing register and types ([faa3ee2](https://github.com/sapphiredev/plugins/commit/faa3ee2f53d2ca1153a7eff2a64e2abf3feaae85))\n-   **logger:** fix location of register file ([6e9a6f7](https://github.com/sapphiredev/plugins/commit/6e9a6f7ae4de5222e879394d717ae04ffb048aeb))\n-   **logger:** include register in github publishes ([e297af8](https://github.com/sapphiredev/plugins/commit/e297af8cada0ff3cf94bbe17e2f1c340743cd4d2))\n\n## [1.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.2...@sapphire/plugin-logger@1.0.3) (2020-12-24)\n\n**Note:** Version bump only for package @sapphire/plugin-logger\n\n## [1.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.1...@sapphire/plugin-logger@1.0.2) (2020-12-24)\n\n### Bug Fixes\n\n-   **logger:** append extra space in default infix ([0daa435](https://github.com/sapphiredev/plugins/commit/0daa4351f75782bde0a2e763c61ca401e559d64f))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-logger@1.0.0...@sapphire/plugin-logger@1.0.1) (2020-12-24)\n\n### Bug Fixes\n\n-   **logger:** remove second spread ([61cddb7](https://github.com/sapphiredev/plugins/commit/61cddb7dfd433c0afd8aeddd6a42b78a1be17850))\n-   **logger:** use pre-generics initialization hook ([d8d3ce1](https://github.com/sapphiredev/plugins/commit/d8d3ce183c4e246a9707cbbfca0c69b135be7267))\n\n# 1.0.0 (2020-12-24)\n\n### Features\n\n-   added plugin-logger ([#25](https://github.com/sapphiredev/plugins/issues/25)) ([192a8ca](https://github.com/sapphiredev/plugins/commit/192a8cac6c34c4dd1cc8e12dd5ba3307926c467d))\n",
   "classes": [
     {
@@ -23,7 +23,7 @@
         "line": 11,
         "file": "Logger.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L11"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L11"
       },
       "external": false,
       "abstract": false,
@@ -47,7 +47,7 @@
           "line": 36,
           "file": "Logger.ts",
           "path": "packages/logger/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L36"
+          "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L36"
         },
         "parentId": 1,
         "parameters": [
@@ -82,7 +82,7 @@
             "line": 16,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L16"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -115,7 +115,7 @@
             "line": 34,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L34"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L34"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -145,7 +145,7 @@
             "line": 22,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L22"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -193,7 +193,7 @@
             "line": 28,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L28"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L28"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -289,7 +289,7 @@
             "line": 69,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L69"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L69"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -337,7 +337,7 @@
             "line": 77,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L77"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L77"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -620,7 +620,7 @@
             "line": 64,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L64"
           },
           "parentId": 1,
           "accessibility": "protected",
@@ -781,7 +781,7 @@
             "line": 50,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L50"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L50"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -844,7 +844,7 @@
             "line": 81,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L81"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L81"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -921,7 +921,7 @@
             "line": 93,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L93"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L93"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -1018,7 +1018,7 @@
         "line": 8,
         "file": "LoggerLevel.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L8"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L8"
       },
       "external": false,
       "abstract": false,
@@ -1036,7 +1036,7 @@
           "line": 27,
           "file": "LoggerLevel.ts",
           "path": "packages/logger/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L27"
+          "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L27"
         },
         "parentId": 69,
         "parameters": [
@@ -1071,7 +1071,7 @@
             "line": 19,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L19"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L19"
           },
           "parentId": 69,
           "accessibility": "public",
@@ -1101,7 +1101,7 @@
             "line": 25,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L25"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L25"
           },
           "parentId": 69,
           "accessibility": "public",
@@ -1143,7 +1143,7 @@
             "line": 13,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L13"
           },
           "parentId": 69,
           "accessibility": "public",
@@ -1182,7 +1182,7 @@
             "line": 33,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L33"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L33"
           },
           "parentId": 69,
           "accessibility": "public",
@@ -1234,7 +1234,7 @@
         "line": 7,
         "file": "LoggerStyle.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L7"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L7"
       },
       "external": false,
       "abstract": false,
@@ -1252,7 +1252,7 @@
           "line": 10,
           "file": "LoggerStyle.ts",
           "path": "packages/logger/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L10"
+          "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L10"
         },
         "parentId": 83,
         "parameters": [
@@ -1282,7 +1282,7 @@
             "line": 8,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L8"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L8"
           },
           "parentId": 83,
           "accessibility": "public",
@@ -1312,7 +1312,7 @@
             "line": 32,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L32"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L32"
           },
           "parentId": 83,
           "accessibility": "public",
@@ -1378,7 +1378,7 @@
         "line": 8,
         "file": "LoggerTimestamp.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L8"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L8"
       },
       "external": false,
       "abstract": false,
@@ -1396,7 +1396,7 @@
           "line": 33,
           "file": "LoggerTimestamp.ts",
           "path": "packages/logger/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L33"
+          "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L33"
         },
         "parentId": 140,
         "parameters": [
@@ -1431,7 +1431,7 @@
             "line": 25,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L25"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L25"
           },
           "parentId": 140,
           "accessibility": "public",
@@ -1473,7 +1473,7 @@
             "line": 31,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L31"
           },
           "parentId": 140,
           "accessibility": "public",
@@ -1506,7 +1506,7 @@
             "line": 13,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L13"
           },
           "parentId": 140,
           "accessibility": "public",
@@ -1539,7 +1539,7 @@
             "line": 19,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L19"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L19"
           },
           "parentId": 140,
           "accessibility": "public",
@@ -1566,7 +1566,7 @@
             "line": 44,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L44"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L44"
           },
           "parentId": 140,
           "accessibility": "public",
@@ -1617,7 +1617,7 @@
         "line": 111,
         "file": "LoggerStyle.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L111"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L111"
       },
       "external": false,
       "properties": [
@@ -1633,7 +1633,7 @@
             "line": 112,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L112"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L112"
           },
           "parentId": 123,
           "value": "bgBlack"
@@ -1650,7 +1650,7 @@
             "line": 120,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L120"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L120"
           },
           "parentId": 123,
           "value": "bgBlackBright"
@@ -1667,7 +1667,7 @@
             "line": 116,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L116"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L116"
           },
           "parentId": 123,
           "value": "bgBlue"
@@ -1684,7 +1684,7 @@
             "line": 124,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L124"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L124"
           },
           "parentId": 123,
           "value": "bgBlueBright"
@@ -1701,7 +1701,7 @@
             "line": 118,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L118"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L118"
           },
           "parentId": 123,
           "value": "bgCyan"
@@ -1718,7 +1718,7 @@
             "line": 126,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L126"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L126"
           },
           "parentId": 123,
           "value": "bgCyanBright"
@@ -1735,7 +1735,7 @@
             "line": 114,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L114"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L114"
           },
           "parentId": 123,
           "value": "bgGreen"
@@ -1752,7 +1752,7 @@
             "line": 122,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L122"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L122"
           },
           "parentId": 123,
           "value": "bgGreenBright"
@@ -1769,7 +1769,7 @@
             "line": 117,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L117"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L117"
           },
           "parentId": 123,
           "value": "bgMagenta"
@@ -1786,7 +1786,7 @@
             "line": 125,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L125"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L125"
           },
           "parentId": 123,
           "value": "bgMagentaBright"
@@ -1803,7 +1803,7 @@
             "line": 113,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L113"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L113"
           },
           "parentId": 123,
           "value": "bgRed"
@@ -1820,7 +1820,7 @@
             "line": 121,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L121"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L121"
           },
           "parentId": 123,
           "value": "bgRedBright"
@@ -1837,7 +1837,7 @@
             "line": 119,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L119"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L119"
           },
           "parentId": 123,
           "value": "bgWhite"
@@ -1854,7 +1854,7 @@
             "line": 127,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L127"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L127"
           },
           "parentId": 123,
           "value": "bgWhiteBright"
@@ -1871,7 +1871,7 @@
             "line": 115,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L115"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L115"
           },
           "parentId": 123,
           "value": "bgYellow"
@@ -1888,7 +1888,7 @@
             "line": 123,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L123"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L123"
           },
           "parentId": 123,
           "value": "bgYellowBright"
@@ -1912,7 +1912,7 @@
         "line": 72,
         "file": "LoggerStyle.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L72"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L72"
       },
       "external": false,
       "properties": [
@@ -1928,7 +1928,7 @@
             "line": 74,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L74"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L74"
           },
           "parentId": 96,
           "value": "bold"
@@ -1945,7 +1945,7 @@
             "line": 75,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L75"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L75"
           },
           "parentId": 96,
           "value": "dim"
@@ -1962,7 +1962,7 @@
             "line": 79,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L79"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L79"
           },
           "parentId": 96,
           "value": "hidden"
@@ -1979,7 +1979,7 @@
             "line": 78,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L78"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L78"
           },
           "parentId": 96,
           "value": "inverse"
@@ -1996,7 +1996,7 @@
             "line": 76,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L76"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L76"
           },
           "parentId": 96,
           "value": "italic"
@@ -2013,7 +2013,7 @@
             "line": 73,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L73"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L73"
           },
           "parentId": 96,
           "value": "reset"
@@ -2030,7 +2030,7 @@
             "line": 80,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L80"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L80"
           },
           "parentId": 96,
           "value": "strikethrough"
@@ -2047,7 +2047,7 @@
             "line": 77,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L77"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L77"
           },
           "parentId": 96,
           "value": "underline"
@@ -2071,7 +2071,7 @@
         "line": 87,
         "file": "LoggerStyle.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L87"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L87"
       },
       "external": false,
       "properties": [
@@ -2087,7 +2087,7 @@
             "line": 88,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L88"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L88"
           },
           "parentId": 105,
           "value": "black"
@@ -2104,7 +2104,7 @@
             "line": 97,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L97"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L97"
           },
           "parentId": 105,
           "value": "blackBright"
@@ -2121,7 +2121,7 @@
             "line": 92,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L92"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L92"
           },
           "parentId": 105,
           "value": "blue"
@@ -2138,7 +2138,7 @@
             "line": 101,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L101"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L101"
           },
           "parentId": 105,
           "value": "blueBright"
@@ -2155,7 +2155,7 @@
             "line": 94,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L94"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L94"
           },
           "parentId": 105,
           "value": "cyan"
@@ -2172,7 +2172,7 @@
             "line": 103,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L103"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L103"
           },
           "parentId": 105,
           "value": "cyanBright"
@@ -2189,7 +2189,7 @@
             "line": 96,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L96"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L96"
           },
           "parentId": 105,
           "value": "gray"
@@ -2206,7 +2206,7 @@
             "line": 90,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L90"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L90"
           },
           "parentId": 105,
           "value": "green"
@@ -2223,7 +2223,7 @@
             "line": 99,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L99"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L99"
           },
           "parentId": 105,
           "value": "greenBright"
@@ -2240,7 +2240,7 @@
             "line": 93,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L93"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L93"
           },
           "parentId": 105,
           "value": "magenta"
@@ -2257,7 +2257,7 @@
             "line": 102,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L102"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L102"
           },
           "parentId": 105,
           "value": "magentaBright"
@@ -2274,7 +2274,7 @@
             "line": 89,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L89"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L89"
           },
           "parentId": 105,
           "value": "red"
@@ -2291,7 +2291,7 @@
             "line": 98,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L98"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L98"
           },
           "parentId": 105,
           "value": "redBright"
@@ -2308,7 +2308,7 @@
             "line": 95,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L95"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L95"
           },
           "parentId": 105,
           "value": "white"
@@ -2325,7 +2325,7 @@
             "line": 104,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L104"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L104"
           },
           "parentId": 105,
           "value": "whiteBright"
@@ -2342,7 +2342,7 @@
             "line": 91,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L91"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L91"
           },
           "parentId": 105,
           "value": "yellow"
@@ -2359,7 +2359,7 @@
             "line": 100,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L100"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L100"
           },
           "parentId": 105,
           "value": "yellowBright"
@@ -2386,7 +2386,7 @@
         "line": 163,
         "file": "Logger.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L163"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L163"
       },
       "external": false,
       "properties": [
@@ -2407,7 +2407,7 @@
             "line": 174,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L174"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L174"
           },
           "parentId": 61,
           "readonly": false,
@@ -2436,7 +2436,7 @@
             "line": 192,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L192"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L192"
           },
           "parentId": 61,
           "readonly": false,
@@ -2465,7 +2465,7 @@
             "line": 198,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L198"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L198"
           },
           "parentId": 61,
           "readonly": false,
@@ -2494,7 +2494,7 @@
             "line": 180,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L180"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L180"
           },
           "parentId": 61,
           "readonly": false,
@@ -2523,7 +2523,7 @@
             "line": 204,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L204"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L204"
           },
           "parentId": 61,
           "readonly": false,
@@ -2552,7 +2552,7 @@
             "line": 168,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L168"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L168"
           },
           "parentId": 61,
           "readonly": false,
@@ -2581,7 +2581,7 @@
             "line": 186,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L186"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L186"
           },
           "parentId": 61,
           "readonly": false,
@@ -2613,7 +2613,7 @@
         "line": 51,
         "file": "LoggerLevel.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L51"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L51"
       },
       "external": false,
       "properties": [
@@ -2638,7 +2638,7 @@
             "line": 64,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L64"
           },
           "parentId": 79,
           "readonly": false,
@@ -2668,7 +2668,7 @@
             "line": 71,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L71"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L71"
           },
           "parentId": 79,
           "readonly": false,
@@ -2710,7 +2710,7 @@
             "line": 57,
             "file": "LoggerLevel.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerLevel.ts#L57"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerLevel.ts#L57"
           },
           "parentId": 79,
           "readonly": false,
@@ -2751,7 +2751,7 @@
         "line": 107,
         "file": "Logger.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L107"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L107"
       },
       "external": false,
       "properties": [
@@ -2776,7 +2776,7 @@
             "line": 127,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L127"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L127"
           },
           "parentId": 53,
           "readonly": false,
@@ -2809,7 +2809,7 @@
             "line": 156,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L156"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L156"
           },
           "parentId": 53,
           "readonly": false,
@@ -2839,7 +2839,7 @@
             "line": 135,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L135"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L135"
           },
           "parentId": 53,
           "readonly": false,
@@ -2872,7 +2872,7 @@
             "line": 149,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L149"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L149"
           },
           "parentId": 53,
           "readonly": false,
@@ -2902,7 +2902,7 @@
             "line": 142,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L142"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L142"
           },
           "parentId": 53,
           "readonly": false,
@@ -2935,7 +2935,7 @@
             "line": 120,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L120"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L120"
           },
           "parentId": 53,
           "readonly": false,
@@ -2968,7 +2968,7 @@
             "line": 113,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/Logger.ts#L113"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/Logger.ts#L113"
           },
           "parentId": 53,
           "readonly": false,
@@ -3000,7 +3000,7 @@
         "line": 41,
         "file": "LoggerStyle.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L41"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L41"
       },
       "external": false,
       "properties": [
@@ -3021,7 +3021,7 @@
             "line": 58,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L58"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L58"
           },
           "parentId": 91,
           "readonly": false,
@@ -3050,7 +3050,7 @@
             "line": 46,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L46"
           },
           "parentId": 91,
           "readonly": false,
@@ -3082,7 +3082,7 @@
             "line": 52,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L52"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L52"
           },
           "parentId": 91,
           "readonly": false,
@@ -3109,7 +3109,7 @@
         "line": 94,
         "file": "LoggerTimestamp.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L94"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L94"
       },
       "external": false,
       "properties": [],
@@ -3132,7 +3132,7 @@
         "line": 55,
         "file": "LoggerTimestamp.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L55"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L55"
       },
       "external": false,
       "properties": [
@@ -3157,7 +3157,7 @@
             "line": 80,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L80"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L80"
           },
           "parentId": 150,
           "readonly": false,
@@ -3199,7 +3199,7 @@
             "line": 87,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L87"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L87"
           },
           "parentId": 150,
           "readonly": false,
@@ -3236,7 +3236,7 @@
             "line": 66,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L66"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L66"
           },
           "parentId": 150,
           "readonly": false,
@@ -3266,7 +3266,7 @@
             "line": 73,
             "file": "LoggerTimestamp.ts",
             "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerTimestamp.ts#L73"
+            "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerTimestamp.ts#L73"
           },
           "parentId": 150,
           "readonly": false,
@@ -3302,7 +3302,7 @@
         "line": 66,
         "file": "LoggerStyle.ts",
         "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/8d9b1ba/packages/logger/src/lib/LoggerStyle.ts#L66"
+        "url": "https://github.com/sapphiredev/plugins/blob/a2bbd33/packages/logger/src/lib/LoggerStyle.ts#L66"
       },
       "external": false,
       "typeParameters": [],
