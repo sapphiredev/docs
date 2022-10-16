@@ -1,27 +1,26 @@
 {
-  "typeDocJsonParserVersion": "5.2.0",
+  "typeDocJsonParserVersion": "6.0.0",
   "id": 0,
   "name": "@sapphire/plugin-hmr",
   "version": "2.0.0",
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-hmr\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> for super-speed HMR.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-hmr?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-hmr)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-hmr?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-hmr)\n\n</div>\n\n## Description\n\nThis plugin provides a HMR (Hot Module Replacement) feature for @sapphire/framework. This allows you to add, delete, and\nupdate commands, listeners, and other pieces without having to restart your bot. This allows for rapid iteration and prototyping without your bot slowing you down.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Easy to use\n\n## Installation\n\n`@sapphire/plugin-hmr` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-hmr @sapphire/framework\n```\n\n---\n\n## Usage\n\n### JavaScript\n\nIn your main or setup file, register the plugin:\n\n```javascript\nrequire('@sapphire/plugin-hmr/register');\n```\n\nOr if you want to make sure the plugin is only loaded in development, you can register it dynamically like so:\n\n```javascript\nrequire('@sapphire/plugin-hmr/register');\n\nconst client = new SapphireClient({\n\t/* your bot options */\n\thmr: {\n\t\tenabled: process.env.NODE_ENV === 'development'\n\t}\n});\n\nasync function main() {\n\tawait client.login();\n}\n\nvoid main();\n```\n\n### TypeScript\n\nIn your main or setup file, register the plugin:\n\n```typescript\nimport '@sapphire/plugin-hmr/register';\n```\n\nOr if you want to make sure the plugin is only loaded in development, you can register it dynamically like so:\n\n```typescript\nimport '@sapphire/plugin-hmr/register';\n\nconst client = new SapphireClient({\n\t/* your bot options */\n\thmr: {\n\t\tenabled: process.env.NODE_ENV === 'development'\n\t}\n});\n\nasync function main() {\n\tawait client.login();\n}\n\nvoid main();\n```\n\nIn order for HMR to pick up your compiled JavaScript files, you will need to recompile your code. To that end, we will configure a `dev` script in `package.json` scripts that runs `build` in parallel with `start`:\n\n```json\n\"scripts\": {\n\t\"dev\": \"run-p watch start\",\n\t\"build\": \"tsc\",\n\t\"watch\": \"tsc --watch\",\n\t\"start\": \"node dist/index.js\"\n}\n```\n\n_Note:_ This uses the `run-p` script which is part of [`npm-run-all`](https://github.com/mysticatea/npm-run-all)\n\n_Note 2:_ Please do note that because the processes are started simultaneously you should run `build` at least once before running `dev`, otherwise the `start` process will fail because there are no files to run just yet.\n\nthen run your bot using the dev script. You can replace npm with your package manager of choice.\n\n```sh\nnpm run start\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://shadownova.dev/\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/yuansheng1549\"><img src=\"https://avatars.githubusercontent.com/u/75909450?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>yuansheng1549</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=yuansheng1549\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/BenSegal855\"><img src=\"https://avatars.githubusercontent.com/u/34194692?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ben</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=BenSegal855\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.\nContributions of any kind welcome!\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-hmr@2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.2.2...@sapphire/plugin-hmr@2.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-hmr@1.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.2.0...@sapphire/plugin-hmr@1.2.2) - (2022-07-11)\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n# [1.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.1.1...@sapphire/plugin-hmr@1.2.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n-   **hmr:** add silent flag ([#233](https://github.com/sapphiredev/plugins/issues/233)) ([4692d34](https://github.com/sapphiredev/plugins/commit/4692d3442c4bf85e1c46cc2c18da0a46f2c3de4f))\n\n## [1.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.1.0...@sapphire/plugin-hmr@1.1.1) (2022-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-hmr\n\n# [1.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.0.1...@sapphire/plugin-hmr@1.1.0) (2022-01-13)\n\n### Features\n\n-   **hmr:** make it possible set the chokidar watch options ([#223](https://github.com/sapphiredev/plugins/issues/223)) ([3fe7e48](https://github.com/sapphiredev/plugins/commit/3fe7e48a3577df6d9addc613cae74ccb07e41639))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.0.0...@sapphire/plugin-hmr@1.0.1) (2022-01-08)\n\n### Bug Fixes\n\n-   **hmr:** improve logging ([#212](https://github.com/sapphiredev/plugins/issues/212)) ([94efab7](https://github.com/sapphiredev/plugins/commit/94efab789b7b72672f8cd89b00c729ef4f6c795c))\n\n# 1.0.0 (2022-01-08)\n\n### Features\n\n-   add HMR plugin ([#209](https://github.com/sapphiredev/plugins/issues/209)) ([4a18bb1](https://github.com/sapphiredev/plugins/commit/4a18bb1377a8d506fddc5bb991430503902d393b))\n",
   "classes": [],
-  "constants": [],
   "enums": [],
   "functions": [
     {
       "id": 1,
       "name": "start",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 20,
         "file": "hmr.ts",
         "path": "packages/hmr/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/010bff2/packages/hmr/src/lib/hmr.ts#L20"
+        "url": "https://github.com/sapphiredev/plugins/blob/f0bab02/packages/hmr/src/lib/hmr.ts#L20"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -38,6 +37,11 @@
             {
               "id": 3,
               "name": "__namedParameter",
+              "comment": {
+                "description": "The {@link HMROptions}.\nThis includes [all options from chokidar](https://github.com/paulmillr/chokidar#persistence),\nas well as whether the HMR should be enabled.\nThe default options are `{ enabled: true }`,\nand if not provided in the object then `enabled` is also set to true.",
+                "blockTags": [],
+                "modifierTags": []
+              },
               "type": {
                 "kind": "reference",
                 "id": 4,
@@ -59,32 +63,32 @@
     {
       "id": 4,
       "name": "HMROptions",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 5,
         "file": "hmr.ts",
         "path": "packages/hmr/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/010bff2/packages/hmr/src/lib/hmr.ts#L5"
+        "url": "https://github.com/sapphiredev/plugins/blob/f0bab02/packages/hmr/src/lib/hmr.ts#L5"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "properties": [
         {
           "id": 15,
           "name": "alwaysStat",
-          "comment": {
-            "description": "If relying upon the [`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object that\nmay get passed with `add`, `addDir`, and `change` events, set this to `true` to ensure it is\nprovided even in cases where it wasn't already available from the underlying watch events.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 130,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "If relying upon the [`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object that\nmay get passed with `add`, `addDir`, and `change` events, set this to `true` to ensure it is\nprovided even in cases where it wasn't already available from the underlying watch events.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -96,16 +100,16 @@
         {
           "id": 20,
           "name": "atomic",
-          "comment": {
-            "description": "`true` if `useFsEvents` and `usePolling` are `false`). Automatically filters out artifacts\nthat occur when using editors that use \"atomic writes\" instead of writing directly to the\nsource file. If a file is re-added within 100 ms of being deleted, Chokidar emits a `change`\nevent rather than `unlink` then `add`. If the default of 100 ms does not work well for you,\nyou can override it by setting `atomic` to a custom value, in milliseconds.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 162,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "`true` if `useFsEvents` and `usePolling` are `false`). Automatically filters out artifacts\nthat occur when using editors that use \"atomic writes\" instead of writing directly to the\nsource file. If a file is re-added within 100 ms of being deleted, Chokidar emits a `change`\nevent rather than `unlink` then `add`. If the default of 100 ms does not work well for you,\nyou can override it by setting `atomic` to a custom value, in milliseconds.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -126,16 +130,16 @@
         {
           "id": 21,
           "name": "awaitWriteFinish",
-          "comment": {
-            "description": "can be set to an object in order to adjust timing params:",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 167,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "can be set to an object in order to adjust timing params:",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -159,16 +163,16 @@
         {
           "id": 18,
           "name": "binaryInterval",
-          "comment": {
-            "description": "Interval of file system polling for binary files. ([see list of binary extensions](https://gi\nthub.com/sindresorhus/binary-extensions/blob/master/binary-extensions.json))",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 146,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "Interval of file system polling for binary files. ([see list of binary extensions](https://gi\nthub.com/sindresorhus/binary-extensions/blob/master/binary-extensions.json))",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -180,16 +184,16 @@
         {
           "id": 11,
           "name": "cwd",
-          "comment": {
-            "description": "The base directory from which watch `paths` are to be derived. Paths emitted with events will\nbe relative to this.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 101,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "The base directory from which watch `paths` are to be derived. Paths emitted with events will\nbe relative to this.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -201,16 +205,16 @@
         {
           "id": 16,
           "name": "depth",
-          "comment": {
-            "description": "If set, limits how many levels of subdirectories will be traversed.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 135,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "If set, limits how many levels of subdirectories will be traversed.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -222,16 +226,16 @@
         {
           "id": 12,
           "name": "disableGlobbing",
-          "comment": {
-            "description": "If set to true then the strings passed to .watch() and .add() are treated as literal path\n names, even if they look like globs. Default: false.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 107,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "If set to true then the strings passed to .watch() and .add() are treated as literal path\n names, even if they look like globs. Default: false.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -243,16 +247,16 @@
         {
           "id": 5,
           "name": "enabled",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 6,
             "file": "hmr.ts",
             "path": "packages/hmr/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/010bff2/packages/hmr/src/lib/hmr.ts#L6"
+            "url": "https://github.com/sapphiredev/plugins/blob/f0bab02/packages/hmr/src/lib/hmr.ts#L6"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -264,16 +268,16 @@
         {
           "id": 10,
           "name": "followSymlinks",
-          "comment": {
-            "description": "When `false`, only the symlinks themselves will be watched for changes instead of following\nthe link references and bubbling events through the link's path.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 95,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "When `false`, only the symlinks themselves will be watched for changes instead of following\nthe link references and bubbling events through the link's path.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -285,16 +289,16 @@
         {
           "id": 9,
           "name": "ignoreInitial",
-          "comment": {
-            "description": "If set to `false` then `add`/`addDir` events are also emitted for matching paths while\ninstantiating the watching as chokidar discovers these file paths (before the `ready` event).",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 89,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "If set to `false` then `add`/`addDir` events are also emitted for matching paths while\ninstantiating the watching as chokidar discovers these file paths (before the `ready` event).",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -306,16 +310,16 @@
         {
           "id": 19,
           "name": "ignorePermissionErrors",
-          "comment": {
-            "description": "Indicates whether to watch files that don't have read permissions if possible. If watching\n fails due to `EPERM` or `EACCES` with this set to `true`, the errors will be suppressed\n silently.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 153,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "Indicates whether to watch files that don't have read permissions if possible. If watching\n fails due to `EPERM` or `EACCES` with this set to `true`, the errors will be suppressed\n silently.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -327,16 +331,16 @@
         {
           "id": 8,
           "name": "ignored",
-          "comment": {
-            "description": "([anymatch](https://github.com/micromatch/anymatch)-compatible definition) Defines files/paths to\nbe ignored. The whole relative or absolute path is tested, not just filename. If a function\nwith two arguments is provided, it gets called twice per path - once with a single argument\n(the path), second time with two arguments (the path and the\n[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object of that path).",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 83,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "([anymatch](https://github.com/micromatch/anymatch)-compatible definition) Defines files/paths to\nbe ignored. The whole relative or absolute path is tested, not just filename. If a function\nwith two arguments is provided, it gets called twice per path - once with a single argument\n(the path), second time with two arguments (the path and the\n[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object of that path).",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -351,16 +355,16 @@
         {
           "id": 17,
           "name": "interval",
-          "comment": {
-            "description": "Interval of file system polling.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 140,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "Interval of file system polling.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -372,16 +376,16 @@
         {
           "id": 7,
           "name": "persistent",
-          "comment": {
-            "description": "Indicates whether the process should continue to run as long as files are being watched. If\nset to `false` when using `fsevents` to watch, no more events will be emitted after `ready`,\neven if the process continues to run.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 74,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "Indicates whether the process should continue to run as long as files are being watched. If\nset to `false` when using `fsevents` to watch, no more events will be emitted after `ready`,\neven if the process continues to run.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -393,16 +397,16 @@
         {
           "id": 6,
           "name": "silent",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 7,
             "file": "hmr.ts",
             "path": "packages/hmr/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/010bff2/packages/hmr/src/lib/hmr.ts#L7"
+            "url": "https://github.com/sapphiredev/plugins/blob/f0bab02/packages/hmr/src/lib/hmr.ts#L7"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -414,16 +418,16 @@
         {
           "id": 14,
           "name": "useFsEvents",
-          "comment": {
-            "description": "Whether to use the `fsevents` watching interface if available. When set to `true` explicitly\nand `fsevents` is available this supercedes the `usePolling` setting. When set to `false` on\nOS X, `usePolling: true` becomes the default.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 123,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "Whether to use the `fsevents` watching interface if available. When set to `true` explicitly\nand `fsevents` is available this supercedes the `usePolling` setting. When set to `false` on\nOS X, `usePolling: true` becomes the default.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -435,16 +439,16 @@
         {
           "id": 13,
           "name": "usePolling",
-          "comment": {
-            "description": "Whether to use fs.watchFile (backed by polling), or fs.watch. If polling leads to high CPU\nutilization, consider setting this to `false`. It is typically necessary to **set this to\n`true` to successfully watch files over a network**, and it may be necessary to successfully\nwatch files in other non-standard situations. Setting to `true` explicitly on OS X overrides\nthe `useFsEvents` default.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 116,
             "file": "index.d.ts",
             "path": "node_modules/chokidar/types",
             "url": null
+          },
+          "comment": {
+            "description": "Whether to use fs.watchFile (backed by polling), or fs.watch. If polling leads to high CPU\nutilization, consider setting this to `false`. It is typically necessary to **set this to\n`true` to successfully watch files over a network**, and it may be necessary to successfully\nwatch files in other non-standard situations. Setting to `true` explicitly on OS X overrides\nthe `useFsEvents` default.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 4,
           "readonly": false,
@@ -458,5 +462,6 @@
     }
   ],
   "namespaces": [],
-  "typeAliases": []
+  "typeAliases": [],
+  "variables": []
 }
