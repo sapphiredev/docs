@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "5.2.0",
+  "typeDocJsonParserVersion": "6.0.0",
   "id": 0,
   "name": "@sapphire/type",
   "version": "2.2.4",
@@ -9,40 +9,46 @@
     {
       "id": 7,
       "name": "Type",
+      "source": {
+        "line": 19,
+        "file": "index.ts",
+        "path": ".",
+        "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L19"
+      },
       "comment": {
         "description": "The class for deep checking Types",
         "blockTags": [],
         "modifierTags": []
       },
-      "source": {
-        "line": 19,
-        "file": "index.ts",
-        "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L19"
-      },
       "external": false,
       "abstract": false,
       "extendsType": null,
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 14,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 49,
           "file": "index.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L49"
+          "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L49"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
         },
         "parentId": 7,
         "parameters": [
           {
             "id": 16,
             "name": "value",
+            "comment": {
+              "description": "The value to generate a deep Type of",
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "intrinsic",
               "type": "unknown"
@@ -51,6 +57,11 @@
           {
             "id": 17,
             "name": "parent",
+            "comment": {
+              "description": "The parent value used in recursion",
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "union",
               "types": [
@@ -74,16 +85,16 @@
         {
           "id": 21,
           "name": "childKeys",
-          "comment": {
-            "description": "The child keys of this Type",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 38,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L38"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L38"
+          },
+          "comment": {
+            "description": "The child keys of this Type",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 7,
           "accessibility": "private",
@@ -114,16 +125,16 @@
         {
           "id": 22,
           "name": "childValues",
-          "comment": {
-            "description": "The child values of this Type",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 43,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L43"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L43"
+          },
+          "comment": {
+            "description": "The child values of this Type",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 7,
           "accessibility": "private",
@@ -154,16 +165,16 @@
         {
           "id": 19,
           "name": "is",
-          "comment": {
-            "description": "The shallow type of this",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 28,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L28"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L28"
+          },
+          "comment": {
+            "description": "The shallow type of this",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 7,
           "accessibility": "public",
@@ -179,16 +190,16 @@
         {
           "id": 20,
           "name": "parent",
-          "comment": {
-            "description": "The parent of this Type",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 33,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L33"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L33"
+          },
+          "comment": {
+            "description": "The parent of this Type",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 7,
           "accessibility": "private",
@@ -216,16 +227,16 @@
         {
           "id": 18,
           "name": "value",
-          "comment": {
-            "description": "The value to generate a deep Type of",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 23,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L23"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L23"
+          },
+          "comment": {
+            "description": "The value to generate a deep Type of",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 7,
           "accessibility": "public",
@@ -241,16 +252,16 @@
         {
           "id": 24,
           "name": "childTypes",
-          "comment": {
-            "description": "The type string for the children of this Type",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 58,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L58"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L58"
+          },
+          "comment": {
+            "description": "The type string for the children of this Type",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 7,
           "accessibility": "public",
@@ -268,16 +279,11 @@
         {
           "id": 34,
           "name": "addEntry",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 101,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L101"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L101"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -297,6 +303,11 @@
                 {
                   "id": 36,
                   "name": "entry",
+                  "comment": {
+                    "description": "The entry",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "tuple",
                     "types": [
@@ -322,16 +333,11 @@
         {
           "id": 31,
           "name": "addValue",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 92,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L92"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L92"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -351,6 +357,11 @@
                 {
                   "id": 33,
                   "name": "value",
+                  "comment": {
+                    "description": "The sub value",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -367,16 +378,11 @@
         {
           "id": 37,
           "name": "check",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 110,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L110"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L110"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -403,16 +409,11 @@
         {
           "id": 29,
           "name": "isCircular",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 83,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L83"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L83"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -439,16 +440,11 @@
         {
           "id": 27,
           "name": "parents",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 74,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L74"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L74"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -486,16 +482,11 @@
         {
           "id": 25,
           "name": "toString",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 66,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L66"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L66"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -522,16 +513,11 @@
         {
           "id": 11,
           "name": "list",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 157,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L157"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L157"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -551,6 +537,11 @@
                 {
                   "id": 13,
                   "name": "values",
+                  "comment": {
+                    "description": "The values to list",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -582,16 +573,11 @@
         {
           "id": 8,
           "name": "resolve",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 139,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L139"
+            "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L139"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -611,6 +597,11 @@
                 {
                   "id": 10,
                   "name": "value",
+                  "comment": {
+                    "description": "The value to get the type name of",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "any"
@@ -627,22 +618,21 @@
       ]
     }
   ],
-  "constants": [],
   "enums": [],
   "functions": [
     {
       "id": 1,
       "name": "getPromiseDetails",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 14,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L14"
+        "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L14"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -659,6 +649,11 @@
             {
               "id": 3,
               "name": "thing",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
               "type": {
                 "kind": "intrinsic",
                 "type": "any"
@@ -678,16 +673,16 @@
     {
       "id": 4,
       "name": "getProxyDetails",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 14,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/41f6c14/src/index.ts#L14"
+        "url": "https://github.com/sapphiredev/type/blob/7e1e527/src/index.ts#L14"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -704,6 +699,11 @@
             {
               "id": 6,
               "name": "thing",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
               "type": {
                 "kind": "intrinsic",
                 "type": "any"
@@ -723,5 +723,6 @@
   ],
   "interfaces": [],
   "namespaces": [],
-  "typeAliases": []
+  "typeAliases": [],
+  "variables": []
 }
