@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "5.2.0",
+  "typeDocJsonParserVersion": "6.0.0",
   "id": 0,
   "name": "@sapphire/duration",
   "version": "1.0.0",
@@ -9,40 +9,46 @@
     {
       "id": 19,
       "name": "Duration",
+      "source": {
+        "line": 53,
+        "file": "Duration.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L53"
+      },
       "comment": {
         "description": "Converts duration strings into ms and future dates",
         "blockTags": [],
         "modifierTags": []
       },
-      "source": {
-        "line": 53,
-        "file": "Duration.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L53"
-      },
       "external": false,
       "abstract": false,
       "extendsType": null,
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 26,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 63,
           "file": "Duration.ts",
           "path": "lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L63"
+          "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L63"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
         },
         "parentId": 19,
         "parameters": [
           {
             "id": 28,
             "name": "pattern",
+            "comment": {
+              "description": "The string to parse",
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "intrinsic",
               "type": "string"
@@ -54,16 +60,16 @@
         {
           "id": 29,
           "name": "offset",
-          "comment": {
-            "description": "The offset",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 57,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L57"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L57"
+          },
+          "comment": {
+            "description": "The offset",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 19,
           "accessibility": "public",
@@ -79,16 +85,16 @@
         {
           "id": 22,
           "name": "kAanRegex",
-          "comment": {
-            "description": "The RegExp used for replacing a/an with 1",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 95,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L95"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L95"
+          },
+          "comment": {
+            "description": "The RegExp used for replacing a/an with 1",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 19,
           "accessibility": "private",
@@ -107,16 +113,16 @@
         {
           "id": 21,
           "name": "kCommaRegex",
-          "comment": {
-            "description": "The RegExp used for removing commas",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 90,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L90"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L90"
+          },
+          "comment": {
+            "description": "The RegExp used for removing commas",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 19,
           "accessibility": "private",
@@ -135,16 +141,16 @@
         {
           "id": 20,
           "name": "kPatternRegex",
-          "comment": {
-            "description": "The RegExp used for the pattern parsing",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 85,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L85"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L85"
+          },
+          "comment": {
+            "description": "The RegExp used for the pattern parsing",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 19,
           "accessibility": "private",
@@ -163,16 +169,16 @@
         {
           "id": 31,
           "name": "fromNow",
-          "comment": {
-            "description": "Get the date from now",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 70,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L70"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L70"
+          },
+          "comment": {
+            "description": "Get the date from now",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 19,
           "accessibility": "public",
@@ -193,16 +199,11 @@
         {
           "id": 32,
           "name": "dateFrom",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 78,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L78"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L78"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -222,6 +223,11 @@
                 {
                   "id": 34,
                   "name": "date",
+                  "comment": {
+                    "description": "The Date instance to get the date from",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -244,16 +250,11 @@
         {
           "id": 23,
           "name": "parse",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 101,
             "file": "Duration.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/Duration.ts#L101"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/Duration.ts#L101"
           },
           "parentId": 19,
           "accessibility": "private",
@@ -273,6 +274,11 @@
                 {
                   "id": 25,
                   "name": "pattern",
+                  "comment": {
+                    "description": "The pattern to parse",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -291,6 +297,12 @@
     {
       "id": 35,
       "name": "DurationFormatter",
+      "source": {
+        "line": 22,
+        "file": "DurationFormatter.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L22"
+      },
       "comment": {
         "description": "Display the duration",
         "blockTags": [
@@ -305,35 +317,35 @@
         ],
         "modifierTags": []
       },
-      "source": {
-        "line": 22,
-        "file": "DurationFormatter.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L22"
-      },
       "external": false,
       "abstract": false,
       "extendsType": null,
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 36,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 23,
           "file": "DurationFormatter.ts",
           "path": "lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L23"
+          "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L23"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
         },
         "parentId": 35,
         "parameters": [
           {
             "id": 38,
             "name": "units",
+            "comment": {
+              "description": null,
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "reference",
               "id": 50,
@@ -348,16 +360,16 @@
         {
           "id": 39,
           "name": "units",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 23,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L23"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 35,
           "accessibility": "public",
@@ -378,16 +390,11 @@
         {
           "id": 40,
           "name": "format",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 25,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L25"
           },
           "parentId": 35,
           "accessibility": "public",
@@ -407,6 +414,11 @@
                 {
                   "id": 42,
                   "name": "duration",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -415,6 +427,11 @@
                 {
                   "id": 43,
                   "name": "precision",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -423,6 +440,11 @@
                 {
                   "id": 44,
                   "name": "__namedParameters",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 45,
@@ -442,86 +464,36 @@
       ]
     }
   ],
-  "constants": [
-    {
-      "id": 18,
-      "name": "DEFAULT_SEPARATORS",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "source": {
-        "line": 57,
-        "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L57"
-      },
-      "external": false,
-      "type": {
-        "kind": "reference",
-        "id": 45,
-        "name": "DurationFormatSeparators",
-        "packageName": null,
-        "typeArguments": []
-      },
-      "value": "..."
-    },
-    {
-      "id": 17,
-      "name": "DEFAULT_UNITS",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "source": {
-        "line": 26,
-        "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L26"
-      },
-      "external": false,
-      "type": {
-        "kind": "reference",
-        "id": 50,
-        "name": "DurationFormatAssetsTime",
-        "packageName": null,
-        "typeArguments": []
-      },
-      "value": "..."
-    }
-  ],
   "enums": [
     {
       "id": 1,
       "name": "Time",
+      "source": {
+        "line": 3,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L3"
+      },
       "comment": {
         "description": null,
         "blockTags": [],
         "modifierTags": []
       },
-      "source": {
-        "line": 3,
-        "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L3"
-      },
       "external": false,
-      "properties": [
+      "members": [
         {
           "id": 6,
           "name": "Day",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 8,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L8"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "86400000"
@@ -529,16 +501,16 @@
         {
           "id": 5,
           "name": "Hour",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 7,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L7"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "3600000"
@@ -546,16 +518,16 @@
         {
           "id": 2,
           "name": "Millisecond",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 4,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L4"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L4"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "1"
@@ -563,16 +535,16 @@
         {
           "id": 4,
           "name": "Minute",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 6,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L6"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "60000"
@@ -580,16 +552,16 @@
         {
           "id": 7,
           "name": "Month",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 9,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L9"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "2628000000"
@@ -597,16 +569,16 @@
         {
           "id": 3,
           "name": "Second",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 5,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L5"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "1000"
@@ -614,16 +586,16 @@
         {
           "id": 8,
           "name": "Year",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 10,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L10"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L10"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "value": "31536000000"
@@ -633,32 +605,32 @@
     {
       "id": 9,
       "name": "TimeTypes",
+      "source": {
+        "line": 16,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L16"
+      },
       "comment": {
         "description": "The supported time types",
         "blockTags": [],
         "modifierTags": []
       },
-      "source": {
-        "line": 16,
-        "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L16"
-      },
       "external": false,
-      "properties": [
+      "members": [
         {
           "id": 13,
           "name": "Day",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 20,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L20"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L20"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "day"
@@ -666,16 +638,16 @@
         {
           "id": 12,
           "name": "Hour",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 19,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L19"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L19"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "hour"
@@ -683,16 +655,16 @@
         {
           "id": 11,
           "name": "Minute",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 18,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L18"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L18"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "minute"
@@ -700,16 +672,16 @@
         {
           "id": 15,
           "name": "Month",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 22,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L22"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L22"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "month"
@@ -717,16 +689,16 @@
         {
           "id": 10,
           "name": "Second",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 17,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L17"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "second"
@@ -734,16 +706,16 @@
         {
           "id": 14,
           "name": "Week",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 21,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L21"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L21"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "week"
@@ -751,16 +723,16 @@
         {
           "id": 16,
           "name": "Year",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 23,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/constants.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L23"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 9,
           "value": "year"
@@ -773,32 +745,32 @@
     {
       "id": 50,
       "name": "DurationFormatAssetsTime",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 72,
         "file": "DurationFormatter.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L72"
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L72"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "properties": [
         {
           "id": 54,
           "name": "day",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 76,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L76"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L76"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -813,16 +785,16 @@
         {
           "id": 53,
           "name": "hour",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 75,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L75"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L75"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -837,16 +809,16 @@
         {
           "id": 52,
           "name": "minute",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 74,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L74"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L74"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -861,16 +833,16 @@
         {
           "id": 56,
           "name": "month",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 78,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L78"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L78"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -885,16 +857,16 @@
         {
           "id": 51,
           "name": "second",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 73,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L73"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L73"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -909,16 +881,16 @@
         {
           "id": 55,
           "name": "week",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 77,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L77"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L77"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -933,16 +905,16 @@
         {
           "id": 57,
           "name": "year",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 79,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L79"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L79"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 50,
           "readonly": false,
@@ -960,32 +932,32 @@
     {
       "id": 48,
       "name": "DurationFormatAssetsUnit",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 68,
         "file": "DurationFormatter.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L68"
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L68"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "properties": [
         {
           "id": 49,
           "name": "DEFAULT",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 69,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L69"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L69"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 48,
           "readonly": false,
@@ -1000,32 +972,32 @@
     {
       "id": 45,
       "name": "DurationFormatSeparators",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 63,
         "file": "DurationFormatter.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L63"
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L63"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "properties": [
         {
           "id": 46,
           "name": "left",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 64,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L64"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L64"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 45,
           "readonly": false,
@@ -1037,16 +1009,16 @@
         {
           "id": 47,
           "name": "right",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 65,
             "file": "DurationFormatter.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/duration/src/lib/DurationFormatter.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/DurationFormatter.ts#L65"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 45,
           "readonly": false,
@@ -1060,5 +1032,55 @@
     }
   ],
   "namespaces": [],
-  "typeAliases": []
+  "typeAliases": [],
+  "variables": [
+    {
+      "id": 18,
+      "name": "DEFAULT_SEPARATORS",
+      "source": {
+        "line": 57,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L57"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 45,
+        "name": "DurationFormatSeparators",
+        "packageName": null,
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 17,
+      "name": "DEFAULT_UNITS",
+      "source": {
+        "line": 26,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/duration/src/lib/constants.ts#L26"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 50,
+        "name": "DurationFormatAssetsTime",
+        "packageName": null,
+        "typeArguments": []
+      },
+      "value": "..."
+    }
+  ]
 }
