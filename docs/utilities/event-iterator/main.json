@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "5.2.0",
+  "typeDocJsonParserVersion": "6.0.0",
   "id": 0,
   "name": "@sapphire/event-iterator",
   "version": "1.6.1",
@@ -9,16 +9,16 @@
     {
       "id": 11,
       "name": "EventIterator",
-      "comment": {
-        "description": "An EventIterator, used for asynchronously iterating over received values.",
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 31,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L31"
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L31"
+      },
+      "comment": {
+        "description": "An EventIterator, used for asynchronously iterating over received values.",
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -40,25 +40,44 @@
           ]
         }
       ],
+      "typeParameters": [
+        {
+          "id": 47,
+          "name": "V",
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "unknown"
+            }
+          },
+          "default": null
+        }
+      ],
       "construct": {
         "id": 12,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 88,
           "file": "index.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L88"
+          "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L88"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
         },
         "parentId": 11,
         "parameters": [
           {
             "id": 15,
             "name": "emitter",
+            "comment": {
+              "description": "The event emitter to listen to.",
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "reference",
               "id": null,
@@ -70,6 +89,11 @@
           {
             "id": 16,
             "name": "event",
+            "comment": {
+              "description": "The event we're listening for to receives values from.",
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "intrinsic",
               "type": "string"
@@ -78,6 +102,11 @@
           {
             "id": 17,
             "name": "options",
+            "comment": {
+              "description": "Any extra options.",
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "reference",
               "id": 6,
@@ -100,16 +129,16 @@
         {
           "id": 21,
           "name": "#ended",
-          "comment": {
-            "description": "Whether or not the EventIterator has ended.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 50,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L50"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L50"
+          },
+          "comment": {
+            "description": "Whether or not the EventIterator has ended.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -125,16 +154,16 @@
         {
           "id": 22,
           "name": "#idle",
-          "comment": {
-            "description": "The amount of idle time in ms before moving on.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 55,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L55"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L55"
+          },
+          "comment": {
+            "description": "The amount of idle time in ms before moving on.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -150,16 +179,16 @@
         {
           "id": 26,
           "name": "#idleTimer",
-          "comment": {
-            "description": "The timer to track when this will idle out.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 75,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L75"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L75"
+          },
+          "comment": {
+            "description": "The timer to track when this will idle out.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -187,16 +216,16 @@
         {
           "id": 25,
           "name": "#limit",
-          "comment": {
-            "description": "The limit before ending the EventIterator.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 70,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L70"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L70"
+          },
+          "comment": {
+            "description": "The limit before ending the EventIterator.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -212,16 +241,16 @@
         {
           "id": 24,
           "name": "#passed",
-          "comment": {
-            "description": "The amount of events that have passed the filter.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 65,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L65"
+          },
+          "comment": {
+            "description": "The amount of events that have passed the filter.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -237,16 +266,16 @@
         {
           "id": 27,
           "name": "#push",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 80,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L80"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L80"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -267,7 +296,7 @@
                   "fileName": "index.ts",
                   "line": 80,
                   "character": 8,
-                  "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L80"
+                  "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L80"
                 }
               ],
               "signatures": [
@@ -332,16 +361,16 @@
         {
           "id": 23,
           "name": "#queue",
-          "comment": {
-            "description": "The queue of received values.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 60,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L60"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L60"
+          },
+          "comment": {
+            "description": "The queue of received values.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "private",
@@ -363,16 +392,16 @@
         {
           "id": 18,
           "name": "emitter",
-          "comment": {
-            "description": "The emitter to listen to.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 35,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L35"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L35"
+          },
+          "comment": {
+            "description": "The emitter to listen to.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "public",
@@ -391,16 +420,16 @@
         {
           "id": 19,
           "name": "event",
-          "comment": {
-            "description": "The event the event iterator is listening for to receive values from.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 40,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L40"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L40"
+          },
+          "comment": {
+            "description": "The event the event iterator is listening for to receive values from.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "public",
@@ -416,16 +445,16 @@
         {
           "id": 20,
           "name": "filter",
-          "comment": {
-            "description": "The filter used to filter out values.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 45,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L45"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L45"
+          },
+          "comment": {
+            "description": "The filter used to filter out values.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "public",
@@ -452,16 +481,16 @@
         {
           "id": 33,
           "name": "ended",
-          "comment": {
-            "description": "Whether or not the EventIterator has ended.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 109,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L109"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L109"
+          },
+          "comment": {
+            "description": "Whether or not the EventIterator has ended.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 11,
           "accessibility": "public",
@@ -479,16 +508,11 @@
         {
           "id": 45,
           "name": "[asyncIterator]",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 187,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L187"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L187"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -526,16 +550,11 @@
         {
           "id": 34,
           "name": "end",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 116,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L116"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L116"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -562,16 +581,11 @@
         {
           "id": 36,
           "name": "next",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 130,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L130"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L130"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -621,16 +635,11 @@
         {
           "id": 42,
           "name": "push",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 194,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L194"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L194"
           },
           "parentId": 11,
           "accessibility": "protected",
@@ -650,6 +659,11 @@
                 {
                   "id": 44,
                   "name": "value",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 14,
@@ -669,16 +683,11 @@
         {
           "id": 38,
           "name": "return",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 171,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L171"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L171"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -728,16 +737,11 @@
         {
           "id": 40,
           "name": "throw",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 179,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L179"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L179"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -787,39 +791,38 @@
       ]
     }
   ],
-  "constants": [],
   "enums": [],
   "functions": [],
   "interfaces": [
     {
       "id": 6,
       "name": "EventIteratorOptions",
-      "comment": {
-        "description": "Options to be passed to an EventIterator.",
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 11,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L11"
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L11"
+      },
+      "comment": {
+        "description": "Options to be passed to an EventIterator.",
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "properties": [
         {
           "id": 7,
           "name": "filter",
-          "comment": {
-            "description": "The filter.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 15,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L15"
+          },
+          "comment": {
+            "description": "The filter.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 6,
           "readonly": false,
@@ -842,16 +845,16 @@
         {
           "id": 8,
           "name": "idle",
-          "comment": {
-            "description": "The timeout in ms before ending the EventIterator.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 20,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L20"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L20"
+          },
+          "comment": {
+            "description": "The timeout in ms before ending the EventIterator.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 6,
           "readonly": false,
@@ -863,16 +866,16 @@
         {
           "id": 9,
           "name": "limit",
-          "comment": {
-            "description": "The limit of events that pass the filter to iterate.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 25,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L25"
+          },
+          "comment": {
+            "description": "The limit of events that pass the filter to iterate.",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 6,
           "readonly": false,
@@ -890,16 +893,16 @@
     {
       "id": 1,
       "name": "EventIteratorFilter",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 6,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L6"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "typeParameters": [
@@ -923,7 +926,7 @@
               "fileName": "index.ts",
               "line": 6,
               "character": 37,
-              "url": "https://github.com/sapphiredev/utilities/blob/1e4531e/packages/event-iterator/src/index.ts#L6"
+              "url": "https://github.com/sapphiredev/utilities/blob/123951e/packages/event-iterator/src/index.ts#L6"
             }
           ],
           "signatures": [
@@ -964,5 +967,6 @@
         }
       }
     }
-  ]
+  ],
+  "variables": []
 }
