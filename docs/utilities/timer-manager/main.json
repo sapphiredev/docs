@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "5.2.0",
+  "typeDocJsonParserVersion": "6.0.0",
   "id": 0,
   "name": "@sapphire/timer-manager",
   "version": "1.0.0",
@@ -9,16 +9,16 @@
     {
       "id": 1,
       "name": "TimerManager",
-      "comment": {
-        "description": "Manages timers so that this application can be cleanly exited",
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 4,
         "file": "TimerManager.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L4"
+      },
+      "comment": {
+        "description": "Manages timers so that this application can be cleanly exited",
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -27,15 +27,16 @@
         "type": "any"
       },
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 30,
         "name": "constructor",
+        "source": null,
         "comment": {
           "description": null,
           "blockTags": [],
           "modifierTags": []
         },
-        "source": null,
         "parentId": 1,
         "parameters": []
       },
@@ -43,16 +44,16 @@
         {
           "id": 3,
           "name": "storedIntervals",
-          "comment": {
-            "description": "A set of intervals to clear on destroy",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 13,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L13"
+          },
+          "comment": {
+            "description": "A set of intervals to clear on destroy",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "accessibility": "private",
@@ -79,16 +80,16 @@
         {
           "id": 2,
           "name": "storedTimeouts",
-          "comment": {
-            "description": "A set of timeouts to clear on destroy",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 8,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L8"
+          },
+          "comment": {
+            "description": "A set of timeouts to clear on destroy",
+            "blockTags": [],
+            "modifierTags": []
           },
           "parentId": 1,
           "accessibility": "private",
@@ -117,16 +118,11 @@
         {
           "id": 25,
           "name": "clearInterval",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 55,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L55"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L55"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -146,6 +142,11 @@
                 {
                   "id": 27,
                   "name": "interval",
+                  "comment": {
+                    "description": "The interval to clear",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -165,16 +166,11 @@
         {
           "id": 13,
           "name": "clearTimeout",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 34,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L34"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L34"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -194,6 +190,11 @@
                 {
                   "id": 15,
                   "name": "timeout",
+                  "comment": {
+                    "description": "The timeout to clear",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -213,16 +214,11 @@
         {
           "id": 28,
           "name": "destroy",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 63,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L63"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L63"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -249,16 +245,11 @@
         {
           "id": 16,
           "name": "setInterval",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 45,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L45"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L45"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -288,6 +279,11 @@
                 {
                   "id": 19,
                   "name": "fn",
+                  "comment": {
+                    "description": "callback function",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -301,7 +297,7 @@
                           "fileName": "lib/TimerManager.ts",
                           "line": 45,
                           "character": 44,
-                          "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L45"
+                          "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L45"
                         }
                       ],
                       "signatures": [
@@ -342,6 +338,11 @@
                 {
                   "id": 23,
                   "name": "delay",
+                  "comment": {
+                    "description": "amount of time before running the callback",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -350,6 +351,11 @@
                 {
                   "id": 24,
                   "name": "args",
+                  "comment": {
+                    "description": "additional arguments to pass back to the callback",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "array",
                     "type": {
@@ -375,16 +381,11 @@
         {
           "id": 4,
           "name": "setTimeout",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 21,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L21"
+            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L21"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -414,6 +415,11 @@
                 {
                   "id": 7,
                   "name": "fn",
+                  "comment": {
+                    "description": "callback function",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -427,7 +433,7 @@
                           "fileName": "lib/TimerManager.ts",
                           "line": 21,
                           "character": 43,
-                          "url": "https://github.com/sapphiredev/utilities/blob/a237936/packages/timer-manager/src/lib/TimerManager.ts#L21"
+                          "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/timer-manager/src/lib/TimerManager.ts#L21"
                         }
                       ],
                       "signatures": [
@@ -468,6 +474,11 @@
                 {
                   "id": 11,
                   "name": "delay",
+                  "comment": {
+                    "description": "amount of time before running the callback",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -476,6 +487,11 @@
                 {
                   "id": 12,
                   "name": "args",
+                  "comment": {
+                    "description": "additional arguments to pass back to the callback",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "array",
                     "type": {
@@ -501,10 +517,10 @@
       ]
     }
   ],
-  "constants": [],
   "enums": [],
   "functions": [],
   "interfaces": [],
   "namespaces": [],
-  "typeAliases": []
+  "typeAliases": [],
+  "variables": []
 }
