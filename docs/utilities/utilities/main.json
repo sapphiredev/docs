@@ -13,7 +13,7 @@
         "line": 15,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L15"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L15"
       },
       "comment": {
         "description": null,
@@ -38,7 +38,7 @@
           "line": 17,
           "file": "sleep.ts",
           "path": "packages/utilities/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L17"
+          "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L17"
         },
         "comment": {
           "description": null,
@@ -90,7 +90,7 @@
                         "fileName": "packages/utilities/src/lib/sleep.ts",
                         "line": 20,
                         "character": 3,
-                        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L20"
+                        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L20"
                       }
                     ],
                     "type": {
@@ -112,7 +112,7 @@
                     "fileName": "packages/utilities/src/lib/sleep.ts",
                     "line": 19,
                     "character": 12,
-                    "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L19"
+                    "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L19"
                   }
                 ]
               }
@@ -153,7 +153,7 @@
             "line": 16,
             "file": "sleep.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L16"
           },
           "comment": {
             "description": null,
@@ -447,7 +447,7 @@
         "line": 6,
         "file": "arrayStrictEquals.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/arrayStrictEquals.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/arrayStrictEquals.ts#L6"
       },
       "comment": {
         "description": null,
@@ -530,7 +530,7 @@
         "line": 10,
         "file": "cast.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/cast.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/cast.ts#L10"
       },
       "comment": {
         "description": null,
@@ -592,7 +592,7 @@
         "line": 6,
         "file": "chunk.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/chunk.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/chunk.ts#L6"
       },
       "comment": {
         "description": null,
@@ -678,7 +678,7 @@
         "line": 8,
         "file": "classExtends.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/classExtends.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/classExtends.ts#L8"
       },
       "comment": {
         "description": null,
@@ -701,7 +701,7 @@
               "name": "T",
               "type": {
                 "kind": "reference",
-                "id": 293,
+                "id": 298,
                 "name": "Ctor",
                 "packageName": null,
                 "typeArguments": [
@@ -736,7 +736,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 293,
+                "id": 298,
                 "name": "Ctor",
                 "packageName": null,
                 "typeArguments": [
@@ -794,10 +794,10 @@
       "id": 114,
       "name": "codeBlock",
       "source": {
-        "line": 8,
+        "line": 14,
         "file": "codeBlock.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/codeBlock.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/codeBlock.ts#L14"
       },
       "comment": {
         "description": null,
@@ -810,64 +810,165 @@
           "id": 115,
           "name": "codeBlock",
           "comment": {
-            "description": "Wraps text in a markdown codeblock with optionally a language indicator for syntax highlighting",
-            "blockTags": [],
+            "description": "Wraps the content inside a codeblock with no language",
+            "blockTags": [
+              {
+                "name": "remark",
+                "text": "If the provided content includes 3 backticks (```) then those backticks will be escaped\nby adding a [Zero Width Space](https://en.wikipedia.org/wiki/Zero-width_space) between the first and second backtick\n\n@remark If the provided content ends with a backtick then a [Zero Width Space](https://en.wikipedia.org/wiki/Zero-width_space) will be added\nto the end of the content\n\n@param content - The content to wrap"
+              }
+            ],
             "modifierTags": []
           },
           "typeParameters": [
             {
               "id": 116,
-              "name": "T",
-              "type": null,
+              "name": "C",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              },
               "default": null
             }
           ],
           "parameters": [
             {
               "id": 117,
-              "name": "language",
+              "name": "content",
               "comment": {
-                "description": "The codeblock language",
-                "blockTags": [],
-                "modifierTags": []
-              },
-              "type": {
-                "kind": "intrinsic",
-                "type": "string"
-              }
-            },
-            {
-              "id": 118,
-              "name": "expression",
-              "comment": {
-                "description": "The expression to be wrapped in the codeblock",
+                "description": null,
                 "blockTags": [],
                 "modifierTags": []
               },
               "type": {
                 "kind": "reference",
                 "id": 116,
-                "name": "T",
+                "name": "C",
                 "packageName": null,
                 "typeArguments": []
               }
             }
           ],
           "returnType": {
-            "kind": "intrinsic",
-            "type": "string"
+            "kind": "templateLiteral",
+            "head": "```\n",
+            "tail": [
+              {
+                "type": {
+                  "kind": "reference",
+                  "id": 116,
+                  "name": "C",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "text": "\n```"
+              }
+            ]
+          }
+        },
+        {
+          "id": 118,
+          "name": "codeBlock",
+          "comment": {
+            "description": "Wraps the content inside a codeblock with the specified language",
+            "blockTags": [
+              {
+                "name": "remark",
+                "text": "If the provided content includes 3 backticks (```) then those backticks will be escaped\nby adding a [Zero Width Space](https://en.wikipedia.org/wiki/Zero-width_space) between the first and second backtick\n\n@remark If the provided content ends with a backtick then a [Zero Width Space](https://en.wikipedia.org/wiki/Zero-width_space) will be added\nto the end of the content\n\n@param language The codeblock language\n@param content The expression to be wrapped in the codeblock"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 119,
+              "name": "L",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              "default": null
+            },
+            {
+              "id": 120,
+              "name": "C",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 121,
+              "name": "language",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "type": {
+                "kind": "reference",
+                "id": 119,
+                "name": "L",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 122,
+              "name": "content",
+              "comment": {
+                "description": null,
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "type": {
+                "kind": "reference",
+                "id": 120,
+                "name": "C",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "templateLiteral",
+            "head": "```",
+            "tail": [
+              {
+                "type": {
+                  "kind": "reference",
+                  "id": 119,
+                  "name": "L",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "text": "\n"
+              },
+              {
+                "type": {
+                  "kind": "reference",
+                  "id": 120,
+                  "name": "C",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "text": "\n```"
+              }
+            ]
           }
         }
       ]
     },
     {
-      "id": 119,
+      "id": 123,
       "name": "cutText",
       "source": {
         "line": 10,
         "file": "cutText.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/cutText.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/cutText.ts#L10"
       },
       "comment": {
         "description": null,
@@ -877,7 +978,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 120,
+          "id": 124,
           "name": "cutText",
           "comment": {
             "description": "Split a text by its latest space character in a range from the character 0 to the selected one.",
@@ -896,7 +997,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 121,
+              "id": 125,
               "name": "str",
               "comment": {
                 "description": "The text to split.",
@@ -909,7 +1010,7 @@
               }
             },
             {
-              "id": 122,
+              "id": 126,
               "name": "length",
               "comment": {
                 "description": "The length of the desired string.",
@@ -936,7 +1037,7 @@
         "line": 68,
         "file": "debounce.ts",
         "path": "packages/utilities/src/lib/debounce",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L68"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L68"
       },
       "comment": {
         "description": null,
@@ -1000,7 +1101,7 @@
                       "fileName": "packages/utilities/src/lib/debounce/debounce.ts",
                       "line": 69,
                       "character": 7,
-                      "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L69"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L69"
                     }
                   ],
                   "signatures": [
@@ -1079,73 +1180,13 @@
       ]
     },
     {
-      "id": 123,
+      "id": 127,
       "name": "deepClone",
       "source": {
         "line": 7,
         "file": "deepClone.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/deepClone.ts#L7"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "signatures": [
-        {
-          "id": 124,
-          "name": "deepClone",
-          "comment": {
-            "description": "Deep clone an object",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "typeParameters": [
-            {
-              "id": 125,
-              "name": "T",
-              "type": null,
-              "default": null
-            }
-          ],
-          "parameters": [
-            {
-              "id": 126,
-              "name": "source",
-              "comment": {
-                "description": "The object to clone",
-                "blockTags": [],
-                "modifierTags": []
-              },
-              "type": {
-                "kind": "reference",
-                "id": 125,
-                "name": "T",
-                "packageName": null,
-                "typeArguments": []
-              }
-            }
-          ],
-          "returnType": {
-            "kind": "reference",
-            "id": 125,
-            "name": "T",
-            "packageName": null,
-            "typeArguments": []
-          }
-        }
-      ]
-    },
-    {
-      "id": 127,
-      "name": "filterNullAndUndefined",
-      "source": {
-        "line": 19,
-        "file": "filterNullAndUndefined.ts",
-        "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/filterNullAndUndefined.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/deepClone.ts#L7"
       },
       "comment": {
         "description": null,
@@ -1156,6 +1197,66 @@
       "signatures": [
         {
           "id": 128,
+          "name": "deepClone",
+          "comment": {
+            "description": "Deep clone an object",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 129,
+              "name": "T",
+              "type": null,
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 130,
+              "name": "source",
+              "comment": {
+                "description": "The object to clone",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "type": {
+                "kind": "reference",
+                "id": 129,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": 129,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "name": "filterNullAndUndefined",
+      "source": {
+        "line": 19,
+        "file": "filterNullAndUndefined.ts",
+        "path": "packages/utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/filterNullAndUndefined.ts#L19"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 132,
           "name": "filterNullAndUndefined",
           "comment": {
             "description": "Checks whether a value is not `null` nor `undefined`.\nThis can be used in {@link Array.filter} to remove `null` and `undefined` from the array type",
@@ -1173,7 +1274,7 @@
           },
           "typeParameters": [
             {
-              "id": 129,
+              "id": 133,
               "name": "TValue",
               "type": null,
               "default": null
@@ -1181,7 +1282,7 @@
           ],
           "parameters": [
             {
-              "id": 130,
+              "id": 134,
               "name": "value",
               "comment": {
                 "description": "The value to verify that is neither `null` nor `undefined`",
@@ -1193,14 +1294,14 @@
                 "types": [
                   {
                     "kind": "reference",
-                    "id": 330,
+                    "id": 335,
                     "name": "Nullish",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 129,
+                    "id": 133,
                     "name": "TValue",
                     "packageName": null,
                     "typeArguments": []
@@ -1215,7 +1316,7 @@
             "name": "value",
             "type": {
               "kind": "reference",
-              "id": 129,
+              "id": 133,
               "name": "TValue",
               "packageName": null,
               "typeArguments": []
@@ -1225,13 +1326,13 @@
       ]
     },
     {
-      "id": 132,
+      "id": 136,
       "name": "filterNullAndUndefinedAndEmpty",
       "source": {
         "line": 19,
         "file": "filterNullAndUndefinedAndEmpty.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/filterNullAndUndefinedAndEmpty.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/filterNullAndUndefinedAndEmpty.ts#L19"
       },
       "comment": {
         "description": null,
@@ -1241,7 +1342,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 133,
+          "id": 137,
           "name": "filterNullAndUndefinedAndEmpty",
           "comment": {
             "description": "Checks whether a value is not `null` nor `undefined` nor `''` (empty string).\nThis can be used in {@link Array.filter} to remove `null`, `undefined` from the array type",
@@ -1259,7 +1360,7 @@
           },
           "typeParameters": [
             {
-              "id": 134,
+              "id": 138,
               "name": "TValue",
               "type": null,
               "default": null
@@ -1267,7 +1368,7 @@
           ],
           "parameters": [
             {
-              "id": 135,
+              "id": 139,
               "name": "value",
               "comment": {
                 "description": "The value to verify that is neither `null`, `undefined` nor `''` (empty string)",
@@ -1283,14 +1384,14 @@
                   },
                   {
                     "kind": "reference",
-                    "id": 330,
+                    "id": 335,
                     "name": "Nullish",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 134,
+                    "id": 138,
                     "name": "TValue",
                     "packageName": null,
                     "typeArguments": []
@@ -1305,7 +1406,7 @@
             "name": "value",
             "type": {
               "kind": "reference",
-              "id": 134,
+              "id": 138,
               "name": "TValue",
               "packageName": null,
               "typeArguments": []
@@ -1315,13 +1416,13 @@
       ]
     },
     {
-      "id": 138,
+      "id": 142,
       "name": "filterNullAndUndefinedAndZero",
       "source": {
         "line": 19,
         "file": "filterNullAndUndefinedAndZero.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/filterNullAndUndefinedAndZero.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/filterNullAndUndefinedAndZero.ts#L19"
       },
       "comment": {
         "description": null,
@@ -1331,7 +1432,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 139,
+          "id": 143,
           "name": "filterNullAndUndefinedAndZero",
           "comment": {
             "description": "Checks whether a value is not `null` nor `undefined` nor `0`.\nThis can be used in {@link Array.filter} to remove `null`, `undefined` from the array type",
@@ -1349,7 +1450,7 @@
           },
           "typeParameters": [
             {
-              "id": 140,
+              "id": 144,
               "name": "TValue",
               "type": null,
               "default": null
@@ -1357,7 +1458,7 @@
           ],
           "parameters": [
             {
-              "id": 141,
+              "id": 145,
               "name": "value",
               "comment": {
                 "description": "The value to verify that is neither `null`, `undefined` nor `0`",
@@ -1373,14 +1474,14 @@
                   },
                   {
                     "kind": "reference",
-                    "id": 330,
+                    "id": 335,
                     "name": "Nullish",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 140,
+                    "id": 144,
                     "name": "TValue",
                     "packageName": null,
                     "typeArguments": []
@@ -1395,7 +1496,7 @@
             "name": "value",
             "type": {
               "kind": "reference",
-              "id": 140,
+              "id": 144,
               "name": "TValue",
               "packageName": null,
               "typeArguments": []
@@ -1411,7 +1512,7 @@
         "line": 15,
         "file": "getDeepObjectKeys.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/getDeepObjectKeys.ts#L15"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/getDeepObjectKeys.ts#L15"
       },
       "comment": {
         "description": null,
@@ -1456,7 +1557,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 335,
+                "id": 340,
                 "name": "AnyObject",
                 "packageName": null,
                 "typeArguments": [
@@ -1498,13 +1599,13 @@
       ]
     },
     {
-      "id": 144,
+      "id": 148,
       "name": "hasAtLeastOneKeyInMap",
       "source": {
         "line": 7,
         "file": "hasAtLeastOneKeyInMap.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/hasAtLeastOneKeyInMap.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/hasAtLeastOneKeyInMap.ts#L7"
       },
       "comment": {
         "description": null,
@@ -1514,7 +1615,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 145,
+          "id": 149,
           "name": "hasAtLeastOneKeyInMap",
           "comment": {
             "description": "Checks whether any of the {@link keys} are in the {@link map}",
@@ -1528,7 +1629,7 @@
           },
           "typeParameters": [
             {
-              "id": 146,
+              "id": 150,
               "name": "T",
               "type": null,
               "default": null
@@ -1536,7 +1637,7 @@
           ],
           "parameters": [
             {
-              "id": 147,
+              "id": 151,
               "name": "map",
               "comment": {
                 "description": "The map to check",
@@ -1551,7 +1652,7 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 146,
+                    "id": 150,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -1564,7 +1665,7 @@
               }
             },
             {
-              "id": 148,
+              "id": 152,
               "name": "keys",
               "comment": {
                 "description": "The keys to find in the map",
@@ -1578,7 +1679,7 @@
                   "kind": "array",
                   "type": {
                     "kind": "reference",
-                    "id": 146,
+                    "id": 150,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -1595,13 +1696,13 @@
       ]
     },
     {
-      "id": 149,
+      "id": 153,
       "name": "inlineCodeBlock",
       "source": {
         "line": 7,
         "file": "inlineCodeBlock.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/inlineCodeBlock.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/inlineCodeBlock.ts#L7"
       },
       "comment": {
         "description": null,
@@ -1611,44 +1712,69 @@
       "external": false,
       "signatures": [
         {
-          "id": 150,
+          "id": 154,
           "name": "inlineCodeBlock",
           "comment": {
             "description": "Wraps text in a markdown inline codeblock",
             "blockTags": [],
             "modifierTags": []
           },
-          "typeParameters": [],
+          "typeParameters": [
+            {
+              "id": 155,
+              "name": "C",
+              "type": {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              "default": null
+            }
+          ],
           "parameters": [
             {
-              "id": 151,
-              "name": "input",
+              "id": 156,
+              "name": "content",
               "comment": {
-                "description": null,
+                "description": "The expression to be wrapped in the codeblock",
                 "blockTags": [],
                 "modifierTags": []
               },
               "type": {
-                "kind": "intrinsic",
-                "type": "string"
+                "kind": "reference",
+                "id": 155,
+                "name": "C",
+                "packageName": null,
+                "typeArguments": []
               }
             }
           ],
           "returnType": {
-            "kind": "intrinsic",
-            "type": "string"
+            "kind": "templateLiteral",
+            "head": "`",
+            "tail": [
+              {
+                "type": {
+                  "kind": "reference",
+                  "id": 155,
+                  "name": "C",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "text": "`"
+              }
+            ]
           }
         }
       ]
     },
     {
-      "id": 152,
+      "id": 157,
       "name": "isClass",
       "source": {
         "line": 7,
         "file": "isClass.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isClass.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isClass.ts#L7"
       },
       "comment": {
         "description": null,
@@ -1658,7 +1784,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 153,
+          "id": 158,
           "name": "isClass",
           "comment": {
             "description": "Verify if the input is a class constructor.",
@@ -1668,7 +1794,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 154,
+              "id": 159,
               "name": "input",
               "comment": {
                 "description": "The function to verify",
@@ -1687,7 +1813,7 @@
             "name": "input",
             "type": {
               "kind": "reference",
-              "id": 293,
+              "id": 298,
               "name": "Ctor",
               "packageName": null,
               "typeArguments": [
@@ -1713,13 +1839,13 @@
       ]
     },
     {
-      "id": 155,
+      "id": 160,
       "name": "isFunction",
       "source": {
         "line": 6,
         "file": "isFunction.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isFunction.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isFunction.ts#L6"
       },
       "comment": {
         "description": null,
@@ -1729,7 +1855,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 156,
+          "id": 161,
           "name": "isFunction",
           "comment": {
             "description": "Verify if the input is a function.",
@@ -1739,7 +1865,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 157,
+              "id": 162,
               "name": "input",
               "comment": {
                 "description": "The function to verify",
@@ -1768,13 +1894,13 @@
       ]
     },
     {
-      "id": 158,
+      "id": 163,
       "name": "isNullOrUndefined",
       "source": {
         "line": 7,
         "file": "isNullOrUndefined.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isNullOrUndefined.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isNullOrUndefined.ts#L7"
       },
       "comment": {
         "description": null,
@@ -1784,7 +1910,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 159,
+          "id": 164,
           "name": "isNullOrUndefined",
           "comment": {
             "description": "Checks whether or not a value is `null` or `undefined`",
@@ -1794,7 +1920,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 160,
+              "id": 165,
               "name": "value",
               "comment": {
                 "description": "The value to check",
@@ -1813,7 +1939,7 @@
             "name": "value",
             "type": {
               "kind": "reference",
-              "id": 330,
+              "id": 335,
               "name": "Nullish",
               "packageName": null,
               "typeArguments": []
@@ -1823,13 +1949,13 @@
       ]
     },
     {
-      "id": 162,
+      "id": 167,
       "name": "isNullOrUndefinedOrEmpty",
       "source": {
         "line": 8,
         "file": "isNullOrUndefinedOrEmpty.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isNullOrUndefinedOrEmpty.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isNullOrUndefinedOrEmpty.ts#L8"
       },
       "comment": {
         "description": null,
@@ -1839,7 +1965,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 163,
+          "id": 168,
           "name": "isNullOrUndefinedOrEmpty",
           "comment": {
             "description": "Checks whether or not a value is `null`, `undefined` or `''`, `[]`",
@@ -1849,7 +1975,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 164,
+              "id": 169,
               "name": "value",
               "comment": {
                 "description": "The value to check",
@@ -1875,7 +2001,7 @@
                 },
                 {
                   "kind": "reference",
-                  "id": 330,
+                  "id": 335,
                   "name": "Nullish",
                   "packageName": null,
                   "typeArguments": []
@@ -1887,13 +2013,13 @@
       ]
     },
     {
-      "id": 166,
+      "id": 171,
       "name": "isNullOrUndefinedOrZero",
       "source": {
         "line": 8,
         "file": "isNullOrUndefinedOrZero.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isNullOrUndefinedOrZero.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isNullOrUndefinedOrZero.ts#L8"
       },
       "comment": {
         "description": null,
@@ -1903,7 +2029,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 167,
+          "id": 172,
           "name": "isNullOrUndefinedOrZero",
           "comment": {
             "description": "Checks whether or not a value is `null`, `undefined` or `0`",
@@ -1913,7 +2039,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 168,
+              "id": 173,
               "name": "value",
               "comment": {
                 "description": "The value to check",
@@ -1939,7 +2065,7 @@
                 },
                 {
                   "kind": "reference",
-                  "id": 330,
+                  "id": 335,
                   "name": "Nullish",
                   "packageName": null,
                   "typeArguments": []
@@ -1951,13 +2077,13 @@
       ]
     },
     {
-      "id": 170,
+      "id": 175,
       "name": "isNumber",
       "source": {
         "line": 5,
         "file": "isNumber.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isNumber.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isNumber.ts#L5"
       },
       "comment": {
         "description": null,
@@ -1967,7 +2093,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 171,
+          "id": 176,
           "name": "isNumber",
           "comment": {
             "description": "Verify if a number is a finite number.",
@@ -1977,7 +2103,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 172,
+              "id": 177,
               "name": "input",
               "comment": {
                 "description": "The number to verify",
@@ -2003,13 +2129,13 @@
       ]
     },
     {
-      "id": 173,
+      "id": 178,
       "name": "isObject",
       "source": {
         "line": 8,
         "file": "isObject.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isObject.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isObject.ts#L8"
       },
       "comment": {
         "description": null,
@@ -2019,7 +2145,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 174,
+          "id": 179,
           "name": "isObject",
           "comment": {
             "description": "Verify if the input is an object literal (or class).",
@@ -2029,7 +2155,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 175,
+              "id": 180,
               "name": "input",
               "comment": {
                 "description": "The object to verify",
@@ -2042,7 +2168,7 @@
               }
             },
             {
-              "id": 176,
+              "id": 181,
               "name": "constructorType",
               "comment": {
                 "description": "The type of the constructor of the object. Use this if you want a `class` of your choosing to pass the check as well.",
@@ -2069,7 +2195,7 @@
           }
         },
         {
-          "id": 177,
+          "id": 182,
           "name": "isObject",
           "comment": {
             "description": null,
@@ -2078,11 +2204,11 @@
           },
           "typeParameters": [
             {
-              "id": 178,
+              "id": 183,
               "name": "T",
               "type": {
                 "kind": "reference",
-                "id": 305,
+                "id": 310,
                 "name": "Constructor",
                 "packageName": null,
                 "typeArguments": [
@@ -2097,7 +2223,7 @@
           ],
           "parameters": [
             {
-              "id": 179,
+              "id": 184,
               "name": "input",
               "comment": {
                 "description": null,
@@ -2110,7 +2236,7 @@
               }
             },
             {
-              "id": 180,
+              "id": 185,
               "name": "constructorType",
               "comment": {
                 "description": null,
@@ -2119,7 +2245,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 178,
+                "id": 183,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -2138,7 +2264,7 @@
               "typeArguments": [
                 {
                   "kind": "reference",
-                  "id": 178,
+                  "id": 183,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -2150,13 +2276,13 @@
       ]
     },
     {
-      "id": 181,
+      "id": 186,
       "name": "isPrimitive",
       "source": {
         "line": 7,
         "file": "isPrimitive.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isPrimitive.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isPrimitive.ts#L7"
       },
       "comment": {
         "description": null,
@@ -2166,7 +2292,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 182,
+          "id": 187,
           "name": "isPrimitive",
           "comment": {
             "description": "Check whether a value is a primitive",
@@ -2176,7 +2302,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 183,
+              "id": 188,
               "name": "input",
               "comment": {
                 "description": "The input to check",
@@ -2225,7 +2351,7 @@
         "line": 21,
         "file": "isThenable.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isThenable.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isThenable.ts#L21"
       },
       "comment": {
         "description": null,
@@ -2274,13 +2400,13 @@
       ]
     },
     {
-      "id": 184,
+      "id": 189,
       "name": "lazy",
       "source": {
         "line": 6,
         "file": "lazy.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/lazy.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/lazy.ts#L6"
       },
       "comment": {
         "description": null,
@@ -2290,7 +2416,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 185,
+          "id": 190,
           "name": "lazy",
           "comment": {
             "description": "Lazily creates a constant or load a module and caches it internally",
@@ -2304,7 +2430,7 @@
           },
           "typeParameters": [
             {
-              "id": 186,
+              "id": 191,
               "name": "T",
               "type": null,
               "default": null
@@ -2312,7 +2438,7 @@
           ],
           "parameters": [
             {
-              "id": 187,
+              "id": 192,
               "name": "cb",
               "comment": {
                 "description": "The callback to lazily run",
@@ -2322,7 +2448,7 @@
               "type": {
                 "kind": "reflection",
                 "reflection": {
-                  "id": 188,
+                  "id": 193,
                   "name": "__type",
                   "kind": 65536,
                   "kindString": "Type literal",
@@ -2332,19 +2458,19 @@
                       "fileName": "packages/utilities/src/lib/lazy.ts",
                       "line": 6,
                       "character": 28,
-                      "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/lazy.ts#L6"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/lazy.ts#L6"
                     }
                   ],
                   "signatures": [
                     {
-                      "id": 189,
+                      "id": 194,
                       "name": "__type",
                       "kind": 4096,
                       "kindString": "Call signature",
                       "flags": {},
                       "type": {
                         "type": "reference",
-                        "id": 186,
+                        "id": 191,
                         "name": "T"
                       }
                     }
@@ -2356,7 +2482,7 @@
           "returnType": {
             "kind": "reflection",
             "reflection": {
-              "id": 190,
+              "id": 195,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -2366,19 +2492,19 @@
                   "fileName": "packages/utilities/src/lib/lazy.ts",
                   "line": 9,
                   "character": 8,
-                  "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/lazy.ts#L9"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/lazy.ts#L9"
                 }
               ],
               "signatures": [
                 {
-                  "id": 191,
+                  "id": 196,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
                   "flags": {},
                   "type": {
                     "type": "reference",
-                    "id": 186,
+                    "id": 191,
                     "name": "T"
                   }
                 }
@@ -2389,13 +2515,13 @@
       ]
     },
     {
-      "id": 192,
+      "id": 197,
       "name": "makeObject",
       "source": {
         "line": 7,
         "file": "makeObject.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/makeObject.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/makeObject.ts#L7"
       },
       "comment": {
         "description": null,
@@ -2405,7 +2531,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 193,
+          "id": 198,
           "name": "makeObject",
           "comment": {
             "description": "Turn a dotted path into a json object.",
@@ -2415,7 +2541,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 194,
+              "id": 199,
               "name": "path",
               "comment": {
                 "description": "The dotted path",
@@ -2428,7 +2554,7 @@
               }
             },
             {
-              "id": 195,
+              "id": 200,
               "name": "value",
               "comment": {
                 "description": "The value",
@@ -2441,7 +2567,7 @@
               }
             },
             {
-              "id": 196,
+              "id": 201,
               "name": "obj",
               "comment": {
                 "description": "The object to edit",
@@ -2486,13 +2612,13 @@
       ]
     },
     {
-      "id": 197,
+      "id": 202,
       "name": "mergeDefault",
       "source": {
         "line": 43,
         "file": "mergeDefault.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/mergeDefault.ts#L43"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/mergeDefault.ts#L43"
       },
       "comment": {
         "description": null,
@@ -2502,7 +2628,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 198,
+          "id": 203,
           "name": "mergeDefault",
           "comment": {
             "description": "Deep merges 2 objects. Properties from the second parameter are applied to the first.",
@@ -2544,7 +2670,7 @@
           },
           "typeParameters": [
             {
-              "id": 199,
+              "id": 204,
               "name": "A",
               "type": {
                 "kind": "intrinsic",
@@ -2553,7 +2679,7 @@
               "default": null
             },
             {
-              "id": 200,
+              "id": 205,
               "name": "B",
               "type": {
                 "kind": "reference",
@@ -2563,7 +2689,7 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 199,
+                    "id": 204,
                     "name": "A",
                     "packageName": null,
                     "typeArguments": []
@@ -2575,7 +2701,7 @@
           ],
           "parameters": [
             {
-              "id": 201,
+              "id": 206,
               "name": "base",
               "comment": {
                 "description": "Base object",
@@ -2584,14 +2710,14 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 199,
+                "id": 204,
                 "name": "A",
                 "packageName": null,
                 "typeArguments": []
               }
             },
             {
-              "id": 202,
+              "id": 207,
               "name": "overwrites",
               "comment": {
                 "description": "Overwrites to apply",
@@ -2600,7 +2726,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 200,
+                "id": 205,
                 "name": "B",
                 "packageName": null,
                 "typeArguments": []
@@ -2609,7 +2735,7 @@
           ],
           "returnType": {
             "kind": "reference",
-            "id": 273,
+            "id": 278,
             "name": "DeepRequired",
             "packageName": null,
             "typeArguments": [
@@ -2618,14 +2744,14 @@
                 "types": [
                   {
                     "kind": "reference",
-                    "id": 199,
+                    "id": 204,
                     "name": "A",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 200,
+                    "id": 205,
                     "name": "B",
                     "packageName": null,
                     "typeArguments": []
@@ -2638,13 +2764,13 @@
       ]
     },
     {
-      "id": 203,
+      "id": 208,
       "name": "mergeObjects",
       "source": {
         "line": 8,
         "file": "mergeObjects.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/mergeObjects.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/mergeObjects.ts#L8"
       },
       "comment": {
         "description": null,
@@ -2654,7 +2780,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 204,
+          "id": 209,
           "name": "mergeObjects",
           "comment": {
             "description": "Merges two objects",
@@ -2663,7 +2789,7 @@
           },
           "typeParameters": [
             {
-              "id": 205,
+              "id": 210,
               "name": "A",
               "type": {
                 "kind": "intrinsic",
@@ -2672,7 +2798,7 @@
               "default": null
             },
             {
-              "id": 206,
+              "id": 211,
               "name": "B",
               "type": {
                 "kind": "intrinsic",
@@ -2683,7 +2809,7 @@
           ],
           "parameters": [
             {
-              "id": 207,
+              "id": 212,
               "name": "objTarget",
               "comment": {
                 "description": "The object to be merged",
@@ -2692,14 +2818,14 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 205,
+                "id": 210,
                 "name": "A",
                 "packageName": null,
                 "typeArguments": []
               }
             },
             {
-              "id": 208,
+              "id": 213,
               "name": "objSource",
               "comment": {
                 "description": "The object to merge",
@@ -2714,7 +2840,7 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 206,
+                    "id": 211,
                     "name": "B",
                     "packageName": null,
                     "typeArguments": []
@@ -2728,14 +2854,14 @@
             "types": [
               {
                 "kind": "reference",
-                "id": 205,
+                "id": 210,
                 "name": "A",
                 "packageName": null,
                 "typeArguments": []
               },
               {
                 "kind": "reference",
-                "id": 206,
+                "id": 211,
                 "name": "B",
                 "packageName": null,
                 "typeArguments": []
@@ -2746,13 +2872,13 @@
       ]
     },
     {
-      "id": 209,
+      "id": 214,
       "name": "noop",
       "source": {
         "line": 2,
         "file": "noop.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/noop.ts#L2"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/noop.ts#L2"
       },
       "comment": {
         "description": null,
@@ -2762,7 +2888,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 210,
+          "id": 215,
           "name": "noop",
           "comment": {
             "description": null,
@@ -2779,13 +2905,13 @@
       ]
     },
     {
-      "id": 211,
+      "id": 216,
       "name": "objectEntries",
       "source": {
         "line": 3,
         "file": "objectEntries.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/objectEntries.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/objectEntries.ts#L3"
       },
       "comment": {
         "description": null,
@@ -2795,7 +2921,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 212,
+          "id": 217,
           "name": "objectEntries",
           "comment": {
             "description": null,
@@ -2804,7 +2930,7 @@
           },
           "typeParameters": [
             {
-              "id": 213,
+              "id": 218,
               "name": "T",
               "type": {
                 "kind": "intrinsic",
@@ -2815,7 +2941,7 @@
           ],
           "parameters": [
             {
-              "id": 214,
+              "id": 219,
               "name": "obj",
               "comment": {
                 "description": null,
@@ -2824,7 +2950,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 213,
+                "id": 218,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -2835,7 +2961,7 @@
             "kind": "conditional",
             "checkType": {
               "kind": "reference",
-              "id": 213,
+              "id": 218,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -2874,7 +3000,7 @@
                     "kind": "indexedAccess",
                     "objectType": {
                       "kind": "reference",
-                      "id": 213,
+                      "id": 218,
                       "name": "T",
                       "packageName": null,
                       "typeArguments": []
@@ -2897,7 +3023,7 @@
                     "operator": "keyof",
                     "type": {
                       "kind": "reference",
-                      "id": 213,
+                      "id": 218,
                       "name": "T",
                       "packageName": null,
                       "typeArguments": []
@@ -2907,7 +3033,7 @@
                     "kind": "indexedAccess",
                     "objectType": {
                       "kind": "reference",
-                      "id": 213,
+                      "id": 218,
                       "name": "T",
                       "packageName": null,
                       "typeArguments": []
@@ -2917,7 +3043,7 @@
                       "operator": "keyof",
                       "type": {
                         "kind": "reference",
-                        "id": 213,
+                        "id": 218,
                         "name": "T",
                         "packageName": null,
                         "typeArguments": []
@@ -2932,13 +3058,13 @@
       ]
     },
     {
-      "id": 215,
+      "id": 220,
       "name": "objectKeys",
       "source": {
         "line": 3,
         "file": "objectKeys.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/objectKeys.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/objectKeys.ts#L3"
       },
       "comment": {
         "description": null,
@@ -2948,7 +3074,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 216,
+          "id": 221,
           "name": "objectKeys",
           "comment": {
             "description": null,
@@ -2957,7 +3083,7 @@
           },
           "typeParameters": [
             {
-              "id": 217,
+              "id": 222,
               "name": "T",
               "type": {
                 "kind": "intrinsic",
@@ -2968,7 +3094,7 @@
           ],
           "parameters": [
             {
-              "id": 218,
+              "id": 223,
               "name": "obj",
               "comment": {
                 "description": null,
@@ -2977,7 +3103,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 217,
+                "id": 222,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -2988,7 +3114,7 @@
             "kind": "conditional",
             "checkType": {
               "kind": "reference",
-              "id": 217,
+              "id": 222,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -3028,7 +3154,7 @@
                 "operator": "keyof",
                 "type": {
                   "kind": "reference",
-                  "id": 217,
+                  "id": 222,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -3040,13 +3166,13 @@
       ]
     },
     {
-      "id": 219,
+      "id": 224,
       "name": "objectToTuples",
       "source": {
         "line": 9,
         "file": "objectToTuples.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/objectToTuples.ts#L9"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/objectToTuples.ts#L9"
       },
       "comment": {
         "description": null,
@@ -3056,7 +3182,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 220,
+          "id": 225,
           "name": "objectToTuples",
           "comment": {
             "description": "Convert an object to a tuple",
@@ -3065,7 +3191,7 @@
           },
           "typeParameters": [
             {
-              "id": 221,
+              "id": 226,
               "name": "T",
               "type": null,
               "default": null
@@ -3073,7 +3199,7 @@
           ],
           "parameters": [
             {
-              "id": 222,
+              "id": 227,
               "name": "obj",
               "comment": {
                 "description": "The object to convert",
@@ -3082,13 +3208,13 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 335,
+                "id": 340,
                 "name": "AnyObject",
                 "packageName": null,
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 221,
+                    "id": 226,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -3097,7 +3223,7 @@
               }
             },
             {
-              "id": 223,
+              "id": 228,
               "name": "prefix",
               "comment": {
                 "description": "The prefix for the key",
@@ -3120,7 +3246,7 @@
                   "operator": "keyof",
                   "type": {
                     "kind": "reference",
-                    "id": 221,
+                    "id": 226,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -3130,7 +3256,7 @@
                   "kind": "indexedAccess",
                   "objectType": {
                     "kind": "reference",
-                    "id": 221,
+                    "id": 226,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -3140,7 +3266,7 @@
                     "operator": "keyof",
                     "type": {
                       "kind": "reference",
-                      "id": 221,
+                      "id": 226,
                       "name": "T",
                       "packageName": null,
                       "typeArguments": []
@@ -3154,13 +3280,13 @@
       ]
     },
     {
-      "id": 224,
+      "id": 229,
       "name": "objectValues",
       "source": {
         "line": 3,
         "file": "objectValues.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/objectValues.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/objectValues.ts#L3"
       },
       "comment": {
         "description": null,
@@ -3170,7 +3296,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 225,
+          "id": 230,
           "name": "objectValues",
           "comment": {
             "description": null,
@@ -3179,7 +3305,7 @@
           },
           "typeParameters": [
             {
-              "id": 226,
+              "id": 231,
               "name": "T",
               "type": {
                 "kind": "intrinsic",
@@ -3190,7 +3316,7 @@
           ],
           "parameters": [
             {
-              "id": 227,
+              "id": 232,
               "name": "obj",
               "comment": {
                 "description": null,
@@ -3199,7 +3325,7 @@
               },
               "type": {
                 "kind": "reference",
-                "id": 226,
+                "id": 231,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -3210,7 +3336,7 @@
             "kind": "conditional",
             "checkType": {
               "kind": "reference",
-              "id": 226,
+              "id": 231,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -3233,7 +3359,7 @@
                 "kind": "indexedAccess",
                 "objectType": {
                   "kind": "reference",
-                  "id": 226,
+                  "id": 231,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -3250,7 +3376,7 @@
                 "kind": "indexedAccess",
                 "objectType": {
                   "kind": "reference",
-                  "id": 226,
+                  "id": 231,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -3260,7 +3386,7 @@
                   "operator": "keyof",
                   "type": {
                     "kind": "reference",
-                    "id": 226,
+                    "id": 231,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -3273,13 +3399,13 @@
       ]
     },
     {
-      "id": 228,
+      "id": 233,
       "name": "partition",
       "source": {
         "line": 12,
         "file": "partition.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/partition.ts#L12"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/partition.ts#L12"
       },
       "comment": {
         "description": null,
@@ -3289,7 +3415,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 229,
+          "id": 234,
           "name": "partition",
           "comment": {
             "description": "Partitions `array` into a tuple of two arrays,\nwhere one array contains all elements that satisfies `predicate`,\nand the other contains all elements that do not satisfy `predicate`.",
@@ -3303,7 +3429,7 @@
           },
           "typeParameters": [
             {
-              "id": 230,
+              "id": 235,
               "name": "T",
               "type": null,
               "default": null
@@ -3311,7 +3437,7 @@
           ],
           "parameters": [
             {
-              "id": 231,
+              "id": 236,
               "name": "array",
               "comment": {
                 "description": "The array to partition. This array is not mutated.",
@@ -3322,7 +3448,7 @@
                 "kind": "array",
                 "type": {
                   "kind": "reference",
-                  "id": 230,
+                  "id": 235,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -3330,7 +3456,7 @@
               }
             },
             {
-              "id": 232,
+              "id": 237,
               "name": "predicate",
               "comment": {
                 "description": "The predicate function to determine in which partition the item should be placed.\nThe function should return true for items that should be placed in the first partition, and false for those that should be placed in the second partition.",
@@ -3340,7 +3466,7 @@
               "type": {
                 "kind": "reflection",
                 "reflection": {
-                  "id": 233,
+                  "id": 238,
                   "name": "__type",
                   "kind": 65536,
                   "kindString": "Type literal",
@@ -3350,31 +3476,31 @@
                       "fileName": "packages/utilities/src/lib/partition.ts",
                       "line": 12,
                       "character": 52,
-                      "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/partition.ts#L12"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/partition.ts#L12"
                     }
                   ],
                   "signatures": [
                     {
-                      "id": 234,
+                      "id": 239,
                       "name": "__type",
                       "kind": 4096,
                       "kindString": "Call signature",
                       "flags": {},
                       "parameters": [
                         {
-                          "id": 235,
+                          "id": 240,
                           "name": "value",
                           "kind": 32768,
                           "kindString": "Parameter",
                           "flags": {},
                           "type": {
                             "type": "reference",
-                            "id": 230,
+                            "id": 235,
                             "name": "T"
                           }
                         },
                         {
-                          "id": 236,
+                          "id": 241,
                           "name": "index",
                           "kind": 32768,
                           "kindString": "Parameter",
@@ -3401,7 +3527,7 @@
               "kind": "array",
               "type": {
                 "kind": "reference",
-                "id": 230,
+                "id": 235,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -3412,13 +3538,13 @@
       ]
     },
     {
-      "id": 237,
+      "id": 242,
       "name": "pickRandom",
       "source": {
         "line": 6,
         "file": "pickRandom.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/pickRandom.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/pickRandom.ts#L6"
       },
       "comment": {
         "description": null,
@@ -3428,7 +3554,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 238,
+          "id": 243,
           "name": "pickRandom",
           "comment": {
             "description": "Picks a random element from an array",
@@ -3437,7 +3563,7 @@
           },
           "typeParameters": [
             {
-              "id": 239,
+              "id": 244,
               "name": "T",
               "type": null,
               "default": null
@@ -3445,7 +3571,7 @@
           ],
           "parameters": [
             {
-              "id": 240,
+              "id": 245,
               "name": "array",
               "comment": {
                 "description": "The array to pick a random element from",
@@ -3459,7 +3585,7 @@
                   "kind": "array",
                   "type": {
                     "kind": "reference",
-                    "id": 239,
+                    "id": 244,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -3468,7 +3594,7 @@
               }
             },
             {
-              "id": 241,
+              "id": 246,
               "name": "amount",
               "comment": {
                 "description": "Amount of values to obtain randomly (default: 1)",
@@ -3483,14 +3609,14 @@
           ],
           "returnType": {
             "kind": "reference",
-            "id": 239,
+            "id": 244,
             "name": "T",
             "packageName": null,
             "typeArguments": []
           }
         },
         {
-          "id": 242,
+          "id": 247,
           "name": "pickRandom",
           "comment": {
             "description": null,
@@ -3499,7 +3625,7 @@
           },
           "typeParameters": [
             {
-              "id": 243,
+              "id": 248,
               "name": "T",
               "type": null,
               "default": null
@@ -3507,7 +3633,7 @@
           ],
           "parameters": [
             {
-              "id": 244,
+              "id": 249,
               "name": "array",
               "comment": {
                 "description": null,
@@ -3521,7 +3647,7 @@
                   "kind": "array",
                   "type": {
                     "kind": "reference",
-                    "id": 243,
+                    "id": 248,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -3530,7 +3656,7 @@
               }
             },
             {
-              "id": 245,
+              "id": 250,
               "name": "amount",
               "comment": {
                 "description": null,
@@ -3547,7 +3673,7 @@
             "kind": "array",
             "type": {
               "kind": "reference",
-              "id": 243,
+              "id": 248,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -3557,13 +3683,13 @@
       ]
     },
     {
-      "id": 246,
+      "id": 251,
       "name": "range",
       "source": {
         "line": 7,
         "file": "range.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/range.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/range.ts#L7"
       },
       "comment": {
         "description": null,
@@ -3573,7 +3699,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 247,
+          "id": 252,
           "name": "range",
           "comment": {
             "description": "Get an array of numbers with the selected range",
@@ -3583,7 +3709,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 248,
+              "id": 253,
               "name": "min",
               "comment": {
                 "description": "The minimum value",
@@ -3596,7 +3722,7 @@
               }
             },
             {
-              "id": 249,
+              "id": 254,
               "name": "max",
               "comment": {
                 "description": "The maximum value",
@@ -3609,7 +3735,7 @@
               }
             },
             {
-              "id": 250,
+              "id": 255,
               "name": "step",
               "comment": {
                 "description": "The step value",
@@ -3633,13 +3759,13 @@
       ]
     },
     {
-      "id": 251,
+      "id": 256,
       "name": "regExpEsc",
       "source": {
         "line": 7,
         "file": "regExpEsc.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/regExpEsc.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/regExpEsc.ts#L7"
       },
       "comment": {
         "description": null,
@@ -3649,7 +3775,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 252,
+          "id": 257,
           "name": "regExpEsc",
           "comment": {
             "description": "Cleans a string from regex injection",
@@ -3659,7 +3785,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 253,
+              "id": 258,
               "name": "str",
               "comment": {
                 "description": "The string to clean",
@@ -3680,13 +3806,13 @@
       ]
     },
     {
-      "id": 254,
+      "id": 259,
       "name": "roundNumber",
       "source": {
         "line": 7,
         "file": "roundNumber.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/roundNumber.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/roundNumber.ts#L7"
       },
       "comment": {
         "description": null,
@@ -3696,7 +3822,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 255,
+          "id": 260,
           "name": "roundNumber",
           "comment": {
             "description": "Properly rounds up or down a number.\nAlso supports strings using an exponent to indicate large or small numbers.",
@@ -3706,7 +3832,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 256,
+              "id": 261,
               "name": "num",
               "comment": {
                 "description": "The number to round off",
@@ -3728,7 +3854,7 @@
               }
             },
             {
-              "id": 257,
+              "id": 262,
               "name": "scale",
               "comment": {
                 "description": "The amount of decimals to retain",
@@ -3755,7 +3881,7 @@
         "line": 35,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L35"
       },
       "comment": {
         "description": null,
@@ -3860,7 +3986,7 @@
         "line": 64,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L64"
       },
       "comment": {
         "description": null,
@@ -3935,13 +4061,13 @@
       ]
     },
     {
-      "id": 258,
+      "id": 263,
       "name": "splitText",
       "source": {
         "line": 9,
         "file": "splitText.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/splitText.ts#L9"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/splitText.ts#L9"
       },
       "comment": {
         "description": null,
@@ -3951,7 +4077,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 259,
+          "id": 264,
           "name": "splitText",
           "comment": {
             "description": "Split a string by its latest space character in a range from the character 0 to the selected one.",
@@ -3970,7 +4096,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 260,
+              "id": 265,
               "name": "str",
               "comment": {
                 "description": "The text to split.",
@@ -3983,7 +4109,7 @@
               }
             },
             {
-              "id": 261,
+              "id": 266,
               "name": "length",
               "comment": {
                 "description": "The length of the desired string.",
@@ -3996,7 +4122,7 @@
               }
             },
             {
-              "id": 262,
+              "id": 267,
               "name": "char",
               "comment": {
                 "description": "The character to split with",
@@ -4023,7 +4149,7 @@
         "line": 13,
         "file": "throttle.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L13"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L13"
       },
       "comment": {
         "description": null,
@@ -4062,7 +4188,7 @@
                       "fileName": "packages/utilities/src/lib/throttle.ts",
                       "line": 13,
                       "character": 35,
-                      "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L13"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L13"
                     }
                   ],
                   "signatures": [
@@ -4157,7 +4283,7 @@
         "line": 35,
         "file": "toTitleCase.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/toTitleCase.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/toTitleCase.ts#L35"
       },
       "comment": {
         "description": null,
@@ -4219,13 +4345,13 @@
       ]
     },
     {
-      "id": 263,
+      "id": 268,
       "name": "tryParseJSON",
       "source": {
         "line": 5,
         "file": "tryParseJSON.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/tryParseJSON.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/tryParseJSON.ts#L5"
       },
       "comment": {
         "description": null,
@@ -4235,7 +4361,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 264,
+          "id": 269,
           "name": "tryParseJSON",
           "comment": {
             "description": "Try parse a stringified JSON string.",
@@ -4245,7 +4371,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 265,
+              "id": 270,
               "name": "value",
               "comment": {
                 "description": "The value to parse",
@@ -4279,13 +4405,13 @@
       ]
     },
     {
-      "id": 267,
+      "id": 272,
       "name": "tryParseURL",
       "source": {
         "line": 6,
         "file": "tryParseURL.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/tryParseURL.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/tryParseURL.ts#L6"
       },
       "comment": {
         "description": null,
@@ -4295,7 +4421,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 268,
+          "id": 273,
           "name": "tryParseURL",
           "comment": {
             "description": "Tries parse a string to a {@link URL} object",
@@ -4310,7 +4436,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 269,
+              "id": 274,
               "name": "value",
               "comment": {
                 "description": "The possible URL to parse",
@@ -4351,7 +4477,7 @@
         "line": 10,
         "file": "debounce.ts",
         "path": "packages/utilities/src/lib/debounce",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L10"
       },
       "comment": {
         "description": "lodash (Custom Build) <https://lodash.com/>\nBuild: `lodash modularize exports=\"npm\" -o ./`\nCopyright jQuery Foundation and other contributors <https://jquery.org/>\nReleased under MIT license <https://lodash.com/license>\nBased on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>\nCopyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors",
@@ -4367,7 +4493,7 @@
             "line": 21,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L21"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L21"
           },
           "comment": {
             "description": "The maximum time `func` is allowed to be delayed before it's invoked",
@@ -4402,7 +4528,7 @@
             "line": 15,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L15"
           },
           "comment": {
             "description": "The number of milliseconds to delay.",
@@ -4431,7 +4557,7 @@
         "line": 24,
         "file": "debounce.ts",
         "path": "packages/utilities/src/lib/debounce",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L24"
       },
       "comment": {
         "description": null,
@@ -4448,7 +4574,7 @@
             "line": 39,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L39"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L39"
           },
           "parentId": 10,
           "signatures": [
@@ -4476,7 +4602,7 @@
             "line": 48,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/debounce/debounce.ts#L48"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/debounce/debounce.ts#L48"
           },
           "parentId": 10,
           "signatures": [
@@ -4518,7 +4644,7 @@
         "line": 68,
         "file": "getDeepObjectKeys.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/getDeepObjectKeys.ts#L68"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/getDeepObjectKeys.ts#L68"
       },
       "comment": {
         "description": "The options for {@link getDeepObjectKeys}",
@@ -4534,7 +4660,7 @@
             "line": 73,
             "file": "getDeepObjectKeys.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/getDeepObjectKeys.ts#L73"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/getDeepObjectKeys.ts#L73"
           },
           "comment": {
             "description": "Whether to use `.${index}.` (`'dotted'`), `[${index}].`, (`'braces-with-dot'`) or `[${index}]` (`'braces'`) to separate array keys",
@@ -4576,7 +4702,7 @@
         "line": 1,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L1"
       },
       "comment": {
         "description": null,
@@ -4592,7 +4718,7 @@
             "line": 12,
             "file": "sleep.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L12"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L12"
           },
           "comment": {
             "description": "Set to `false` to indicate that the scheduled `Timeout`\nshould not require the Node.js event loop to remain active.",
@@ -4618,7 +4744,7 @@
             "line": 5,
             "file": "sleep.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/sleep.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/sleep.ts#L5"
           },
           "comment": {
             "description": "When provided the corresponding `AbortController` can be used to cancel an asynchronous action.",
@@ -4645,7 +4771,7 @@
         "line": 4,
         "file": "isThenable.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isThenable.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isThenable.ts#L4"
       },
       "comment": {
         "description": null,
@@ -4661,7 +4787,7 @@
             "line": 6,
             "file": "isThenable.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isThenable.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isThenable.ts#L6"
           },
           "comment": {
             "description": null,
@@ -4685,7 +4811,7 @@
             "line": 5,
             "file": "isThenable.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/isThenable.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/isThenable.ts#L5"
           },
           "comment": {
             "description": null,
@@ -4712,7 +4838,7 @@
         "line": 56,
         "file": "toTitleCase.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/toTitleCase.ts#L56"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/toTitleCase.ts#L56"
       },
       "comment": {
         "description": "The options to use when converting a string to title case",
@@ -4728,7 +4854,7 @@
             "line": 60,
             "file": "toTitleCase.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/toTitleCase.ts#L60"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/toTitleCase.ts#L60"
           },
           "comment": {
             "description": "The optional additional variants to use when converting the string",
@@ -4761,7 +4887,7 @@
             "line": 65,
             "file": "toTitleCase.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/toTitleCase.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/toTitleCase.ts#L65"
           },
           "comment": {
             "description": "Whether to convert the string to title case in a case sensitive manner.",
@@ -4782,13 +4908,13 @@
   "namespaces": [],
   "typeAliases": [
     {
-      "id": 310,
+      "id": 315,
       "name": "AbstractConstructor",
       "source": {
         "line": 64,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L64"
       },
       "comment": {
         "description": null,
@@ -4798,7 +4924,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 314,
+          "id": 319,
           "name": "T",
           "type": null,
           "default": null
@@ -4807,7 +4933,7 @@
       "type": {
         "kind": "reflection",
         "reflection": {
-          "id": 311,
+          "id": 316,
           "name": "__type",
           "kind": 512,
           "kindString": "Constructor",
@@ -4817,12 +4943,12 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 64,
               "character": 37,
-              "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L64"
+              "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L64"
             }
           ],
           "signatures": [
             {
-              "id": 312,
+              "id": 317,
               "name": "__type",
               "kind": 16384,
               "kindString": "Constructor signature",
@@ -4839,7 +4965,7 @@
               },
               "parameters": [
                 {
-                  "id": 313,
+                  "id": 318,
                   "name": "args",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4857,7 +4983,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 314,
+                "id": 319,
                 "name": "T"
               }
             }
@@ -4866,13 +4992,13 @@
       }
     },
     {
-      "id": 299,
+      "id": 304,
       "name": "AbstractCtor",
       "source": {
         "line": 54,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L54"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L54"
       },
       "comment": {
         "description": null,
@@ -4882,11 +5008,11 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 303,
+          "id": 308,
           "name": "A",
           "type": {
             "kind": "reference",
-            "id": 292,
+            "id": 297,
             "name": "Arr",
             "packageName": null,
             "typeArguments": []
@@ -4904,7 +5030,7 @@
           }
         },
         {
-          "id": 304,
+          "id": 309,
           "name": "R",
           "type": null,
           "default": {
@@ -4916,7 +5042,7 @@
       "type": {
         "kind": "reflection",
         "reflection": {
-          "id": 300,
+          "id": 305,
           "name": "__type",
           "kind": 512,
           "kindString": "Constructor",
@@ -4926,12 +5052,12 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 54,
               "character": 68,
-              "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L54"
+              "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L54"
             }
           ],
           "signatures": [
             {
-              "id": 301,
+              "id": 306,
               "name": "__type",
               "kind": 16384,
               "kindString": "Constructor signature",
@@ -4948,7 +5074,7 @@
               },
               "parameters": [
                 {
-                  "id": 302,
+                  "id": 307,
                   "name": "args",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4957,14 +5083,14 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 303,
+                    "id": 308,
                     "name": "A"
                   }
                 }
               ],
               "type": {
                 "type": "reference",
-                "id": 304,
+                "id": 309,
                 "name": "R"
               }
             }
@@ -4973,13 +5099,13 @@
       }
     },
     {
-      "id": 335,
+      "id": 340,
       "name": "AnyObject",
       "source": {
         "line": 106,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L106"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L106"
       },
       "comment": {
         "description": "An object that can have any structure, this is an alternative to {@link NonNullObject} for situations where\nthat leads to unexpected type resolutions.\n\nNote that this is still a strictly typed type, it is not simply aliasing `any`",
@@ -4989,7 +5115,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 336,
+          "id": 341,
           "name": "T",
           "type": null,
           "default": null
@@ -5003,7 +5129,7 @@
           "operator": "keyof",
           "type": {
             "kind": "reference",
-            "id": 336,
+            "id": 341,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5014,7 +5140,7 @@
           "kind": "indexedAccess",
           "objectType": {
             "kind": "reference",
-            "id": 336,
+            "id": 341,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5032,13 +5158,13 @@
       }
     },
     {
-      "id": 284,
+      "id": 289,
       "name": "ArgumentTypes",
       "source": {
         "line": 38,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L38"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L38"
       },
       "comment": {
         "description": null,
@@ -5048,12 +5174,12 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 291,
+          "id": 296,
           "name": "F",
           "type": {
             "kind": "reflection",
             "reflection": {
-              "id": 288,
+              "id": 293,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -5063,19 +5189,19 @@
                   "fileName": "packages/utilities/src/lib/types.ts",
                   "line": 38,
                   "character": 36,
-                  "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L38"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L38"
                 }
               ],
               "signatures": [
                 {
-                  "id": 289,
+                  "id": 294,
                   "name": "__type",
                   "kind": 4096,
                   "kindString": "Call signature",
                   "flags": {},
                   "parameters": [
                     {
-                      "id": 290,
+                      "id": 295,
                       "name": "args",
                       "kind": 32768,
                       "kindString": "Parameter",
@@ -5106,7 +5232,7 @@
         "kind": "conditional",
         "checkType": {
           "kind": "reference",
-          "id": 291,
+          "id": 296,
           "name": "F",
           "packageName": null,
           "typeArguments": []
@@ -5114,7 +5240,7 @@
         "extendsType": {
           "kind": "reflection",
           "reflection": {
-            "id": 285,
+            "id": 290,
             "name": "__type",
             "kind": 65536,
             "kindString": "Type literal",
@@ -5124,19 +5250,19 @@
                 "fileName": "packages/utilities/src/lib/types.ts",
                 "line": 38,
                 "character": 77,
-                "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L38"
+                "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L38"
               }
             ],
             "signatures": [
               {
-                "id": 286,
+                "id": 291,
                 "name": "__type",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 287,
+                    "id": 292,
                     "name": "args",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -5171,13 +5297,13 @@
       }
     },
     {
-      "id": 292,
+      "id": 297,
       "name": "Arr",
       "source": {
         "line": 44,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L44"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L44"
       },
       "comment": {
         "description": "A readonly array of any values.",
@@ -5199,13 +5325,13 @@
       }
     },
     {
-      "id": 344,
+      "id": 349,
       "name": "ArrayElementType",
       "source": {
         "line": 186,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L186"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L186"
       },
       "comment": {
         "description": "Gets a union type of all the keys that are in an array.",
@@ -5220,7 +5346,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 345,
+          "id": 350,
           "name": "T",
           "type": null,
           "default": null
@@ -5230,7 +5356,7 @@
         "kind": "conditional",
         "checkType": {
           "kind": "reference",
-          "id": 345,
+          "id": 350,
           "name": "T",
           "packageName": null,
           "typeArguments": []
@@ -5253,7 +5379,7 @@
           "kind": "conditional",
           "checkType": {
             "kind": "reference",
-            "id": 345,
+            "id": 350,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5278,7 +5404,7 @@
           },
           "falseType": {
             "kind": "reference",
-            "id": 345,
+            "id": 350,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5287,13 +5413,13 @@
       }
     },
     {
-      "id": 328,
+      "id": 333,
       "name": "Awaitable",
       "source": {
         "line": 79,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L79"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L79"
       },
       "comment": {
         "description": "ReturnType for a function that can return either a value or a `Promise` with that value",
@@ -5303,7 +5429,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 329,
+          "id": 334,
           "name": "T",
           "type": null,
           "default": null
@@ -5320,7 +5446,7 @@
             "typeArguments": [
               {
                 "kind": "reference",
-                "id": 329,
+                "id": 334,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -5329,7 +5455,7 @@
           },
           {
             "kind": "reference",
-            "id": 329,
+            "id": 334,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5338,13 +5464,13 @@
       }
     },
     {
-      "id": 272,
+      "id": 277,
       "name": "Builtin",
       "source": {
         "line": 4,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L4"
       },
       "comment": {
         "description": null,
@@ -5358,7 +5484,7 @@
         "types": [
           {
             "kind": "reference",
-            "id": 271,
+            "id": 276,
             "name": "Primitive",
             "packageName": null,
             "typeArguments": []
@@ -5395,13 +5521,13 @@
       }
     },
     {
-      "id": 305,
+      "id": 310,
       "name": "Constructor",
       "source": {
         "line": 59,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L59"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L59"
       },
       "comment": {
         "description": null,
@@ -5411,7 +5537,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 309,
+          "id": 314,
           "name": "T",
           "type": null,
           "default": null
@@ -5420,7 +5546,7 @@
       "type": {
         "kind": "reflection",
         "reflection": {
-          "id": 306,
+          "id": 311,
           "name": "__type",
           "kind": 512,
           "kindString": "Constructor",
@@ -5430,12 +5556,12 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 59,
               "character": 29,
-              "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L59"
+              "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L59"
             }
           ],
           "signatures": [
             {
-              "id": 307,
+              "id": 312,
               "name": "__type",
               "kind": 16384,
               "kindString": "Constructor signature",
@@ -5450,7 +5576,7 @@
               },
               "parameters": [
                 {
-                  "id": 308,
+                  "id": 313,
                   "name": "args",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5468,7 +5594,7 @@
               ],
               "type": {
                 "type": "reference",
-                "id": 309,
+                "id": 314,
                 "name": "T"
               }
             }
@@ -5477,13 +5603,13 @@
       }
     },
     {
-      "id": 293,
+      "id": 298,
       "name": "Ctor",
       "source": {
         "line": 49,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L49"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L49"
       },
       "comment": {
         "description": null,
@@ -5493,11 +5619,11 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 297,
+          "id": 302,
           "name": "A",
           "type": {
             "kind": "reference",
-            "id": 292,
+            "id": 297,
             "name": "Arr",
             "packageName": null,
             "typeArguments": []
@@ -5515,7 +5641,7 @@
           }
         },
         {
-          "id": 298,
+          "id": 303,
           "name": "R",
           "type": null,
           "default": {
@@ -5527,7 +5653,7 @@
       "type": {
         "kind": "reflection",
         "reflection": {
-          "id": 294,
+          "id": 299,
           "name": "__type",
           "kind": 512,
           "kindString": "Constructor",
@@ -5537,12 +5663,12 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 49,
               "character": 60,
-              "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L49"
+              "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L49"
             }
           ],
           "signatures": [
             {
-              "id": 295,
+              "id": 300,
               "name": "__type",
               "kind": 16384,
               "kindString": "Constructor signature",
@@ -5557,7 +5683,7 @@
               },
               "parameters": [
                 {
-                  "id": 296,
+                  "id": 301,
                   "name": "args",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5566,14 +5692,14 @@
                   },
                   "type": {
                     "type": "reference",
-                    "id": 297,
+                    "id": 302,
                     "name": "A"
                   }
                 }
               ],
               "type": {
                 "type": "reference",
-                "id": 298,
+                "id": 303,
                 "name": "R"
               }
             }
@@ -5582,13 +5708,13 @@
       }
     },
     {
-      "id": 282,
+      "id": 287,
       "name": "DeepPartial",
       "source": {
         "line": 30,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L30"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L30"
       },
       "comment": {
         "description": null,
@@ -5598,7 +5724,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 283,
+          "id": 288,
           "name": "T",
           "type": null,
           "default": null
@@ -5612,7 +5738,7 @@
           "operator": "keyof",
           "type": {
             "kind": "reference",
-            "id": 283,
+            "id": 288,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5625,7 +5751,7 @@
             "kind": "indexedAccess",
             "objectType": {
               "kind": "reference",
-              "id": 283,
+              "id": 288,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -5649,7 +5775,7 @@
             "kind": "array",
             "type": {
               "kind": "reference",
-              "id": 282,
+              "id": 287,
               "name": "DeepPartial",
               "packageName": null,
               "typeArguments": [
@@ -5669,7 +5795,7 @@
               "kind": "indexedAccess",
               "objectType": {
                 "kind": "reference",
-                "id": 283,
+                "id": 288,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -5702,7 +5828,7 @@
               "typeArguments": [
                 {
                   "kind": "reference",
-                  "id": 282,
+                  "id": 287,
                   "name": "DeepPartial",
                   "packageName": null,
                   "typeArguments": [
@@ -5719,7 +5845,7 @@
             },
             "falseType": {
               "kind": "reference",
-              "id": 282,
+              "id": 287,
               "name": "DeepPartial",
               "packageName": null,
               "typeArguments": [
@@ -5727,7 +5853,7 @@
                   "kind": "indexedAccess",
                   "objectType": {
                     "kind": "reference",
-                    "id": 283,
+                    "id": 288,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -5749,13 +5875,13 @@
       }
     },
     {
-      "id": 273,
+      "id": 278,
       "name": "DeepRequired",
       "source": {
         "line": 6,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L6"
       },
       "comment": {
         "description": null,
@@ -5765,7 +5891,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 275,
+          "id": 280,
           "name": "T",
           "type": null,
           "default": null
@@ -5775,14 +5901,14 @@
         "kind": "conditional",
         "checkType": {
           "kind": "reference",
-          "id": 275,
+          "id": 280,
           "name": "T",
           "packageName": null,
           "typeArguments": []
         },
         "extendsType": {
           "kind": "reference",
-          "id": 272,
+          "id": 277,
           "name": "Builtin",
           "packageName": null,
           "typeArguments": []
@@ -5795,7 +5921,7 @@
           "typeArguments": [
             {
               "kind": "reference",
-              "id": 275,
+              "id": 280,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -5806,7 +5932,7 @@
           "kind": "conditional",
           "checkType": {
             "kind": "reference",
-            "id": 275,
+            "id": 280,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -5835,7 +5961,7 @@
             "typeArguments": [
               {
                 "kind": "reference",
-                "id": 273,
+                "id": 278,
                 "name": "DeepRequired",
                 "packageName": null,
                 "typeArguments": [
@@ -5850,7 +5976,7 @@
               },
               {
                 "kind": "reference",
-                "id": 273,
+                "id": 278,
                 "name": "DeepRequired",
                 "packageName": null,
                 "typeArguments": [
@@ -5869,7 +5995,7 @@
             "kind": "conditional",
             "checkType": {
               "kind": "reference",
-              "id": 275,
+              "id": 280,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -5898,7 +6024,7 @@
               "typeArguments": [
                 {
                   "kind": "reference",
-                  "id": 273,
+                  "id": 278,
                   "name": "DeepRequired",
                   "packageName": null,
                   "typeArguments": [
@@ -5913,7 +6039,7 @@
                 },
                 {
                   "kind": "reference",
-                  "id": 273,
+                  "id": 278,
                   "name": "DeepRequired",
                   "packageName": null,
                   "typeArguments": [
@@ -5932,7 +6058,7 @@
               "kind": "conditional",
               "checkType": {
                 "kind": "reference",
-                "id": 275,
+                "id": 280,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -5961,7 +6087,7 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 273,
+                    "id": 278,
                     "name": "DeepRequired",
                     "packageName": null,
                     "typeArguments": [
@@ -5976,7 +6102,7 @@
                   },
                   {
                     "kind": "reference",
-                    "id": 273,
+                    "id": 278,
                     "name": "DeepRequired",
                     "packageName": null,
                     "typeArguments": [
@@ -5995,7 +6121,7 @@
                 "kind": "conditional",
                 "checkType": {
                   "kind": "reference",
-                  "id": 275,
+                  "id": 280,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -6020,7 +6146,7 @@
                   "typeArguments": [
                     {
                       "kind": "reference",
-                      "id": 273,
+                      "id": 278,
                       "name": "DeepRequired",
                       "packageName": null,
                       "typeArguments": [
@@ -6039,7 +6165,7 @@
                   "kind": "conditional",
                   "checkType": {
                     "kind": "reference",
-                    "id": 275,
+                    "id": 280,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -6064,7 +6190,7 @@
                     "typeArguments": [
                       {
                         "kind": "reference",
-                        "id": 273,
+                        "id": 278,
                         "name": "DeepRequired",
                         "packageName": null,
                         "typeArguments": [
@@ -6083,7 +6209,7 @@
                     "kind": "conditional",
                     "checkType": {
                       "kind": "reference",
-                      "id": 275,
+                      "id": 280,
                       "name": "T",
                       "packageName": null,
                       "typeArguments": []
@@ -6108,7 +6234,7 @@
                       "typeArguments": [
                         {
                           "kind": "reference",
-                          "id": 273,
+                          "id": 278,
                           "name": "DeepRequired",
                           "packageName": null,
                           "typeArguments": [
@@ -6127,7 +6253,7 @@
                       "kind": "conditional",
                       "checkType": {
                         "kind": "reference",
-                        "id": 275,
+                        "id": 280,
                         "name": "T",
                         "packageName": null,
                         "typeArguments": []
@@ -6152,7 +6278,7 @@
                         "typeArguments": [
                           {
                             "kind": "reference",
-                            "id": 273,
+                            "id": 278,
                             "name": "DeepRequired",
                             "packageName": null,
                             "typeArguments": [
@@ -6171,7 +6297,7 @@
                         "kind": "conditional",
                         "checkType": {
                           "kind": "reference",
-                          "id": 275,
+                          "id": 280,
                           "name": "T",
                           "packageName": null,
                           "typeArguments": []
@@ -6179,7 +6305,7 @@
                         "extendsType": {
                           "kind": "reflection",
                           "reflection": {
-                            "id": 274,
+                            "id": 279,
                             "name": "__type",
                             "kind": 65536,
                             "kindString": "Type literal",
@@ -6189,7 +6315,7 @@
                                 "fileName": "packages/utilities/src/lib/types.ts",
                                 "line": 22,
                                 "character": 13,
-                                "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L22"
+                                "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L22"
                               }
                             ]
                           }
@@ -6202,7 +6328,7 @@
                             "operator": "keyof",
                             "type": {
                               "kind": "reference",
-                              "id": 275,
+                              "id": 280,
                               "name": "T",
                               "packageName": null,
                               "typeArguments": []
@@ -6211,7 +6337,7 @@
                           "nameType": null,
                           "templateType": {
                             "kind": "reference",
-                            "id": 273,
+                            "id": 278,
                             "name": "DeepRequired",
                             "packageName": null,
                             "typeArguments": [
@@ -6219,7 +6345,7 @@
                                 "kind": "indexedAccess",
                                 "objectType": {
                                   "kind": "reference",
-                                  "id": 275,
+                                  "id": 280,
                                   "name": "T",
                                   "packageName": null,
                                   "typeArguments": []
@@ -6245,7 +6371,7 @@
                           "typeArguments": [
                             {
                               "kind": "reference",
-                              "id": 275,
+                              "id": 280,
                               "name": "T",
                               "packageName": null,
                               "typeArguments": []
@@ -6263,13 +6389,13 @@
       }
     },
     {
-      "id": 315,
+      "id": 320,
       "name": "FirstArgument",
       "source": {
         "line": 69,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L69"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L69"
       },
       "comment": {
         "description": "Gets the first argument of any given function",
@@ -6279,7 +6405,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 320,
+          "id": 325,
           "name": "T",
           "type": null,
           "default": null
@@ -6289,7 +6415,7 @@
         "kind": "conditional",
         "checkType": {
           "kind": "reference",
-          "id": 320,
+          "id": 325,
           "name": "T",
           "packageName": null,
           "typeArguments": []
@@ -6297,7 +6423,7 @@
         "extendsType": {
           "kind": "reflection",
           "reflection": {
-            "id": 316,
+            "id": 321,
             "name": "__type",
             "kind": 65536,
             "kindString": "Type literal",
@@ -6307,19 +6433,19 @@
                 "fileName": "packages/utilities/src/lib/types.ts",
                 "line": 69,
                 "character": 41,
-                "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L69"
+                "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L69"
               }
             ],
             "signatures": [
               {
-                "id": 317,
+                "id": 322,
                 "name": "__type",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 318,
+                    "id": 323,
                     "name": "arg1",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -6330,7 +6456,7 @@
                     }
                   },
                   {
-                    "id": 319,
+                    "id": 324,
                     "name": "args",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -6368,13 +6494,13 @@
       }
     },
     {
-      "id": 340,
+      "id": 345,
       "name": "Mutable",
       "source": {
         "line": 149,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L149"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L149"
       },
       "comment": {
         "description": "Transforms a `readonly` type to be mutable",
@@ -6389,7 +6515,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 341,
+          "id": 346,
           "name": "T",
           "type": null,
           "default": null
@@ -6403,7 +6529,7 @@
           "operator": "keyof",
           "type": {
             "kind": "reference",
-            "id": 341,
+            "id": 346,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -6416,7 +6542,7 @@
             "kind": "indexedAccess",
             "objectType": {
               "kind": "reference",
-              "id": 341,
+              "id": 346,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -6441,7 +6567,7 @@
               },
               {
                 "kind": "reference",
-                "id": 333,
+                "id": 338,
                 "name": "NonNullObject",
                 "packageName": null,
                 "typeArguments": []
@@ -6450,7 +6576,7 @@
           },
           "trueType": {
             "kind": "reference",
-            "id": 340,
+            "id": 345,
             "name": "Mutable",
             "packageName": null,
             "typeArguments": [
@@ -6458,7 +6584,7 @@
                 "kind": "indexedAccess",
                 "objectType": {
                   "kind": "reference",
-                  "id": 341,
+                  "id": 346,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -6477,7 +6603,7 @@
             "kind": "indexedAccess",
             "objectType": {
               "kind": "reference",
-              "id": 341,
+              "id": 346,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -6496,13 +6622,13 @@
       }
     },
     {
-      "id": 333,
+      "id": 338,
       "name": "NonNullObject",
       "source": {
         "line": 98,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L98"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L98"
       },
       "comment": {
         "description": "An object that is non nullable, to bypass TypeScript not easily working with {@link Record}<{@link PropertyKey}, unknown> in various instances.",
@@ -6517,7 +6643,7 @@
           {
             "kind": "reflection",
             "reflection": {
-              "id": 334,
+              "id": 339,
               "name": "__type",
               "kind": 65536,
               "kindString": "Type literal",
@@ -6527,7 +6653,7 @@
                   "fileName": "packages/utilities/src/lib/types.ts",
                   "line": 98,
                   "character": 28,
-                  "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L98"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L98"
                 }
               ]
             }
@@ -6540,13 +6666,13 @@
       }
     },
     {
-      "id": 331,
+      "id": 336,
       "name": "NonNullableProperties",
       "source": {
         "line": 90,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L90"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L90"
       },
       "comment": {
         "description": "Similar to the built in {@link NonNullable}, but properly removes `null` from all keys in the class or interface\nThis does not recurse deeply, for that use {@link DeepRequired}",
@@ -6556,7 +6682,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 332,
+          "id": 337,
           "name": "T",
           "type": null,
           "default": {
@@ -6573,7 +6699,7 @@
           "operator": "keyof",
           "type": {
             "kind": "reference",
-            "id": 332,
+            "id": 337,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -6590,7 +6716,7 @@
               "kind": "indexedAccess",
               "objectType": {
                 "kind": "reference",
-                "id": 332,
+                "id": 337,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -6610,13 +6736,13 @@
       }
     },
     {
-      "id": 330,
+      "id": 335,
       "name": "Nullish",
       "source": {
         "line": 84,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L84"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L84"
       },
       "comment": {
         "description": "Type union for the full 2 billion dollar mistake in the JavaScript ecosystem",
@@ -6640,13 +6766,13 @@
       }
     },
     {
-      "id": 279,
+      "id": 284,
       "name": "PartialRequired",
       "source": {
         "line": 28,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L28"
       },
       "comment": {
         "description": null,
@@ -6656,20 +6782,20 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 280,
+          "id": 285,
           "name": "T",
           "type": null,
           "default": null
         },
         {
-          "id": 281,
+          "id": 286,
           "name": "K",
           "type": {
             "kind": "typeOperator",
             "operator": "keyof",
             "type": {
               "kind": "reference",
-              "id": 280,
+              "id": 285,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -6695,14 +6821,14 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 280,
+                    "id": 285,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 281,
+                    "id": 286,
                     "name": "K",
                     "packageName": null,
                     "typeArguments": []
@@ -6725,14 +6851,14 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 280,
+                    "id": 285,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 281,
+                    "id": 286,
                     "name": "K",
                     "packageName": null,
                     "typeArguments": []
@@ -6745,13 +6871,13 @@
       }
     },
     {
-      "id": 337,
+      "id": 342,
       "name": "PickByValue",
       "source": {
         "line": 127,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L127"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L127"
       },
       "comment": {
         "description": "Gets all the keys (as a string union) from a type `T` that match value `V`",
@@ -6766,13 +6892,13 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 338,
+          "id": 343,
           "name": "T",
           "type": null,
           "default": null
         },
         {
-          "id": 339,
+          "id": 344,
           "name": "V",
           "type": null,
           "default": null
@@ -6791,7 +6917,7 @@
                 "operator": "keyof",
                 "type": {
                   "kind": "reference",
-                  "id": 338,
+                  "id": 343,
                   "name": "T",
                   "packageName": null,
                   "typeArguments": []
@@ -6804,7 +6930,7 @@
                   "kind": "indexedAccess",
                   "objectType": {
                     "kind": "reference",
-                    "id": 338,
+                    "id": 343,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
@@ -6819,7 +6945,7 @@
                 },
                 "extendsType": {
                   "kind": "reference",
-                  "id": 339,
+                  "id": 344,
                   "name": "V",
                   "packageName": null,
                   "typeArguments": []
@@ -6844,7 +6970,7 @@
               "operator": "keyof",
               "type": {
                 "kind": "reference",
-                "id": 338,
+                "id": 343,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -6856,7 +6982,7 @@
             "operator": "keyof",
             "type": {
               "kind": "reference",
-              "id": 338,
+              "id": 343,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -6866,13 +6992,13 @@
       }
     },
     {
-      "id": 271,
+      "id": 276,
       "name": "Primitive",
       "source": {
         "line": 1,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L1"
       },
       "comment": {
         "description": null,
@@ -6916,13 +7042,13 @@
       }
     },
     {
-      "id": 276,
+      "id": 281,
       "name": "RequiredExcept",
       "source": {
         "line": 26,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L26"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L26"
       },
       "comment": {
         "description": null,
@@ -6932,20 +7058,20 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 277,
+          "id": 282,
           "name": "T",
           "type": null,
           "default": null
         },
         {
-          "id": 278,
+          "id": 283,
           "name": "K",
           "type": {
             "kind": "typeOperator",
             "operator": "keyof",
             "type": {
               "kind": "reference",
-              "id": 277,
+              "id": 282,
               "name": "T",
               "packageName": null,
               "typeArguments": []
@@ -6971,14 +7097,14 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 277,
+                    "id": 282,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 278,
+                    "id": 283,
                     "name": "K",
                     "packageName": null,
                     "typeArguments": []
@@ -7001,14 +7127,14 @@
                 "typeArguments": [
                   {
                     "kind": "reference",
-                    "id": 277,
+                    "id": 282,
                     "name": "T",
                     "packageName": null,
                     "typeArguments": []
                   },
                   {
                     "kind": "reference",
-                    "id": 278,
+                    "id": 283,
                     "name": "K",
                     "packageName": null,
                     "typeArguments": []
@@ -7021,13 +7147,13 @@
       }
     },
     {
-      "id": 321,
+      "id": 326,
       "name": "SecondArgument",
       "source": {
         "line": 74,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L74"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L74"
       },
       "comment": {
         "description": "Gets the second argument of any given function",
@@ -7037,7 +7163,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 327,
+          "id": 332,
           "name": "T",
           "type": null,
           "default": null
@@ -7047,7 +7173,7 @@
         "kind": "conditional",
         "checkType": {
           "kind": "reference",
-          "id": 327,
+          "id": 332,
           "name": "T",
           "packageName": null,
           "typeArguments": []
@@ -7055,7 +7181,7 @@
         "extendsType": {
           "kind": "reflection",
           "reflection": {
-            "id": 322,
+            "id": 327,
             "name": "__type",
             "kind": 65536,
             "kindString": "Type literal",
@@ -7065,19 +7191,19 @@
                 "fileName": "packages/utilities/src/lib/types.ts",
                 "line": 74,
                 "character": 42,
-                "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L74"
+                "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L74"
               }
             ],
             "signatures": [
               {
-                "id": 323,
+                "id": 328,
                 "name": "__type",
                 "kind": 4096,
                 "kindString": "Call signature",
                 "flags": {},
                 "parameters": [
                   {
-                    "id": 324,
+                    "id": 329,
                     "name": "arg1",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -7088,7 +7214,7 @@
                     }
                   },
                   {
-                    "id": 325,
+                    "id": 330,
                     "name": "arg2",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -7099,7 +7225,7 @@
                     }
                   },
                   {
-                    "id": 326,
+                    "id": 331,
                     "name": "args",
                     "kind": 32768,
                     "kindString": "Parameter",
@@ -7137,13 +7263,13 @@
       }
     },
     {
-      "id": 342,
+      "id": 347,
       "name": "StrictRequired",
       "source": {
         "line": 172,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/types.ts#L172"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/types.ts#L172"
       },
       "comment": {
         "description": "Transforms every key in an object to be strictly required, essentially removing `undefined` and `null` from the type.",
@@ -7158,7 +7284,7 @@
       "external": false,
       "typeParameters": [
         {
-          "id": 343,
+          "id": 348,
           "name": "T",
           "type": null,
           "default": null
@@ -7172,7 +7298,7 @@
           "operator": "keyof",
           "type": {
             "kind": "reference",
-            "id": 343,
+            "id": 348,
             "name": "T",
             "packageName": null,
             "typeArguments": []
@@ -7189,7 +7315,7 @@
               "kind": "indexedAccess",
               "objectType": {
                 "kind": "reference",
-                "id": 343,
+                "id": 348,
                 "name": "T",
                 "packageName": null,
                 "typeArguments": []
@@ -7215,7 +7341,7 @@
         "line": 1,
         "file": "throttle.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L1"
       },
       "comment": {
         "description": null,
@@ -7240,7 +7366,7 @@
                   "fileName": "packages/utilities/src/lib/throttle.ts",
                   "line": 1,
                   "character": 33,
-                  "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L1"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L1"
                 }
               ],
               "signatures": [
@@ -7309,7 +7435,7 @@
                       "fileName": "packages/utilities/src/lib/throttle.ts",
                       "line": 1,
                       "character": 66,
-                      "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L1"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L1"
                     }
                   ],
                   "type": {
@@ -7325,7 +7451,7 @@
                           "fileName": "packages/utilities/src/lib/throttle.ts",
                           "line": 1,
                           "character": 73,
-                          "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L1"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L1"
                         }
                       ],
                       "signatures": [
@@ -7358,7 +7484,7 @@
                   "fileName": "packages/utilities/src/lib/throttle.ts",
                   "line": 1,
                   "character": 64,
-                  "url": "https://github.com/sapphiredev/utilities/blob/a90f287/packages/utilities/src/lib/throttle.ts#L1"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/utilities/src/lib/throttle.ts#L1"
                 }
               ]
             }
