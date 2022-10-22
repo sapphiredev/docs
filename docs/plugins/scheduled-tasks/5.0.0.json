@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "5.0.0",
+  "typeDocJsonParserVersion": "6.0.1",
   "id": 0,
   "name": "@sapphire/plugin-scheduled-tasks",
   "version": "5.0.0",
@@ -30,6 +30,7 @@
         "typeArguments": []
       },
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 34,
         "name": "constructor",
@@ -49,6 +50,11 @@
           {
             "id": 36,
             "name": "context",
+            "comment": {
+              "description": null,
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "reference",
               "id": null,
@@ -60,6 +66,11 @@
           {
             "id": 37,
             "name": "options",
+            "comment": {
+              "description": null,
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "reference",
               "id": 64,
@@ -85,7 +96,7 @@
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L7"
           },
-          "parentId": 33,
+          "parentId": 40,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -110,7 +121,7 @@
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L6"
           },
-          "parentId": 33,
+          "parentId": 39,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -144,7 +155,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 47,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -169,7 +180,7 @@
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L5"
           },
-          "parentId": 33,
+          "parentId": 38,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -203,7 +214,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 45,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -231,7 +242,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 46,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -256,7 +267,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 48,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -284,7 +295,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 44,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -333,7 +344,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 50,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -352,18 +363,13 @@
         {
           "id": 51,
           "name": "onLoad",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 465,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 51,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -388,18 +394,13 @@
         {
           "id": 53,
           "name": "onUnload",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 470,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 53,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -424,18 +425,13 @@
         {
           "id": 57,
           "name": "reload",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 478,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 57,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -468,18 +464,13 @@
         {
           "id": 41,
           "name": "run",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 18,
             "file": "ScheduledTask.ts",
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L18"
           },
-          "parentId": 33,
+          "parentId": 41,
           "accessibility": "public",
           "abstract": true,
           "static": false,
@@ -497,6 +488,11 @@
                 {
                   "id": 43,
                   "name": "payload",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -513,18 +509,13 @@
         {
           "id": 59,
           "name": "toJSON",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 482,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 59,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -552,18 +543,13 @@
         {
           "id": 55,
           "name": "unload",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 474,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 33,
+          "parentId": 55,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -613,6 +599,7 @@
       "abstract": false,
       "extendsType": null,
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 2,
         "name": "constructor",
@@ -632,6 +619,11 @@
           {
             "id": 4,
             "name": "options",
+            "comment": {
+              "description": null,
+              "blockTags": [],
+              "modifierTags": []
+            },
             "type": {
               "kind": "union",
               "types": [
@@ -666,7 +658,7 @@
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L11"
           },
-          "parentId": 1,
+          "parentId": 5,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -694,7 +686,7 @@
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L18"
           },
-          "parentId": 1,
+          "parentId": 7,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -719,7 +711,7 @@
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L100"
           },
-          "parentId": 1,
+          "parentId": 32,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -738,18 +730,13 @@
         {
           "id": 8,
           "name": "create",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 22,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L22"
           },
-          "parentId": 1,
+          "parentId": 8,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -767,6 +754,11 @@
                 {
                   "id": 10,
                   "name": "task",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "never"
@@ -775,6 +767,11 @@
                 {
                   "id": 11,
                   "name": "payload",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -783,6 +780,11 @@
                 {
                   "id": 12,
                   "name": "options",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "union",
                     "types": [
@@ -811,18 +813,13 @@
         {
           "id": 13,
           "name": "createRepeated",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 33,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L33"
           },
-          "parentId": 1,
+          "parentId": 13,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -847,18 +844,13 @@
         {
           "id": 15,
           "name": "delete",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 55,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L55"
           },
-          "parentId": 1,
+          "parentId": 15,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -876,6 +868,11 @@
                 {
                   "id": 17,
                   "name": "id",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -892,18 +889,13 @@
         {
           "id": 24,
           "name": "get",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 67,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L67"
           },
-          "parentId": 1,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -921,6 +913,11 @@
                 {
                   "id": 26,
                   "name": "id",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -937,18 +934,13 @@
         {
           "id": 18,
           "name": "list",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 59,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L59"
           },
-          "parentId": 1,
+          "parentId": 18,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -966,6 +958,11 @@
                 {
                   "id": 20,
                   "name": "options",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -982,18 +979,13 @@
         {
           "id": 21,
           "name": "listRepeated",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 63,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L63"
           },
-          "parentId": 1,
+          "parentId": 21,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1011,6 +1003,11 @@
                 {
                   "id": 23,
                   "name": "options",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -1027,18 +1024,13 @@
         {
           "id": 27,
           "name": "run",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 71,
             "file": "ScheduledTaskHandler.ts",
             "path": "packages/scheduled-tasks/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L71"
           },
-          "parentId": 1,
+          "parentId": 27,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1056,6 +1048,11 @@
                 {
                   "id": 29,
                   "name": "task",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -1064,6 +1061,11 @@
                 {
                   "id": 30,
                   "name": "payload",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -1119,6 +1121,7 @@
         ]
       },
       "implementsType": [],
+      "typeParameters": [],
       "construct": {
         "id": 84,
         "name": "constructor",
@@ -1151,7 +1154,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 96,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1187,7 +1190,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 623,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1212,7 +1215,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 126,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1240,7 +1243,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 97,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1265,7 +1268,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 98,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1298,7 +1301,7 @@
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L5"
           },
-          "parentId": 69,
+          "parentId": 86,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1334,7 +1337,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 614,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1359,7 +1362,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 99,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1395,7 +1398,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 83,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1423,7 +1426,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 70,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1456,7 +1459,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 71,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1498,7 +1501,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 101,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1517,18 +1520,13 @@
         {
           "id": 621,
           "name": "[iterator]",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 121,
             "file": "lib.es2015.iterable.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 621,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1573,18 +1571,13 @@
         {
           "id": 157,
           "name": "at",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 105,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 157,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1602,6 +1595,11 @@
                 {
                   "id": 159,
                   "name": "index",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -1630,18 +1628,13 @@
         {
           "id": 94,
           "name": "clear",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 28,
             "file": "ScheduledTaskStore.ts",
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L28"
           },
-          "parentId": 69,
+          "parentId": 94,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1666,18 +1659,13 @@
         {
           "id": 554,
           "name": "clone",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 350,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 554,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1722,18 +1710,13 @@
         {
           "id": 556,
           "name": "concat",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 361,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 556,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1756,6 +1739,11 @@
                 {
                   "id": 558,
                   "name": "collections",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "array",
                     "type": {
@@ -1805,18 +1793,13 @@
         {
           "id": 122,
           "name": "construct",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 348,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 122,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1839,6 +1822,11 @@
                 {
                   "id": 124,
                   "name": "Ctor",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1858,6 +1846,11 @@
                 {
                   "id": 125,
                   "name": "data",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1880,18 +1873,13 @@
         {
           "id": 91,
           "name": "delete",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 19,
             "file": "ScheduledTaskStore.ts",
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L19"
           },
-          "parentId": 69,
+          "parentId": 91,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1909,6 +1897,11 @@
                 {
                   "id": 93,
                   "name": "key",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -1925,18 +1918,13 @@
         {
           "id": 569,
           "name": "difference",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 397,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 569,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1961,6 +1949,11 @@
                 {
                   "id": 572,
                   "name": "other",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -2019,18 +2012,13 @@
         {
           "id": 522,
           "name": "each",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 324,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 522,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2053,6 +2041,11 @@
                 {
                   "id": 524,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -2160,6 +2153,11 @@
                 {
                   "id": 532,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -2257,6 +2255,11 @@
                 {
                   "id": 539,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 531,
@@ -2279,18 +2282,13 @@
         {
           "id": 127,
           "name": "ensure",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 42,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 127,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2313,6 +2311,11 @@
                 {
                   "id": 129,
                   "name": "key",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -2321,6 +2324,11 @@
                 {
                   "id": 130,
                   "name": "defaultValueGenerator",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -2400,18 +2408,13 @@
         {
           "id": 615,
           "name": "entries",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 126,
             "file": "lib.es2015.iterable.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 615,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2456,18 +2459,13 @@
         {
           "id": 559,
           "name": "equals",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 371,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 559,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2490,6 +2488,11 @@
                 {
                   "id": 561,
                   "name": "collection",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -2521,18 +2524,13 @@
         {
           "id": 455,
           "name": "every",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 288,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 455,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2565,6 +2563,11 @@
                 {
                   "id": 458,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -2714,6 +2717,11 @@
                 {
                   "id": 466,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -2839,6 +2847,11 @@
                 {
                   "id": 473,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -2952,6 +2965,11 @@
                 {
                   "id": 482,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3057,6 +3075,11 @@
                 {
                   "id": 489,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 480,
@@ -3134,6 +3157,11 @@
                 {
                   "id": 493,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3239,6 +3267,11 @@
                 {
                   "id": 500,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 491,
@@ -3293,6 +3326,11 @@
                 {
                   "id": 503,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3390,6 +3428,11 @@
                 {
                   "id": 510,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 502,
@@ -3409,18 +3452,13 @@
         {
           "id": 265,
           "name": "filter",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 196,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 265,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -3453,6 +3491,11 @@
                 {
                   "id": 268,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3597,6 +3640,11 @@
                 {
                   "id": 276,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3717,6 +3765,11 @@
                 {
                   "id": 283,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3845,6 +3898,11 @@
                 {
                   "id": 292,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -3950,6 +4008,11 @@
                 {
                   "id": 299,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 290,
@@ -4022,6 +4085,11 @@
                 {
                   "id": 303,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -4127,6 +4195,11 @@
                 {
                   "id": 310,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 301,
@@ -4176,6 +4249,11 @@
                 {
                   "id": 313,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -4273,6 +4351,11 @@
                 {
                   "id": 320,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 312,
@@ -4307,18 +4390,13 @@
         {
           "id": 173,
           "name": "find",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 152,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 173,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -4362,6 +4440,11 @@
                 {
                   "id": 176,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -4479,6 +4562,11 @@
                 {
                   "id": 183,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -4615,6 +4703,11 @@
                 {
                   "id": 192,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -4720,6 +4813,11 @@
                 {
                   "id": 199,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 190,
@@ -4766,6 +4864,11 @@
                 {
                   "id": 202,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -4863,6 +4966,11 @@
                 {
                   "id": 209,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 201,
@@ -4894,18 +5002,13 @@
         {
           "id": 210,
           "name": "findKey",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 169,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 210,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -4938,6 +5041,11 @@
                 {
                   "id": 213,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -5055,6 +5163,11 @@
                 {
                   "id": 220,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -5177,6 +5290,11 @@
                 {
                   "id": 229,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -5282,6 +5400,11 @@
                 {
                   "id": 236,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 227,
@@ -5328,6 +5451,11 @@
                 {
                   "id": 239,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -5425,6 +5553,11 @@
                 {
                   "id": 246,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 238,
@@ -5453,18 +5586,13 @@
         {
           "id": 141,
           "name": "first",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 66,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 141,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -5514,6 +5642,11 @@
                 {
                   "id": 144,
                   "name": "amount",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -5536,18 +5669,13 @@
         {
           "id": 145,
           "name": "firstKey",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 76,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 145,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -5594,6 +5722,11 @@
                 {
                   "id": 148,
                   "name": "amount",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -5613,18 +5746,13 @@
         {
           "id": 377,
           "name": "flatMap",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 232,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 377,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -5654,6 +5782,11 @@
                 {
                   "id": 380,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -5794,6 +5927,11 @@
                 {
                   "id": 389,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -5906,6 +6044,11 @@
                 {
                   "id": 396,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 388,
@@ -5940,18 +6083,13 @@
         {
           "id": 599,
           "name": "forEach",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 31,
             "file": "lib.es2015.collection.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 599,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -5969,6 +6107,11 @@
                 {
                   "id": 601,
                   "name": "callbackfn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -6062,6 +6205,11 @@
                 {
                   "id": 607,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "any"
@@ -6078,18 +6226,13 @@
         {
           "id": 608,
           "name": "get",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 36,
             "file": "lib.es2015.collection.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 608,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6112,6 +6255,11 @@
                 {
                   "id": 610,
                   "name": "key",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -6140,18 +6288,13 @@
         {
           "id": 611,
           "name": "has",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 40,
             "file": "lib.es2015.collection.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 611,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6174,6 +6317,11 @@
                 {
                   "id": 613,
                   "name": "key",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -6190,18 +6338,13 @@
         {
           "id": 135,
           "name": "hasAll",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 50,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 135,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6224,6 +6367,11 @@
                 {
                   "id": 137,
                   "name": "keys",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "array",
                     "type": {
@@ -6243,18 +6391,13 @@
         {
           "id": 138,
           "name": "hasAny",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 58,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 138,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6277,6 +6420,11 @@
                 {
                   "id": 140,
                   "name": "keys",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "array",
                     "type": {
@@ -6296,18 +6444,13 @@
         {
           "id": 119,
           "name": "insert",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 341,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 119,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6330,6 +6473,11 @@
                 {
                   "id": 121,
                   "name": "piece",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 33,
@@ -6360,18 +6508,13 @@
         {
           "id": 565,
           "name": "intersect",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 391,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 565,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6396,6 +6539,11 @@
                 {
                   "id": 568,
                   "name": "other",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -6442,18 +6590,13 @@
         {
           "id": 160,
           "name": "keyAt",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 113,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 160,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6471,6 +6614,11 @@
                 {
                   "id": 162,
                   "name": "index",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -6496,18 +6644,13 @@
         {
           "id": 617,
           "name": "keys",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 131,
             "file": "lib.es2015.iterable.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 617,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6540,18 +6683,13 @@
         {
           "id": 149,
           "name": "last",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 86,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 149,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6601,6 +6739,11 @@
                 {
                   "id": 152,
                   "name": "amount",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -6623,18 +6766,13 @@
         {
           "id": 153,
           "name": "lastKey",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 96,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 153,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6681,6 +6819,11 @@
                 {
                   "id": 156,
                   "name": "amount",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -6700,18 +6843,13 @@
         {
           "id": 105,
           "name": "load",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 315,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 105,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6734,6 +6872,11 @@
                 {
                   "id": 107,
                   "name": "root",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -6742,6 +6885,11 @@
                 {
                   "id": 108,
                   "name": "path",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -6772,18 +6920,13 @@
         {
           "id": 114,
           "name": "loadAll",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 329,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 114,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6816,18 +6959,13 @@
         {
           "id": 397,
           "name": "map",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 246,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 397,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6857,6 +6995,11 @@
                 {
                   "id": 400,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -6976,6 +7119,11 @@
                 {
                   "id": 409,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7076,6 +7224,11 @@
                 {
                   "id": 416,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 407,
@@ -7101,18 +7254,13 @@
         {
           "id": 417,
           "name": "mapValues",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 260,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 417,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7142,6 +7290,11 @@
                 {
                   "id": 420,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7270,6 +7423,11 @@
                 {
                   "id": 429,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7370,6 +7528,11 @@
                 {
                   "id": 436,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 427,
@@ -7404,18 +7567,13 @@
         {
           "id": 573,
           "name": "merge",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 427,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 573,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7455,6 +7613,11 @@
                 {
                   "id": 577,
                   "name": "other",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -7478,6 +7641,11 @@
                 {
                   "id": 578,
                   "name": "whenInSelf",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7556,6 +7724,11 @@
                 {
                   "id": 583,
                   "name": "whenInOther",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7636,6 +7809,11 @@
                 {
                   "id": 588,
                   "name": "whenInBoth",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7753,18 +7931,13 @@
         {
           "id": 321,
           "name": "partition",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 214,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 321,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7797,6 +7970,11 @@
                 {
                   "id": 324,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -7980,6 +8158,11 @@
                 {
                   "id": 332,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -8139,6 +8322,11 @@
                 {
                   "id": 339,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -8291,6 +8479,11 @@
                 {
                   "id": 348,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -8396,6 +8589,11 @@
                 {
                   "id": 355,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 346,
@@ -8507,6 +8705,11 @@
                 {
                   "id": 359,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -8612,6 +8815,11 @@
                 {
                   "id": 366,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 357,
@@ -8700,6 +8908,11 @@
                 {
                   "id": 369,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -8797,6 +9010,11 @@
                 {
                   "id": 376,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 368,
@@ -8855,18 +9073,13 @@
         {
           "id": 163,
           "name": "random",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 121,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 163,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -8916,6 +9129,11 @@
                 {
                   "id": 166,
                   "name": "amount",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -8938,18 +9156,13 @@
         {
           "id": 167,
           "name": "randomKey",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 130,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 167,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -8996,6 +9209,11 @@
                 {
                   "id": 170,
                   "name": "amount",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "number"
@@ -9015,18 +9233,13 @@
         {
           "id": 511,
           "name": "reduce",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 307,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 511,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9056,6 +9269,11 @@
                 {
                   "id": 514,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -9156,6 +9374,11 @@
                 {
                   "id": 521,
                   "name": "initialValue",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 513,
@@ -9178,18 +9401,13 @@
         {
           "id": 102,
           "name": "registerPath",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 308,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 102,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9212,6 +9430,11 @@
                 {
                   "id": 104,
                   "name": "path",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -9234,18 +9457,13 @@
         {
           "id": 116,
           "name": "resolve",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 335,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 116,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9268,6 +9486,11 @@
                 {
                   "id": 118,
                   "name": "name",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "union",
                     "types": [
@@ -9299,18 +9522,13 @@
         {
           "id": 171,
           "name": "reverse",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 136,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 171,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9338,18 +9556,13 @@
         {
           "id": 87,
           "name": "set",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 11,
             "file": "ScheduledTaskStore.ts",
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L11"
           },
-          "parentId": 69,
+          "parentId": 87,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9367,6 +9580,11 @@
                 {
                   "id": 89,
                   "name": "key",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -9375,6 +9593,11 @@
                 {
                   "id": 90,
                   "name": "value",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 33,
@@ -9397,18 +9620,13 @@
         {
           "id": 437,
           "name": "some",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 274,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 437,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9431,6 +9649,11 @@
                 {
                   "id": 439,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -9535,6 +9758,11 @@
                 {
                   "id": 447,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -9632,6 +9860,11 @@
                 {
                   "id": 454,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 446,
@@ -9651,18 +9884,13 @@
         {
           "id": 562,
           "name": "sort",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 385,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 562,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9685,6 +9913,11 @@
                 {
                   "id": 564,
                   "name": "compareFunction",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -9719,18 +9952,13 @@
         {
           "id": 594,
           "name": "sorted",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 442,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 594,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9753,6 +9981,11 @@
                 {
                   "id": 596,
                   "name": "compareFunction",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -9799,18 +10032,13 @@
         {
           "id": 247,
           "name": "sweep",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 181,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 247,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9833,6 +10061,11 @@
                 {
                   "id": 249,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -9937,6 +10170,11 @@
                 {
                   "id": 257,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -10034,6 +10272,11 @@
                 {
                   "id": 264,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 256,
@@ -10053,18 +10296,13 @@
         {
           "id": 540,
           "name": "tap",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 340,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 540,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10087,6 +10325,11 @@
                 {
                   "id": 542,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -10167,6 +10410,11 @@
                 {
                   "id": 548,
                   "name": "fn",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -10237,6 +10485,11 @@
                 {
                   "id": 553,
                   "name": "thisArg",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 547,
@@ -10259,18 +10512,13 @@
         {
           "id": 597,
           "name": "toJSON",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 443,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 597,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10301,18 +10549,13 @@
         {
           "id": 109,
           "name": "unload",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 321,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 109,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10335,6 +10578,11 @@
                 {
                   "id": 111,
                   "name": "name",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "union",
                     "types": [
@@ -10374,18 +10622,13 @@
         {
           "id": 112,
           "name": "unloadAll",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 325,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 112,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10424,18 +10667,13 @@
         {
           "id": 619,
           "name": "values",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 136,
             "file": "lib.es2015.iterable.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 619,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10471,18 +10709,13 @@
         {
           "id": 72,
           "name": "combineEntries",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 457,
             "file": "collection.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 69,
+          "parentId": 72,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -10518,6 +10751,11 @@
                 {
                   "id": 76,
                   "name": "entries",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -10549,6 +10787,11 @@
                 {
                   "id": 77,
                   "name": "combine",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reflection",
                     "reflection": {
@@ -10666,7 +10909,6 @@
       ]
     }
   ],
-  "constants": [],
   "enums": [
     {
       "id": 656,
@@ -10683,7 +10925,7 @@
         "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskEvents.ts#L5"
       },
       "external": false,
-      "properties": [
+      "members": [
         {
           "id": 659,
           "name": "ScheduledTaskError",
@@ -10891,7 +11133,7 @@
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L6"
           },
-          "parentId": 624,
+          "parentId": 625,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -10903,18 +11145,13 @@
         {
           "id": 626,
           "name": "connect",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 7,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L7"
           },
-          "parentId": 624,
+          "parentId": 626,
           "signatures": [
             {
               "id": 627,
@@ -10936,18 +11173,13 @@
         {
           "id": 628,
           "name": "create",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 8,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L8"
           },
-          "parentId": 624,
+          "parentId": 628,
           "signatures": [
             {
               "id": 629,
@@ -10962,6 +11194,11 @@
                 {
                   "id": 630,
                   "name": "task",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "never"
@@ -10970,6 +11207,11 @@
                 {
                   "id": 631,
                   "name": "payload",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -10978,6 +11220,11 @@
                 {
                   "id": 632,
                   "name": "options",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "reference",
                     "id": 665,
@@ -10997,18 +11244,13 @@
         {
           "id": 633,
           "name": "createRepeated",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 9,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L9"
           },
-          "parentId": 624,
+          "parentId": 633,
           "signatures": [
             {
               "id": 634,
@@ -11023,6 +11265,11 @@
                 {
                   "id": 635,
                   "name": "tasks",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "array",
                     "type": {
@@ -11045,18 +11292,13 @@
         {
           "id": 636,
           "name": "delete",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 10,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L10"
           },
-          "parentId": 624,
+          "parentId": 636,
           "signatures": [
             {
               "id": 637,
@@ -11071,6 +11313,11 @@
                 {
                   "id": 638,
                   "name": "id",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -11087,18 +11334,13 @@
         {
           "id": 645,
           "name": "get",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 13,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L13"
           },
-          "parentId": 624,
+          "parentId": 645,
           "signatures": [
             {
               "id": 646,
@@ -11113,6 +11355,11 @@
                 {
                   "id": 647,
                   "name": "id",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -11129,18 +11376,13 @@
         {
           "id": 639,
           "name": "list",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 11,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L11"
           },
-          "parentId": 624,
+          "parentId": 639,
           "signatures": [
             {
               "id": 640,
@@ -11155,6 +11397,11 @@
                 {
                   "id": 641,
                   "name": "options",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -11171,18 +11418,13 @@
         {
           "id": 642,
           "name": "listRepeated",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 12,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L12"
           },
-          "parentId": 624,
+          "parentId": 642,
           "signatures": [
             {
               "id": 643,
@@ -11197,6 +11439,11 @@
                 {
                   "id": 644,
                   "name": "options",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -11213,18 +11460,13 @@
         {
           "id": 648,
           "name": "run",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 14,
             "file": "ScheduledTaskBaseStrategy.ts",
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskBaseStrategy.ts#L14"
           },
-          "parentId": 624,
+          "parentId": 648,
           "signatures": [
             {
               "id": 649,
@@ -11239,6 +11481,11 @@
                 {
                   "id": 650,
                   "name": "task",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -11247,6 +11494,11 @@
                 {
                   "id": 651,
                   "name": "payload",
+                  "comment": {
+                    "description": null,
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
                   "type": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -11292,7 +11544,7 @@
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskCreateRepeatedTask.ts#L4"
           },
-          "parentId": 653,
+          "parentId": 654,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -11313,7 +11565,7 @@
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTaskCreateRepeatedTask.ts#L5"
           },
-          "parentId": 653,
+          "parentId": 655,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -11356,7 +11608,7 @@
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L23"
           },
-          "parentId": 64,
+          "parentId": 66,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -11391,7 +11643,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 64,
+          "parentId": 68,
           "readonly": true,
           "type": {
             "kind": "intrinsic",
@@ -11412,7 +11664,7 @@
             "path": "packages/scheduled-tasks/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L22"
           },
-          "parentId": 64,
+          "parentId": 65,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -11447,7 +11699,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 64,
+          "parentId": 67,
           "readonly": true,
           "type": {
             "kind": "intrinsic",
@@ -11505,7 +11757,7 @@
             "path": "packages/scheduled-tasks/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/c36cdd4/packages/scheduled-tasks/src/lib/types/ScheduledTasksOptions.ts#L4"
           },
-          "parentId": 663,
+          "parentId": 664,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -11536,7 +11788,6 @@
       },
       "external": false,
       "classes": [],
-      "constants": [],
       "enums": [],
       "functions": [],
       "interfaces": [],
@@ -11590,7 +11841,8 @@
             "typeArguments": []
           }
         }
-      ]
+      ],
+      "variables": []
     }
   ],
   "typeAliases": [
@@ -12007,5 +12259,6 @@
         ]
       }
     }
-  ]
+  ],
+  "variables": []
 }

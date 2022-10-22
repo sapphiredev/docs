@@ -1,0 +1,19 @@
+{
+	"name": "docs",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Documentation files for the Sapphire website",
+	"author": "@sapphire",
+	"scripts": {
+		"migrate": "typedoc-json-parser -v --migrate docs"
+	},
+	"dependencies": {
+		"typedoc-json-parser": "^6.0.1"
+	},
+	"packageManager": "yarn@3.2.4",
+	"prettier": "@sapphire/prettier-config",
+	"devDependencies": {
+		"@sapphire/prettier-config": "^1.4.4",
+		"prettier": "^2.7.1"
+	}
+}
