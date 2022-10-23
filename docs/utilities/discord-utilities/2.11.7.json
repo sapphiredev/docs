@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "6.0.0",
+  "typeDocJsonParserVersion": "6.0.2",
   "id": 0,
   "name": "@sapphire/discord-utilities",
   "version": "2.11.7",
@@ -15,16 +15,16 @@
     {
       "id": 32,
       "name": "ApplicationCommandLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord application commands (slash commands).",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 129,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L129"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord application commands (slash commands).",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -146,16 +146,16 @@
     {
       "id": 37,
       "name": "ApplicationCommandOptionLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Choices of Discord Application Commands.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 149,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L149"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Choices of Discord Application Commands.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -277,16 +277,16 @@
     {
       "id": 74,
       "name": "AutoCompleteLimits",
+      "comment": {
+        "description": "Namespace container limits related to Discord autocomplete interactions.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 302,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L302"
-      },
-      "comment": {
-        "description": "Namespace container limits related to Discord autocomplete interactions.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -379,16 +379,16 @@
     {
       "id": 42,
       "name": "ButtonLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Message Buttons.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 169,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L169"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Message Buttons.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -481,16 +481,16 @@
     {
       "id": 1,
       "name": "ChannelLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord channels.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 4,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L4"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord channels.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -612,12 +612,6 @@
     {
       "id": 89,
       "name": "ChannelMentionRegex",
-      "source": {
-        "line": 6,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L6"
-      },
       "comment": {
         "description": "Regex that can capture the ID in Discord Channel mentions",
         "blockTags": [
@@ -632,6 +626,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 6,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L6"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -645,12 +645,6 @@
     {
       "id": 90,
       "name": "ChannelMessageRegex",
-      "source": {
-        "line": 15,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L15"
-      },
       "comment": {
         "description": "Regex that can capture the channel and message IDs in a channelId-messageId pattern\nThis pattern can be found when you hold Shift and hover over a message, and click the \"ID\" button",
         "blockTags": [
@@ -669,6 +663,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 15,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L15"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -682,12 +682,6 @@
     {
       "id": 91,
       "name": "DiscordHostnameRegex",
-      "source": {
-        "line": 25,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L25"
-      },
       "comment": {
         "description": "Regex that matches links on the known Discord host names",
         "blockTags": [
@@ -714,6 +708,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 25,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L25"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -727,12 +727,6 @@
     {
       "id": 92,
       "name": "DiscordInviteLinkRegex",
-      "source": {
-        "line": 33,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L33"
-      },
       "comment": {
         "description": "Regex that can can capture the code of Discord invite links",
         "blockTags": [
@@ -747,6 +741,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 33,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L33"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -760,16 +760,16 @@
     {
       "id": 6,
       "name": "EmbedLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord embeds.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 24,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L24"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord embeds.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1036,16 +1036,16 @@
     {
       "id": 16,
       "name": "EmojiLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord emojis.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 69,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L69"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord emojis.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1109,12 +1109,6 @@
     {
       "id": 93,
       "name": "EmojiRegex",
-      "source": {
-        "line": 42,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L42"
-      },
       "comment": {
         "description": "Regex that can capture the ID of any animated or non-animated custom Discord emoji",
         "blockTags": [
@@ -1137,6 +1131,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 42,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L42"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -1150,12 +1150,6 @@
     {
       "id": 94,
       "name": "FormattedCustomEmoji",
-      "source": {
-        "line": 49,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L49"
-      },
       "comment": {
         "description": "Regex that matches any animated or non-animated custom Discord emoji.\nUnlike {@link EmojiRegex} It can be a substring of a larger string.",
         "blockTags": [
@@ -1165,6 +1159,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 49,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L49"
       },
       "external": false,
       "type": {
@@ -1179,12 +1179,6 @@
     {
       "id": 95,
       "name": "FormattedCustomEmojiWithGroups",
-      "source": {
-        "line": 59,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L59"
-      },
       "comment": {
         "description": "Regex that can capture any animated or non-animated custom Discord emoji.\nSimilar to {@link FormattedCustomEmoji} and unlike {@link EmojiRegex} can also be a substring of a larger string.",
         "blockTags": [
@@ -1207,6 +1201,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 59,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L59"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -1220,16 +1220,16 @@
     {
       "id": 19,
       "name": "GuildLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord guilds.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 79,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L79"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord guilds.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1322,16 +1322,16 @@
     {
       "id": 23,
       "name": "GuildMemberLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord guild members.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 94,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L94"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord guild members.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1395,12 +1395,6 @@
     {
       "id": 96,
       "name": "HttpUrlRegex",
-      "source": {
-        "line": 66,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L66"
-      },
       "comment": {
         "description": "Regex that matches any URL starting with `http` or `https`",
         "blockTags": [
@@ -1415,6 +1409,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 66,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L66"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -1428,16 +1428,16 @@
     {
       "id": 26,
       "name": "InteractionLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord interactions.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 104,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L104"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord interactions.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1588,16 +1588,16 @@
     {
       "id": 54,
       "name": "MessageLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord messages.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 219,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L219"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord messages.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1885,12 +1885,6 @@
     {
       "id": 97,
       "name": "MessageLinkRegex",
-      "source": {
-        "line": 75,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L75"
-      },
       "comment": {
         "description": "Regex that can capture the Guild, Channel, and Message ID based on a shareable Discord message link.",
         "blockTags": [
@@ -1913,6 +1907,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 75,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L75"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -1926,16 +1926,16 @@
     {
       "id": 78,
       "name": "ModalLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord Modals.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 317,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L317"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord Modals.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2057,16 +2057,16 @@
     {
       "id": 64,
       "name": "ModerationLimits",
+      "comment": {
+        "description": "Namespace containing limits related to built-in moderation features.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 267,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L267"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to built-in moderation features.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2130,12 +2130,6 @@
     {
       "id": 98,
       "name": "ParsedCustomEmoji",
-      "source": {
-        "line": 84,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L84"
-      },
       "comment": {
         "description": "Regex that matches any animated or non-animated custom Discord emoji *without the wrapping `<...>` symbols.\nThis means that a string that matches this regex can directly be send inside a Discord message.\nOther than this difference it is similar to {@link FormattedCustomEmoji}.",
         "blockTags": [
@@ -2145,6 +2139,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 84,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L84"
       },
       "external": false,
       "type": {
@@ -2159,12 +2159,6 @@
     {
       "id": 99,
       "name": "ParsedCustomEmojiWithGroups",
-      "source": {
-        "line": 95,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L95"
-      },
       "comment": {
         "description": "Regex that matches any animated or non-animated custom Discord emoji *without the wrapping `<...>` symbols.\nThis means that a string that matches this regex can directly be send inside a Discord message.\nOther than this difference it is similar to {@link FormattedCustomEmojiWithGroups}.",
         "blockTags": [
@@ -2187,6 +2181,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 95,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L95"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -2200,16 +2200,16 @@
     {
       "id": 67,
       "name": "RoleLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord roles.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 277,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L277"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord roles.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2273,12 +2273,6 @@
     {
       "id": 100,
       "name": "RoleMentionRegex",
-      "source": {
-        "line": 102,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L102"
-      },
       "comment": {
         "description": "Regex that can capture the ID in Discord Role mentions",
         "blockTags": [
@@ -2293,6 +2287,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 102,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L102"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -2306,16 +2306,16 @@
     {
       "id": 46,
       "name": "SelectMenuLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Select Menus.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 184,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L184"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Select Menus.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2524,12 +2524,6 @@
     {
       "id": 101,
       "name": "SnowflakeRegex",
-      "source": {
-        "line": 109,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L109"
-      },
       "comment": {
         "description": "Regex that can capture any Discord Snowflake ID",
         "blockTags": [
@@ -2544,6 +2538,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 109,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L109"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -2557,16 +2557,16 @@
     {
       "id": 83,
       "name": "TextInputLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord Modal Text Input component.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 337,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L337"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord Modal Text Input component.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2717,12 +2717,6 @@
     {
       "id": 102,
       "name": "TokenRegex",
-      "source": {
-        "line": 121,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L121"
-      },
       "comment": {
         "description": "Regex that can capture a Discord Token",
         "blockTags": [
@@ -2745,6 +2739,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 121,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L121"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -2758,12 +2758,6 @@
     {
       "id": 106,
       "name": "TwemojiRegex",
-      "source": {
-        "line": 5,
-        "file": "TwemojiRegex.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/TwemojiRegex.ts#L5"
-      },
       "comment": {
         "description": "Regex that can capture a Twemoji (Twitter Emoji)",
         "blockTags": [
@@ -2773,6 +2767,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 5,
+        "file": "TwemojiRegex.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/TwemojiRegex.ts#L5"
       },
       "external": false,
       "type": {
@@ -2787,16 +2787,16 @@
     {
       "id": 70,
       "name": "UserLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord users and Direct Messages.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 287,
         "file": "limits.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/limits.ts#L287"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord users and Direct Messages.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2889,12 +2889,6 @@
     {
       "id": 103,
       "name": "UserOrMemberMentionRegex",
-      "source": {
-        "line": 128,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L128"
-      },
       "comment": {
         "description": "Regex that can capture the ID of a user in Discord user mentions",
         "blockTags": [
@@ -2909,6 +2903,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 128,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L128"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -2922,12 +2922,6 @@
     {
       "id": 104,
       "name": "WebSocketUrlRegex",
-      "source": {
-        "line": 135,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L135"
-      },
       "comment": {
         "description": "Regex that matches any WebSocket URL starting with `ws` or `wss`",
         "blockTags": [
@@ -2942,6 +2936,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 135,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L135"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -2955,12 +2955,6 @@
     {
       "id": 105,
       "name": "WebhookRegex",
-      "source": {
-        "line": 145,
-        "file": "regexes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L145"
-      },
       "comment": {
         "description": "Regex that captures the Webhook ID and token from a Discord Webhook URL.",
         "blockTags": [
@@ -2986,6 +2980,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 145,
+        "file": "regexes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/discord-utilities/src/lib/regexes.ts#L145"
       },
       "external": false,
       "type": {
