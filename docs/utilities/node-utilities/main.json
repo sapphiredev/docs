@@ -11,16 +11,16 @@
     {
       "id": 1,
       "name": "findFilesRecursively",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 30,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
+        "url": "https://github.com/sapphiredev/utilities/blob/21b07d5/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -51,7 +51,7 @@
               "id": 3,
               "name": "path",
               "comment": {
-                "description": null,
+                "description": "The path in which to find files.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -67,7 +67,7 @@
               "id": 4,
               "name": "predicate",
               "comment": {
-                "description": null,
+                "description": "A predicate function receives the path as a parameter. Truthy values will have the path included, falsey values will have the file excluded.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -84,7 +84,7 @@
                       "fileName": "lib/findFilesRecursively.ts",
                       "line": 30,
                       "character": 71,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
+                      "url": "https://github.com/sapphiredev/utilities/blob/21b07d5/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
                     }
                   ],
                   "signatures": [
@@ -135,16 +135,16 @@
     {
       "id": 20,
       "name": "findFilesRecursivelyRegex",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 87,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/node-utilities/src/lib/findFilesRecursively.ts#L87"
+        "url": "https://github.com/sapphiredev/utilities/blob/21b07d5/packages/node-utilities/src/lib/findFilesRecursively.ts#L87"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -167,7 +167,7 @@
               "id": 22,
               "name": "path",
               "comment": {
-                "description": null,
+                "description": "The path in which to find files. This can be a string, buffer, or {@link URL}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -183,7 +183,7 @@
               "id": 23,
               "name": "regex",
               "comment": {
-                "description": null,
+                "description": "The regex pattern that the file name must match.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -214,16 +214,16 @@
     {
       "id": 12,
       "name": "findFilesRecursivelyStringEndsWith",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 65,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/node-utilities/src/lib/findFilesRecursively.ts#L65"
+        "url": "https://github.com/sapphiredev/utilities/blob/21b07d5/packages/node-utilities/src/lib/findFilesRecursively.ts#L65"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -246,7 +246,7 @@
               "id": 14,
               "name": "path",
               "comment": {
-                "description": null,
+                "description": "The path in which to find files. This can be a string, buffer, or {@link URL}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -262,7 +262,7 @@
               "id": 15,
               "name": "fileEndsWith",
               "comment": {
-                "description": null,
+                "description": "The string pattern with which the file name must end.\nIdeally this is a file extension, however you can also provide more parts of the end of the file.\n\nNote that we do **not** support a full globby pattern using asterisk for wildcards. It has to be an exact match with {@link String.endsWith}",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -290,16 +290,16 @@
     {
       "id": 16,
       "name": "findFilesRecursivelyStringIncludes",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 77,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/node-utilities/src/lib/findFilesRecursively.ts#L77"
+        "url": "https://github.com/sapphiredev/utilities/blob/21b07d5/packages/node-utilities/src/lib/findFilesRecursively.ts#L77"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -322,7 +322,7 @@
               "id": 18,
               "name": "path",
               "comment": {
-                "description": null,
+                "description": "The path in which to find files. This can be a string, buffer, or {@link URL}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -338,7 +338,7 @@
               "id": 19,
               "name": "include",
               "comment": {
-                "description": null,
+                "description": "The string pattern which must be present in the file name.\n\nNote that we do **not** support a full globby pattern using asterisk for wildcards. It has to be an exact match with {@link String.includes}",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -366,16 +366,16 @@
     {
       "id": 8,
       "name": "findFilesRecursivelyStringStartsWith",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 51,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2fe4885/packages/node-utilities/src/lib/findFilesRecursively.ts#L51"
+        "url": "https://github.com/sapphiredev/utilities/blob/21b07d5/packages/node-utilities/src/lib/findFilesRecursively.ts#L51"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -398,7 +398,7 @@
               "id": 10,
               "name": "path",
               "comment": {
-                "description": null,
+                "description": "The path in which to find files. This can be a string, buffer, or {@link URL}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -414,7 +414,7 @@
               "id": 11,
               "name": "fileStartsWith",
               "comment": {
-                "description": null,
+                "description": "The string pattern with which the file name must start.\n\nNote that we do **not** support a full globby pattern using asterisk for wildcards. It has to be an exact match with {@link String.startsWith}",
                 "blockTags": [],
                 "modifierTags": []
               },
