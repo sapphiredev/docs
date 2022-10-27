@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.0.0",
+  "typeDocJsonParserVersion": "6.0.2",
   "id": 0,
   "name": "@sapphire/bitfield",
   "version": "1.0.0",
@@ -9,16 +9,16 @@
     {
       "id": 1,
       "name": "BitField",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 1,
         "file": "BitField.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L1"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -28,7 +28,7 @@
         {
           "id": 45,
           "name": "Flags",
-          "constraint": {
+          "type": {
             "kind": "union",
             "types": [
               {
@@ -71,19 +71,18 @@
       "construct": {
         "id": 2,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 7,
           "file": "BitField.ts",
           "path": "lib",
           "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L7"
         },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "parentId": 1,
-        "accessibility": "public",
         "parameters": [
           {
             "id": 5,
@@ -115,18 +114,18 @@
         {
           "id": 9,
           "name": "flags",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 5,
             "file": "BitField.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L5"
           },
-          "parentId": 9,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -143,18 +142,18 @@
         {
           "id": 8,
           "name": "mask",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 4,
             "file": "BitField.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L4"
           },
-          "parentId": 8,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -193,18 +192,18 @@
         {
           "id": 6,
           "name": "type",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 2,
             "file": "BitField.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L2"
           },
-          "parentId": 6,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -250,18 +249,18 @@
         {
           "id": 7,
           "name": "zero",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 3,
             "file": "BitField.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L3"
           },
-          "parentId": 7,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -315,7 +314,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L81"
           },
-          "parentId": 13,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -339,7 +338,7 @@
                   "id": 15,
                   "name": "field",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to compare the bits from.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -401,7 +400,7 @@
                   "id": 16,
                   "name": "bits",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to compare with.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -476,7 +475,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L114"
           },
-          "parentId": 21,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -504,7 +503,7 @@
                   "id": 23,
                   "name": "field",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to get the complement of.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -604,7 +603,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L183"
           },
-          "parentId": 31,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -636,7 +635,7 @@
                   "id": 33,
                   "name": "a",
                   "comment": {
-                    "description": null,
+                    "description": "The first field.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -698,7 +697,7 @@
                   "id": 34,
                   "name": "b",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to remove from `a`.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -798,7 +797,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L91"
           },
-          "parentId": 17,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -822,7 +821,7 @@
                   "id": 19,
                   "name": "field",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to compare the bits from.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -884,7 +883,7 @@
                   "id": 20,
                   "name": "bits",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to compare with.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -959,7 +958,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L159"
           },
-          "parentId": 27,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -991,7 +990,7 @@
                   "id": 29,
                   "name": "bitfield",
                   "comment": {
-                    "description": null,
+                    "description": "The first field.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1053,7 +1052,7 @@
                   "id": 30,
                   "name": "fields",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to intersect with `bitfield`.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1160,7 +1159,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L60"
           },
-          "parentId": 10,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1184,7 +1183,7 @@
                   "id": 12,
                   "name": "resolvable",
                   "comment": {
-                    "description": null,
+                    "description": "The value to resolve.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1284,7 +1283,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L205"
           },
-          "parentId": 35,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1320,7 +1319,7 @@
                   "id": 37,
                   "name": "a",
                   "comment": {
-                    "description": null,
+                    "description": "The first field.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1382,7 +1381,7 @@
                   "id": 38,
                   "name": "b",
                   "comment": {
-                    "description": null,
+                    "description": "The second field.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1482,7 +1481,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L226"
           },
-          "parentId": 39,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1510,7 +1509,7 @@
                   "id": 41,
                   "name": "field",
                   "comment": {
-                    "description": null,
+                    "description": "The field to convert to an array.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1595,7 +1594,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L260"
           },
-          "parentId": 42,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1623,7 +1622,7 @@
                   "id": 44,
                   "name": "field",
                   "comment": {
-                    "description": null,
+                    "description": "The field to convert to an object.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1717,7 +1716,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L132"
           },
-          "parentId": 24,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1749,7 +1748,7 @@
                   "id": 26,
                   "name": "fields",
                   "comment": {
-                    "description": null,
+                    "description": "The bits to create a union of.",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1858,6 +1857,12 @@
     {
       "id": 48,
       "name": "ValueResolvable",
+      "source": {
+        "line": 279,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L279"
+      },
       "comment": {
         "description": "Resolves the possible types accepted by the specified {@link BitField}.",
         "blockTags": [
@@ -1868,18 +1873,12 @@
         ],
         "modifierTags": []
       },
-      "source": {
-        "line": 279,
-        "file": "BitField.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L279"
-      },
       "external": false,
       "typeParameters": [
         {
           "id": 49,
           "name": "T",
-          "constraint": null,
+          "type": null,
           "default": null
         }
       ],
@@ -1966,6 +1965,12 @@
     {
       "id": 46,
       "name": "ValueType",
+      "source": {
+        "line": 273,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L273"
+      },
       "comment": {
         "description": "Resolves the type of the values the specified {@link BitField} takes.",
         "blockTags": [
@@ -1976,18 +1981,12 @@
         ],
         "modifierTags": []
       },
-      "source": {
-        "line": 273,
-        "file": "BitField.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/bitfield/src/lib/BitField.ts#L273"
-      },
       "external": false,
       "typeParameters": [
         {
           "id": 47,
           "name": "T",
-          "constraint": null,
+          "type": null,
           "default": null
         }
       ],

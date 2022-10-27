@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.0.0",
+  "typeDocJsonParserVersion": "6.0.2",
   "id": 0,
   "name": "@sapphire/phisherman",
   "version": "1.4.1",
@@ -11,16 +11,16 @@
     {
       "id": 12,
       "name": "checkDomain",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 17,
         "file": "Phisherman.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/Phisherman.ts#L17"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -43,7 +43,7 @@
               "id": 14,
               "name": "domain",
               "comment": {
-                "description": null,
+                "description": "The domain to check.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -56,7 +56,7 @@
               "id": 15,
               "name": "apiKey",
               "comment": {
-                "description": null,
+                "description": "optionally pass a Phiserman API key for making this request. This will default to {@link storedApiKey}, which can be configured through {@link setApiKey}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -185,16 +185,16 @@
     {
       "id": 24,
       "name": "getDomainInfo",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 68,
         "file": "Phisherman.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/Phisherman.ts#L68"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -217,7 +217,7 @@
               "id": 26,
               "name": "domain",
               "comment": {
-                "description": null,
+                "description": "The domain to get info about.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -230,7 +230,7 @@
               "id": 27,
               "name": "apiKey",
               "comment": {
-                "description": null,
+                "description": "optionally pass a Phiserman API key for making this request. This will default to {@link storedApiKey}, which can be configured through {@link setApiKey}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -261,16 +261,16 @@
     {
       "id": 28,
       "name": "reportCaughtPhish",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 91,
         "file": "Phisherman.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/Phisherman.ts#L91"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -293,7 +293,7 @@
               "id": 30,
               "name": "domain",
               "comment": {
-                "description": null,
+                "description": "The domain which was caught.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -319,7 +319,7 @@
               "id": 32,
               "name": "guildId",
               "comment": {
-                "description": null,
+                "description": "The id of the guild in which the domain was caught.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -359,16 +359,16 @@
     {
       "id": 20,
       "name": "reportDomain",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 43,
         "file": "Phisherman.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/Phisherman.ts#L43"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -391,7 +391,7 @@
               "id": 22,
               "name": "domain",
               "comment": {
-                "description": null,
+                "description": "The domain to report.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -404,7 +404,7 @@
               "id": 23,
               "name": "apiKey",
               "comment": {
-                "description": null,
+                "description": "optionally pass a Phiserman API key for making this request. This will default to {@link storedApiKey}, which can be configured through {@link setApiKey}.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -435,16 +435,16 @@
     {
       "id": 33,
       "name": "setApiKey",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 114,
         "file": "Phisherman.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/Phisherman.ts#L114"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -467,7 +467,7 @@
               "id": 35,
               "name": "key",
               "comment": {
-                "description": null,
+                "description": "The API key to access the phisherman API and cache within the code of the wrapper.",
                 "blockTags": [],
                 "modifierTags": []
               },
@@ -497,35 +497,34 @@
     {
       "id": 4,
       "name": "PhishermanOptions",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 1,
         "file": "PhishermanTypes.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L1"
       },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "external": false,
-      "typeParameters": [],
       "properties": [
         {
           "id": 5,
           "name": "apiKey",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 2,
             "file": "PhishermanTypes.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L2"
           },
-          "parentId": 5,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -538,35 +537,34 @@
     {
       "id": 6,
       "name": "PhishermanReportType",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 14,
         "file": "PhishermanTypes.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L14"
       },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "external": false,
-      "typeParameters": [],
       "properties": [
         {
           "id": 8,
           "name": "message",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 16,
             "file": "PhishermanTypes.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L16"
           },
-          "parentId": 8,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 6,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -576,18 +574,18 @@
         {
           "id": 7,
           "name": "success",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 15,
             "file": "PhishermanTypes.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L15"
           },
-          "parentId": 7,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 6,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -600,35 +598,34 @@
     {
       "id": 9,
       "name": "PhishermanReturnType",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 5,
         "file": "PhishermanTypes.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L5"
       },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "external": false,
-      "typeParameters": [],
       "properties": [
         {
           "id": 11,
           "name": "classification",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 7,
             "file": "PhishermanTypes.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
           },
-          "parentId": 11,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 9,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -655,18 +652,18 @@
         {
           "id": 10,
           "name": "verifiedPhish",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 6,
             "file": "PhishermanTypes.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
           },
-          "parentId": 10,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 9,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -682,16 +679,16 @@
     {
       "id": 1,
       "name": "CheckReturnType",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 10,
         "file": "PhishermanTypes.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
