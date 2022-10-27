@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.0.0",
+  "typeDocJsonParserVersion": "6.0.2",
   "id": 0,
   "name": "@sapphire/ratelimits",
   "version": "2.4.5",
@@ -9,16 +9,16 @@
     {
       "id": 1,
       "name": "RateLimit",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 3,
         "file": "RateLimit.ts",
         "path": "packages/ratelimits/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L3"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -28,7 +28,7 @@
         {
           "id": 23,
           "name": "K",
-          "constraint": null,
+          "type": null,
           "default": {
             "kind": "intrinsic",
             "type": "string"
@@ -38,25 +38,24 @@
       "construct": {
         "id": 2,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 22,
           "file": "RateLimit.ts",
           "path": "packages/ratelimits/src/lib",
           "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L22"
         },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "parentId": 1,
-        "accessibility": "public",
         "parameters": [
           {
             "id": 5,
             "name": "manager",
             "comment": {
-              "description": null,
+              "description": "The manager for this entry.",
               "blockTags": [],
               "modifierTags": []
             },
@@ -82,18 +81,18 @@
         {
           "id": 7,
           "name": "expires",
-          "comment": {
-            "description": "The timestamp that represents when this entry will reset back to a available state.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 12,
             "file": "RateLimit.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L12"
           },
-          "parentId": 7,
+          "comment": {
+            "description": "The timestamp that represents when this entry will reset back to a available state.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -107,18 +106,18 @@
         {
           "id": 8,
           "name": "manager",
-          "comment": {
-            "description": "The {@link RateLimitManager} this entry is for.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 17,
             "file": "RateLimit.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L17"
           },
-          "parentId": 8,
+          "comment": {
+            "description": "The {@link RateLimitManager} this entry is for.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -143,18 +142,18 @@
         {
           "id": 6,
           "name": "remaining",
-          "comment": {
-            "description": "The remaining amount of times this entry can be dripped before the bucket is empty.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 7,
             "file": "RateLimit.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L7"
           },
-          "parentId": 6,
+          "comment": {
+            "description": "The remaining amount of times this entry can be dripped before the bucket is empty.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -168,18 +167,18 @@
         {
           "id": 10,
           "name": "expired",
-          "comment": {
-            "description": "Whether this entry is expired or not, allowing the bucket to be reset.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 30,
             "file": "RateLimit.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L30"
           },
-          "parentId": 10,
+          "comment": {
+            "description": "Whether this entry is expired or not, allowing the bucket to be reset.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -193,18 +192,18 @@
         {
           "id": 12,
           "name": "limited",
-          "comment": {
-            "description": "Whether this entry is limited or not.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 37,
             "file": "RateLimit.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L37"
           },
-          "parentId": 12,
+          "comment": {
+            "description": "Whether this entry is limited or not.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -218,18 +217,18 @@
         {
           "id": 14,
           "name": "remainingTime",
-          "comment": {
-            "description": "The remaining time in milliseconds before resetting.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 44,
             "file": "RateLimit.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L44"
           },
-          "parentId": 14,
+          "comment": {
+            "description": "The remaining time in milliseconds before resetting.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -251,7 +250,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L51"
           },
-          "parentId": 15,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -293,7 +292,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L62"
           },
-          "parentId": 17,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -335,7 +334,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L69"
           },
-          "parentId": 19,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -377,7 +376,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimit.ts#L77"
           },
-          "parentId": 21,
+          "parentId": 1,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -415,16 +414,16 @@
     {
       "id": 24,
       "name": "RateLimitManager",
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "source": {
         "line": 4,
         "file": "RateLimitManager.ts",
         "path": "packages/ratelimits/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L4"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -463,7 +462,7 @@
         {
           "id": 77,
           "name": "K",
-          "constraint": null,
+          "type": null,
           "default": {
             "kind": "intrinsic",
             "type": "string"
@@ -473,25 +472,24 @@
       "construct": {
         "id": 27,
         "name": "constructor",
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "source": {
           "line": 24,
           "file": "RateLimitManager.ts",
           "path": "packages/ratelimits/src/lib",
           "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L24"
         },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "parentId": 24,
-        "accessibility": "public",
         "parameters": [
           {
             "id": 30,
             "name": "time",
             "comment": {
-              "description": null,
+              "description": "The amount of milliseconds for the ratelimits from this manager to expire.",
               "blockTags": [],
               "modifierTags": []
             },
@@ -504,7 +502,7 @@
             "id": 31,
             "name": "limit",
             "comment": {
-              "description": null,
+              "description": "The amount of times a {@link RateLimit} can drip before it's limited.",
               "blockTags": [],
               "modifierTags": []
             },
@@ -519,18 +517,18 @@
         {
           "id": 76,
           "name": "[toStringTag]",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 135,
             "file": "lib.es2015.symbol.wellknown.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 76,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -544,18 +542,18 @@
         {
           "id": 33,
           "name": "limit",
-          "comment": {
-            "description": "The amount of times a {@link RateLimit} can drip before it's limited.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 13,
             "file": "RateLimitManager.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L13"
           },
-          "parentId": 33,
+          "comment": {
+            "description": "The amount of times a {@link RateLimit} can drip before it's limited.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -569,6 +567,12 @@
         {
           "id": 67,
           "name": "size",
+          "source": {
+            "line": 48,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
           "comment": {
             "description": null,
             "blockTags": [
@@ -579,13 +583,7 @@
             ],
             "modifierTags": []
           },
-          "source": {
-            "line": 48,
-            "file": "lib.es2015.collection.d.ts",
-            "path": "node_modules/typescript/lib",
-            "url": null
-          },
-          "parentId": 67,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -599,18 +597,18 @@
         {
           "id": 34,
           "name": "sweepInterval",
-          "comment": {
-            "description": "The interval to sweep expired {@link ratelimits}.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 18,
             "file": "RateLimitManager.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L18"
           },
-          "parentId": 34,
+          "comment": {
+            "description": "The interval to sweep expired {@link ratelimits}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 24,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -636,18 +634,18 @@
         {
           "id": 32,
           "name": "time",
-          "comment": {
-            "description": "The amount of milliseconds for the {@link ratelimits} from this manager to expire.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 8,
             "file": "RateLimitManager.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L8"
           },
-          "parentId": 32,
+          "comment": {
+            "description": "The amount of milliseconds for the {@link ratelimits} from this manager to expire.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -661,18 +659,18 @@
         {
           "id": 26,
           "name": "[species]",
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 317,
             "file": "lib.es2015.symbol.wellknown.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 26,
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -689,18 +687,18 @@
         {
           "id": 25,
           "name": "sweepIntervalDuration",
-          "comment": {
-            "description": "The delay in milliseconds for {@link sweepInterval}.",
-            "blockTags": [],
-            "modifierTags": []
-          },
           "source": {
             "line": 76,
             "file": "RateLimitManager.ts",
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L76"
           },
-          "parentId": 25,
+          "comment": {
+            "description": "The delay in milliseconds for {@link sweepInterval}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -722,7 +720,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 74,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -784,7 +782,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L35"
           },
-          "parentId": 35,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -803,7 +801,7 @@
                   "id": 37,
                   "name": "id",
                   "comment": {
-                    "description": null,
+                    "description": "The id for the {@link RateLimit}",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -843,7 +841,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 47,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -874,7 +872,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L43"
           },
-          "parentId": 38,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -893,7 +891,7 @@
                   "id": 40,
                   "name": "id",
                   "comment": {
-                    "description": null,
+                    "description": "The id the {@link RateLimit} belongs to",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -933,7 +931,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 49,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -986,7 +984,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 68,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1048,7 +1046,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 52,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1207,7 +1205,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 61,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1280,7 +1278,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 64,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1333,7 +1331,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 70,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1375,7 +1373,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L54"
           },
-          "parentId": 41,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1394,7 +1392,7 @@
                   "id": 43,
                   "name": "id",
                   "comment": {
-                    "description": null,
+                    "description": "The id the {@link RateLimit} belongs to",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1410,7 +1408,7 @@
                   "id": 44,
                   "name": "value",
                   "comment": {
-                    "description": null,
+                    "description": "The {@link RateLimit} to set",
                     "blockTags": [],
                     "modifierTags": []
                   },
@@ -1458,7 +1456,7 @@
             "path": "packages/ratelimits/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/ratelimits/src/lib/RateLimitManager.ts#L62"
           },
-          "parentId": 45,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1489,7 +1487,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 72,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
