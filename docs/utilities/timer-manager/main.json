@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "6.0.2",
+  "typeDocJsonParserVersion": "7.0.1",
   "id": 0,
   "name": "@sapphire/timer-manager",
   "version": "1.0.0",
@@ -9,16 +9,16 @@
     {
       "id": 1,
       "name": "TimerManager",
+      "comment": {
+        "description": "Manages timers so that this application can be cleanly exited",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 4,
         "file": "TimerManager.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L4"
-      },
-      "comment": {
-        "description": "Manages timers so that this application can be cleanly exited",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -31,31 +31,32 @@
       "construct": {
         "id": 30,
         "name": "constructor",
-        "source": null,
         "comment": {
           "description": null,
           "blockTags": [],
           "modifierTags": []
         },
+        "source": null,
         "parentId": 1,
+        "accessibility": "public",
         "parameters": []
       },
       "properties": [
         {
           "id": 3,
           "name": "storedIntervals",
+          "comment": {
+            "description": "A set of intervals to clear on destroy",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "TimerManager.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L13"
           },
-          "comment": {
-            "description": "A set of intervals to clear on destroy",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 3,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -80,18 +81,18 @@
         {
           "id": 2,
           "name": "storedTimeouts",
+          "comment": {
+            "description": "A set of timeouts to clear on destroy",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 8,
             "file": "TimerManager.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L8"
           },
-          "comment": {
-            "description": "A set of timeouts to clear on destroy",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 2,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -124,7 +125,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L55"
           },
-          "parentId": 1,
+          "parentId": 25,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -172,7 +173,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L34"
           },
-          "parentId": 1,
+          "parentId": 13,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -220,7 +221,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L63"
           },
-          "parentId": 1,
+          "parentId": 28,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -251,7 +252,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L45"
           },
-          "parentId": 1,
+          "parentId": 16,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -268,7 +269,7 @@
                 {
                   "id": 18,
                   "name": "A",
-                  "type": null,
+                  "constraint": null,
                   "default": {
                     "kind": "intrinsic",
                     "type": "unknown"
@@ -387,7 +388,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timer-manager/src/lib/TimerManager.ts#L21"
           },
-          "parentId": 1,
+          "parentId": 4,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -404,7 +405,7 @@
                 {
                   "id": 6,
                   "name": "A",
-                  "type": null,
+                  "constraint": null,
                   "default": {
                     "kind": "intrinsic",
                     "type": "unknown"
