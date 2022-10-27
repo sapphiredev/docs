@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "6.0.2",
+  "typeDocJsonParserVersion": "7.0.1",
   "id": 0,
   "name": "@sapphire/timestamp",
   "version": "1.0.0",
@@ -9,16 +9,16 @@
     {
       "id": 16,
       "name": "Timestamp",
+      "comment": {
+        "description": "Timestamp class, parses the pattern once, displays the desired Date or UNIX timestamp with the selected pattern.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 125,
         "file": "Timestamp.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L125"
-      },
-      "comment": {
-        "description": "Timestamp class, parses the pattern once, displays the desired Date or UNIX timestamp with the selected pattern.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -28,18 +28,19 @@
       "construct": {
         "id": 38,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 142,
           "file": "Timestamp.ts",
           "path": "lib",
           "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L142"
         },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
-        },
         "parentId": 16,
+        "accessibility": "public",
         "parameters": [
           {
             "id": 40,
@@ -60,12 +61,6 @@
         {
           "id": 41,
           "name": "pattern",
-          "source": {
-            "line": 130,
-            "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L130"
-          },
           "comment": {
             "description": "The raw pattern",
             "blockTags": [
@@ -76,7 +71,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 16,
+          "source": {
+            "line": 130,
+            "file": "Timestamp.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L130"
+          },
+          "parentId": 41,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -90,12 +91,6 @@
         {
           "id": 42,
           "name": "template",
-          "source": {
-            "line": 135,
-            "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L135"
-          },
           "comment": {
             "description": null,
             "blockTags": [
@@ -106,7 +101,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 16,
+          "source": {
+            "line": 135,
+            "file": "Timestamp.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L135"
+          },
+          "parentId": 42,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -134,7 +135,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L152"
           },
-          "parentId": 16,
+          "parentId": 43,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -187,7 +188,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L161"
           },
-          "parentId": 16,
+          "parentId": 46,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -240,7 +241,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L171"
           },
-          "parentId": 16,
+          "parentId": 49,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -297,7 +298,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L180"
           },
-          "parentId": 16,
+          "parentId": 52,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -328,7 +329,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L220"
           },
-          "parentId": 16,
+          "parentId": 28,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -413,7 +414,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L190"
           },
-          "parentId": 16,
+          "parentId": 17,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -479,7 +480,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L200"
           },
-          "parentId": 16,
+          "parentId": 21,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -545,7 +546,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L232"
           },
-          "parentId": 16,
+          "parentId": 32,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -601,7 +602,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L261"
           },
-          "parentId": 16,
+          "parentId": 35,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -657,7 +658,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L209"
           },
-          "parentId": 16,
+          "parentId": 25,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -724,32 +725,32 @@
     {
       "id": 1,
       "name": "Time",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 1,
         "file": "constants.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L1"
       },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "external": false,
       "members": [
         {
           "id": 6,
           "name": "Day",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 6,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L6"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "86400000"
@@ -757,16 +758,16 @@
         {
           "id": 5,
           "name": "Hour",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 5,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L5"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "3600000"
@@ -774,16 +775,16 @@
         {
           "id": 2,
           "name": "Millisecond",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 2,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L2"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "1"
@@ -791,16 +792,16 @@
         {
           "id": 4,
           "name": "Minute",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 4,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L4"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "60000"
@@ -808,16 +809,16 @@
         {
           "id": 7,
           "name": "Month",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 7,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L7"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "2628000000"
@@ -825,16 +826,16 @@
         {
           "id": 3,
           "name": "Second",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 3,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L3"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "1000"
@@ -842,16 +843,16 @@
         {
           "id": 8,
           "name": "Year",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 8,
             "file": "constants.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L8"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 1,
           "value": "31536000000"
@@ -864,34 +865,35 @@
     {
       "id": 13,
       "name": "TimestampTemplateEntry",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 117,
         "file": "Timestamp.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L117"
       },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "external": false,
+      "typeParameters": [],
       "properties": [
         {
           "id": 15,
           "name": "content",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 119,
             "file": "Timestamp.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L119"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 13,
+          "parentId": 15,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -910,18 +912,18 @@
         {
           "id": 14,
           "name": "type",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 118,
             "file": "Timestamp.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L118"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 13,
+          "parentId": 14,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -937,16 +939,16 @@
     {
       "id": 12,
       "name": "TimeResolvable",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 115,
         "file": "Timestamp.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/Timestamp.ts#L115"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -976,16 +978,16 @@
     {
       "id": 9,
       "name": "days",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 11,
         "file": "constants.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L11"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1000,16 +1002,16 @@
     {
       "id": 10,
       "name": "months",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 13,
         "file": "constants.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L13"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -1024,16 +1026,16 @@
     {
       "id": 11,
       "name": "tokens",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 15,
         "file": "constants.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/0e56a92/packages/timestamp/src/lib/constants.ts#L15"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
