@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/fetch",
   "version": "2.4.1",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/fetch\n\n**Tiny wrapper around cross-fetch for improved TypeScript and data type support**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/fetch?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/fetch)\n[![npm](https://img.shields.io/npm/v/@sapphire/fetch?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/fetch)\n\n</div>\n\n**Table of Contents**\n\n-   [@sapphire/fetch](#sapphirefetch)\n    -   [Description](#description)\n    -   [Features](#features)\n    -   [Installation](#installation)\n    -   [Usage](#usage)\n        -   [`GET`ting JSON data](#getting-json-data)\n        -   [`GET`ting Buffer data (images, etc.)](#getting-buffer-data-images-etc)\n        -   [`POST`ing JSON data](#posting-json-data)\n    -   [Buy us some doughnuts](#buy-us-some-doughnuts)\n    -   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\n[cross-fetch] is already a great library for making API calls, but because it focuses solely on bringing the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to Node.js, it doesn't provide specific error messages and handling for different return types (JSON, Buffer, plain text, etc). This is where `@sapphire/fetch` comes in. The syntax is more restrictive than that of [cross-fetch], but that makes it consistent and easier to use in TypeScript.\n\n## Features\n\n-   Written in TypeScript\n-   Fully tested\n-   Exported `enum` for the common return data types.\n-   Throws distinctive errors when the API returns a \"not ok\" status code to make them easier to understand.\n-   Enforces casting the return type when requesting JSON data, to ensure your return data is strictly typed.\n-   Uses [cross-fetch] so this package can be used in NodeJS (where it uses [node-fetch]) and browser (where it uses [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API))\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/fetch\n```\n\n## Usage\n\n**Note:** While this section uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { fetch } from '@sapphire/fetch'` is the same as `const { fetch } = require('@sapphire/fetch')`.\n\n**Note**: `fetch` can also be imported as a default import: `import fetch from '@sapphire/fetch'`.\n\n### `GET`ting JSON data\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes } from '@sapphire/fetch';\n\ninterface JsonPlaceholderResponse {\n\tuserId: number;\n\tid: number;\n\ttitle: string;\n\tcompleted: boolean;\n}\n\n// Fetch the data. No need to call `.json()` after making the request!\nconst data = await fetch<JsonPlaceholderResponse>('https://jsonplaceholder.typicode.com/todos/1', FetchResultTypes.JSON);\n\n// Do something with the data\nconsole.log(data.userId);\n```\n\n### `GET`ting Buffer data (images, etc.)\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes } from '@sapphire/fetch';\n\n// Fetch the data. No need to call `.buffer()` after making the request!\nconst sapphireLogo = await fetch('https://github.com/sapphiredev.png', FetchResultTypes.Buffer);\n\n// sapphireLogo is the `Buffer` of the image\nconsole.log(sapphireLogo);\n```\n\n### `POST`ing JSON data\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes, FetchMethods } from '@sapphire/fetch';\n\n// Fetch the data. No need to call `.json()` after making the request!\nconst responseData = await fetch(\n\t'https://jsonplaceholder.typicode.com/todos',\n\t{\n\t\tmethod: FetchMethods.Post,\n\t\theaders: {\n\t\t\t'Content-Type': 'application/json'\n\t\t},\n\t\tbody: JSON.stringify({\n\t\t\tname: 'John Doe'\n\t\t})\n\t},\n\tFetchResultTypes.JSON\n);\n\n// Do something with the response data\nconsole.log(responseData);\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Code\">💻</a> <a href=\"#projectManagement-kyranet\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Akyranet\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars2.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3APyroTechniac\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Avladfrangu\" title=\"Bug reports\">🐛</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"#userTesting-vladfrangu\" title=\"User Testing\">📓</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars0.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"#projectManagement-Stitch07\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Alcremie\"><img src=\"https://avatars0.githubusercontent.com/u/54785334?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ivan Lieder</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Alcremie\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AAlcremie\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars3.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=RealShadowNova\" title=\"Code\">💻</a> <a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Vetlix\"><img src=\"https://avatars.githubusercontent.com/u/31412314?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vetlix</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Vetlix\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ethamitc\"><img src=\"https://avatars.githubusercontent.com/u/27776796?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ethan Mitchell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ethamitc\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://fanoulis.dev/\"><img src=\"https://avatars.githubusercontent.com/u/38255093?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Charalampos Fanoulis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=cfanoulis\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app/\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kaname-png\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/nandhagk\"><img src=\"https://avatars.githubusercontent.com/u/62976649?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>nandhagk</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Anandhagk\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://gitlab.com/DavidPH/\"><img src=\"https://avatars.githubusercontent.com/u/44669930?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>David</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=DavidPHH\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=FC5570\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Tokipudi\"><img src=\"https://avatars.githubusercontent.com/u/29551076?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jérémy de Saint Denis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Tokipudi\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ItsMrCube\"><img src=\"https://avatars.githubusercontent.com/u/25201357?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>MrCube</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ItsMrCube\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/bitomic\"><img src=\"https://avatars.githubusercontent.com/u/35199700?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>bitomic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=bitomic\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://c43721.dev/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://commandtechno.com/\"><img src=\"https://avatars.githubusercontent.com/u/68407783?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Commandtechno</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Commandtechno\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/dhruv-kaushikk\"><img src=\"https://avatars.githubusercontent.com/u/73697546?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=dhruv-kaushikk\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://axis.moe/\"><img src=\"https://avatars.githubusercontent.com/u/54381371?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jonathan</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=axisiscool\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"#maintenance-imranbarbhuiya\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/NotKaskus\"><img src=\"https://avatars.githubusercontent.com/u/75168528?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Paul Andrew</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=NotKaskus\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Mzato0001\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AMzato0001\" title=\"Bug reports\">🐛</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=MajesticString\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/EvolutionX-10\"><img src=\"https://avatars.githubusercontent.com/u/85353424?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Evo</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=EvolutionX-10\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://enes.ovh/\"><img src=\"https://avatars.githubusercontent.com/u/61084101?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Enes Genç</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=enxg\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/muchnameless\"><img src=\"https://avatars.githubusercontent.com/u/12682826?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>muchnameless</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=muchnameless\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/legendhimslef\"><img src=\"https://avatars.githubusercontent.com/u/69213593?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Voxelli</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=legendhimslef\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/CitTheDev\"><img src=\"https://avatars.githubusercontent.com/u/94020875?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Cit The Dev</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=CitTheDev\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://www.goestav.com/\"><img src=\"https://avatars.githubusercontent.com/u/27970303?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Goestav</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=goestav\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n\n<!-- LINKS -->\n\n[node-fetch]: https://github.com/node-fetch/node-fetch\n[cross-fetch]: https://github.com/lquixada/cross-fetch\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/fetch\n\n**Tiny wrapper around cross-fetch for improved TypeScript and data type support**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/fetch?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/fetch)\n[![npm](https://img.shields.io/npm/v/@sapphire/fetch?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/fetch)\n\n</div>\n\n**Table of Contents**\n\n-   [@sapphire/fetch](#sapphirefetch)\n    -   [Description](#description)\n    -   [Features](#features)\n    -   [Installation](#installation)\n    -   [Usage](#usage)\n        -   [`GET`ting JSON data](#getting-json-data)\n        -   [`GET`ting Buffer data (images, etc.)](#getting-buffer-data-images-etc)\n        -   [`POST`ing JSON data](#posting-json-data)\n    -   [Buy us some doughnuts](#buy-us-some-doughnuts)\n    -   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\n[cross-fetch] is already a great library for making API calls, but because it focuses solely on bringing the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to Node.js, it doesn't provide specific error messages and handling for different return types (JSON, Buffer, plain text, etc). This is where `@sapphire/fetch` comes in. The syntax is more restrictive than that of [cross-fetch], but that makes it consistent and easier to use in TypeScript.\n\n## Features\n\n-   Written in TypeScript\n-   Fully tested\n-   Exported `enum` for the common return data types.\n-   Throws distinctive errors when the API returns a \"not ok\" status code to make them easier to understand.\n-   Enforces casting the return type when requesting JSON data, to ensure your return data is strictly typed.\n-   Uses [cross-fetch] so this package can be used in NodeJS (where it uses [node-fetch]) and browser (where it uses [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API))\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/fetch\n```\n\n## Usage\n\n**Note:** While this section uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { fetch } from '@sapphire/fetch'` is the same as `const { fetch } = require('@sapphire/fetch')`.\n\n**Note**: `fetch` can also be imported as a default import: `import fetch from '@sapphire/fetch'`.\n\n### `GET`ting JSON data\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes } from '@sapphire/fetch';\n\ninterface JsonPlaceholderResponse {\n\tuserId: number;\n\tid: number;\n\ttitle: string;\n\tcompleted: boolean;\n}\n\n// Fetch the data. No need to call `.json()` after making the request!\nconst data = await fetch<JsonPlaceholderResponse>('https://jsonplaceholder.typicode.com/todos/1', FetchResultTypes.JSON);\n\n// Do something with the data\nconsole.log(data.userId);\n```\n\n### `GET`ting Buffer data (images, etc.)\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes } from '@sapphire/fetch';\n\n// Fetch the data. No need to call `.buffer()` after making the request!\nconst sapphireLogo = await fetch('https://github.com/sapphiredev.png', FetchResultTypes.Buffer);\n\n// sapphireLogo is the `Buffer` of the image\nconsole.log(sapphireLogo);\n```\n\n### `POST`ing JSON data\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes, FetchMethods } from '@sapphire/fetch';\n\n// Fetch the data. No need to call `.json()` after making the request!\nconst responseData = await fetch(\n\t'https://jsonplaceholder.typicode.com/todos',\n\t{\n\t\tmethod: FetchMethods.Post,\n\t\theaders: {\n\t\t\t'Content-Type': 'application/json'\n\t\t},\n\t\tbody: JSON.stringify({\n\t\t\tname: 'John Doe'\n\t\t})\n\t},\n\tFetchResultTypes.JSON\n);\n\n// Do something with the response data\nconsole.log(responseData);\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=favna\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Code\">💻</a> <a href=\"#projectManagement-kyranet\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Akyranet\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=kyranet\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars2.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3APyroTechniac\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=PyroTechniac\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Avladfrangu\" title=\"Bug reports\">🐛</a> <a href=\"https://github.com/sapphiredev/utilities/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a> <a href=\"#userTesting-vladfrangu\" title=\"User Testing\">📓</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=vladfrangu\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars0.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"#projectManagement-Stitch07\" title=\"Project Management\">📆</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Stitch07\" title=\"Tests\">⚠️</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Alcremie\"><img src=\"https://avatars0.githubusercontent.com/u/54785334?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ivan Lieder</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Alcremie\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AAlcremie\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars3.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=RealShadowNova\" title=\"Code\">💻</a> <a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Vetlix\"><img src=\"https://avatars.githubusercontent.com/u/31412314?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vetlix</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Vetlix\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ethamitc\"><img src=\"https://avatars.githubusercontent.com/u/27776796?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ethan Mitchell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ethamitc\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://fanoulis.dev/\"><img src=\"https://avatars.githubusercontent.com/u/38255093?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Charalampos Fanoulis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=cfanoulis\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app/\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=kaname-png\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/nandhagk\"><img src=\"https://avatars.githubusercontent.com/u/62976649?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>nandhagk</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3Anandhagk\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Documentation\">📖</a> <a href=\"https://github.com/sapphiredev/utilities/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://gitlab.com/DavidPH/\"><img src=\"https://avatars.githubusercontent.com/u/44669930?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>David</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=DavidPHH\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=FC5570\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Tokipudi\"><img src=\"https://avatars.githubusercontent.com/u/29551076?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jérémy de Saint Denis</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Tokipudi\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/ItsMrCube\"><img src=\"https://avatars.githubusercontent.com/u/25201357?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>MrCube</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=ItsMrCube\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/bitomic\"><img src=\"https://avatars.githubusercontent.com/u/35199700?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>bitomic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=bitomic\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://c43721.dev/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://commandtechno.com/\"><img src=\"https://avatars.githubusercontent.com/u/68407783?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Commandtechno</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Commandtechno\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/dhruv-kaushikk\"><img src=\"https://avatars.githubusercontent.com/u/73697546?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=dhruv-kaushikk\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://axis.moe/\"><img src=\"https://avatars.githubusercontent.com/u/54381371?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jonathan</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=axisiscool\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"#maintenance-imranbarbhuiya\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/NotKaskus\"><img src=\"https://avatars.githubusercontent.com/u/75168528?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Paul Andrew</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=NotKaskus\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=Mzato0001\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/utilities/issues?q=author%3AMzato0001\" title=\"Bug reports\">🐛</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=MajesticString\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/EvolutionX-10\"><img src=\"https://avatars.githubusercontent.com/u/85353424?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Evo</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=EvolutionX-10\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://enes.ovh/\"><img src=\"https://avatars.githubusercontent.com/u/61084101?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Enes Genç</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=enxg\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/muchnameless\"><img src=\"https://avatars.githubusercontent.com/u/12682826?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>muchnameless</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=muchnameless\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/legendhimslef\"><img src=\"https://avatars.githubusercontent.com/u/69213593?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Voxelli</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=legendhimslef\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/CitTheDev\"><img src=\"https://avatars.githubusercontent.com/u/94020875?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Cit The Dev</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=CitTheDev\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://www.goestav.com/\"><img src=\"https://avatars.githubusercontent.com/u/27970303?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Goestav</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=goestav\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/didinele\"><img src=\"https://avatars.githubusercontent.com/u/27137376?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>DD</b></sub></a><br /><a href=\"https://github.com/sapphiredev/utilities/commits?author=didinele\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n\n<!-- LINKS -->\n\n[node-fetch]: https://github.com/node-fetch/node-fetch\n[cross-fetch]: https://github.com/lquixada/cross-fetch\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/fetch@2.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.4.0...@sapphire/fetch@2.4.1) - (2022-07-13)\n\n## 🏠 Refactor\n\n- Change `const enum` for regular `enum` (#394) ([960e973](https://github.com/sapphiredev/utilities/commit/960e973dc63aeccdc0012d72a4fef052bbd37b6f))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n# [@sapphire/fetch@2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.3.1...@sapphire/fetch@2.4.0) - (2022-06-05)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🚀 Features\n\n- **fetch:** Accept JS objects for the request body (#365) ([a3eee88](https://github.com/sapphiredev/utilities/commit/a3eee88f36192655c50bbde05ecca1e7d07c464d))\n\n## 🧪 Testing\n\n- Fix fetch tests for Node 18 ([e92fb02](https://github.com/sapphiredev/utilities/commit/e92fb025cb1dcb5f33c1ea76fb25a4a1b5b37368))\n\n## [2.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.3.0...@sapphire/fetch@2.3.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n# [2.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.2.0...@sapphire/fetch@2.3.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n\n# [2.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.1.0...@sapphire/fetch@2.2.0) (2022-03-01)\n\n### Features\n\n-   **fetch:** add common media content types enum ([#303](https://github.com/sapphiredev/utilities/issues/303)) ([2f1c464](https://github.com/sapphiredev/utilities/commit/2f1c4640a9d4d12b1a22d0227172323d54eaed8f))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [2.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.4...@sapphire/fetch@2.1.0) (2022-01-28)\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n## [2.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.3...@sapphire/fetch@2.0.4) (2022-01-10)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [2.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.2...@sapphire/fetch@2.0.3) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [2.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.1...@sapphire/fetch@2.0.2) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.0...@sapphire/fetch@2.0.1) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n# [2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.5...@sapphire/fetch@2.0.0) (2021-10-04)\n\n### Features\n\n-   **fetch:** migrate to using cross-fetch ([#149](https://github.com/sapphiredev/utilities/issues/149)) ([a8baab9](https://github.com/sapphiredev/utilities/commit/a8baab978814ca3aa18992120af7ad004ceaee80))\n-   **fetch:** set minimum NodeJS to v14 ([56889ab](https://github.com/sapphiredev/utilities/commit/56889abce158119adf1afcc1ec4cee8cbb411c79))\n\n### BREAKING CHANGES\n\n-   **fetch:** `fetch` is no longer on the default export. Use a named import instead.\n-   **fetch:** This package no longer depends on `node-fetch`\n-   **fetch:** This package no longer depends on `@types/node-fetch` for TypeScript users\n\n## [1.0.5](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.4...@sapphire/fetch@1.0.5) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [1.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.3...@sapphire/fetch@1.0.4) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [1.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.2...@sapphire/fetch@1.0.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n\n## [1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.1...@sapphire/fetch@1.0.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **fetch:** mark package as side effect free ([8e3e470](https://github.com/sapphiredev/utilities/commit/8e3e470e7803f67593f18d2454cb1f95a8a35f18))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.0...@sapphire/fetch@1.0.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# 1.0.0 (2021-04-21)\n\n### Features\n\n-   add fetch package ([#107](https://github.com/sapphiredev/utilities/issues/107)) ([891034c](https://github.com/sapphiredev/utilities/commit/891034cf5f9e6f2c700999fd39a71e490c5dc766))\n",
   "classes": [
     {
@@ -13,7 +13,7 @@
         "line": 7,
         "file": "QueryError.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L7"
       },
       "comment": {
         "description": "The QueryError class which is thrown by the `fetch` method",
@@ -38,7 +38,7 @@
           "line": 19,
           "file": "QueryError.ts",
           "path": "packages/fetch/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L19"
+          "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L19"
         },
         "comment": {
           "description": null,
@@ -113,7 +113,7 @@
             "line": 17,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L17"
           },
           "comment": {
             "description": null,
@@ -138,7 +138,7 @@
             "line": 13,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L13"
           },
           "comment": {
             "description": "The returned response body as a string",
@@ -188,7 +188,7 @@
             "line": 11,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L11"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L11"
           },
           "comment": {
             "description": "The HTTP status code.",
@@ -263,7 +263,7 @@
             "line": 15,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L15"
           },
           "comment": {
             "description": "The original {@link Response} object",
@@ -316,7 +316,7 @@
             "line": 9,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L9"
           },
           "comment": {
             "description": "The requested url.",
@@ -469,7 +469,7 @@
             "line": 28,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/QueryError.ts#L28"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/QueryError.ts#L28"
           },
           "parentId": 44,
           "accessibility": "public",
@@ -565,7 +565,7 @@
         "line": 89,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L89"
+        "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L89"
       },
       "comment": {
         "description": "A list of common [Media Content Types](https://www.iana.org/assignments/media-types/media-types.xhtml) as defined by the [IANA](https://www.iana.org/).\nMedia Content Types are also known as a Multipurpose Internet Mail Extensions or MIME type\nMedia Content Types are defined and standardized in IETF's [RFC 6838](https://datatracker.ietf.org/doc/html/rfc6838).",
@@ -581,7 +581,7 @@
             "line": 94,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L94"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L94"
           },
           "comment": {
             "description": "The `audio/aac` media content type.",
@@ -603,7 +603,7 @@
             "line": 100,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L100"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L100"
           },
           "comment": {
             "description": "The `audio/mp4` media content type.",
@@ -625,7 +625,7 @@
             "line": 106,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L106"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L106"
           },
           "comment": {
             "description": "The `audio/mpeg` media content type.",
@@ -647,7 +647,7 @@
             "line": 112,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L112"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L112"
           },
           "comment": {
             "description": "The `audio/ogg` media content type.",
@@ -669,7 +669,7 @@
             "line": 118,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L118"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L118"
           },
           "comment": {
             "description": "The `audio/opus` media content type.",
@@ -691,7 +691,7 @@
             "line": 124,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L124"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L124"
           },
           "comment": {
             "description": "The `audio/vorbis` media content type.",
@@ -713,7 +713,7 @@
             "line": 128,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L128"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L128"
           },
           "comment": {
             "description": "The `audio/wav` media content type.",
@@ -730,7 +730,7 @@
             "line": 132,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L132"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L132"
           },
           "comment": {
             "description": "The `audio/webm` media content type.",
@@ -747,7 +747,7 @@
             "line": 138,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L138"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L138"
           },
           "comment": {
             "description": "The `font/otf` media content type.",
@@ -769,7 +769,7 @@
             "line": 144,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L144"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L144"
           },
           "comment": {
             "description": "The `font/ttf` media content type.",
@@ -791,7 +791,7 @@
             "line": 150,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L150"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L150"
           },
           "comment": {
             "description": "The `font/woff` media content type.",
@@ -813,7 +813,7 @@
             "line": 156,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L156"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L156"
           },
           "comment": {
             "description": "The `font/woff2` media content type.",
@@ -835,7 +835,7 @@
             "line": 162,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L162"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L162"
           },
           "comment": {
             "description": "The `multipart/form-data` media content type.",
@@ -857,7 +857,7 @@
             "line": 167,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L167"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L167"
           },
           "comment": {
             "description": "The `x-www-form-urlencoded` media content type.",
@@ -879,7 +879,7 @@
             "line": 172,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L172"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L172"
           },
           "comment": {
             "description": "The `image/apng` media content type.",
@@ -901,7 +901,7 @@
             "line": 178,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L178"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L178"
           },
           "comment": {
             "description": "The `image/gif` media content type.",
@@ -923,7 +923,7 @@
             "line": 184,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L184"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L184"
           },
           "comment": {
             "description": "The `image/jpeg` media content type.",
@@ -945,7 +945,7 @@
             "line": 189,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L189"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L189"
           },
           "comment": {
             "description": "The `image/png` media content type.",
@@ -967,7 +967,7 @@
             "line": 194,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L194"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L194"
           },
           "comment": {
             "description": "The `image/webp` media content type.",
@@ -989,7 +989,7 @@
             "line": 200,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L200"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L200"
           },
           "comment": {
             "description": "The `application/json` media content type.",
@@ -1011,7 +1011,7 @@
             "line": 206,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L206"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L206"
           },
           "comment": {
             "description": "The `application/javascript` media content type.",
@@ -1033,7 +1033,7 @@
             "line": 212,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L212"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L212"
           },
           "comment": {
             "description": "The `application/octet-stream` media content type.",
@@ -1055,7 +1055,7 @@
             "line": 218,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L218"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L218"
           },
           "comment": {
             "description": "The `text/css` media content type.",
@@ -1077,7 +1077,7 @@
             "line": 223,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L223"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L223"
           },
           "comment": {
             "description": "The `text/HTML` media content type.",
@@ -1099,7 +1099,7 @@
             "line": 229,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L229"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L229"
           },
           "comment": {
             "description": "The `text/plain` media content type.",
@@ -1121,7 +1121,7 @@
             "line": 235,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L235"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L235"
           },
           "comment": {
             "description": "The `video/h264` media content type.",
@@ -1143,7 +1143,7 @@
             "line": 241,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L241"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L241"
           },
           "comment": {
             "description": "The `video/h265` media content type.",
@@ -1165,7 +1165,7 @@
             "line": 247,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L247"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L247"
           },
           "comment": {
             "description": "The `video/mp4` media content type.",
@@ -1187,7 +1187,7 @@
             "line": 253,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L253"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L253"
           },
           "comment": {
             "description": "The `video/ogg` media content type.",
@@ -1209,7 +1209,7 @@
             "line": 257,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L257"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L257"
           },
           "comment": {
             "description": "The `video/webm` media content type.",
@@ -1226,7 +1226,7 @@
             "line": 263,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L263"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L263"
           },
           "comment": {
             "description": "The `application/xml` media content type.",
@@ -1250,7 +1250,7 @@
         "line": 36,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L36"
+        "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L36"
       },
       "comment": {
         "description": "The list of [HTTP Methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)",
@@ -1266,7 +1266,7 @@
             "line": 66,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L66"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L66"
           },
           "comment": {
             "description": "The `CONNECT` method establishes a tunnel to the server identified by the target resource",
@@ -1288,7 +1288,7 @@
             "line": 61,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L61"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L61"
           },
           "comment": {
             "description": "The `DELETE` method deletes the specified resource.",
@@ -1310,7 +1310,7 @@
             "line": 41,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L41"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L41"
           },
           "comment": {
             "description": "The `GET` method requests a representation of the specified resource. Requests using `GET` should only retrieve data.",
@@ -1332,7 +1332,7 @@
             "line": 46,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L46"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L46"
           },
           "comment": {
             "description": "The `HEAD` method asks for a response identical to that of a {@link `GET`} request, but without the response body.",
@@ -1354,7 +1354,7 @@
             "line": 71,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L71"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L71"
           },
           "comment": {
             "description": "The `OPTIONS` method is used to describe the communication options for the target resource.",
@@ -1376,7 +1376,7 @@
             "line": 81,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L81"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L81"
           },
           "comment": {
             "description": "The `PATCH` method is used to apply partial modifications to a resource.",
@@ -1398,7 +1398,7 @@
             "line": 51,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L51"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L51"
           },
           "comment": {
             "description": "The `POST` method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server.",
@@ -1420,7 +1420,7 @@
             "line": 56,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L56"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L56"
           },
           "comment": {
             "description": "The `PUT` method replaces all current representations of the target resource with the request payload.",
@@ -1442,7 +1442,7 @@
             "line": 76,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L76"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L76"
           },
           "comment": {
             "description": "The `TRACE` method performs a message loop-back test along the path to the target resource.",
@@ -1466,7 +1466,7 @@
         "line": 4,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L4"
       },
       "comment": {
         "description": "The supported return types for the `fetch` method",
@@ -1482,7 +1482,7 @@
             "line": 22,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L22"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L22"
           },
           "comment": {
             "description": "Returns only the body, as a [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob).",
@@ -1504,7 +1504,7 @@
             "line": 17,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L17"
           },
           "comment": {
             "description": "Returns only the body, as a [Buffer](https://nodejs.org/api/buffer.html).",
@@ -1526,7 +1526,7 @@
             "line": 11,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L11"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L11"
           },
           "comment": {
             "description": "Returns only the body, as JSON. Similar to [`Body.json()`](https://developer.mozilla.org/en-US/docs/Web/API/Body/json).\n\nYou should provide your own type cast (either through the generic return type, or with `as <type>`) to the response to define\nthe JSON structure, otherwise the result will be `unknown`.",
@@ -1543,7 +1543,7 @@
             "line": 30,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L30"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L30"
           },
           "comment": {
             "description": "Returns the entire response and doesn't parse the `body` in any way.",
@@ -1560,7 +1560,7 @@
             "line": 26,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L26"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L26"
           },
           "comment": {
             "description": "Returns only the body, as plain text. Similar to [`Body.text()`](https://developer.mozilla.org/en-US/docs/Web/API/Body/text).",
@@ -1581,7 +1581,7 @@
         "line": 21,
         "file": "fetch.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/fetch.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/fetch.ts#L21"
       },
       "comment": {
         "description": null,
@@ -2495,7 +2495,7 @@
         "line": 266,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L266"
+        "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L266"
       },
       "comment": {
         "description": null,
@@ -2512,7 +2512,7 @@
             "line": 267,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/117ba27/packages/fetch/src/lib/types.ts#L267"
+            "url": "https://github.com/sapphiredev/utilities/blob/42ef7b6/packages/fetch/src/lib/types.ts#L267"
           },
           "comment": {
             "description": null,
