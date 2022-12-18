@@ -2,18 +2,18 @@
   "typeDocJsonParserVersion": "7.0.2",
   "id": 0,
   "name": "@sapphire/type",
-  "version": "2.2.6",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/type\n\n**A type detection utility for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/type)](https://github.com/sapphiredev/type/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/type/branch/main/graph/badge.svg?token=hygqPZuVZ5)](https://codecov.io/gh/sapphiredev/type)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/type?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/type)\n[![npm](https://img.shields.io/npm/v/@sapphire/type?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/type)\n\n</div>\n\n---\n\n**_Note: We currently do not support NodeJS version 19 and above. This is currently not possible because we're using the\n[`nan`][nan] package for NodeJS internal bindings and [`nan`][nan] currently does not support NodeJS version 19 and\nabove._**\n\n[nan]: https://github.com/nodejs/nan\n\n---\n\n**Table of Contents**\n\n- [@sapphire/type](#sapphiretype)\n  - [Description](#description)\n  - [Features](#features)\n  - [Installation](#installation)\n  - [Usage](#usage)\n    - [Basic Usage](#basic-usage)\n  - [Buy us some doughnuts](#buy-us-some-doughnuts)\n  - [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nSometimes there is a need to know what a value's type of something is, this package exists to satisfy those needs by\nimplementing a parser that can retrieve the type of the value recursively and process a string similar to TypeScript's\ntypes.\n\n## Features\n\n- Written in TypeScript\n- Bundled with Rollup so it can be used in NodeJS and browsers\n- Offers CommonJS, ESM and UMD bundles\n- Fully tested\n\n## Installation\n\n```sh\nyarn add @sapphire/type\n# npm install @sapphire/type\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example\n`const { Type } = require('@sapphire/type')` equals `import { Type } from '@sapphire/type'`.\n\n**Note:** When using ESM syntax you can also default-import `Type` class: `import Type from '@sapphire/type'`.\n\n**Note:** The internal functions of `getPromiseDetails` and `getProxyDetails` are also exported. If you don't know what\nthese are, then you need not be concerned about this.\n\n### Basic Usage\n\n```typescript\n// Import the Type class\nconst { Type } = require('@sapphire/type');\n\n// Define a Type with an array of two numbers\nconst type = new Type([1, 2]);\n\nconsole.log(type.toString());\n// Logs: Array<number>\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are\namazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons\nbelow to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=favna\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=PyroTechniac\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/VoltrexMaster\"><img src=\"https://avatars.githubusercontent.com/u/62040526?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Voltrex</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=VoltrexMaster\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"#maintenance-vladfrangu\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"#maintenance-allcontributors[bot]\" title=\"Maintenance\">🚧</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.\nContributions of any kind welcome!\n",
-  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [2.2.6](https://github.com/sapphiredev/type/compare/v2.2.5...v2.2.6) - (2022-11-12)\n\n## 🐛 Bug Fixes\n\n- Fixed prebuild target (#421) ([1d8887e](https://github.com/sapphiredev/type/commit/1d8887e394b574ebc1b6efc9ee49f302153b2926))\n\n# [2.2.5](https://github.com/sapphiredev/type/compare/v2.2.4...v2.2.5) - (2022-11-06)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#417) ([482018e](https://github.com/sapphiredev/type/commit/482018e27c86e0f2c161cc25ca9e46249a808700))\n- **deps:** Update all non-major dependencies (#371) ([384abe7](https://github.com/sapphiredev/type/commit/384abe77ed77e56a0db834248b284e108f744dda))\n\n## 📝 Documentation\n\n- Add @allcontributors[bot] as a contributor ([00e117e](https://github.com/sapphiredev/type/commit/00e117e6b3cbfaa8b5bf877253a1ada853cb8bf2))\n- Add RealShadowNova as a contributor for tool (#389) ([ae3669f](https://github.com/sapphiredev/type/commit/ae3669f95ed68776c4b32158316d7a547c657d17))\n\n## 🧪 Testing\n\n- Switch to vitest (#387) ([2054309](https://github.com/sapphiredev/type/commit/2054309defbf73919196a92161bfb5c1e6659c2c))\n- Fix jest config ([8d73abe](https://github.com/sapphiredev/type/commit/8d73abee3d5faa6283b234c10dabcbfe1dbb2bc3))\n\n# [2.2.4](https://github.com/sapphiredev/type/compare/v2.2.0...v2.2.4) - (2022-04-29)\n\n## Bug Fixes\n\n- **prebuilts:** Remove `macos-12` target as it conflicts with `macos-latest` ([027a015](https://github.com/sapphiredev/type/commit/027a015bc3382c920c4499f89e57f10d5482e779))\n- **prebuilts:** Ensure proper prebuilts are published ([de4d79c](https://github.com/sapphiredev/type/commit/de4d79c6db35b6484f7d0ed978b9d6d1ae89525e))\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n# [@sapphire/type@2.2.3](https://github.com/sapphiredev/type/compare/v2.2.0...@sapphire/type@2.2.3) - (2022-04-26)\n\n## Bug Fixes\n\n- **prebuilts:** Remove `macos-12` target as it conflicts with `macos-latest` ([027a015](https://github.com/sapphiredev/type/commit/027a015bc3382c920c4499f89e57f10d5482e779))\n- **prebuilts:** Ensure proper prebuilts are published ([de4d79c](https://github.com/sapphiredev/type/commit/de4d79c6db35b6484f7d0ed978b9d6d1ae89525e))\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n# [@sapphire/type@2.2.2](https://github.com/sapphiredev/type/compare/v2.2.0...@sapphire/type@2.2.2) - (2022-04-26)\n\n## Bug Fixes\n\n- **prebuilts:** Ensure proper prebuilts are published ([de4d79c](https://github.com/sapphiredev/type/commit/de4d79c6db35b6484f7d0ed978b9d6d1ae89525e))\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n# [@sapphire/type@2.2.1](https://github.com/sapphiredev/type/compare/v2.2.0...@sapphire/type@2.2.1) - (2022-04-26)\n\n## Bug Fixes\n\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n## [2.2.0](https://github.com/sapphiredev/type/compare/v2.1.2...v2.2.0) (2022-03-06)\n\n\n### Features\n\n* allow module: NodeNext ([#317](https://github.com/sapphiredev/type/issues/317)) ([91e72b2](https://github.com/sapphiredev/type/commit/91e72b205aedc10a493cc984404fce06e87046a4))\n\n\n### Bug Fixes\n\n* remove eslint-ignore comment ([#280](https://github.com/sapphiredev/type/issues/280)) ([c466d92](https://github.com/sapphiredev/type/commit/c466d92c240c0cca11a88b25108acedc0ba48796))\n\n### [2.1.2](https://github.com/sapphiredev/type/compare/v2.1.1...v2.1.2) (2021-11-06)\n\n### [2.1.1](https://github.com/sapphiredev/type/compare/v2.1.0...v2.1.1) (2021-10-17)\n\n\n### Bug Fixes\n\n* allow more node & npm versions in engines field ([2325577](https://github.com/sapphiredev/type/commit/232557704ad5f754eac56711ac05ded97a2f4ba8))\n\n## [2.1.0](https://github.com/sapphiredev/type/compare/v2.0.11...v2.1.0) (2021-08-14)\n\n\n### Features\n\n* create release with prebuilts for Node 16.6.2 ([560018a](https://github.com/sapphiredev/type/commit/560018a01a90e07666fba00035af774bf1d4a7c8))\n\n### [2.0.11](https://github.com/sapphiredev/type/compare/v2.0.10...v2.0.11) (2021-06-18)\n\n\n### Bug Fixes\n\n* bump gen-esm-wrapper dependency to remove __esModule key ([49de458](https://github.com/sapphiredev/type/commit/49de4589849aef0adeeab66504c4ac0149822602))\n\n### [2.0.10](https://github.com/sapphiredev/type/compare/v2.0.9...v2.0.10) (2021-06-18)\n\n\n### Bug Fixes\n\n* fixed object with null prototypes being ignored ([#234](https://github.com/sapphiredev/type/issues/234)) ([b83e14e](https://github.com/sapphiredev/type/commit/b83e14e4f2917cd55e8d3cdf25562c0e3b35a80d))\n\n### [2.0.9](https://github.com/sapphiredev/type/compare/v2.0.5...v2.0.9) (2021-06-06)\n\n### Bug Fixes\n\n-   restore prebuilts\n-   add musl prebuilts ([#233](https://github.com/sapphiredev/type/issues/233)) ([2fe8d13](https://github.com/sapphiredev/type/commit/2fe8d13ad7e138cf8af3ea1b057beddb09369522))\n-   explicitly fallback to build when creating prebuilts ([992cf1f](https://github.com/sapphiredev/type/commit/992cf1f0b560e857c28fe2a846a137a9eb671b6b))\n\n### [2.0.5](https://github.com/sapphiredev/type/compare/v2.0.4...v2.0.5) (2021-06-05)\n\n### Bug Fixes\n\n-   fixed urls in package, changelog and readme ([93ec5c3](https://github.com/sapphiredev/type/commit/93ec5c3918bfec502efcbc417999d7fbc74cd4d6))\n\n### [2.0.4](https://github.com/sapphiredev/type/compare/v2.0.3...v2.0.4) (2021-05-20)\n\n### Bug Fixes\n\n-   ensure bundlers do not incorrectly detect missing dependency ([4244a36](https://github.com/sapphiredev/type/commit/4244a3608f86bb7f99c1cbff04741794f035e187))\n\n### [2.0.3](https://github.com/sapphiredev/type/compare/v2.0.2...v2.0.3) (2021-05-20)\n\n### Bug Fixes\n\n-   mark package as Side Effect free ([fa1625c](https://github.com/sapphiredev/type/commit/fa1625c1957fc182e7597499c7573d843ab11652))\n\n### [2.0.2](https://github.com/sapphiredev/type/compare/v2.0.1...v2.0.2) (2021-05-02)\n\n### Bug Fixes\n\n-   switch back to icrawl's v1 artifact uploader ([e7450cf](https://github.com/sapphiredev/type/commit/e7450cfbd887e37597e840aa3bd1e919f9fa8a58))\n\n### [2.0.1](https://github.com/sapphiredev/type/compare/v2.0.0...v2.0.1) (2021-05-02)\n\n### Bug Fixes\n\n-   switch to @discordjs/node-pre-gyp ([1b4847c](https://github.com/sapphiredev/type/commit/1b4847c5bae9c20f78ba34e3be3edb067dafd4dc))\n\n## 2.0.0 (2021-05-02)\n\n### ⚠ BREAKING CHANGES\n\n-   **type:** No longer bundles with rollup because this relies on NodeJS internals and should\n    only be used in NodeJS environments.\n\n### Features\n\n-   **type:** native module for node 16 ([d5fd960](https://github.com/sapphiredev/type/commit/d5fd9607f6e951d712d9dbf3160bd78dd57fdf82))\n",
+  "version": "2.3.0",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/type\n\n**A type detection utility for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/type)](https://github.com/sapphiredev/type/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/type/branch/main/graph/badge.svg?token=hygqPZuVZ5)](https://codecov.io/gh/sapphiredev/type)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/type?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/type)\n[![npm](https://img.shields.io/npm/v/@sapphire/type?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/type)\n\n</div>\n\n---\n\n**Table of Contents**\n\n- [@sapphire/type](#sapphiretype)\n  - [Description](#description)\n  - [Features](#features)\n  - [Installation](#installation)\n  - [Usage](#usage)\n    - [Basic Usage](#basic-usage)\n  - [Buy us some doughnuts](#buy-us-some-doughnuts)\n  - [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nSometimes there is a need to know what a value's type of something is, this package exists to satisfy those needs by\nimplementing a parser that can retrieve the type of the value recursively and process a string similar to TypeScript's\ntypes.\n\n## Features\n\n- Written in TypeScript\n- Bundled with Rollup so it can be used in NodeJS and browsers\n- Offers CommonJS, ESM and UMD bundles\n- Fully tested\n\n## Installation\n\n```sh\nyarn add @sapphire/type\n# npm install @sapphire/type\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example\n`const { Type } = require('@sapphire/type')` equals `import { Type } from '@sapphire/type'`.\n\n**Note:** When using ESM syntax you can also default-import `Type` class: `import Type from '@sapphire/type'`.\n\n**Note:** The internal functions of `getPromiseDetails` and `getProxyDetails` are also exported. If you don't know what\nthese are, then you need not be concerned about this.\n\n### Basic Usage\n\n```typescript\n// Import the Type class\nconst { Type } = require('@sapphire/type');\n\n// Define a Type with an array of two numbers\nconst type = new Type([1, 2]);\n\nconsole.log(type.toString());\n// Logs: Array<number>\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are\namazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons\nbelow to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=favna\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PyroTechniac\"><img src=\"https://avatars.githubusercontent.com/u/39341355?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Gryffon Bellish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=PyroTechniac\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/VoltrexMaster\"><img src=\"https://avatars.githubusercontent.com/u/62040526?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Voltrex</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=VoltrexMaster\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"#maintenance-vladfrangu\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/type/commits?author=Lioness100\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/RealShadowNova\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"#maintenance-allcontributors[bot]\" title=\"Maintenance\">🚧</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.\nContributions of any kind welcome!\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [2.3.0](https://github.com/sapphiredev/type/compare/v2.2.6...v2.3.0) - (2022-12-18)\n\n## 🚀 Features\n\n- Add node 19 support (#428) ([f2d2dc6](https://github.com/sapphiredev/type/commit/f2d2dc6d9fc29f81bea0e04ed962062ef38154d9))\n\n# [2.2.6](https://github.com/sapphiredev/type/compare/v2.2.5...v2.2.6) - (2022-11-12)\n\n## 🐛 Bug Fixes\n\n- Fixed prebuild target (#421) ([1d8887e](https://github.com/sapphiredev/type/commit/1d8887e394b574ebc1b6efc9ee49f302153b2926))\n\n# [2.2.5](https://github.com/sapphiredev/type/compare/v2.2.4...v2.2.5) - (2022-11-06)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#417) ([482018e](https://github.com/sapphiredev/type/commit/482018e27c86e0f2c161cc25ca9e46249a808700))\n- **deps:** Update all non-major dependencies (#371) ([384abe7](https://github.com/sapphiredev/type/commit/384abe77ed77e56a0db834248b284e108f744dda))\n\n## 📝 Documentation\n\n- Add @allcontributors[bot] as a contributor ([00e117e](https://github.com/sapphiredev/type/commit/00e117e6b3cbfaa8b5bf877253a1ada853cb8bf2))\n- Add RealShadowNova as a contributor for tool (#389) ([ae3669f](https://github.com/sapphiredev/type/commit/ae3669f95ed68776c4b32158316d7a547c657d17))\n\n## 🧪 Testing\n\n- Switch to vitest (#387) ([2054309](https://github.com/sapphiredev/type/commit/2054309defbf73919196a92161bfb5c1e6659c2c))\n- Fix jest config ([8d73abe](https://github.com/sapphiredev/type/commit/8d73abee3d5faa6283b234c10dabcbfe1dbb2bc3))\n\n# [2.2.4](https://github.com/sapphiredev/type/compare/v2.2.0...v2.2.4) - (2022-04-29)\n\n## Bug Fixes\n\n- **prebuilts:** Remove `macos-12` target as it conflicts with `macos-latest` ([027a015](https://github.com/sapphiredev/type/commit/027a015bc3382c920c4499f89e57f10d5482e779))\n- **prebuilts:** Ensure proper prebuilts are published ([de4d79c](https://github.com/sapphiredev/type/commit/de4d79c6db35b6484f7d0ed978b9d6d1ae89525e))\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n# [@sapphire/type@2.2.3](https://github.com/sapphiredev/type/compare/v2.2.0...@sapphire/type@2.2.3) - (2022-04-26)\n\n## Bug Fixes\n\n- **prebuilts:** Remove `macos-12` target as it conflicts with `macos-latest` ([027a015](https://github.com/sapphiredev/type/commit/027a015bc3382c920c4499f89e57f10d5482e779))\n- **prebuilts:** Ensure proper prebuilts are published ([de4d79c](https://github.com/sapphiredev/type/commit/de4d79c6db35b6484f7d0ed978b9d6d1ae89525e))\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n# [@sapphire/type@2.2.2](https://github.com/sapphiredev/type/compare/v2.2.0...@sapphire/type@2.2.2) - (2022-04-26)\n\n## Bug Fixes\n\n- **prebuilts:** Ensure proper prebuilts are published ([de4d79c](https://github.com/sapphiredev/type/commit/de4d79c6db35b6484f7d0ed978b9d6d1ae89525e))\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n# [@sapphire/type@2.2.1](https://github.com/sapphiredev/type/compare/v2.2.0...@sapphire/type@2.2.1) - (2022-04-26)\n\n## Bug Fixes\n\n- Configure prebuilts for Node 17 and Node 18 ([ec2e873](https://github.com/sapphiredev/type/commit/ec2e8733446e3fbb2af7231fb26a467be7f6591b))\n\n## [2.2.0](https://github.com/sapphiredev/type/compare/v2.1.2...v2.2.0) (2022-03-06)\n\n\n### Features\n\n* allow module: NodeNext ([#317](https://github.com/sapphiredev/type/issues/317)) ([91e72b2](https://github.com/sapphiredev/type/commit/91e72b205aedc10a493cc984404fce06e87046a4))\n\n\n### Bug Fixes\n\n* remove eslint-ignore comment ([#280](https://github.com/sapphiredev/type/issues/280)) ([c466d92](https://github.com/sapphiredev/type/commit/c466d92c240c0cca11a88b25108acedc0ba48796))\n\n### [2.1.2](https://github.com/sapphiredev/type/compare/v2.1.1...v2.1.2) (2021-11-06)\n\n### [2.1.1](https://github.com/sapphiredev/type/compare/v2.1.0...v2.1.1) (2021-10-17)\n\n\n### Bug Fixes\n\n* allow more node & npm versions in engines field ([2325577](https://github.com/sapphiredev/type/commit/232557704ad5f754eac56711ac05ded97a2f4ba8))\n\n## [2.1.0](https://github.com/sapphiredev/type/compare/v2.0.11...v2.1.0) (2021-08-14)\n\n\n### Features\n\n* create release with prebuilts for Node 16.6.2 ([560018a](https://github.com/sapphiredev/type/commit/560018a01a90e07666fba00035af774bf1d4a7c8))\n\n### [2.0.11](https://github.com/sapphiredev/type/compare/v2.0.10...v2.0.11) (2021-06-18)\n\n\n### Bug Fixes\n\n* bump gen-esm-wrapper dependency to remove __esModule key ([49de458](https://github.com/sapphiredev/type/commit/49de4589849aef0adeeab66504c4ac0149822602))\n\n### [2.0.10](https://github.com/sapphiredev/type/compare/v2.0.9...v2.0.10) (2021-06-18)\n\n\n### Bug Fixes\n\n* fixed object with null prototypes being ignored ([#234](https://github.com/sapphiredev/type/issues/234)) ([b83e14e](https://github.com/sapphiredev/type/commit/b83e14e4f2917cd55e8d3cdf25562c0e3b35a80d))\n\n### [2.0.9](https://github.com/sapphiredev/type/compare/v2.0.5...v2.0.9) (2021-06-06)\n\n### Bug Fixes\n\n-   restore prebuilts\n-   add musl prebuilts ([#233](https://github.com/sapphiredev/type/issues/233)) ([2fe8d13](https://github.com/sapphiredev/type/commit/2fe8d13ad7e138cf8af3ea1b057beddb09369522))\n-   explicitly fallback to build when creating prebuilts ([992cf1f](https://github.com/sapphiredev/type/commit/992cf1f0b560e857c28fe2a846a137a9eb671b6b))\n\n### [2.0.5](https://github.com/sapphiredev/type/compare/v2.0.4...v2.0.5) (2021-06-05)\n\n### Bug Fixes\n\n-   fixed urls in package, changelog and readme ([93ec5c3](https://github.com/sapphiredev/type/commit/93ec5c3918bfec502efcbc417999d7fbc74cd4d6))\n\n### [2.0.4](https://github.com/sapphiredev/type/compare/v2.0.3...v2.0.4) (2021-05-20)\n\n### Bug Fixes\n\n-   ensure bundlers do not incorrectly detect missing dependency ([4244a36](https://github.com/sapphiredev/type/commit/4244a3608f86bb7f99c1cbff04741794f035e187))\n\n### [2.0.3](https://github.com/sapphiredev/type/compare/v2.0.2...v2.0.3) (2021-05-20)\n\n### Bug Fixes\n\n-   mark package as Side Effect free ([fa1625c](https://github.com/sapphiredev/type/commit/fa1625c1957fc182e7597499c7573d843ab11652))\n\n### [2.0.2](https://github.com/sapphiredev/type/compare/v2.0.1...v2.0.2) (2021-05-02)\n\n### Bug Fixes\n\n-   switch back to icrawl's v1 artifact uploader ([e7450cf](https://github.com/sapphiredev/type/commit/e7450cfbd887e37597e840aa3bd1e919f9fa8a58))\n\n### [2.0.1](https://github.com/sapphiredev/type/compare/v2.0.0...v2.0.1) (2021-05-02)\n\n### Bug Fixes\n\n-   switch to @discordjs/node-pre-gyp ([1b4847c](https://github.com/sapphiredev/type/commit/1b4847c5bae9c20f78ba34e3be3edb067dafd4dc))\n\n## 2.0.0 (2021-05-02)\n\n### ⚠ BREAKING CHANGES\n\n-   **type:** No longer bundles with rollup because this relies on NodeJS internals and should\n    only be used in NodeJS environments.\n\n### Features\n\n-   **type:** native module for node 16 ([d5fd960](https://github.com/sapphiredev/type/commit/d5fd9607f6e951d712d9dbf3160bd78dd57fdf82))\n",
   "classes": [
     {
       "id": 7,
       "name": "Type",
       "source": {
-        "line": 19,
+        "line": 17,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L19"
+        "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L17"
       },
       "comment": {
         "description": "The class for deep checking Types",
@@ -29,10 +29,10 @@
         "id": 14,
         "name": "constructor",
         "source": {
-          "line": 49,
+          "line": 47,
           "file": "index.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L49"
+          "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L47"
         },
         "comment": {
           "description": null,
@@ -87,10 +87,10 @@
           "id": 21,
           "name": "childKeys",
           "source": {
-            "line": 38,
+            "line": 36,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L38"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L36"
           },
           "comment": {
             "description": "The child keys of this Type",
@@ -127,10 +127,10 @@
           "id": 22,
           "name": "childValues",
           "source": {
-            "line": 43,
+            "line": 41,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L43"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L41"
           },
           "comment": {
             "description": "The child values of this Type",
@@ -167,10 +167,10 @@
           "id": 19,
           "name": "is",
           "source": {
-            "line": 28,
+            "line": 26,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L28"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L26"
           },
           "comment": {
             "description": "The shallow type of this",
@@ -192,10 +192,10 @@
           "id": 20,
           "name": "parent",
           "source": {
-            "line": 33,
+            "line": 31,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L33"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L31"
           },
           "comment": {
             "description": "The parent of this Type",
@@ -229,10 +229,10 @@
           "id": 18,
           "name": "value",
           "source": {
-            "line": 23,
+            "line": 21,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L23"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L21"
           },
           "comment": {
             "description": "The value to generate a deep Type of",
@@ -254,10 +254,10 @@
           "id": 24,
           "name": "childTypes",
           "source": {
-            "line": 58,
+            "line": 56,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L58"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L56"
           },
           "comment": {
             "description": "The type string for the children of this Type",
@@ -281,10 +281,10 @@
           "id": 34,
           "name": "addEntry",
           "source": {
-            "line": 101,
+            "line": 99,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L101"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L99"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -335,10 +335,10 @@
           "id": 31,
           "name": "addValue",
           "source": {
-            "line": 92,
+            "line": 90,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L92"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L90"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -380,10 +380,10 @@
           "id": 37,
           "name": "check",
           "source": {
-            "line": 110,
+            "line": 108,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L110"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L108"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -411,10 +411,10 @@
           "id": 29,
           "name": "isCircular",
           "source": {
-            "line": 83,
+            "line": 81,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L83"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L81"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -442,10 +442,10 @@
           "id": 27,
           "name": "parents",
           "source": {
-            "line": 74,
+            "line": 72,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L74"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L72"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -484,10 +484,10 @@
           "id": 25,
           "name": "toString",
           "source": {
-            "line": 66,
+            "line": 64,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L66"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L64"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -515,10 +515,10 @@
           "id": 11,
           "name": "list",
           "source": {
-            "line": 157,
+            "line": 155,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L157"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L155"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -575,10 +575,10 @@
           "id": 8,
           "name": "resolve",
           "source": {
-            "line": 139,
+            "line": 137,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L139"
+            "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L137"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -625,10 +625,10 @@
       "id": 1,
       "name": "getPromiseDetails",
       "source": {
-        "line": 14,
+        "line": 12,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L14"
+        "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L12"
       },
       "comment": {
         "description": null,
@@ -675,10 +675,10 @@
       "id": 4,
       "name": "getProxyDetails",
       "source": {
-        "line": 14,
+        "line": 12,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/d836d9e/src/index.ts#L14"
+        "url": "https://github.com/sapphiredev/type/blob/7007b2d/src/index.ts#L12"
       },
       "comment": {
         "description": null,
