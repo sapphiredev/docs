@@ -9,10 +9,10 @@
   "enums": [],
   "functions": [
     {
-      "id": 1,
+      "id": 2,
       "name": "free",
       "source": {
-        "line": 14,
+        "line": 15,
         "file": "index.d.ts",
         "path": "node_modules/@skyra/editable-commands/dist",
         "url": null
@@ -25,7 +25,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 2,
+          "id": 3,
           "name": "free",
           "comment": {
             "description": "Removes the tracked response for `message`.",
@@ -40,7 +40,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 3,
+              "id": 4,
               "name": "message",
               "comment": {
                 "description": "The message to free from tracking.",
@@ -70,10 +70,10 @@
       ]
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "get",
       "source": {
-        "line": 20,
+        "line": 21,
         "file": "index.d.ts",
         "path": "node_modules/@skyra/editable-commands/dist",
         "url": null
@@ -86,7 +86,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 5,
+          "id": 6,
           "name": "get",
           "comment": {
             "description": "Gets the tracked response to `message`, if any was tracked and was not deleted.",
@@ -101,7 +101,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 6,
+              "id": 7,
               "name": "message",
               "comment": {
                 "description": "The message to get the reply from.",
@@ -143,10 +143,10 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "reply",
       "source": {
-        "line": 34,
+        "line": 35,
         "file": "index.d.ts",
         "path": "node_modules/@skyra/editable-commands/dist",
         "url": null
@@ -159,7 +159,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 8,
+          "id": 9,
           "name": "reply",
           "comment": {
             "description": "Sends a reply message as a response for `message`, and tracks it.",
@@ -174,7 +174,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 9,
+              "id": 10,
               "name": "message",
               "comment": {
                 "description": "The message to replies to.",
@@ -196,7 +196,7 @@
               }
             },
             {
-              "id": 10,
+              "id": 11,
               "name": "options",
               "comment": {
                 "description": "The options for the message sending, identical to `TextBasedChannel#send`'s options.",
@@ -213,9 +213,9 @@
                   },
                   {
                     "kind": "reference",
-                    "id": null,
-                    "name": "ReplyMessageOptions",
-                    "packageName": "discord.js",
+                    "id": 1,
+                    "name": "MessageOptions",
+                    "packageName": "@skyra/editable-commands",
                     "typeArguments": []
                   }
                 ]
@@ -241,10 +241,10 @@
       ]
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "send",
       "source": {
-        "line": 27,
+        "line": 28,
         "file": "index.d.ts",
         "path": "node_modules/@skyra/editable-commands/dist",
         "url": null
@@ -257,7 +257,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 12,
+          "id": 13,
           "name": "send",
           "comment": {
             "description": "Sends a message as a response for `message`, and tracks it.",
@@ -272,7 +272,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 13,
+              "id": 14,
               "name": "message",
               "comment": {
                 "description": "The message to replies to.",
@@ -294,7 +294,7 @@
               }
             },
             {
-              "id": 14,
+              "id": 15,
               "name": "options",
               "comment": {
                 "description": "The options for the message sending, identical to `TextBasedChannel#send`'s options.",
@@ -311,9 +311,9 @@
                   },
                   {
                     "kind": "reference",
-                    "id": null,
+                    "id": 1,
                     "name": "MessageOptions",
-                    "packageName": "discord.js",
+                    "packageName": "@skyra/editable-commands",
                     "typeArguments": []
                   }
                 ]
@@ -339,10 +339,10 @@
       ]
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "track",
       "source": {
-        "line": 8,
+        "line": 9,
         "file": "index.d.ts",
         "path": "node_modules/@skyra/editable-commands/dist",
         "url": null
@@ -355,7 +355,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 16,
+          "id": 17,
           "name": "track",
           "comment": {
             "description": "Tracks a response with a message, in a way that if {@link send} is called with `message`, `response` will be edited.",
@@ -365,7 +365,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 17,
+              "id": 18,
               "name": "message",
               "comment": {
                 "description": "The message to track when editing.",
@@ -387,7 +387,7 @@
               }
             },
             {
-              "id": 18,
+              "id": 19,
               "name": "response",
               "comment": {
                 "description": "The response to edit when using send with `message`.",
@@ -419,6 +419,50 @@
   ],
   "interfaces": [],
   "namespaces": [],
-  "typeAliases": [],
+  "typeAliases": [
+    {
+      "id": 1,
+      "name": "MessageOptions",
+      "source": {
+        "line": 3,
+        "file": "index.d.ts",
+        "path": "node_modules/@skyra/editable-commands/dist",
+        "url": null
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": true,
+      "typeParameters": [],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "MessageCreateOptions",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "MessageReplyOptions",
+            "packageName": "discord.js",
+            "typeArguments": []
+          },
+          {
+            "kind": "reference",
+            "id": null,
+            "name": "MessageEditOptions",
+            "packageName": "discord.js",
+            "typeArguments": []
+          }
+        ]
+      }
+    }
+  ],
   "variables": []
 }
