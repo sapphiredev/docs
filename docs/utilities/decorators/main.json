@@ -14,7 +14,7 @@
         "line": 6,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L6"
       },
       "comment": {
         "description": null,
@@ -30,7 +30,7 @@
             "line": 7,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L7"
           },
           "comment": {
             "description": null,
@@ -47,7 +47,7 @@
             "line": 8,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L8"
           },
           "comment": {
             "description": null,
@@ -64,7 +64,7 @@
             "line": 9,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L9"
           },
           "comment": {
             "description": null,
@@ -81,7 +81,7 @@
             "line": 10,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L10"
+            "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L10"
           },
           "comment": {
             "description": null,
@@ -102,7 +102,7 @@
         "line": 52,
         "file": "piece-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/piece-decorators.ts#L52"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/piece-decorators.ts#L52"
       },
       "comment": {
         "description": null,
@@ -123,7 +123,7 @@
               },
               {
                 "name": "example",
-                "text": "```typescript\nimport { ApplyOptions } from '@sapphire/decorators';\nimport { Listener } from '@sapphire/framework';\nimport { GatewayDispatchEvents, GatewayMessageDeleteDispatch } from 'discord-api-types/v9';\n\n@ApplyOptions<Listener.Options>(({ container }) => ({\n  description: 'Handle Raw Message Delete events',\n  emitter: container.client.ws,\n  event: GatewayDispatchEvents.MessageDelete\n}))\nexport class UserListener extends Listener {\n  public override run(data: GatewayMessageDeleteDispatch['d']): void {\n    if (!data.guild_id) return;\n\n    const guild = this.container.client.guilds.cache.get(data.guild_id);\n    if (!guild || !guild.channels.cache.has(data.channel_id)) return;\n\n    // Do something with the data\n  }\n}\n```"
+                "text": "```typescript\nimport { ApplyOptions } from '@sapphire/decorators';\nimport { Listener } from '@sapphire/framework';\nimport { GatewayDispatchEvents, GatewayMessageDeleteDispatch } from 'discord.js';\n\n@ApplyOptions<Listener.Options>(({ container }) => ({\n  description: 'Handle Raw Message Delete events',\n  emitter: container.client.ws,\n  event: GatewayDispatchEvents.MessageDelete\n}))\nexport class UserListener extends Listener {\n  public override run(data: GatewayMessageDeleteDispatch['d']): void {\n    if (!data.guild_id) return;\n\n    const guild = this.container.client.guilds.cache.get(data.guild_id);\n    if (!guild || !guild.channels.cache.has(data.channel_id)) return;\n\n    // Do something with the data\n  }\n}\n```"
               }
             ],
             "modifierTags": []
@@ -175,7 +175,7 @@
                           "fileName": "piece-decorators.ts",
                           "line": 52,
                           "character": 72,
-                          "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/piece-decorators.ts#L52"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/piece-decorators.ts#L52"
                         }
                       ],
                       "signatures": [
@@ -229,7 +229,7 @@
         "line": 8,
         "file": "base-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/base-decorators.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/base-decorators.ts#L8"
       },
       "comment": {
         "description": null,
@@ -276,7 +276,7 @@
                   "fileName": "base-decorators.ts",
                   "line": 9,
                   "character": 8,
-                  "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/base-decorators.ts#L9"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/base-decorators.ts#L9"
                 }
               ],
               "signatures": [
@@ -328,7 +328,7 @@
         "line": 28,
         "file": "base-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/base-decorators.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/base-decorators.ts#L28"
       },
       "comment": {
         "description": null,
@@ -379,7 +379,7 @@
         "line": 79,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L79"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L79"
       },
       "comment": {
         "description": null,
@@ -404,7 +404,7 @@
               },
               {
                 "name": "example",
-                "text": "```typescript\nimport { ApplyOptions, RequiresClientPermissions } from '@sapphire/decorators';\nimport { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<SubCommandPluginCommandOptions>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends SubCommandPluginCommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
+                "text": "```typescript\nimport { ApplyOptions, RequiresClientPermissions } from '@sapphire/decorators';\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<Subcommand.Options>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends Subcommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
               }
             ],
             "modifierTags": []
@@ -449,7 +449,7 @@
         "line": 192,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L192"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L192"
       },
       "comment": {
         "description": null,
@@ -508,7 +508,7 @@
         "line": 183,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L183"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L183"
       },
       "comment": {
         "description": null,
@@ -567,7 +567,7 @@
         "line": 148,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/djs-decorators.ts#L148"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/djs-decorators.ts#L148"
       },
       "comment": {
         "description": null,
@@ -592,7 +592,7 @@
               },
               {
                 "name": "example",
-                "text": "```typescript\nimport { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';\nimport { SubCommandPluginCommand, SubCommandPluginCommandOptions } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<SubCommandPluginCommandOptions>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends SubCommandPluginCommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
+                "text": "```typescript\nimport { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<Subcommand.Options>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends Subcommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
               }
             ],
             "modifierTags": []
@@ -637,7 +637,7 @@
         "line": 43,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/utils.ts#L43"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/utils.ts#L43"
       },
       "comment": {
         "description": null,
@@ -676,7 +676,7 @@
                       "fileName": "utils.ts",
                       "line": 43,
                       "character": 55,
-                      "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/utils.ts#L43"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/utils.ts#L43"
                     }
                   ],
                   "signatures": [
@@ -751,7 +751,7 @@
         "line": 73,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/utils.ts#L73"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/utils.ts#L73"
       },
       "comment": {
         "description": null,
@@ -827,7 +827,7 @@
         "line": 34,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/utils.ts#L34"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/utils.ts#L34"
       },
       "comment": {
         "description": null,
@@ -883,7 +883,7 @@
         "line": 64,
         "file": "piece-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/piece-decorators.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/piece-decorators.ts#L64"
       },
       "comment": {
         "description": null,
@@ -900,7 +900,7 @@
             "line": 65,
             "file": "piece-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/piece-decorators.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/piece-decorators.ts#L65"
           },
           "comment": {
             "description": null,
@@ -924,7 +924,7 @@
             "line": 66,
             "file": "piece-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/piece-decorators.ts#L66"
+            "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/piece-decorators.ts#L66"
           },
           "comment": {
             "description": null,
@@ -951,7 +951,7 @@
         "line": 14,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/utils.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/utils.ts#L14"
       },
       "comment": {
         "description": null,
@@ -970,7 +970,7 @@
         "line": 4,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/cd98c48/packages/decorators/src/utils.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/2e2c3e9/packages/decorators/src/utils.ts#L4"
       },
       "comment": {
         "description": null,
