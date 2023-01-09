@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/plugin-api",
   "version": "5.0.0",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-api\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to expose a REST API.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-api?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-api)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-api?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-api)\n\n</div>\n\n## Description\n\nThis plugin provides an API endpoint for your bot that can be called from external services. A good exemplary use case for this is once your bot grows to have enough configuration options that you want to offer a website to your end-users to change those settings, and your website needs to interface with the bot for this to work.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Provides a Decorator-based API to make developing your routes easy!\n-   Follows common REST standards.\n-   Includes ESM ready entrypoint\n-   Premade OAuth 2.0 endpoints\n\n## Installation\n\n`@sapphire/plugin-api` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n-   [`discord-api-types`](https://www.npmjs.com/package/discord-api-types)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-api @sapphire/framework discord.js discord-api-types\n```\n\n---\n\n## Usage\n\nStart by importing the registration file in your project to use the plugin:\n\n**JavaScript**\n\n```js\nrequire('@sapphire/plugin-api/register');\n```\n\n**TypeScript**\n\n```typescript\nimport '@sapphire/plugin-api/register';\n```\n\nThen, you can use the following configuration options in your SapphireClient extension class or initializer. This will either be located in your `new SapphireClient` constructor call, or `super` in your constructor method if you use an extension class.\n\n```js\n{\n  auth: {\n\t// The application/client ID of your bot.\n\t// You can find this at https://discord.com/developers/applications\n    id: '',\n\t// The client secret of your bot.\n\t// You can find this at https://discord.com/developers/applications\n    secret: '',\n\t// The name of the authentication cookie.\n    cookie: 'SAPPHIRE_AUTH',\n\t// The URL that users should be redirected to after a successful authentication\n    redirect: '',\n\t// The scopes that should be given to the authentication.\n    scopes: [OAuth2Scopes.Identify],\n\t// Transformers to transform the raw data from Discord to a different structure.\n    transformers: []\n  },\n  // The prefix for all routes, e.g. / or v1/.\n  prefix: '',\n  // The origin header to be set on every request at 'Access-Control-Allow-Origin.\n  origin: '*',\n  // Any options passed to the NodeJS \"net\" internal server.listen function\n  // See https://nodejs.org/api/net.html#net_server_listen_options_callback\n  listenOptions: {\n\t// The port the API will listen on.\n    port: 4000\n  }\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Antonio Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://shadownova.dev/\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/yuansheng1549\"><img src=\"https://avatars.githubusercontent.com/u/75909450?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>yuansheng1549</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=yuansheng1549\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/BenSegal855\"><img src=\"https://avatars.githubusercontent.com/u/34194692?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ben</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=BenSegal855\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Arcadia148\"><img src=\"https://avatars.githubusercontent.com/u/50211159?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Arcadia148</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Arcadia148\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-api\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to expose a REST API.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-api?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-api)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-api?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-api)\n\n</div>\n\n## Description\n\nThis plugin provides an API endpoint for your bot that can be called from external services. A good exemplary use case for this is once your bot grows to have enough configuration options that you want to offer a website to your end-users to change those settings, and your website needs to interface with the bot for this to work.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Provides a Decorator-based API to make developing your routes easy!\n-   Follows common REST standards.\n-   Includes ESM ready entrypoint\n-   Premade OAuth 2.0 endpoints\n\n## Installation\n\n`@sapphire/plugin-api` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n-   [`discord-api-types`](https://www.npmjs.com/package/discord-api-types)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-api @sapphire/framework discord.js discord-api-types\n```\n\n---\n\n## Usage\n\nStart by importing the registration file in your project to use the plugin:\n\n**JavaScript**\n\n```js\nrequire('@sapphire/plugin-api/register');\n```\n\n**TypeScript**\n\n```typescript\nimport '@sapphire/plugin-api/register';\n```\n\nThen, you can use the following configuration options in your SapphireClient extension class or initializer. This will either be located in your `new SapphireClient` constructor call, or `super` in your constructor method if you use an extension class.\n\n```js\n{\n  auth: {\n\t// The application/client ID of your bot.\n\t// You can find this at https://discord.com/developers/applications\n    id: '',\n\t// The client secret of your bot.\n\t// You can find this at https://discord.com/developers/applications\n    secret: '',\n\t// The name of the authentication cookie.\n    cookie: 'SAPPHIRE_AUTH',\n\t// The URL that users should be redirected to after a successful authentication\n    redirect: '',\n\t// The scopes that should be given to the authentication.\n    scopes: [OAuth2Scopes.Identify],\n\t// Transformers to transform the raw data from Discord to a different structure.\n    transformers: []\n  },\n  // The prefix for all routes, e.g. / or v1/.\n  prefix: '',\n  // The origin header to be set on every request at 'Access-Control-Allow-Origin.\n  origin: '*',\n  // Any options passed to the NodeJS \"net\" internal server.listen function\n  // See https://nodejs.org/api/net.html#net_server_listen_options_callback\n  listenOptions: {\n\t// The port the API will listen on.\n    port: 4000\n  }\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tr>\n    <td align=\"center\"><a href=\"https://favware.tech/\"><img src=\"https://avatars3.githubusercontent.com/u/4019718?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=favna\" title=\"Code\">💻</a> <a href=\"#infra-favna\" title=\"Infrastructure (Hosting, Build-Tools, etc)\">🚇</a> <a href=\"#projectManagement-favna\" title=\"Project Management\">📆</a></td>\n    <td align=\"center\"><a href=\"https://Quantumlyy.com\"><img src=\"https://avatars1.githubusercontent.com/u/7919610?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Nejc Drobnic</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Quantumlyy\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/kyranet\"><img src=\"https://avatars0.githubusercontent.com/u/24852502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Aura Román</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kyranet\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/vladfrangu\"><img src=\"https://avatars3.githubusercontent.com/u/17960496?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Vlad Frangu</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/pulls?q=is%3Apr+reviewed-by%3Avladfrangu\" title=\"Reviewed Pull Requests\">👀</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/depfu\"><img src=\"https://avatars3.githubusercontent.com/in/715?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>depfu[bot]</b></sub></a><br /><a href=\"#maintenance-depfu[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/dependabot\"><img src=\"https://avatars0.githubusercontent.com/in/29110?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>dependabot[bot]</b></sub></a><br /><a href=\"#maintenance-dependabot[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/allcontributors\"><img src=\"https://avatars0.githubusercontent.com/in/23186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=allcontributors[bot]\" title=\"Documentation\">📖</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Nytelife26\"><img src=\"https://avatars1.githubusercontent.com/u/22531310?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Tyler J Russell</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Nytelife26\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Stitch07\"><img src=\"https://avatars.githubusercontent.com/u/29275227?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Stitch07</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Stitch07\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/issues?q=author%3AStitch07\" title=\"Bug reports\">🐛</a></td>\n    <td align=\"center\"><a href=\"https://github.com/PlatinBae\"><img src=\"https://avatars.githubusercontent.com/u/50950966?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>PlatinBae</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=PlatinBae\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://kaname.netlify.app\"><img src=\"https://avatars.githubusercontent.com/u/56084970?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Kaname</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=kaname-png\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/noftaly\"><img src=\"https://avatars.githubusercontent.com/u/34779161?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Elliot</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=noftaly\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Lioness100\"><img src=\"https://avatars.githubusercontent.com/u/65814829?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Lioness100</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Code\">💻</a> <a href=\"https://github.com/sapphiredev/plugins/commits?author=Lioness100\" title=\"Documentation\">📖</a></td>\n    <td align=\"center\"><a href=\"https://github.com/UndiedGamer\"><img src=\"https://avatars.githubusercontent.com/u/84702365?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>UndiedGamer</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=UndiedGamer\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/feralheart\"><img src=\"https://avatars.githubusercontent.com/u/3487559?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Feralheart</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=feralheart\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://jurien.dev/\"><img src=\"https://avatars.githubusercontent.com/u/5418114?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Jurien Hamaker</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jurienhamaker\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/apps/renovate\"><img src=\"https://avatars.githubusercontent.com/in/2740?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>renovate[bot]</b></sub></a><br /><a href=\"#maintenance-renovate[bot]\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://renovate.whitesourcesoftware.com/\"><img src=\"https://avatars.githubusercontent.com/u/25180681?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>WhiteSource Renovate</b></sub></a><br /><a href=\"#maintenance-renovate-bot\" title=\"Maintenance\">🚧</a></td>\n    <td align=\"center\"><a href=\"https://c43721.github.io/\"><img src=\"https://avatars.githubusercontent.com/u/55610086?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>c43721</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=c43721\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://megatank58.me/\"><img src=\"https://avatars.githubusercontent.com/u/51410502?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>megatank58</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=megatank58\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://fc5570.me/\"><img src=\"https://avatars.githubusercontent.com/u/68158483?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>FC</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=FC5570\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/Suyashtnt\"><img src=\"https://avatars.githubusercontent.com/u/45307955?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Just a Badly Drawn TABS Dude</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Suyashtnt\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://newtt.me/\"><img src=\"https://avatars.githubusercontent.com/u/19301186?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>newt :D</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=newtykins\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://linktr.ee/mzato0001\"><img src=\"https://avatars.githubusercontent.com/u/62367547?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Mzato</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Mzato0001\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/MajesticString\"><img src=\"https://avatars.githubusercontent.com/u/66224939?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Harry Allen</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=MajesticString\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/jczstudios\"><img src=\"https://avatars.githubusercontent.com/u/17862924?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Julian</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=jczstudios\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/KrishAgarwal2811\"><img src=\"https://avatars.githubusercontent.com/u/68506145?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Krish</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=KrishAgarwal2811\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/imranbarbhuiya\"><img src=\"https://avatars.githubusercontent.com/u/74945038?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Parbez</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=imranbarbhuiya\" title=\"Code\">💻</a></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://github.com/ricardooow\"><img src=\"https://avatars.githubusercontent.com/u/28981399?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>ricardooow</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=ricardooow\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://shadownova.dev/\"><img src=\"https://avatars.githubusercontent.com/u/46537907?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Hezekiah Hendry</b></sub></a><br /><a href=\"#tool-RealShadowNova\" title=\"Tools\">🔧</a></td>\n    <td align=\"center\"><a href=\"https://github.com/yuansheng1549\"><img src=\"https://avatars.githubusercontent.com/u/75909450?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>yuansheng1549</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=yuansheng1549\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/BenSegal855\"><img src=\"https://avatars.githubusercontent.com/u/34194692?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Ben</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=BenSegal855\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/r-priyam\"><img src=\"https://avatars.githubusercontent.com/u/50884372?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Priyam</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=r-priyam\" title=\"Code\">💻</a></td>\n    <td align=\"center\"><a href=\"https://github.com/Arcadia148\"><img src=\"https://avatars.githubusercontent.com/u/50211159?v=4?s=100\" width=\"100px;\" alt=\"\"/><br /><sub><b>Arcadia148</b></sub></a><br /><a href=\"https://github.com/sapphiredev/plugins/commits?author=Arcadia148\" title=\"Code\">💻</a></td>\n  </tr>\n</table>\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\nThis project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-api@5.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@4.0.1...@sapphire/plugin-api@5.0.0) - (2023-01-08)\n\n## 🏠 Refactor\n\n- Node-fetch to undici (#145) ([16409fd](https://github.com/sapphiredev/plugins/commit/16409fdebe4bae7d8eb22da32e639b68e6239dd1))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n## 🚀 Features\n\n- **deps:** Support for djs v14 (#403) ([7674782](https://github.com/sapphiredev/plugins/commit/76747829f4b3ec152ab888e57a56a138e7d527f5))\n\n# [@sapphire/plugin-api@4.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@4.0.0...@sapphire/plugin-api@4.0.1) - (2022-09-18)\n\n## 🐛 Bug Fixes\n\n- **api:** Compatibility with latest @types/node ([8c80780](https://github.com/sapphiredev/plugins/commit/8c807807bbeb979fb4344b1c7a342d72aceee83c))\n\n## 🧪 Testing\n\n- Migrate to vitest ([94a182e](https://github.com/sapphiredev/plugins/commit/94a182ea0d03f79616c66983695caf64e93cb6c3))\n\n# [@sapphire/plugin-api@4.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.2.4...@sapphire/plugin-api@4.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-api@3.2.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.2.3...@sapphire/plugin-api@3.2.4) - (2022-07-18)\n\n## 🐛 Bug Fixes\n\n- End response only if options route handler is not present (#325) ([058d088](https://github.com/sapphiredev/plugins/commit/058d0881d1b542e669052d816939dde16f33877b))\n\n# [@sapphire/plugin-api@3.2.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.2.1...@sapphire/plugin-api@3.2.3) - (2022-07-11)\n\n## 🏃 Performance\n\n- **i18next:** Switch to new backend library ([21cd166](https://github.com/sapphiredev/plugins/commit/21cd1665c3bcba9c3dbc9711e9d57153ad768276))\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n## [3.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.2.0...@sapphire/plugin-api@3.2.1) (2022-04-01)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2377eb9](https://github.com/sapphiredev/plugins/commit/2377eb90c7a5efb65e2be242d492f06bd4841a2e))\n\n# [3.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.1.4...@sapphire/plugin-api@3.2.0) (2022-03-06)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2016134](https://github.com/sapphiredev/plugins/commit/201613418babe93748e74064cf66d4ea0582725c))\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n-   **api:** Add automatically connect option ([#250](https://github.com/sapphiredev/plugins/issues/250)) ([6bf3626](https://github.com/sapphiredev/plugins/commit/6bf3626364264a6450a4d97e7dc3f6ada538269a))\n\n## [3.1.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.1.3...@sapphire/plugin-api@3.1.4) (2022-01-23)\n\n### Bug Fixes\n\n-   **deps:** update dependency node-fetch to v2.6.7 [security] ([743c9a6](https://github.com/sapphiredev/plugins/commit/743c9a606cd8d03cc91666cb86953ba302ccfb65))\n\n## [3.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.1.2...@sapphire/plugin-api@3.1.3) (2022-01-06)\n\n### Bug Fixes\n\n-   **api:** fixed return of `response.json` and `response.text` to actually return `void` ([add3ce5](https://github.com/sapphiredev/plugins/commit/add3ce55b2d49f9a605691d78baed13ef27844c7))\n\n## [3.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.1.1...@sapphire/plugin-api@3.1.2) (2021-12-21)\n\n### Bug Fixes\n\n-   **routes:** ensure that unmatched routes return 404 instead of 200 ([#193](https://github.com/sapphiredev/plugins/issues/193)) ([19e1be9](https://github.com/sapphiredev/plugins/commit/19e1be98d9c8ef4493fd76a517d33b3bf7577ba8))\n\n## [3.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.1.0...@sapphire/plugin-api@3.1.1) (2021-12-06)\n\n**Note:** Version bump only for package @sapphire/plugin-api\n\n# [3.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.0.2...@sapphire/plugin-api@3.1.0) (2021-11-21)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([4c796f8](https://github.com/sapphiredev/plugins/commit/4c796f8ea424c0fe37cda949afac0d5900cc2ff2))\n\n### Features\n\n-   expose and use namespaces for options, context, etc ([#176](https://github.com/sapphiredev/plugins/issues/176)) ([33452da](https://github.com/sapphiredev/plugins/commit/33452da808d91313a5d3bf680e11b5208ac67442))\n\n## [3.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.0.1...@sapphire/plugin-api@3.0.2) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/plugin-api\n\n## [3.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@3.0.0...@sapphire/plugin-api@3.0.1) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([ce5b12f](https://github.com/sapphiredev/plugins/commit/ce5b12f8142297bceda49b85574a95a3cf9112ab))\n\n# [3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.2.0...@sapphire/plugin-api@3.0.0) (2021-10-16)\n\n### Bug Fixes\n\n-   **api:** remove @sapphire/pieces from install instructions ([44e514c](https://github.com/sapphiredev/plugins/commit/44e514c7a755b13b316e875d3be7ed055bd33baf))\n-   **api:** update to Discord API v9 ([#124](https://github.com/sapphiredev/plugins/issues/124)) ([b194fe6](https://github.com/sapphiredev/plugins/commit/b194fe613ec04f327a2aa5ae8d051c400ed105c8))\n-   **plugin-api:** resolved augmentation bugs ([#102](https://github.com/sapphiredev/plugins/issues/102)) ([e21fd4a](https://github.com/sapphiredev/plugins/commit/e21fd4a6b0b36b2351c388b57d9c454734627a8b))\n\n### Code Refactoring\n\n-   **plugin-api:** updated for discord.js@13 and framework@2 ([856cd6f](https://github.com/sapphiredev/plugins/commit/856cd6f6f409ebb7fc156a64b0f7503154d2a38e))\n\n### Features\n\n-   **i18next:** update i18next dependency ([#129](https://github.com/sapphiredev/plugins/issues/129)) ([96519de](https://github.com/sapphiredev/plugins/commit/96519de5de253db390ed9a76ed073ffe1eabd187))\n-   rename `Awaited` to `Awaitable` ([#152](https://github.com/sapphiredev/plugins/issues/152)) ([e8aabab](https://github.com/sapphiredev/plugins/commit/e8aababca760125fd3752a807ef26da16103dd65))\n\n### BREAKING CHANGES\n\n-   **i18next:** i18next has been updated to v21.0.1. Please also seee the breaking changes for i18next [here](https://github.com/i18next/i18next/blob/master/CHANGELOG.md#2100) and their migration guide [here](https://www.i18next.com/misc/migration-guide#v-20-x-x-to-v-21-0-0)\n\n-   chore: activate renovate\n-   **plugin-api:** Increase `@sapphire/framework` requirement to v2.\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.1.4...@sapphire/plugin-api@2.2.0) (2021-06-19)\n\n### Bug Fixes\n\n-   **api:** specify package side effects ([2b50666](https://github.com/sapphiredev/plugins/commit/2b506666031af0f7586d5cd98f35957ba5dc8620))\n-   **doc:** change `[@link](https://github.com/link)` to `[@linkplain](https://github.com/linkplain)` for support in VSCode IntelliSense ([e448947](https://github.com/sapphiredev/plugins/commit/e44894769aae533668de7d6f2559cc4f7b58041d))\n-   **docs:** update-tsdoc-for-vscode-may-2021 ([#92](https://github.com/sapphiredev/plugins/issues/92)) ([ac52451](https://github.com/sapphiredev/plugins/commit/ac52451f3cf5560a8b93931411cc04497c00d4a9))\n-   remove peer deps, update dev deps, update READMEs ([#91](https://github.com/sapphiredev/plugins/issues/91)) ([3489b1d](https://github.com/sapphiredev/plugins/commit/3489b1dc1e8a7c64c255595b3d441cd0b5bac936))\n\n### Features\n\n-   **api:** expand MimeTypes enum with more common mime types ([b824cc6](https://github.com/sapphiredev/plugins/commit/b824cc60ea9c160b6c057dfb48ad0f9f416c2a24))\n\n## [2.1.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.1.3...@sapphire/plugin-api@2.1.4) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([a86049f](https://github.com/sapphiredev/plugins/commit/a86049f185f0ccb12d61379dd82255b36d4fa145))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([c5fd156](https://github.com/sapphiredev/plugins/commit/c5fd15691abb9a9712dc4b8aebd8400f6d91f719))\n\n## [2.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.1.2...@sapphire/plugin-api@2.1.3) (2021-04-21)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#75](https://github.com/sapphiredev/plugins/issues/75)) ([e437dc4](https://github.com/sapphiredev/plugins/commit/e437dc45fcd4d22ab2dcdb0e70c67cc5856883c0))\n\n## [2.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.1.1...@sapphire/plugin-api@2.1.2) (2021-04-03)\n\n### Bug Fixes\n\n-   **api:** always set Domain on cookie ([90b76e9](https://github.com/sapphiredev/plugins/commit/90b76e9586f213745517c1937437b7c48e4cafb0))\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.1.0...@sapphire/plugin-api@2.1.1) (2021-04-03)\n\n### Bug Fixes\n\n-   **api:** fixed types for CookieStore ([83420f4](https://github.com/sapphiredev/plugins/commit/83420f46dfbcfba3477aa4db0897dc4aacc2118e))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.0.5...@sapphire/plugin-api@2.1.0) (2021-04-03)\n\n### Features\n\n-   **api:** add domainOverwrite to ServerOptions.auth ([#73](https://github.com/sapphiredev/plugins/issues/73)) ([32f9222](https://github.com/sapphiredev/plugins/commit/32f922240438b5587e4e51c76fe28babb1a5811f))\n\n## [2.0.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.0.4...@sapphire/plugin-api@2.0.5) (2021-04-03)\n\n### Bug Fixes\n\n-   **api:** fixed how domain is retrieved for cookies ([#72](https://github.com/sapphiredev/plugins/issues/72)) ([bd5302f](https://github.com/sapphiredev/plugins/commit/bd5302fca79606f887bed19ffc828dccbecdb991))\n\n## [2.0.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.0.3...@sapphire/plugin-api@2.0.4) (2021-03-16)\n\n### Bug Fixes\n\n-   update dependencies, add tslib, bump framework to v1.0.0 ([880b761](https://github.com/sapphiredev/plugins/commit/880b7614d857f23fcbcd351e69795c451a95f49c))\n\n## [2.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.0.2...@sapphire/plugin-api@2.0.3) (2021-02-16)\n\n### Bug Fixes\n\n-   **plugin-api:** automatically remove cookie on invalid token ([#62](https://github.com/sapphiredev/plugins/issues/62)) ([5ce667e](https://github.com/sapphiredev/plugins/commit/5ce667ed6fc1eb1b2b88fea7698041d71c4579b7))\n\n## [2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.0.1...@sapphire/plugin-api@2.0.2) (2021-02-13)\n\n### Bug Fixes\n\n-   **plugin-api:** `expires_in` is in seconds, not milliseconds ([#60](https://github.com/sapphiredev/plugins/issues/60)) ([fccfab5](https://github.com/sapphiredev/plugins/commit/fccfab5321791a80dd30b541fca207b87acba4d2))\n\n## [2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@2.0.0...@sapphire/plugin-api@2.0.1) (2021-02-07)\n\n**Note:** Version bump only for package @sapphire/plugin-api\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.5.2...@sapphire/plugin-api@2.0.0) (2021-02-03)\n\n### Features\n\n-   **api:** update for @sapphire/framework alpha 5 ([#53](https://github.com/sapphiredev/plugins/issues/53)) ([fe51322](https://github.com/sapphiredev/plugins/commit/fe513225a671072acd6904165393cb0e3d078464))\n\n### BREAKING CHANGES\n\n-   **api:** refer to breaking changes in [@sapphire/framework v1.0.0-alpha.5](https://github.com/sapphiredev/framework/releases/tag/v1.0.0-alpha.5)\n\n## [1.5.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.5.1...@sapphire/plugin-api@1.5.2) (2021-01-28)\n\n### Bug Fixes\n\n-   **plugin-api:** swap condition ([27742f2](https://github.com/sapphiredev/plugins/commit/27742f23f71fbbc79b9e6606da9cfc4d48a891ae))\n\n## [1.5.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.5.0...@sapphire/plugin-api@1.5.1) (2021-01-28)\n\n### Bug Fixes\n\n-   add additional peer dependencies ([d67820a](https://github.com/sapphiredev/plugins/commit/d67820ab2e0390980c785b56d4194c05fa59b1ba))\n-   **plugin-api:** fixed typo ([#50](https://github.com/sapphiredev/plugins/issues/50)) ([d25c674](https://github.com/sapphiredev/plugins/commit/d25c674f2463f8bbe865f34ca5a6ef4c5b26f434))\n\n# [1.5.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.4.0...@sapphire/plugin-api@1.5.0) (2021-01-28)\n\n### Features\n\n-   **plugin-api:** make LoginDataTransformer accept Awaited<LoginData> ([#49](https://github.com/sapphiredev/plugins/issues/49)) ([666e0a2](https://github.com/sapphiredev/plugins/commit/666e0a2adfb00510fa303f8b3d796eb00409fd38))\n\n# [1.4.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.3.1...@sapphire/plugin-api@1.4.0) (2021-01-27)\n\n### Features\n\n-   **plugin-api:** added Auth#{fetchData,transformers}, fixed Oauth bug ([#48](https://github.com/sapphiredev/plugins/issues/48)) ([957a63b](https://github.com/sapphiredev/plugins/commit/957a63be9b783521d1a95015369d9e2530a41f55))\n\n## [1.3.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.3.0...@sapphire/plugin-api@1.3.1) (2021-01-23)\n\n### Bug Fixes\n\n-   **plugin-api:** return null instead of throwing error ([#46](https://github.com/sapphiredev/plugins/issues/46)) ([7a0cf3d](https://github.com/sapphiredev/plugins/commit/7a0cf3d6d135ae4ab5de72e9e0c22446b3a9fffd))\n\n# [1.3.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.2.0...@sapphire/plugin-api@1.3.0) (2021-01-09)\n\n### Bug Fixes\n\n-   **api:** update to latest discord-api-types ([6a46797](https://github.com/sapphiredev/plugins/commit/6a4679770f44b4930016280963c0fe4563c48bf2))\n\n### Features\n\n-   **api:** add media parsers ([#39](https://github.com/sapphiredev/plugins/issues/39)) ([18fac10](https://github.com/sapphiredev/plugins/commit/18fac107e9210a8c66da6b7cc5d3b24ab47a07e1))\n\n# [1.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.1.1...@sapphire/plugin-api@1.2.0) (2020-12-28)\n\n### Bug Fixes\n\n-   **api:** correct the registered paths ([986dc5d](https://github.com/sapphiredev/plugins/commit/986dc5d6d6c37b071b09f655853998c2596efd10))\n-   **api:** resolved a few critical bugs ([#30](https://github.com/sapphiredev/plugins/issues/30)) ([fc479c5](https://github.com/sapphiredev/plugins/commit/fc479c5c487303a21bad1d7023a40437ec328d17))\n-   **api:** resolved all bugs with oauth2 ([#31](https://github.com/sapphiredev/plugins/issues/31)) ([d7c4ad4](https://github.com/sapphiredev/plugins/commit/d7c4ad47af1ff693c9fffc83a078eab4ffb6c33c))\n-   **api,logger:** add type augments to index.ts ([ae1f4da](https://github.com/sapphiredev/plugins/commit/ae1f4da9671a531edf10555242e21f39eb3b0d17))\n-   **api,logger:** properly export ESM register ([7cf7ea9](https://github.com/sapphiredev/plugins/commit/7cf7ea9a9c91f73874035b0512292cc08d93e38e))\n-   **api,logger:** third attempt at fixing register and types ([faa3ee2](https://github.com/sapphiredev/plugins/commit/faa3ee2f53d2ca1153a7eff2a64e2abf3feaae85))\n\n### Features\n\n-   **api:** handle route errors ([#33](https://github.com/sapphiredev/plugins/issues/33)) ([bc3c6f6](https://github.com/sapphiredev/plugins/commit/bc3c6f619a8f27fcf5b505c441fb95f9ef439d72))\n\n## [1.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.1.0...@sapphire/plugin-api@1.1.1) (2020-12-24)\n\n**Note:** Version bump only for package @sapphire/plugin-api\n\n# [1.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.0.1...@sapphire/plugin-api@1.1.0) (2020-12-24)\n\n### Features\n\n-   added plugin-logger ([#25](https://github.com/sapphiredev/plugins/issues/25)) ([192a8ca](https://github.com/sapphiredev/plugins/commit/192a8cac6c34c4dd1cc8e12dd5ba3307926c467d))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-api@1.0.0...@sapphire/plugin-api@1.0.1) (2020-12-22)\n\n### Bug Fixes\n\n-   exclude tsbuildinfo ([3e37278](https://github.com/sapphiredev/plugins/commit/3e37278009e6842fe783e4ce31ab359fca6aef44))\n\n# 1.0.0 (2020-12-22)\n\n### Features\n\n-   finished API ([#22](https://github.com/sapphiredev/plugins/issues/22)) ([a647112](https://github.com/sapphiredev/plugins/commit/a6471129ddab96146987a1dafa90f0576de8e2f2))\n-   make API framework agnostic ([#24](https://github.com/sapphiredev/plugins/issues/24)) ([4067d70](https://github.com/sapphiredev/plugins/commit/4067d70dc9a6f0f4f7cf414eff8c1c785f7f0e86))\n-   **api:** add api plugin ([d87c7ad](https://github.com/sapphiredev/plugins/commit/d87c7adf8555f948fde31381969d3ebe2f0102f4))\n",
   "classes": [
     {
@@ -13,7 +13,7 @@
         "line": 4,
         "file": "ApiRequest.ts",
         "path": "packages/api/src/lib/structures/api",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiRequest.ts#L4"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiRequest.ts#L4"
       },
       "comment": {
         "description": null,
@@ -109,7 +109,7 @@
             "line": 27,
             "file": "ApiRequest.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiRequest.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiRequest.ts#L27"
           },
           "comment": {
             "description": "The authorization information. This field indicates three possible values:\n\n- `undefined`: The authorization middleware has not been executed yet.\n- `null`: The user is not authorized.\n- `AuthData`: The user is authorized.",
@@ -146,7 +146,7 @@
             "line": 18,
             "file": "ApiRequest.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiRequest.ts#L18"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiRequest.ts#L18"
           },
           "comment": {
             "description": "The body that was sent by the user.",
@@ -483,7 +483,7 @@
             "line": 13,
             "file": "ApiRequest.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiRequest.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiRequest.ts#L13"
           },
           "comment": {
             "description": "The URI parameters.",
@@ -520,7 +520,7 @@
             "line": 8,
             "file": "ApiRequest.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiRequest.ts#L8"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiRequest.ts#L8"
           },
           "comment": {
             "description": "The query parameters.",
@@ -8437,7 +8437,7 @@
         "line": 9,
         "file": "ApiResponse.ts",
         "path": "packages/api/src/lib/structures/api",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L9"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L9"
       },
       "comment": {
         "description": null,
@@ -8632,7 +8632,7 @@
             "line": 13,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L13"
           },
           "comment": {
             "description": null,
@@ -10831,7 +10831,7 @@
             "line": 42,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L42"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L42"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -10882,7 +10882,7 @@
             "line": 70,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L70"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L70"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -10969,7 +10969,7 @@
             "line": 26,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L26"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -11716,7 +11716,7 @@
             "line": 77,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L77"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L77"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -11874,7 +11874,7 @@
             "line": 56,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L56"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L56"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -12161,7 +12161,7 @@
             "line": 103,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L103"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L103"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -12338,7 +12338,7 @@
             "line": 34,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L34"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L34"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -12389,7 +12389,7 @@
             "line": 63,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L63"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -12574,7 +12574,7 @@
             "line": 18,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L18"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L18"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -16396,7 +16396,7 @@
             "line": 88,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L88"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L88"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -16447,7 +16447,7 @@
             "line": 117,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L117"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L117"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -16841,7 +16841,7 @@
             "line": 95,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L95"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L95"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -16903,7 +16903,7 @@
             "line": 110,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L110"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L110"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -16954,7 +16954,7 @@
             "line": 49,
             "file": "ApiResponse.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/ApiResponse.ts#L49"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/ApiResponse.ts#L49"
           },
           "parentId": 460,
           "accessibility": "public",
@@ -18727,7 +18727,7 @@
         "line": 14,
         "file": "Auth.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L14"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L14"
       },
       "comment": {
         "description": null,
@@ -18746,7 +18746,7 @@
           "line": 49,
           "file": "Auth.ts",
           "path": "packages/api/src/lib/structures/http",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L49"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L49"
         },
         "comment": {
           "description": null,
@@ -18783,7 +18783,7 @@
             "line": 47,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L47"
           },
           "comment": {
             "description": null,
@@ -18808,7 +18808,7 @@
             "line": 25,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L25"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L25"
           },
           "comment": {
             "description": "The name for the cookie, this will be used to identify a Secure HttpOnly cookie.",
@@ -18838,7 +18838,7 @@
             "line": 45,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L45"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L45"
           },
           "comment": {
             "description": null,
@@ -18872,7 +18872,7 @@
             "line": 19,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L19"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L19"
           },
           "comment": {
             "description": "The client's application id, this can be retrieved in Discord Developer Portal at https://discord.com/developers/applications.",
@@ -18902,7 +18902,7 @@
             "line": 37,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L37"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L37"
           },
           "comment": {
             "description": "The redirect uri.",
@@ -18941,7 +18941,7 @@
             "line": 31,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L31"
           },
           "comment": {
             "description": "The scopes defined at https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes.",
@@ -18981,7 +18981,7 @@
             "line": 43,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L43"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L43"
           },
           "comment": {
             "description": "The transformers used for {@link fetchData}.",
@@ -19025,7 +19025,7 @@
             "line": 63,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L63"
           },
           "comment": {
             "description": "The client secret, this can be retrieved in Discord Developer Portal at https://discord.com/developers/applications.",
@@ -19057,7 +19057,7 @@
             "line": 85,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L85"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L85"
           },
           "parentId": 1079,
           "accessibility": "public",
@@ -19120,7 +19120,7 @@
             "line": 73,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L73"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L73"
           },
           "parentId": 1079,
           "accessibility": "public",
@@ -19174,7 +19174,7 @@
             "line": 103,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L103"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L103"
           },
           "parentId": 1079,
           "accessibility": "public",
@@ -19236,7 +19236,7 @@
             "line": 126,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L126"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L126"
           },
           "parentId": 1079,
           "accessibility": "private",
@@ -19344,7 +19344,7 @@
             "line": 138,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L138"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L138"
           },
           "parentId": 1079,
           "accessibility": "public",
@@ -19407,7 +19407,7 @@
         "line": 8,
         "file": "CookieStore.ts",
         "path": "packages/api/src/lib/structures/api",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L8"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L8"
       },
       "comment": {
         "description": null,
@@ -19441,7 +19441,7 @@
           "line": 14,
           "file": "CookieStore.ts",
           "path": "packages/api/src/lib/structures/api",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L14"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L14"
         },
         "comment": {
           "description": null,
@@ -19565,7 +19565,7 @@
             "line": 11,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L11"
           },
           "comment": {
             "description": null,
@@ -19590,7 +19590,7 @@
             "line": 9,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L9"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L9"
           },
           "comment": {
             "description": null,
@@ -19618,7 +19618,7 @@
             "line": 10,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L10"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L10"
           },
           "comment": {
             "description": null,
@@ -19654,7 +19654,7 @@
             "line": 12,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L12"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L12"
           },
           "comment": {
             "description": null,
@@ -19737,7 +19737,7 @@
             "line": 128,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L128"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L128"
           },
           "comment": {
             "description": null,
@@ -19815,7 +19815,7 @@
             "line": 45,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L45"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L45"
           },
           "parentId": 1003,
           "accessibility": "public",
@@ -20225,7 +20225,7 @@
             "line": 110,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L110"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L110"
           },
           "parentId": 1003,
           "accessibility": "private",
@@ -20327,7 +20327,7 @@
             "line": 53,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L53"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L53"
           },
           "parentId": 1003,
           "accessibility": "protected",
@@ -20426,7 +20426,7 @@
             "line": 68,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L68"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L68"
           },
           "parentId": 1003,
           "accessibility": "protected",
@@ -20503,7 +20503,7 @@
             "line": 49,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L49"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L49"
           },
           "parentId": 1003,
           "accessibility": "public",
@@ -20651,7 +20651,7 @@
             "line": 130,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L130"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L130"
           },
           "parentId": 1003,
           "accessibility": "private",
@@ -20699,7 +20699,7 @@
         "line": 12,
         "file": "MediaParser.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L12"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L12"
       },
       "comment": {
         "description": "A media parser",
@@ -20968,7 +20968,7 @@
             "line": 24,
             "file": "MediaParser.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L24"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L24"
           },
           "parentId": 1348,
           "accessibility": "public",
@@ -21022,7 +21022,7 @@
             "line": 63,
             "file": "MediaParser.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L63"
           },
           "parentId": 1348,
           "accessibility": "protected",
@@ -21157,7 +21157,7 @@
             "line": 48,
             "file": "MediaParser.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L48"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L48"
           },
           "parentId": 1348,
           "accessibility": "protected",
@@ -21222,7 +21222,7 @@
             "line": 33,
             "file": "MediaParser.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L33"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L33"
           },
           "parentId": 1348,
           "accessibility": "protected",
@@ -21323,7 +21323,7 @@
             "line": 17,
             "file": "MediaParser.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L17"
           },
           "parentId": 1348,
           "accessibility": "public",
@@ -21452,7 +21452,7 @@
         "line": 7,
         "file": "MediaParserStore.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParserStore.ts#L7"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParserStore.ts#L7"
       },
       "comment": {
         "description": null,
@@ -21490,7 +21490,7 @@
           "line": 8,
           "file": "MediaParserStore.ts",
           "path": "packages/api/src/lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParserStore.ts#L8"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParserStore.ts#L8"
         },
         "comment": {
           "description": null,
@@ -28341,7 +28341,7 @@
             "line": 17,
             "file": "MediaParserStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParserStore.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParserStore.ts#L17"
           },
           "parentId": 1387,
           "accessibility": "public",
@@ -31486,7 +31486,7 @@
         "line": 10,
         "file": "Middleware.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L10"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L10"
       },
       "comment": {
         "description": null,
@@ -31516,7 +31516,7 @@
           "line": 23,
           "file": "Middleware.ts",
           "path": "packages/api/src/lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L23"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L23"
         },
         "comment": {
           "description": null,
@@ -31676,7 +31676,7 @@
             "line": 21,
             "file": "Middleware.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L21"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L21"
           },
           "comment": {
             "description": "The position the middleware has. The {@link MiddlewareStore} will run all middlewares with lower position than\nthis one.\n\nThe built-in middlewares follow the following positions:\n- headers: 10\n- body: 20\n- cookies: 30\n- auth: 40",
@@ -31881,7 +31881,7 @@
             "line": 34,
             "file": "Middleware.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L34"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L34"
           },
           "parentId": 1948,
           "accessibility": "public",
@@ -32056,7 +32056,7 @@
         "line": 10,
         "file": "MiddlewareStore.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L10"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L10"
       },
       "comment": {
         "description": null,
@@ -32094,7 +32094,7 @@
           "line": 16,
           "file": "MiddlewareStore.ts",
           "path": "packages/api/src/lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L16"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L16"
         },
         "comment": {
           "description": null,
@@ -32290,7 +32290,7 @@
             "line": 14,
             "file": "MiddlewareStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L14"
           },
           "comment": {
             "description": "The sorted middlewares, in ascending order of {@see Middleware#position}.",
@@ -32599,7 +32599,7 @@
             "line": 46,
             "file": "MiddlewareStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L46"
           },
           "parentId": 1983,
           "accessibility": "public",
@@ -32847,7 +32847,7 @@
             "line": 37,
             "file": "MiddlewareStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L37"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L37"
           },
           "parentId": 1983,
           "accessibility": "public",
@@ -40611,7 +40611,7 @@
             "line": 20,
             "file": "MiddlewareStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L20"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L20"
           },
           "parentId": 1983,
           "accessibility": "public",
@@ -40719,7 +40719,7 @@
             "line": 27,
             "file": "MiddlewareStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MiddlewareStore.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MiddlewareStore.ts#L27"
           },
           "parentId": 1983,
           "accessibility": "public",
@@ -42173,7 +42173,7 @@
         "line": 12,
         "file": "Route.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L12"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L12"
       },
       "comment": {
         "description": null,
@@ -42203,7 +42203,7 @@
           "line": 33,
           "file": "Route.ts",
           "path": "packages/api/src/lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L33"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L33"
         },
         "comment": {
           "description": null,
@@ -42257,7 +42257,7 @@
             "line": 21,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L21"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L21"
           },
           "comment": {
             "description": "The accepted content types.",
@@ -42463,7 +42463,7 @@
             "line": 16,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L16"
           },
           "comment": {
             "description": "(RFC 7230 3.3.2) The maximum decimal number of octets.",
@@ -42488,7 +42488,7 @@
             "line": 31,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L31"
           },
           "comment": {
             "description": "The methods this route accepts.",
@@ -42584,7 +42584,7 @@
             "line": 26,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L26"
           },
           "comment": {
             "description": "The route information.",
@@ -42691,7 +42691,7 @@
             "line": 52,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L52"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L52"
           },
           "parentId": 2547,
           "accessibility": "public",
@@ -42722,7 +42722,7 @@
             "line": 66,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L66"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L66"
           },
           "parentId": 2547,
           "accessibility": "public",
@@ -42867,7 +42867,7 @@
         "line": 20,
         "file": "RouteData.ts",
         "path": "packages/api/src/lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L20"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L20"
       },
       "comment": {
         "description": null,
@@ -42886,7 +42886,7 @@
           "line": 25,
           "file": "RouteData.ts",
           "path": "packages/api/src/lib/utils",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L25"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L25"
         },
         "comment": {
           "description": null,
@@ -42920,7 +42920,7 @@
             "line": 23,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L23"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L23"
           },
           "comment": {
             "description": null,
@@ -42955,7 +42955,7 @@
             "line": 21,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L21"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L21"
           },
           "comment": {
             "description": null,
@@ -42980,7 +42980,7 @@
             "line": 22,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L22"
           },
           "comment": {
             "description": null,
@@ -43007,7 +43007,7 @@
             "line": 31,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L31"
           },
           "parentId": 3176,
           "accessibility": "public",
@@ -43063,7 +43063,7 @@
             "line": 54,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L54"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L54"
           },
           "parentId": 3176,
           "accessibility": "private",
@@ -43117,7 +43117,7 @@
             "line": 63,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L63"
           },
           "parentId": 3176,
           "accessibility": "private",
@@ -43173,7 +43173,7 @@
         "line": 23,
         "file": "RouteStore.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L23"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L23"
       },
       "comment": {
         "description": null,
@@ -43211,7 +43211,7 @@
           "line": 26,
           "file": "RouteStore.ts",
           "path": "packages/api/src/lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L26"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L26"
         },
         "comment": {
           "description": null,
@@ -43443,7 +43443,7 @@
             "line": 24,
             "file": "RouteStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L24"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L24"
           },
           "comment": {
             "description": null,
@@ -49752,7 +49752,7 @@
             "line": 32,
             "file": "RouteStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L32"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L32"
           },
           "parentId": 2589,
           "accessibility": "public",
@@ -50181,7 +50181,7 @@
             "line": 63,
             "file": "RouteStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L63"
           },
           "parentId": 2589,
           "accessibility": "private",
@@ -50233,7 +50233,7 @@
                           "fileName": "packages/api/src/lib/structures/RouteStore.ts",
                           "line": 83,
                           "character": 19,
-                          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L83"
+                          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L83"
                         }
                       ],
                       "type": {
@@ -50252,7 +50252,7 @@
                           "fileName": "packages/api/src/lib/structures/RouteStore.ts",
                           "line": 83,
                           "character": 11,
-                          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L83"
+                          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L83"
                         }
                       ],
                       "type": {
@@ -50278,7 +50278,7 @@
                       "fileName": "packages/api/src/lib/structures/RouteStore.ts",
                       "line": 83,
                       "character": 9,
-                      "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L83"
+                      "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L83"
                     }
                   ]
                 }
@@ -53387,7 +53387,7 @@
         "line": 26,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L26"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L26"
       },
       "comment": {
         "description": null,
@@ -53417,7 +53417,7 @@
           "line": 67,
           "file": "Server.ts",
           "path": "packages/api/src/lib/structures/http",
-          "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L67"
+          "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L67"
         },
         "comment": {
           "description": null,
@@ -53454,7 +53454,7 @@
             "line": 49,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L49"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L49"
           },
           "comment": {
             "description": "The authentication system.",
@@ -53496,7 +53496,7 @@
             "line": 43,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L43"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L43"
           },
           "comment": {
             "description": "The media parsers this server holds.",
@@ -53529,7 +53529,7 @@
             "line": 37,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L37"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L37"
           },
           "comment": {
             "description": "The middlewares this server holds.",
@@ -53562,7 +53562,7 @@
             "line": 61,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L61"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L61"
           },
           "comment": {
             "description": "The options for this server.",
@@ -53595,7 +53595,7 @@
             "line": 31,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L31"
           },
           "comment": {
             "description": "The routes this server holds.",
@@ -53628,7 +53628,7 @@
             "line": 55,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L55"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L55"
           },
           "comment": {
             "description": "The http.Server instance that manages the recieved HTTP requests.",
@@ -53922,7 +53922,7 @@
             "line": 86,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L86"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L86"
           },
           "parentId": 1204,
           "accessibility": "public",
@@ -53961,7 +53961,7 @@
             "line": 121,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L121"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L121"
           },
           "parentId": 1204,
           "accessibility": "public",
@@ -56073,7 +56073,7 @@
         "line": 1,
         "file": "HttpCodes.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L1"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L1"
       },
       "comment": {
         "description": null,
@@ -56089,7 +56089,7 @@
             "line": 22,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L22"
           },
           "comment": {
             "description": "The request has been accepted for processing, but the processing has not\nbeen completed. The request might or might not be eventually acted upon,\nand may be disallowed when processing occurs.",
@@ -56106,7 +56106,7 @@
             "line": 63,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L63"
           },
           "comment": {
             "description": "(WebDAV; RFC 5842) The members of a DAV binding have already been\nenumerated in a preceding part of the (multistatus) response, and are not\nbeing included again.",
@@ -56123,7 +56123,7 @@
             "line": 385,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L385"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L385"
           },
           "comment": {
             "description": "The server was acting as a gateway or proxy and received an invalid\nresponse from the upstream server.",
@@ -56140,7 +56140,7 @@
             "line": 150,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L150"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L150"
           },
           "comment": {
             "description": "The server cannot or will not process the request due to an apparent\nclient error (e.g., malformed request syntax, size too large, invalid\nrequest message framing, or deceptive request routing).",
@@ -56157,7 +56157,7 @@
             "line": 225,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L225"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L225"
           },
           "comment": {
             "description": "Indicates that the request could not be processed because of conflict in\nthe current state of the resource, such as an edit conflict between\nmultiple simultaneous updates.",
@@ -56174,7 +56174,7 @@
             "line": 15,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L15"
           },
           "comment": {
             "description": "The request has been fulfilled, resulting in the creation of a new\nresource.",
@@ -56191,7 +56191,7 @@
             "line": 301,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L301"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L301"
           },
           "comment": {
             "description": "Returned by the Twitter Search and Trends API when the client is being rate limited.\nThe text is a quote from 'Demolition Man' and the '420' code is likely a reference\nto this number's association with marijuana. Other services may wish to implement\nthe 429 Too Many Requests response code instead.",
@@ -56208,7 +56208,7 @@
             "line": 283,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L283"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L283"
           },
           "comment": {
             "description": "The server cannot meet the requirements of the Expect request-header\nfield.",
@@ -56225,7 +56225,7 @@
             "line": 324,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L324"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L324"
           },
           "comment": {
             "description": "(WebDAV; RFC 4918) The request failed because it depended on another\nrequest and that request failed (e.g., a PROPPATCH).",
@@ -56242,7 +56242,7 @@
             "line": 186,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L186"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L186"
           },
           "comment": {
             "description": "The request contained valid data and was understood by the server, but\nthe server is refusing action. This may be due to the user not having the\nnecessary permissions for a resource or needing an account of some sort,\nor attempting a prohibited action (e.g. creating a duplicate record\nwhere only one is allowed). This code is also typically used if the\nrequest provided authentication by answering the WWW-Authenticate header\nfield challenge, but the server did not accept that authentication. The\nrequest should not be repeated.",
@@ -56259,7 +56259,7 @@
             "line": 97,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L97"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L97"
           },
           "comment": {
             "description": "(Previously \"Moved temporarily\") Tells the client to look at (browse to)\nanother URL. 302 has been superseded by 303 and 307. This is an example\nof industry practice contradicting the standard. The HTTP/1.0\nspecification (RFC 1945) required the client to perform a temporary\nredirect (the original describing phrase was \"Moved Temporarily\"), but\npopular browsers implemented 302 with the functionality of a 303 See\nOther. Therefore, HTTP/1.1 added status codes 303 and 307 to distinguish\nbetween the two behaviours. However, some Web applications and frameworks\nuse the 302 status code as if it were the 303.",
@@ -56276,7 +56276,7 @@
             "line": 397,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L397"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L397"
           },
           "comment": {
             "description": "The server was acting as a gateway or proxy and did not receive a timely\nresponse from the upstream server.",
@@ -56293,7 +56293,7 @@
             "line": 236,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L236"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L236"
           },
           "comment": {
             "description": "Indicates that the resource requested is no longer available and will not\nbe available again. This should be used when a resource has been\nintentionally removed and the resource should be purged. Upon receiving a\n410 status code, the client should not request the resource in the future.\nClients such as search engines should remove the resource from their\nindices. Most use cases do not require clients and search engines to\npurge the resource, and a \"404 Not Found\" may be used instead.",
@@ -56310,7 +56310,7 @@
             "line": 402,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L402"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L402"
           },
           "comment": {
             "description": "The server does not support the HTTP protocol version used in the request.",
@@ -56327,7 +56327,7 @@
             "line": 293,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L293"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L293"
           },
           "comment": {
             "description": "(RFC 2324, RFC 7168) This code was defined in 1998 as one of the\ntraditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot\nControl Protocol, and is not expected to be implemented by actual HTTP\nservers. The RFC specifies this code should be returned by teapots\nrequested to brew coffee. This HTTP status is used as an Easter egg in\nsome websites, such as Google.com's I'm a teapot easter egg.",
@@ -56344,7 +56344,7 @@
             "line": 70,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L70"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L70"
           },
           "comment": {
             "description": "(RFC 3229) The server has fulfilled a request for the resource, and the\nresponse is a representation of the result of one or more\ninstance-manipulations applied to the current instance.",
@@ -56361,7 +56361,7 @@
             "line": 414,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L414"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L414"
           },
           "comment": {
             "description": "(WebDAV; RFC 4918) The server is unable to store the representation\nneeded to complete the request.",
@@ -56378,7 +56378,7 @@
             "line": 372,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L372"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L372"
           },
           "comment": {
             "description": "A generic error message, given when an unexpected condition was\nencountered and no more specific message is suitable.",
@@ -56395,7 +56395,7 @@
             "line": 242,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L242"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L242"
           },
           "comment": {
             "description": "The request did not specify the length of its content, which is required\nby the requested resource.",
@@ -56412,7 +56412,7 @@
             "line": 318,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L318"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L318"
           },
           "comment": {
             "description": "(WebDAV; RFC 4918) The resource that is being accessed is locked.",
@@ -56429,7 +56429,7 @@
             "line": 420,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L420"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L420"
           },
           "comment": {
             "description": "(WebDAV; RFC 5842) The server detected an infinite loop while processing\nthe request (sent instead of 208 Already Reported).",
@@ -56446,7 +56446,7 @@
             "line": 199,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L199"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L199"
           },
           "comment": {
             "description": "A request method is not supported for the requested resource; for example,\na GET request on a form that requires data to be presented via POST, or a\nPUT request on a read-only resource.",
@@ -56463,7 +56463,7 @@
             "line": 307,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L307"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L307"
           },
           "comment": {
             "description": "(RFC 7540) The request was directed at a server that is not able to\nproduce a response (for example because of connection reuse).",
@@ -56480,7 +56480,7 @@
             "line": 84,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L84"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L84"
           },
           "comment": {
             "description": "This and all future requests should be directed to the given URI.",
@@ -56497,7 +56497,7 @@
             "line": 56,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L56"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L56"
           },
           "comment": {
             "description": "(WebDAV; RFC 4918) The message body that follows is by default an XML\nmessage and can contain a number of separate response codes, depending on\nhow many sub-requests were made.",
@@ -56514,7 +56514,7 @@
             "line": 79,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L79"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L79"
           },
           "comment": {
             "description": "Indicates multiple options for the resource from which the client may\nchoose (via agent-driven content negotiation). For example, this code\ncould be used to present multiple video format options, to list files\nwith different filename extensions, or to suggest word-sense\ndisambiguation.",
@@ -56531,7 +56531,7 @@
             "line": 434,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L434"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L434"
           },
           "comment": {
             "description": "(RFC 6585) The client needs to authenticate to gain network access.\nIntended for use by intercepting proxies used to control access to the\nnetwork (e.g., \"captive portals\" used to require agreement to Terms of\nService before granting full Internet access via a Wi-Fi hotspot).",
@@ -56548,7 +56548,7 @@
             "line": 35,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L35"
           },
           "comment": {
             "description": "The server successfully processed the request, and is not returning any\ncontent.",
@@ -56565,7 +56565,7 @@
             "line": 29,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L29"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L29"
           },
           "comment": {
             "description": "The server is a transforming proxy (e.g. a Web accelerator) that received\na 200 OK from its origin, but is returning a modified version of the\norigin's response.",
@@ -56582,7 +56582,7 @@
             "line": 205,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L205"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L205"
           },
           "comment": {
             "description": "The requested resource is capable of generating only content not\nacceptable according to the Accept headers sent in the request. See Content negotiation.",
@@ -56599,7 +56599,7 @@
             "line": 426,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L426"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L426"
           },
           "comment": {
             "description": "(RFC 2774) Further extensions to the request are required for the server\nto fulfil it.",
@@ -56616,7 +56616,7 @@
             "line": 192,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L192"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L192"
           },
           "comment": {
             "description": "The requested resource could not be found but may be available in the\nfuture. Subsequent requests by the client are permissible.",
@@ -56633,7 +56633,7 @@
             "line": 379,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L379"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L379"
           },
           "comment": {
             "description": "The server either does not recognize the request method, or it lacks the\nability to fulfil the request. Usually this implies future availability\n(e.g., a new feature of a web-service API).",
@@ -56650,7 +56650,7 @@
             "line": 113,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L113"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L113"
           },
           "comment": {
             "description": "(RFC 7232) Indicates that the resource has not been modified since the\nversion specified by the request headers If-Modified-Since or\nIf-None-Match. In such case, there is no need to retransmit the resource\nsince the client still has a previously-downloaded copy.",
@@ -56667,7 +56667,7 @@
             "line": 9,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L9"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L9"
           },
           "comment": {
             "description": "Standard response for successful HTTP requests. The actual response will\ndepend on the request method used. In a GET request, the response will\ncontain an entity corresponding to the requested resource. In a POST\nrequest, the response will contain an entity describing or containing the\nresult of the action.",
@@ -56684,7 +56684,7 @@
             "line": 49,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L49"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L49"
           },
           "comment": {
             "description": "(RFC 7233) The server is delivering only part of the resource (byte\nserving) due to a range header sent by the client. The range header is\nused by HTTP clients to enable resuming of interrupted downloads, or\nsplit a download into multiple simultaneous streams.",
@@ -56701,7 +56701,7 @@
             "line": 254,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L254"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L254"
           },
           "comment": {
             "description": "(RFC 7231) The request is larger than the server is willing or able to\nprocess. Previously called \"Request Entity Too Large\".",
@@ -56718,7 +56718,7 @@
             "line": 174,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L174"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L174"
           },
           "comment": {
             "description": "Reserved for future use. The original intention was that this code might\nbe used as part of some form of digital cash or micropayment scheme, as\nproposed, for example, by GNU Taler, but that has not yet happened, and\nthis code is not widely used. Google Developers API uses this status if a\nparticular developer has exceeded the daily limit on requests. Sipgate\nuses this code if an account does not have sufficient funds to start a\ncall. Shopify uses this code when the store has not paid their fees and\nis temporarily disabled. Stripe uses this code for failed payments where\nparameters were correct, for example blocked fraudulent payments.",
@@ -56735,7 +56735,7 @@
             "line": 143,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L143"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L143"
           },
           "comment": {
             "description": "(RFC 7538) The request and all future requests should be repeated using\nanother URI. 307 and 308 parallel the behaviors of 302 and 301, but do\nnot allow the HTTP method to change. So, for example, submitting a form\nto a permanently redirected resource may continue smoothly.",
@@ -56752,7 +56752,7 @@
             "line": 248,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L248"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L248"
           },
           "comment": {
             "description": "(RFC 7232) The server does not meet one of the preconditions that the\nrequester put on the request header fields.",
@@ -56769,7 +56769,7 @@
             "line": 345,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L345"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L345"
           },
           "comment": {
             "description": "(RFC 6585) The origin server requires the request to be conditional.\nIntended to prevent the 'lost update' problem, where a client GETs a\nresource's state, modifies it, and PUTs it back to the server, when\nmeanwhile a third party has modified the state on the server, leading to\na conflict.",
@@ -56786,7 +56786,7 @@
             "line": 210,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L210"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L210"
           },
           "comment": {
             "description": "(RFC 7235) The client must first authenticate itself with the proxy.",
@@ -56803,7 +56803,7 @@
             "line": 277,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L277"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L277"
           },
           "comment": {
             "description": "(RFC 7233) The client has asked for a portion of the file (byte serving),\nbut the server cannot supply that portion. For example, if the client\nasked for a part of the file that lies beyond the end of the file. Called\n\"Requested Range Not Satisfiable\" previously.",
@@ -56820,7 +56820,7 @@
             "line": 358,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L358"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L358"
           },
           "comment": {
             "description": "(RFC 6585) The server is unwilling to process the request because either\nan individual header field, or all the header fields collectively, are\ntoo large.",
@@ -56837,7 +56837,7 @@
             "line": 218,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L218"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L218"
           },
           "comment": {
             "description": "The server timed out waiting for the request. According to HTTP\nspecifications: \"The client did not produce a request within the time\nthat the server was prepared to wait. The client MAY repeat the request\nwithout modifications at any later time.\"",
@@ -56854,7 +56854,7 @@
             "line": 41,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L41"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L41"
           },
           "comment": {
             "description": "The server successfully processed the request, asks that the requester\nreset its document view, and is not returning any content.",
@@ -56871,7 +56871,7 @@
             "line": 105,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L105"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L105"
           },
           "comment": {
             "description": "The response to the request can be found under another URI using the GET\nmethod. When received in response to a POST (or PUT/DELETE), the client\nshould presume that the server has received the data and should issue a\nnew GET request to the given URI.",
@@ -56888,7 +56888,7 @@
             "line": 391,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L391"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L391"
           },
           "comment": {
             "description": "The server cannot handle the request (because it is overloaded or down\nfor maintenance). Generally, this is a temporary state.",
@@ -56905,7 +56905,7 @@
             "line": 126,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L126"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L126"
           },
           "comment": {
             "description": "No longer used. Originally meant \"Subsequent requests should use the\nspecified proxy.\".",
@@ -56922,7 +56922,7 @@
             "line": 135,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L135"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L135"
           },
           "comment": {
             "description": "In this case, the request should be repeated with another URI; however,\nfuture requests should still use the original URI. In contrast to how 302\nwas historically implemented, the request method is not allowed to be\nchanged when reissuing the original request. For example, a POST request\nshould be repeated using another POST request.",
@@ -56939,7 +56939,7 @@
             "line": 330,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L330"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L330"
           },
           "comment": {
             "description": "(RFC 8470) Indicates that the server is unwilling to risk processing a\nrequest that might be replayed.",
@@ -56956,7 +56956,7 @@
             "line": 351,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L351"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L351"
           },
           "comment": {
             "description": "(RFC 6585) The user has sent too many requests in a given amount of time.\nIntended for use with rate-limiting schemes.",
@@ -56973,7 +56973,7 @@
             "line": 262,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L262"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L262"
           },
           "comment": {
             "description": "(RFC 7231) The URI provided was too long for the server to process. Often\nthe result of too much data being encoded as a query-string of a GET\nrequest, in which case it should be converted to a POST request. Called\n\"Request-URI Too Long\" previously.",
@@ -56990,7 +56990,7 @@
             "line": 161,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L161"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L161"
           },
           "comment": {
             "description": "(RFC 7235) Similar to 403 Forbidden, but specifically for use when\nauthentication is required and has failed or has not yet been provided.\nThe response must include a WWW-Authenticate header field containing a\nchallenge applicable to the requested resource. See Basic access\nauthentication and Digest access authentication. 401 semantically means\n\"unauthorised\", the user does not have valid authentication credentials\nfor the target resource.",
@@ -57007,7 +57007,7 @@
             "line": 366,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L366"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L366"
           },
           "comment": {
             "description": "(RFC 7725) A server operator has received a legal demand to deny access\nto a resource or to a set of resources that includes the requested\nresource. The code 451 was chosen as a reference to the novel Fahrenheit\n451 (see the Acknowledgements in the RFC).",
@@ -57024,7 +57024,7 @@
             "line": 313,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L313"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L313"
           },
           "comment": {
             "description": "(WebDAV; RFC 4918) The request was well-formed but was unable to be\nfollowed due to semantic errors.",
@@ -57041,7 +57041,7 @@
             "line": 269,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L269"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L269"
           },
           "comment": {
             "description": "(RFC 7231) The request entity has a media type which the server or\nresource does not support. For example, the client uploads an image as\nimage/svg+xml, but the server requires that images use a different format.",
@@ -57058,7 +57058,7 @@
             "line": 336,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L336"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L336"
           },
           "comment": {
             "description": "The client should switch to a different protocol such as TLS/1.0, given\nin the Upgrade header field.",
@@ -57075,7 +57075,7 @@
             "line": 121,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L121"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L121"
           },
           "comment": {
             "description": "The requested resource is available only through a proxy, the address for\nwhich is provided in the response. For security reasons, many HTTP\nclients (such as Mozilla Firefox and Internet Explorer) do not obey this\nstatus code.",
@@ -57092,7 +57092,7 @@
             "line": 408,
             "file": "HttpCodes.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpCodes.ts#L408"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpCodes.ts#L408"
           },
           "comment": {
             "description": "(RFC 2295) Transparent content negotiation for the request results in a\ncircular reference.",
@@ -57111,7 +57111,7 @@
         "line": 1,
         "file": "MimeTypes.ts",
         "path": "packages/api/src/lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L1"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L1"
       },
       "comment": {
         "description": null,
@@ -57127,7 +57127,7 @@
             "line": 2,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L2"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L2"
           },
           "comment": {
             "description": null,
@@ -57144,7 +57144,7 @@
             "line": 3,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L3"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L3"
           },
           "comment": {
             "description": null,
@@ -57161,7 +57161,7 @@
             "line": 4,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L4"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L4"
           },
           "comment": {
             "description": null,
@@ -57178,7 +57178,7 @@
             "line": 5,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L5"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L5"
           },
           "comment": {
             "description": null,
@@ -57195,7 +57195,7 @@
             "line": 6,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L6"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L6"
           },
           "comment": {
             "description": null,
@@ -57212,7 +57212,7 @@
             "line": 7,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L7"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L7"
           },
           "comment": {
             "description": null,
@@ -57229,7 +57229,7 @@
             "line": 8,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L8"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L8"
           },
           "comment": {
             "description": null,
@@ -57246,7 +57246,7 @@
             "line": 9,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L9"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L9"
           },
           "comment": {
             "description": null,
@@ -57263,7 +57263,7 @@
             "line": 10,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L10"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L10"
           },
           "comment": {
             "description": null,
@@ -57280,7 +57280,7 @@
             "line": 11,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L11"
           },
           "comment": {
             "description": null,
@@ -57297,7 +57297,7 @@
             "line": 12,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L12"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L12"
           },
           "comment": {
             "description": null,
@@ -57314,7 +57314,7 @@
             "line": 13,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L13"
           },
           "comment": {
             "description": null,
@@ -57331,7 +57331,7 @@
             "line": 14,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L14"
           },
           "comment": {
             "description": null,
@@ -57348,7 +57348,7 @@
             "line": 15,
             "file": "MimeTypes.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/MimeTypes.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/MimeTypes.ts#L15"
           },
           "comment": {
             "description": null,
@@ -57367,7 +57367,7 @@
         "line": 12,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L12"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L12"
       },
       "comment": {
         "description": null,
@@ -57383,7 +57383,7 @@
             "line": 13,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L13"
           },
           "comment": {
             "description": null,
@@ -57400,7 +57400,7 @@
             "line": 15,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L15"
           },
           "comment": {
             "description": null,
@@ -57417,7 +57417,7 @@
             "line": 19,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L19"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L19"
           },
           "comment": {
             "description": null,
@@ -57434,7 +57434,7 @@
             "line": 18,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L18"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L18"
           },
           "comment": {
             "description": null,
@@ -57451,7 +57451,7 @@
             "line": 20,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L20"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L20"
           },
           "comment": {
             "description": null,
@@ -57468,7 +57468,7 @@
             "line": 16,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L16"
           },
           "comment": {
             "description": null,
@@ -57485,7 +57485,7 @@
             "line": 14,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L14"
           },
           "comment": {
             "description": null,
@@ -57502,7 +57502,7 @@
             "line": 17,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L17"
           },
           "comment": {
             "description": null,
@@ -57521,7 +57521,7 @@
         "line": 6,
         "file": "RouteData.ts",
         "path": "packages/api/src/lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L6"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L6"
       },
       "comment": {
         "description": null,
@@ -57542,7 +57542,7 @@
             "line": 15,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L15"
           },
           "comment": {
             "description": null,
@@ -57564,7 +57564,7 @@
             "line": 10,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L10"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L10"
           },
           "comment": {
             "description": null,
@@ -57591,7 +57591,7 @@
         "line": 148,
         "file": "Auth.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L148"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L148"
       },
       "comment": {
         "description": "Defines the authentication data, this is to be encrypted and decrypted by the server.",
@@ -57613,7 +57613,7 @@
             "line": 159,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L159"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L159"
           },
           "comment": {
             "description": "The timestamp at which the token expires.",
@@ -57639,7 +57639,7 @@
             "line": 153,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L153"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L153"
           },
           "comment": {
             "description": "The user ID.",
@@ -57665,7 +57665,7 @@
             "line": 165,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L165"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L165"
           },
           "comment": {
             "description": "The refresh token.",
@@ -57691,7 +57691,7 @@
             "line": 171,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L171"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L171"
           },
           "comment": {
             "description": "The access token.",
@@ -57720,7 +57720,7 @@
         "line": 230,
         "file": "Auth.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L230"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L230"
       },
       "comment": {
         "description": "The login data sent when fetching data from a user.",
@@ -57742,7 +57742,7 @@
             "line": 247,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L247"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L247"
           },
           "comment": {
             "description": "The connections data, defined when the `'connections'` scope is defined.",
@@ -57780,7 +57780,7 @@
             "line": 241,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L241"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L241"
           },
           "comment": {
             "description": "The guilds data, defined when the `'guilds'` scope is defined.",
@@ -57818,7 +57818,7 @@
             "line": 235,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L235"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L235"
           },
           "comment": {
             "description": "The user data, defined when the `'identify'` scope is defined.",
@@ -57859,7 +57859,7 @@
         "line": 254,
         "file": "Auth.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L254"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L254"
       },
       "comment": {
         "description": null,
@@ -57897,7 +57897,7 @@
         "line": 11,
         "file": "RouteStore.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L11"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L11"
       },
       "comment": {
         "description": null,
@@ -57916,7 +57916,7 @@
         "line": 239,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L239"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L239"
       },
       "comment": {
         "description": "The context sent in the error events.",
@@ -57938,7 +57938,7 @@
             "line": 256,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L256"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L256"
           },
           "comment": {
             "description": "The route match.",
@@ -57967,7 +57967,7 @@
             "line": 244,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L244"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L244"
           },
           "comment": {
             "description": "The erroneous request.",
@@ -57996,7 +57996,7 @@
             "line": 250,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L250"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L250"
           },
           "comment": {
             "description": "The server's response.",
@@ -58036,7 +58036,7 @@
         "line": 40,
         "file": "Middleware.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L40"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L40"
       },
       "comment": {
         "description": "The options for all middlewares.",
@@ -58105,7 +58105,7 @@
             "line": 46,
             "file": "Middleware.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L46"
           },
           "comment": {
             "description": "The position to insert the middleware at.",
@@ -58138,7 +58138,7 @@
         "line": 71,
         "file": "RouteData.ts",
         "path": "packages/api/src/lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L71"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L71"
       },
       "comment": {
         "description": null,
@@ -58155,7 +58155,7 @@
             "line": 73,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L73"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L73"
           },
           "comment": {
             "description": null,
@@ -58179,7 +58179,7 @@
             "line": 72,
             "file": "RouteData.ts",
             "path": "packages/api/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L72"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L72"
           },
           "comment": {
             "description": null,
@@ -58203,7 +58203,7 @@
         "line": 15,
         "file": "RouteStore.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L15"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L15"
       },
       "comment": {
         "description": null,
@@ -58220,7 +58220,7 @@
             "line": 17,
             "file": "RouteStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L17"
           },
           "comment": {
             "description": null,
@@ -58244,7 +58244,7 @@
             "line": 16,
             "file": "RouteStore.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/RouteStore.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/RouteStore.ts#L16"
           },
           "comment": {
             "description": null,
@@ -58271,7 +58271,7 @@
         "line": 77,
         "file": "Route.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L77"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L77"
       },
       "comment": {
         "description": null,
@@ -58288,7 +58288,7 @@
             "line": 107,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L107"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L107"
           },
           "comment": {
             "description": "The accepted content types for this route. If set to null, the route will accept any data.",
@@ -58468,7 +58468,7 @@
             "line": 100,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L100"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L100"
           },
           "comment": {
             "description": "(RFC 7230 3.3.2) The maximum decimal number of octets.",
@@ -58524,7 +58524,7 @@
             "line": 93,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L93"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L93"
           },
           "comment": {
             "description": "The route the piece should represent.",
@@ -58565,7 +58565,7 @@
         "line": 139,
         "file": "CookieStore.ts",
         "path": "packages/api/src/lib/structures/api",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L139"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L139"
       },
       "comment": {
         "description": null,
@@ -58582,7 +58582,7 @@
             "line": 142,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L142"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L142"
           },
           "comment": {
             "description": null,
@@ -58603,7 +58603,7 @@
             "line": 140,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L140"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L140"
           },
           "comment": {
             "description": null,
@@ -58627,7 +58627,7 @@
             "line": 144,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L144"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L144"
           },
           "comment": {
             "description": null,
@@ -58648,7 +58648,7 @@
             "line": 141,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L141"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L141"
           },
           "comment": {
             "description": null,
@@ -58669,7 +58669,7 @@
             "line": 143,
             "file": "CookieStore.ts",
             "path": "packages/api/src/lib/structures/api",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/api/CookieStore.ts#L143"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/api/CookieStore.ts#L143"
           },
           "comment": {
             "description": null,
@@ -58693,7 +58693,7 @@
         "line": 170,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L170"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L170"
       },
       "comment": {
         "description": "The API options.",
@@ -58715,7 +58715,7 @@
             "line": 197,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L197"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L197"
           },
           "comment": {
             "description": "The accepted content types for this route. If set to null, the route will accept any data.",
@@ -58869,7 +58869,7 @@
             "line": 219,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L219"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L219"
           },
           "comment": {
             "description": "The auth options. If neither `auth` nor `auth.secret` are defined, auth-related routes and middlewares will be\nautomatically disabled.",
@@ -58902,7 +58902,7 @@
             "line": 226,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L226"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L226"
           },
           "comment": {
             "description": "Whether the server should connect upon being when the plugin is loaded.",
@@ -58932,7 +58932,7 @@
             "line": 211,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L211"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L211"
           },
           "comment": {
             "description": "The HTTP listen options.",
@@ -58965,7 +58965,7 @@
             "line": 190,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L190"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L190"
           },
           "comment": {
             "description": "(RFC 7230 3.3.2) The maximum decimal number of octets.",
@@ -58995,7 +58995,7 @@
             "line": 183,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L183"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L183"
           },
           "comment": {
             "description": "The origin header to be set on every request at 'Access-Control-Allow-Origin'.",
@@ -59025,7 +59025,7 @@
             "line": 176,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L176"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L176"
           },
           "comment": {
             "description": "The prefix for all routes, e.g. `v1/`.",
@@ -59055,7 +59055,7 @@
             "line": 204,
             "file": "Server.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L204"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L204"
           },
           "comment": {
             "description": "The HTTP server options.",
@@ -59112,7 +59112,7 @@
         "line": 178,
         "file": "Auth.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L178"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L178"
       },
       "comment": {
         "description": "Defines the authentication options.",
@@ -59134,7 +59134,7 @@
             "line": 190,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L190"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L190"
           },
           "comment": {
             "description": "The name for the cookie, this will be used to identify a Secure HttpOnly cookie.",
@@ -59164,7 +59164,7 @@
             "line": 223,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L223"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L223"
           },
           "comment": {
             "description": "The domain that should be used for the cookie. This overwrites the automatic detection of the domain.",
@@ -59198,7 +59198,7 @@
             "line": 183,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L183"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L183"
           },
           "comment": {
             "description": "The client's application id, this can be retrieved in Discord Developer Portal at https://discord.com/developers/applications.",
@@ -59224,7 +59224,7 @@
             "line": 209,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L209"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L209"
           },
           "comment": {
             "description": "The redirect uri. This will default to {@link OAuth2BodyData.redirectUri} if missing.",
@@ -59250,7 +59250,7 @@
             "line": 203,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L203"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L203"
           },
           "comment": {
             "description": "The scopes defined at https://discord.com/developers/docs/topics/oauth2#shared-resources-oauth2-scopes.",
@@ -59286,7 +59286,7 @@
             "line": 196,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L196"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L196"
           },
           "comment": {
             "description": "The client secret, this can be retrieved in Discord Developer Portal at https://discord.com/developers/applications.",
@@ -59312,7 +59312,7 @@
             "line": 216,
             "file": "Auth.ts",
             "path": "packages/api/src/lib/structures/http",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Auth.ts#L216"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Auth.ts#L216"
           },
           "comment": {
             "description": "The login data transformers used for {@link fetchData}.",
@@ -59361,7 +59361,7 @@
         "line": 12,
         "file": "MediaParser.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L12"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L12"
       },
       "comment": {
         "description": null,
@@ -59382,7 +59382,7 @@
             "line": 107,
             "file": "MediaParser.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/MediaParser.ts#L107"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/MediaParser.ts#L107"
           },
           "comment": {
             "description": null,
@@ -59409,7 +59409,7 @@
         "line": 10,
         "file": "Middleware.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L10"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L10"
       },
       "comment": {
         "description": null,
@@ -59430,7 +59430,7 @@
             "line": 50,
             "file": "Middleware.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L50"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L50"
           },
           "comment": {
             "description": null,
@@ -59454,7 +59454,7 @@
             "line": 51,
             "file": "Middleware.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Middleware.ts#L51"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Middleware.ts#L51"
           },
           "comment": {
             "description": null,
@@ -59481,7 +59481,7 @@
         "line": 12,
         "file": "Route.ts",
         "path": "packages/api/src/lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L12"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L12"
       },
       "comment": {
         "description": null,
@@ -59502,7 +59502,7 @@
             "line": 111,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L111"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L111"
           },
           "comment": {
             "description": null,
@@ -59526,7 +59526,7 @@
             "line": 112,
             "file": "Route.ts",
             "path": "packages/api/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/Route.ts#L112"
+            "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/Route.ts#L112"
           },
           "comment": {
             "description": null,
@@ -59555,7 +59555,7 @@
         "line": 233,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L233"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L233"
       },
       "comment": {
         "description": "The {@link ServerOptions} without {@link auth}.",
@@ -59596,7 +59596,7 @@
         "line": 151,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L151"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L151"
       },
       "comment": {
         "description": "RFC 1341 4: Defines a Content-Type's parameter, which follows the following structure:\n\n- `parameter` = `attribute` \"=\" `value`\n- `attribute` = `token`\n- `value` = `token` / `quoted-string`\n- `token` = 1*<any CHAR except `SPACE`, `CTLs`, or `tspecials`>\n- `tspecials` = `(` | `)` | `<` | `>` | `@` | `,` | `;` | `:` | `\\` | `\"` | `/` | `[` | `]` | `?` | `.` | `=`\n\n@note `tspecials` must be in quoted-string, to use within parameter values.\n@note The definition of `tspecials` is the same as the RFC 822 definition of `specials` with the addition of the\nthree characters `/`, `?`, and `=`.",
@@ -59638,7 +59638,7 @@
         "line": 135,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L135"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L135"
       },
       "comment": {
         "description": "RFC 1341 4: Defines a Content-Type's type, which follows the following structure:\n\n- `type` = `text` | `multipart` | `message` | `image` | `audio` | `video` | `application` | x-token\n- `x-token` = The two characters \"X-\" followed, with no intervening white space, by any token",
@@ -59706,7 +59706,7 @@
         "line": 18,
         "file": "RouteData.ts",
         "path": "packages/api/src/lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/utils/RouteData.ts#L18"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/utils/RouteData.ts#L18"
       },
       "comment": {
         "description": null,
@@ -59748,7 +59748,7 @@
         "line": 3,
         "file": "HttpMethods.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpMethods.ts#L3"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpMethods.ts#L3"
       },
       "comment": {
         "description": null,
@@ -59910,7 +59910,7 @@
         "line": 164,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L164"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L164"
       },
       "comment": {
         "description": "RFC 1341 4: Defines the syntax for a Content-Type field, which follows the following structure:\n`type \"/\" subtype *[\";\" parameter]`.",
@@ -59967,7 +59967,7 @@
         "line": 157,
         "file": "Server.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/Server.ts#L157"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/Server.ts#L157"
       },
       "comment": {
         "description": "RFC 1341 4: Defines the syntax for a Content-Type field without parameters, which follows the following structure:\n`type \"/\" subtype`.",
@@ -60009,7 +60009,7 @@
         "line": 41,
         "file": "HttpMethods.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpMethods.ts#L41"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpMethods.ts#L41"
       },
       "comment": {
         "description": null,
@@ -60049,7 +60049,7 @@
         "line": 40,
         "file": "HttpMethods.ts",
         "path": "packages/api/src/lib/structures/http",
-        "url": "https://github.com/sapphiredev/plugins/blob/70d13d0/packages/api/src/lib/structures/http/HttpMethods.ts#L40"
+        "url": "https://github.com/sapphiredev/plugins/blob/20f53b2/packages/api/src/lib/structures/http/HttpMethods.ts#L40"
       },
       "comment": {
         "description": null,
