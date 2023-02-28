@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.0.2",
+  "typeDocJsonParserVersion": "7.2.0",
   "id": 0,
   "name": "@sapphire/snowflake",
   "version": "3.3.0",
@@ -9,16 +9,16 @@
     {
       "id": 2,
       "name": "Snowflake",
+      "comment": {
+        "description": "A class for generating and deconstructing Twitter snowflakes.\n\nA {@link Twitter snowflake}\nis a 64-bit unsigned integer with 4 fields that have a fixed epoch value.\n\nIf we have a snowflake `266241948824764416` we can represent it as binary:\n```\n64                                          22     17     12          0\n 000000111011000111100001101001000101000000  00001  00000  000000000000\n          number of ms since epoch           worker  pid    increment\n```",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 17,
         "file": "Snowflake.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L17"
-      },
-      "comment": {
-        "description": "A class for generating and deconstructing Twitter snowflakes.\n\nA {@link Twitter snowflake}\nis a 64-bit unsigned integer with 4 fields that have a fixed epoch value.\n\nIf we have a snowflake `266241948824764416` we can represent it as binary:\n```\n64                                          22     17     12          0\n 000000111011000111100001101001000101000000  00001  00000  000000000000\n          number of ms since epoch           worker  pid    increment\n```",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -28,16 +28,16 @@
       "construct": {
         "id": 3,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 39,
           "file": "Snowflake.ts",
           "path": "lib",
           "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L39"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 2,
         "accessibility": "public",
@@ -50,6 +50,8 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
+            "optional": false,
             "type": {
               "kind": "union",
               "types": [
@@ -77,12 +79,6 @@
         {
           "id": 7,
           "name": "#epoch",
-          "source": {
-            "line": 28,
-            "file": "Snowflake.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L28"
-          },
           "comment": {
             "description": "Internal reference of the epoch passed in the constructor",
             "blockTags": [],
@@ -90,7 +86,13 @@
               "@internal"
             ]
           },
-          "parentId": 2,
+          "source": {
+            "line": 28,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L28"
+          },
+          "parentId": 7,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -104,12 +106,6 @@
         {
           "id": 6,
           "name": "#increment",
-          "source": {
-            "line": 22,
-            "file": "Snowflake.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L22"
-          },
           "comment": {
             "description": "Internal incrementor for generating snowflakes",
             "blockTags": [],
@@ -117,7 +113,13 @@
               "@internal"
             ]
           },
-          "parentId": 2,
+          "source": {
+            "line": 22,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L22"
+          },
+          "parentId": 6,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -131,18 +133,18 @@
         {
           "id": 8,
           "name": "decode",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L34"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 8,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -242,18 +244,18 @@
         {
           "id": 13,
           "name": "epoch",
+          "comment": {
+            "description": "The epoch for this snowflake.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 46,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L46"
           },
-          "comment": {
-            "description": "The epoch for this snowflake.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 13,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -275,7 +277,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L89"
           },
-          "parentId": 2,
+          "parentId": 17,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -307,6 +309,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -341,7 +345,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L62"
           },
-          "parentId": 2,
+          "parentId": 14,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -373,6 +377,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": 23,
@@ -398,7 +404,7 @@
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L106"
           },
-          "parentId": 2,
+          "parentId": 20,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -426,6 +432,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -457,16 +465,16 @@
     {
       "id": 28,
       "name": "DeconstructedSnowflake",
+      "comment": {
+        "description": "Object returned by Snowflake#deconstruct",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 144,
         "file": "Snowflake.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L144"
-      },
-      "comment": {
-        "description": "Object returned by Snowflake#deconstruct",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -474,18 +482,18 @@
         {
           "id": 34,
           "name": "epoch",
+          "comment": {
+            "description": "The epoch to use in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 173,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L173"
           },
-          "comment": {
-            "description": "The epoch to use in the snowflake",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 34,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -495,18 +503,18 @@
         {
           "id": 29,
           "name": "id",
+          "comment": {
+            "description": "The id in BigInt form",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 148,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L148"
           },
-          "comment": {
-            "description": "The id in BigInt form",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 29,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -516,18 +524,18 @@
         {
           "id": 33,
           "name": "increment",
+          "comment": {
+            "description": "The increment stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 168,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L168"
           },
-          "comment": {
-            "description": "The increment stored in the snowflake",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 33,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -537,18 +545,18 @@
         {
           "id": 32,
           "name": "processId",
+          "comment": {
+            "description": "The process id stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 163,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L163"
           },
-          "comment": {
-            "description": "The process id stored in the snowflake",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 32,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -558,18 +566,18 @@
         {
           "id": 30,
           "name": "timestamp",
+          "comment": {
+            "description": "The timestamp stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 153,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L153"
           },
-          "comment": {
-            "description": "The timestamp stored in the snowflake",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 30,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -579,18 +587,18 @@
         {
           "id": 31,
           "name": "workerId",
+          "comment": {
+            "description": "The worker id stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 158,
             "file": "Snowflake.ts",
             "path": "lib",
             "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L158"
           },
-          "comment": {
-            "description": "The worker id stored in the snowflake",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 31,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -603,16 +611,16 @@
     {
       "id": 23,
       "name": "SnowflakeGenerateOptions",
+      "comment": {
+        "description": "Options for Snowflake#generate",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 114,
         "file": "Snowflake.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L114"
-      },
-      "comment": {
-        "description": "Options for Snowflake#generate",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -620,12 +628,6 @@
         {
           "id": 25,
           "name": "increment",
-          "source": {
-            "line": 126,
-            "file": "Snowflake.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L126"
-          },
           "comment": {
             "description": "The increment to use",
             "blockTags": [
@@ -640,7 +642,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 23,
+          "source": {
+            "line": 126,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L126"
+          },
+          "parentId": 25,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -650,12 +658,6 @@
         {
           "id": 27,
           "name": "processId",
-          "source": {
-            "line": 138,
-            "file": "Snowflake.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L138"
-          },
           "comment": {
             "description": "The process ID to use, will be truncated to 5 bits (0-31)",
             "blockTags": [
@@ -666,7 +668,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 23,
+          "source": {
+            "line": 138,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L138"
+          },
+          "parentId": 27,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -676,12 +684,6 @@
         {
           "id": 24,
           "name": "timestamp",
-          "source": {
-            "line": 119,
-            "file": "Snowflake.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L119"
-          },
           "comment": {
             "description": "Timestamp or date of the snowflake to generate",
             "blockTags": [
@@ -692,7 +694,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 23,
+          "source": {
+            "line": 119,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L119"
+          },
+          "parentId": 24,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -718,12 +726,6 @@
         {
           "id": 26,
           "name": "workerId",
-          "source": {
-            "line": 132,
-            "file": "Snowflake.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L132"
-          },
           "comment": {
             "description": "The worker ID to use, will be truncated to 5 bits (0-31)",
             "blockTags": [
@@ -734,7 +736,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 23,
+          "source": {
+            "line": 132,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/Snowflake.ts#L132"
+          },
+          "parentId": 26,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -751,16 +759,16 @@
     {
       "id": 1,
       "name": "DiscordSnowflake",
+      "comment": {
+        "description": "A class for parsing snowflake ids using Discord's snowflake epoch\n\nWhich is 2015-01-01 at 00:00:00.000 UTC+0, {@linkplain https://discord.com/developers/docs/reference#snowflakes}",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 8,
         "file": "DiscordSnowflake.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/DiscordSnowflake.ts#L8"
-      },
-      "comment": {
-        "description": "A class for parsing snowflake ids using Discord's snowflake epoch\n\nWhich is 2015-01-01 at 00:00:00.000 UTC+0, {@linkplain https://discord.com/developers/docs/reference#snowflakes}",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -775,16 +783,16 @@
     {
       "id": 35,
       "name": "TwitterSnowflake",
+      "comment": {
+        "description": "A class for parsing snowflake ids using Twitter's snowflake epoch\n\nWhich is 2010-11-04 at 01:42:54.657 UTC+0, found in the archived snowflake repository {@linkplain https://github.com/twitter-archive/snowflake/blob/b3f6a3c6ca8e1b6847baa6ff42bf72201e2c2231/src/main/scala/com/twitter/service/snowflake/IdWorker.scala#L25}",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 8,
         "file": "TwitterSnowflake.ts",
         "path": "lib",
         "url": "https://github.com/sapphiredev/utilities/blob/e59c756/packages/snowflake/src/lib/TwitterSnowflake.ts#L8"
-      },
-      "comment": {
-        "description": "A class for parsing snowflake ids using Twitter's snowflake epoch\n\nWhich is 2010-11-04 at 01:42:54.657 UTC+0, found in the archived snowflake repository {@linkplain https://github.com/twitter-archive/snowflake/blob/b3f6a3c6ca8e1b6847baa6ff42bf72201e2c2231/src/main/scala/com/twitter/service/snowflake/IdWorker.scala#L25}",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {

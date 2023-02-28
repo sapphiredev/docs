@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.0.1",
+  "typeDocJsonParserVersion": "7.2.0",
   "id": 0,
   "name": "@sapphire/plugin-i18next",
   "version": "4.0.1",
@@ -9,12 +9,6 @@
     {
       "id": 86,
       "name": "InternationalizationHandler",
-      "source": {
-        "line": 15,
-        "file": "InternationalizationHandler.ts",
-        "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L15"
-      },
       "comment": {
         "description": "A generalized class for handling `i18next` JSON files and their discovery.",
         "blockTags": [
@@ -25,6 +19,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 15,
+        "file": "InternationalizationHandler.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L15"
+      },
       "external": false,
       "abstract": false,
       "extendsType": null,
@@ -33,16 +33,16 @@
       "construct": {
         "id": 87,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 58,
           "file": "InternationalizationHandler.ts",
           "path": "packages/i18next/src/lib",
           "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L58"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 86,
         "accessibility": "public",
@@ -55,6 +55,8 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
+            "optional": false,
             "type": {
               "kind": "reference",
               "id": 143,
@@ -69,12 +71,6 @@
         {
           "id": 95,
           "name": "backendOptions",
-          "source": {
-            "line": 51,
-            "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L51"
-          },
           "comment": {
             "description": "The backend options for `@skyra/i18next-backend` used by `i18next`.",
             "blockTags": [
@@ -85,7 +81,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 51,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L51"
+          },
+          "parentId": 95,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -102,18 +104,18 @@
         {
           "id": 96,
           "name": "fetchLanguage",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 117,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L117"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 96,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -279,12 +281,6 @@
         {
           "id": 92,
           "name": "languages",
-          "source": {
-            "line": 32,
-            "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L32"
-          },
           "comment": {
             "description": "A `Map` of `i18next` language functions keyed by their language code.",
             "blockTags": [
@@ -295,7 +291,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 32,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L32"
+          },
+          "parentId": 92,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -333,12 +335,6 @@
         {
           "id": 94,
           "name": "languagesDirectory",
-          "source": {
-            "line": 45,
-            "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L45"
-          },
           "comment": {
             "description": "The director passed to `@skyra/i18next-backend`.\nAlso used in {@link InternationalizationHandler.walkLanguageDirectory}.",
             "blockTags": [
@@ -349,7 +345,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 45,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L45"
+          },
+          "parentId": 94,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -363,12 +365,6 @@
         {
           "id": 90,
           "name": "languagesLoaded",
-          "source": {
-            "line": 20,
-            "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L20"
-          },
           "comment": {
             "description": "Describes whether {@link init} has been run and languages are loaded in {@link languages}.",
             "blockTags": [
@@ -379,7 +375,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 20,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L20"
+          },
+          "parentId": 90,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -393,12 +395,6 @@
         {
           "id": 91,
           "name": "namespaces",
-          "source": {
-            "line": 26,
-            "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L26"
-          },
           "comment": {
             "description": "A `Set` of initially loaded namespaces.",
             "blockTags": [
@@ -409,7 +405,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 26,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L26"
+          },
+          "parentId": 91,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -431,12 +433,6 @@
         {
           "id": 93,
           "name": "options",
-          "source": {
-            "line": 38,
-            "file": "InternationalizationHandler.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L38"
-          },
           "comment": {
             "description": "The options InternationalizationHandler was initialized with in the client.",
             "blockTags": [
@@ -447,7 +443,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 38,
+            "file": "InternationalizationHandler.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L38"
+          },
+          "parentId": 93,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -472,7 +474,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L181"
           },
-          "parentId": 86,
+          "parentId": 105,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -563,6 +565,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -576,6 +580,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -607,6 +613,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": 47,
@@ -643,7 +651,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L164"
           },
-          "parentId": 86,
+          "parentId": 102,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -671,6 +679,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -705,7 +715,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L123"
           },
-          "parentId": 86,
+          "parentId": 100,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -749,7 +759,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L222"
           },
-          "parentId": 86,
+          "parentId": 119,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -788,7 +798,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L245"
           },
-          "parentId": 86,
+          "parentId": 121,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -820,6 +830,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -833,6 +845,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -871,7 +885,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/InternationalizationHandler.ts#L202"
           },
-          "parentId": 86,
+          "parentId": 113,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -899,6 +913,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1002,16 +1018,16 @@
     {
       "id": 71,
       "name": "applyDescriptionLocalizedBuilder",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 169,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L169"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1059,6 +1075,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 73,
@@ -1075,6 +1093,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "union",
                 "types": [
@@ -1106,16 +1126,16 @@
     {
       "id": 76,
       "name": "applyLocalizedBuilder",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 226,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L226"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1195,6 +1215,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 78,
@@ -1211,6 +1233,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "union",
                 "types": [
@@ -1292,16 +1316,16 @@
     {
       "id": 66,
       "name": "applyNameLocalizedBuilder",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 158,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L158"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1349,6 +1373,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 68,
@@ -1365,6 +1391,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "union",
                 "types": [
@@ -1396,16 +1424,16 @@
     {
       "id": 81,
       "name": "createLocalizedChoice",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 266,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L266"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1455,6 +1483,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "union",
                 "types": [
@@ -1480,6 +1510,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": null,
@@ -1539,16 +1571,16 @@
     {
       "id": 49,
       "name": "fetchLanguage",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 30,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L30"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1583,6 +1615,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 192,
@@ -1610,16 +1644,16 @@
     {
       "id": 52,
       "name": "fetchT",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 67,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L67"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1650,6 +1684,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 192,
@@ -1689,16 +1725,16 @@
     {
       "id": 63,
       "name": "getLocalizedData",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 142,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L142"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1729,6 +1765,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "union",
                 "types": [
@@ -1760,16 +1798,16 @@
     {
       "id": 55,
       "name": "resolveKey",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 79,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/functions.ts#L79"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "signatures": [
@@ -1855,6 +1893,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 192,
@@ -1871,6 +1911,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "union",
                 "types": [
@@ -1902,6 +1944,8 @@
                 "blockTags": [],
                 "modifierTags": []
               },
+              "rest": false,
+              "optional": false,
               "type": {
                 "kind": "reference",
                 "id": 47,
@@ -1942,16 +1986,16 @@
     {
       "id": 183,
       "name": "BuilderWithDescription",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 176,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L176"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -1966,7 +2010,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L177"
           },
-          "parentId": 183,
+          "parentId": 184,
           "signatures": [
             {
               "id": 185,
@@ -1986,6 +2030,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -2011,7 +2057,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L178"
           },
-          "parentId": 183,
+          "parentId": 187,
           "signatures": [
             {
               "id": 188,
@@ -2031,6 +2077,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -2211,16 +2259,16 @@
     {
       "id": 176,
       "name": "BuilderWithName",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 171,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L171"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2235,7 +2283,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L172"
           },
-          "parentId": 176,
+          "parentId": 177,
           "signatures": [
             {
               "id": 178,
@@ -2255,6 +2303,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -2280,7 +2330,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L173"
           },
-          "parentId": 176,
+          "parentId": 180,
           "signatures": [
             {
               "id": 181,
@@ -2300,6 +2350,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -2480,12 +2532,6 @@
     {
       "id": 132,
       "name": "HMROptions",
-      "source": {
-        "line": 34,
-        "file": "types.ts",
-        "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L34"
-      },
       "comment": {
         "description": "Configure whether to use Hot-Module-Replacement (HMR) for your i18next resources using these options. The minimum config to enable HMR is to set `enabled` to true. Any other properties are optional.",
         "blockTags": [
@@ -2496,18 +2542,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 34,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L34"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 133,
           "name": "enabled",
-          "source": {
-            "line": 39,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L39"
-          },
           "comment": {
             "description": "HMR status for the i18next plugin.",
             "blockTags": [
@@ -2518,7 +2564,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 132,
+          "source": {
+            "line": 39,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L39"
+          },
+          "parentId": 133,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2528,12 +2580,6 @@
         {
           "id": 134,
           "name": "languages",
-          "source": {
-            "line": 45,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L45"
-          },
           "comment": {
             "description": "Languages that will be reloaded when updating the languages directory.",
             "blockTags": [
@@ -2544,7 +2590,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 132,
+          "source": {
+            "line": 45,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L45"
+          },
+          "parentId": 134,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2566,12 +2618,6 @@
         {
           "id": 135,
           "name": "namespaces",
-          "source": {
-            "line": 51,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L51"
-          },
           "comment": {
             "description": "Namespaces that will be reloaded when updating the languages directory.",
             "blockTags": [
@@ -2582,7 +2628,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 132,
+          "source": {
+            "line": 51,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L51"
+          },
+          "parentId": 135,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2604,18 +2656,18 @@
         {
           "id": 136,
           "name": "options",
+          "comment": {
+            "description": "HMR options",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L56"
           },
-          "comment": {
-            "description": "HMR options",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 132,
+          "parentId": 136,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2631,16 +2683,16 @@
     {
       "id": 166,
       "name": "I18nextFormatters",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 161,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L161"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2648,18 +2700,18 @@
         {
           "id": 167,
           "name": "name",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 162,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L162"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 166,
+          "parentId": 167,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2677,7 +2729,7 @@
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L163"
           },
-          "parentId": 166,
+          "parentId": 168,
           "signatures": [
             {
               "id": 169,
@@ -2697,6 +2749,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "any"
@@ -2710,6 +2764,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -2732,6 +2788,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "any"
@@ -2750,16 +2808,16 @@
     {
       "id": 164,
       "name": "InternationalizationClientOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 157,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L157"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2767,18 +2825,18 @@
         {
           "id": 165,
           "name": "i18n",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 158,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L158"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 164,
+          "parentId": 165,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2794,16 +2852,16 @@
     {
       "id": 158,
       "name": "InternationalizationContext",
+      "comment": {
+        "description": "Context for {@link fetchLanguage} functions.\nThis context enables implementation of per-guild, per-channel, and per-user localization.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 146,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L146"
-      },
-      "comment": {
-        "description": "Context for {@link fetchLanguage} functions.\nThis context enables implementation of per-guild, per-channel, and per-user localization.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2811,18 +2869,18 @@
         {
           "id": 160,
           "name": "channel",
+          "comment": {
+            "description": "The {@link DiscordChannel} object to fetch the preferred language for.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 150,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L150"
           },
-          "comment": {
-            "description": "The {@link DiscordChannel} object to fetch the preferred language for.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 158,
+          "parentId": 160,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2844,18 +2902,18 @@
         {
           "id": 159,
           "name": "guild",
+          "comment": {
+            "description": "The {@link Guild} object to fetch the preferred language for, or `null` if the language is to be fetched in a DM.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 148,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L148"
           },
-          "comment": {
-            "description": "The {@link Guild} object to fetch the preferred language for, or `null` if the language is to be fetched in a DM.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 158,
+          "parentId": 159,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2877,18 +2935,18 @@
         {
           "id": 162,
           "name": "interactionGuildLocale",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 153,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L153"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 158,
+          "parentId": 162,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2907,18 +2965,18 @@
         {
           "id": 163,
           "name": "interactionLocale",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 154,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L154"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 158,
+          "parentId": 163,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2928,18 +2986,18 @@
         {
           "id": 161,
           "name": "user",
+          "comment": {
+            "description": "The user to fetch the preferred language for.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 152,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L152"
           },
-          "comment": {
-            "description": "The user to fetch the preferred language for.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 158,
+          "parentId": 161,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2964,12 +3022,6 @@
     {
       "id": 143,
       "name": "InternationalizationOptions",
-      "source": {
-        "line": 70,
-        "file": "types.ts",
-        "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L70"
-      },
       "comment": {
         "description": "The options used in {@link InternationalizationHandler}.",
         "blockTags": [
@@ -2980,18 +3032,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 70,
+        "file": "types.ts",
+        "path": "packages/i18next/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L70"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 145,
           "name": "backend",
-          "source": {
-            "line": 82,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L82"
-          },
           "comment": {
             "description": "The options passed to `backend` in `i18next.init`.",
             "blockTags": [
@@ -3002,7 +3054,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 82,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L82"
+          },
+          "parentId": 145,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3015,12 +3073,6 @@
         {
           "id": 147,
           "name": "defaultLanguageDirectory",
-          "source": {
-            "line": 95,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L95"
-          },
           "comment": {
             "description": "The directory in which \"i18next-fs-backend\" should search for files.",
             "blockTags": [
@@ -3035,7 +3087,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 95,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L95"
+          },
+          "parentId": 147,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3045,12 +3103,6 @@
         {
           "id": 148,
           "name": "defaultMissingKey",
-          "source": {
-            "line": 102,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L102"
-          },
           "comment": {
             "description": "The default value to be used if a specific language key isn't found.\nDefaults to \"default:default\".",
             "blockTags": [
@@ -3061,7 +3113,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 102,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L102"
+          },
+          "parentId": 148,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3071,12 +3129,6 @@
         {
           "id": 149,
           "name": "defaultNS",
-          "source": {
-            "line": 109,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L109"
-          },
           "comment": {
             "description": "The default NS that is prefixed to all keys that don't specify it.\nDefaults to \"default\".",
             "blockTags": [
@@ -3087,7 +3139,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 109,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L109"
+          },
+          "parentId": 149,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3097,12 +3155,6 @@
         {
           "id": 144,
           "name": "defaultName",
-          "source": {
-            "line": 76,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L76"
-          },
           "comment": {
             "description": "Used as the default 2nd to last fallback locale if no other is found.\nIt's only followed by \"en-US\".",
             "blockTags": [
@@ -3113,7 +3165,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 76,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L76"
+          },
+          "parentId": 144,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3123,18 +3181,18 @@
         {
           "id": 152,
           "name": "fetchLanguage",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 136,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L136"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 143,
+          "parentId": 152,
           "readonly": false,
           "type": {
             "kind": "reflection",
@@ -3268,12 +3326,6 @@
         {
           "id": 150,
           "name": "formatters",
-          "source": {
-            "line": 117,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L117"
-          },
           "comment": {
             "description": "Array of formatters to add to i18n.",
             "blockTags": [
@@ -3288,7 +3340,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 117,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L117"
+          },
+          "parentId": 150,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -3304,12 +3362,6 @@
         {
           "id": 151,
           "name": "hmr",
-          "source": {
-            "line": 124,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L124"
-          },
           "comment": {
             "description": "Reload languages and namespaces when updating the languages directory.",
             "blockTags": [
@@ -3320,7 +3372,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 124,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L124"
+          },
+          "parentId": 151,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3333,12 +3391,6 @@
         {
           "id": 146,
           "name": "i18next",
-          "source": {
-            "line": 88,
-            "file": "types.ts",
-            "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L88"
-          },
           "comment": {
             "description": "The options passed to `i18next.init`.",
             "blockTags": [
@@ -3349,7 +3401,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 143,
+          "source": {
+            "line": 88,
+            "file": "types.ts",
+            "path": "packages/i18next/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L88"
+          },
+          "parentId": 146,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -3385,16 +3443,16 @@
     {
       "id": 173,
       "name": "LocalizedData",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 166,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L166"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3402,18 +3460,18 @@
         {
           "id": 175,
           "name": "localizations",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 168,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L168"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 173,
+          "parentId": 175,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3573,18 +3631,18 @@
         {
           "id": 174,
           "name": "value",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 167,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L167"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 173,
+          "parentId": 174,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3597,16 +3655,16 @@
     {
       "id": 125,
       "name": "StringMap",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 18,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L18"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3616,16 +3674,16 @@
     {
       "id": 1,
       "name": "TFunction",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 881,
         "file": "index.d.ts",
         "path": "node_modules/i18next",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": true,
       "typeParameters": [
@@ -3666,16 +3724,16 @@
     {
       "id": 190,
       "name": "BuilderWithNameAndDescription",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 181,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L181"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3702,16 +3760,16 @@
     {
       "id": 191,
       "name": "ChannelTarget",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 182,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L182"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3738,16 +3796,16 @@
     {
       "id": 157,
       "name": "DiscordChannel",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 140,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L140"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3788,16 +3846,16 @@
     {
       "id": 137,
       "name": "DynamicOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 64,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L64"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [
@@ -3909,16 +3967,16 @@
     {
       "id": 128,
       "name": "TFunctionKeys",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 22,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L22"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3963,16 +4021,16 @@
     {
       "id": 129,
       "name": "TFunctionResult",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 23,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L23"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [
@@ -4051,16 +4109,16 @@
     {
       "id": 47,
       "name": "TOptions",
+      "comment": {
+        "description": "Options that allow open ended values for interpolation unless type is provided.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 717,
         "file": "index.d.ts",
         "path": "node_modules/i18next",
         "url": null
-      },
-      "comment": {
-        "description": "Options that allow open ended values for interpolation unless type is provided.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": true,
       "typeParameters": [
@@ -4103,16 +4161,16 @@
     {
       "id": 192,
       "name": "Target",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 183,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L183"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -4153,16 +4211,16 @@
     {
       "id": 156,
       "name": "TextBasedDiscordChannel",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 139,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/7142b4f/packages/i18next/src/lib/types.ts#L139"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
