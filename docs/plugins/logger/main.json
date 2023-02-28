@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.1.0",
+  "typeDocJsonParserVersion": "7.2.0",
   "id": 0,
   "name": "@sapphire/plugin-logger",
   "version": "3.0.1",
@@ -9,12 +9,6 @@
     {
       "id": 1,
       "name": "Logger",
-      "source": {
-        "line": 11,
-        "file": "Logger.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L11"
-      },
       "comment": {
         "description": "The logger class.",
         "blockTags": [
@@ -24,6 +18,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 11,
+        "file": "Logger.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L11"
       },
       "external": false,
       "abstract": false,
@@ -39,16 +39,16 @@
       "construct": {
         "id": 15,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 36,
           "file": "Logger.ts",
           "path": "packages/logger/src/lib",
           "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L36"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 1,
         "accessibility": "public",
@@ -61,6 +61,7 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
             "optional": false,
             "type": {
               "kind": "reference",
@@ -76,12 +77,6 @@
         {
           "id": 18,
           "name": "console",
-          "source": {
-            "line": 16,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L16"
-          },
           "comment": {
             "description": "The console this writes to.",
             "blockTags": [
@@ -92,7 +87,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 16,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L16"
+          },
+          "parentId": 18,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -109,12 +110,6 @@
         {
           "id": 21,
           "name": "depth",
-          "source": {
-            "line": 34,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L34"
-          },
           "comment": {
             "description": "The inspect depth when logging objects.",
             "blockTags": [
@@ -125,7 +120,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 34,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L34"
+          },
+          "parentId": 21,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -139,12 +140,6 @@
         {
           "id": 19,
           "name": "formats",
-          "source": {
-            "line": 22,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L22"
-          },
           "comment": {
             "description": "The formats supported by the logger.",
             "blockTags": [
@@ -155,7 +150,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 22,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L22"
+          },
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -187,12 +188,6 @@
         {
           "id": 20,
           "name": "join",
-          "source": {
-            "line": 28,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L28"
-          },
           "comment": {
             "description": "The string `write` will join values by.",
             "blockTags": [
@@ -203,7 +198,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 28,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L28"
+          },
+          "parentId": 20,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -217,18 +218,18 @@
         {
           "id": 31,
           "name": "level",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 3448,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 31,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -245,18 +246,18 @@
         {
           "id": 14,
           "name": "levels",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 3458,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 14,
           "accessibility": "protected",
           "abstract": false,
           "static": true,
@@ -288,18 +289,18 @@
         {
           "id": 30,
           "name": "levels",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 69,
             "file": "Logger.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L69"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 30,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -331,12 +332,6 @@
         {
           "id": 3,
           "name": "stylize",
-          "source": {
-            "line": 77,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L77"
-          },
           "comment": {
             "description": "Gets whether or not colorette is enabled.",
             "blockTags": [
@@ -347,7 +342,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 77,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L77"
+          },
+          "parentId": 3,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -369,7 +370,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 38,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -392,6 +393,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -422,7 +424,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 47,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -445,6 +447,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -475,7 +478,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 50,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -498,6 +501,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -528,7 +532,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 32,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -551,6 +555,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -577,7 +582,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 41,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -600,6 +605,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -630,7 +636,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L64"
           },
-          "parentId": 1,
+          "parentId": 26,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -658,6 +664,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -688,7 +695,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 35,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -711,6 +718,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -741,7 +749,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 44,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -764,6 +772,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -794,7 +803,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L50"
           },
-          "parentId": 1,
+          "parentId": 22,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -817,6 +826,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -834,6 +844,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "typeOperator",
@@ -864,7 +875,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L81"
           },
-          "parentId": 1,
+          "parentId": 4,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -887,6 +898,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -904,6 +916,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -948,7 +961,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L93"
           },
-          "parentId": 1,
+          "parentId": 8,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -971,6 +984,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "union",
@@ -997,6 +1011,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -1014,6 +1029,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -1031,6 +1047,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1053,12 +1070,6 @@
     {
       "id": 69,
       "name": "LoggerLevel",
-      "source": {
-        "line": 8,
-        "file": "LoggerLevel.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L8"
-      },
       "comment": {
         "description": "Logger utility that stores and applies a full style into the message.",
         "blockTags": [
@@ -1069,6 +1080,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 8,
+        "file": "LoggerLevel.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L8"
+      },
       "external": false,
       "abstract": false,
       "extendsType": null,
@@ -1077,16 +1094,16 @@
       "construct": {
         "id": 70,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 27,
           "file": "LoggerLevel.ts",
           "path": "packages/logger/src/lib",
           "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L27"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 69,
         "accessibility": "public",
@@ -1099,6 +1116,7 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
             "optional": false,
             "type": {
               "kind": "reference",
@@ -1114,12 +1132,6 @@
         {
           "id": 74,
           "name": "infix",
-          "source": {
-            "line": 19,
-            "file": "LoggerLevel.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L19"
-          },
           "comment": {
             "description": "The infix, added between the timestamp and the message.",
             "blockTags": [
@@ -1130,7 +1142,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 69,
+          "source": {
+            "line": 19,
+            "file": "LoggerLevel.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L19"
+          },
+          "parentId": 74,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1144,12 +1162,6 @@
         {
           "id": 75,
           "name": "message",
-          "source": {
-            "line": 25,
-            "file": "LoggerLevel.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L25"
-          },
           "comment": {
             "description": "The style formatter for the message.",
             "blockTags": [
@@ -1160,7 +1172,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 69,
+          "source": {
+            "line": 25,
+            "file": "LoggerLevel.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L25"
+          },
+          "parentId": 75,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1186,12 +1204,6 @@
         {
           "id": 73,
           "name": "timestamp",
-          "source": {
-            "line": 13,
-            "file": "LoggerLevel.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L13"
-          },
           "comment": {
             "description": "The timestamp formatter.",
             "blockTags": [
@@ -1202,7 +1214,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 69,
+          "source": {
+            "line": 13,
+            "file": "LoggerLevel.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L13"
+          },
+          "parentId": 73,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1236,7 +1254,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L33"
           },
-          "parentId": 69,
+          "parentId": 76,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1259,6 +1277,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1278,12 +1297,6 @@
     {
       "id": 83,
       "name": "LoggerStyle",
-      "source": {
-        "line": 7,
-        "file": "LoggerStyle.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L7"
-      },
       "comment": {
         "description": "Logger utility that applies a style to a string.",
         "blockTags": [
@@ -1294,6 +1307,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 7,
+        "file": "LoggerStyle.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L7"
+      },
       "external": false,
       "abstract": false,
       "extendsType": null,
@@ -1302,16 +1321,16 @@
       "construct": {
         "id": 84,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 10,
           "file": "LoggerStyle.ts",
           "path": "packages/logger/src/lib",
           "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L10"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 83,
         "accessibility": "public",
@@ -1324,6 +1343,7 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
             "optional": false,
             "type": {
               "kind": "reference",
@@ -1339,18 +1359,18 @@
         {
           "id": 87,
           "name": "style",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 8,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L8"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 83,
+          "parentId": 87,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1375,7 +1395,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L32"
           },
-          "parentId": 83,
+          "parentId": 88,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1403,6 +1423,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "union",
@@ -1431,12 +1452,6 @@
     {
       "id": 140,
       "name": "LoggerTimestamp",
-      "source": {
-        "line": 8,
-        "file": "LoggerTimestamp.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L8"
-      },
       "comment": {
         "description": "Logger utility that formats a timestamp.",
         "blockTags": [
@@ -1447,6 +1462,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 8,
+        "file": "LoggerTimestamp.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L8"
+      },
       "external": false,
       "abstract": false,
       "extendsType": null,
@@ -1455,16 +1476,16 @@
       "construct": {
         "id": 141,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 33,
           "file": "LoggerTimestamp.ts",
           "path": "packages/logger/src/lib",
           "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L33"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 140,
         "accessibility": "public",
@@ -1477,6 +1498,7 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
             "optional": false,
             "type": {
               "kind": "reference",
@@ -1492,12 +1514,6 @@
         {
           "id": 146,
           "name": "color",
-          "source": {
-            "line": 25,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L25"
-          },
           "comment": {
             "description": "The logger style to apply the color to the timestamp.",
             "blockTags": [
@@ -1508,7 +1524,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 140,
+          "source": {
+            "line": 25,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L25"
+          },
+          "parentId": 146,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1534,12 +1556,6 @@
         {
           "id": 147,
           "name": "formatter",
-          "source": {
-            "line": 31,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L31"
-          },
           "comment": {
             "description": "The final formatter.",
             "blockTags": [
@@ -1550,7 +1566,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 140,
+          "source": {
+            "line": 31,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L31"
+          },
+          "parentId": 147,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1567,12 +1589,6 @@
         {
           "id": 144,
           "name": "timestamp",
-          "source": {
-            "line": 13,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L13"
-          },
           "comment": {
             "description": "The timestamp used to format the current date.",
             "blockTags": [
@@ -1583,7 +1599,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 140,
+          "source": {
+            "line": 13,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L13"
+          },
+          "parentId": 144,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1600,12 +1622,6 @@
         {
           "id": 145,
           "name": "utc",
-          "source": {
-            "line": 19,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L19"
-          },
           "comment": {
             "description": "Whether or not the logger will show a timestamp in UTC.",
             "blockTags": [
@@ -1616,7 +1632,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 140,
+          "source": {
+            "line": 19,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L19"
+          },
+          "parentId": 145,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1638,7 +1660,7 @@
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L44"
           },
-          "parentId": 140,
+          "parentId": 148,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1672,12 +1694,6 @@
     {
       "id": 123,
       "name": "LoggerStyleBackground",
-      "source": {
-        "line": 111,
-        "file": "LoggerStyle.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L111"
-      },
       "comment": {
         "description": "The background colors.",
         "blockTags": [
@@ -1688,21 +1704,27 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 111,
+        "file": "LoggerStyle.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L111"
+      },
       "external": false,
       "members": [
         {
           "id": 124,
           "name": "Black",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 112,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L112"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgBlack"
@@ -1710,16 +1732,16 @@
         {
           "id": 132,
           "name": "BlackBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 120,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L120"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgBlackBright"
@@ -1727,16 +1749,16 @@
         {
           "id": 128,
           "name": "Blue",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 116,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L116"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgBlue"
@@ -1744,16 +1766,16 @@
         {
           "id": 136,
           "name": "BlueBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 124,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L124"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgBlueBright"
@@ -1761,16 +1783,16 @@
         {
           "id": 130,
           "name": "Cyan",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 118,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L118"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgCyan"
@@ -1778,16 +1800,16 @@
         {
           "id": 138,
           "name": "CyanBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 126,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L126"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgCyanBright"
@@ -1795,16 +1817,16 @@
         {
           "id": 126,
           "name": "Green",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 114,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L114"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgGreen"
@@ -1812,16 +1834,16 @@
         {
           "id": 134,
           "name": "GreenBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 122,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L122"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgGreenBright"
@@ -1829,16 +1851,16 @@
         {
           "id": 129,
           "name": "Magenta",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 117,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L117"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgMagenta"
@@ -1846,16 +1868,16 @@
         {
           "id": 137,
           "name": "MagentaBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 125,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L125"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgMagentaBright"
@@ -1863,16 +1885,16 @@
         {
           "id": 125,
           "name": "Red",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 113,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L113"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgRed"
@@ -1880,16 +1902,16 @@
         {
           "id": 133,
           "name": "RedBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 121,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L121"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgRedBright"
@@ -1897,16 +1919,16 @@
         {
           "id": 131,
           "name": "White",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 119,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L119"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgWhite"
@@ -1914,16 +1936,16 @@
         {
           "id": 139,
           "name": "WhiteBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 127,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L127"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgWhiteBright"
@@ -1931,16 +1953,16 @@
         {
           "id": 127,
           "name": "Yellow",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 115,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L115"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgYellow"
@@ -1948,16 +1970,16 @@
         {
           "id": 135,
           "name": "YellowBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 123,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L123"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 123,
           "value": "bgYellowBright"
@@ -1967,12 +1989,6 @@
     {
       "id": 96,
       "name": "LoggerStyleEffect",
-      "source": {
-        "line": 72,
-        "file": "LoggerStyle.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L72"
-      },
       "comment": {
         "description": "The text styles.",
         "blockTags": [
@@ -1983,21 +1999,27 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 72,
+        "file": "LoggerStyle.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L72"
+      },
       "external": false,
       "members": [
         {
           "id": 98,
           "name": "Bold",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 74,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L74"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "bold"
@@ -2005,16 +2027,16 @@
         {
           "id": 99,
           "name": "Dim",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 75,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L75"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "dim"
@@ -2022,16 +2044,16 @@
         {
           "id": 103,
           "name": "Hidden",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 79,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L79"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "hidden"
@@ -2039,16 +2061,16 @@
         {
           "id": 102,
           "name": "Inverse",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 78,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L78"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "inverse"
@@ -2056,16 +2078,16 @@
         {
           "id": 100,
           "name": "Italic",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 76,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L76"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "italic"
@@ -2073,16 +2095,16 @@
         {
           "id": 97,
           "name": "Reset",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 73,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L73"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "reset"
@@ -2090,16 +2112,16 @@
         {
           "id": 104,
           "name": "Strikethrough",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 80,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L80"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "strikethrough"
@@ -2107,16 +2129,16 @@
         {
           "id": 101,
           "name": "Underline",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 77,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L77"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 96,
           "value": "underline"
@@ -2126,12 +2148,6 @@
     {
       "id": 105,
       "name": "LoggerStyleText",
-      "source": {
-        "line": 87,
-        "file": "LoggerStyle.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L87"
-      },
       "comment": {
         "description": "The text colors.",
         "blockTags": [
@@ -2142,21 +2158,27 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 87,
+        "file": "LoggerStyle.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L87"
+      },
       "external": false,
       "members": [
         {
           "id": 106,
           "name": "Black",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 88,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L88"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "black"
@@ -2164,16 +2186,16 @@
         {
           "id": 115,
           "name": "BlackBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 97,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L97"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "blackBright"
@@ -2181,16 +2203,16 @@
         {
           "id": 110,
           "name": "Blue",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 92,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L92"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "blue"
@@ -2198,16 +2220,16 @@
         {
           "id": 119,
           "name": "BlueBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 101,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L101"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "blueBright"
@@ -2215,16 +2237,16 @@
         {
           "id": 112,
           "name": "Cyan",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 94,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L94"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "cyan"
@@ -2232,16 +2254,16 @@
         {
           "id": 121,
           "name": "CyanBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 103,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L103"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "cyanBright"
@@ -2249,16 +2271,16 @@
         {
           "id": 114,
           "name": "Gray",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 96,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L96"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "gray"
@@ -2266,16 +2288,16 @@
         {
           "id": 108,
           "name": "Green",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 90,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L90"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "green"
@@ -2283,16 +2305,16 @@
         {
           "id": 117,
           "name": "GreenBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 99,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L99"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "greenBright"
@@ -2300,16 +2322,16 @@
         {
           "id": 111,
           "name": "Magenta",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 93,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L93"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "magenta"
@@ -2317,16 +2339,16 @@
         {
           "id": 120,
           "name": "MagentaBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 102,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L102"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "magentaBright"
@@ -2334,16 +2356,16 @@
         {
           "id": 107,
           "name": "Red",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 89,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L89"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "red"
@@ -2351,16 +2373,16 @@
         {
           "id": 116,
           "name": "RedBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 98,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L98"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "redBright"
@@ -2368,16 +2390,16 @@
         {
           "id": 113,
           "name": "White",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 95,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L95"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "white"
@@ -2385,16 +2407,16 @@
         {
           "id": 122,
           "name": "WhiteBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 104,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L104"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "whiteBright"
@@ -2402,16 +2424,16 @@
         {
           "id": 109,
           "name": "Yellow",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 91,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L91"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "yellow"
@@ -2419,16 +2441,16 @@
         {
           "id": 118,
           "name": "YellowBright",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 100,
             "file": "LoggerStyle.ts",
             "path": "packages/logger/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L100"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 105,
           "value": "yellowBright"
@@ -2441,12 +2463,6 @@
     {
       "id": 61,
       "name": "LoggerFormatOptions",
-      "source": {
-        "line": 163,
-        "file": "Logger.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L163"
-      },
       "comment": {
         "description": "The logger format options.",
         "blockTags": [
@@ -2457,18 +2473,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 163,
+        "file": "Logger.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L163"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 63,
           "name": "debug",
-          "source": {
-            "line": 174,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L174"
-          },
           "comment": {
             "description": "The logger options for the debug level, used when calling {@link ILogger.debug}.",
             "blockTags": [
@@ -2479,7 +2495,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 174,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L174"
+          },
+          "parentId": 63,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2492,12 +2514,6 @@
         {
           "id": 66,
           "name": "error",
-          "source": {
-            "line": 192,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L192"
-          },
           "comment": {
             "description": "The logger options for the error level, used when calling {@link ILogger.error}.",
             "blockTags": [
@@ -2508,7 +2524,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 192,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L192"
+          },
+          "parentId": 66,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2521,12 +2543,6 @@
         {
           "id": 67,
           "name": "fatal",
-          "source": {
-            "line": 198,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L198"
-          },
           "comment": {
             "description": "The logger options for the critical level, used when calling {@link ILogger.fatal}.",
             "blockTags": [
@@ -2537,7 +2553,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 198,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L198"
+          },
+          "parentId": 67,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2550,12 +2572,6 @@
         {
           "id": 64,
           "name": "info",
-          "source": {
-            "line": 180,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L180"
-          },
           "comment": {
             "description": "The logger options for the info level, used when calling {@link ILogger.info}.",
             "blockTags": [
@@ -2566,7 +2582,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 180,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L180"
+          },
+          "parentId": 64,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2579,12 +2601,6 @@
         {
           "id": 68,
           "name": "none",
-          "source": {
-            "line": 204,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L204"
-          },
           "comment": {
             "description": "The logger options for an unknown or uncategorised level.",
             "blockTags": [
@@ -2595,7 +2611,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 204,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L204"
+          },
+          "parentId": 68,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2608,12 +2630,6 @@
         {
           "id": 62,
           "name": "trace",
-          "source": {
-            "line": 168,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L168"
-          },
           "comment": {
             "description": "The logger options for the lowest log level, used when calling {@link ILogger.trace}.",
             "blockTags": [
@@ -2624,7 +2640,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 168,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L168"
+          },
+          "parentId": 62,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2637,12 +2659,6 @@
         {
           "id": 65,
           "name": "warn",
-          "source": {
-            "line": 186,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L186"
-          },
           "comment": {
             "description": "The logger options for the warning level, used when calling {@link ILogger.warn}.",
             "blockTags": [
@@ -2653,7 +2669,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 61,
+          "source": {
+            "line": 186,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L186"
+          },
+          "parentId": 65,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2669,12 +2691,6 @@
     {
       "id": 79,
       "name": "LoggerLevelOptions",
-      "source": {
-        "line": 51,
-        "file": "LoggerLevel.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L51"
-      },
       "comment": {
         "description": "The options for {@link LoggerLevel}.",
         "blockTags": [
@@ -2685,18 +2701,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 51,
+        "file": "LoggerLevel.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L51"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 81,
           "name": "infix",
-          "source": {
-            "line": 64,
-            "file": "LoggerLevel.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L64"
-          },
           "comment": {
             "description": "The infix to be included between the timestamp and the message.",
             "blockTags": [
@@ -2711,7 +2727,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 79,
+          "source": {
+            "line": 64,
+            "file": "LoggerLevel.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L64"
+          },
+          "parentId": 81,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2721,12 +2743,6 @@
         {
           "id": 82,
           "name": "message",
-          "source": {
-            "line": 71,
-            "file": "LoggerLevel.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L71"
-          },
           "comment": {
             "description": "The style options for the message.",
             "blockTags": [
@@ -2741,7 +2757,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 79,
+          "source": {
+            "line": 71,
+            "file": "LoggerLevel.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L71"
+          },
+          "parentId": 82,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2763,12 +2785,6 @@
         {
           "id": 80,
           "name": "timestamp",
-          "source": {
-            "line": 57,
-            "file": "LoggerLevel.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L57"
-          },
           "comment": {
             "description": "The timestamp options. Set to `null` to disable timestamp parsing.",
             "blockTags": [
@@ -2783,7 +2799,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 79,
+          "source": {
+            "line": 57,
+            "file": "LoggerLevel.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerLevel.ts#L57"
+          },
+          "parentId": 80,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2808,12 +2830,6 @@
     {
       "id": 53,
       "name": "LoggerOptions",
-      "source": {
-        "line": 107,
-        "file": "Logger.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L107"
-      },
       "comment": {
         "description": "The logger options.",
         "blockTags": [
@@ -2824,18 +2840,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 107,
+        "file": "Logger.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L107"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 56,
           "name": "defaultFormat",
-          "source": {
-            "line": 127,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L127"
-          },
           "comment": {
             "description": "The default options used to fill all the possible values for {@link format}.",
             "blockTags": [
@@ -2850,7 +2866,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 127,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L127"
+          },
+          "parentId": 56,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2863,12 +2885,6 @@
         {
           "id": 60,
           "name": "depth",
-          "source": {
-            "line": 156,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L156"
-          },
           "comment": {
             "description": "The inspect depth when logging objects.",
             "blockTags": [
@@ -2883,7 +2899,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 156,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L156"
+          },
+          "parentId": 60,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2893,12 +2915,6 @@
         {
           "id": 57,
           "name": "format",
-          "source": {
-            "line": 135,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L135"
-          },
           "comment": {
             "description": "The options for each log level. LogLevel.None serves to set the default for all keys, where only\n{@link LoggerTimestampOptions.timestamp} and {@link LoggerLevelOptions.prefix} would be overridden.",
             "blockTags": [
@@ -2913,7 +2929,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 135,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L135"
+          },
+          "parentId": 57,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2926,12 +2948,6 @@
         {
           "id": 59,
           "name": "join",
-          "source": {
-            "line": 149,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L149"
-          },
           "comment": {
             "description": "The string that joins different messages.",
             "blockTags": [
@@ -2946,7 +2962,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 149,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L149"
+          },
+          "parentId": 59,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2956,12 +2978,6 @@
         {
           "id": 58,
           "name": "level",
-          "source": {
-            "line": 142,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L142"
-          },
           "comment": {
             "description": "The minimum log level.",
             "blockTags": [
@@ -2976,7 +2992,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 142,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L142"
+          },
+          "parentId": 58,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2989,12 +3011,6 @@
         {
           "id": 55,
           "name": "stderr",
-          "source": {
-            "line": 120,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L120"
-          },
           "comment": {
             "description": "A WriteStream for the error logs.",
             "blockTags": [
@@ -3009,7 +3025,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 120,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L120"
+          },
+          "parentId": 55,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3022,12 +3044,6 @@
         {
           "id": 54,
           "name": "stdout",
-          "source": {
-            "line": 113,
-            "file": "Logger.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L113"
-          },
           "comment": {
             "description": "The WriteStream for the output logs.",
             "blockTags": [
@@ -3042,7 +3058,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 53,
+          "source": {
+            "line": 113,
+            "file": "Logger.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/Logger.ts#L113"
+          },
+          "parentId": 54,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3058,12 +3080,6 @@
     {
       "id": 91,
       "name": "LoggerStyleOptions",
-      "source": {
-        "line": 41,
-        "file": "LoggerStyle.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L41"
-      },
       "comment": {
         "description": "The options for {@link LoggerStyle}.",
         "blockTags": [
@@ -3074,18 +3090,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 41,
+        "file": "LoggerStyle.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L41"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 94,
           "name": "background",
-          "source": {
-            "line": 58,
-            "file": "LoggerStyle.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L58"
-          },
           "comment": {
             "description": "The background color, e.g. `magenta` or `red`.",
             "blockTags": [
@@ -3096,7 +3112,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 91,
+          "source": {
+            "line": 58,
+            "file": "LoggerStyle.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L58"
+          },
+          "parentId": 94,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3109,12 +3131,6 @@
         {
           "id": 92,
           "name": "effects",
-          "source": {
-            "line": 46,
-            "file": "LoggerStyle.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L46"
-          },
           "comment": {
             "description": "The text effects, e.g. `italic`, `strikethrough`, etc.",
             "blockTags": [
@@ -3125,7 +3141,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 91,
+          "source": {
+            "line": 46,
+            "file": "LoggerStyle.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L46"
+          },
+          "parentId": 92,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -3141,12 +3163,6 @@
         {
           "id": 93,
           "name": "text",
-          "source": {
-            "line": 52,
-            "file": "LoggerStyle.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L52"
-          },
           "comment": {
             "description": "The text color, e.g. `red` or `yellow`.",
             "blockTags": [
@@ -3157,7 +3173,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 91,
+          "source": {
+            "line": 52,
+            "file": "LoggerStyle.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L52"
+          },
+          "parentId": 93,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3173,16 +3195,16 @@
     {
       "id": 155,
       "name": "LoggerTimestampFormatter",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 94,
         "file": "LoggerTimestamp.ts",
         "path": "packages/logger/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L94"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3192,12 +3214,6 @@
     {
       "id": 150,
       "name": "LoggerTimestampOptions",
-      "source": {
-        "line": 55,
-        "file": "LoggerTimestamp.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L55"
-      },
       "comment": {
         "description": "The options for {@link LoggerTimestamp}.",
         "blockTags": [
@@ -3208,18 +3224,18 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 55,
+        "file": "LoggerTimestamp.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L55"
+      },
       "external": false,
       "typeParameters": [],
       "properties": [
         {
           "id": 153,
           "name": "color",
-          "source": {
-            "line": 80,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L80"
-          },
           "comment": {
             "description": "The color to use.",
             "blockTags": [
@@ -3234,7 +3250,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 150,
+          "source": {
+            "line": 80,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L80"
+          },
+          "parentId": 153,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -3256,12 +3278,6 @@
         {
           "id": 154,
           "name": "formatter",
-          "source": {
-            "line": 87,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L87"
-          },
           "comment": {
             "description": "The formatter. See {@link LoggerTimestampFormatter} for more information.",
             "blockTags": [
@@ -3276,7 +3292,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 150,
+          "source": {
+            "line": 87,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L87"
+          },
+          "parentId": 154,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3289,12 +3311,6 @@
         {
           "id": 151,
           "name": "pattern",
-          "source": {
-            "line": 66,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L66"
-          },
           "comment": {
             "description": "The {@link Timestamp} pattern.",
             "blockTags": [
@@ -3313,7 +3329,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 150,
+          "source": {
+            "line": 66,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L66"
+          },
+          "parentId": 151,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3323,12 +3345,6 @@
         {
           "id": 152,
           "name": "utc",
-          "source": {
-            "line": 73,
-            "file": "LoggerTimestamp.ts",
-            "path": "packages/logger/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L73"
-          },
           "comment": {
             "description": "Whether or not the date should be UTC.",
             "blockTags": [
@@ -3343,7 +3359,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 150,
+          "source": {
+            "line": 73,
+            "file": "LoggerTimestamp.ts",
+            "path": "packages/logger/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerTimestamp.ts#L73"
+          },
+          "parentId": 152,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3359,12 +3381,6 @@
     {
       "id": 95,
       "name": "LoggerStyleResolvable",
-      "source": {
-        "line": 66,
-        "file": "LoggerStyle.ts",
-        "path": "packages/logger/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L66"
-      },
       "comment": {
         "description": "The value accepted by {@link LoggerStyle}'s constructor. Read `colorette`'s documentation for more information.",
         "blockTags": [
@@ -3378,6 +3394,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 66,
+        "file": "LoggerStyle.ts",
+        "path": "packages/logger/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/af00a2f/packages/logger/src/lib/LoggerStyle.ts#L66"
       },
       "external": false,
       "typeParameters": [],

@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.1.0",
+  "typeDocJsonParserVersion": "7.2.0",
   "id": 0,
   "name": "@sapphire/discord-utilities",
   "version": "3.0.0",
@@ -9,16 +9,16 @@
     {
       "id": 1,
       "name": "InteractionOptionResolver",
+      "comment": {
+        "description": "Utility class for resolving command interaction options while working with the raw API.\nBased on {@linkplain https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js}",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 28,
         "file": "InteractionOptionResolver.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L28"
-      },
-      "comment": {
-        "description": "Utility class for resolving command interaction options while working with the raw API.\nBased on {@linkplain https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js}",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -28,16 +28,16 @@
       "construct": {
         "id": 2,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 61,
           "file": "InteractionOptionResolver.ts",
           "path": "packages/discord-utilities/src/lib",
           "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L61"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 1,
         "accessibility": "public",
@@ -50,6 +50,7 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
             "optional": false,
             "type": {
               "kind": "union",
@@ -84,18 +85,18 @@
         {
           "id": 6,
           "name": "data",
+          "comment": {
+            "description": "The interaction options array",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "InteractionOptionResolver.ts",
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L34"
           },
-          "comment": {
-            "description": "The interaction options array",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 6,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -124,18 +125,18 @@
         {
           "id": 9,
           "name": "group",
+          "comment": {
+            "description": "The name of the subcommand group",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 54,
             "file": "InteractionOptionResolver.ts",
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L54"
           },
-          "comment": {
-            "description": "The name of the subcommand group",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 9,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -158,18 +159,18 @@
         {
           "id": 8,
           "name": "hoistedOptions",
+          "comment": {
+            "description": "Bottom-level options for the interaction\nIf there is a subcommand (or subcommand and group), this represents the options for the subcommand.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 49,
             "file": "InteractionOptionResolver.ts",
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L49"
           },
-          "comment": {
-            "description": "Bottom-level options for the interaction\nIf there is a subcommand (or subcommand and group), this represents the options for the subcommand.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 8,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -198,18 +199,18 @@
         {
           "id": 5,
           "name": "interaction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 29,
             "file": "InteractionOptionResolver.ts",
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L29"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 5,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -245,18 +246,18 @@
         {
           "id": 7,
           "name": "resolved",
+          "comment": {
+            "description": "The interaction resolved data",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 39,
             "file": "InteractionOptionResolver.ts",
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L39"
           },
-          "comment": {
-            "description": "The interaction resolved data",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 7,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -296,18 +297,18 @@
         {
           "id": 10,
           "name": "subcommand",
+          "comment": {
+            "description": "The name of the subcommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 59,
             "file": "InteractionOptionResolver.ts",
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L59"
           },
-          "comment": {
-            "description": "The name of the subcommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 10,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -338,7 +339,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L83"
           },
-          "parentId": 1,
+          "parentId": 11,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -361,6 +362,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -375,6 +377,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -417,6 +420,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -431,6 +435,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -457,7 +462,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L238"
           },
-          "parentId": 1,
+          "parentId": 84,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -480,6 +485,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -494,6 +500,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -536,6 +543,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -550,6 +558,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -576,7 +585,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L134"
           },
-          "parentId": 1,
+          "parentId": 28,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -599,6 +608,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -613,6 +623,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -652,6 +663,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -666,6 +678,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -689,7 +702,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L147"
           },
-          "parentId": 1,
+          "parentId": 35,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -712,6 +725,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -726,6 +740,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -768,6 +783,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -782,6 +798,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -808,7 +825,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L327"
           },
-          "parentId": 1,
+          "parentId": 107,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1116,7 +1133,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L173"
           },
-          "parentId": 1,
+          "parentId": 49,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1139,6 +1156,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1153,6 +1171,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1192,6 +1211,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1206,6 +1226,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1229,7 +1250,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L212"
           },
-          "parentId": 1,
+          "parentId": 70,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1252,6 +1273,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1266,6 +1288,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1308,6 +1331,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1322,6 +1346,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1348,7 +1373,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L251"
           },
-          "parentId": 1,
+          "parentId": 91,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1371,6 +1396,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1385,6 +1411,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1441,6 +1468,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1455,6 +1483,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1500,7 +1529,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L186"
           },
-          "parentId": 1,
+          "parentId": 56,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1523,6 +1552,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1537,6 +1567,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1576,6 +1607,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1590,6 +1622,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1613,7 +1646,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L225"
           },
-          "parentId": 1,
+          "parentId": 77,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1636,6 +1669,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1650,6 +1684,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1692,6 +1727,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1706,6 +1742,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1732,7 +1769,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L160"
           },
-          "parentId": 1,
+          "parentId": 42,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1755,6 +1792,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1769,6 +1807,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1808,6 +1847,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -1822,6 +1862,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1845,7 +1886,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L104"
           },
-          "parentId": 1,
+          "parentId": 18,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1868,6 +1909,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1907,6 +1949,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -1930,7 +1973,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L119"
           },
-          "parentId": 1,
+          "parentId": 23,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1953,6 +1996,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -1992,6 +2036,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -2015,7 +2060,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L292"
           },
-          "parentId": 1,
+          "parentId": 100,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2038,6 +2083,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -2080,6 +2126,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -2106,7 +2153,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L316"
           },
-          "parentId": 1,
+          "parentId": 105,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2140,7 +2187,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L284"
           },
-          "parentId": 1,
+          "parentId": 98,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2174,7 +2221,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L348"
           },
-          "parentId": 1,
+          "parentId": 121,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -2271,6 +2318,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -2285,6 +2333,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -2302,6 +2351,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -2428,6 +2478,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -2442,6 +2493,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "reference",
@@ -2459,6 +2511,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -2495,7 +2548,7 @@
             "path": "packages/discord-utilities/src/lib",
             "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/InteractionOptionResolver.ts#L199"
           },
-          "parentId": 1,
+          "parentId": 63,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2518,6 +2571,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -2532,6 +2586,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": true,
                   "type": {
                     "kind": "intrinsic",
@@ -2574,6 +2629,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "intrinsic",
@@ -2588,6 +2644,7 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
                   "optional": false,
                   "type": {
                     "kind": "literal",
@@ -2617,16 +2674,16 @@
     {
       "id": 163,
       "name": "ApplicationCommandLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord application commands (slash commands).",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 129,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L129"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord application commands (slash commands).",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2748,16 +2805,16 @@
     {
       "id": 168,
       "name": "ApplicationCommandOptionLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Choices of Discord Application Commands.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 149,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L149"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Choices of Discord Application Commands.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2879,16 +2936,16 @@
     {
       "id": 205,
       "name": "AutoCompleteLimits",
+      "comment": {
+        "description": "Namespace container limits related to Discord autocomplete interactions.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 302,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L302"
-      },
-      "comment": {
-        "description": "Namespace container limits related to Discord autocomplete interactions.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2981,16 +3038,16 @@
     {
       "id": 173,
       "name": "ButtonLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Message Buttons.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 169,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L169"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Message Buttons.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3083,16 +3140,16 @@
     {
       "id": 132,
       "name": "ChannelLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord channels.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 4,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L4"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord channels.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3214,12 +3271,6 @@
     {
       "id": 220,
       "name": "ChannelMentionRegex",
-      "source": {
-        "line": 6,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L6"
-      },
       "comment": {
         "description": "Regex that can capture the ID in Discord Channel mentions",
         "blockTags": [
@@ -3234,6 +3285,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 6,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L6"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -3247,12 +3304,6 @@
     {
       "id": 221,
       "name": "ChannelMessageRegex",
-      "source": {
-        "line": 15,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L15"
-      },
       "comment": {
         "description": "Regex that can capture the channel and message IDs in a channelId-messageId pattern\nThis pattern can be found when you hold Shift and hover over a message, and click the \"ID\" button",
         "blockTags": [
@@ -3271,6 +3322,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 15,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L15"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -3284,12 +3341,6 @@
     {
       "id": 222,
       "name": "DiscordHostnameRegex",
-      "source": {
-        "line": 25,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L25"
-      },
       "comment": {
         "description": "Regex that matches links on the known Discord host names",
         "blockTags": [
@@ -3316,6 +3367,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 25,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L25"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -3329,12 +3386,6 @@
     {
       "id": 223,
       "name": "DiscordInviteLinkRegex",
-      "source": {
-        "line": 33,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L33"
-      },
       "comment": {
         "description": "Regex that can can capture the code of Discord invite links",
         "blockTags": [
@@ -3349,6 +3400,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 33,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L33"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -3362,16 +3419,16 @@
     {
       "id": 137,
       "name": "EmbedLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord embeds.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 24,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L24"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord embeds.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3638,16 +3695,16 @@
     {
       "id": 147,
       "name": "EmojiLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord emojis.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 69,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L69"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord emojis.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3711,12 +3768,6 @@
     {
       "id": 224,
       "name": "EmojiRegex",
-      "source": {
-        "line": 42,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L42"
-      },
       "comment": {
         "description": "Regex that can capture the ID of any animated or non-animated custom Discord emoji",
         "blockTags": [
@@ -3739,6 +3790,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 42,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L42"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -3752,12 +3809,6 @@
     {
       "id": 225,
       "name": "FormattedCustomEmoji",
-      "source": {
-        "line": 49,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L49"
-      },
       "comment": {
         "description": "Regex that matches any animated or non-animated custom Discord emoji.\nUnlike {@link EmojiRegex} It can be a substring of a larger string.",
         "blockTags": [
@@ -3767,6 +3818,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 49,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L49"
       },
       "external": false,
       "type": {
@@ -3781,12 +3838,6 @@
     {
       "id": 226,
       "name": "FormattedCustomEmojiWithGroups",
-      "source": {
-        "line": 59,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L59"
-      },
       "comment": {
         "description": "Regex that can capture any animated or non-animated custom Discord emoji.\nSimilar to {@link FormattedCustomEmoji} and unlike {@link EmojiRegex} can also be a substring of a larger string.",
         "blockTags": [
@@ -3809,6 +3860,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 59,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L59"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -3822,16 +3879,16 @@
     {
       "id": 150,
       "name": "GuildLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord guilds.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 79,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L79"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord guilds.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3924,16 +3981,16 @@
     {
       "id": 154,
       "name": "GuildMemberLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord guild members.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 94,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L94"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord guild members.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3997,12 +4054,6 @@
     {
       "id": 227,
       "name": "HttpUrlRegex",
-      "source": {
-        "line": 66,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L66"
-      },
       "comment": {
         "description": "Regex that matches any URL starting with `http` or `https`",
         "blockTags": [
@@ -4017,6 +4068,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 66,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L66"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -4030,16 +4087,16 @@
     {
       "id": 157,
       "name": "InteractionLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord interactions.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 104,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L104"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord interactions.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -4190,16 +4247,16 @@
     {
       "id": 185,
       "name": "MessageLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord messages.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 219,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L219"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord messages.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -4487,12 +4544,6 @@
     {
       "id": 228,
       "name": "MessageLinkRegex",
-      "source": {
-        "line": 75,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L75"
-      },
       "comment": {
         "description": "Regex that can capture the Guild, Channel, and Message ID based on a shareable Discord message link.",
         "blockTags": [
@@ -4515,6 +4566,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 75,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L75"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -4528,16 +4585,16 @@
     {
       "id": 209,
       "name": "ModalLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord Modals.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 317,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L317"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord Modals.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -4659,16 +4716,16 @@
     {
       "id": 195,
       "name": "ModerationLimits",
+      "comment": {
+        "description": "Namespace containing limits related to built-in moderation features.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 267,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L267"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to built-in moderation features.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -4732,12 +4789,6 @@
     {
       "id": 229,
       "name": "ParsedCustomEmoji",
-      "source": {
-        "line": 84,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L84"
-      },
       "comment": {
         "description": "Regex that matches any animated or non-animated custom Discord emoji *without the wrapping `<...>` symbols.\nThis means that a string that matches this regex can directly be send inside a Discord message.\nOther than this difference it is similar to {@link FormattedCustomEmoji}.",
         "blockTags": [
@@ -4747,6 +4798,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 84,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L84"
       },
       "external": false,
       "type": {
@@ -4761,12 +4818,6 @@
     {
       "id": 230,
       "name": "ParsedCustomEmojiWithGroups",
-      "source": {
-        "line": 95,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L95"
-      },
       "comment": {
         "description": "Regex that matches any animated or non-animated custom Discord emoji *without the wrapping `<...>` symbols.\nThis means that a string that matches this regex can directly be send inside a Discord message.\nOther than this difference it is similar to {@link FormattedCustomEmojiWithGroups}.",
         "blockTags": [
@@ -4789,6 +4840,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 95,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L95"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -4802,16 +4859,16 @@
     {
       "id": 198,
       "name": "RoleLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord roles.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 277,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L277"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord roles.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -4875,12 +4932,6 @@
     {
       "id": 231,
       "name": "RoleMentionRegex",
-      "source": {
-        "line": 102,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L102"
-      },
       "comment": {
         "description": "Regex that can capture the ID in Discord Role mentions",
         "blockTags": [
@@ -4895,6 +4946,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 102,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L102"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -4908,16 +4965,16 @@
     {
       "id": 177,
       "name": "SelectMenuLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Select Menus.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 184,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L184"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Select Menus.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -5126,12 +5183,6 @@
     {
       "id": 232,
       "name": "SnowflakeRegex",
-      "source": {
-        "line": 109,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L109"
-      },
       "comment": {
         "description": "Regex that can capture any Discord Snowflake ID",
         "blockTags": [
@@ -5146,6 +5197,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 109,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L109"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -5159,16 +5216,16 @@
     {
       "id": 214,
       "name": "TextInputLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord Modal Text Input component.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 337,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L337"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord Modal Text Input component.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -5319,12 +5376,6 @@
     {
       "id": 233,
       "name": "TokenRegex",
-      "source": {
-        "line": 121,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L121"
-      },
       "comment": {
         "description": "Regex that can capture a Discord Token",
         "blockTags": [
@@ -5347,6 +5398,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 121,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L121"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -5360,12 +5417,6 @@
     {
       "id": 237,
       "name": "TwemojiRegex",
-      "source": {
-        "line": 5,
-        "file": "TwemojiRegex.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/TwemojiRegex.ts#L5"
-      },
       "comment": {
         "description": "Regex that can capture a Twemoji (Twitter Emoji)",
         "blockTags": [
@@ -5375,6 +5426,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 5,
+        "file": "TwemojiRegex.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/TwemojiRegex.ts#L5"
       },
       "external": false,
       "type": {
@@ -5389,16 +5446,16 @@
     {
       "id": 201,
       "name": "UserLimits",
+      "comment": {
+        "description": "Namespace containing limits related to Discord users and Direct Messages.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 287,
         "file": "limits.ts",
         "path": "packages/discord-utilities/src/lib",
         "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/limits.ts#L287"
-      },
-      "comment": {
-        "description": "Namespace containing limits related to Discord users and Direct Messages.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -5491,12 +5548,6 @@
     {
       "id": 234,
       "name": "UserOrMemberMentionRegex",
-      "source": {
-        "line": 128,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L128"
-      },
       "comment": {
         "description": "Regex that can capture the ID of a user in Discord user mentions",
         "blockTags": [
@@ -5511,6 +5562,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 128,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L128"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -5524,12 +5581,6 @@
     {
       "id": 235,
       "name": "WebSocketUrlRegex",
-      "source": {
-        "line": 135,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L135"
-      },
       "comment": {
         "description": "Regex that matches any WebSocket URL starting with `ws` or `wss`",
         "blockTags": [
@@ -5544,6 +5595,12 @@
         ],
         "modifierTags": []
       },
+      "source": {
+        "line": 135,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L135"
+      },
       "external": false,
       "type": {
         "kind": "reference",
@@ -5557,12 +5614,6 @@
     {
       "id": 236,
       "name": "WebhookRegex",
-      "source": {
-        "line": 145,
-        "file": "regexes.ts",
-        "path": "packages/discord-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L145"
-      },
       "comment": {
         "description": "Regex that captures the Webhook ID and token from a Discord Webhook URL.",
         "blockTags": [
@@ -5588,6 +5639,12 @@
           }
         ],
         "modifierTags": []
+      },
+      "source": {
+        "line": 145,
+        "file": "regexes.ts",
+        "path": "packages/discord-utilities/src/lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/8336b7f/packages/discord-utilities/src/lib/regexes.ts#L145"
       },
       "external": false,
       "type": {

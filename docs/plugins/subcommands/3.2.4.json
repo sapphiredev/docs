@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.0.2",
+  "typeDocJsonParserVersion": "7.2.0",
   "id": 0,
   "name": "@sapphire/plugin-subcommands",
   "version": "3.2.4",
@@ -9,16 +9,16 @@
     {
       "id": 1,
       "name": "Subcommand",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 17,
         "file": "Subcommand.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L17"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -86,16 +86,16 @@
       "construct": {
         "id": 2,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 21,
           "file": "Subcommand.ts",
           "path": "packages/subcommands/src/lib",
           "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L21"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 1,
         "accessibility": "public",
@@ -108,6 +108,8 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
+            "optional": false,
             "type": {
               "kind": "reference",
               "id": null,
@@ -124,6 +126,8 @@
               "blockTags": [],
               "modifierTags": []
             },
+            "rest": false,
+            "optional": false,
             "type": {
               "kind": "reference",
               "id": 5,
@@ -138,18 +142,18 @@
         {
           "id": 104,
           "name": "aliases",
+          "comment": {
+            "description": "The aliases for the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 687,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The aliases for the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 104,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -170,12 +174,6 @@
         {
           "id": 55,
           "name": "applicationCommandRegistry",
-          "source": {
-            "line": 2104,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The application command registry associated with this command.",
             "blockTags": [
@@ -186,7 +184,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2104,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 55,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -203,18 +207,18 @@
         {
           "id": 9,
           "name": "caseInsensitiveSubcommands",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 19,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L19"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 9,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -228,12 +232,6 @@
         {
           "id": 49,
           "name": "description",
-          "source": {
-            "line": 2069,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "A basic summary about the command",
             "blockTags": [
@@ -244,7 +242,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2069,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 49,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -258,12 +262,6 @@
         {
           "id": 51,
           "name": "detailedDescription",
-          "source": {
-            "line": 2079,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Longer version of command's summary and how to use it",
             "blockTags": [
@@ -274,7 +272,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2079,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 51,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -291,18 +295,18 @@
         {
           "id": 108,
           "name": "enabled",
+          "comment": {
+            "description": "Whether or not the piece is enabled.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 450,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "Whether or not the piece is enabled.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 108,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -316,12 +320,6 @@
         {
           "id": 52,
           "name": "fullCategory",
-          "source": {
-            "line": 2088,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The full category for the command. Either an array of strings that denote every (sub)folder the command is in,\nor `null` if it could not be resolved automatically.\n\nIf this is `null` for how you setup your code then you can overwrite how the `fullCategory` is resolved by\nextending this class and overwriting the assignment in the constructor.",
             "blockTags": [
@@ -332,7 +330,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2088,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 52,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -353,12 +357,6 @@
         {
           "id": 56,
           "name": "lexer",
-          "source": {
-            "line": 2110,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The lexer to be used for command parsing",
             "blockTags": [
@@ -369,7 +367,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2110,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 56,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -386,18 +390,18 @@
         {
           "id": 106,
           "name": "location",
+          "comment": {
+            "description": "The location metadata for the piece's file.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 442,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The location metadata for the piece's file.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 106,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -414,18 +418,18 @@
         {
           "id": 107,
           "name": "name",
+          "comment": {
+            "description": "The name of the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 446,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The name of the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 107,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -439,18 +443,18 @@
         {
           "id": 109,
           "name": "options",
+          "comment": {
+            "description": "The raw options passed to this {@link Piece}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 454,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The raw options passed to this {@link Piece}",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 109,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -467,18 +471,18 @@
         {
           "id": 8,
           "name": "parsedSubcommandMappings",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 18,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L18"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 8,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -495,12 +499,6 @@
         {
           "id": 50,
           "name": "preconditions",
-          "source": {
-            "line": 2074,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The preconditions to be run.",
             "blockTags": [
@@ -511,7 +509,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2074,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 50,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -528,18 +532,18 @@
         {
           "id": 105,
           "name": "store",
+          "comment": {
+            "description": "The store that contains the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 438,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The store that contains the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 105,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -572,12 +576,6 @@
         {
           "id": 53,
           "name": "strategy",
-          "source": {
-            "line": 2093,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The strategy to use for the lexer.",
             "blockTags": [
@@ -588,7 +586,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2093,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 53,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -605,12 +609,6 @@
         {
           "id": 54,
           "name": "typing",
-          "source": {
-            "line": 2099,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "If {@link SapphireClient.typing} is true, it can be overridden for a specific command using this property, set via its options.\nOtherwise, this property will be ignored.",
             "blockTags": [
@@ -621,7 +619,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2099,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 54,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -635,12 +639,6 @@
         {
           "id": 63,
           "name": "category",
-          "source": {
-            "line": 2132,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The main category for the command, if any.\n\nThis getter retrieves the first value of {@link Command.fullCategory}, if it has at least one item, otherwise it\nreturns `null`.",
             "blockTags": [
@@ -651,7 +649,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2132,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 63,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -674,12 +678,6 @@
         {
           "id": 111,
           "name": "container",
-          "source": {
-            "line": 460,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
@@ -690,7 +688,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 460,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 111,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -707,12 +711,6 @@
         {
           "id": 67,
           "name": "parentCategory",
-          "source": {
-            "line": 2150,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The parent category for the command.\n\nThis getter retrieves the last value of {@link Command.fullCategory}, if it has at least one item, otherwise it\nreturns `null`.",
             "blockTags": [
@@ -723,7 +721,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2150,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 67,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -746,12 +750,6 @@
         {
           "id": 65,
           "name": "subCategory",
-          "source": {
-            "line": 2141,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The sub-category for the command, if any.\n\nThis getter retrieves the second value of {@link Command.fullCategory}, if it has at least two items, otherwise\nit returns `null`.",
             "blockTags": [
@@ -762,7 +760,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 2141,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 65,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -793,7 +797,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L339"
           },
-          "parentId": 1,
+          "parentId": 36,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -816,6 +820,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "array",
                     "type": {
@@ -835,6 +841,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -1006,7 +1014,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L291"
           },
-          "parentId": 1,
+          "parentId": 31,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -1029,6 +1037,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1053,6 +1063,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1069,6 +1081,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": 157,
@@ -1102,7 +1116,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L252"
           },
-          "parentId": 1,
+          "parentId": 25,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -1125,6 +1139,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1146,6 +1162,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1162,6 +1180,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1178,6 +1198,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": 157,
@@ -1211,7 +1233,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L357"
           },
-          "parentId": 1,
+          "parentId": 46,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -1234,6 +1256,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "union",
                     "types": [
@@ -1265,7 +1289,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 72,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1288,6 +1312,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1321,7 +1347,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L215"
           },
-          "parentId": 1,
+          "parentId": 21,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1344,6 +1370,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1368,6 +1396,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1401,7 +1431,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 68,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1424,6 +1454,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1448,6 +1480,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1473,7 +1507,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 57,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1496,6 +1530,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1517,6 +1553,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "intrinsic",
                     "type": "string"
@@ -1530,6 +1568,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1566,7 +1606,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L127"
           },
-          "parentId": 1,
+          "parentId": 16,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1589,6 +1629,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1610,6 +1652,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": 4,
@@ -1626,6 +1670,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1659,7 +1705,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L108"
           },
-          "parentId": 1,
+          "parentId": 10,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1690,7 +1736,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 112,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1721,7 +1767,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 86,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1749,6 +1795,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1774,7 +1822,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 101,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1797,6 +1845,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1822,7 +1872,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 89,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1845,6 +1895,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1870,7 +1922,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 95,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1893,6 +1945,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1918,7 +1972,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 98,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1941,6 +1995,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -1966,7 +2022,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 92,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1989,6 +2045,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -2014,7 +2072,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 77,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2037,6 +2095,8 @@
                     "blockTags": [],
                     "modifierTags": []
                   },
+                  "rest": false,
+                  "optional": false,
                   "type": {
                     "kind": "reference",
                     "id": null,
@@ -2070,7 +2130,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 84,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2109,7 +2169,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 82,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2148,7 +2208,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L123"
           },
-          "parentId": 1,
+          "parentId": 14,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2187,7 +2247,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 80,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2226,7 +2286,7 @@
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L119"
           },
-          "parentId": 1,
+          "parentId": 12,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2257,7 +2317,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 75,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2291,7 +2351,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 114,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2328,32 +2388,32 @@
     {
       "id": 190,
       "name": "SubcommandPluginIdentifiers",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 21,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L21"
       },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "external": false,
       "members": [
         {
           "id": 192,
           "name": "ChatInputSubcommandNoMatch",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 23,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L23"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 190,
           "value": "chatInputSubcommandNoMatch"
@@ -2361,16 +2421,16 @@
         {
           "id": 191,
           "name": "MessageSubcommandNoMatch",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 22,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L22"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 190,
           "value": "messageSubcommandNoMatch"
@@ -2378,16 +2438,16 @@
         {
           "id": 193,
           "name": "SubcommandNotFound",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 24,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L24"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 190,
           "value": "subcommandNotFound"
@@ -2400,16 +2460,16 @@
     {
       "id": 227,
       "name": "ChatInputSubcommandAcceptedPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 55,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L55"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2417,18 +2477,18 @@
         {
           "id": 231,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 52,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L52"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 227,
+          "parentId": 231,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2456,18 +2516,18 @@
         {
           "id": 228,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L56"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 227,
+          "parentId": 228,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2480,18 +2540,18 @@
         {
           "id": 230,
           "name": "interaction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 51,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L51"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 227,
+          "parentId": 230,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2512,18 +2572,18 @@
         {
           "id": 229,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 57,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L57"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 227,
+          "parentId": 229,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2539,16 +2599,16 @@
     {
       "id": 237,
       "name": "ChatInputSubcommandErrorPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 62,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L62"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2556,18 +2616,18 @@
         {
           "id": 241,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 52,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L52"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 237,
+          "parentId": 241,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2595,18 +2655,18 @@
         {
           "id": 238,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L56"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 237,
+          "parentId": 238,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2619,18 +2679,18 @@
         {
           "id": 240,
           "name": "interaction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 51,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L51"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 237,
+          "parentId": 240,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2651,18 +2711,18 @@
         {
           "id": 239,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 57,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L57"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 237,
+          "parentId": 239,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2678,16 +2738,16 @@
     {
       "id": 232,
       "name": "ChatInputSubcommandRunPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 60,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L60"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2695,18 +2755,18 @@
         {
           "id": 236,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 52,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L52"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 232,
+          "parentId": 236,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2734,18 +2794,18 @@
         {
           "id": 233,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L56"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 232,
+          "parentId": 233,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2758,18 +2818,18 @@
         {
           "id": 235,
           "name": "interaction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 51,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L51"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 232,
+          "parentId": 235,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2790,18 +2850,18 @@
         {
           "id": 234,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 57,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L57"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 232,
+          "parentId": 234,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2817,16 +2877,16 @@
     {
       "id": 242,
       "name": "ChatInputSubcommandSuccessPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 64,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L64"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2834,18 +2894,18 @@
         {
           "id": 247,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 52,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L52"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 242,
+          "parentId": 247,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2873,18 +2933,18 @@
         {
           "id": 244,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L56"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 242,
+          "parentId": 244,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2897,18 +2957,18 @@
         {
           "id": 246,
           "name": "interaction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 51,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L51"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 242,
+          "parentId": 246,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2929,18 +2989,18 @@
         {
           "id": 245,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 57,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L57"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 242,
+          "parentId": 245,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2953,18 +3013,18 @@
         {
           "id": 243,
           "name": "result",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 65,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L65"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 242,
+          "parentId": 243,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2977,16 +3037,16 @@
     {
       "id": 224,
       "name": "IChatInputSubcommandPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 50,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L50"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2994,18 +3054,18 @@
         {
           "id": 226,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 52,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L52"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 224,
+          "parentId": 226,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3033,18 +3093,18 @@
         {
           "id": 225,
           "name": "interaction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 51,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L51"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 224,
+          "parentId": 225,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3068,16 +3128,16 @@
     {
       "id": 200,
       "name": "IMessageSubcommandPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 32,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L32"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3085,18 +3145,18 @@
         {
           "id": 202,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L34"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 200,
+          "parentId": 202,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3124,18 +3184,18 @@
         {
           "id": 201,
           "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 33,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L33"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 200,
+          "parentId": 201,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3156,16 +3216,16 @@
     {
       "id": 203,
       "name": "MessageSubcommandAcceptedPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 37,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L37"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3173,18 +3233,18 @@
         {
           "id": 207,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L34"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 203,
+          "parentId": 207,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3212,18 +3272,18 @@
         {
           "id": 204,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 38,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L38"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 203,
+          "parentId": 204,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3236,18 +3296,18 @@
         {
           "id": 205,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 39,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L39"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 203,
+          "parentId": 205,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3260,18 +3320,18 @@
         {
           "id": 206,
           "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 33,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L33"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 203,
+          "parentId": 206,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3292,16 +3352,16 @@
     {
       "id": 213,
       "name": "MessageSubcommandErrorPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 44,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L44"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3309,18 +3369,18 @@
         {
           "id": 217,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L34"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 213,
+          "parentId": 217,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3348,18 +3408,18 @@
         {
           "id": 214,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 38,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L38"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 213,
+          "parentId": 214,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3372,18 +3432,18 @@
         {
           "id": 215,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 39,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L39"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 213,
+          "parentId": 215,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3396,18 +3456,18 @@
         {
           "id": 216,
           "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 33,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L33"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 213,
+          "parentId": 216,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3428,16 +3488,16 @@
     {
       "id": 194,
       "name": "MessageSubcommandNoMatchContext",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 27,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L27"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3445,18 +3505,18 @@
         {
           "id": 198,
           "name": "commandName",
+          "comment": {
+            "description": "The alias used to run this command.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 2022,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The alias used to run this command.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 194,
+          "parentId": 198,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3466,18 +3526,18 @@
         {
           "id": 199,
           "name": "commandPrefix",
+          "comment": {
+            "description": "The matched prefix, this will always be the same as {@link MessageCommand.RunContext.prefix} if it was a string, otherwise it is\nthe result of doing `prefix.exec(content)[0]`.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 2027,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The matched prefix, this will always be the same as {@link MessageCommand.RunContext.prefix} if it was a string, otherwise it is\nthe result of doing `prefix.exec(content)[0]`.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 194,
+          "parentId": 199,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3487,18 +3547,18 @@
         {
           "id": 196,
           "name": "possibleSubcommandGroupOrName",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 29,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L29"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 194,
+          "parentId": 196,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -3517,18 +3577,18 @@
         {
           "id": 195,
           "name": "possibleSubcommandName",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 28,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L28"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 194,
+          "parentId": 195,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -3547,18 +3607,18 @@
         {
           "id": 197,
           "name": "prefix",
+          "comment": {
+            "description": "The prefix used to run this command.\n\nThis is a string for the mention and default prefix, and a RegExp for the `regexPrefix`.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 2018,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The prefix used to run this command.\n\nThis is a string for the mention and default prefix, and a RegExp for the `regexPrefix`.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 194,
+          "parentId": 197,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -3583,16 +3643,16 @@
     {
       "id": 208,
       "name": "MessageSubcommandRunPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 42,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L42"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3600,18 +3660,18 @@
         {
           "id": 212,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L34"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 208,
+          "parentId": 212,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3639,18 +3699,18 @@
         {
           "id": 209,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 38,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L38"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 208,
+          "parentId": 209,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3663,18 +3723,18 @@
         {
           "id": 210,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 39,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L39"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 208,
+          "parentId": 210,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3687,18 +3747,18 @@
         {
           "id": 211,
           "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 33,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L33"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 208,
+          "parentId": 211,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3719,16 +3779,16 @@
     {
       "id": 218,
       "name": "MessageSubcommandSuccessPayload",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 46,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L46"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3736,18 +3796,18 @@
         {
           "id": 223,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L34"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 218,
+          "parentId": 223,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3775,18 +3835,18 @@
         {
           "id": 220,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 38,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L38"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 218,
+          "parentId": 220,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3799,18 +3859,18 @@
         {
           "id": 221,
           "name": "matchedSubcommandMapping",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 39,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L39"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 218,
+          "parentId": 221,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3823,18 +3883,18 @@
         {
           "id": 222,
           "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 33,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L33"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 218,
+          "parentId": 222,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -3852,18 +3912,18 @@
         {
           "id": 219,
           "name": "result",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 47,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L47"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 218,
+          "parentId": 219,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3876,16 +3936,16 @@
     {
       "id": 172,
       "name": "SubcommandMappingGroup",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 82,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L82"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3893,18 +3953,18 @@
         {
           "id": 174,
           "name": "entries",
+          "comment": {
+            "description": "The {@link SubcommandMappingMethod}s that are contained within this subcommand group.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 90,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L90"
           },
-          "comment": {
-            "description": "The {@link SubcommandMappingMethod}s that are contained within this subcommand group.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 172,
+          "parentId": 174,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -3920,18 +3980,18 @@
         {
           "id": 175,
           "name": "name",
+          "comment": {
+            "description": "The name of this subcommand, or subcommand group",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 14,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
           },
-          "comment": {
-            "description": "The name of this subcommand, or subcommand group",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 172,
+          "parentId": 175,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -3941,18 +4001,18 @@
         {
           "id": 173,
           "name": "type",
+          "comment": {
+            "description": "This subcommand mapping describes a subcommand group and can therefore only ever be `'group'`",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 86,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L86"
           },
-          "comment": {
-            "description": "This subcommand mapping describes a subcommand group and can therefore only ever be `'group'`",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 172,
+          "parentId": 173,
           "readonly": false,
           "type": {
             "kind": "literal",
@@ -3965,16 +4025,16 @@
     {
       "id": 157,
       "name": "SubcommandMappingMethod",
+      "comment": {
+        "description": "Describes how a subcommand method maps to the actual implementation of that subcommand.",
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 25,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L25"
-      },
-      "comment": {
-        "description": "Describes how a subcommand method maps to the actual implementation of that subcommand.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -3982,12 +4042,6 @@
         {
           "id": 166,
           "name": "chatInputRun",
-          "source": {
-            "line": 79,
-            "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L79"
-          },
           "comment": {
             "description": "The class method to call when invoking this subcommand through a **chat input command**,\nor a callback implementation of the subcommand.\n\nNote that when providing a string you have to first define the method that will be called within your function\nbefore this will allow any values. This is to ensure that the property is strictly typed to the context of the\nclass.",
             "blockTags": [
@@ -4002,7 +4056,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 157,
+          "source": {
+            "line": 79,
+            "file": "SubcommandMappings.ts",
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L79"
+          },
+          "parentId": 166,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -4099,18 +4159,18 @@
         {
           "id": 159,
           "name": "default",
+          "comment": {
+            "description": "Whether this is the default subcommand when none is provided.\n\nNote that this is effectively only used for Message based subcommand\n(those implementing {@link messageRun})\nbecause the subcommand is always provided for chat input commands.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 37,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L37"
           },
-          "comment": {
-            "description": "Whether this is the default subcommand when none is provided.\n\nNote that this is effectively only used for Message based subcommand\n(those implementing {@link messageRun})\nbecause the subcommand is always provided for chat input commands.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 157,
+          "parentId": 159,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4120,12 +4180,6 @@
         {
           "id": 160,
           "name": "messageRun",
-          "source": {
-            "line": 58,
-            "file": "SubcommandMappings.ts",
-            "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L58"
-          },
           "comment": {
             "description": "The class method to call when invoking this subcommand through a **message command**,\nor a callback implementation of the subcommand.\n\nNote that when providing a string you have to first define the method that will be called within your function\nbefore this will allow any values. This is to ensure that the property is strictly typed to the context of the\nclass.",
             "blockTags": [
@@ -4140,7 +4194,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 157,
+          "source": {
+            "line": 58,
+            "file": "SubcommandMappings.ts",
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L58"
+          },
+          "parentId": 160,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -4282,18 +4342,18 @@
         {
           "id": 171,
           "name": "name",
+          "comment": {
+            "description": "The name of this subcommand, or subcommand group",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 14,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
           },
-          "comment": {
-            "description": "The name of this subcommand, or subcommand group",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 157,
+          "parentId": 171,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4303,18 +4363,18 @@
         {
           "id": 158,
           "name": "type",
+          "comment": {
+            "description": "This subcommand mapping describes a subcommand method and can therefore only ever be `'method'`",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 29,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L29"
           },
-          "comment": {
-            "description": "This subcommand mapping describes a subcommand method and can therefore only ever be `'method'`",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 157,
+          "parentId": 158,
           "readonly": false,
           "type": {
             "kind": "literal",
@@ -4327,16 +4387,16 @@
     {
       "id": 130,
       "name": "SubcommandOptions",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 367,
         "file": "Subcommand.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L367"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -4344,12 +4404,6 @@
         {
           "id": 148,
           "name": "aliases",
-          "source": {
-            "line": 671,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "The aliases for the piece.",
             "blockTags": [
@@ -4360,7 +4414,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 671,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 148,
           "readonly": true,
           "type": {
             "kind": "typeOperator",
@@ -4377,12 +4437,6 @@
         {
           "id": 141,
           "name": "cooldownDelay",
-          "source": {
-            "line": 1926,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The time in milliseconds for the cooldown entries to reset, if set to a non-zero value alongside {@link Command.Options.cooldownLimit}, the `Cooldown` precondition will be added to the list.",
             "blockTags": [
@@ -4397,7 +4451,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1926,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 141,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4407,12 +4467,6 @@
         {
           "id": 143,
           "name": "cooldownFilteredUsers",
-          "source": {
-            "line": 1939,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The users that are exempt from the Cooldown precondition.\nUse this to filter out someone like a bot owner",
             "blockTags": [
@@ -4427,7 +4481,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1939,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 143,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -4440,12 +4500,6 @@
         {
           "id": 140,
           "name": "cooldownLimit",
-          "source": {
-            "line": 1920,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The amount of entries the cooldown can have before filling up, if set to a non-zero value alongside {@link Command.Options.cooldownDelay}, the `Cooldown` precondition will be added to the list.",
             "blockTags": [
@@ -4460,7 +4514,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1920,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 140,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4470,12 +4530,6 @@
         {
           "id": 142,
           "name": "cooldownScope",
-          "source": {
-            "line": 1932,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The scope of the cooldown entries.",
             "blockTags": [
@@ -4490,7 +4544,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1932,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 142,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -4503,12 +4563,6 @@
         {
           "id": 134,
           "name": "description",
-          "source": {
-            "line": 1869,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The description for the command.",
             "blockTags": [
@@ -4523,7 +4577,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1869,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 134,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4533,12 +4593,6 @@
         {
           "id": 135,
           "name": "detailedDescription",
-          "source": {
-            "line": 1875,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The detailed description for the command.",
             "blockTags": [
@@ -4553,7 +4607,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1875,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 135,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -4566,12 +4626,6 @@
         {
           "id": 150,
           "name": "enabled",
-          "source": {
-            "line": 420,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether or not the piece should be enabled. If set to false, the piece will be unloaded.",
             "blockTags": [
@@ -4582,7 +4636,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 420,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 150,
           "readonly": true,
           "type": {
             "kind": "intrinsic",
@@ -4592,12 +4652,6 @@
         {
           "id": 151,
           "name": "flags",
-          "source": {
-            "line": 448,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The accepted flags. Flags are key-only identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [`silent`].\n* A boolean defining whether the strategy should accept all keys (`true`) or none at all (`false`).",
             "blockTags": [
@@ -4608,7 +4662,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 448,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 151,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -4634,12 +4694,6 @@
         {
           "id": 136,
           "name": "fullCategory",
-          "source": {
-            "line": 1889,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The full category path for the command",
             "blockTags": [
@@ -4658,7 +4712,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1889,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 136,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -4671,12 +4731,6 @@
         {
           "id": 132,
           "name": "generateDashLessAliases",
-          "source": {
-            "line": 379,
-            "file": "Subcommand.ts",
-            "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L379"
-          },
           "comment": {
             "description": "Whether to add aliases for subcommands with dashes in them\n\nWhen this option is enabled *and* the subcommand implements `messageRun`, dashless aliases will be added.\n\nFor subcommands groups both the group itself and all subcommands within the group will have dashless aliases added.",
             "blockTags": [
@@ -4691,7 +4745,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 379,
+            "file": "Subcommand.ts",
+            "path": "packages/subcommands/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L379"
+          },
+          "parentId": 132,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4701,12 +4761,6 @@
         {
           "id": 133,
           "name": "generateUnderscoreLessAliases",
-          "source": {
-            "line": 1863,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether to add aliases for commands with underscores in them",
             "blockTags": [
@@ -4721,7 +4775,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1863,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 133,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4731,12 +4791,6 @@
         {
           "id": 149,
           "name": "name",
-          "source": {
-            "line": 415,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "The name for the piece.",
             "blockTags": [
@@ -4747,7 +4801,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 415,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 149,
           "readonly": true,
           "type": {
             "kind": "intrinsic",
@@ -4757,12 +4817,6 @@
         {
           "id": 139,
           "name": "nsfw",
-          "source": {
-            "line": 1914,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Sets whether or not the command should be treated as NSFW. If set to true, the `NSFW` precondition will be added to the list.",
             "blockTags": [
@@ -4777,7 +4831,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1914,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 139,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -4787,12 +4847,6 @@
         {
           "id": 152,
           "name": "options",
-          "source": {
-            "line": 455,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The accepted options. Options are key-value identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [`silent`].\n* A boolean defining whether the strategy should accept all keys (`true`) or none at all (`false`).",
             "blockTags": [
@@ -4803,7 +4857,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 455,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 152,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -4829,12 +4889,6 @@
         {
           "id": 137,
           "name": "preconditions",
-          "source": {
-            "line": 1896,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The {@link Precondition}s to be run, accepts an array of their names.",
             "blockTags": [
@@ -4853,7 +4907,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1896,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 137,
           "readonly": false,
           "type": {
             "kind": "typeOperator",
@@ -4873,12 +4933,6 @@
         {
           "id": 153,
           "name": "prefixes",
-          "source": {
-            "line": 460,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The prefixes for both flags and options.",
             "blockTags": [
@@ -4889,7 +4943,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 460,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 153,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -4902,12 +4962,6 @@
         {
           "id": 138,
           "name": "quotes",
-          "source": {
-            "line": 1908,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The quotes accepted by this command, pass `[]` to disable them.",
             "blockTags": [
@@ -4922,7 +4976,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1908,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 138,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -4944,12 +5004,6 @@
         {
           "id": 144,
           "name": "requiredClientPermissions",
-          "source": {
-            "line": 1945,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The required permissions for the client.",
             "blockTags": [
@@ -4964,7 +5018,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1945,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 144,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -4977,12 +5037,6 @@
         {
           "id": 145,
           "name": "requiredUserPermissions",
-          "source": {
-            "line": 1951,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The required permissions for the user.",
             "blockTags": [
@@ -4997,7 +5051,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1951,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 145,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -5010,12 +5070,6 @@
         {
           "id": 146,
           "name": "runIn",
-          "source": {
-            "line": 1957,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The channels the command should run in. If set to `null`, no precondition entry will be added. Some optimizations are applied when given an array to reduce the amount of preconditions run (e.g. `'GUILD_TEXT'` and `'GUILD_NEWS'` becomes `'GUILD_ANY'`, and if both `'DM'` and `'GUILD_ANY'` are defined, then no precondition entry is added as it runs in all channels).",
             "blockTags": [
@@ -5030,7 +5084,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1957,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 146,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -5085,12 +5145,6 @@
         {
           "id": 154,
           "name": "separators",
-          "source": {
-            "line": 465,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The flag separators.",
             "blockTags": [
@@ -5101,7 +5155,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 465,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 154,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -5114,18 +5174,18 @@
         {
           "id": 131,
           "name": "subcommands",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 368,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L368"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 130,
+          "parentId": 131,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -5138,12 +5198,6 @@
         {
           "id": 147,
           "name": "typing",
-          "source": {
-            "line": 1963,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "If {@link SapphireClient.typing} is true, this option will override it.\nOtherwise, this option has no effect - you may call {@link Channel#sendTyping}` in the run method if you want specific commands to display the typing status.",
             "blockTags": [
@@ -5154,7 +5208,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 130,
+          "source": {
+            "line": 1963,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 147,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -5169,16 +5229,16 @@
     {
       "id": 118,
       "name": "Subcommand",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 17,
         "file": "Subcommand.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L17"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "classes": [],
@@ -5190,16 +5250,16 @@
         {
           "id": 127,
           "name": "AutocompleteInteraction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 389,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L389"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [
@@ -5241,16 +5301,16 @@
         {
           "id": 123,
           "name": "ChatInputInteraction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 387,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L387"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [
@@ -5292,16 +5352,16 @@
         {
           "id": 121,
           "name": "Context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 385,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L385"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -5316,16 +5376,16 @@
         {
           "id": 125,
           "name": "ContextMenuInteraction",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 388,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L388"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [
@@ -5367,16 +5427,16 @@
         {
           "id": 120,
           "name": "JSON",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 384,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L384"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -5391,16 +5451,16 @@
         {
           "id": 119,
           "name": "Options",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 383,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L383"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -5415,16 +5475,16 @@
         {
           "id": 129,
           "name": "Registry",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 390,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L390"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -5439,16 +5499,16 @@
         {
           "id": 122,
           "name": "RunInTypes",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 386,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
             "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/Subcommand.ts#L386"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -5468,16 +5528,16 @@
     {
       "id": 177,
       "name": "ChatInputCommandSubcommandMappingMethod",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 96,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L96"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -5536,16 +5596,16 @@
     {
       "id": 176,
       "name": "MessageSubcommandMappingMethod",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 94,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L94"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -5604,16 +5664,16 @@
     {
       "id": 155,
       "name": "SubcommandMapping",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 3,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L3"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -5640,16 +5700,16 @@
     {
       "id": 156,
       "name": "SubcommandMappingArray",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 5,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/SubcommandMappings.ts#L5"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -5669,16 +5729,16 @@
     {
       "id": 178,
       "name": "SubcommandPluginEvents",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 6,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
         "url": "https://github.com/sapphiredev/plugins/blob/135081f/packages/subcommands/src/lib/types/Events.ts#L6"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
