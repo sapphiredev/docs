@@ -1,0 +1,1404 @@
+{
+  "typeDocJsonParserVersion": "7.2.0",
+  "id": 0,
+  "name": "@sapphire/cron",
+  "version": "1.1.0",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/cron\n\n**Cron utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/cron?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/cron)\n[![npm](https://img.shields.io/npm/v/@sapphire/cron?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/cron)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Basic Usage](#basic-usage)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/cron\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/cron@1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/cron@1.0.0...@sapphire/cron@1.1.0) - (2023-03-15)\n\n## 🏠 Refactor\n\n- **cron:** Update Time enum ([baf7e08](https://github.com/sapphiredev/utilities/commit/baf7e087d291d484e2e63ea030c52c9ff3bc6922))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n\n# [@sapphire/cron@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/cron@1.0.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n",
+  "classes": [
+    {
+      "id": 45,
+      "name": "Cron",
+      "source": {
+        "line": 8,
+        "file": "Cron.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L8"
+      },
+      "comment": {
+        "description": "Handles Cron strings and generates dates based on the cron string provided.",
+        "blockTags": [
+          {
+            "name": "see",
+            "text": "https://en.wikipedia.org/wiki/Cron"
+          }
+        ],
+        "modifierTags": []
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "typeParameters": [],
+      "construct": {
+        "id": 56,
+        "name": "constructor",
+        "source": {
+          "line": 20,
+          "file": "Cron.ts",
+          "path": "lib",
+          "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L20"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "parentId": 45,
+        "accessibility": "public",
+        "parameters": [
+          {
+            "id": 58,
+            "name": "cron",
+            "comment": {
+              "description": "The cron pattern to use",
+              "blockTags": [],
+              "modifierTags": []
+            },
+            "rest": false,
+            "optional": false,
+            "type": {
+              "kind": "intrinsic",
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 59,
+          "name": "cron",
+          "source": {
+            "line": 9,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L9"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 63,
+          "name": "days",
+          "source": {
+            "line": 13,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L13"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        },
+        {
+          "id": 65,
+          "name": "dows",
+          "source": {
+            "line": 15,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L15"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        },
+        {
+          "id": 62,
+          "name": "hours",
+          "source": {
+            "line": 12,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L12"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        },
+        {
+          "id": 61,
+          "name": "minutes",
+          "source": {
+            "line": 11,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L11"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        },
+        {
+          "id": 64,
+          "name": "months",
+          "source": {
+            "line": 14,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L14"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "array",
+            "type": {
+              "kind": "intrinsic",
+              "type": "number"
+            }
+          }
+        },
+        {
+          "id": 60,
+          "name": "normalized",
+          "source": {
+            "line": 10,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L10"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 66,
+          "name": "next",
+          "source": {
+            "line": 31,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L31"
+          },
+          "parentId": 45,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 67,
+              "name": "next",
+              "comment": {
+                "description": "Get the next date that matches with the current pattern",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 68,
+                  "name": "outset",
+                  "comment": {
+                    "description": "The Date instance to compare with",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "Date",
+                    "packageName": "typescript",
+                    "typeArguments": []
+                  }
+                },
+                {
+                  "id": 69,
+                  "name": "origin",
+                  "comment": {
+                    "description": "Whether this next call is origin",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Date",
+                "packageName": "typescript",
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "name": "normalize",
+          "source": {
+            "line": 54,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L54"
+          },
+          "parentId": 45,
+          "accessibility": "private",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 47,
+              "name": "normalize",
+              "comment": {
+                "description": "Normalize the pattern",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 48,
+                  "name": "cron",
+                  "comment": {
+                    "description": "The pattern to normalize",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "parsePart",
+          "source": {
+            "line": 100,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L100"
+          },
+          "parentId": 45,
+          "accessibility": "private",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 53,
+              "name": "parsePart",
+              "comment": {
+                "description": "Parse the current part",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 54,
+                  "name": "cronPart",
+                  "comment": {
+                    "description": "The part of the pattern to parse",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                },
+                {
+                  "id": 55,
+                  "name": "id",
+                  "comment": {
+                    "description": "The id that identifies the current part",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "number"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "array",
+                "type": {
+                  "kind": "intrinsic",
+                  "type": "number"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "name": "parseString",
+          "source": {
+            "line": 89,
+            "file": "Cron.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/Cron.ts#L89"
+          },
+          "parentId": 45,
+          "accessibility": "private",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 50,
+              "name": "parseString",
+              "comment": {
+                "description": "Parse the pattern",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 51,
+                  "name": "cron",
+                  "comment": {
+                    "description": "The pattern to parse",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "array",
+                "type": {
+                  "kind": "array",
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "id": 1,
+      "name": "Time",
+      "source": {
+        "line": 1,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L1"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "members": [
+        {
+          "id": 8,
+          "name": "Day",
+          "source": {
+            "line": 8,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L8"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "86400000"
+        },
+        {
+          "id": 7,
+          "name": "Hour",
+          "source": {
+            "line": 7,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L7"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "3600000"
+        },
+        {
+          "id": 3,
+          "name": "Microsecond",
+          "source": {
+            "line": 3,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L3"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "0.001"
+        },
+        {
+          "id": 4,
+          "name": "Millisecond",
+          "source": {
+            "line": 4,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L4"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "1"
+        },
+        {
+          "id": 6,
+          "name": "Minute",
+          "source": {
+            "line": 6,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L6"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "60000"
+        },
+        {
+          "id": 10,
+          "name": "Month",
+          "source": {
+            "line": 10,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L10"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "2628000000"
+        },
+        {
+          "id": 2,
+          "name": "Nanosecond",
+          "source": {
+            "line": 2,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L2"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "0.000001"
+        },
+        {
+          "id": 5,
+          "name": "Second",
+          "source": {
+            "line": 5,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L5"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "1000"
+        },
+        {
+          "id": 9,
+          "name": "Week",
+          "source": {
+            "line": 9,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L9"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "604800000"
+        },
+        {
+          "id": 11,
+          "name": "Year",
+          "source": {
+            "line": 11,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L11"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "31536000000"
+        }
+      ]
+    }
+  ],
+  "functions": [],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": [],
+  "variables": [
+    {
+      "id": 14,
+      "name": "allowedNum",
+      "source": {
+        "line": 18,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L18"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "array",
+        "type": {
+          "kind": "array",
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 23,
+      "name": "cronTokens",
+      "source": {
+        "line": 35,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L35"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 24,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 28,
+              "name": "apr",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 39,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L39"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 4
+              },
+              "defaultValue": "4"
+            },
+            {
+              "id": 32,
+              "name": "aug",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 43,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L43"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 8
+              },
+              "defaultValue": "8"
+            },
+            {
+              "id": 36,
+              "name": "dec",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 47,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L47"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 12
+              },
+              "defaultValue": "12"
+            },
+            {
+              "id": 26,
+              "name": "feb",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 37,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L37"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 2
+              },
+              "defaultValue": "2"
+            },
+            {
+              "id": 42,
+              "name": "fri",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 53,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L53"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 5
+              },
+              "defaultValue": "5"
+            },
+            {
+              "id": 25,
+              "name": "jan",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 36,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L36"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 1
+              },
+              "defaultValue": "1"
+            },
+            {
+              "id": 31,
+              "name": "jul",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 42,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L42"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 7
+              },
+              "defaultValue": "7"
+            },
+            {
+              "id": 30,
+              "name": "jun",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 41,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L41"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 6
+              },
+              "defaultValue": "6"
+            },
+            {
+              "id": 27,
+              "name": "mar",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 38,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L38"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 3
+              },
+              "defaultValue": "3"
+            },
+            {
+              "id": 29,
+              "name": "may",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 40,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L40"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 5
+              },
+              "defaultValue": "5"
+            },
+            {
+              "id": 38,
+              "name": "mon",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 49,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L49"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 1
+              },
+              "defaultValue": "1"
+            },
+            {
+              "id": 35,
+              "name": "nov",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 46,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L46"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 11
+              },
+              "defaultValue": "11"
+            },
+            {
+              "id": 34,
+              "name": "oct",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 45,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L45"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 10
+              },
+              "defaultValue": "10"
+            },
+            {
+              "id": 43,
+              "name": "sat",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 54,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L54"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 6
+              },
+              "defaultValue": "6"
+            },
+            {
+              "id": 33,
+              "name": "sep",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 44,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L44"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 9
+              },
+              "defaultValue": "9"
+            },
+            {
+              "id": 37,
+              "name": "sun",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 48,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L48"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 0
+              },
+              "defaultValue": "0"
+            },
+            {
+              "id": 41,
+              "name": "thu",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 52,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L52"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 4
+              },
+              "defaultValue": "4"
+            },
+            {
+              "id": 39,
+              "name": "tue",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 50,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L50"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 2
+              },
+              "defaultValue": "2"
+            },
+            {
+              "id": 40,
+              "name": "wed",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 51,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L51"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": 3
+              },
+              "defaultValue": "3"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                28,
+                32,
+                36,
+                26,
+                42,
+                25,
+                31,
+                30,
+                27,
+                29,
+                38,
+                35,
+                34,
+                43,
+                33,
+                37,
+                41,
+                39,
+                40
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/constants.ts",
+              "line": 35,
+              "character": 26,
+              "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L35"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 12,
+      "name": "partRegex",
+      "source": {
+        "line": 14,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L14"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 15,
+      "name": "predefined",
+      "source": {
+        "line": 26,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L26"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reflection",
+        "reflection": {
+          "id": 16,
+          "name": "__type",
+          "kind": 65536,
+          "kindString": "Type literal",
+          "flags": {},
+          "children": [
+            {
+              "id": 17,
+              "name": "@annually",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 27,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L27"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": "0 0 1 1 *"
+              },
+              "defaultValue": "'0 0 1 1 *'"
+            },
+            {
+              "id": 21,
+              "name": "@daily",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 31,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L31"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": "0 0 * * *"
+              },
+              "defaultValue": "'0 0 * * *'"
+            },
+            {
+              "id": 22,
+              "name": "@hourly",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 32,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L32"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": "0 * * * *"
+              },
+              "defaultValue": "'0 * * * *'"
+            },
+            {
+              "id": 19,
+              "name": "@monthly",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 29,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L29"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": "0 0 1 * *"
+              },
+              "defaultValue": "'0 0 1 * *'"
+            },
+            {
+              "id": 20,
+              "name": "@weekly",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 30,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L30"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": "0 0 * * 0"
+              },
+              "defaultValue": "'0 0 * * 0'"
+            },
+            {
+              "id": 18,
+              "name": "@yearly",
+              "kind": 1024,
+              "kindString": "Property",
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/constants.ts",
+                  "line": 28,
+                  "character": 1,
+                  "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L28"
+                }
+              ],
+              "type": {
+                "type": "literal",
+                "value": "0 0 1 1 *"
+              },
+              "defaultValue": "'0 0 1 1 *'"
+            }
+          ],
+          "groups": [
+            {
+              "title": "Properties",
+              "children": [
+                17,
+                21,
+                22,
+                19,
+                20,
+                18
+              ]
+            }
+          ],
+          "sources": [
+            {
+              "fileName": "lib/constants.ts",
+              "line": 26,
+              "character": 26,
+              "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L26"
+            }
+          ]
+        }
+      },
+      "value": "..."
+    },
+    {
+      "id": 44,
+      "name": "tokensRegex",
+      "source": {
+        "line": 57,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L57"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 13,
+      "name": "wildcardRegex",
+      "source": {
+        "line": 16,
+        "file": "constants.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/9fad0d6/packages/cron/src/lib/constants.ts#L16"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": null,
+        "name": "RegExp",
+        "packageName": "typescript",
+        "typeArguments": []
+      },
+      "value": "..."
+    }
+  ]
+}
