@@ -2,18 +2,18 @@
   "typeDocJsonParserVersion": "7.2.0",
   "id": 0,
   "name": "@sapphire/timestamp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/timestamp\n\n**Timestamp utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/timestamp?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/timestamp)\n[![npm](https://img.shields.io/npm/v/@sapphire/timestamp?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/timestamp)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Human Readable Milliseconds](#human-readable-milliseconds)\n    -   [Formatting a Date](#formatting-a-date)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/timestamp\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Timestamp } = require('@sapphire/timestamp')` equals `import { Timestamp } from '@sapphire/timestamp'`.\n\n### Human Readable Milliseconds\n\nMilliseconds are often hard for humans to quickly parse, so it's nice to use\nnamed Enum members to make it easier to read.\n\n```typescript\n// Import the Time enum\nconst { Time } = require('@sapphire/timestamp');\n\nsetTimeout(() => {\n\t// Do something in half a second\n}, Time.Second / 2 /* 500 */);\n\nsetTimeout(() => {\n\t// Do something in 6 hours\n}, Time.Hour * 6 /* 21600000 */);\n\nsetTimeout(() => {\n\t// Do something in 1 day\n}, Time.Day /* 86400000 */);\n```\n\n### Formatting a Date\n\n```typescript\n// Import the Timestamp class\nconst { Timestamp } = require('@sapphire/timestamp');\n\n// Saturday 9th March 2019, at 16:20:35:500\nconst date = new Date(2019, 2, 9, 16, 20, 35, 1);\n\n// Format the date with tokens (use square brackets to escape)\nconst timestamp = new Timestamp('MMMM d YYYY[, at ]HH:mm:ss:SSS');\ntimestamp.display(date); // March 9th 2019, at 16:20:35:001\n```\n\n<details>\n\t<summary>\n\t\t<b>View all available tokens</b>\n\t</summary>\n\n```typescript\n// Saturday 9th March 2019, at 16:20:35:500\nconst date = new Date(2019, 2, 9, 16, 20, 35, 1);\n\nnew Timestamp('Y').display(date); // 19\nnew Timestamp('YY').display(date); // 19\nnew Timestamp('YYY').display(date); // 2019\nnew Timestamp('YYYY').display(date); // 2019\nnew Timestamp('Q').display(date); // 1\nnew Timestamp('M').display(date); // 3\nnew Timestamp('MM').display(date); // 03\nnew Timestamp('MMM').display(date); // March\nnew Timestamp('MMMM').display(date); // March\nnew Timestamp('D').display(date); // 9\nnew Timestamp('DD').display(date); // 09\nnew Timestamp('DDD').display(date); // 68\nnew Timestamp('DDDD').display(date); // 68\nnew Timestamp('d').display(date); // 9th\nnew Timestamp('dd').display(date); // Sa\nnew Timestamp('ddd').display(date); // Sat\nnew Timestamp('dddd').display(date); // Saturday\nnew Timestamp('X').display(date); // 1552168835\nnew Timestamp('x').display(date); // 1552168835001\nnew Timestamp('H').display(date); // 16\nnew Timestamp('HH').display(date); // 16\nnew Timestamp('h').display(date); // 4\nnew Timestamp('hh').display(date); // 04\nnew Timestamp('a').display(date); // pm\nnew Timestamp('A').display(date); // PM\nnew Timestamp('m').display(date); // 20\nnew Timestamp('mm').display(date); // 20\nnew Timestamp('s').display(date); // 35\nnew Timestamp('ss').display(date); // 35\nnew Timestamp('S').display(date); // 0\nnew Timestamp('SS').display(date); // 00\nnew Timestamp('SSS').display(date); // 001\nnew Timestamp('t').display(date); // 4:20:35 PM\nnew Timestamp('T').display(date); // 4:20 PM\nnew Timestamp('L').display(date); // 03/09/2019\nnew Timestamp('LL').display(date); // March 09, 2019\nnew Timestamp('LLL').display(date); // March 09, 2019 4:20 PM\nnew Timestamp('LLLL').display(date); // Saturday, March 09, 2019 4:20 PM\nnew Timestamp('l').display(date); // 3/9/2019\nnew Timestamp('ll').display(date); // Mar 09, 2019\nnew Timestamp('lll').display(date); // Mar 09, 2019 4:20 PM\nnew Timestamp('llll').display(date); // Sat, Mar 09, 2019 4:20 PM\nnew Timestamp('Z').display(date); // -05:00\nnew Timestamp('ZZ').display(date); // -05:00\n```\n\n</details>\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
-  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/timestamp@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/timestamp@1.0.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/timestamp@1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/timestamp@1.0.0...@sapphire/timestamp@1.0.1) - (2023-03-15)\n\n## 🏠 Refactor\n\n- **timestamp:** Update Time enum ([5a1e7fe](https://github.com/sapphiredev/utilities/commit/5a1e7fec0699fb1de35faec1d77f5ae548fa6d31))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- **timestamp:** Add usage (#489) ([7ea90f6](https://github.com/sapphiredev/utilities/commit/7ea90f64e4f9b9a33b11c77837ba17e6128b37af))\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/timestamp@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/timestamp@1.0.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n",
   "classes": [
     {
-      "id": 16,
+      "id": 19,
       "name": "Timestamp",
       "source": {
         "line": 125,
         "file": "Timestamp.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L125"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L125"
       },
       "comment": {
         "description": "Timestamp class, parses the pattern once, displays the desired Date or UNIX timestamp with the selected pattern.",
@@ -26,24 +26,24 @@
       "implementsType": [],
       "typeParameters": [],
       "construct": {
-        "id": 38,
+        "id": 41,
         "name": "constructor",
         "source": {
           "line": 142,
           "file": "Timestamp.ts",
           "path": "lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L142"
+          "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L142"
         },
         "comment": {
           "description": null,
           "blockTags": [],
           "modifierTags": []
         },
-        "parentId": 16,
+        "parentId": 19,
         "accessibility": "public",
         "parameters": [
           {
-            "id": 40,
+            "id": 43,
             "name": "pattern",
             "comment": {
               "description": "The pattern to parse",
@@ -61,13 +61,13 @@
       },
       "properties": [
         {
-          "id": 41,
+          "id": 44,
           "name": "pattern",
           "source": {
             "line": 130,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L130"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L130"
           },
           "comment": {
             "description": "The raw pattern",
@@ -79,7 +79,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -91,13 +91,13 @@
           }
         },
         {
-          "id": 42,
+          "id": 45,
           "name": "template",
           "source": {
             "line": 135,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L135"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L135"
           },
           "comment": {
             "description": null,
@@ -109,7 +109,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -119,7 +119,7 @@
             "kind": "array",
             "type": {
               "kind": "reference",
-              "id": 13,
+              "id": 16,
               "name": "TimestampTemplateEntry",
               "packageName": null,
               "typeArguments": []
@@ -129,21 +129,21 @@
       ],
       "methods": [
         {
-          "id": 43,
+          "id": 46,
           "name": "display",
           "source": {
             "line": 152,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L152"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L152"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 44,
+              "id": 47,
               "name": "display",
               "comment": {
                 "description": "Display the current date with the current pattern.",
@@ -158,7 +158,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 45,
+                  "id": 48,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -169,62 +169,7 @@
                   "optional": false,
                   "type": {
                     "kind": "reference",
-                    "id": 12,
-                    "name": "TimeResolvable",
-                    "packageName": null,
-                    "typeArguments": []
-                  }
-                }
-              ],
-              "returnType": {
-                "kind": "intrinsic",
-                "type": "string"
-              }
-            }
-          ]
-        },
-        {
-          "id": 46,
-          "name": "displayUTC",
-          "source": {
-            "line": 161,
-            "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L161"
-          },
-          "parentId": 16,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "signatures": [
-            {
-              "id": 47,
-              "name": "displayUTC",
-              "comment": {
-                "description": "Display the current date utc with the current pattern.",
-                "blockTags": [
-                  {
-                    "name": "since",
-                    "text": "1.0.0"
-                  }
-                ],
-                "modifierTags": []
-              },
-              "typeParameters": [],
-              "parameters": [
-                {
-                  "id": 48,
-                  "name": "time",
-                  "comment": {
-                    "description": "The time to display in utc",
-                    "blockTags": [],
-                    "modifierTags": []
-                  },
-                  "rest": false,
-                  "optional": true,
-                  "type": {
-                    "kind": "reference",
-                    "id": 12,
+                    "id": 15,
                     "name": "TimeResolvable",
                     "packageName": null,
                     "typeArguments": []
@@ -240,20 +185,75 @@
         },
         {
           "id": 49,
-          "name": "edit",
+          "name": "displayUTC",
           "source": {
-            "line": 171,
+            "line": 161,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L171"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L161"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
               "id": 50,
+              "name": "displayUTC",
+              "comment": {
+                "description": "Display the current date utc with the current pattern.",
+                "blockTags": [
+                  {
+                    "name": "since",
+                    "text": "1.0.0"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 51,
+                  "name": "time",
+                  "comment": {
+                    "description": "The time to display in utc",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": true,
+                  "type": {
+                    "kind": "reference",
+                    "id": 15,
+                    "name": "TimeResolvable",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "name": "edit",
+          "source": {
+            "line": 171,
+            "file": "Timestamp.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L171"
+          },
+          "parentId": 19,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 53,
               "name": "edit",
               "comment": {
                 "description": "Edits the current pattern.",
@@ -272,7 +272,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 51,
+                  "id": 54,
                   "name": "pattern",
                   "comment": {
                     "description": "The new pattern for this instance",
@@ -289,7 +289,7 @@
               ],
               "returnType": {
                 "kind": "reference",
-                "id": 16,
+                "id": 19,
                 "name": "Timestamp",
                 "packageName": null,
                 "typeArguments": []
@@ -298,21 +298,21 @@
           ]
         },
         {
-          "id": 52,
+          "id": 55,
           "name": "toString",
           "source": {
             "line": 180,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L180"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L180"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 53,
+              "id": 56,
               "name": "toString",
               "comment": {
                 "description": "Defines the toString behavior of Timestamp.",
@@ -329,21 +329,21 @@
           ]
         },
         {
-          "id": 28,
+          "id": 31,
           "name": "display",
           "source": {
             "line": 220,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L220"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L220"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "private",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 29,
+              "id": 32,
               "name": "display",
               "comment": {
                 "description": "Display the current date with the current pattern.",
@@ -358,7 +358,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 30,
+                  "id": 33,
                   "name": "template",
                   "comment": {
                     "description": "The pattern to parse",
@@ -371,7 +371,7 @@
                     "kind": "array",
                     "type": {
                       "kind": "reference",
-                      "id": 13,
+                      "id": 16,
                       "name": "TimestampTemplateEntry",
                       "packageName": null,
                       "typeArguments": []
@@ -379,7 +379,7 @@
                   }
                 },
                 {
-                  "id": 31,
+                  "id": 34,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -418,21 +418,21 @@
           ]
         },
         {
-          "id": 17,
+          "id": 20,
           "name": "displayArbitrary",
           "source": {
             "line": 190,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L190"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L190"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 18,
+              "id": 21,
               "name": "displayArbitrary",
               "comment": {
                 "description": "Display the current date with the current pattern.",
@@ -447,7 +447,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 19,
+                  "id": 22,
                   "name": "pattern",
                   "comment": {
                     "description": "The pattern to parse",
@@ -462,7 +462,7 @@
                   }
                 },
                 {
-                  "id": 20,
+                  "id": 23,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -473,7 +473,7 @@
                   "optional": false,
                   "type": {
                     "kind": "reference",
-                    "id": 12,
+                    "id": 15,
                     "name": "TimeResolvable",
                     "packageName": null,
                     "typeArguments": []
@@ -488,21 +488,21 @@
           ]
         },
         {
-          "id": 21,
+          "id": 24,
           "name": "displayUTCArbitrary",
           "source": {
             "line": 200,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L200"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L200"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 22,
+              "id": 25,
               "name": "displayUTCArbitrary",
               "comment": {
                 "description": "Display the current date utc with the current pattern.",
@@ -517,7 +517,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 23,
+                  "id": 26,
                   "name": "pattern",
                   "comment": {
                     "description": "The pattern to parse",
@@ -532,7 +532,7 @@
                   }
                 },
                 {
-                  "id": 24,
+                  "id": 27,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -543,7 +543,7 @@
                   "optional": false,
                   "type": {
                     "kind": "reference",
-                    "id": 12,
+                    "id": 15,
                     "name": "TimeResolvable",
                     "packageName": null,
                     "typeArguments": []
@@ -558,21 +558,21 @@
           ]
         },
         {
-          "id": 32,
+          "id": 35,
           "name": "parse",
           "source": {
             "line": 232,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L232"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L232"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "private",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 33,
+              "id": 36,
               "name": "parse",
               "comment": {
                 "description": "Parses the pattern.",
@@ -587,7 +587,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 34,
+                  "id": 37,
                   "name": "pattern",
                   "comment": {
                     "description": "The pattern to parse",
@@ -606,7 +606,7 @@
                 "kind": "array",
                 "type": {
                   "kind": "reference",
-                  "id": 13,
+                  "id": 16,
                   "name": "TimestampTemplateEntry",
                   "packageName": null,
                   "typeArguments": []
@@ -616,21 +616,21 @@
           ]
         },
         {
-          "id": 35,
+          "id": 38,
           "name": "resolveDate",
           "source": {
             "line": 261,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L261"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L261"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "private",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 36,
+              "id": 39,
               "name": "resolveDate",
               "comment": {
                 "description": "Resolves a date.",
@@ -645,7 +645,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 37,
+                  "id": 40,
                   "name": "time",
                   "comment": {
                     "description": "The time to parse",
@@ -656,7 +656,7 @@
                   "optional": false,
                   "type": {
                     "kind": "reference",
-                    "id": 12,
+                    "id": 15,
                     "name": "TimeResolvable",
                     "packageName": null,
                     "typeArguments": []
@@ -674,21 +674,21 @@
           ]
         },
         {
-          "id": 25,
+          "id": 28,
           "name": "utc",
           "source": {
             "line": 209,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L209"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L209"
           },
-          "parentId": 16,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 26,
+              "id": 29,
               "name": "utc",
               "comment": {
                 "description": "Creates a UTC Date object to work with.",
@@ -703,7 +703,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 27,
+                  "id": 30,
                   "name": "time",
                   "comment": {
                     "description": "The date to convert to utc",
@@ -755,7 +755,7 @@
         "line": 1,
         "file": "constants.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L1"
       },
       "comment": {
         "description": null,
@@ -765,13 +765,13 @@
       "external": false,
       "members": [
         {
-          "id": 6,
+          "id": 8,
           "name": "Day",
           "source": {
-            "line": 6,
+            "line": 8,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L8"
           },
           "comment": {
             "description": null,
@@ -782,13 +782,13 @@
           "value": "86400000"
         },
         {
-          "id": 5,
+          "id": 7,
           "name": "Hour",
           "source": {
-            "line": 5,
+            "line": 7,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L7"
           },
           "comment": {
             "description": null,
@@ -799,13 +799,30 @@
           "value": "3600000"
         },
         {
-          "id": 2,
-          "name": "Millisecond",
+          "id": 3,
+          "name": "Microsecond",
           "source": {
-            "line": 2,
+            "line": 3,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L3"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "0.001"
+        },
+        {
+          "id": 4,
+          "name": "Millisecond",
+          "source": {
+            "line": 4,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L4"
           },
           "comment": {
             "description": null,
@@ -816,13 +833,13 @@
           "value": "1"
         },
         {
-          "id": 4,
+          "id": 6,
           "name": "Minute",
           "source": {
-            "line": 4,
+            "line": 6,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L4"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L6"
           },
           "comment": {
             "description": null,
@@ -833,13 +850,13 @@
           "value": "60000"
         },
         {
-          "id": 7,
+          "id": 10,
           "name": "Month",
           "source": {
-            "line": 7,
+            "line": 10,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L10"
           },
           "comment": {
             "description": null,
@@ -850,13 +867,30 @@
           "value": "2628000000"
         },
         {
-          "id": 3,
-          "name": "Second",
+          "id": 2,
+          "name": "Nanosecond",
           "source": {
-            "line": 3,
+            "line": 2,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L3"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L2"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "0.000001"
+        },
+        {
+          "id": 5,
+          "name": "Second",
+          "source": {
+            "line": 5,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L5"
           },
           "comment": {
             "description": null,
@@ -867,13 +901,30 @@
           "value": "1000"
         },
         {
-          "id": 8,
-          "name": "Year",
+          "id": 9,
+          "name": "Week",
           "source": {
-            "line": 8,
+            "line": 9,
             "file": "constants.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L9"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "value": "604800000"
+        },
+        {
+          "id": 11,
+          "name": "Year",
+          "source": {
+            "line": 11,
+            "file": "constants.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L11"
           },
           "comment": {
             "description": null,
@@ -889,13 +940,13 @@
   "functions": [],
   "interfaces": [
     {
-      "id": 13,
+      "id": 16,
       "name": "TimestampTemplateEntry",
       "source": {
         "line": 117,
         "file": "Timestamp.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L117"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L117"
       },
       "comment": {
         "description": null,
@@ -906,20 +957,20 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 15,
+          "id": 18,
           "name": "content",
           "source": {
             "line": 119,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L119"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L119"
           },
           "comment": {
             "description": null,
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 13,
+          "parentId": 16,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -936,20 +987,20 @@
           }
         },
         {
-          "id": 14,
+          "id": 17,
           "name": "type",
           "source": {
             "line": 118,
             "file": "Timestamp.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L118"
+            "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L118"
           },
           "comment": {
             "description": null,
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 13,
+          "parentId": 16,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -963,13 +1014,13 @@
   "namespaces": [],
   "typeAliases": [
     {
-      "id": 12,
+      "id": 15,
       "name": "TimeResolvable",
       "source": {
         "line": 115,
         "file": "Timestamp.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/Timestamp.ts#L115"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/Timestamp.ts#L115"
       },
       "comment": {
         "description": null,
@@ -1002,13 +1053,13 @@
   ],
   "variables": [
     {
-      "id": 9,
+      "id": 12,
       "name": "days",
       "source": {
-        "line": 11,
+        "line": 14,
         "file": "constants.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L11"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L14"
       },
       "comment": {
         "description": null,
@@ -1026,13 +1077,13 @@
       "value": "..."
     },
     {
-      "id": 10,
+      "id": 13,
       "name": "months",
       "source": {
-        "line": 13,
+        "line": 16,
         "file": "constants.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L13"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L16"
       },
       "comment": {
         "description": null,
@@ -1050,13 +1101,13 @@
       "value": "..."
     },
     {
-      "id": 11,
+      "id": 14,
       "name": "tokens",
       "source": {
-        "line": 15,
+        "line": 18,
         "file": "constants.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2bfcb56/packages/timestamp/src/lib/constants.ts#L15"
+        "url": "https://github.com/sapphiredev/utilities/blob/21627a9/packages/timestamp/src/lib/constants.ts#L18"
       },
       "comment": {
         "description": null,
