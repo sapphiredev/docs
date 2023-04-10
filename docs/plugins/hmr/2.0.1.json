@@ -1,0 +1,470 @@
+{
+  "typeDocJsonParserVersion": "7.2.0",
+  "id": 0,
+  "name": "@sapphire/plugin-hmr",
+  "version": "2.0.1",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/plugin-hmr\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> for super-speed HMR.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-hmr?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-hmr)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-hmr?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-hmr)\n\n</div>\n\n## Description\n\nThis plugin provides a HMR (Hot Module Replacement) feature for @sapphire/framework. This allows you to add, delete, and\nupdate commands, listeners, and other pieces without having to restart your bot. This allows for rapid iteration and prototyping without your bot slowing you down.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Easy to use\n\n## Installation\n\n`@sapphire/plugin-hmr` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-hmr @sapphire/framework\n```\n\n---\n\n## Usage\n\n### JavaScript\n\nIn your main or setup file, register the plugin:\n\n```javascript\nrequire('@sapphire/plugin-hmr/register');\n```\n\nOr if you want to make sure the plugin is only loaded in development, you can register it dynamically like so:\n\n```javascript\nrequire('@sapphire/plugin-hmr/register');\n\nconst client = new SapphireClient({\n\t/* your bot options */\n\thmr: {\n\t\tenabled: process.env.NODE_ENV === 'development'\n\t}\n});\n\nasync function main() {\n\tawait client.login();\n}\n\nvoid main();\n```\n\n### TypeScript\n\nIn your main or setup file, register the plugin:\n\n```typescript\nimport '@sapphire/plugin-hmr/register';\n```\n\nOr if you want to make sure the plugin is only loaded in development, you can register it dynamically like so:\n\n```typescript\nimport '@sapphire/plugin-hmr/register';\n\nconst client = new SapphireClient({\n\t/* your bot options */\n\thmr: {\n\t\tenabled: process.env.NODE_ENV === 'development'\n\t}\n});\n\nasync function main() {\n\tawait client.login();\n}\n\nvoid main();\n```\n\nIn order for HMR to pick up your compiled JavaScript files, you will need to recompile your code. To that end, we will configure a `dev` script in `package.json` scripts that runs `build` in parallel with `start`:\n\n```json\n\"scripts\": {\n\t\"dev\": \"run-p watch start\",\n\t\"build\": \"tsc\",\n\t\"watch\": \"tsc --watch\",\n\t\"start\": \"node dist/index.js\"\n}\n```\n\n_Note:_ This uses the `run-p` script which is part of [`npm-run-all`](https://github.com/mysticatea/npm-run-all)\n\n_Note 2:_ Please do note that because the processes are started simultaneously you should run `build` at least once before running `dev`, otherwise the `start` process will fail because there are no files to run just yet.\n\nthen run your bot using the dev script. You can replace npm with your package manager of choice.\n\n```sh\nnpm run start\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-hmr@2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@2.0.0...@sapphire/plugin-hmr@2.0.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **hmr:** Fixed compatibility with TS 5.x ([24fa3fb](https://github.com/sapphiredev/plugins/commit/24fa3fb0dc1848af83ebca02d285d890851b061b))\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n# [@sapphire/plugin-hmr@2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.2.2...@sapphire/plugin-hmr@2.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-hmr@1.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.2.0...@sapphire/plugin-hmr@1.2.2) - (2022-07-11)\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n# [1.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.1.1...@sapphire/plugin-hmr@1.2.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n-   **hmr:** add silent flag ([#233](https://github.com/sapphiredev/plugins/issues/233)) ([4692d34](https://github.com/sapphiredev/plugins/commit/4692d3442c4bf85e1c46cc2c18da0a46f2c3de4f))\n\n## [1.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.1.0...@sapphire/plugin-hmr@1.1.1) (2022-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-hmr\n\n# [1.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.0.1...@sapphire/plugin-hmr@1.1.0) (2022-01-13)\n\n### Features\n\n-   **hmr:** make it possible set the chokidar watch options ([#223](https://github.com/sapphiredev/plugins/issues/223)) ([3fe7e48](https://github.com/sapphiredev/plugins/commit/3fe7e48a3577df6d9addc613cae74ccb07e41639))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-hmr@1.0.0...@sapphire/plugin-hmr@1.0.1) (2022-01-08)\n\n### Bug Fixes\n\n-   **hmr:** improve logging ([#212](https://github.com/sapphiredev/plugins/issues/212)) ([94efab7](https://github.com/sapphiredev/plugins/commit/94efab789b7b72672f8cd89b00c729ef4f6c795c))\n\n# 1.0.0 (2022-01-08)\n\n### Features\n\n-   add HMR plugin ([#209](https://github.com/sapphiredev/plugins/issues/209)) ([4a18bb1](https://github.com/sapphiredev/plugins/commit/4a18bb1377a8d506fddc5bb991430503902d393b))\n",
+  "classes": [],
+  "enums": [],
+  "functions": [
+    {
+      "id": 1,
+      "name": "start",
+      "source": {
+        "line": 20,
+        "file": "hmr.ts",
+        "path": "packages/hmr/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/ab354dc/packages/hmr/src/lib/hmr.ts#L20"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 2,
+          "name": "start",
+          "comment": {
+            "description": "Starts HMR for all registered {@link Store Stores} in {@link container.stores the main container}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 3,
+              "name": "__namedParameter",
+              "comment": {
+                "description": "The {@link HMROptions}.\nThis includes [all options from chokidar](https://github.com/paulmillr/chokidar#persistence),\nas well as whether the HMR should be enabled.\nThe default options are `{ enabled: true }`,\nand if not provided in the object then `enabled` is also set to true.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "rest": false,
+              "optional": false,
+              "type": {
+                "kind": "reference",
+                "id": 4,
+                "name": "HMROptions",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "intrinsic",
+            "type": "void"
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "id": 4,
+      "name": "HMROptions",
+      "source": {
+        "line": 5,
+        "file": "hmr.ts",
+        "path": "packages/hmr/src/lib",
+        "url": "https://github.com/sapphiredev/plugins/blob/ab354dc/packages/hmr/src/lib/hmr.ts#L5"
+      },
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [],
+      "properties": [
+        {
+          "id": 15,
+          "name": "alwaysStat",
+          "source": {
+            "line": 130,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "If relying upon the [`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object that\nmay get passed with `add`, `addDir`, and `change` events, set this to `true` to ensure it is\nprovided even in cases where it wasn't already available from the underlying watch events.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 20,
+          "name": "atomic",
+          "source": {
+            "line": 162,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "`true` if `useFsEvents` and `usePolling` are `false`). Automatically filters out artifacts\nthat occur when using editors that use \"atomic writes\" instead of writing directly to the\nsource file. If a file is re-added within 100 ms of being deleted, Chokidar emits a `change`\nevent rather than `unlink` then `add`. If the default of 100 ms does not work well for you,\nyou can override it by setting `atomic` to a custom value, in milliseconds.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "number"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        {
+          "id": 21,
+          "name": "awaitWriteFinish",
+          "source": {
+            "line": 167,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "can be set to an object in order to adjust timing params:",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "boolean"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "AwaitWriteFinishOptions",
+                "packageName": "chokidar",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 18,
+          "name": "binaryInterval",
+          "source": {
+            "line": 146,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "Interval of file system polling for binary files. ([see list of binary extensions](https://gi\nthub.com/sindresorhus/binary-extensions/blob/master/binary-extensions.json))",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 11,
+          "name": "cwd",
+          "source": {
+            "line": 101,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "The base directory from which watch `paths` are to be derived. Paths emitted with events will\nbe relative to this.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 16,
+          "name": "depth",
+          "source": {
+            "line": 135,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "If set, limits how many levels of subdirectories will be traversed.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 12,
+          "name": "disableGlobbing",
+          "source": {
+            "line": 107,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "If set to true then the strings passed to .watch() and .add() are treated as literal path\n names, even if they look like globs. Default: false.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 5,
+          "name": "enabled",
+          "source": {
+            "line": 6,
+            "file": "hmr.ts",
+            "path": "packages/hmr/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/ab354dc/packages/hmr/src/lib/hmr.ts#L6"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 10,
+          "name": "followSymlinks",
+          "source": {
+            "line": 95,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "When `false`, only the symlinks themselves will be watched for changes instead of following\nthe link references and bubbling events through the link's path.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 9,
+          "name": "ignoreInitial",
+          "source": {
+            "line": 89,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "If set to `false` then `add`/`addDir` events are also emitted for matching paths while\ninstantiating the watching as chokidar discovers these file paths (before the `ready` event).",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 19,
+          "name": "ignorePermissionErrors",
+          "source": {
+            "line": 153,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "Indicates whether to watch files that don't have read permissions if possible. If watching\n fails due to `EPERM` or `EACCES` with this set to `true`, the errors will be suppressed\n silently.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 8,
+          "name": "ignored",
+          "source": {
+            "line": 83,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "([anymatch](https://github.com/micromatch/anymatch)-compatible definition) Defines files/paths to\nbe ignored. The whole relative or absolute path is tested, not just filename. If a function\nwith two arguments is provided, it gets called twice per path - once with a single argument\n(the path), second time with two arguments (the path and the\n[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object of that path).",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "AnymatchMatcher",
+            "packageName": "anymatch",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 17,
+          "name": "interval",
+          "source": {
+            "line": 140,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "Interval of file system polling.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 7,
+          "name": "persistent",
+          "source": {
+            "line": 74,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "Indicates whether the process should continue to run as long as files are being watched. If\nset to `false` when using `fsevents` to watch, no more events will be emitted after `ready`,\neven if the process continues to run.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 6,
+          "name": "silent",
+          "source": {
+            "line": 7,
+            "file": "hmr.ts",
+            "path": "packages/hmr/src/lib",
+            "url": "https://github.com/sapphiredev/plugins/blob/ab354dc/packages/hmr/src/lib/hmr.ts#L7"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 14,
+          "name": "useFsEvents",
+          "source": {
+            "line": 123,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "Whether to use the `fsevents` watching interface if available. When set to `true` explicitly\nand `fsevents` is available this supercedes the `usePolling` setting. When set to `false` on\nOS X, `usePolling: true` becomes the default.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        },
+        {
+          "id": 13,
+          "name": "usePolling",
+          "source": {
+            "line": 116,
+            "file": "index.d.ts",
+            "path": "node_modules/chokidar/types",
+            "url": null
+          },
+          "comment": {
+            "description": "Whether to use fs.watchFile (backed by polling), or fs.watch. If polling leads to high CPU\nutilization, consider setting this to `false`. It is typically necessary to **set this to\n`true` to successfully watch files over a network**, and it may be necessary to successfully\nwatch files in other non-standard situations. Setting to `true` explicitly on OS X overrides\nthe `useFsEvents` default.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 4,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ],
+      "methods": []
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": [],
+  "variables": []
+}
