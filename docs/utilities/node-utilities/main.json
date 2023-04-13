@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/node-utilities",
   "version": "1.0.0",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/node-utilities\n\n**Common NodeJS utilities for the Sapphire Community.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/node-utilities?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/node-utilities)\n[![npm](https://img.shields.io/npm/v/@sapphire/node-utilities?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/node-utilities)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [`findFilesRecursively`](#findfilesrecursively)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-)\n\n## Features\n\n-   Written in TypeScript\n-   Offers CommonJS, and ESM bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/node-utilities\n```\n\n## Usage\n\n### `findFilesRecursively`\n\nRecursively searches for files in a directory and returns an [`AsyncIterableIterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols) of the found paths.\n\n```ts\nimport { findFilesRecursively } from '@sapphire/node-utilities';\n\nconst files = findFilesRecursively('./src');\nfor await (const file of files) {\n\tconsole.log(file);\n}\n\n// This, for example, could log:\n// /root/src/index.js\n// /root/src/database.csv\n// /root/src/lib/utils/constants.json\n\n// Alternate forms:\nconst files = findFilesRecursivelyStringStartsWith('./src', 'index'); // filename starts with \"index\"\nconst files = findFilesRecursivelyStringEndsWith('./src', '.js'); // filename ends with \".js\"\nconst files = findFilesRecursivelyStringIncludes('./src', 'database'); // filename includes \"database\"\nconst files = findFilesRecursivelyRegex('./src', /\\.[tj]sx?$/); // filename matches the regex\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/node-utilities\n\n**Common NodeJS utilities for the Sapphire Community.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/node-utilities?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/node-utilities)\n[![npm](https://img.shields.io/npm/v/@sapphire/node-utilities?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/node-utilities)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [`findFilesRecursively`](#findfilesrecursively)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-)\n\n## Features\n\n-   Written in TypeScript\n-   Offers CommonJS, and ESM bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/node-utilities\n```\n\n## Usage\n\n### `findFilesRecursively`\n\nRecursively searches for files in a directory and returns an [`AsyncIterableIterator`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols) of the found paths.\n\n```ts\nimport { findFilesRecursively } from '@sapphire/node-utilities';\n\nconst files = findFilesRecursively('./src');\nfor await (const file of files) {\n\tconsole.log(file);\n}\n\n// This, for example, could log:\n// /root/src/index.js\n// /root/src/database.csv\n// /root/src/lib/utils/constants.json\n\n// Alternate forms:\nconst files = findFilesRecursivelyStringStartsWith('./src', 'index'); // filename starts with \"index\"\nconst files = findFilesRecursivelyStringEndsWith('./src', '.js'); // filename ends with \".js\"\nconst files = findFilesRecursivelyStringIncludes('./src', 'database'); // filename includes \"database\"\nconst files = findFilesRecursivelyRegex('./src', /\\.[tj]sx?$/); // filename matches the regex\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/node-utilities@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/node-utilities@1.0.0) - (2022-10-02)\n\n## 🚀 Features\n\n- Add `@sapphire/node-utilities` (#468) ([1606208](https://github.com/sapphiredev/utilities/commit/1606208ce2e1ca8a6b307d14ce7f119e6c914a97))\n\n",
   "classes": [],
   "enums": [],
@@ -15,7 +15,7 @@
         "line": 30,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
       },
       "comment": {
         "description": null,
@@ -88,7 +88,7 @@
                       "fileName": "lib/findFilesRecursively.ts",
                       "line": 30,
                       "character": 71,
-                      "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/node-utilities/src/lib/findFilesRecursively.ts#L30"
                     }
                   ],
                   "signatures": [
@@ -143,7 +143,7 @@
         "line": 87,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/node-utilities/src/lib/findFilesRecursively.ts#L87"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/node-utilities/src/lib/findFilesRecursively.ts#L87"
       },
       "comment": {
         "description": null,
@@ -226,7 +226,7 @@
         "line": 65,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/node-utilities/src/lib/findFilesRecursively.ts#L65"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/node-utilities/src/lib/findFilesRecursively.ts#L65"
       },
       "comment": {
         "description": null,
@@ -306,7 +306,7 @@
         "line": 77,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/node-utilities/src/lib/findFilesRecursively.ts#L77"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/node-utilities/src/lib/findFilesRecursively.ts#L77"
       },
       "comment": {
         "description": null,
@@ -386,7 +386,7 @@
         "line": 51,
         "file": "findFilesRecursively.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/node-utilities/src/lib/findFilesRecursively.ts#L51"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/node-utilities/src/lib/findFilesRecursively.ts#L51"
       },
       "comment": {
         "description": null,
