@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/event-iterator",
   "version": "1.6.1",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/event-iterator\n\n**Turns event emitter events into async iterators.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/event-iterator?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/event-iterator)\n[![npm](https://img.shields.io/npm/v/@sapphire/event-iterator?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/event-iterator)\n\n</div>\n\n**Table of Contents**\n\n-   [Description](#description)\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Basic Usage](#basic-usage)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nThere is often a need to have async iterators with fine control, timeouts, limits, filter, and so on, this package exists to satisfy those needs. By implementing an [async iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator) which can be used with [`for await...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of) loops.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/event-iterator\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { EventIterator } = require('@sapphire/event-iterator')` equals `import { EventIterator } from '@sapphire/event-iterator'`.\n\n### Basic Usage\n\n```typescript\n// Import the EventIterator class\nconst { EventIterator } = require('@sapphire/event-iterator');\n\n// Define an event iterator with a limit of 2 entries\nconst iterator = new EventIterator(emitter, 'message', { limit: 2 });\n\nemitter.emit('message', { id: 'foo' });\nemitter.emit('message', { id: 'bar' });\nemitter.emit('message', { id: 'baz' });\n\nfor await (const message of iterator) {\n\tconsole.log(message);\n\t// Logs: { id: 'foo' }\n\t// Logs: { id: 'bar' }\n}\n\n// The iterator ended at second item, { id: 'baz' } is not collected due to the specified limit.\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/event-iterator\n\n**Turns event emitter events into async iterators.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/event-iterator?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/event-iterator)\n[![npm](https://img.shields.io/npm/v/@sapphire/event-iterator?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/event-iterator)\n\n</div>\n\n**Table of Contents**\n\n-   [Description](#description)\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Basic Usage](#basic-usage)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nThere is often a need to have async iterators with fine control, timeouts, limits, filter, and so on, this package exists to satisfy those needs. By implementing an [async iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator) which can be used with [`for await...of`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of) loops.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/event-iterator\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { EventIterator } = require('@sapphire/event-iterator')` equals `import { EventIterator } from '@sapphire/event-iterator'`.\n\n### Basic Usage\n\n```typescript\n// Import the EventIterator class\nconst { EventIterator } = require('@sapphire/event-iterator');\n\n// Define an event iterator with a limit of 2 entries\nconst iterator = new EventIterator(emitter, 'message', { limit: 2 });\n\nemitter.emit('message', { id: 'foo' });\nemitter.emit('message', { id: 'bar' });\nemitter.emit('message', { id: 'baz' });\n\nfor await (const message of iterator) {\n\tconsole.log(message);\n\t// Logs: { id: 'foo' }\n\t// Logs: { id: 'bar' }\n}\n\n// The iterator ended at second item, { id: 'baz' } is not collected due to the specified limit.\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [1.6.1](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.6.0...@sapphire/event-iterator@1.6.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n# [1.6.0](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.5.0...@sapphire/event-iterator@1.6.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [1.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.4.0...@sapphire/event-iterator@1.5.0) (2022-01-28)\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n# [1.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.3.3...@sapphire/event-iterator@1.4.0) (2022-01-10)\n\n### Features\n\n-   **event-iterator:** do not bundle for browsers ([#237](https://github.com/sapphiredev/utilities/issues/237)) ([c922e61](https://github.com/sapphiredev/utilities/commit/c922e613bacdfb1dd428cc174c0742b24642827e))\n\n## [1.3.3](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.3.2...@sapphire/event-iterator@1.3.3) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.3.2](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.3.1...@sapphire/event-iterator@1.3.2) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [1.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.3.0...@sapphire/event-iterator@1.3.1) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n# [1.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.2.4...@sapphire/event-iterator@1.3.0) (2021-10-04)\n\n### Features\n\n-   **event-iterator:** set minimum NodeJS to v14 ([57110ee](https://github.com/sapphiredev/utilities/commit/57110ee1a25879d7cde62b4cfc4d9e128886bd54))\n\n## [1.2.4](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.2.3...@sapphire/event-iterator@1.2.4) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.2.3](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.2.2...@sapphire/event-iterator@1.2.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n\n## [1.2.2](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.2.1...@sapphire/event-iterator@1.2.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **event-iterator:** mark package as side effect free ([780129d](https://github.com/sapphiredev/utilities/commit/780129d1c8d16bb39f80cb70f70074229106bae7))\n\n## [1.2.1](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.2.0...@sapphire/event-iterator@1.2.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# [1.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.8...@sapphire/event-iterator@1.2.0) (2021-04-21)\n\n### Features\n\n-   add @sapphire/embed-jsx ([#100](https://github.com/sapphiredev/utilities/issues/100)) ([7277a23](https://github.com/sapphiredev/utilities/commit/7277a236015236ed8e81b7882875410facc4ce17))\n\n## [1.1.8](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.7...@sapphire/event-iterator@1.1.8) (2021-04-19)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#102](https://github.com/sapphiredev/utilities/issues/102)) ([835b408](https://github.com/sapphiredev/utilities/commit/835b408e8e57130c3787aca2e32613346ff23e4d))\n\n## [1.1.7](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.6...@sapphire/event-iterator@1.1.7) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.1.6](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.5...@sapphire/event-iterator@1.1.6) (2021-03-16)\n\n### Bug Fixes\n\n-   remove terser from all packages ([#79](https://github.com/sapphiredev/utilities/issues/79)) ([1cfe4e7](https://github.com/sapphiredev/utilities/commit/1cfe4e7c804e62c142495686d2b83b81d0026c02))\n\n## [1.1.5](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.4...@sapphire/event-iterator@1.1.5) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.1.4](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.3...@sapphire/event-iterator@1.1.4) (2021-01-16)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.1.3](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.2...@sapphire/event-iterator@1.1.3) (2021-01-01)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.1...@sapphire/event-iterator@1.1.2) (2020-12-26)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n## [1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.1.0...@sapphire/event-iterator@1.1.1) (2020-12-22)\n\n**Note:** Version bump only for package @sapphire/event-iterator\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.0.1...@sapphire/event-iterator@1.1.0) (2020-11-15)\n\n### Bug Fixes\n\n-   **event-iterator:** pass keep_classnames to terser ([d903fe6](https://github.com/sapphiredev/utilities/commit/d903fe60d6ea3705b88e39c3dd9e7d0f60fea8a0))\n-   **event-iterator:** pass keep_fnames to terser ([d1398cd](https://github.com/sapphiredev/utilities/commit/d1398cd7c1f5c0445e141551dc3fe8ba4800cbad))\n\n### Features\n\n-   added time-utilities package ([#26](https://github.com/sapphiredev/utilities/issues/26)) ([f17a333](https://github.com/sapphiredev/utilities/commit/f17a3339667a452e8745fad7884272176e5d65e8))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/event-iterator@1.0.0...@sapphire/event-iterator@1.0.1) (2020-11-04)\n\n### Bug Fixes\n\n-   **event-iterator:** properly specify ESM and CommonJS exports ([ee0c114](https://github.com/sapphiredev/utilities/commit/ee0c114b09c9d003cce79a5899d4b109a04bdf6b))\n\n# 1.0.0 (2020-10-11)\n\n### Features\n\n-   added event-iterator package ([#19](https://github.com/sapphiredev/utilities/issues/19)) ([8c80a76](https://github.com/sapphiredev/utilities/commit/8c80a76f81069429a882550589f43d4b4f8a4bcb))\n",
   "classes": [
     {
@@ -13,7 +13,7 @@
         "line": 31,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L31"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L31"
       },
       "comment": {
         "description": "An EventIterator, used for asynchronously iterating over received values.",
@@ -61,7 +61,7 @@
           "line": 88,
           "file": "index.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L88"
+          "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L88"
         },
         "comment": {
           "description": null,
@@ -140,7 +140,7 @@
             "line": 50,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L50"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L50"
           },
           "comment": {
             "description": "Whether or not the EventIterator has ended.",
@@ -165,7 +165,7 @@
             "line": 55,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L55"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L55"
           },
           "comment": {
             "description": "The amount of idle time in ms before moving on.",
@@ -190,7 +190,7 @@
             "line": 75,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L75"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L75"
           },
           "comment": {
             "description": "The timer to track when this will idle out.",
@@ -227,7 +227,7 @@
             "line": 70,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L70"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L70"
           },
           "comment": {
             "description": "The limit before ending the EventIterator.",
@@ -252,7 +252,7 @@
             "line": 65,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L65"
           },
           "comment": {
             "description": "The amount of events that have passed the filter.",
@@ -277,7 +277,7 @@
             "line": 80,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L80"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L80"
           },
           "comment": {
             "description": null,
@@ -303,7 +303,7 @@
                   "fileName": "index.ts",
                   "line": 80,
                   "character": 8,
-                  "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L80"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L80"
                 }
               ],
               "signatures": [
@@ -372,7 +372,7 @@
             "line": 60,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L60"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L60"
           },
           "comment": {
             "description": "The queue of received values.",
@@ -403,7 +403,7 @@
             "line": 35,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L35"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L35"
           },
           "comment": {
             "description": "The emitter to listen to.",
@@ -431,7 +431,7 @@
             "line": 40,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L40"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L40"
           },
           "comment": {
             "description": "The event the event iterator is listening for to receive values from.",
@@ -456,7 +456,7 @@
             "line": 45,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L45"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L45"
           },
           "comment": {
             "description": "The filter used to filter out values.",
@@ -492,7 +492,7 @@
             "line": 109,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L109"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L109"
           },
           "comment": {
             "description": "Whether or not the EventIterator has ended.",
@@ -519,7 +519,7 @@
             "line": 187,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L187"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L187"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -561,7 +561,7 @@
             "line": 116,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L116"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L116"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -592,7 +592,7 @@
             "line": 130,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L130"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L130"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -646,7 +646,7 @@
             "line": 194,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L194"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L194"
           },
           "parentId": 11,
           "accessibility": "protected",
@@ -696,7 +696,7 @@
             "line": 171,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L171"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L171"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -750,7 +750,7 @@
             "line": 179,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L179"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L179"
           },
           "parentId": 11,
           "accessibility": "public",
@@ -810,7 +810,7 @@
         "line": 11,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L11"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L11"
       },
       "comment": {
         "description": "Options to be passed to an EventIterator.",
@@ -834,7 +834,7 @@
             "line": 15,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L15"
           },
           "comment": {
             "description": "The filter.",
@@ -866,7 +866,7 @@
             "line": 20,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L20"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L20"
           },
           "comment": {
             "description": "The timeout in ms before ending the EventIterator.",
@@ -887,7 +887,7 @@
             "line": 25,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L25"
           },
           "comment": {
             "description": "The limit of events that pass the filter to iterate.",
@@ -914,7 +914,7 @@
         "line": 6,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L6"
       },
       "comment": {
         "description": null,
@@ -943,7 +943,7 @@
               "fileName": "index.ts",
               "line": 6,
               "character": 37,
-              "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/event-iterator/src/index.ts#L6"
+              "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/event-iterator/src/index.ts#L6"
             }
           ],
           "signatures": [
