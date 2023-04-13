@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/phisherman",
   "version": "1.4.1",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/phisherman\n\n**Wrapper around [Phisherman](https://phisherman.gg) to easily check and report domains**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/phisherman?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/phisherman)\n[![npm](https://img.shields.io/npm/v/@sapphire/phisherman?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/phisherman)\n\n</div>\n\n## Description\n\nWith @sapphire/phisherman, you can have an out of the box integration with [Phisherman](https://phisherman.gg). Phisherman is a centralised database of phishing and scam links. It is designed for use with Discord bots, allowing them to utilise the Phisherman API to cross-check URLs against our known phishing links.\n\nNote: Phisherman is currently in early access. For more information or to request access, please visit their [discord server](https://discord.gg/QwrpmTgvWy).\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Easy to use\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/phisherman\n```\n\n---\n\n## Usage\n\n**Note:** While this section uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { checkDomain } from '@sapphire/phisherman'` is the same as `const { checkDomain } = require('@sapphire/phisherman')`.\n\nBefore you do anything make sure to set the apiKey like this:\n\n```typescript\nimport { setApiKey } from '@sapphire/phisherman';\n\nsetApiKey('your-api-key');\n```\n\nThe main use you will have for phisherman is checking whether an URL is safe or not. You can do so with:\n\n```typescript\nimport { checkDomain } from '@sapphire/phisherman';\n\ncheckDomain('some-domain');\n```\n\nIf you have an URL that didn't pass the check, but you are sure is actually a phishing site, you can use the following to report it to phisherman:\n\n```typescript\nimport { reportDomain } from '@sapphire/phisherman';\n\nreportDomain('some-domain');\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/phisherman\n\n**Wrapper around [Phisherman](https://phisherman.gg) to easily check and report domains**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/phisherman?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/phisherman)\n[![npm](https://img.shields.io/npm/v/@sapphire/phisherman?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/phisherman)\n\n</div>\n\n## Description\n\nWith @sapphire/phisherman, you can have an out of the box integration with [Phisherman](https://phisherman.gg). Phisherman is a centralised database of phishing and scam links. It is designed for use with Discord bots, allowing them to utilise the Phisherman API to cross-check URLs against our known phishing links.\n\nNote: Phisherman is currently in early access. For more information or to request access, please visit their [discord server](https://discord.gg/QwrpmTgvWy).\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Easy to use\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/phisherman\n```\n\n---\n\n## Usage\n\n**Note:** While this section uses `import`, it maps 1:1 with CommonJS' require syntax. For example, `import { checkDomain } from '@sapphire/phisherman'` is the same as `const { checkDomain } = require('@sapphire/phisherman')`.\n\nBefore you do anything make sure to set the apiKey like this:\n\n```typescript\nimport { setApiKey } from '@sapphire/phisherman';\n\nsetApiKey('your-api-key');\n```\n\nThe main use you will have for phisherman is checking whether an URL is safe or not. You can do so with:\n\n```typescript\nimport { checkDomain } from '@sapphire/phisherman';\n\ncheckDomain('some-domain');\n```\n\nIf you have an URL that didn't pass the check, but you are sure is actually a phishing site, you can use the following to report it to phisherman:\n\n```typescript\nimport { reportDomain } from '@sapphire/phisherman';\n\nreportDomain('some-domain');\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n## [1.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.4.0...@sapphire/phisherman@1.4.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/phisherman\n\n# [1.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.3.1...@sapphire/phisherman@1.4.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n\n## [1.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.3.0...@sapphire/phisherman@1.3.1) (2022-03-01)\n\n**Note:** Version bump only for package @sapphire/phisherman\n\n# [1.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.2.0...@sapphire/phisherman@1.3.0) (2022-02-15)\n\n### Features\n\n-   **phisherman:** add url validation ([#294](https://github.com/sapphiredev/utilities/issues/294)) ([b039d4a](https://github.com/sapphiredev/utilities/commit/b039d4a621b4b0be7b87af578868a37145087846))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [1.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.1.0...@sapphire/phisherman@1.2.0) (2022-01-28)\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.0.1...@sapphire/phisherman@1.1.0) (2022-01-22)\n\n### Features\n\n-   **phisherman:** add more methods ([#265](https://github.com/sapphiredev/utilities/issues/265)) ([524f311](https://github.com/sapphiredev/utilities/commit/524f3116fe5e1fd2f8186ef1e635dcf750503555))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/phisherman@1.0.0...@sapphire/phisherman@1.0.1) (2022-01-16)\n\n**Note:** Version bump only for package @sapphire/phisherman\n\n# 1.0.0 (2022-01-12)\n\n### Features\n\n-   add phisherman ([#255](https://github.com/sapphiredev/utilities/issues/255)) ([68fba03](https://github.com/sapphiredev/utilities/commit/68fba03bcbd3af14e66b25357d1eafd0cc315f0f))\n",
   "classes": [],
   "enums": [],
@@ -15,7 +15,7 @@
         "line": 17,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L17"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L17"
       },
       "comment": {
         "description": null,
@@ -96,7 +96,7 @@
                           "fileName": "lib/PhishermanTypes.ts",
                           "line": 7,
                           "character": 1,
-                          "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
                         }
                       ],
                       "type": {
@@ -132,7 +132,7 @@
                           "fileName": "lib/Phisherman.ts",
                           "line": 33,
                           "character": 2,
-                          "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L33"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L33"
                         }
                       ],
                       "type": {
@@ -152,7 +152,7 @@
                           "fileName": "lib/PhishermanTypes.ts",
                           "line": 6,
                           "character": 1,
-                          "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
                         }
                       ],
                       "type": {
@@ -176,7 +176,7 @@
                       "fileName": "lib/Phisherman.ts",
                       "line": 31,
                       "character": 8,
-                      "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L31"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L31"
                     }
                   ]
                 }
@@ -193,7 +193,7 @@
         "line": 68,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L68"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L68"
       },
       "comment": {
         "description": null,
@@ -273,7 +273,7 @@
         "line": 91,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L91"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L91"
       },
       "comment": {
         "description": null,
@@ -377,7 +377,7 @@
         "line": 43,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L43"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L43"
       },
       "comment": {
         "description": null,
@@ -457,7 +457,7 @@
         "line": 114,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/Phisherman.ts#L114"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/Phisherman.ts#L114"
       },
       "comment": {
         "description": null,
@@ -521,7 +521,7 @@
         "line": 1,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L1"
       },
       "comment": {
         "description": null,
@@ -538,7 +538,7 @@
             "line": 2,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L2"
           },
           "comment": {
             "description": null,
@@ -562,7 +562,7 @@
         "line": 14,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L14"
       },
       "comment": {
         "description": null,
@@ -579,7 +579,7 @@
             "line": 16,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L16"
           },
           "comment": {
             "description": null,
@@ -600,7 +600,7 @@
             "line": 15,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L15"
           },
           "comment": {
             "description": null,
@@ -624,7 +624,7 @@
         "line": 5,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L5"
       },
       "comment": {
         "description": null,
@@ -641,7 +641,7 @@
             "line": 7,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
           },
           "comment": {
             "description": null,
@@ -679,7 +679,7 @@
             "line": 6,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
           },
           "comment": {
             "description": null,
@@ -706,7 +706,7 @@
         "line": 10,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
       },
       "comment": {
         "description": null,
@@ -745,7 +745,7 @@
                       "fileName": "lib/PhishermanTypes.ts",
                       "line": 11,
                       "character": 1,
-                      "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L11"
+                      "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L11"
                     }
                   ],
                   "type": {
@@ -767,7 +767,7 @@
                   "fileName": "lib/PhishermanTypes.ts",
                   "line": 10,
                   "character": 53,
-                  "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
+                  "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
                 }
               ]
             }
