@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/timer-manager",
   "version": "1.0.0",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://cdn.skyra.pw/gh-assets/sapphire-banner.png)\n\n# @sapphire/timer-manager\n\n**Timer manager utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/timer-manager?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/timer-manager)\n[![npm](https://img.shields.io/npm/v/@sapphire/timer-manager?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/timer-manager)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Basic Usage](#basic-usage)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/timer-manager\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { TimerManager } = require('@sapphire/timer-manager')` equals `import { TimerManager } from '@sapphire/timer-manager'`.\n\n### Basic Usage\n\n```typescript\n// Import the TimerManager class\nconst { TimerManager } = require('@sapphire/timer-manager');\n\n// Use the class for timeouts\nconst timeout = TimerManager.setTimeout(() => console.log('Hello, world!'), 1000);\nTimerManager.clearTimeout(timeout);\n\n// Use the class for intervals\nconst interval = TimerManager.setInterval(() => console.log('Hello, world!'), 1000);\nTimerManager.clearInterval(interval);\n\n// Destroy all running timeouts and intervals so that NodeJS can gracefully exit\nTimerManager.destroy();\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/timer-manager\n\n**Timer manager utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/timer-manager?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/timer-manager)\n[![npm](https://img.shields.io/npm/v/@sapphire/timer-manager?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/timer-manager)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Basic Usage](#basic-usage)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/timer-manager\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { TimerManager } = require('@sapphire/timer-manager')` equals `import { TimerManager } from '@sapphire/timer-manager'`.\n\n### Basic Usage\n\n```typescript\n// Import the TimerManager class\nconst { TimerManager } = require('@sapphire/timer-manager');\n\n// Use the class for timeouts\nconst timeout = TimerManager.setTimeout(() => console.log('Hello, world!'), 1000);\nTimerManager.clearTimeout(timeout);\n\n// Use the class for intervals\nconst interval = TimerManager.setInterval(() => console.log('Hello, world!'), 1000);\nTimerManager.clearInterval(interval);\n\n// Destroy all running timeouts and intervals so that NodeJS can gracefully exit\nTimerManager.destroy();\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/timer-manager@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/timer-manager@1.0.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n",
   "classes": [
     {
@@ -13,7 +13,7 @@
         "line": 4,
         "file": "TimerManager.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L4"
       },
       "comment": {
         "description": "Manages timers so that this application can be cleanly exited",
@@ -49,7 +49,7 @@
             "line": 13,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L13"
           },
           "comment": {
             "description": "A set of intervals to clear on destroy",
@@ -85,7 +85,7 @@
             "line": 8,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L8"
           },
           "comment": {
             "description": "A set of timeouts to clear on destroy",
@@ -123,7 +123,7 @@
             "line": 55,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L55"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L55"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -173,7 +173,7 @@
             "line": 34,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L34"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L34"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -223,7 +223,7 @@
             "line": 63,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L63"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L63"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -254,7 +254,7 @@
             "line": 45,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L45"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L45"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -304,7 +304,7 @@
                           "fileName": "lib/TimerManager.ts",
                           "line": 45,
                           "character": 44,
-                          "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L45"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L45"
                         }
                       ],
                       "signatures": [
@@ -396,7 +396,7 @@
             "line": 21,
             "file": "TimerManager.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L21"
+            "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L21"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -446,7 +446,7 @@
                           "fileName": "lib/TimerManager.ts",
                           "line": 21,
                           "character": 43,
-                          "url": "https://github.com/sapphiredev/utilities/blob/0da5479/packages/timer-manager/src/lib/TimerManager.ts#L21"
+                          "url": "https://github.com/sapphiredev/utilities/blob/2f4a3e8/packages/timer-manager/src/lib/TimerManager.ts#L21"
                         }
                       ],
                       "signatures": [
