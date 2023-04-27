@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.2.0",
+  "typeDocJsonParserVersion": "7.3.1",
   "id": 0,
   "name": "@sapphire/plugin-pattern-commands",
   "version": "5.0.1",
@@ -9,16 +9,17 @@
     {
       "id": 645,
       "name": "PatternCommand",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 4,
         "file": "PatternCommand.ts",
         "path": "packages/pattern-commands/src/lib/structures",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L4"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": true,
@@ -49,16 +50,16 @@
       "construct": {
         "id": 646,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 8,
           "file": "PatternCommand.ts",
           "path": "packages/pattern-commands/src/lib/structures",
           "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L8"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 645,
         "accessibility": "public",
@@ -105,18 +106,18 @@
         {
           "id": 720,
           "name": "aliases",
+          "comment": {
+            "description": "The aliases for the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 687,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The aliases for the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 720,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -137,12 +138,6 @@
         {
           "id": 663,
           "name": "applicationCommandRegistry",
-          "source": {
-            "line": 2146,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The application command registry associated with this command.",
             "blockTags": [
@@ -153,7 +148,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2146,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 663,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -170,18 +171,18 @@
         {
           "id": 650,
           "name": "chance",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 5,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L5"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 650,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -195,12 +196,6 @@
         {
           "id": 657,
           "name": "description",
-          "source": {
-            "line": 2111,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "A basic summary about the command",
             "blockTags": [
@@ -211,7 +206,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2111,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 657,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -225,12 +226,6 @@
         {
           "id": 659,
           "name": "detailedDescription",
-          "source": {
-            "line": 2121,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Longer version of command's summary and how to use it",
             "blockTags": [
@@ -241,7 +236,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2121,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 659,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -258,18 +259,18 @@
         {
           "id": 723,
           "name": "enabled",
+          "comment": {
+            "description": "Whether or not the piece is enabled.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 450,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "Whether or not the piece is enabled.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 723,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -283,12 +284,6 @@
         {
           "id": 660,
           "name": "fullCategory",
-          "source": {
-            "line": 2130,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The full category for the command. Either an array of strings that denote every (sub)folder the command is in,\nor `null` if it could not be resolved automatically.\n\nIf this is `null` with how you set up your code then you can overwrite how the `fullCategory` is resolved by\nextending this class and overwriting the assignment in the constructor.",
             "blockTags": [
@@ -299,7 +294,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2130,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 660,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -320,12 +321,6 @@
         {
           "id": 664,
           "name": "lexer",
-          "source": {
-            "line": 2152,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The lexer to be used for command parsing",
             "blockTags": [
@@ -336,7 +331,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2152,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 664,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -353,18 +354,18 @@
         {
           "id": 721,
           "name": "location",
+          "comment": {
+            "description": "The location metadata for the piece's file.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 442,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The location metadata for the piece's file.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 721,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -381,18 +382,18 @@
         {
           "id": 652,
           "name": "matchFullName",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 7,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L7"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 652,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -406,18 +407,18 @@
         {
           "id": 722,
           "name": "name",
+          "comment": {
+            "description": "The name of the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 446,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The name of the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 722,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -431,18 +432,18 @@
         {
           "id": 724,
           "name": "options",
+          "comment": {
+            "description": "The raw options passed to this {@link Piece}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 454,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The raw options passed to this {@link Piece}",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 724,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -459,12 +460,6 @@
         {
           "id": 658,
           "name": "preconditions",
-          "source": {
-            "line": 2116,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The preconditions to be run.",
             "blockTags": [
@@ -475,7 +470,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2116,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 658,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -492,18 +493,18 @@
         {
           "id": 656,
           "name": "store",
+          "comment": {
+            "description": "The {@link CommandStore} that contains this {@link Command}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 2106,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The {@link CommandStore} that contains this {@link Command}.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 656,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -520,12 +521,6 @@
         {
           "id": 661,
           "name": "strategy",
-          "source": {
-            "line": 2135,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The strategy to use for the lexer.",
             "blockTags": [
@@ -536,7 +531,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2135,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 661,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -553,12 +554,6 @@
         {
           "id": 662,
           "name": "typing",
-          "source": {
-            "line": 2141,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "If {@link SapphireClient.typing} is true, it can be overridden for a specific command using this property, set via its options.\nOtherwise, this property will be ignored.",
             "blockTags": [
@@ -569,7 +564,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2141,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 662,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -583,18 +584,18 @@
         {
           "id": 651,
           "name": "weight",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 6,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L6"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 645,
+          "parentId": 651,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -608,12 +609,6 @@
         {
           "id": 671,
           "name": "category",
-          "source": {
-            "line": 2174,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The main category for the command, if any.\n\nThis getter retrieves the first value of {@link Command.fullCategory}, if it has at least one item, otherwise it\nreturns `null`.",
             "blockTags": [
@@ -624,7 +619,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2174,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 671,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -647,12 +648,6 @@
         {
           "id": 726,
           "name": "container",
-          "source": {
-            "line": 460,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
@@ -663,7 +658,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 460,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 726,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -680,12 +681,6 @@
         {
           "id": 675,
           "name": "parentCategory",
-          "source": {
-            "line": 2192,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The parent category for the command.\n\nThis getter retrieves the last value of {@link Command.fullCategory}, if it has at least one item, otherwise it\nreturns `null`.",
             "blockTags": [
@@ -696,7 +691,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2192,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 675,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -719,12 +720,6 @@
         {
           "id": 673,
           "name": "subCategory",
-          "source": {
-            "line": 2183,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The sub-category for the command, if any.\n\nThis getter retrieves the second value of {@link Command.fullCategory}, if it has at least two items, otherwise\nit returns `null`.",
             "blockTags": [
@@ -735,7 +730,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 645,
+          "source": {
+            "line": 2183,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 673,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -766,7 +767,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 684,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -824,7 +825,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 676,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -900,7 +901,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 680,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -976,7 +977,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 665,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1075,7 +1076,7 @@
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L29"
           },
-          "parentId": 645,
+          "parentId": 653,
           "accessibility": "public",
           "abstract": true,
           "static": false,
@@ -1130,7 +1131,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 727,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1161,7 +1162,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 729,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1192,7 +1193,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 702,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1247,7 +1248,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 717,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1297,7 +1298,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 705,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1347,7 +1348,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 711,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1397,7 +1398,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 714,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1447,7 +1448,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 708,
           "accessibility": "protected",
           "abstract": false,
           "static": false,
@@ -1497,7 +1498,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 689,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1555,7 +1556,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 700,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1594,7 +1595,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 698,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1633,7 +1634,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 694,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1672,7 +1673,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 696,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1711,7 +1712,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 692,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1750,7 +1751,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 687,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1784,7 +1785,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 645,
+          "parentId": 731,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1819,16 +1820,17 @@
     {
       "id": 86,
       "name": "PatternCommandStore",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 4,
         "file": "PaternCommandStore.ts",
         "path": "packages/pattern-commands/src/lib/structures",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PaternCommandStore.ts#L4"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -1852,16 +1854,16 @@
       "construct": {
         "id": 101,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 5,
           "file": "PaternCommandStore.ts",
           "path": "packages/pattern-commands/src/lib/structures",
           "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PaternCommandStore.ts#L5"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 86,
         "accessibility": "public",
@@ -1871,18 +1873,18 @@
         {
           "id": 116,
           "name": "Constructor",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 284,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 116,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1907,18 +1909,18 @@
         {
           "id": 644,
           "name": "[toStringTag]",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 137,
             "file": "lib.es2015.symbol.wellknown.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 644,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1932,18 +1934,18 @@
         {
           "id": 103,
           "name": "aliases",
+          "comment": {
+            "description": "The aliases referencing to pieces.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 709,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The aliases referencing to pieces.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 103,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1972,18 +1974,18 @@
         {
           "id": 140,
           "name": "constructor",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 21,
             "file": "index.d.ts",
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 140,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2000,18 +2002,18 @@
         {
           "id": 117,
           "name": "name",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 285,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 117,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2025,18 +2027,18 @@
         {
           "id": 118,
           "name": "paths",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 286,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 118,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2058,12 +2060,6 @@
         {
           "id": 635,
           "name": "size",
-          "source": {
-            "line": 46,
-            "file": "lib.es2015.collection.d.ts",
-            "path": "node_modules/typescript/lib",
-            "url": null
-          },
           "comment": {
             "description": null,
             "blockTags": [
@@ -2074,7 +2070,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 46,
+            "file": "lib.es2015.collection.d.ts",
+            "path": "node_modules/typescript/lib",
+            "url": null
+          },
+          "parentId": 635,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2088,18 +2090,18 @@
         {
           "id": 119,
           "name": "strategy",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 287,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 119,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2124,18 +2126,18 @@
         {
           "id": 100,
           "name": "[species]",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 319,
             "file": "lib.es2015.symbol.wellknown.d.ts",
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 100,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -2152,18 +2154,18 @@
         {
           "id": 87,
           "name": "defaultStrategy",
+          "comment": {
+            "description": "The default strategy, defaults to {@link LoaderStrategy}, which is constructed on demand when a store is constructed,\nwhen none was set beforehand.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 372,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The default strategy, defaults to {@link LoaderStrategy}, which is constructed on demand when a store is constructed,\nwhen none was set beforehand.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 87,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -2185,18 +2187,18 @@
         {
           "id": 88,
           "name": "logger",
+          "comment": {
+            "description": "The default logger, defaults to `null`.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 376,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The default logger, defaults to `null`.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 86,
+          "parentId": 88,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -2222,12 +2224,6 @@
         {
           "id": 121,
           "name": "container",
-          "source": {
-            "line": 297,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
@@ -2238,7 +2234,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 86,
+          "source": {
+            "line": 297,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 121,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2263,7 +2265,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 642,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2314,7 +2316,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 171,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2373,7 +2375,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 617,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2404,7 +2406,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 568,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2455,7 +2457,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 570,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2540,7 +2542,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 136,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2624,7 +2626,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 619,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2676,7 +2678,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 587,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2772,7 +2774,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 536,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -3048,7 +3050,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 141,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -3178,7 +3180,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 636,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -3229,7 +3231,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 573,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -3296,7 +3298,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 469,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -4242,7 +4244,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 279,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -5198,7 +5200,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 187,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -5822,7 +5824,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 224,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6418,7 +6420,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 155,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6503,7 +6505,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 159,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6582,7 +6584,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 391,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -6925,7 +6927,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 622,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7072,7 +7074,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 104,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7131,7 +7133,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 107,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7178,7 +7180,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 149,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7233,7 +7235,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 152,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7288,7 +7290,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 113,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7354,7 +7356,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 579,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7438,7 +7440,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 174,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7494,7 +7496,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 638,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7533,7 +7535,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 163,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7618,7 +7620,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 167,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7697,7 +7699,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 125,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7778,7 +7780,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 131,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -7817,7 +7819,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 411,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -8118,7 +8120,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 431,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -8437,7 +8439,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 591,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -8809,7 +8811,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 335,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -9969,7 +9971,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 177,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10054,7 +10056,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 181,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10133,7 +10135,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 525,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10305,7 +10307,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 122,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10363,7 +10365,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 133,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10430,7 +10432,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 185,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10464,7 +10466,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 631,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10532,7 +10534,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 451,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10802,7 +10804,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 576,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10872,7 +10874,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 612,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -10954,7 +10956,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 583,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11038,7 +11040,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 261,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11308,7 +11310,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 554,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11530,7 +11532,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 615,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11567,7 +11569,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 110,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11642,7 +11644,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 129,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11687,7 +11689,7 @@
             "path": "node_modules/typescript/lib",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 640,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -11729,7 +11731,7 @@
             "path": "node_modules/@discordjs/collection/dist",
             "url": null
           },
-          "parentId": 86,
+          "parentId": 89,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -11929,16 +11931,17 @@
     {
       "id": 1,
       "name": "PluginPatternCommandsCommandAcceptedListener",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 7,
         "file": "PluginCommandAccepted.ts",
         "path": "packages/pattern-commands/src/listeners",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L7"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -11965,16 +11968,16 @@
       "construct": {
         "id": 2,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 8,
           "file": "PluginCommandAccepted.ts",
           "path": "packages/pattern-commands/src/listeners",
           "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L8"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 1,
         "accessibility": "public",
@@ -12003,12 +12006,6 @@
         {
           "id": 9,
           "name": "emitter",
-          "source": {
-            "line": 348,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The emitter, if any.",
             "blockTags": [
@@ -12019,7 +12016,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 348,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 9,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12045,18 +12048,18 @@
         {
           "id": 20,
           "name": "enabled",
+          "comment": {
+            "description": "Whether or not the piece is enabled.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 450,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "Whether or not the piece is enabled.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 20,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12070,12 +12073,6 @@
         {
           "id": 10,
           "name": "event",
-          "source": {
-            "line": 353,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The name of the event the listener listens to.",
             "blockTags": [
@@ -12086,7 +12083,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 353,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 10,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12109,18 +12112,18 @@
         {
           "id": 18,
           "name": "location",
+          "comment": {
+            "description": "The location metadata for the piece's file.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 442,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The location metadata for the piece's file.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 18,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12137,18 +12140,18 @@
         {
           "id": 19,
           "name": "name",
+          "comment": {
+            "description": "The name of the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 446,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The name of the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 19,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12162,12 +12165,6 @@
         {
           "id": 11,
           "name": "once",
-          "source": {
-            "line": 358,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether the listener will be unloaded after the first run.",
             "blockTags": [
@@ -12178,7 +12175,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 358,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 11,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12192,18 +12195,18 @@
         {
           "id": 21,
           "name": "options",
+          "comment": {
+            "description": "The raw options passed to this {@link Piece}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 454,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The raw options passed to this {@link Piece}",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 21,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12220,18 +12223,18 @@
         {
           "id": 8,
           "name": "store",
+          "comment": {
+            "description": "The {@link ListenerStore} that contains this {@link Listener}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 343,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The {@link ListenerStore} that contains this {@link Listener}.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 1,
+          "parentId": 8,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12248,12 +12251,6 @@
         {
           "id": 23,
           "name": "container",
-          "source": {
-            "line": 460,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
@@ -12264,7 +12261,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 1,
+          "source": {
+            "line": 460,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 23,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12289,7 +12292,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 12,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12320,7 +12323,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 14,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12351,7 +12354,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 26,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12390,7 +12393,7 @@
             "path": "packages/pattern-commands/src/listeners",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L12"
           },
-          "parentId": 1,
+          "parentId": 5,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12448,7 +12451,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 16,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12482,7 +12485,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 1,
+          "parentId": 24,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12517,16 +12520,17 @@
     {
       "id": 28,
       "name": "PluginPatternCommandsMessageParseListener",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 9,
         "file": "PluginMessageParse.ts",
         "path": "packages/pattern-commands/src/listeners",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L9"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -12553,16 +12557,16 @@
       "construct": {
         "id": 29,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 11,
           "file": "PluginMessageParse.ts",
           "path": "packages/pattern-commands/src/listeners",
           "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L11"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 28,
         "accessibility": "public",
@@ -12591,12 +12595,6 @@
         {
           "id": 40,
           "name": "emitter",
-          "source": {
-            "line": 348,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The emitter, if any.",
             "blockTags": [
@@ -12607,7 +12605,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 28,
+          "source": {
+            "line": 348,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 40,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12633,18 +12637,18 @@
         {
           "id": 51,
           "name": "enabled",
+          "comment": {
+            "description": "Whether or not the piece is enabled.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 450,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "Whether or not the piece is enabled.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 51,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12658,12 +12662,6 @@
         {
           "id": 41,
           "name": "event",
-          "source": {
-            "line": 353,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The name of the event the listener listens to.",
             "blockTags": [
@@ -12674,7 +12672,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 28,
+          "source": {
+            "line": 353,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 41,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12697,18 +12701,18 @@
         {
           "id": 49,
           "name": "location",
+          "comment": {
+            "description": "The location metadata for the piece's file.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 442,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The location metadata for the piece's file.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 49,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12725,18 +12729,18 @@
         {
           "id": 50,
           "name": "name",
+          "comment": {
+            "description": "The name of the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 446,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The name of the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 50,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12750,12 +12754,6 @@
         {
           "id": 42,
           "name": "once",
-          "source": {
-            "line": 358,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether the listener will be unloaded after the first run.",
             "blockTags": [
@@ -12766,7 +12764,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 28,
+          "source": {
+            "line": 358,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 42,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12780,18 +12784,18 @@
         {
           "id": 52,
           "name": "options",
+          "comment": {
+            "description": "The raw options passed to this {@link Piece}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 454,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The raw options passed to this {@link Piece}",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 52,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -12808,18 +12812,18 @@
         {
           "id": 32,
           "name": "requiredPermissions",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 10,
             "file": "PluginMessageParse.ts",
             "path": "packages/pattern-commands/src/listeners",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L10"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 32,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -13034,18 +13038,18 @@
         {
           "id": 39,
           "name": "store",
+          "comment": {
+            "description": "The {@link ListenerStore} that contains this {@link Listener}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 343,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The {@link ListenerStore} that contains this {@link Listener}.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 28,
+          "parentId": 39,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13062,12 +13066,6 @@
         {
           "id": 54,
           "name": "container",
-          "source": {
-            "line": 460,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
@@ -13078,7 +13076,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 28,
+          "source": {
+            "line": 460,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 54,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13103,7 +13107,7 @@
             "path": "packages/pattern-commands/src/listeners",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L89"
           },
-          "parentId": 28,
+          "parentId": 36,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -13166,7 +13170,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 28,
+          "parentId": 43,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13197,7 +13201,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 28,
+          "parentId": 45,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13228,7 +13232,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 28,
+          "parentId": 57,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13267,7 +13271,7 @@
             "path": "packages/pattern-commands/src/listeners",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L15"
           },
-          "parentId": 28,
+          "parentId": 33,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13330,7 +13334,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 28,
+          "parentId": 47,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13364,7 +13368,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 28,
+          "parentId": 55,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13399,16 +13403,17 @@
     {
       "id": 59,
       "name": "PluginPatternCommandsPreCommandRunListener",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 6,
         "file": "PluginPreCommandRun.ts",
         "path": "packages/pattern-commands/src/listeners",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L6"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -13435,16 +13440,16 @@
       "construct": {
         "id": 60,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 7,
           "file": "PluginPreCommandRun.ts",
           "path": "packages/pattern-commands/src/listeners",
           "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L7"
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 59,
         "accessibility": "public",
@@ -13473,12 +13478,6 @@
         {
           "id": 67,
           "name": "emitter",
-          "source": {
-            "line": 348,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The emitter, if any.",
             "blockTags": [
@@ -13489,7 +13488,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 59,
+          "source": {
+            "line": 348,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 67,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13515,18 +13520,18 @@
         {
           "id": 78,
           "name": "enabled",
+          "comment": {
+            "description": "Whether or not the piece is enabled.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 450,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "Whether or not the piece is enabled.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 59,
+          "parentId": 78,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13540,12 +13545,6 @@
         {
           "id": 68,
           "name": "event",
-          "source": {
-            "line": 353,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The name of the event the listener listens to.",
             "blockTags": [
@@ -13556,7 +13555,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 59,
+          "source": {
+            "line": 353,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 68,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13579,18 +13584,18 @@
         {
           "id": 76,
           "name": "location",
+          "comment": {
+            "description": "The location metadata for the piece's file.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 442,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The location metadata for the piece's file.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 59,
+          "parentId": 76,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13607,18 +13612,18 @@
         {
           "id": 77,
           "name": "name",
+          "comment": {
+            "description": "The name of the piece.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 446,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The name of the piece.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 59,
+          "parentId": 77,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13632,12 +13637,6 @@
         {
           "id": 69,
           "name": "once",
-          "source": {
-            "line": 358,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether the listener will be unloaded after the first run.",
             "blockTags": [
@@ -13648,7 +13647,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 59,
+          "source": {
+            "line": 358,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 69,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13662,18 +13667,18 @@
         {
           "id": 79,
           "name": "options",
+          "comment": {
+            "description": "The raw options passed to this {@link Piece}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 454,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "comment": {
-            "description": "The raw options passed to this {@link Piece}",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 59,
+          "parentId": 79,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13690,18 +13695,18 @@
         {
           "id": 66,
           "name": "store",
+          "comment": {
+            "description": "The {@link ListenerStore} that contains this {@link Listener}.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 343,
             "file": "index.d.ts",
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "comment": {
-            "description": "The {@link ListenerStore} that contains this {@link Listener}.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 59,
+          "parentId": 66,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13718,12 +13723,6 @@
         {
           "id": 81,
           "name": "container",
-          "source": {
-            "line": 460,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "A reference to the {@link Container} object for ease of use.",
             "blockTags": [
@@ -13734,7 +13733,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 59,
+          "source": {
+            "line": 460,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 81,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13759,7 +13764,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 59,
+          "parentId": 70,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13790,7 +13795,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 59,
+          "parentId": 72,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13821,7 +13826,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 59,
+          "parentId": 84,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13860,7 +13865,7 @@
             "path": "packages/pattern-commands/src/listeners",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L11"
           },
-          "parentId": 59,
+          "parentId": 63,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13918,7 +13923,7 @@
             "path": "node_modules/@sapphire/framework/dist",
             "url": null
           },
-          "parentId": 59,
+          "parentId": 74,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13952,7 +13957,7 @@
             "path": "node_modules/@sapphire/pieces/dist",
             "url": null
           },
-          "parentId": 59,
+          "parentId": 82,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -13989,28 +13994,23 @@
     {
       "id": 766,
       "name": "PatternCommandEvents",
+      "comment": {
+        "description": "Events emitted during the parsing and command run.\nYou can use these events for debugging and logging purposes.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 5,
         "file": "PaternCommandEvents.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L5"
       },
-      "comment": {
-        "description": "Events emitted during the parsing and command run.\nYou can use these events for debugging and logging purposes.",
-        "blockTags": [],
-        "modifierTags": []
-      },
       "external": false,
       "members": [
         {
           "id": 769,
           "name": "CommandAccepted",
-          "source": {
-            "line": 22,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L22"
-          },
           "comment": {
             "description": "Event that is emitted after the preconditions if none of them denied the command",
             "blockTags": [
@@ -14021,18 +14021,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 22,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L22"
+          },
           "parentId": 766,
           "value": "patternCommandAccepted"
         },
         {
           "id": 770,
           "name": "CommandDenied",
-          "source": {
-            "line": 28,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L28"
-          },
           "comment": {
             "description": "Event that is emitted after the preconditions if at least one of them denied the command",
             "blockTags": [
@@ -14047,18 +14047,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 28,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L28"
+          },
           "parentId": 766,
           "value": "patternCommandDenied"
         },
         {
           "id": 773,
           "name": "CommandError",
-          "source": {
-            "line": 50,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L50"
-          },
           "comment": {
             "description": "Event that is emitted if there's an error while running the command",
             "blockTags": [
@@ -14077,18 +14077,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 50,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L50"
+          },
           "parentId": 766,
           "value": "patternCommandError"
         },
         {
           "id": 774,
           "name": "CommandFinished",
-          "source": {
-            "line": 57,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L57"
-          },
           "comment": {
             "description": "Event that is emitted if the command has finished, regardless of whether an error occurred or not",
             "blockTags": [
@@ -14107,18 +14107,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 57,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L57"
+          },
           "parentId": 766,
           "value": "patternCommandFinished"
         },
         {
           "id": 767,
           "name": "CommandNoLuck",
-          "source": {
-            "line": 12,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L12"
-          },
           "comment": {
             "description": "Event that is emitted when the RNG doesn't love the command",
             "blockTags": [
@@ -14137,18 +14137,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 12,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L12"
+          },
           "parentId": 766,
           "value": "patternCommandNoLuck"
         },
         {
           "id": 771,
           "name": "CommandRun",
-          "source": {
-            "line": 35,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L35"
-          },
           "comment": {
             "description": "Event that is emitted just before the command is ran",
             "blockTags": [
@@ -14167,18 +14167,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 35,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L35"
+          },
           "parentId": 766,
           "value": "patternCommandRun"
         },
         {
           "id": 772,
           "name": "CommandSuccess",
-          "source": {
-            "line": 43,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L43"
-          },
           "comment": {
             "description": "Event that is emitted if there's no error while running the command",
             "blockTags": [
@@ -14201,18 +14201,18 @@
             ],
             "modifierTags": []
           },
+          "source": {
+            "line": 43,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L43"
+          },
           "parentId": 766,
           "value": "patternCommandSuccess"
         },
         {
           "id": 768,
           "name": "PreCommandRun",
-          "source": {
-            "line": 17,
-            "file": "PaternCommandEvents.ts",
-            "path": "packages/pattern-commands/src/lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L17"
-          },
           "comment": {
             "description": "Event that is emitted when an alias triggered the command but before parsing the preconditions",
             "blockTags": [
@@ -14222,6 +14222,12 @@
               }
             ],
             "modifierTags": []
+          },
+          "source": {
+            "line": 17,
+            "file": "PaternCommandEvents.ts",
+            "path": "packages/pattern-commands/src/lib/utils",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PaternCommandEvents.ts#L17"
           },
           "parentId": 766,
           "value": "patternCommandPreRun"
@@ -14234,16 +14240,17 @@
     {
       "id": 794,
       "name": "PatternCommandAcceptedPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 25,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L25"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -14251,18 +14258,18 @@
         {
           "id": 799,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 794,
+          "parentId": 799,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14272,18 +14279,18 @@
         {
           "id": 798,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 794,
+          "parentId": 798,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14296,18 +14303,18 @@
         {
           "id": 796,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 794,
+          "parentId": 796,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14320,18 +14327,18 @@
         {
           "id": 797,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 794,
+          "parentId": 797,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14349,18 +14356,18 @@
         {
           "id": 795,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 794,
+          "parentId": 795,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14373,16 +14380,17 @@
     {
       "id": 788,
       "name": "PatternCommandDeniedPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 20,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L20"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -14390,18 +14398,18 @@
         {
           "id": 793,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 788,
+          "parentId": 793,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14411,18 +14419,18 @@
         {
           "id": 792,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 788,
+          "parentId": 792,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14435,18 +14443,18 @@
         {
           "id": 790,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 22,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L22"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 788,
+          "parentId": 790,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14459,18 +14467,18 @@
         {
           "id": 791,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 788,
+          "parentId": 791,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14488,18 +14496,18 @@
         {
           "id": 789,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 21,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L21"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 788,
+          "parentId": 789,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14512,16 +14520,17 @@
     {
       "id": 817,
       "name": "PatternCommandErrorPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 39,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L39"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -14529,18 +14538,18 @@
         {
           "id": 824,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 824,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14550,18 +14559,18 @@
         {
           "id": 823,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 823,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14574,18 +14583,18 @@
         {
           "id": 821,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 821,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14598,18 +14607,18 @@
         {
           "id": 818,
           "name": "duration",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 35,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 818,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14619,18 +14628,18 @@
         {
           "id": 822,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 822,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14648,18 +14657,18 @@
         {
           "id": 820,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 820,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14669,18 +14678,18 @@
         {
           "id": 819,
           "name": "success",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 36,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 817,
+          "parentId": 819,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14693,16 +14702,17 @@
     {
       "id": 809,
       "name": "PatternCommandFinishedPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 34,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L34"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -14710,18 +14720,18 @@
         {
           "id": 816,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 816,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14731,18 +14741,18 @@
         {
           "id": 815,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 815,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14755,18 +14765,18 @@
         {
           "id": 813,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 813,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14779,18 +14789,18 @@
         {
           "id": 810,
           "name": "duration",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 35,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 810,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14800,18 +14810,18 @@
         {
           "id": 814,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 814,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14829,18 +14839,18 @@
         {
           "id": 812,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 812,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14850,18 +14860,18 @@
         {
           "id": 811,
           "name": "success",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 36,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 809,
+          "parentId": 811,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14874,16 +14884,17 @@
     {
       "id": 825,
       "name": "PatternCommandNoLuckPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 41,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L41"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -14891,18 +14902,18 @@
         {
           "id": 830,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 825,
+          "parentId": 830,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -14912,18 +14923,18 @@
         {
           "id": 829,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 825,
+          "parentId": 829,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14936,18 +14947,18 @@
         {
           "id": 827,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 825,
+          "parentId": 827,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14960,18 +14971,18 @@
         {
           "id": 828,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 825,
+          "parentId": 828,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -14989,18 +15000,18 @@
         {
           "id": 826,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 825,
+          "parentId": 826,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15013,16 +15024,17 @@
     {
       "id": 739,
       "name": "PatternCommandOptions",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 32,
         "file": "PatternCommand.ts",
         "path": "packages/pattern-commands/src/lib/structures",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L32"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -15030,12 +15042,6 @@
         {
           "id": 759,
           "name": "aliases",
-          "source": {
-            "line": 671,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "The aliases for the piece.",
             "blockTags": [
@@ -15046,7 +15052,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 671,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 759,
           "readonly": true,
           "type": {
             "kind": "typeOperator",
@@ -15063,12 +15075,6 @@
         {
           "id": 740,
           "name": "chance",
-          "source": {
-            "line": 37,
-            "file": "PatternCommand.ts",
-            "path": "packages/pattern-commands/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L37"
-          },
           "comment": {
             "description": "The chance that the pattern command is triggered.",
             "blockTags": [
@@ -15079,7 +15085,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 37,
+            "file": "PatternCommand.ts",
+            "path": "packages/pattern-commands/src/lib/structures",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L37"
+          },
+          "parentId": 740,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15089,12 +15101,6 @@
         {
           "id": 752,
           "name": "cooldownDelay",
-          "source": {
-            "line": 2011,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The time in milliseconds for the cooldown entries to reset, if set to a non-zero value alongside {@link Command.Options.cooldownLimit}, the `Cooldown` precondition will be added to the list.",
             "blockTags": [
@@ -15109,7 +15115,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2011,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 752,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15119,12 +15131,6 @@
         {
           "id": 754,
           "name": "cooldownFilteredUsers",
-          "source": {
-            "line": 2024,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The users that are exempt from the Cooldown precondition.\nUse this to filter out someone like a bot owner",
             "blockTags": [
@@ -15139,7 +15145,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2024,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 754,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -15152,12 +15164,6 @@
         {
           "id": 751,
           "name": "cooldownLimit",
-          "source": {
-            "line": 2005,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The amount of entries the cooldown can have before filling up, if set to a non-zero value alongside {@link Command.Options.cooldownDelay}, the `Cooldown` precondition will be added to the list.",
             "blockTags": [
@@ -15172,7 +15178,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2005,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 751,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15182,12 +15194,6 @@
         {
           "id": 753,
           "name": "cooldownScope",
-          "source": {
-            "line": 2017,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The scope of the cooldown entries.",
             "blockTags": [
@@ -15202,7 +15208,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2017,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 753,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -15215,12 +15227,6 @@
         {
           "id": 745,
           "name": "description",
-          "source": {
-            "line": 1954,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The description for the command.",
             "blockTags": [
@@ -15235,7 +15241,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1954,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 745,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15245,12 +15257,6 @@
         {
           "id": 746,
           "name": "detailedDescription",
-          "source": {
-            "line": 1960,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The detailed description for the command.",
             "blockTags": [
@@ -15265,7 +15271,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1960,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 746,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -15278,12 +15290,6 @@
         {
           "id": 761,
           "name": "enabled",
-          "source": {
-            "line": 420,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether or not the piece should be enabled. If set to false, the piece will be unloaded.",
             "blockTags": [
@@ -15294,7 +15300,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 420,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 761,
           "readonly": true,
           "type": {
             "kind": "intrinsic",
@@ -15304,12 +15316,6 @@
         {
           "id": 762,
           "name": "flags",
-          "source": {
-            "line": 465,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The accepted flags. Flags are key-only identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [`silent`].\n* A boolean defining whether the strategy should accept all keys (`true`) or none at all (`false`).",
             "blockTags": [
@@ -15320,7 +15326,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 465,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 762,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -15346,12 +15358,6 @@
         {
           "id": 747,
           "name": "fullCategory",
-          "source": {
-            "line": 1974,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The full category path for the command",
             "blockTags": [
@@ -15370,7 +15376,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1974,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 747,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -15383,12 +15395,6 @@
         {
           "id": 743,
           "name": "generateDashLessAliases",
-          "source": {
-            "line": 1942,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether to add aliases for commands with dashes in them",
             "blockTags": [
@@ -15403,7 +15409,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1942,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 743,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15413,12 +15425,6 @@
         {
           "id": 744,
           "name": "generateUnderscoreLessAliases",
-          "source": {
-            "line": 1948,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Whether to add aliases for commands with underscores in them",
             "blockTags": [
@@ -15433,7 +15439,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1948,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 744,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15443,12 +15455,6 @@
         {
           "id": 742,
           "name": "matchFullName",
-          "source": {
-            "line": 48,
-            "file": "PatternCommand.ts",
-            "path": "packages/pattern-commands/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L48"
-          },
           "comment": {
             "description": "If true it will only trigger on full matches (for example, explore won't trigger lore)\nNote: It will only change the behavior of the command's name and not for the command's aliasses",
             "blockTags": [
@@ -15459,7 +15465,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 48,
+            "file": "PatternCommand.ts",
+            "path": "packages/pattern-commands/src/lib/structures",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L48"
+          },
+          "parentId": 742,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15469,12 +15481,6 @@
         {
           "id": 760,
           "name": "name",
-          "source": {
-            "line": 415,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/pieces/dist",
-            "url": null
-          },
           "comment": {
             "description": "The name for the piece.",
             "blockTags": [
@@ -15485,7 +15491,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 415,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/pieces/dist",
+            "url": null
+          },
+          "parentId": 760,
           "readonly": true,
           "type": {
             "kind": "intrinsic",
@@ -15495,12 +15507,6 @@
         {
           "id": 750,
           "name": "nsfw",
-          "source": {
-            "line": 1999,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "Sets whether the command should be treated as NSFW. If set to true, the `NSFW` precondition will be added to the list.",
             "blockTags": [
@@ -15515,7 +15521,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1999,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 750,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15525,12 +15537,6 @@
         {
           "id": 763,
           "name": "options",
-          "source": {
-            "line": 472,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The accepted options. Options are key-value identifiers that can be placed anywhere in the command. Two different types are accepted:\n* An array of strings, e.g. [`silent`].\n* A boolean defining whether the strategy should accept all keys (`true`) or none at all (`false`).",
             "blockTags": [
@@ -15541,7 +15547,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 472,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 763,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -15567,12 +15579,6 @@
         {
           "id": 748,
           "name": "preconditions",
-          "source": {
-            "line": 1981,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The {@link Precondition}s to be run, accepts an array of their names.",
             "blockTags": [
@@ -15591,7 +15597,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1981,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 748,
           "readonly": false,
           "type": {
             "kind": "typeOperator",
@@ -15611,12 +15623,6 @@
         {
           "id": 764,
           "name": "prefixes",
-          "source": {
-            "line": 477,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The prefixes for both flags and options.",
             "blockTags": [
@@ -15627,7 +15633,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 477,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 764,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -15640,12 +15652,6 @@
         {
           "id": 749,
           "name": "quotes",
-          "source": {
-            "line": 1993,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The quotes accepted by this command, pass `[]` to disable them.",
             "blockTags": [
@@ -15660,7 +15666,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 1993,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 749,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -15682,12 +15694,6 @@
         {
           "id": 755,
           "name": "requiredClientPermissions",
-          "source": {
-            "line": 2030,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The required permissions for the client.",
             "blockTags": [
@@ -15702,7 +15708,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2030,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 755,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -15715,12 +15727,6 @@
         {
           "id": 756,
           "name": "requiredUserPermissions",
-          "source": {
-            "line": 2036,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The required permissions for the user.",
             "blockTags": [
@@ -15735,7 +15741,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2036,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 756,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -15748,12 +15760,6 @@
         {
           "id": 757,
           "name": "runIn",
-          "source": {
-            "line": 2042,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The channels the command should run in. If set to `null`, no precondition entry will be added. Some optimizations are applied when given an array to reduce the amount of preconditions run (e.g. `'GUILD_TEXT'` and `'GUILD_NEWS'` becomes `'GUILD_ANY'`, and if both `'DM'` and `'GUILD_ANY'` are defined, then no precondition entry is added as it runs in all channels).",
             "blockTags": [
@@ -15768,7 +15774,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2042,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 757,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -15823,12 +15835,6 @@
         {
           "id": 765,
           "name": "separators",
-          "source": {
-            "line": 482,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "The flag separators.",
             "blockTags": [
@@ -15839,7 +15845,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 482,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 765,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -15852,12 +15864,6 @@
         {
           "id": 758,
           "name": "typing",
-          "source": {
-            "line": 2048,
-            "file": "index.d.ts",
-            "path": "node_modules/@sapphire/framework/dist",
-            "url": null
-          },
           "comment": {
             "description": "If {@link SapphireClient.typing} is true, this option will override it.\nOtherwise, this option has no effect - you may call {@link Channel#sendTyping}` in the run method if you want specific commands to display the typing status.",
             "blockTags": [
@@ -15868,7 +15874,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 2048,
+            "file": "index.d.ts",
+            "path": "node_modules/@sapphire/framework/dist",
+            "url": null
+          },
+          "parentId": 758,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15878,12 +15890,6 @@
         {
           "id": 741,
           "name": "weight",
-          "source": {
-            "line": 42,
-            "file": "PatternCommand.ts",
-            "path": "packages/pattern-commands/src/lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L42"
-          },
           "comment": {
             "description": "The matching weight of the command.",
             "blockTags": [
@@ -15894,7 +15900,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 739,
+          "source": {
+            "line": 42,
+            "file": "PatternCommand.ts",
+            "path": "packages/pattern-commands/src/lib/structures",
+            "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L42"
+          },
+          "parentId": 741,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15907,16 +15919,17 @@
     {
       "id": 778,
       "name": "PatternCommandPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 9,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L9"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -15924,18 +15937,18 @@
         {
           "id": 781,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 778,
+          "parentId": 781,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -15945,18 +15958,18 @@
         {
           "id": 780,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 778,
+          "parentId": 780,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -15969,18 +15982,18 @@
         {
           "id": 779,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 778,
+          "parentId": 779,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16001,16 +16014,17 @@
     {
       "id": 775,
       "name": "PatternCommandPrePayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 4,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L4"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -16018,18 +16032,18 @@
         {
           "id": 776,
           "name": "message",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 5,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L5"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 775,
+          "parentId": 776,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16047,18 +16061,18 @@
         {
           "id": 777,
           "name": "possibleCommands",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 6,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L6"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 775,
+          "parentId": 777,
           "readonly": false,
           "type": {
             "kind": "array",
@@ -16077,16 +16091,17 @@
     {
       "id": 800,
       "name": "PatternCommandSuccessPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 30,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L30"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -16094,18 +16109,18 @@
         {
           "id": 808,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 808,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16115,18 +16130,18 @@
         {
           "id": 807,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 807,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16139,18 +16154,18 @@
         {
           "id": 805,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 805,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16163,18 +16178,18 @@
         {
           "id": 802,
           "name": "duration",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 35,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 802,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16184,18 +16199,18 @@
         {
           "id": 806,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 806,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16213,18 +16228,18 @@
         {
           "id": 804,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 804,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16234,18 +16249,18 @@
         {
           "id": 801,
           "name": "result",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 31,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L31"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 801,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16255,18 +16270,18 @@
         {
           "id": 803,
           "name": "success",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 36,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 800,
+          "parentId": 803,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16279,16 +16294,17 @@
     {
       "id": 782,
       "name": "PatternPreCommandRunPayload",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 18,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L18"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -16296,18 +16312,18 @@
         {
           "id": 787,
           "name": "alias",
+          "comment": {
+            "description": "The alias of this pattern command",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
-          "comment": {
-            "description": "The alias of this pattern command",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 782,
+          "parentId": 787,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16317,18 +16333,18 @@
         {
           "id": 786,
           "name": "command",
+          "comment": {
+            "description": "The command that is triggered by this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
-          "comment": {
-            "description": "The command that is triggered by this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 782,
+          "parentId": 786,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16341,18 +16357,18 @@
         {
           "id": 784,
           "name": "context",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 22,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L22"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 782,
+          "parentId": 784,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16365,18 +16381,18 @@
         {
           "id": 785,
           "name": "message",
+          "comment": {
+            "description": "The message that triggered this PatternCommand",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
-          "comment": {
-            "description": "The message that triggered this PatternCommand",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 782,
+          "parentId": 785,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16394,18 +16410,18 @@
         {
           "id": 783,
           "name": "parameters",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 21,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L21"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 782,
+          "parentId": 783,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16418,16 +16434,17 @@
     {
       "id": 831,
       "name": "PossiblePatternCommand",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 43,
         "file": "PatternCommandInterfaces.ts",
         "path": "packages/pattern-commands/src/lib/utils",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L43"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -16435,18 +16452,18 @@
         {
           "id": 833,
           "name": "alias",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 45,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L45"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 831,
+          "parentId": 833,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16456,18 +16473,18 @@
         {
           "id": 832,
           "name": "command",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 44,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L44"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 831,
+          "parentId": 832,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -16480,18 +16497,18 @@
         {
           "id": 834,
           "name": "weight",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 46,
             "file": "PatternCommandInterfaces.ts",
             "path": "packages/pattern-commands/src/lib/utils",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L46"
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 831,
+          "parentId": 834,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -16506,16 +16523,17 @@
     {
       "id": 733,
       "name": "PatternCommand",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 4,
         "file": "PatternCommand.ts",
         "path": "packages/pattern-commands/src/lib/structures",
         "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L4"
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "classes": [],
@@ -16527,16 +16545,17 @@
         {
           "id": 734,
           "name": "Context",
+          "namespaceParentId": 733,
+          "comment": {
+            "description": "Re-export of {@link MessageCommand.Context}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 53,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L53"
-          },
-          "comment": {
-            "description": "Re-export of {@link MessageCommand.Context}",
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -16551,16 +16570,17 @@
         {
           "id": 736,
           "name": "JSON",
+          "namespaceParentId": 733,
+          "comment": {
+            "description": "Re-export of {@link MessageCommand.JSON}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 59,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L59"
-          },
-          "comment": {
-            "description": "Re-export of {@link MessageCommand.JSON}",
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -16575,16 +16595,17 @@
         {
           "id": 738,
           "name": "Options",
+          "namespaceParentId": 733,
+          "comment": {
+            "description": "The PatternCommand Options",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 67,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L67"
-          },
-          "comment": {
-            "description": "The PatternCommand Options",
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -16599,16 +16620,17 @@
         {
           "id": 735,
           "name": "RunContext",
+          "namespaceParentId": 733,
+          "comment": {
+            "description": "Re-export of {@link MessageCommand.RunContext}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L56"
-          },
-          "comment": {
-            "description": "Re-export of {@link MessageCommand.RunContext}",
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
@@ -16623,16 +16645,17 @@
         {
           "id": 737,
           "name": "RunInTypes",
+          "namespaceParentId": 733,
+          "comment": {
+            "description": "Re-export of {@link MessageCommand.RunInTypes}",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 62,
             "file": "PatternCommand.ts",
             "path": "packages/pattern-commands/src/lib/structures",
             "url": "https://github.com/sapphiredev/plugins/blob/7791fd4/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L62"
-          },
-          "comment": {
-            "description": "Re-export of {@link MessageCommand.RunInTypes}",
-            "blockTags": [],
-            "modifierTags": []
           },
           "external": false,
           "typeParameters": [],
