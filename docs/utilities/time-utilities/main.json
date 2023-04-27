@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.2.0",
+  "typeDocJsonParserVersion": "7.3.1",
   "id": 0,
   "name": "@sapphire/time-utilities",
   "version": "1.7.9",
@@ -15,6 +15,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": "Handles Cron strings and generates dates based on the cron string provided.",
         "blockTags": [
@@ -430,6 +431,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": "Converts duration strings into ms and future dates",
         "blockTags": [],
@@ -919,6 +921,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": "Display the duration",
         "blockTags": [
@@ -969,7 +972,7 @@
               "kind": "reference",
               "id": 106,
               "name": "DurationFormatAssetsTime",
-              "packageName": null,
+              "packageName": "@sapphire/duration",
               "typeArguments": []
             }
           }
@@ -1000,7 +1003,7 @@
             "kind": "reference",
             "id": 106,
             "name": "DurationFormatAssetsTime",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         }
@@ -1074,7 +1077,7 @@
                     "kind": "reference",
                     "id": 116,
                     "name": "DurationFormatSeparators",
-                    "packageName": null,
+                    "packageName": "@sapphire/duration",
                     "typeArguments": []
                   }
                 }
@@ -1097,6 +1100,7 @@
         "path": "timer-manager/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": "Manages timers so that this application can be cleanly exited",
         "blockTags": [],
@@ -1213,7 +1217,7 @@
                   "type": {
                     "kind": "reference",
                     "id": null,
-                    "name": "global.NodeJS.Timeout",
+                    "name": "__global.NodeJS.Timeout",
                     "packageName": "@types/node",
                     "typeArguments": []
                   }
@@ -1263,7 +1267,7 @@
                   "type": {
                     "kind": "reference",
                     "id": null,
-                    "name": "global.NodeJS.Timeout",
+                    "name": "__global.NodeJS.Timeout",
                     "packageName": "@types/node",
                     "typeArguments": []
                   }
@@ -1356,8 +1360,8 @@
                     "reflection": {
                       "id": 138,
                       "name": "__type",
+                      "variant": "declaration",
                       "kind": 65536,
-                      "kindString": "Type literal",
                       "flags": {},
                       "sources": [
                         {
@@ -1370,15 +1374,22 @@
                         {
                           "id": 139,
                           "name": "__type",
+                          "variant": "signature",
                           "kind": 4096,
-                          "kindString": "Call signature",
                           "flags": {},
+                          "sources": [
+                            {
+                              "fileName": "timer-manager/dist/index.d.ts",
+                              "line": 31,
+                              "character": 40
+                            }
+                          ],
                           "parameters": [
                             {
                               "id": 140,
                               "name": "args",
+                              "variant": "param",
                               "kind": 32768,
-                              "kindString": "Parameter",
                               "flags": {
                                 "isRest": true
                               },
@@ -1386,8 +1397,9 @@
                                 "type": "array",
                                 "elementType": {
                                   "type": "reference",
-                                  "id": 136,
-                                  "name": "A"
+                                  "target": -1,
+                                  "name": "A",
+                                  "refersToTypeParameter": true
                                 }
                               }
                             }
@@ -1430,7 +1442,7 @@
                     "kind": "array",
                     "type": {
                       "kind": "reference",
-                      "id": 136,
+                      "id": -1,
                       "name": "A",
                       "packageName": null,
                       "typeArguments": []
@@ -1441,7 +1453,7 @@
               "returnType": {
                 "kind": "reference",
                 "id": null,
-                "name": "global.NodeJS.Timeout",
+                "name": "__global.NodeJS.Timeout",
                 "packageName": "@types/node",
                 "typeArguments": []
               }
@@ -1497,8 +1509,8 @@
                     "reflection": {
                       "id": 126,
                       "name": "__type",
+                      "variant": "declaration",
                       "kind": 65536,
-                      "kindString": "Type literal",
                       "flags": {},
                       "sources": [
                         {
@@ -1511,15 +1523,22 @@
                         {
                           "id": 127,
                           "name": "__type",
+                          "variant": "signature",
                           "kind": 4096,
-                          "kindString": "Call signature",
                           "flags": {},
+                          "sources": [
+                            {
+                              "fileName": "timer-manager/dist/index.d.ts",
+                              "line": 19,
+                              "character": 39
+                            }
+                          ],
                           "parameters": [
                             {
                               "id": 128,
                               "name": "args",
+                              "variant": "param",
                               "kind": 32768,
-                              "kindString": "Parameter",
                               "flags": {
                                 "isRest": true
                               },
@@ -1527,8 +1546,9 @@
                                 "type": "array",
                                 "elementType": {
                                   "type": "reference",
-                                  "id": 124,
-                                  "name": "A"
+                                  "target": -1,
+                                  "name": "A",
+                                  "refersToTypeParameter": true
                                 }
                               }
                             }
@@ -1571,7 +1591,7 @@
                     "kind": "array",
                     "type": {
                       "kind": "reference",
-                      "id": 124,
+                      "id": -1,
                       "name": "A",
                       "packageName": null,
                       "typeArguments": []
@@ -1582,7 +1602,7 @@
               "returnType": {
                 "kind": "reference",
                 "id": null,
-                "name": "global.NodeJS.Timeout",
+                "name": "__global.NodeJS.Timeout",
                 "packageName": "@types/node",
                 "typeArguments": []
               }
@@ -1600,6 +1620,7 @@
         "path": "timestamp/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": "Timestamp class, parses the pattern once, displays the desired Date or UNIX timestamp with the selected pattern.",
         "blockTags": [],
@@ -1856,7 +1877,7 @@
                     "kind": "reference",
                     "id": 184,
                     "name": "TimeResolvable",
-                    "packageName": null,
+                    "packageName": "@sapphire/timestamp",
                     "typeArguments": []
                   }
                 }
@@ -1911,7 +1932,7 @@
                     "kind": "reference",
                     "id": 184,
                     "name": "TimeResolvable",
-                    "packageName": null,
+                    "packageName": "@sapphire/timestamp",
                     "typeArguments": []
                   }
                 }
@@ -1976,7 +1997,7 @@
                 "kind": "reference",
                 "id": 152,
                 "name": "Timestamp",
-                "packageName": null,
+                "packageName": "@sapphire/timestamp",
                 "typeArguments": []
               }
             }
@@ -2071,7 +2092,7 @@
                     "kind": "reference",
                     "id": 184,
                     "name": "TimeResolvable",
-                    "packageName": null,
+                    "packageName": "@sapphire/timestamp",
                     "typeArguments": []
                   }
                 }
@@ -2141,7 +2162,7 @@
                     "kind": "reference",
                     "id": 184,
                     "name": "TimeResolvable",
-                    "packageName": null,
+                    "packageName": "@sapphire/timestamp",
                     "typeArguments": []
                   }
                 }
@@ -2237,6 +2258,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2425,6 +2447,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": "The supported time types",
         "blockTags": [],
@@ -2565,6 +2588,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2593,7 +2617,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
@@ -2617,7 +2641,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
@@ -2641,7 +2665,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
@@ -2665,7 +2689,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
@@ -2689,7 +2713,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
@@ -2713,7 +2737,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
@@ -2737,7 +2761,7 @@
             "kind": "reference",
             "id": 114,
             "name": "DurationFormatAssetsUnit",
-            "packageName": null,
+            "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         }
@@ -2753,6 +2777,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2794,6 +2819,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2856,6 +2882,7 @@
         "path": "timestamp/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2930,6 +2957,7 @@
         "path": "timestamp/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2969,6 +2997,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -2979,7 +3008,7 @@
         "kind": "reference",
         "id": 116,
         "name": "DurationFormatSeparators",
-        "packageName": null,
+        "packageName": "@sapphire/duration",
         "typeArguments": []
       }
     },
@@ -2992,6 +3021,7 @@
         "path": "duration/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3002,7 +3032,7 @@
         "kind": "reference",
         "id": 106,
         "name": "DurationFormatAssetsTime",
-        "packageName": null,
+        "packageName": "@sapphire/duration",
         "typeArguments": []
       }
     },
@@ -3015,6 +3045,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3041,6 +3072,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3052,15 +3084,15 @@
         "reflection": {
           "id": 21,
           "name": "__type",
+          "variant": "declaration",
           "kind": 65536,
-          "kindString": "Type literal",
           "flags": {},
           "children": [
             {
               "id": 25,
               "name": "apr",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3079,8 +3111,8 @@
             {
               "id": 29,
               "name": "aug",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3099,8 +3131,8 @@
             {
               "id": 33,
               "name": "dec",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3119,8 +3151,8 @@
             {
               "id": 23,
               "name": "feb",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3139,8 +3171,8 @@
             {
               "id": 39,
               "name": "fri",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3159,8 +3191,8 @@
             {
               "id": 22,
               "name": "jan",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3179,8 +3211,8 @@
             {
               "id": 28,
               "name": "jul",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3199,8 +3231,8 @@
             {
               "id": 27,
               "name": "jun",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3219,8 +3251,8 @@
             {
               "id": 24,
               "name": "mar",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3239,8 +3271,8 @@
             {
               "id": 26,
               "name": "may",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3259,8 +3291,8 @@
             {
               "id": 35,
               "name": "mon",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3279,8 +3311,8 @@
             {
               "id": 32,
               "name": "nov",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3299,8 +3331,8 @@
             {
               "id": 31,
               "name": "oct",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3319,8 +3351,8 @@
             {
               "id": 40,
               "name": "sat",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3339,8 +3371,8 @@
             {
               "id": 30,
               "name": "sep",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3359,8 +3391,8 @@
             {
               "id": 34,
               "name": "sun",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3379,8 +3411,8 @@
             {
               "id": 38,
               "name": "thu",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3399,8 +3431,8 @@
             {
               "id": 36,
               "name": "tue",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3419,8 +3451,8 @@
             {
               "id": 37,
               "name": "wed",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3482,6 +3514,7 @@
         "path": "timestamp/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3505,6 +3538,7 @@
         "path": "timestamp/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3528,6 +3562,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3551,6 +3586,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3562,15 +3598,15 @@
         "reflection": {
           "id": 43,
           "name": "__type",
+          "variant": "declaration",
           "kind": 65536,
-          "kindString": "Type literal",
           "flags": {},
           "children": [
             {
               "id": 44,
               "name": "@annually",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3589,8 +3625,8 @@
             {
               "id": 48,
               "name": "@daily",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3609,8 +3645,8 @@
             {
               "id": 49,
               "name": "@hourly",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3629,8 +3665,8 @@
             {
               "id": 46,
               "name": "@monthly",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3649,8 +3685,8 @@
             {
               "id": 47,
               "name": "@weekly",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3669,8 +3705,8 @@
             {
               "id": 45,
               "name": "@yearly",
+              "variant": "declaration",
               "kind": 1024,
-              "kindString": "Property",
               "flags": {
                 "isReadonly": true
               },
@@ -3719,6 +3755,7 @@
         "path": "timestamp/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3751,6 +3788,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
@@ -3774,6 +3812,7 @@
         "path": "cron/dist",
         "url": null
       },
+      "namespaceParentId": null,
       "comment": {
         "description": null,
         "blockTags": [],
