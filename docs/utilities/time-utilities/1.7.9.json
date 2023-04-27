@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "7.2.0",
+  "typeDocJsonParserVersion": "7.3.1",
   "id": 0,
   "name": "@sapphire/time-utilities",
   "version": "1.7.9",
@@ -9,12 +9,6 @@
     {
       "id": 2,
       "name": "Cron",
-      "source": {
-        "line": 51,
-        "file": "index.d.ts",
-        "path": "cron/dist",
-        "url": null
-      },
       "comment": {
         "description": "Handles Cron strings and generates dates based on the cron string provided.",
         "blockTags": [
@@ -25,6 +19,13 @@
         ],
         "modifierTags": []
       },
+      "namespaceParentId": null,
+      "source": {
+        "line": 51,
+        "file": "index.d.ts",
+        "path": "cron/dist",
+        "url": null
+      },
       "external": false,
       "abstract": false,
       "extendsType": null,
@@ -33,16 +34,16 @@
       "construct": {
         "id": 6,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 62,
           "file": "index.d.ts",
           "path": "cron/dist",
           "url": null
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 2,
         "accessibility": "public",
@@ -68,18 +69,18 @@
         {
           "id": 9,
           "name": "cron",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 52,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 9,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -93,18 +94,18 @@
         {
           "id": 13,
           "name": "days",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 56,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 13,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -121,18 +122,18 @@
         {
           "id": 15,
           "name": "dows",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 58,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 15,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -149,18 +150,18 @@
         {
           "id": 12,
           "name": "hours",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 55,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 12,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -177,18 +178,18 @@
         {
           "id": 11,
           "name": "minutes",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 54,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 11,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -205,18 +206,18 @@
         {
           "id": 14,
           "name": "months",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 57,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 14,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -233,18 +234,18 @@
         {
           "id": 10,
           "name": "normalized",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 53,
             "file": "index.d.ts",
             "path": "cron/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 2,
+          "parentId": 10,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -258,12 +259,6 @@
         {
           "id": 3,
           "name": "normalize",
-          "source": {
-            "line": 73,
-            "file": "index.d.ts",
-            "path": "cron/dist",
-            "url": null
-          },
           "comment": {
             "description": "Normalize the pattern",
             "blockTags": [
@@ -274,7 +269,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 2,
+          "source": {
+            "line": 73,
+            "file": "index.d.ts",
+            "path": "cron/dist",
+            "url": null
+          },
+          "parentId": 3,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -288,12 +289,6 @@
         {
           "id": 5,
           "name": "parsePart",
-          "source": {
-            "line": 84,
-            "file": "index.d.ts",
-            "path": "cron/dist",
-            "url": null
-          },
           "comment": {
             "description": "Parse the current part",
             "blockTags": [
@@ -308,7 +303,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 2,
+          "source": {
+            "line": 84,
+            "file": "index.d.ts",
+            "path": "cron/dist",
+            "url": null
+          },
+          "parentId": 5,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -322,12 +323,6 @@
         {
           "id": 4,
           "name": "parseString",
-          "source": {
-            "line": 78,
-            "file": "index.d.ts",
-            "path": "cron/dist",
-            "url": null
-          },
           "comment": {
             "description": "Parse the pattern",
             "blockTags": [
@@ -338,7 +333,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 2,
+          "source": {
+            "line": 78,
+            "file": "index.d.ts",
+            "path": "cron/dist",
+            "url": null
+          },
+          "parentId": 4,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -360,7 +361,7 @@
             "path": "cron/dist",
             "url": null
           },
-          "parentId": 2,
+          "parentId": 16,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -424,16 +425,17 @@
     {
       "id": 54,
       "name": "Duration",
+      "comment": {
+        "description": "Converts duration strings into ms and future dates",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 58,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
-      },
-      "comment": {
-        "description": "Converts duration strings into ms and future dates",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -443,16 +445,16 @@
       "construct": {
         "id": 58,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 107,
           "file": "index.d.ts",
           "path": "duration/dist",
           "url": null
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 54,
         "accessibility": "public",
@@ -478,18 +480,18 @@
         {
           "id": 68,
           "name": "days",
+          "comment": {
+            "description": "The amount of days extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 90,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of days extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 68,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -503,18 +505,18 @@
         {
           "id": 67,
           "name": "hours",
+          "comment": {
+            "description": "The amount of hours extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 86,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of hours extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 67,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -528,18 +530,18 @@
         {
           "id": 63,
           "name": "microseconds",
+          "comment": {
+            "description": "The amount of microseconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 70,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of microseconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 63,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -553,18 +555,18 @@
         {
           "id": 64,
           "name": "milliseconds",
+          "comment": {
+            "description": "The amount of milliseconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 74,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of milliseconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 64,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -578,18 +580,18 @@
         {
           "id": 66,
           "name": "minutes",
+          "comment": {
+            "description": "The amount of minutes extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 82,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of minutes extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 66,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -603,18 +605,18 @@
         {
           "id": 70,
           "name": "months",
+          "comment": {
+            "description": "The amount of months extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 98,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of months extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 70,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -628,18 +630,18 @@
         {
           "id": 62,
           "name": "nanoseconds",
+          "comment": {
+            "description": "The amount of nanoseconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 66,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of nanoseconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 62,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -653,18 +655,18 @@
         {
           "id": 61,
           "name": "offset",
+          "comment": {
+            "description": "The offset",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 62,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The offset",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 61,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -678,18 +680,18 @@
         {
           "id": 65,
           "name": "seconds",
+          "comment": {
+            "description": "The amount of seconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 78,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of seconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 65,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -703,18 +705,18 @@
         {
           "id": 69,
           "name": "weeks",
+          "comment": {
+            "description": "The amount of weeks extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 94,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of weeks extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 69,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -728,18 +730,18 @@
         {
           "id": 71,
           "name": "years",
+          "comment": {
+            "description": "The amount of years extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 102,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The amount of years extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 71,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -753,18 +755,18 @@
         {
           "id": 57,
           "name": "aAndAnRegex",
+          "comment": {
+            "description": "The RegExp used for replacing a/an with 1",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 128,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The RegExp used for replacing a/an with 1",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 57,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -778,18 +780,18 @@
         {
           "id": 56,
           "name": "commaRegex",
+          "comment": {
+            "description": "The RegExp used for removing commas",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 124,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The RegExp used for removing commas",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -803,18 +805,18 @@
         {
           "id": 55,
           "name": "patternRegex",
+          "comment": {
+            "description": "The RegExp used for the pattern parsing",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 120,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "The RegExp used for the pattern parsing",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 55,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -828,18 +830,18 @@
         {
           "id": 73,
           "name": "fromNow",
+          "comment": {
+            "description": "Get the date from now",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 111,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": "Get the date from now",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 73,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -864,7 +866,7 @@
             "path": "duration/dist",
             "url": null
           },
-          "parentId": 54,
+          "parentId": 74,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -913,12 +915,6 @@
     {
       "id": 77,
       "name": "DurationFormatter",
-      "source": {
-        "line": 6,
-        "file": "index.d.ts",
-        "path": "duration/dist",
-        "url": null
-      },
       "comment": {
         "description": "Display the duration",
         "blockTags": [
@@ -933,6 +929,13 @@
         ],
         "modifierTags": []
       },
+      "namespaceParentId": null,
+      "source": {
+        "line": 6,
+        "file": "index.d.ts",
+        "path": "duration/dist",
+        "url": null
+      },
       "external": false,
       "abstract": false,
       "extendsType": null,
@@ -941,16 +944,16 @@
       "construct": {
         "id": 78,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 8,
           "file": "index.d.ts",
           "path": "duration/dist",
           "url": null
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 77,
         "accessibility": "public",
@@ -979,18 +982,18 @@
         {
           "id": 81,
           "name": "units",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 7,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 77,
+          "parentId": 81,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1015,7 +1018,7 @@
             "path": "duration/dist",
             "url": null
           },
-          "parentId": 77,
+          "parentId": 82,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1091,16 +1094,17 @@
     {
       "id": 119,
       "name": "TimerManager",
+      "comment": {
+        "description": "Manages timers so that this application can be cleanly exited",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 4,
         "file": "index.d.ts",
         "path": "timer-manager/dist",
         "url": null
-      },
-      "comment": {
-        "description": "Manages timers so that this application can be cleanly exited",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -1113,12 +1117,12 @@
       "construct": {
         "id": 148,
         "name": "constructor",
-        "source": null,
         "comment": {
           "description": null,
           "blockTags": [],
           "modifierTags": []
         },
+        "source": null,
         "parentId": 119,
         "accessibility": "public",
         "parameters": []
@@ -1127,18 +1131,18 @@
         {
           "id": 121,
           "name": "storedIntervals",
+          "comment": {
+            "description": "A set of intervals to clear on destroy",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 12,
             "file": "index.d.ts",
             "path": "timer-manager/dist",
             "url": null
           },
-          "comment": {
-            "description": "A set of intervals to clear on destroy",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1152,18 +1156,18 @@
         {
           "id": 120,
           "name": "storedTimeouts",
+          "comment": {
+            "description": "A set of timeouts to clear on destroy",
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 8,
             "file": "index.d.ts",
             "path": "timer-manager/dist",
             "url": null
           },
-          "comment": {
-            "description": "A set of timeouts to clear on destroy",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 119,
+          "parentId": 120,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1185,7 +1189,7 @@
             "path": "timer-manager/dist",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 143,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1235,7 +1239,7 @@
             "path": "timer-manager/dist",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 131,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1285,7 +1289,7 @@
             "path": "timer-manager/dist",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 146,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1316,7 +1320,7 @@
             "path": "timer-manager/dist",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 134,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1457,7 +1461,7 @@
             "path": "timer-manager/dist",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 122,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -1594,16 +1598,17 @@
     {
       "id": 152,
       "name": "Timestamp",
+      "comment": {
+        "description": "Timestamp class, parses the pattern once, displays the desired Date or UNIX timestamp with the selected pattern.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 25,
         "file": "index.d.ts",
         "path": "timestamp/dist",
         "url": null
-      },
-      "comment": {
-        "description": "Timestamp class, parses the pattern once, displays the desired Date or UNIX timestamp with the selected pattern.",
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "abstract": false,
@@ -1613,16 +1618,16 @@
       "construct": {
         "id": 167,
         "name": "constructor",
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
         "source": {
           "line": 40,
           "file": "index.d.ts",
           "path": "timestamp/dist",
           "url": null
-        },
-        "comment": {
-          "description": null,
-          "blockTags": [],
-          "modifierTags": []
         },
         "parentId": 152,
         "accessibility": "public",
@@ -1648,12 +1653,6 @@
         {
           "id": 170,
           "name": "pattern",
-          "source": {
-            "line": 30,
-            "file": "index.d.ts",
-            "path": "timestamp/dist",
-            "url": null
-          },
           "comment": {
             "description": "The raw pattern",
             "blockTags": [
@@ -1664,7 +1663,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "source": {
+            "line": 30,
+            "file": "index.d.ts",
+            "path": "timestamp/dist",
+            "url": null
+          },
+          "parentId": 170,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1678,12 +1683,6 @@
         {
           "id": 171,
           "name": "template",
-          "source": {
-            "line": 34,
-            "file": "index.d.ts",
-            "path": "timestamp/dist",
-            "url": null
-          },
           "comment": {
             "description": null,
             "blockTags": [
@@ -1694,7 +1693,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "source": {
+            "line": 34,
+            "file": "index.d.ts",
+            "path": "timestamp/dist",
+            "url": null
+          },
+          "parentId": 171,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -1708,12 +1713,6 @@
         {
           "id": 164,
           "name": "display",
-          "source": {
-            "line": 90,
-            "file": "index.d.ts",
-            "path": "timestamp/dist",
-            "url": null
-          },
           "comment": {
             "description": "Display the current date with the current pattern.",
             "blockTags": [
@@ -1732,7 +1731,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "source": {
+            "line": 90,
+            "file": "index.d.ts",
+            "path": "timestamp/dist",
+            "url": null
+          },
+          "parentId": 164,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1746,12 +1751,6 @@
         {
           "id": 165,
           "name": "parse",
-          "source": {
-            "line": 96,
-            "file": "index.d.ts",
-            "path": "timestamp/dist",
-            "url": null
-          },
           "comment": {
             "description": "Parses the pattern.",
             "blockTags": [
@@ -1766,7 +1765,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "source": {
+            "line": 96,
+            "file": "index.d.ts",
+            "path": "timestamp/dist",
+            "url": null
+          },
+          "parentId": 165,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1780,12 +1785,6 @@
         {
           "id": 166,
           "name": "resolveDate",
-          "source": {
-            "line": 102,
-            "file": "index.d.ts",
-            "path": "timestamp/dist",
-            "url": null
-          },
           "comment": {
             "description": "Resolves a date.",
             "blockTags": [
@@ -1800,7 +1799,13 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "source": {
+            "line": 102,
+            "file": "index.d.ts",
+            "path": "timestamp/dist",
+            "url": null
+          },
+          "parentId": 166,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1822,7 +1827,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 172,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1877,7 +1882,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 175,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1932,7 +1937,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 178,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1991,7 +1996,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 181,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -2022,7 +2027,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 153,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -2092,7 +2097,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 157,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -2162,7 +2167,7 @@
             "path": "timestamp/dist",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 161,
           "accessibility": "public",
           "abstract": false,
           "static": true,
@@ -2231,32 +2236,33 @@
     {
       "id": 87,
       "name": "Time",
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 28,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
       },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
       "external": false,
       "members": [
         {
           "id": 94,
           "name": "Day",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 35,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "86400000"
@@ -2264,16 +2270,16 @@
         {
           "id": 93,
           "name": "Hour",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 34,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "3600000"
@@ -2281,16 +2287,16 @@
         {
           "id": 89,
           "name": "Microsecond",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 30,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "0.001"
@@ -2298,16 +2304,16 @@
         {
           "id": 90,
           "name": "Millisecond",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 31,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "1"
@@ -2315,16 +2321,16 @@
         {
           "id": 92,
           "name": "Minute",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 33,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "60000"
@@ -2332,16 +2338,16 @@
         {
           "id": 96,
           "name": "Month",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 37,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "2628000000"
@@ -2349,16 +2355,16 @@
         {
           "id": 88,
           "name": "Nanosecond",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 29,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "0.000001"
@@ -2366,16 +2372,16 @@
         {
           "id": 91,
           "name": "Second",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 32,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "1000"
@@ -2383,16 +2389,16 @@
         {
           "id": 95,
           "name": "Week",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 36,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "604800000"
@@ -2400,16 +2406,16 @@
         {
           "id": 97,
           "name": "Year",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 38,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 87,
           "value": "31536000000"
@@ -2419,32 +2425,33 @@
     {
       "id": 98,
       "name": "TimeTypes",
+      "comment": {
+        "description": "The supported time types",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "namespaceParentId": null,
       "source": {
         "line": 43,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
       },
-      "comment": {
-        "description": "The supported time types",
-        "blockTags": [],
-        "modifierTags": []
-      },
       "external": false,
       "members": [
         {
           "id": 102,
           "name": "Day",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 47,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "day"
@@ -2452,16 +2459,16 @@
         {
           "id": 101,
           "name": "Hour",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 46,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "hour"
@@ -2469,16 +2476,16 @@
         {
           "id": 100,
           "name": "Minute",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 45,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "minute"
@@ -2486,16 +2493,16 @@
         {
           "id": 104,
           "name": "Month",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 49,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "month"
@@ -2503,16 +2510,16 @@
         {
           "id": 99,
           "name": "Second",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 44,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "second"
@@ -2520,16 +2527,16 @@
         {
           "id": 103,
           "name": "Week",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 48,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "week"
@@ -2537,16 +2544,16 @@
         {
           "id": 105,
           "name": "Year",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 50,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
           },
           "parentId": 98,
           "value": "year"
@@ -2559,16 +2566,17 @@
     {
       "id": 106,
       "name": "DurationFormatAssetsTime",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 18,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2576,18 +2584,18 @@
         {
           "id": 110,
           "name": "day",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 22,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 110,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2600,18 +2608,18 @@
         {
           "id": 109,
           "name": "hour",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 21,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 109,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2624,18 +2632,18 @@
         {
           "id": 108,
           "name": "minute",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 20,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2648,18 +2656,18 @@
         {
           "id": 112,
           "name": "month",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 24,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 112,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2672,18 +2680,18 @@
         {
           "id": 107,
           "name": "second",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 19,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 107,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2696,18 +2704,18 @@
         {
           "id": 111,
           "name": "week",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 23,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 111,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2720,18 +2728,18 @@
         {
           "id": 113,
           "name": "year",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 25,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 106,
+          "parentId": 113,
           "readonly": false,
           "type": {
             "kind": "reference",
@@ -2747,16 +2755,17 @@
     {
       "id": 114,
       "name": "DurationFormatAssetsUnit",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 15,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2764,18 +2773,18 @@
         {
           "id": 115,
           "name": "DEFAULT",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 16,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 114,
+          "parentId": 115,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2788,16 +2797,17 @@
     {
       "id": 116,
       "name": "DurationFormatSeparators",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 11,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2805,18 +2815,18 @@
         {
           "id": 117,
           "name": "left",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 12,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 116,
+          "parentId": 117,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2826,18 +2836,18 @@
         {
           "id": 118,
           "name": "right",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 13,
             "file": "index.d.ts",
             "path": "duration/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 116,
+          "parentId": 118,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2850,16 +2860,17 @@
     {
       "id": 185,
       "name": "TimestampTemplateEntry",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 18,
         "file": "index.d.ts",
         "path": "timestamp/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2867,18 +2878,18 @@
         {
           "id": 187,
           "name": "content",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 20,
             "file": "index.d.ts",
             "path": "timestamp/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 185,
+          "parentId": 187,
           "readonly": false,
           "type": {
             "kind": "union",
@@ -2897,18 +2908,18 @@
         {
           "id": 186,
           "name": "type",
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
           "source": {
             "line": 19,
             "file": "index.d.ts",
             "path": "timestamp/dist",
             "url": null
           },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 185,
+          "parentId": 186,
           "readonly": false,
           "type": {
             "kind": "intrinsic",
@@ -2924,16 +2935,17 @@
     {
       "id": 184,
       "name": "TimeResolvable",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 17,
         "file": "index.d.ts",
         "path": "timestamp/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "typeParameters": [],
@@ -2963,16 +2975,17 @@
     {
       "id": 52,
       "name": "DEFAULT_SEPARATORS",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 53,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -2986,16 +2999,17 @@
     {
       "id": 53,
       "name": "DEFAULT_UNITS",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 52,
         "file": "index.d.ts",
         "path": "duration/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3009,16 +3023,17 @@
     {
       "id": 1,
       "name": "allowedNum",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 15,
         "file": "index.d.ts",
         "path": "cron/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3035,16 +3050,17 @@
     {
       "id": 20,
       "name": "cronTokens",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 24,
         "file": "index.d.ts",
         "path": "cron/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3476,16 +3492,17 @@
     {
       "id": 150,
       "name": "days",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 13,
         "file": "index.d.ts",
         "path": "timestamp/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3499,16 +3516,17 @@
     {
       "id": 151,
       "name": "months",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 14,
         "file": "index.d.ts",
         "path": "timestamp/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3522,16 +3540,17 @@
     {
       "id": 41,
       "name": "partRegex",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 13,
         "file": "index.d.ts",
         "path": "cron/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3545,16 +3564,17 @@
     {
       "id": 42,
       "name": "predefined",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 16,
         "file": "index.d.ts",
         "path": "cron/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3713,16 +3733,17 @@
     {
       "id": 183,
       "name": "tokens",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 15,
         "file": "index.d.ts",
         "path": "timestamp/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3745,16 +3766,17 @@
     {
       "id": 50,
       "name": "tokensRegex",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 45,
         "file": "index.d.ts",
         "path": "cron/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
@@ -3768,16 +3790,17 @@
     {
       "id": 51,
       "name": "wildcardRegex",
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
       "source": {
         "line": 14,
         "file": "index.d.ts",
         "path": "cron/dist",
         "url": null
-      },
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
       },
       "external": false,
       "type": {
