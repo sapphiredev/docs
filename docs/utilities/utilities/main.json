@@ -2,9 +2,9 @@
   "typeDocJsonParserVersion": "7.4.0",
   "id": 0,
   "name": "@sapphire/utilities",
-  "version": "3.11.1",
+  "version": "3.11.2",
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/utilities\n\n**Common JavaScript utilities for the Sapphire Community.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/utilities?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/utilities)\n[![npm](https://img.shields.io/npm/v/@sapphire/utilities?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/utilities)\n\n</div>\n\n**Table of Contents**\n\n-   [Description](#description)\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Javascript Utilities](javascript-utilities)\n        -   [`arrayStrictEqual`](#arraystrictequal)\n        -   [`chunk`](#chunk)\n        -   [`classExtends`](#classextends)\n        -   [`codeBlock`](#codeblock)\n        -   [`cutText`](#cuttext)\n        -   [`deepClone`](#deepclone)\n        -   [`filterNullAndUndefined`](#filternullandundefined)\n        -   [`filterNullAndUndefinedAndEmpty`](#filternullandundefinedandempty)\n        -   [`filterNullAndUndefinedAndZero`](#filternullandundefinedandzero)\n        -   [`getDeepObjectKeys`](#getdeepobjectkeys)\n        -   [`hasAtLeastOneKeyInMap`](#hasatleastonekeyinmap)\n        -   [`inlineCodeBlock`](#inlinecodeblock)\n        -   [`isClass`](#isclass)\n        -   [`isFunction`](#isfunction)\n        -   [`isNullOrUndefined`](#isnullorundefined)\n        -   [`isNullOrUndefinedOrEmpty`](#isnullorundefinedorempty)\n        -   [`isNullOrUndefinedOrZero`](#isnullorundefinedorzero)\n        -   [`isNumber`](#isnumber)\n        -   [`isObject`](#isobject)\n        -   [`isPrimitive`](#isprimitive)\n        -   [`isThenable`](#isthenable)\n        -   [`lazy`](#lazy)\n        -   [`makeObject`](#makeObject)\n        -   [`mergeDefault`](#mergedefault)\n        -   [`mergeObjects`](#mergeobjects)\n        -   [`noop`](#noop)\n        -   [`objectToTuples`](#objecttotuples)\n        -   [`partition`](#partition)\n        -   [`pickRandom`](#pickRandom)\n        -   [`range`](#range)\n        -   [`regExpEsc`](#regexesc)\n        -   [`roundNumber`](#roundnumber)\n        -   [`sleep`](#sleep)\n        -   [`splitText`](#splitText)\n        -   [`throttle`](#throttle)\n        -   [`toTitleCase`](#totitlecase)\n        -   [`tryParseJSON`](#tryparsejson)\n        -   [`tryParseURL`](#tryparseurl)\n    -   [Typescript Utilities](#typescript-utilities)\n        -   [Functions](#functions)\n            -   [`cast`](#cast)\n            -   [`objectEntries`](#objectentries)\n            -   [`objectKeys`](#objectkeys)\n            -   [`objectValues`](#objectvalues)\n        -   [Types](#types)\n            -   [`Primitive`](#primitive)\n            -   [`Builtin`](#builtin)\n            -   [`DeepRequired`](#deeprequired)\n            -   [`RequiredExcept`](#requiredexcept)\n            -   [`PartialRequired`](#partialrequired)\n            -   [`DeepPartial`](#deeppartial)\n            -   [`ArgumentTypes`](#argumenttypes)\n            -   [`Arr`](#arr)\n            -   [`Ctor`](#ctor)\n            -   [`AbstractCtor`](#abstractctor)\n            -   [`Constructor`](#constructor)\n            -   [`AbstractConstructor`](#abstractconstructor)\n            -   [`FirstArgument`](#firstargument)\n            -   [`SecondArgument`](#secondargument)\n            -   [`Awaitable`](#awaitable)\n            -   [`Nullish`](#nullish)\n            -   [`NonNullableProperties`](#nonnullableproperties)\n            -   [`NonNullObject`](#nonnullobject)\n            -   [`AnyObject`](#anyobject)\n            -   [`PickByValue`](#pickbyvalue)\n            -   [`Mutable`](#mutable)\n            -   [`StrictRequired`](#strictrequired)\n            -   [`ArrayElementType`](#arrayelementtype)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-)\n\n## Description\n\nWe often have a need for a function or type augmentation and having to include it in every repo is a huge drag. To solve this problem there are dozens upon dozens of packages on NPM, but we cannot maintain those in case of issues and a lot of them are poorly written or under-optimised. Our solution is to provide @sapphire/utilities, which is the only package you'll likely need to cover your day-to-day needs.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/utilities\n```\n\n---\n\n## Usage\n\nYou can import individual utility function from subpath like: @sapphire/utility/isFunction or the entire library.\n\n```ts\nimport { isFunction } from '@sapphire/utilities/isFunction';\n// or\nimport { isFunction } from '@sapphire/utilities';\n```\n\n**Note:** For typescript users, subpath import are only supported in `--moduleResolution node16` and `--moduleResolution nodenext`. More information can be found [in this issue on the microsoft/TypeScript repository](https://github.com/microsoft/TypeScript/issues/50794).\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { arrayStrictEquals } = require('@sapphire/utilities')` equals `import { arrayStrictEquals } from '@sapphire/utilities'`.\n\n### Javascript Utilities\n\n#### `arrayStrictEquals`\n\nCompares if two arrays are strictly equal.\n\n```ts\narrayStrictEquals([1, 2, 3], [1, 2, 3]); // true\narrayStrictEquals([1, 2, 3], [1, 2, 3, 4]); // false\narrayStrictEquals([1, 2, 3], [1, 2, 4]); // false\n```\n\n#### `chunk`\n\nSplits up an array into chunks.\n\n```ts\nchunk([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]\nchunk([1, 2, 3, 4, 5], 3); // [[1, 2, 3], [4, 5]]\n```\n\n#### `classExtends`\n\nChecks whether or not the value class extends the base class.\n\n```ts\nclass A {}\nclass B extends A {}\n\nclassExtends(A, B); // false\nclassExtends(B, A); // true\n```\n\n#### `codeBlock`\n\nWraps text in a markdown codeblock with a language indicator for syntax highlighting.\n\n````ts\ncodeBlock('js', 'const value = \"Hello World!\";'); // ```js\\nconst value = \"Hello World!\";\\n```\n````\n\n#### `cutText`\n\nSplit a text by its latest space character in a range from the character 0 to the selected one.\n\n```ts\ncutText('Lorem Ipsum', 9); // \"Lorem...\"\n```\n\n#### `deepClone`\n\nDeep clones an object.\n\n```ts\nconst obj = { a: 1, b: { c: 2 } };\nconst clone = deepClone(obj); // { a: 1, b: { c: 2 } }\n```\n\n#### `filterNullAndUndefined`\n\nChecks whether a value is not `null` nor `undefined`. This can be used in `Array#filter` to remove `null` and `undefined` from the array type\n\n```ts\n// TypeScript Type: (string | undefined | null)[]\nconst someArray = ['one', 'two', undefined, null, 'five'];\n\n// TypeScript Type: string[]\nconst filteredArray = someArray.filter(filterNullAndUndefined); // ['one', 'two', 'five']\n```\n\n#### `filterNullAndUndefinedAndEmpty`\n\nChecks whether a value is not `null`, `undefined`, or `''` (empty string). This can be used in `Array#filter` to remove `null`, `undefined`, and `''` from the array type\n\n```ts\n// TypeScript Type: (number | string | undefined | null)[]\nconst someArray = [1, 2, undefined, null, ''];\n\n// TypeScript Type: number[]\nconst filteredArray = someArray.filter(filterNullAndUndefinedAndEmpty); // [1, 2]\n```\n\n#### `filterNullAndUndefinedAndZero`\n\nChecks whether a value is not `null`, `undefined`, or `0`. This can be used in `Array#filter` to remove `null`, `undefined`, and `0` from the array type\n\n```ts\n// TypeScript Type: (string | number | undefined | null)[]\nconst someArray = ['one', 'two', undefined, null, 0];\n\n// TypeScript Type: string[]\nconst filteredArray = someArray.filter(filterNullAndUndefinedAndZero); // ['one', 'two']\n```\n\n#### `getDeepObjectKeys`\n\nReturns an array of all the keys of an object, including the keys of nested objects.\n\n```ts\nconst obj = { a: 1, b: { c: 2 }, d: [{ e: 3 }] };\ngetDeepObjectKeys(obj); // ['a', 'b.c', 'd.0.e']\ngetDeepObjectKeys(obj, { arrayKeysIndexStyle: 'braces' }); // ['a', 'bc', 'd[0]e']\ngetDeepObjectKeys(obj, { arrayKeysIndexStyle: 'braces-with-dot' }); // ['a', 'b.c', 'd[0].e']\ngetDeepObjectKeys(obj, { arrayKeysIndexStyle: 'dotted' }); // ['a', 'b.c', 'd.0.e']\n```\n\n#### `hasAtLeastOneKeyInMap`\n\nChecks whether a map has at least one of an array of keys.\n\n```ts\nconst map = new Map([\n\t['a', 1],\n\t['b', 2],\n\t['c', 3]\n]);\n\nhasAtLeastOneKeyInMap(map, ['a', 'd']); // true\nhasAtLeastOneKeyInMap(map, ['d', 'e']); // false\n```\n\n#### `inlineCodeBlock`\n\nWraps text in a markdown inline codeblock.\n\n```ts\ninlineCodeBlock('const value = \"Hello World!\";'); // `const value = \"Hello World!\";`\n```\n\n#### `isClass`\n\nVerifies if the input is a class constructor.\n\n```ts\nclass A {}\n\nisClass(A); // true\nisClass(function () {}); // false\n```\n\n#### `isFunction`\n\nVerifies if the input is a function.\n\n```ts\nisFunction(function () {}); // true\nisFunction('foo'); // false\n```\n\n#### `isNullOrUndefined`\n\nChecks whether a value is `null` or `undefined`.\n\n```ts\nisNullOrUndefined(null); // true\nisNullOrUndefined(undefined); // true\nisNullOrUndefined(1); // false\n```\n\n#### `isNullOrUndefinedOrEmpty`\n\nChecks whether a value is `null`, `undefined`, or `''` (empty string).\n\n```ts\nisNullOrUndefinedOrEmpty(null); // true\nisNullOrUndefinedOrEmpty(undefined); // true\nisNullOrUndefinedOrEmpty(''); // true\nisNullOrUndefinedOrEmpty(1); // false\n```\n\n#### `isNullOrUndefinedOrZero`\n\nChecks whether a value is `null`, `undefined`, or `0`.\n\n```ts\nisNullOrUndefinedOrZero(null); // true\nisNullOrUndefinedOrZero(undefined); // true\nisNullOrUndefinedOrZero(0); // true\nisNullOrUndefinedOrZero(1); // false\n```\n\n#### `isNumber`\n\nVerifies if the input is a number.\n\n```ts\nisNumber(1); // true\nisNumber('1'); // false\n```\n\n#### `isObject`\n\nVerifies if the input is an object.\n\n```ts\nisObject({}); // true\nisObject([]); // true\nisObject('foo'); // false\n```\n\n#### `isPrimitive`\n\nVerifies if the input is a primitive.\n\n```ts\nisPrimitive(1); // true\nisPrimitive('1'); // true\nisPrimitive({}); // false\n```\n\n#### `isThenable`\n\nVerifies if an object is a promise.\n\n```ts\nisThenable({}); // false\nisThenable(Promise.resolve()); // true\n```\n\n#### `lazy`\n\nLazily creates a constant or load a module and caches it internally.\n\n```ts\nlet timesCalled = 0;\nconst lazyValue = lazy(() => {\n\ttimesCalled++;\n\treturn 'foo';\n});\n\nlazyValue(); // 'foo'\nlazyValue(); // 'foo' - cached\n\ntimesCalled; // 1\n```\n\n#### `makeObject`\n\nTurn a dotted path into a json object.\n\n```ts\nmakeObject('a.b.c', 1); // { a: { b: { c: 1 } } }\n```\n\n#### `mergeDefault`\n\nDeep merges two objects. Properties from the second parameter are applied to the first.\n\n```ts\nconst base = { a: 1, b: { c: 2 } };\nconst overwritten = { b: { d: 3 } };\n\nmergeDefault(base, overwritten);\noverwritten; // { a: 1, b: { c: 2, d: 3 } }\n```\n\n#### `mergeObjects`\n\nMerges two objects.\n\n```ts\nconst source = { a: 1, b: 2 };\nconst target = { c: 4 };\n\nmergeObjects(source, target);\ntarget; // { a: 1, b: 2, c: 4 }\n```\n\n#### `noop`\n\nA no-operation function.\n\n```ts\nnoop(); // undefined\n\n// Example usage of ignoring a promise rejection\nPromise.reject().catch(noop);\n```\n\n#### `objectToTuples`\n\nConverts an object to a tuple with string paths.\n\n```ts\nconst obj = { a: 1, b: { c: 2 } };\nobjectToTuples(obj); // [['a', 1], ['b.c', 2]]\n```\n\n#### `partition`\n\nPartitions an array into a tuple of two arrays, where one array contains all elements that satisfies the predicate, and the other contains all elements that do not satisfy the predicate.\n\n```ts\nconst arr = [1, 2, 3, 4, 5];\nconst [evens, odds] = partition(arr, (n) => n % 2 === 0);\n\nevens; // [2, 4]\nodds; // [1, 3, 5]\n```\n\n#### `pickRandom`\n\nPicks a random element from an array.\n\n```ts\nconst arr = [1, 2, 3, 4, 5];\npickRandom(arr); // 3\n```\n\n#### `range`\n\nGet an array of numbers with the selected range, considering a specified step.\n\n```ts\nrange(1, 4, 1); // [1, 2, 3, 4]\nrange(1, 4, 2); // [1, 3]\nrange(4, 1, -1); // [4, 3, 2, 1]\nrange(4, 1, -2); // [4, 2]\n```\n\n#### `regExpEsc`\n\nCleans a string from regex injection by escaping special characters.\n\n```ts\nregExpEsc('foo.bar?'); // 'foo\\\\.bar\\\\?'\n```\n\n#### `roundNumber`\n\nProperly rounds up or down a number. Also supports strings using an exponent to indicate large or small numbers.\n\n```ts\nroundNumber(1.9134658034); // 1\nroundNumber(1.9134658034, 2); // 1.91\nroundNumber('10e-5'); // 0\n```\n\n#### `sleep` / `sleepSync`\n\nSleeps for the specified number of milliseconds.\n\n```ts\nawait sleep(1000); // Sleeps for 1 second\nsleepSync(1000); // Sleeps for 1 second\n```\n\n#### `splitText`\n\nSplit a string by its latest space character in a range from the character 0 to the selected one.\n\n```ts\nsplitText('Hello All People!', 8); // 'Hello'\nsplitText('Hello All People!', 10); // 'Hello All'\n```\n\n#### `throttle`\n\nCreates a throttled function that only invokes a function at most once per every x milliseconds. The throttled function comes with a flush method to reset the last time the throttled function was invoked.\n\n```ts\nconst throttled = throttle(() => console.log('throttled'), 1000);\n\nthrottled(); // 'throttled'\nthrottled(); // nothing\nthrottled.flush();\nthrottled(); // 'throttled'\n```\n\n#### `toTitleCase`\n\nConverts a string to Title Case. This is designed to also ensure common Discord PascalCased strings are put in their TitleCase variants.\n\n```ts\ntoTitleCase('foo bar'); // 'Foo Bar'\ntoTitleCase('textchannel'); // 'TextChannel'\ntoTitleCase('onetwo three', { onetwo: 'OneTwo' }); // OneTwo Three\n```\n\n#### `tryParseJSON`\n\nTries to parse a string as JSON.\n\n```ts\ntryParseJSON('{\"foo\": \"bar\"}'); // { foo: 'bar' }\ntryParseJSON('{\"foo\": \"bar\"' /* invalid */); // '{\"foo\": \"bar\"'\n```\n\n#### `tryParseURL`\n\nTries to parse a string as a URL.\n\n```ts\ntryParseURL('https://google.com'); // URL object\ntryParseURL('hello there :)'); // null\n```\n\n### Typescript Utilities\n\nA subset of our utilities are intended specifically for typescript users.\n\n#### Functions\n\n##### `cast`\n\nCasts any value to `T`. Note that this function is not type-safe, and may cause runtime errors if used incorrectly.\n\n```ts\nconst value = cast<string>(1); // value is now of type string\n```\n\n##### `objectEntries`\n\nA strongly-typed alternative to `Object.entries`.\n\n```ts\nconst obj = { a: 1, b: 2 } as const;\n\nconst native = Object.entries(obj); // [string, number][]\nconst strict = objectEntries(obj); // [['a', 1], ['b', 2]]\n```\n\n##### `objectKeys`\n\nA strongly-typed alternative to `Object.keys`.\n\n```ts\nconst obj = { a: 1, b: 2 } as const;\n\nconst native = Object.keys(obj); // string[]\nconst strict = objectKeys(obj); // ['a', 'b']\n```\n\n##### `objectValues`\n\nA strongly-typed alternative to `Object.values`.\n\n```ts\nconst obj = { a: 1, b: 2 } as const;\n\nconst native = Object.values(obj); // number[]\nconst strict = objectValues(obj); // [1, 2]\n```\n\n#### Types\n\n##### `Primitive`\n\nA union of all primitive types.\n\n```ts\n// string | number | bigint | boolean | symbol | undefined | null\ndeclare const primitive: Primitive;\n```\n\n##### `Builtin`\n\nA union of all builtin types.\n\n```ts\n// Primitive | Function | Date | Error | RegExp\ndeclare const builtin: Builtin;\n```\n\n##### `DeepRequired`\n\nMakes all properties in `T` required recursively.\n\n```ts\ntype Foo = Set<{ bar?: Promise<{ baz?: string }>[] }>;\n\n// Set<{ bar: Promise<{ baz: string }>[] }>\ndeclare const foo: DeepRequired<Foo>;\n```\n\n##### `RequiredExcept`\n\nMakes all properties in `T` required except for the ones specified in `K`.\n\n```ts\ninterface Foo {\n\tbar?: string;\n\tbaz?: number;\n}\n\n// { bar?: string; baz: number }\ndeclare const foo: RequiredExcept<Foo, 'bar'>;\n```\n\n##### `PartialRequired`\n\nMakes all properties in `T` that are assignable to `K` required.\n\n```ts\ninterface Foo {\n\tbar?: string;\n\tbaz?: number;\n}\n\n// { bar: string; baz?: number }\ndeclare const foo: PartialRequired<Foo, 'bar'>;\n```\n\n##### `ArgumentTypes`\n\nExtracts the argument types of a function type.\n\n```ts\ntype Foo = (bar: string, baz: number) => void;\n\n// [string, number]\ndeclare const foo: ArgumentTypes<Foo>;\n```\n\n##### `Arr`\n\nA type that represents a readonly array of `any`.\n\n```ts\n// readonly any[]\ndeclare const arr: Arr;\n```\n\n##### `Ctor`\n\nA constructor with parameters.\n\n```ts\n// new (...args: any[]) => any\ndeclare const foo: Ctor;\n\n// new (...args: [string, number]) => SomeClass\ndeclare const bar: Ctor<[string, number], SomeClass>;\n```\n\n##### `AbstractCtor`\n\nAn abstract constructor with parameters.\n\n```ts\n// abstract new (...args: any[]) => any\ndeclare const foo: AbstractCtor;\n\n// abstract new (...args: [string, number]) => SomeClass\ndeclare const bar: AbstractCtor<[string, number], SomeClass>;\n```\n\n##### `Constructor`\n\nA constructor without parameters.\n\n```ts\n// new (...args: any[]) => any\ndeclare const foo: Constructor;\n\n// new (...args: any[]) => SomeClass\ndeclare const bar: Constructor<SomeClass>;\n```\n\n##### `AbstractConstructor`\n\nAn abstract constructor without parameters.\n\n```ts\n// abstract new (...args: any[]) => any\ndeclare const foo: AbstractConstructor;\n\n// abstract new (...args: any[]) => SomeClass\ndeclare const bar: AbstractConstructor<SomeClass>;\n```\n\n##### `FirstArgument`\n\nExtracts the first argument of a function type.\n\n```ts\ntype Foo = (bar: string, baz: number) => void;\n\n// string\ndeclare const foo: FirstArgument<Foo>;\n```\n\n##### `SecondArgument`\n\nExtracts the second argument of a function type.\n\n```ts\ntype Foo = (bar: string, baz: number) => void;\n\n// number\ndeclare const foo: SecondArgument<Foo>;\n```\n\n##### `Awaitable`\n\nA type that represents a value or a promise of a value. Useful for functions that can accept both promises and non-promises.\n\n```ts\n// string | Promise<string>\ndeclare const foo: Awaitable<string>;\n```\n\n##### `Nullish`\n\nA type that represents `null` or `undefined`.\n\n```ts\n// null | undefined\ndeclare const foo: Nullish;\n```\n\n##### `NonNullableProperties`\n\nRemoves all properties of `T` that are not `null` or `undefined`.\n\n```ts\ninterface Foo {\n\tfoo: null;\n\tbar: undefined;\n\tbaz: boolean;\n}\n\n// { baz: boolean }\ndeclare const foo: NonNullableProperties<Foo>;\n```\n\n##### `NonNullObject`\n\nA type that represents an object that is not `null` or `undefined`.\n\n```ts\n// ✅\nconst foo: NonNullObject = {};\n\n// ❌\nconst bar: NonNullObject = null;\n\n// ❌\nconst baz: NonNullObject = undefined;\n```\n\n##### `AnyObject`\n\nAn object that can have any structure. Similar to `NonNullObject`, and to be used as an alternative if the aforementioned type leads to unexpected behaviors.\n\n```ts\n// ✅\nconst foo: AnyObject = {};\n\n// ❌\nconst bar: AnyObject = null;\n\n// ❌\nconst baz: AnyObject = undefined;\n```\n\n##### `PickByValue`\n\nPicks keys from `T` who's values are assignable to `V`.\n\n```ts\ninterface Foo {\n\tfoo: string;\n\tbar: number;\n\tbaz: boolean;\n}\n\n// 'foo' | 'bar'\ndeclare const foo: PickByValue<Foo, string | number>;\n```\n\n##### `Mutable`\n\nMakes all properties in `T` mutable.\n\n```ts\ninterface Foo {\n\treadonly bar: string;\n\treadonly baz: readonly number][];\n}\n\n// { bar: string; baz: number[] }\ndeclare const foo: Mutable<Foo>;\n```\n\n##### `StrictRequired`\n\nMakes all properties in `T` strictly required by removing `undefined` and `null` from value types.\n\n```ts\ninterface Foo {\n\tbar: string | undefined;\n\tbaz?: number | null;\n}\n\n// { bar: string; baz: number }\ndeclare const foo: StrictRequired<Foo>;\n```\n\n##### `ArrayElementType`\n\nGets a union type of all the keys that are in an array.\n\n```ts\nconst sample = [1, 2, '3', true];\n\n// string | number | boolean\ndeclare const foo: ArrayElementType<typeof sample>;\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
-  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/utilities@3.11.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.11.0...@sapphire/utilities@3.11.1) - (2023-04-10)\n\n## 🏃 Performance\n\n- **chunk:** Remove clone (#574) ([049047b](https://github.com/sapphiredev/utilities/commit/049047b3ceee6fcfeb2e09e15e26424022a5045c))\n\n## 🏠 Refactor\n\n- **utilities:** Improve `codeBlock` and `inlineCodeBlock` (#498) ([29b1e5a](https://github.com/sapphiredev/utilities/commit/29b1e5a21317142ca6cceea5d4eaf65e9243653e))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- **utilities:** Add usage (#499) ([0c4decc](https://github.com/sapphiredev/utilities/commit/0c4decc879cb531d82fe4c871b6fe6a7b3e1314b))\n\n## 🧪 Testing\n\n- Cleanup tests ([aec1bb2](https://github.com/sapphiredev/utilities/commit/aec1bb290d0f3c00a1ae4f4c86302ebbb161d348))\n\n# [@sapphire/utilities@3.11.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.10.1...@sapphire/utilities@3.11.0) - (2022-10-08)\n\n## 🐛 Bug Fixes\n\n- Override deprecated jsdoc (#488) ([5cc9a2c](https://github.com/sapphiredev/utilities/commit/5cc9a2ca1257cdbb62a65f70cea9cacb86853704))\n\n## 🚀 Features\n\n- Throttle function (#483) ([541891a](https://github.com/sapphiredev/utilities/commit/541891a8fea49d06d2855aa45efb095f196cdfb0))\n- **utilities:** Add pickRandom (#486) ([20823c9](https://github.com/sapphiredev/utilities/commit/20823c9ed02d1d4835b082874e5c2718b101c416))\n- Added `tryParseURL` (#482) ([46c5b49](https://github.com/sapphiredev/utilities/commit/46c5b49ac08da8207c7fbc1e7c15572d136bf103))\n\n# [@sapphire/utilities@3.10.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.10.0...@sapphire/utilities@3.10.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Add missing deprecated exports ([ef08c69](https://github.com/sapphiredev/utilities/commit/ef08c6910381df88fdada4b610f77604f5217ae1))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/utilities@3.10.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.3...@sapphire/utilities@3.10.0) - (2022-10-02)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed output file extensions (#480) ([99a011d](https://github.com/sapphiredev/utilities/commit/99a011db82cb0b012974eb26951195cf8d00b672))\n- **utilities:** Specify chunk file as side effect ([7b34a81](https://github.com/sapphiredev/utilities/commit/7b34a81673f8c0e86fab40b956bffc903aa28a8f))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n- **utilities:** Add `objectKeys` function (#472) ([384ff84](https://github.com/sapphiredev/utilities/commit/384ff845115c37aaeb20b0b23051954f75f1d0bf))\n- **utilities:** Add `objectEntries` function (#471) ([84c1418](https://github.com/sapphiredev/utilities/commit/84c1418a1b60dcc61c0e74f54f4c9825ac735962))\n- **utilities:** Add `objectValues` function (#474) ([90c2409](https://github.com/sapphiredev/utilities/commit/90c2409e3103575aff1dd00e0d1b5c1c10c74140))\n- **utilities:** Add `sleep` and `sleepSync` (#469) ([8cd1293](https://github.com/sapphiredev/utilities/commit/8cd129382f1958e00166a8248f4d864480562829))\n\n# [@sapphire/utilities@3.10.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.10.0...@sapphire/utilities@3.10.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Add missing deprecated exports ([ef08c69](https://github.com/sapphiredev/utilities/commit/ef08c6910381df88fdada4b610f77604f5217ae1))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/utilities@3.10.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.3...@sapphire/utilities@3.10.0) - (2022-10-02)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed output file extensions (#480) ([99a011d](https://github.com/sapphiredev/utilities/commit/99a011db82cb0b012974eb26951195cf8d00b672))\n- **utilities:** Specify chunk file as side effect ([7b34a81](https://github.com/sapphiredev/utilities/commit/7b34a81673f8c0e86fab40b956bffc903aa28a8f))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n- **utilities:** Add `objectKeys` function (#472) ([384ff84](https://github.com/sapphiredev/utilities/commit/384ff845115c37aaeb20b0b23051954f75f1d0bf))\n- **utilities:** Add `objectEntries` function (#471) ([84c1418](https://github.com/sapphiredev/utilities/commit/84c1418a1b60dcc61c0e74f54f4c9825ac735962))\n- **utilities:** Add `objectValues` function (#474) ([90c2409](https://github.com/sapphiredev/utilities/commit/90c2409e3103575aff1dd00e0d1b5c1c10c74140))\n- **utilities:** Add `sleep` and `sleepSync` (#469) ([8cd1293](https://github.com/sapphiredev/utilities/commit/8cd129382f1958e00166a8248f4d864480562829))\n\n# [@sapphire/utilities@3.10.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.3...@sapphire/utilities@3.10.0) - (2022-10-02)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed output file extensions (#480) ([99a011d](https://github.com/sapphiredev/utilities/commit/99a011db82cb0b012974eb26951195cf8d00b672))\n- **utilities:** Specify chunk file as side effect ([7b34a81](https://github.com/sapphiredev/utilities/commit/7b34a81673f8c0e86fab40b956bffc903aa28a8f))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n- **utilities:** Add `objectKeys` function (#472) ([384ff84](https://github.com/sapphiredev/utilities/commit/384ff845115c37aaeb20b0b23051954f75f1d0bf))\n- **utilities:** Add `objectEntries` function (#471) ([84c1418](https://github.com/sapphiredev/utilities/commit/84c1418a1b60dcc61c0e74f54f4c9825ac735962))\n- **utilities:** Add `objectValues` function (#474) ([90c2409](https://github.com/sapphiredev/utilities/commit/90c2409e3103575aff1dd00e0d1b5c1c10c74140))\n- **utilities:** Add `sleep` and `sleepSync` (#469) ([8cd1293](https://github.com/sapphiredev/utilities/commit/8cd129382f1958e00166a8248f4d864480562829))\n\n# [@sapphire/utilities@3.9.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.2...@sapphire/utilities@3.9.3) - (2022-09-02)\n\n## 🐛 Bug Fixes\n\n- **isNumber:** Parse string parameter as number (allow string as parameter) (#444) ([01e1b14](https://github.com/sapphiredev/utilities/commit/01e1b1428cf793d7716d60217204626c76bd872e))\n\n## 📝 Documentation\n\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n# [@sapphire/utilities@3.9.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.0...@sapphire/utilities@3.9.1) - (2022-08-16)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed `getDeepObjectKeys` not returning proper values for arrays of not-objects (#428) ([88f84e6](https://github.com/sapphiredev/utilities/commit/88f84e61a72e6682bfeb2b38a8a2c55de08c757e))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 📝 Documentation\n\n- Fixed typos (#427) ([e840a97](https://github.com/sapphiredev/utilities/commit/e840a9795583b59ee3da9ffe0d325e0a3cfa0c14))\n\n# [@sapphire/utilities@3.9.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.0...@sapphire/utilities@3.9.1) - (2022-08-16)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed `getDeepObjectKeys` not returning proper values for arrays of not-objects (#428) ([88f84e6](https://github.com/sapphiredev/utilities/commit/88f84e61a72e6682bfeb2b38a8a2c55de08c757e))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 📝 Documentation\n\n- Fixed typos (#427) ([e840a97](https://github.com/sapphiredev/utilities/commit/e840a9795583b59ee3da9ffe0d325e0a3cfa0c14))\n\n# [@sapphire/utilities@3.9.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.8.0...@sapphire/utilities@3.9.0) - (2022-08-04)\n\n## 🚀 Features\n\n- **utilities:** Add getDeepObjectKeys (#413) ([b8b0883](https://github.com/sapphiredev/utilities/commit/b8b0883689e96df30767e4c9998b5f3403560779))\n\n# [@sapphire/utilities@3.8.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.7.0...@sapphire/utilities@3.8.0) - (2022-07-30)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n\n## 📝 Documentation\n\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n\n## 🚀 Features\n\n- Add lazy (#406) ([80db17c](https://github.com/sapphiredev/utilities/commit/80db17cde4266a2a73639fde9670996a0814474b))\n\n# [@sapphire/utilities@3.7.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.6.2...@sapphire/utilities@3.7.0) - (2022-07-01)\n\n## 🏠 Refactor\n\n- **utilities:** Make `objectToTuples` more type-safe ([664580f](https://github.com/sapphiredev/utilities/commit/664580f74ba2fdc7c9edcd277dd93214d823fb2d))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🚀 Features\n\n- **utilities:** Add `AnyObject` utility type ([e442028](https://github.com/sapphiredev/utilities/commit/e442028b07f867c31f94208b70b479893245b806))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n## [3.6.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.6.1...@sapphire/utilities@3.6.2) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.6.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.6.0...@sapphire/utilities@3.6.1) (2022-03-20)\n\n### Bug Fixes\n\n-   **utilities:** remove `U` type from `cast` ([241ca66](https://github.com/sapphiredev/utilities/commit/241ca66bcecb11477c948e11c0428c31f4e34e6b))\n\n# [3.6.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.5.0...@sapphire/utilities@3.6.0) (2022-03-20)\n\n### Features\n\n-   **utilities:** add `cast` method ([7e02bf5](https://github.com/sapphiredev/utilities/commit/7e02bf5b34f33c4cafb321055629c9f6a24c5ed9))\n\n# [3.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.4.0...@sapphire/utilities@3.5.0) (2022-03-11)\n\n### Features\n\n-   **utlities:** add title case `options` param ([#313](https://github.com/sapphiredev/utilities/issues/313)) ([ca7cffa](https://github.com/sapphiredev/utilities/commit/ca7cffa015d027de6ba4121f45c0b88867aede02))\n\n# [3.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.3.0...@sapphire/utilities@3.4.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [3.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.2.1...@sapphire/utilities@3.3.0) (2022-01-28)\n\n### Bug Fixes\n\n-   fixed date cloning ([#275](https://github.com/sapphiredev/utilities/issues/275)) ([53d1f86](https://github.com/sapphiredev/utilities/commit/53d1f86ee7ea6cb29020b9845cc265f92a99a28c))\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n## [3.2.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.2.0...@sapphire/utilities@3.2.1) (2022-01-21)\n\n### Bug Fixes\n\n-   fixed typos of `communitys` ([e4e3a69](https://github.com/sapphiredev/utilities/commit/e4e3a6913a8157f24f366ac43db46faebdc085ce)), closes [#263](https://github.com/sapphiredev/utilities/issues/263)\n\n# [3.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.1.0...@sapphire/utilities@3.2.0) (2022-01-10)\n\n### Bug Fixes\n\n-   **utilities:** make `NonNullObject` require object ([#242](https://github.com/sapphiredev/utilities/issues/242)) ([5e0f161](https://github.com/sapphiredev/utilities/commit/5e0f161145402e01b631a9b1b2033d0618cccc8b))\n\n### Features\n\n-   **utilities:** support custom constructors for `isObject` ([#241](https://github.com/sapphiredev/utilities/issues/241)) ([701c2c2](https://github.com/sapphiredev/utilities/commit/701c2c200f147d7d7dcccaee65b75e709b601f8c))\n\n# [3.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.8...@sapphire/utilities@3.1.0) (2021-11-19)\n\n### Features\n\n-   add array partitioning ([#220](https://github.com/sapphiredev/utilities/issues/220)) ([42d6b81](https://github.com/sapphiredev/utilities/commit/42d6b8123233ed5315c55412d993fc19266660bb))\n\n## [3.0.8](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.7...@sapphire/utilities@3.0.8) (2021-11-15)\n\n### Bug Fixes\n\n-   **utilities:** target ES2019 for create-react-app support ([95575ed](https://github.com/sapphiredev/utilities/commit/95575ed5bc2def07fb8066d85662a08d8610d8d1))\n\n## [3.0.7](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.6...@sapphire/utilities@3.0.7) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.0.6](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.5...@sapphire/utilities@3.0.6) (2021-10-28)\n\n### Bug Fixes\n\n-   **deepClone:** fixed deep cloning when there are classes ([d3aeed1](https://github.com/sapphiredev/utilities/commit/d3aeed1613ae642ca96b1bd6914f0d43c7c35807))\n\n## [3.0.5](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.4...@sapphire/utilities@3.0.5) (2021-10-26)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.3...@sapphire/utilities@3.0.4) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [3.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.2...@sapphire/utilities@3.0.3) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.1...@sapphire/utilities@3.0.2) (2021-10-08)\n\n### Bug Fixes\n\n-   **utilities:** correct forgotten abstract ([#195](https://github.com/sapphiredev/utilities/issues/195)) ([20b7ef7](https://github.com/sapphiredev/utilities/commit/20b7ef7d22d88a7fe54ae40474fa58ab85c49488))\n\n## [3.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.0...@sapphire/utilities@3.0.1) (2021-10-04)\n\n### Bug Fixes\n\n-   **utilities:** add AbstractCtor and AbstractConstructor and remove abstract from their counterparts ([dbc0321](https://github.com/sapphiredev/utilities/commit/dbc032169791bbdc70eb2a8f151098d21fa192fd))\n-   **utilities:** support abstract classes for Ctor utility type ([1ce3136](https://github.com/sapphiredev/utilities/commit/1ce3136165aea830460ae5283d8348fef17c0dba))\n\n# [3.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@2.0.1...@sapphire/utilities@3.0.0) (2021-10-04)\n\n### Bug Fixes\n\n-   **utilities:** rename `Awaited<T>` to `Awaitable<T>` ([#193](https://github.com/sapphiredev/utilities/issues/193)) ([6ff3e28](https://github.com/sapphiredev/utilities/commit/6ff3e28a78cc9c2b3d58d42fbfba876ab70046c2))\n\n### Features\n\n-   **utilities:** add empty array to 'isNullishOrEmpty' ([#168](https://github.com/sapphiredev/utilities/issues/168)) ([8f9e615](https://github.com/sapphiredev/utilities/commit/8f9e6156a802c90495f6f07ce6570226af01794c))\n-   **utilities:** set minimum NodeJS to v14 ([79aa230](https://github.com/sapphiredev/utilities/commit/79aa230a5874d1bbfb14c3b8506de06b3329395a))\n-   **utilities:** support abstract classes for `Constructor` utility type ([#194](https://github.com/sapphiredev/utilities/issues/194)) ([732d5a0](https://github.com/sapphiredev/utilities/commit/732d5a07b6eef9c37ee52a42f4a391764a08debf))\n\n### BREAKING CHANGES\n\n-   **utilities:** `Awaited` has been renamed to `Awaitable`\n\n## [2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@2.0.0...@sapphire/utilities@2.0.1) (2021-07-20)\n\n### Bug Fixes\n\n-   **utilities:** add tsdoc for filter functions ([36d51d1](https://github.com/sapphiredev/utilities/commit/36d51d12366dd25fa2f04a90e834b5fc2aac73ac))\n\n# [2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.7.0...@sapphire/utilities@2.0.0) (2021-07-17)\n\n### Code Refactoring\n\n-   **rateLimits:** rewrite all of it ([#130](https://github.com/sapphiredev/utilities/issues/130)) ([320778c](https://github.com/sapphiredev/utilities/commit/320778ca65cbf3591bd1ce0b1f2eb430693eef9a))\n\n### BREAKING CHANGES\n\n-   **rateLimits:** Removed `Bucket`\n\n# [1.7.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.6.1...@sapphire/utilities@1.7.0) (2021-07-11)\n\n### Features\n\n-   **utilities:** add 3 new helper methods ([4ebcd43](https://github.com/sapphiredev/utilities/commit/4ebcd431cede7773aed2fe82e58c0d2d66578fea))\n\n## [1.6.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.6.0...@sapphire/utilities@1.6.1) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n# [1.6.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.3...@sapphire/utilities@1.6.0) (2021-06-19)\n\n### Features\n\n-   **utilities:** update utilities with more stuff ([#122](https://github.com/sapphiredev/utilities/issues/122)) ([5dfb668](https://github.com/sapphiredev/utilities/commit/5dfb6688d27ab361a7c31692465ed613b500cdb1))\n\n## [1.5.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.2...@sapphire/utilities@1.5.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n\n## [1.5.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.1...@sapphire/utilities@1.5.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **utilities:** mark package as side effect free ([73cbabd](https://github.com/sapphiredev/utilities/commit/73cbabddc274387d7819d80afe426eb1112f7995))\n\n## [1.5.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.0...@sapphire/utilities@1.5.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# [1.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.8...@sapphire/utilities@1.5.0) (2021-04-21)\n\n### Bug Fixes\n\n-   **utilities:** resolve lgtm error ([eb5f4e6](https://github.com/sapphiredev/utilities/commit/eb5f4e6478d35a6864427fe02849e930b151285c))\n\n### Features\n\n-   add @sapphire/embed-jsx ([#100](https://github.com/sapphiredev/utilities/issues/100)) ([7277a23](https://github.com/sapphiredev/utilities/commit/7277a236015236ed8e81b7882875410facc4ce17))\n\n## [1.4.8](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.7...@sapphire/utilities@1.4.8) (2021-04-19)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#102](https://github.com/sapphiredev/utilities/issues/102)) ([835b408](https://github.com/sapphiredev/utilities/commit/835b408e8e57130c3787aca2e32613346ff23e4d))\n\n## [1.4.7](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.6...@sapphire/utilities@1.4.7) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.6](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.5...@sapphire/utilities@1.4.6) (2021-03-16)\n\n### Bug Fixes\n\n-   remove terser from all packages ([#79](https://github.com/sapphiredev/utilities/issues/79)) ([1cfe4e7](https://github.com/sapphiredev/utilities/commit/1cfe4e7c804e62c142495686d2b83b81d0026c02))\n\n## [1.4.5](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.4...@sapphire/utilities@1.4.5) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.4](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.3...@sapphire/utilities@1.4.4) (2021-01-25)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.2...@sapphire/utilities@1.4.3) (2021-01-16)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.1...@sapphire/utilities@1.4.2) (2021-01-14)\n\n### Bug Fixes\n\n-   **utilities:** fix parseUrl not working in v1.4.1 ([c1fe990](https://github.com/sapphiredev/utilities/commit/c1fe990d443b20791d268a2ca2bdd645500ed436))\n\n## [1.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.0...@sapphire/utilities@1.4.1) (2021-01-14)\n\n### Bug Fixes\n\n-   **utilities:** fixed return type for parseURL ([718065a](https://github.com/sapphiredev/utilities/commit/718065a34b5ee225503f8b2197784f1fd1b15f19))\n-   **utilities:** properly type parseUrl ([dcf800f](https://github.com/sapphiredev/utilities/commit/dcf800f6e1435cd6151f510da36b9e99166df9e4))\n\n# [1.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.3.1...@sapphire/utilities@1.4.0) (2021-01-13)\n\n### Features\n\n-   **utilities:** add Nullish utility type ([a7e32bd](https://github.com/sapphiredev/utilities/commit/a7e32bdc1475840d6c313fbb83b7e502ebf780f5))\n\n## [1.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.3.0...@sapphire/utilities@1.3.1) (2021-01-01)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n# [1.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.2.0...@sapphire/utilities@1.3.0) (2020-12-26)\n\n### Features\n\n-   **decorators:** add createFunctionPrecondition, fixed build ([#51](https://github.com/sapphiredev/utilities/issues/51)) ([c87d5db](https://github.com/sapphiredev/utilities/commit/c87d5db8e29bbfcf96a29e34e4e4186426bac304))\n\n# [1.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.1.1...@sapphire/utilities@1.2.0) (2020-12-22)\n\n### Features\n\n-   **utilities:** add debounce ([#45](https://github.com/sapphiredev/utilities/issues/45)) ([4762ebf](https://github.com/sapphiredev/utilities/commit/4762ebfac1724308330a61d2c8b3d71eadbd24f0))\n\n## [1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.1.0...@sapphire/utilities@1.1.1) (2020-11-15)\n\n### Bug Fixes\n\n-   **utilities:** add alias of isNullish to isNullOrUndefined ([eadf28f](https://github.com/sapphiredev/utilities/commit/eadf28ff024d887d83ade252e4567317593ca529)), closes [#30](https://github.com/sapphiredev/utilities/issues/30)\n-   **utilities:** pass keep_classnames to terser ([9425c82](https://github.com/sapphiredev/utilities/commit/9425c82765b2fda461d08ab1d5ed4a302d327281))\n-   **utilities:** pass keep_fnames to terser ([4b8fde2](https://github.com/sapphiredev/utilities/commit/4b8fde225fc7fb8da26dd51bc1ab97b6d45f6af5))\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.3...@sapphire/utilities@1.1.0) (2020-11-07)\n\n### Features\n\n-   **utilities:** add range function ([f9ac35e](https://github.com/sapphiredev/utilities/commit/f9ac35ee74848746ce057a1c2a8ccc6499aca892))\n-   **utilities:** add range function ([a59d623](https://github.com/sapphiredev/utilities/commit/a59d62341d64c4b1565637d15cd642efd275281a))\n-   added time-utilities package ([#26](https://github.com/sapphiredev/utilities/issues/26)) ([f17a333](https://github.com/sapphiredev/utilities/commit/f17a3339667a452e8745fad7884272176e5d65e8))\n\n## [1.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.2...@sapphire/utilities@1.0.3) (2020-11-04)\n\n### Bug Fixes\n\n-   **utilities:** properly specify ESM and CommonJS exports ([11f4f9b](https://github.com/sapphiredev/utilities/commit/11f4f9b32f8c2a6c8be2f4568e2e1e0fac47b39e))\n\n## [1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.1...@sapphire/utilities@1.0.2) (2020-10-11)\n\n### Bug Fixes\n\n-   **ratelimits,snowflake,utilities:** fixed esm output target ([9fdab3f](https://github.com/sapphiredev/utilities/commit/9fdab3fca283c8c0b47cc32661c5cf8e0a5e583c))\n-   **utilities:** fixed up mergeDefault ([#21](https://github.com/sapphiredev/utilities/issues/21)) ([76561db](https://github.com/sapphiredev/utilities/commit/76561dbf339ebf2dff1a712e448407e6a1b36070))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.0...@sapphire/utilities@1.0.1) (2020-09-20)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n# 1.0.0 (2020-09-05)\n\n### Bug Fixes\n\n-   **utilities:** fix types for isFunction ([991de0d](https://github.com/sapphiredev/utilities/commit/991de0da0f9b51813f4fee4ecf071feeb9d95abe))\n-   **utilities:** fixed types for codeBlock ([abae927](https://github.com/sapphiredev/utilities/commit/abae927f5a5dbf1785770569d0fc6bcdf658880e))\n-   **utilities:** fixed types for isThenable ([0563b8d](https://github.com/sapphiredev/utilities/commit/0563b8dc0492fe8ff5dd3fc16dd334854d962728))\n-   **utilities:** put lang as first param ([54bfba7](https://github.com/sapphiredev/utilities/commit/54bfba781ac7d6f9d60fc7fec85475d8496d9aa2))\n\n### Features\n\n-   implement snowflake ([5ba4e2d](https://github.com/sapphiredev/utilities/commit/5ba4e2d82557dd4ff60ffe891a7b46e46373bea2))\n-   **decorators:** add decorators package ([#4](https://github.com/sapphiredev/utilities/issues/4)) ([677b3e5](https://github.com/sapphiredev/utilities/commit/677b3e59d5c6160cbe6fb410821cadd7c0f00e3c))\n-   **utilities:** add all utilities ([94fcae8](https://github.com/sapphiredev/utilities/commit/94fcae8cb81e0eaaddac7de1e78b1e26cccb9bf0))\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/utilities@3.11.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.11.1...@sapphire/utilities@3.11.2) - (2023-05-06)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Add support for TypedArray to deepClone (#592) ([85dcd15](https://github.com/sapphiredev/utilities/commit/85dcd15fd98fff5bf74749d2cd26963a99c71a75))\n\n# [@sapphire/utilities@3.11.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.11.0...@sapphire/utilities@3.11.1) - (2023-04-10)\n\n## 🏃 Performance\n\n- **chunk:** Remove clone (#574) ([049047b](https://github.com/sapphiredev/utilities/commit/049047b3ceee6fcfeb2e09e15e26424022a5045c))\n\n## 🏠 Refactor\n\n- **utilities:** Improve `codeBlock` and `inlineCodeBlock` (#498) ([29b1e5a](https://github.com/sapphiredev/utilities/commit/29b1e5a21317142ca6cceea5d4eaf65e9243653e))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- **utilities:** Add usage (#499) ([0c4decc](https://github.com/sapphiredev/utilities/commit/0c4decc879cb531d82fe4c871b6fe6a7b3e1314b))\n\n## 🧪 Testing\n\n- Cleanup tests ([aec1bb2](https://github.com/sapphiredev/utilities/commit/aec1bb290d0f3c00a1ae4f4c86302ebbb161d348))\n\n# [@sapphire/utilities@3.11.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.10.1...@sapphire/utilities@3.11.0) - (2022-10-08)\n\n## 🐛 Bug Fixes\n\n- Override deprecated jsdoc (#488) ([5cc9a2c](https://github.com/sapphiredev/utilities/commit/5cc9a2ca1257cdbb62a65f70cea9cacb86853704))\n\n## 🚀 Features\n\n- Throttle function (#483) ([541891a](https://github.com/sapphiredev/utilities/commit/541891a8fea49d06d2855aa45efb095f196cdfb0))\n- **utilities:** Add pickRandom (#486) ([20823c9](https://github.com/sapphiredev/utilities/commit/20823c9ed02d1d4835b082874e5c2718b101c416))\n- Added `tryParseURL` (#482) ([46c5b49](https://github.com/sapphiredev/utilities/commit/46c5b49ac08da8207c7fbc1e7c15572d136bf103))\n\n# [@sapphire/utilities@3.10.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.10.0...@sapphire/utilities@3.10.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Add missing deprecated exports ([ef08c69](https://github.com/sapphiredev/utilities/commit/ef08c6910381df88fdada4b610f77604f5217ae1))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/utilities@3.10.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.3...@sapphire/utilities@3.10.0) - (2022-10-02)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed output file extensions (#480) ([99a011d](https://github.com/sapphiredev/utilities/commit/99a011db82cb0b012974eb26951195cf8d00b672))\n- **utilities:** Specify chunk file as side effect ([7b34a81](https://github.com/sapphiredev/utilities/commit/7b34a81673f8c0e86fab40b956bffc903aa28a8f))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n- **utilities:** Add `objectKeys` function (#472) ([384ff84](https://github.com/sapphiredev/utilities/commit/384ff845115c37aaeb20b0b23051954f75f1d0bf))\n- **utilities:** Add `objectEntries` function (#471) ([84c1418](https://github.com/sapphiredev/utilities/commit/84c1418a1b60dcc61c0e74f54f4c9825ac735962))\n- **utilities:** Add `objectValues` function (#474) ([90c2409](https://github.com/sapphiredev/utilities/commit/90c2409e3103575aff1dd00e0d1b5c1c10c74140))\n- **utilities:** Add `sleep` and `sleepSync` (#469) ([8cd1293](https://github.com/sapphiredev/utilities/commit/8cd129382f1958e00166a8248f4d864480562829))\n\n# [@sapphire/utilities@3.10.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.10.0...@sapphire/utilities@3.10.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Add missing deprecated exports ([ef08c69](https://github.com/sapphiredev/utilities/commit/ef08c6910381df88fdada4b610f77604f5217ae1))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/utilities@3.10.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.3...@sapphire/utilities@3.10.0) - (2022-10-02)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed output file extensions (#480) ([99a011d](https://github.com/sapphiredev/utilities/commit/99a011db82cb0b012974eb26951195cf8d00b672))\n- **utilities:** Specify chunk file as side effect ([7b34a81](https://github.com/sapphiredev/utilities/commit/7b34a81673f8c0e86fab40b956bffc903aa28a8f))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n- **utilities:** Add `objectKeys` function (#472) ([384ff84](https://github.com/sapphiredev/utilities/commit/384ff845115c37aaeb20b0b23051954f75f1d0bf))\n- **utilities:** Add `objectEntries` function (#471) ([84c1418](https://github.com/sapphiredev/utilities/commit/84c1418a1b60dcc61c0e74f54f4c9825ac735962))\n- **utilities:** Add `objectValues` function (#474) ([90c2409](https://github.com/sapphiredev/utilities/commit/90c2409e3103575aff1dd00e0d1b5c1c10c74140))\n- **utilities:** Add `sleep` and `sleepSync` (#469) ([8cd1293](https://github.com/sapphiredev/utilities/commit/8cd129382f1958e00166a8248f4d864480562829))\n\n# [@sapphire/utilities@3.10.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.3...@sapphire/utilities@3.10.0) - (2022-10-02)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed output file extensions (#480) ([99a011d](https://github.com/sapphiredev/utilities/commit/99a011db82cb0b012974eb26951195cf8d00b672))\n- **utilities:** Specify chunk file as side effect ([7b34a81](https://github.com/sapphiredev/utilities/commit/7b34a81673f8c0e86fab40b956bffc903aa28a8f))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n- **utilities:** Add `objectKeys` function (#472) ([384ff84](https://github.com/sapphiredev/utilities/commit/384ff845115c37aaeb20b0b23051954f75f1d0bf))\n- **utilities:** Add `objectEntries` function (#471) ([84c1418](https://github.com/sapphiredev/utilities/commit/84c1418a1b60dcc61c0e74f54f4c9825ac735962))\n- **utilities:** Add `objectValues` function (#474) ([90c2409](https://github.com/sapphiredev/utilities/commit/90c2409e3103575aff1dd00e0d1b5c1c10c74140))\n- **utilities:** Add `sleep` and `sleepSync` (#469) ([8cd1293](https://github.com/sapphiredev/utilities/commit/8cd129382f1958e00166a8248f4d864480562829))\n\n# [@sapphire/utilities@3.9.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.2...@sapphire/utilities@3.9.3) - (2022-09-02)\n\n## 🐛 Bug Fixes\n\n- **isNumber:** Parse string parameter as number (allow string as parameter) (#444) ([01e1b14](https://github.com/sapphiredev/utilities/commit/01e1b1428cf793d7716d60217204626c76bd872e))\n\n## 📝 Documentation\n\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n# [@sapphire/utilities@3.9.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.0...@sapphire/utilities@3.9.1) - (2022-08-16)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed `getDeepObjectKeys` not returning proper values for arrays of not-objects (#428) ([88f84e6](https://github.com/sapphiredev/utilities/commit/88f84e61a72e6682bfeb2b38a8a2c55de08c757e))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 📝 Documentation\n\n- Fixed typos (#427) ([e840a97](https://github.com/sapphiredev/utilities/commit/e840a9795583b59ee3da9ffe0d325e0a3cfa0c14))\n\n# [@sapphire/utilities@3.9.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.9.0...@sapphire/utilities@3.9.1) - (2022-08-16)\n\n## 🐛 Bug Fixes\n\n- **utilities:** Fixed `getDeepObjectKeys` not returning proper values for arrays of not-objects (#428) ([88f84e6](https://github.com/sapphiredev/utilities/commit/88f84e61a72e6682bfeb2b38a8a2c55de08c757e))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 📝 Documentation\n\n- Fixed typos (#427) ([e840a97](https://github.com/sapphiredev/utilities/commit/e840a9795583b59ee3da9ffe0d325e0a3cfa0c14))\n\n# [@sapphire/utilities@3.9.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.8.0...@sapphire/utilities@3.9.0) - (2022-08-04)\n\n## 🚀 Features\n\n- **utilities:** Add getDeepObjectKeys (#413) ([b8b0883](https://github.com/sapphiredev/utilities/commit/b8b0883689e96df30767e4c9998b5f3403560779))\n\n# [@sapphire/utilities@3.8.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.7.0...@sapphire/utilities@3.8.0) - (2022-07-30)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n\n## 📝 Documentation\n\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n\n## 🚀 Features\n\n- Add lazy (#406) ([80db17c](https://github.com/sapphiredev/utilities/commit/80db17cde4266a2a73639fde9670996a0814474b))\n\n# [@sapphire/utilities@3.7.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.6.2...@sapphire/utilities@3.7.0) - (2022-07-01)\n\n## 🏠 Refactor\n\n- **utilities:** Make `objectToTuples` more type-safe ([664580f](https://github.com/sapphiredev/utilities/commit/664580f74ba2fdc7c9edcd277dd93214d823fb2d))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🚀 Features\n\n- **utilities:** Add `AnyObject` utility type ([e442028](https://github.com/sapphiredev/utilities/commit/e442028b07f867c31f94208b70b479893245b806))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n## [3.6.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.6.1...@sapphire/utilities@3.6.2) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.6.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.6.0...@sapphire/utilities@3.6.1) (2022-03-20)\n\n### Bug Fixes\n\n-   **utilities:** remove `U` type from `cast` ([241ca66](https://github.com/sapphiredev/utilities/commit/241ca66bcecb11477c948e11c0428c31f4e34e6b))\n\n# [3.6.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.5.0...@sapphire/utilities@3.6.0) (2022-03-20)\n\n### Features\n\n-   **utilities:** add `cast` method ([7e02bf5](https://github.com/sapphiredev/utilities/commit/7e02bf5b34f33c4cafb321055629c9f6a24c5ed9))\n\n# [3.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.4.0...@sapphire/utilities@3.5.0) (2022-03-11)\n\n### Features\n\n-   **utlities:** add title case `options` param ([#313](https://github.com/sapphiredev/utilities/issues/313)) ([ca7cffa](https://github.com/sapphiredev/utilities/commit/ca7cffa015d027de6ba4121f45c0b88867aede02))\n\n# [3.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.3.0...@sapphire/utilities@3.4.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [3.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.2.1...@sapphire/utilities@3.3.0) (2022-01-28)\n\n### Bug Fixes\n\n-   fixed date cloning ([#275](https://github.com/sapphiredev/utilities/issues/275)) ([53d1f86](https://github.com/sapphiredev/utilities/commit/53d1f86ee7ea6cb29020b9845cc265f92a99a28c))\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n## [3.2.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.2.0...@sapphire/utilities@3.2.1) (2022-01-21)\n\n### Bug Fixes\n\n-   fixed typos of `communitys` ([e4e3a69](https://github.com/sapphiredev/utilities/commit/e4e3a6913a8157f24f366ac43db46faebdc085ce)), closes [#263](https://github.com/sapphiredev/utilities/issues/263)\n\n# [3.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.1.0...@sapphire/utilities@3.2.0) (2022-01-10)\n\n### Bug Fixes\n\n-   **utilities:** make `NonNullObject` require object ([#242](https://github.com/sapphiredev/utilities/issues/242)) ([5e0f161](https://github.com/sapphiredev/utilities/commit/5e0f161145402e01b631a9b1b2033d0618cccc8b))\n\n### Features\n\n-   **utilities:** support custom constructors for `isObject` ([#241](https://github.com/sapphiredev/utilities/issues/241)) ([701c2c2](https://github.com/sapphiredev/utilities/commit/701c2c200f147d7d7dcccaee65b75e709b601f8c))\n\n# [3.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.8...@sapphire/utilities@3.1.0) (2021-11-19)\n\n### Features\n\n-   add array partitioning ([#220](https://github.com/sapphiredev/utilities/issues/220)) ([42d6b81](https://github.com/sapphiredev/utilities/commit/42d6b8123233ed5315c55412d993fc19266660bb))\n\n## [3.0.8](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.7...@sapphire/utilities@3.0.8) (2021-11-15)\n\n### Bug Fixes\n\n-   **utilities:** target ES2019 for create-react-app support ([95575ed](https://github.com/sapphiredev/utilities/commit/95575ed5bc2def07fb8066d85662a08d8610d8d1))\n\n## [3.0.7](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.6...@sapphire/utilities@3.0.7) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.0.6](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.5...@sapphire/utilities@3.0.6) (2021-10-28)\n\n### Bug Fixes\n\n-   **deepClone:** fixed deep cloning when there are classes ([d3aeed1](https://github.com/sapphiredev/utilities/commit/d3aeed1613ae642ca96b1bd6914f0d43c7c35807))\n\n## [3.0.5](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.4...@sapphire/utilities@3.0.5) (2021-10-26)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.3...@sapphire/utilities@3.0.4) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [3.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.2...@sapphire/utilities@3.0.3) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [3.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.1...@sapphire/utilities@3.0.2) (2021-10-08)\n\n### Bug Fixes\n\n-   **utilities:** correct forgotten abstract ([#195](https://github.com/sapphiredev/utilities/issues/195)) ([20b7ef7](https://github.com/sapphiredev/utilities/commit/20b7ef7d22d88a7fe54ae40474fa58ab85c49488))\n\n## [3.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@3.0.0...@sapphire/utilities@3.0.1) (2021-10-04)\n\n### Bug Fixes\n\n-   **utilities:** add AbstractCtor and AbstractConstructor and remove abstract from their counterparts ([dbc0321](https://github.com/sapphiredev/utilities/commit/dbc032169791bbdc70eb2a8f151098d21fa192fd))\n-   **utilities:** support abstract classes for Ctor utility type ([1ce3136](https://github.com/sapphiredev/utilities/commit/1ce3136165aea830460ae5283d8348fef17c0dba))\n\n# [3.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@2.0.1...@sapphire/utilities@3.0.0) (2021-10-04)\n\n### Bug Fixes\n\n-   **utilities:** rename `Awaited<T>` to `Awaitable<T>` ([#193](https://github.com/sapphiredev/utilities/issues/193)) ([6ff3e28](https://github.com/sapphiredev/utilities/commit/6ff3e28a78cc9c2b3d58d42fbfba876ab70046c2))\n\n### Features\n\n-   **utilities:** add empty array to 'isNullishOrEmpty' ([#168](https://github.com/sapphiredev/utilities/issues/168)) ([8f9e615](https://github.com/sapphiredev/utilities/commit/8f9e6156a802c90495f6f07ce6570226af01794c))\n-   **utilities:** set minimum NodeJS to v14 ([79aa230](https://github.com/sapphiredev/utilities/commit/79aa230a5874d1bbfb14c3b8506de06b3329395a))\n-   **utilities:** support abstract classes for `Constructor` utility type ([#194](https://github.com/sapphiredev/utilities/issues/194)) ([732d5a0](https://github.com/sapphiredev/utilities/commit/732d5a07b6eef9c37ee52a42f4a391764a08debf))\n\n### BREAKING CHANGES\n\n-   **utilities:** `Awaited` has been renamed to `Awaitable`\n\n## [2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@2.0.0...@sapphire/utilities@2.0.1) (2021-07-20)\n\n### Bug Fixes\n\n-   **utilities:** add tsdoc for filter functions ([36d51d1](https://github.com/sapphiredev/utilities/commit/36d51d12366dd25fa2f04a90e834b5fc2aac73ac))\n\n# [2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.7.0...@sapphire/utilities@2.0.0) (2021-07-17)\n\n### Code Refactoring\n\n-   **rateLimits:** rewrite all of it ([#130](https://github.com/sapphiredev/utilities/issues/130)) ([320778c](https://github.com/sapphiredev/utilities/commit/320778ca65cbf3591bd1ce0b1f2eb430693eef9a))\n\n### BREAKING CHANGES\n\n-   **rateLimits:** Removed `Bucket`\n\n# [1.7.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.6.1...@sapphire/utilities@1.7.0) (2021-07-11)\n\n### Features\n\n-   **utilities:** add 3 new helper methods ([4ebcd43](https://github.com/sapphiredev/utilities/commit/4ebcd431cede7773aed2fe82e58c0d2d66578fea))\n\n## [1.6.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.6.0...@sapphire/utilities@1.6.1) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n# [1.6.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.3...@sapphire/utilities@1.6.0) (2021-06-19)\n\n### Features\n\n-   **utilities:** update utilities with more stuff ([#122](https://github.com/sapphiredev/utilities/issues/122)) ([5dfb668](https://github.com/sapphiredev/utilities/commit/5dfb6688d27ab361a7c31692465ed613b500cdb1))\n\n## [1.5.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.2...@sapphire/utilities@1.5.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n\n## [1.5.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.1...@sapphire/utilities@1.5.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **utilities:** mark package as side effect free ([73cbabd](https://github.com/sapphiredev/utilities/commit/73cbabddc274387d7819d80afe426eb1112f7995))\n\n## [1.5.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.5.0...@sapphire/utilities@1.5.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# [1.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.8...@sapphire/utilities@1.5.0) (2021-04-21)\n\n### Bug Fixes\n\n-   **utilities:** resolve lgtm error ([eb5f4e6](https://github.com/sapphiredev/utilities/commit/eb5f4e6478d35a6864427fe02849e930b151285c))\n\n### Features\n\n-   add @sapphire/embed-jsx ([#100](https://github.com/sapphiredev/utilities/issues/100)) ([7277a23](https://github.com/sapphiredev/utilities/commit/7277a236015236ed8e81b7882875410facc4ce17))\n\n## [1.4.8](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.7...@sapphire/utilities@1.4.8) (2021-04-19)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#102](https://github.com/sapphiredev/utilities/issues/102)) ([835b408](https://github.com/sapphiredev/utilities/commit/835b408e8e57130c3787aca2e32613346ff23e4d))\n\n## [1.4.7](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.6...@sapphire/utilities@1.4.7) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.6](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.5...@sapphire/utilities@1.4.6) (2021-03-16)\n\n### Bug Fixes\n\n-   remove terser from all packages ([#79](https://github.com/sapphiredev/utilities/issues/79)) ([1cfe4e7](https://github.com/sapphiredev/utilities/commit/1cfe4e7c804e62c142495686d2b83b81d0026c02))\n\n## [1.4.5](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.4...@sapphire/utilities@1.4.5) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.4](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.3...@sapphire/utilities@1.4.4) (2021-01-25)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.2...@sapphire/utilities@1.4.3) (2021-01-16)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n## [1.4.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.1...@sapphire/utilities@1.4.2) (2021-01-14)\n\n### Bug Fixes\n\n-   **utilities:** fix parseUrl not working in v1.4.1 ([c1fe990](https://github.com/sapphiredev/utilities/commit/c1fe990d443b20791d268a2ca2bdd645500ed436))\n\n## [1.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.4.0...@sapphire/utilities@1.4.1) (2021-01-14)\n\n### Bug Fixes\n\n-   **utilities:** fixed return type for parseURL ([718065a](https://github.com/sapphiredev/utilities/commit/718065a34b5ee225503f8b2197784f1fd1b15f19))\n-   **utilities:** properly type parseUrl ([dcf800f](https://github.com/sapphiredev/utilities/commit/dcf800f6e1435cd6151f510da36b9e99166df9e4))\n\n# [1.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.3.1...@sapphire/utilities@1.4.0) (2021-01-13)\n\n### Features\n\n-   **utilities:** add Nullish utility type ([a7e32bd](https://github.com/sapphiredev/utilities/commit/a7e32bdc1475840d6c313fbb83b7e502ebf780f5))\n\n## [1.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.3.0...@sapphire/utilities@1.3.1) (2021-01-01)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n# [1.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.2.0...@sapphire/utilities@1.3.0) (2020-12-26)\n\n### Features\n\n-   **decorators:** add createFunctionPrecondition, fixed build ([#51](https://github.com/sapphiredev/utilities/issues/51)) ([c87d5db](https://github.com/sapphiredev/utilities/commit/c87d5db8e29bbfcf96a29e34e4e4186426bac304))\n\n# [1.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.1.1...@sapphire/utilities@1.2.0) (2020-12-22)\n\n### Features\n\n-   **utilities:** add debounce ([#45](https://github.com/sapphiredev/utilities/issues/45)) ([4762ebf](https://github.com/sapphiredev/utilities/commit/4762ebfac1724308330a61d2c8b3d71eadbd24f0))\n\n## [1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.1.0...@sapphire/utilities@1.1.1) (2020-11-15)\n\n### Bug Fixes\n\n-   **utilities:** add alias of isNullish to isNullOrUndefined ([eadf28f](https://github.com/sapphiredev/utilities/commit/eadf28ff024d887d83ade252e4567317593ca529)), closes [#30](https://github.com/sapphiredev/utilities/issues/30)\n-   **utilities:** pass keep_classnames to terser ([9425c82](https://github.com/sapphiredev/utilities/commit/9425c82765b2fda461d08ab1d5ed4a302d327281))\n-   **utilities:** pass keep_fnames to terser ([4b8fde2](https://github.com/sapphiredev/utilities/commit/4b8fde225fc7fb8da26dd51bc1ab97b6d45f6af5))\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.3...@sapphire/utilities@1.1.0) (2020-11-07)\n\n### Features\n\n-   **utilities:** add range function ([f9ac35e](https://github.com/sapphiredev/utilities/commit/f9ac35ee74848746ce057a1c2a8ccc6499aca892))\n-   **utilities:** add range function ([a59d623](https://github.com/sapphiredev/utilities/commit/a59d62341d64c4b1565637d15cd642efd275281a))\n-   added time-utilities package ([#26](https://github.com/sapphiredev/utilities/issues/26)) ([f17a333](https://github.com/sapphiredev/utilities/commit/f17a3339667a452e8745fad7884272176e5d65e8))\n\n## [1.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.2...@sapphire/utilities@1.0.3) (2020-11-04)\n\n### Bug Fixes\n\n-   **utilities:** properly specify ESM and CommonJS exports ([11f4f9b](https://github.com/sapphiredev/utilities/commit/11f4f9b32f8c2a6c8be2f4568e2e1e0fac47b39e))\n\n## [1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.1...@sapphire/utilities@1.0.2) (2020-10-11)\n\n### Bug Fixes\n\n-   **ratelimits,snowflake,utilities:** fixed esm output target ([9fdab3f](https://github.com/sapphiredev/utilities/commit/9fdab3fca283c8c0b47cc32661c5cf8e0a5e583c))\n-   **utilities:** fixed up mergeDefault ([#21](https://github.com/sapphiredev/utilities/issues/21)) ([76561db](https://github.com/sapphiredev/utilities/commit/76561dbf339ebf2dff1a712e448407e6a1b36070))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/utilities@1.0.0...@sapphire/utilities@1.0.1) (2020-09-20)\n\n**Note:** Version bump only for package @sapphire/utilities\n\n# 1.0.0 (2020-09-05)\n\n### Bug Fixes\n\n-   **utilities:** fix types for isFunction ([991de0d](https://github.com/sapphiredev/utilities/commit/991de0da0f9b51813f4fee4ecf071feeb9d95abe))\n-   **utilities:** fixed types for codeBlock ([abae927](https://github.com/sapphiredev/utilities/commit/abae927f5a5dbf1785770569d0fc6bcdf658880e))\n-   **utilities:** fixed types for isThenable ([0563b8d](https://github.com/sapphiredev/utilities/commit/0563b8dc0492fe8ff5dd3fc16dd334854d962728))\n-   **utilities:** put lang as first param ([54bfba7](https://github.com/sapphiredev/utilities/commit/54bfba781ac7d6f9d60fc7fec85475d8496d9aa2))\n\n### Features\n\n-   implement snowflake ([5ba4e2d](https://github.com/sapphiredev/utilities/commit/5ba4e2d82557dd4ff60ffe891a7b46e46373bea2))\n-   **decorators:** add decorators package ([#4](https://github.com/sapphiredev/utilities/issues/4)) ([677b3e5](https://github.com/sapphiredev/utilities/commit/677b3e59d5c6160cbe6fb410821cadd7c0f00e3c))\n-   **utilities:** add all utilities ([94fcae8](https://github.com/sapphiredev/utilities/commit/94fcae8cb81e0eaaddac7de1e78b1e26cccb9bf0))\n",
   "classes": [
     {
       "id": 35,
@@ -13,7 +13,7 @@
         "line": 15,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L15"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -39,7 +39,7 @@
           "line": 17,
           "file": "sleep.ts",
           "path": "packages/utilities/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L17"
+          "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L17"
         },
         "comment": {
           "description": null,
@@ -96,7 +96,7 @@
                         "fileName": "packages/utilities/src/lib/sleep.ts",
                         "line": 20,
                         "character": 3,
-                        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L20"
+                        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L20"
                       }
                     ],
                     "type": {
@@ -118,7 +118,7 @@
                     "fileName": "packages/utilities/src/lib/sleep.ts",
                     "line": 19,
                     "character": 12,
-                    "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L19"
+                    "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L19"
                   }
                 ]
               }
@@ -159,7 +159,7 @@
             "line": 16,
             "file": "sleep.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L16"
           },
           "comment": {
             "description": null,
@@ -479,7 +479,7 @@
         "line": 6,
         "file": "arrayStrictEquals.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/arrayStrictEquals.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/arrayStrictEquals.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -567,7 +567,7 @@
         "line": 10,
         "file": "cast.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/cast.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/cast.ts#L10"
       },
       "namespaceParentId": null,
       "comment": {
@@ -632,7 +632,7 @@
         "line": 6,
         "file": "chunk.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/chunk.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/chunk.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -723,7 +723,7 @@
         "line": 8,
         "file": "classExtends.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/classExtends.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/classExtends.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -815,7 +815,7 @@
         "line": 14,
         "file": "codeBlock.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/codeBlock.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/codeBlock.ts#L14"
       },
       "namespaceParentId": null,
       "comment": {
@@ -993,7 +993,7 @@
         "line": 10,
         "file": "cutText.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/cutText.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/cutText.ts#L10"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1067,7 +1067,7 @@
         "line": 68,
         "file": "debounce.ts",
         "path": "packages/utilities/src/lib/debounce",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L68"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L68"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1134,7 +1134,7 @@
                       "fileName": "packages/utilities/src/lib/debounce/debounce.ts",
                       "line": 69,
                       "character": 7,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L69"
+                      "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L69"
                     }
                   ],
                   "signatures": [
@@ -1149,7 +1149,7 @@
                           "fileName": "packages/utilities/src/lib/debounce/debounce.ts",
                           "line": 69,
                           "character": 7,
-                          "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L69"
+                          "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L69"
                         }
                       ],
                       "parameters": [
@@ -1231,7 +1231,7 @@
         "line": 18,
         "file": "deepClone.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/deepClone.ts#L18"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/deepClone.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1294,7 +1294,7 @@
         "line": 19,
         "file": "filterNullAndUndefined.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/filterNullAndUndefined.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/filterNullAndUndefined.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1383,7 +1383,7 @@
         "line": 19,
         "file": "filterNullAndUndefinedAndEmpty.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/filterNullAndUndefinedAndEmpty.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/filterNullAndUndefinedAndEmpty.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1476,7 +1476,7 @@
         "line": 19,
         "file": "filterNullAndUndefinedAndZero.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/filterNullAndUndefinedAndZero.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/filterNullAndUndefinedAndZero.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1569,7 +1569,7 @@
         "line": 15,
         "file": "getDeepObjectKeys.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/getDeepObjectKeys.ts#L15"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/getDeepObjectKeys.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1667,7 +1667,7 @@
         "line": 7,
         "file": "hasAtLeastOneKeyInMap.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/hasAtLeastOneKeyInMap.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/hasAtLeastOneKeyInMap.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1769,7 +1769,7 @@
         "line": 7,
         "file": "inlineCodeBlock.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/inlineCodeBlock.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/inlineCodeBlock.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1844,7 +1844,7 @@
         "line": 7,
         "file": "isClass.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isClass.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isClass.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1902,7 +1902,7 @@
         "line": 6,
         "file": "isFunction.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isFunction.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isFunction.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1960,7 +1960,7 @@
         "line": 7,
         "file": "isNullOrUndefined.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isNullOrUndefined.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isNullOrUndefined.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2018,7 +2018,7 @@
         "line": 8,
         "file": "isNullOrUndefinedOrEmpty.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isNullOrUndefinedOrEmpty.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isNullOrUndefinedOrEmpty.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2085,7 +2085,7 @@
         "line": 8,
         "file": "isNullOrUndefinedOrZero.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isNullOrUndefinedOrZero.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isNullOrUndefinedOrZero.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2152,7 +2152,7 @@
         "line": 5,
         "file": "isNumber.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isNumber.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isNumber.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2207,7 +2207,7 @@
         "line": 8,
         "file": "isObject.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isObject.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isObject.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2363,7 +2363,7 @@
         "line": 7,
         "file": "isPrimitive.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isPrimitive.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isPrimitive.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2435,7 +2435,7 @@
         "line": 21,
         "file": "isThenable.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isThenable.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isThenable.ts#L21"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2493,7 +2493,7 @@
         "line": 6,
         "file": "lazy.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/lazy.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/lazy.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2548,7 +2548,7 @@
                       "fileName": "packages/utilities/src/lib/lazy.ts",
                       "line": 6,
                       "character": 28,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/lazy.ts#L6"
+                      "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/lazy.ts#L6"
                     }
                   ],
                   "signatures": [
@@ -2563,7 +2563,7 @@
                           "fileName": "packages/utilities/src/lib/lazy.ts",
                           "line": 6,
                           "character": 28,
-                          "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/lazy.ts#L6"
+                          "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/lazy.ts#L6"
                         }
                       ],
                       "type": {
@@ -2591,7 +2591,7 @@
                   "fileName": "packages/utilities/src/lib/lazy.ts",
                   "line": 9,
                   "character": 8,
-                  "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/lazy.ts#L9"
+                  "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/lazy.ts#L9"
                 }
               ],
               "signatures": [
@@ -2606,7 +2606,7 @@
                       "fileName": "packages/utilities/src/lib/lazy.ts",
                       "line": 9,
                       "character": 8,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/lazy.ts#L9"
+                      "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/lazy.ts#L9"
                     }
                   ],
                   "type": {
@@ -2629,7 +2629,7 @@
         "line": 7,
         "file": "makeObject.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/makeObject.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/makeObject.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2733,7 +2733,7 @@
         "line": 43,
         "file": "mergeDefault.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/mergeDefault.ts#L43"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/mergeDefault.ts#L43"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2890,7 +2890,7 @@
         "line": 8,
         "file": "mergeObjects.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/mergeObjects.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/mergeObjects.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3003,7 +3003,7 @@
         "line": 2,
         "file": "noop.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/noop.ts#L2"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/noop.ts#L2"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3037,7 +3037,7 @@
         "line": 3,
         "file": "objectEntries.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/objectEntries.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/objectEntries.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3193,7 +3193,7 @@
         "line": 3,
         "file": "objectKeys.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/objectKeys.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/objectKeys.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3304,7 +3304,7 @@
         "line": 9,
         "file": "objectToTuples.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/objectToTuples.ts#L9"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/objectToTuples.ts#L9"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3423,7 +3423,7 @@
         "line": 3,
         "file": "objectValues.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/objectValues.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/objectValues.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3545,7 +3545,7 @@
         "line": 12,
         "file": "partition.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/partition.ts#L12"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/partition.ts#L12"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3621,7 +3621,7 @@
                       "fileName": "packages/utilities/src/lib/partition.ts",
                       "line": 12,
                       "character": 52,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/partition.ts#L12"
+                      "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/partition.ts#L12"
                     }
                   ],
                   "signatures": [
@@ -3636,7 +3636,7 @@
                           "fileName": "packages/utilities/src/lib/partition.ts",
                           "line": 12,
                           "character": 52,
-                          "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/partition.ts#L12"
+                          "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/partition.ts#L12"
                         }
                       ],
                       "parameters": [
@@ -3698,7 +3698,7 @@
         "line": 6,
         "file": "pickRandom.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/pickRandom.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/pickRandom.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3852,7 +3852,7 @@
         "line": 7,
         "file": "range.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/range.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/range.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3935,7 +3935,7 @@
         "line": 7,
         "file": "regExpEsc.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/regExpEsc.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/regExpEsc.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3985,7 +3985,7 @@
         "line": 7,
         "file": "roundNumber.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/roundNumber.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/roundNumber.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4059,7 +4059,7 @@
         "line": 35,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L35"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4171,7 +4171,7 @@
         "line": 64,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L64"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4257,7 +4257,7 @@
         "line": 9,
         "file": "splitText.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/splitText.ts#L9"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/splitText.ts#L9"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4346,7 +4346,7 @@
         "line": 13,
         "file": "throttle.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L13"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L13"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4386,7 +4386,7 @@
                       "fileName": "packages/utilities/src/lib/throttle.ts",
                       "line": 13,
                       "character": 35,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L13"
+                      "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L13"
                     }
                   ],
                   "signatures": [
@@ -4401,7 +4401,7 @@
                           "fileName": "packages/utilities/src/lib/throttle.ts",
                           "line": 13,
                           "character": 35,
-                          "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L13"
+                          "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L13"
                         }
                       ],
                       "parameters": [
@@ -4493,7 +4493,7 @@
         "line": 35,
         "file": "toTitleCase.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/toTitleCase.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/toTitleCase.ts#L35"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4566,7 +4566,7 @@
         "line": 5,
         "file": "tryParseJSON.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/tryParseJSON.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/tryParseJSON.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4629,7 +4629,7 @@
         "line": 6,
         "file": "tryParseURL.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/tryParseURL.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/tryParseURL.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4698,7 +4698,7 @@
         "line": 10,
         "file": "debounce.ts",
         "path": "packages/utilities/src/lib/debounce",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L10"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4716,7 +4716,7 @@
             "line": 21,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L21"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L21"
           },
           "comment": {
             "description": "The maximum time `func` is allowed to be delayed before it's invoked",
@@ -4751,7 +4751,7 @@
             "line": 15,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L15"
           },
           "comment": {
             "description": "The number of milliseconds to delay.",
@@ -4780,7 +4780,7 @@
         "line": 24,
         "file": "debounce.ts",
         "path": "packages/utilities/src/lib/debounce",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4818,7 +4818,7 @@
             "line": 39,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L39"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L39"
           },
           "parentId": 10,
           "signatures": [
@@ -4846,7 +4846,7 @@
             "line": 48,
             "file": "debounce.ts",
             "path": "packages/utilities/src/lib/debounce",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/debounce/debounce.ts#L48"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/debounce/debounce.ts#L48"
           },
           "parentId": 10,
           "signatures": [
@@ -4888,7 +4888,7 @@
         "line": 68,
         "file": "getDeepObjectKeys.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/getDeepObjectKeys.ts#L68"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/getDeepObjectKeys.ts#L68"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4906,7 +4906,7 @@
             "line": 73,
             "file": "getDeepObjectKeys.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/getDeepObjectKeys.ts#L73"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/getDeepObjectKeys.ts#L73"
           },
           "comment": {
             "description": "Whether to use `.${index}.` (`'dotted'`), `[${index}].`, (`'braces-with-dot'`) or `[${index}]` (`'braces'`) to separate array keys",
@@ -4948,7 +4948,7 @@
         "line": 1,
         "file": "sleep.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4966,7 +4966,7 @@
             "line": 12,
             "file": "sleep.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L12"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L12"
           },
           "comment": {
             "description": "Set to `false` to indicate that the scheduled `Timeout`\nshould not require the Node.js event loop to remain active.",
@@ -4992,7 +4992,7 @@
             "line": 5,
             "file": "sleep.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/sleep.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/sleep.ts#L5"
           },
           "comment": {
             "description": "When provided the corresponding `AbortController` can be used to cancel an asynchronous action.",
@@ -5019,7 +5019,7 @@
         "line": 4,
         "file": "isThenable.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isThenable.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isThenable.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5037,7 +5037,7 @@
             "line": 6,
             "file": "isThenable.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isThenable.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isThenable.ts#L6"
           },
           "comment": {
             "description": null,
@@ -5061,7 +5061,7 @@
             "line": 5,
             "file": "isThenable.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/isThenable.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/isThenable.ts#L5"
           },
           "comment": {
             "description": null,
@@ -5088,7 +5088,7 @@
         "line": 56,
         "file": "toTitleCase.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/toTitleCase.ts#L56"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/toTitleCase.ts#L56"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5106,7 +5106,7 @@
             "line": 60,
             "file": "toTitleCase.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/toTitleCase.ts#L60"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/toTitleCase.ts#L60"
           },
           "comment": {
             "description": "The optional additional variants to use when converting the string",
@@ -5139,7 +5139,7 @@
             "line": 65,
             "file": "toTitleCase.ts",
             "path": "packages/utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/toTitleCase.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/toTitleCase.ts#L65"
           },
           "comment": {
             "description": "Whether to convert the string to title case in a case sensitive manner.",
@@ -5166,7 +5166,7 @@
         "line": 64,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L64"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5196,7 +5196,7 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 64,
               "character": 37,
-              "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L64"
+              "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L64"
             }
           ],
           "signatures": [
@@ -5252,7 +5252,7 @@
         "line": 54,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L54"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L54"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5307,7 +5307,7 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 54,
               "character": 68,
-              "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L54"
+              "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L54"
             }
           ],
           "signatures": [
@@ -5362,7 +5362,7 @@
         "line": 106,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L106"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L106"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5422,7 +5422,7 @@
         "line": 38,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L38"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L38"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5448,7 +5448,7 @@
                   "fileName": "packages/utilities/src/lib/types.ts",
                   "line": 38,
                   "character": 36,
-                  "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L38"
+                  "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L38"
                 }
               ],
               "signatures": [
@@ -5509,7 +5509,7 @@
                 "fileName": "packages/utilities/src/lib/types.ts",
                 "line": 38,
                 "character": 77,
-                "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L38"
+                "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L38"
               }
             ],
             "signatures": [
@@ -5562,7 +5562,7 @@
         "line": 44,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L44"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L44"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5591,7 +5591,7 @@
         "line": 186,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L186"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L186"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5680,7 +5680,7 @@
         "line": 79,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L79"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L79"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5732,7 +5732,7 @@
         "line": 4,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5790,7 +5790,7 @@
         "line": 59,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L59"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L59"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5820,7 +5820,7 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 59,
               "character": 29,
-              "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L59"
+              "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L59"
             }
           ],
           "signatures": [
@@ -5874,7 +5874,7 @@
         "line": 49,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L49"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L49"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5929,7 +5929,7 @@
               "fileName": "packages/utilities/src/lib/types.ts",
               "line": 49,
               "character": 60,
-              "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L49"
+              "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L49"
             }
           ],
           "signatures": [
@@ -5982,7 +5982,7 @@
         "line": 30,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L30"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L30"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6150,7 +6150,7 @@
         "line": 6,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6585,7 +6585,7 @@
                                 "fileName": "packages/utilities/src/lib/types.ts",
                                 "line": 22,
                                 "character": 13,
-                                "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L22"
+                                "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L22"
                               }
                             ]
                           }
@@ -6665,7 +6665,7 @@
         "line": 69,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L69"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L69"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6704,7 +6704,7 @@
                 "fileName": "packages/utilities/src/lib/types.ts",
                 "line": 69,
                 "character": 41,
-                "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L69"
+                "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L69"
               }
             ],
             "signatures": [
@@ -6771,7 +6771,7 @@
         "line": 149,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L149"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L149"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6900,7 +6900,7 @@
         "line": 98,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L98"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L98"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6926,7 +6926,7 @@
                   "fileName": "packages/utilities/src/lib/types.ts",
                   "line": 98,
                   "character": 28,
-                  "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L98"
+                  "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L98"
                 }
               ]
             }
@@ -6945,7 +6945,7 @@
         "line": 90,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L90"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L90"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7016,7 +7016,7 @@
         "line": 84,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L84"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L84"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7047,7 +7047,7 @@
         "line": 28,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7153,7 +7153,7 @@
         "line": 127,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L127"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L127"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7275,7 +7275,7 @@
         "line": 1,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7326,7 +7326,7 @@
         "line": 26,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L26"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L26"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7432,7 +7432,7 @@
         "line": 74,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L74"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L74"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7471,7 +7471,7 @@
                 "fileName": "packages/utilities/src/lib/types.ts",
                 "line": 74,
                 "character": 42,
-                "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L74"
+                "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L74"
               }
             ],
             "signatures": [
@@ -7549,7 +7549,7 @@
         "line": 172,
         "file": "types.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/types.ts#L172"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/types.ts#L172"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7622,7 +7622,7 @@
         "line": 1,
         "file": "throttle.ts",
         "path": "packages/utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7648,7 +7648,7 @@
                   "fileName": "packages/utilities/src/lib/throttle.ts",
                   "line": 1,
                   "character": 33,
-                  "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L1"
+                  "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L1"
                 }
               ],
               "signatures": [
@@ -7717,7 +7717,7 @@
                       "fileName": "packages/utilities/src/lib/throttle.ts",
                       "line": 1,
                       "character": 66,
-                      "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L1"
+                      "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L1"
                     }
                   ],
                   "type": {
@@ -7733,7 +7733,7 @@
                           "fileName": "packages/utilities/src/lib/throttle.ts",
                           "line": 1,
                           "character": 73,
-                          "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L1"
+                          "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L1"
                         }
                       ],
                       "signatures": [
@@ -7766,7 +7766,7 @@
                   "fileName": "packages/utilities/src/lib/throttle.ts",
                   "line": 1,
                   "character": 64,
-                  "url": "https://github.com/sapphiredev/utilities/blob/2ceac2f/packages/utilities/src/lib/throttle.ts#L1"
+                  "url": "https://github.com/sapphiredev/utilities/blob/959696b/packages/utilities/src/lib/throttle.ts#L1"
                 }
               ]
             }
