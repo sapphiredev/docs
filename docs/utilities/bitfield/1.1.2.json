@@ -1,0 +1,2368 @@
+{
+  "typeDocJsonParserVersion": "7.4.0",
+  "id": 0,
+  "name": "@sapphire/bitfield",
+  "version": "1.1.2",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/bitfield\n\n**BitField utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/bitfield?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/bitfield)\n[![npm](https://img.shields.io/npm/v/@sapphire/bitfield?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/bitfield)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Resolving](#resolving)\n    -   [Checking for the existence of any bit](#checking-for-the-existence-of-any-bit)\n    -   [Checking for the existence of one or multiple bits](#checking-for-the-existence-of-one-or-multiple-bits)\n    -   [Getting the field's complement](#getting-the-fields-complement)\n    -   [Getting the union of different fields](#getting-the-union-of-different-fields)\n    -   [Getting the intersection between different fields](#getting-the-intersection-between-different-fields)\n    -   [Getting the symmetric difference between different fields](#getting-the-symmetric-difference-between-different-fields)\n    -   [Formatting a field](#formatting-a-field)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/bitfield\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { BitField } = require('@sapphire/bitfield')` equals `import { BitField } from '@sapphire/bitfield'`.\n\n```typescript\n// Require the BitField class\nconst { BitField } = require('@sapphire/bitfield');\n\nconst PermissionFlags = {\n\tRead: 1 << 0,\n\tWrite: 1 << 1,\n\tEdit: 1 << 2,\n\tDelete: 1 << 3\n};\nconst PermissionsBitField = new BitField(PermissionFlags);\n\nconst DetailedPermissionsFlags = {\n\tReadMessages: 1n << 0n,\n\tReadChannels: 1n << 1n,\n\tCreateMessages: 1n << 2n,\n\tCreateChannels: 1n << 3n\n\t// ...\n};\nconst DetailedPermissionsBitField = new BitField(DetailedPermissionsFlags);\n```\n\n> **Warning**: If the source is a TypeScript enum of numbers, you may use the `enumToObject` utility to turn it into a strict typed 1-way object.\n\n```typescript\nconst { BitField, enumToObject } = require('@sapphire/bitfield');\nconst { ActivityFlags } = require('discord-api-types/v10');\n\nconst PermissionsBitField = new BitField(enumToObject(ActivityFlags));\n```\n\n> **Note**: An exception will be thrown in the constructor if a non-object, null, empty object, or objects with values that aren't all numbers or all bigints.\n\n### Resolving\n\nYou can resolve bitfields from raw numbers, strings, or arrays of them. All of `BitField`'s methods call `resolve` internally, making the usage a lot easier.\n\n```typescript\nPermissionsBitField.resolve(PermissionFlags.Read);\nPermissionsBitField.resolve(1);\nPermissionsBitField.resolve('Read');\nPermissionsBitField.resolve([1]);\nPermissionsBitField.resolve(['Read']);\n// 1 [Read]\n\nPermissionsBitField.resolve(PermissionFlags.Read | PermissionFlags.Write);\nPermissionsBitField.resolve([PermissionFlags.Read, PermissionFlags.Write]);\nPermissionsBitField.resolve(['Read', 'Write']);\n// 3 [Read + Write]\n\nPermissionsBitField.resolve([]);\nPermissionsBitField.zero;\n// 0 [∅]\n\n// Out-of-bounds fields are masked by `PermissionsBitField.mask`:\nPermissionsBitField.resolve(17);\n// 0b10001 (17) -> ~~0b10000 (16, invalid)~~ | 0b0001 (1, Read)\n// 1 [Read]\n\n// Invalid names will cause a `RangeError` to be thrown:\nPermissionsBitField.resolve(['Execute']);\n// thrown RangeError('Received a name that could not be resolved to a property of flags')\n\n// Invalid types, or non-array objects will cause a `TypeError` to be thrown:\nPermissionsBitField.resolve(true);\nPermissionsBitField.resolve(null);\nPermissionsBitField.resolve({});\n\n// Number BitFields do not accept bigints:\nPermissionsBitField.resolve(1n);\n// BigInt BitFields do not accept numbers:\nDetailedPermissionsBitField.resolve(1);\n```\n\nFor simplicity, we will be using arrays of strings for the rest of the README, but any of the above alternatives are available.\n\n### Checking for the existence of any bit\n\nUseful for checking if at least one of B's bits are included in A.\n\n```typescript\nPermissionsBitField.any(['Read', 'Write'], ['Read']);\nPermissionsBitField.any(['Read', 'Write'], ['Write']);\nPermissionsBitField.any(['Read', 'Write'], ['Write', 'Edit']);\n// true\n\nPermissionsBitField.any(['Read', 'Write'], ['Edit']);\nPermissionsBitField.any(['Read', 'Write'], ['Delete']);\nPermissionsBitField.any(['Read', 'Write'], ['Edit', 'Delete']);\n// false\n```\n\n### Checking for the existence of one or multiple bits\n\nUseful for checking if all of B's bits are included in A, or in other words, A is a superset of B.\n\n```typescript\nPermissionsBitField.any(['Read', 'Write'], ['Read']);\nPermissionsBitField.any(['Read', 'Write'], ['Write']);\n// true\n\nPermissionsBitField.any(['Read', 'Write'], ['Write', 'Edit']);\nPermissionsBitField.any(['Read', 'Write'], ['Edit']);\nPermissionsBitField.any(['Read', 'Write'], ['Delete']);\nPermissionsBitField.any(['Read', 'Write'], ['Edit', 'Delete']);\n// false\n```\n\n### Getting the field's complement\n\nGets the complement of a field, or the result of excluding A from all of the BitField's mask.\n\n```typescript\nPermissionsBitField.complement(['Read']);\n// 14 [Write + Edit + Delete]\n\nPermissionsBitField.complement(['Read', 'Write']);\n// 12 [Edit + Delete]\n\nPermissionsBitField.complement(['Read', 'Write', 'Edit', 'Delete']);\n// 0 [∅]\n```\n\n### Getting the union of different fields\n\nUseful for adding multiple fields into one.\n\n```typescript\nPermissionsBitField.union(['Read'], ['Write'], ['Edit']);\n// 7 [Read + Write + Edit]\n\nPermissionsBitField.union();\n// 0 [∅]\n```\n\n### Getting the intersection between different fields\n\nGets the intersection of all the fields.\n\n```typescript\nPermissionsBitField.intersection(['Read', 'Write'], ['Write']);\n// 2 [Write]\n\nPermissionsBitField.intersection(['Read'], ['Write']);\n// 0 [∅]\n```\n\n### Getting the symmetric difference between different fields\n\nThe summetric difference is basically the union of the difference between A and B and vice versa (bits from A that aren't in B, and bits from B that aren't in A), or XOR, useful for retrieving the bit difference between two fields.\n\n```typescript\nPermissionsBitField.intersection(['Read', 'Write'], ['Write', 'Edit']);\n// 5 [Read + Edit]\n\nPermissionsBitField.intersection(['Write'], ['Write']);\n// 0 [∅]\n```\n\n### Formatting a field\n\nWe can format fields in two ways, one is with arrays:\n\n```typescript\nPermissionsBitField.toArray(PermissionFlags.Read | PermissionFlags.Write);\nPermissionsBitField.toArray([PermissionFlags.Read, PermissionFlags.Write]);\nPermissionsBitField.toArray(['Read', 'Write']);\n// ['Read', 'Write']\n```\n\nAnd another is with objects:\n\n```typescript\nPermissionsBitField.toObject(PermissionFlags.Read | PermissionFlags.Write);\nPermissionsBitField.toObject([PermissionFlags.Read, PermissionFlags.Write]);\nPermissionsBitField.toObject(['Read', 'Write']);\n// {\n//   Read: true,\n//   Write: true,\n//   Edit: false,\n//   Delete: false\n// }\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/bitfield@1.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/bitfield@1.1.1...@sapphire/bitfield@1.1.2) - (2023-05-10)\n\n## 🏠 Refactor\n\n- **bitfield:** Call entries only once (#594) ([de02ab3](https://github.com/sapphiredev/utilities/commit/de02ab311d8c56fad0b58bf9acdec5a40484ce0d))\n\n# [@sapphire/bitfield@1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/bitfield@1.1.0...@sapphire/bitfield@1.1.1) - (2023-05-10)\n\n## 🐛 Bug Fixes\n\n- **bitfield:** Export PrimitiveType and MaybeArray ([568bd32](https://github.com/sapphiredev/utilities/commit/568bd329e1341147dfb7f8a5dabcd9dd604fe535))\n\n# [@sapphire/bitfield@1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/bitfield@1.0.0...@sapphire/bitfield@1.1.0) - (2023-04-16)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n\n## 🚀 Features\n\n- **utilities:** Add `enumToObject` (#580) ([d4f8d39](https://github.com/sapphiredev/utilities/commit/d4f8d39eebedf4db9f81927ab339834a422c5334))\n\n# [@sapphire/bitfield@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/bitfield@1.0.0) - (2022-10-16)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n\n## 🚀 Features\n\n- Add `@sapphire/bitfield` package (#502) ([64a9c50](https://github.com/sapphiredev/utilities/commit/64a9c5031509c7fc8f1b0ceffb2020635dbb3e5a))\n\n",
+  "classes": [
+    {
+      "id": 1,
+      "name": "BitField",
+      "source": {
+        "line": 3,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L3"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "typeParameters": [
+        {
+          "id": 46,
+          "name": "Flags",
+          "constraint": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Record",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "number"
+                  }
+                ]
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Record",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "bigint"
+                  }
+                ]
+              }
+            ]
+          },
+          "default": null
+        }
+      ],
+      "construct": {
+        "id": 2,
+        "name": "constructor",
+        "source": {
+          "line": 10,
+          "file": "BitField.ts",
+          "path": "lib",
+          "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L10"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "parentId": 1,
+        "accessibility": "public",
+        "parameters": [
+          {
+            "id": 5,
+            "name": "flags",
+            "comment": {
+              "description": null,
+              "blockTags": [],
+              "modifierTags": []
+            },
+            "rest": false,
+            "optional": false,
+            "type": {
+              "kind": "reference",
+              "id": null,
+              "name": "Readonly",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "reference",
+                  "id": -1,
+                  "name": "Flags",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 45,
+          "name": "[FlagEntriesSymbol]",
+          "source": {
+            "line": 8,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L8"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "typeOperator",
+            "operator": "readonly",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "tuple",
+                "types": [
+                  {
+                    "kind": "intrinsic",
+                    "type": "string"
+                  },
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": 9,
+          "name": "flags",
+          "source": {
+            "line": 7,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L7"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": -1,
+            "name": "Flags",
+            "packageName": null,
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 8,
+          "name": "mask",
+          "source": {
+            "line": 6,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L6"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": 47,
+            "name": "PrimitiveType",
+            "packageName": "@sapphire/bitfield",
+            "typeArguments": [
+              {
+                "kind": "indexedAccess",
+                "objectType": {
+                  "kind": "reference",
+                  "id": -1,
+                  "name": "Flags",
+                  "packageName": null,
+                  "typeArguments": []
+                },
+                "indexType": {
+                  "kind": "typeOperator",
+                  "operator": "keyof",
+                  "type": {
+                    "kind": "reference",
+                    "id": -1,
+                    "name": "Flags",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": 6,
+          "name": "type",
+          "source": {
+            "line": 4,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L4"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "conditional",
+            "checkType": {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": -1,
+                "name": "Flags",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "typeOperator",
+                "operator": "keyof",
+                "type": {
+                  "kind": "reference",
+                  "id": -1,
+                  "name": "Flags",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              }
+            },
+            "extendsType": {
+              "kind": "intrinsic",
+              "type": "number"
+            },
+            "trueType": {
+              "kind": "literal",
+              "value": "number"
+            },
+            "falseType": {
+              "kind": "literal",
+              "value": "bigint"
+            }
+          }
+        },
+        {
+          "id": 7,
+          "name": "zero",
+          "source": {
+            "line": 5,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L5"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "conditional",
+            "checkType": {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": -1,
+                "name": "Flags",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "typeOperator",
+                "operator": "keyof",
+                "type": {
+                  "kind": "reference",
+                  "id": -1,
+                  "name": "Flags",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              }
+            },
+            "extendsType": {
+              "kind": "intrinsic",
+              "type": "number"
+            },
+            "trueType": {
+              "kind": "literal",
+              "value": "0"
+            },
+            "falseType": {
+              "kind": "literal",
+              "value": "0"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 13,
+          "name": "any",
+          "source": {
+            "line": 85,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L85"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 14,
+              "name": "any",
+              "comment": {
+                "description": "Checks whether or not `field` contains any of the bits from `bits`.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "Whether or not `field` has any of `bits`'s bits, also denoted as `A ∩ B ≠ ∅`."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 15,
+                  "name": "field",
+                  "comment": {
+                    "description": "The bits to compare the bits from.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 16,
+                  "name": "bits",
+                  "comment": {
+                    "description": "The bits to compare with.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "name": "complement",
+          "source": {
+            "line": 118,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L118"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 22,
+              "name": "complement",
+              "comment": {
+                "description": "Makes the complement of `field`, which is a field of all bits (of `U` or the union of all {@link Flags} bits)\nthat do not belong to `A`. It is the result of `U ∖ A`, or `difference(U, field)`.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The complement of `field`, also denoted `Aᶜ` or `A'`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst bitfield = new BitField({\n\tRead:   0b0001,\n\tWrite:  0b0010,\n\tEdit:   0b0100,\n\tDelete: 0b1000\n});\n\nbitfield.complement(0b0100);\n// 0b1011\n```"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 23,
+                  "name": "field",
+                  "comment": {
+                    "description": "The bits to get the complement of.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 47,
+                "name": "PrimitiveType",
+                "packageName": "@sapphire/bitfield",
+                "typeArguments": [
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "difference",
+          "source": {
+            "line": 187,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L187"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 32,
+              "name": "difference",
+              "comment": {
+                "description": "Removes from `a` the bits that exist in `b`.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The result of `a ∖ b`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nbitfield.difference(0b1100, 0b0100);\n// 0b1000\n\nbitfield.difference(0b1111, 0b0110);\n// 0b1001\n```"
+                  },
+                  {
+                    "name": "seealso",
+                    "text": "{@link https://en.wikipedia.org/wiki/Difference_(set_theory)}"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 33,
+                  "name": "a",
+                  "comment": {
+                    "description": "The first field.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 34,
+                  "name": "b",
+                  "comment": {
+                    "description": "The bits to remove from `a`.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 47,
+                "name": "PrimitiveType",
+                "packageName": "@sapphire/bitfield",
+                "typeArguments": [
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "name": "has",
+          "source": {
+            "line": 95,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L95"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 18,
+              "name": "has",
+              "comment": {
+                "description": "Checks whether or not `field` is a superset of or equal to `bits`.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "Whether or not `field` is a superset of or equal to `bits`, also denoted as `A ⊇ B`."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 19,
+                  "name": "field",
+                  "comment": {
+                    "description": "The bits to compare the bits from.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 20,
+                  "name": "bits",
+                  "comment": {
+                    "description": "The bits to compare with.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "intersection",
+          "source": {
+            "line": 163,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L163"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 28,
+              "name": "intersection",
+              "comment": {
+                "description": "Makes an intersection of all the bits.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The result of intersecting `bitfield` with all of the `fields`, also denoted as `A ⋂ fields`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nbitfield.intersection(0b0001, 0b0100);\n// 0b0000\n\nbitfield.intersection(0b1100, 0b0100);\n// 0b0100\n\nbitfield.intersection(0b1101, 0b0101, 0b1100);\n// 0b0100\n```"
+                  },
+                  {
+                    "name": "seealso",
+                    "text": "{@link https://en.wikipedia.org/wiki/Intersection_(set_theory)}"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 29,
+                  "name": "bitfield",
+                  "comment": {
+                    "description": "The first field.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 30,
+                  "name": "fields",
+                  "comment": {
+                    "description": "The bits to intersect with `bitfield`.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": true,
+                  "optional": false,
+                  "type": {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "reference",
+                        "id": 49,
+                        "name": "MaybeArray",
+                        "packageName": "@sapphire/bitfield",
+                        "typeArguments": [
+                          {
+                            "kind": "union",
+                            "types": [
+                              {
+                                "kind": "typeOperator",
+                                "operator": "keyof",
+                                "type": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                }
+                              },
+                              {
+                                "kind": "reference",
+                                "id": 47,
+                                "name": "PrimitiveType",
+                                "packageName": "@sapphire/bitfield",
+                                "typeArguments": [
+                                  {
+                                    "kind": "indexedAccess",
+                                    "objectType": {
+                                      "kind": "reference",
+                                      "id": -1,
+                                      "name": "Flags",
+                                      "packageName": null,
+                                      "typeArguments": []
+                                    },
+                                    "indexType": {
+                                      "kind": "typeOperator",
+                                      "operator": "keyof",
+                                      "type": {
+                                        "kind": "reference",
+                                        "id": -1,
+                                        "name": "Flags",
+                                        "packageName": null,
+                                        "typeArguments": []
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 47,
+                "name": "PrimitiveType",
+                "packageName": "@sapphire/bitfield",
+                "typeArguments": [
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "name": "resolve",
+          "source": {
+            "line": 64,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L64"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 11,
+              "name": "resolve",
+              "comment": {
+                "description": "Resolves a:\n- `string`: If it's a property of {@link Flags}.\n- `number`: If the BitField processes `number` primitives.\n- `bigint`: If the BitField processes `bigint` primitives.\n- `Array`: Resolves recursively.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The resolved value."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 12,
+                  "name": "resolvable",
+                  "comment": {
+                    "description": "The value to resolve.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 47,
+                "name": "PrimitiveType",
+                "packageName": "@sapphire/bitfield",
+                "typeArguments": [
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "name": "symmetricDifference",
+          "source": {
+            "line": 209,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L209"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 36,
+              "name": "symmetricDifference",
+              "comment": {
+                "description": "Computes the symmetric difference, denoted as `A ⊖ B` or `A Δ B`, which is the disjunctive union, or the set of\nelements which are in either of the sets, but not in their intersection. As such, this is the result of\n`(A ∖ B) ∪ (B ∖ A)`, `union(difference(a, b), difference(b, a))`, or `a ⊕ b`.",
+                "blockTags": [
+                  {
+                    "name": "remarks",
+                    "text": "The empty set (`∅`) is neutral, as such, `A Δ ∅ = A` and `A Δ A = ∅`"
+                  },
+                  {
+                    "name": "returns",
+                    "text": "The result of computing `a Δ b`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nbitfield.symmetricDifference(0b1100, 0b0011);\n// 0b1111\n\nbitfield.symmetricDifference(0b1101, 0b1011);\n// 0b0110\n```"
+                  },
+                  {
+                    "name": "seealso",
+                    "text": "{@link https://en.wikipedia.org/wiki/Symmetric_difference}"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 37,
+                  "name": "a",
+                  "comment": {
+                    "description": "The first field.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 38,
+                  "name": "b",
+                  "comment": {
+                    "description": "The second field.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 47,
+                "name": "PrimitiveType",
+                "packageName": "@sapphire/bitfield",
+                "typeArguments": [
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "name": "toArray",
+          "source": {
+            "line": 230,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L230"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 40,
+              "name": "toArray",
+              "comment": {
+                "description": "Retrieves an array of the properties from {@link Flags} whose values are contained in `field`.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The names of the {@link BitField}'s flag properties whose value are contained in `field`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst bitfield = new BitField({\n\tRead:   0b0001,\n\tWrite:  0b0010,\n\tEdit:   0b0100,\n\tDelete: 0b1000\n});\n\nbitfield.toArray(0b0101);\n// ['Read', 'Edit']\n```"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 41,
+                  "name": "field",
+                  "comment": {
+                    "description": "The field to convert to an array.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "array",
+                "type": {
+                  "kind": "typeOperator",
+                  "operator": "keyof",
+                  "type": {
+                    "kind": "reference",
+                    "id": -1,
+                    "name": "Flags",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "name": "toObject",
+          "source": {
+            "line": 264,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L264"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 43,
+              "name": "toObject",
+              "comment": {
+                "description": "Retrieves an object with the properties from {@link Flags} whose values are boolean denoting whether or not the\nflag's bit is contained in `field`.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "An object with the properties of {@link Flags} which values are boolean."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst bitfield = new BitField({\n\tRead:   0b0001,\n\tWrite:  0b0010,\n\tEdit:   0b0100,\n\tDelete: 0b1000\n});\n\nbitfield.toObject(0b0101);\n// {\n// \tRead: true,\n// \tWrite: false,\n// \tEdit: true,\n// \tDelete: false\n// }\n```"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 44,
+                  "name": "field",
+                  "comment": {
+                    "description": "The field to convert to an object.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 49,
+                    "name": "MaybeArray",
+                    "packageName": "@sapphire/bitfield",
+                    "typeArguments": [
+                      {
+                        "kind": "union",
+                        "types": [
+                          {
+                            "kind": "typeOperator",
+                            "operator": "keyof",
+                            "type": {
+                              "kind": "reference",
+                              "id": -1,
+                              "name": "Flags",
+                              "packageName": null,
+                              "typeArguments": []
+                            }
+                          },
+                          {
+                            "kind": "reference",
+                            "id": 47,
+                            "name": "PrimitiveType",
+                            "packageName": "@sapphire/bitfield",
+                            "typeArguments": [
+                              {
+                                "kind": "indexedAccess",
+                                "objectType": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                },
+                                "indexType": {
+                                  "kind": "typeOperator",
+                                  "operator": "keyof",
+                                  "type": {
+                                    "kind": "reference",
+                                    "id": -1,
+                                    "name": "Flags",
+                                    "packageName": null,
+                                    "typeArguments": []
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "Record",
+                "packageName": "typescript",
+                "typeArguments": [
+                  {
+                    "kind": "typeOperator",
+                    "operator": "keyof",
+                    "type": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    }
+                  },
+                  {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "name": "union",
+          "source": {
+            "line": 136,
+            "file": "BitField.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L136"
+          },
+          "parentId": 1,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 25,
+              "name": "union",
+              "comment": {
+                "description": "Makes a union of all the bits.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The result of combining all bits together, also denoted as `∅ ⋃ fields`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nbitfield.union(0b0001, 0b0100);\n// 0b0101\n\nbitfield.union(0b1100, 0b0001, 0b0010);\n// 0b1111\n```"
+                  },
+                  {
+                    "name": "seealso",
+                    "text": "{@link https://en.wikipedia.org/wiki/Union_(set_theory)}"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 26,
+                  "name": "fields",
+                  "comment": {
+                    "description": "The bits to create a union of.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": true,
+                  "optional": false,
+                  "type": {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "reference",
+                        "id": 49,
+                        "name": "MaybeArray",
+                        "packageName": "@sapphire/bitfield",
+                        "typeArguments": [
+                          {
+                            "kind": "union",
+                            "types": [
+                              {
+                                "kind": "typeOperator",
+                                "operator": "keyof",
+                                "type": {
+                                  "kind": "reference",
+                                  "id": -1,
+                                  "name": "Flags",
+                                  "packageName": null,
+                                  "typeArguments": []
+                                }
+                              },
+                              {
+                                "kind": "reference",
+                                "id": 47,
+                                "name": "PrimitiveType",
+                                "packageName": "@sapphire/bitfield",
+                                "typeArguments": [
+                                  {
+                                    "kind": "indexedAccess",
+                                    "objectType": {
+                                      "kind": "reference",
+                                      "id": -1,
+                                      "name": "Flags",
+                                      "packageName": null,
+                                      "typeArguments": []
+                                    },
+                                    "indexType": {
+                                      "kind": "typeOperator",
+                                      "operator": "keyof",
+                                      "type": {
+                                        "kind": "reference",
+                                        "id": -1,
+                                        "name": "Flags",
+                                        "packageName": null,
+                                        "typeArguments": []
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 47,
+                "name": "PrimitiveType",
+                "packageName": "@sapphire/bitfield",
+                "typeArguments": [
+                  {
+                    "kind": "indexedAccess",
+                    "objectType": {
+                      "kind": "reference",
+                      "id": -1,
+                      "name": "Flags",
+                      "packageName": null,
+                      "typeArguments": []
+                    },
+                    "indexType": {
+                      "kind": "typeOperator",
+                      "operator": "keyof",
+                      "type": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "functions": [
+    {
+      "id": 55,
+      "name": "enumToObject",
+      "source": {
+        "line": 22,
+        "file": "utilities.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/utilities.ts#L22"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 56,
+          "name": "enumToObject",
+          "comment": {
+            "description": "Converts a TypeScript enum to a 1-way object, stripping out the number keys.",
+            "blockTags": [
+              {
+                "name": "example",
+                "text": "```typescript\nenum Permissions {\n\tRead: 1 << 0,\n\tWrite: 1 << 1\n}\n// {\n// \tRead: 1,\n// \tWrite: 2,\n// \t1: 'Read',\n// \t2: 'Write'\n// }\n\nenumToObject(Permissions);\n// { Read: 1, Write: 2 }\n```"
+              },
+              {
+                "name": "returns",
+                "text": "The mapped object"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 57,
+              "name": "T",
+              "constraint": {
+                "kind": "intrinsic",
+                "type": "object"
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 58,
+              "name": "enumObject",
+              "comment": {
+                "description": "The enum to convert",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "rest": false,
+              "optional": false,
+              "type": {
+                "kind": "reference",
+                "id": -1,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "mapped",
+            "parameter": "K",
+            "parameterType": {
+              "kind": "reference",
+              "id": null,
+              "name": "Exclude",
+              "packageName": "typescript",
+              "typeArguments": [
+                {
+                  "kind": "typeOperator",
+                  "operator": "keyof",
+                  "type": {
+                    "kind": "reference",
+                    "id": -1,
+                    "name": "T",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                },
+                {
+                  "kind": "templateLiteral",
+                  "head": "",
+                  "tail": [
+                    {
+                      "type": {
+                        "kind": "intrinsic",
+                        "type": "number"
+                      },
+                      "text": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            "nameType": null,
+            "templateType": {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": -1,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "reference",
+                "id": -1,
+                "name": "K",
+                "packageName": null,
+                "typeArguments": []
+              }
+            },
+            "readonly": null,
+            "optional": null
+          }
+        }
+      ]
+    }
+  ],
+  "interfaces": [],
+  "namespaces": [],
+  "typeAliases": [
+    {
+      "id": 49,
+      "name": "MaybeArray",
+      "source": {
+        "line": 272,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L272"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 50,
+          "name": "T",
+          "constraint": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "union",
+        "types": [
+          {
+            "kind": "reference",
+            "id": -1,
+            "name": "T",
+            "packageName": null,
+            "typeArguments": []
+          },
+          {
+            "kind": "typeOperator",
+            "operator": "readonly",
+            "type": {
+              "kind": "array",
+              "type": {
+                "kind": "reference",
+                "id": -1,
+                "name": "T",
+                "packageName": null,
+                "typeArguments": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 47,
+      "name": "PrimitiveType",
+      "source": {
+        "line": 270,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L270"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 48,
+          "name": "T",
+          "constraint": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": -1,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "intrinsic",
+          "type": "number"
+        },
+        "trueType": {
+          "kind": "intrinsic",
+          "type": "number"
+        },
+        "falseType": {
+          "kind": "intrinsic",
+          "type": "bigint"
+        }
+      }
+    },
+    {
+      "id": 53,
+      "name": "ValueResolvable",
+      "source": {
+        "line": 284,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L284"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "Resolves the possible types accepted by the specified {@link BitField}.",
+        "blockTags": [
+          {
+            "name": "typeparam",
+            "text": "A {@link BitField} instance type."
+          }
+        ],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 54,
+          "name": "T",
+          "constraint": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": -1,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "reference",
+          "id": 1,
+          "name": "BitField",
+          "packageName": "@sapphire/bitfield",
+          "typeArguments": [
+            {
+              "kind": "inferred",
+              "type": "Flags"
+            }
+          ]
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": 49,
+          "name": "MaybeArray",
+          "packageName": "@sapphire/bitfield",
+          "typeArguments": [
+            {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "typeOperator",
+                  "operator": "keyof",
+                  "type": {
+                    "kind": "reference",
+                    "id": -1,
+                    "name": "Flags",
+                    "packageName": null,
+                    "typeArguments": []
+                  }
+                },
+                {
+                  "kind": "reference",
+                  "id": 47,
+                  "name": "PrimitiveType",
+                  "packageName": "@sapphire/bitfield",
+                  "typeArguments": [
+                    {
+                      "kind": "indexedAccess",
+                      "objectType": {
+                        "kind": "reference",
+                        "id": -1,
+                        "name": "Flags",
+                        "packageName": null,
+                        "typeArguments": []
+                      },
+                      "indexType": {
+                        "kind": "typeOperator",
+                        "operator": "keyof",
+                        "type": {
+                          "kind": "reference",
+                          "id": -1,
+                          "name": "Flags",
+                          "packageName": null,
+                          "typeArguments": []
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "falseType": {
+          "kind": "intrinsic",
+          "type": "never"
+        }
+      }
+    },
+    {
+      "id": 51,
+      "name": "ValueType",
+      "source": {
+        "line": 278,
+        "file": "BitField.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/87bec15/packages/bitfield/src/lib/BitField.ts#L278"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "Resolves the type of the values the specified {@link BitField} takes.",
+        "blockTags": [
+          {
+            "name": "typeparam",
+            "text": "A {@link BitField} instance type."
+          }
+        ],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [
+        {
+          "id": 52,
+          "name": "T",
+          "constraint": null,
+          "default": null
+        }
+      ],
+      "type": {
+        "kind": "conditional",
+        "checkType": {
+          "kind": "reference",
+          "id": -1,
+          "name": "T",
+          "packageName": null,
+          "typeArguments": []
+        },
+        "extendsType": {
+          "kind": "reference",
+          "id": 1,
+          "name": "BitField",
+          "packageName": "@sapphire/bitfield",
+          "typeArguments": [
+            {
+              "kind": "inferred",
+              "type": "Flags"
+            }
+          ]
+        },
+        "trueType": {
+          "kind": "reference",
+          "id": 47,
+          "name": "PrimitiveType",
+          "packageName": "@sapphire/bitfield",
+          "typeArguments": [
+            {
+              "kind": "indexedAccess",
+              "objectType": {
+                "kind": "reference",
+                "id": -1,
+                "name": "Flags",
+                "packageName": null,
+                "typeArguments": []
+              },
+              "indexType": {
+                "kind": "typeOperator",
+                "operator": "keyof",
+                "type": {
+                  "kind": "reference",
+                  "id": -1,
+                  "name": "Flags",
+                  "packageName": null,
+                  "typeArguments": []
+                }
+              }
+            }
+          ]
+        },
+        "falseType": {
+          "kind": "intrinsic",
+          "type": "never"
+        }
+      }
+    }
+  ],
+  "variables": []
+}
