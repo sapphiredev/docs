@@ -1,0 +1,1077 @@
+{
+  "typeDocJsonParserVersion": "7.4.0",
+  "id": 0,
+  "name": "@sapphire/snowflake",
+  "version": "3.5.1",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/snowflake\n\n**Deconstruct and generate snowflake IDs using BigInts.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/utilities/branch/main/graph/badge.svg?token=OEGIV6RFDO)](https://codecov.io/gh/sapphiredev/utilities)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/snowflake?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/snowflake)\n[![npm](https://img.shields.io/npm/v/@sapphire/snowflake?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/snowflake)\n\n</div>\n\n**Table of Contents**\n\n-   [Description](#description)\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Constructing snowflakes](#constructing-snowflakes)\n        -   [Snowflakes with custom epoch](#snowflakes-with-custom-epoch)\n        -   [Snowflake with Discord epoch constant](#snowflake-with-discord-epoch-constant)\n        -   [Snowflake with Twitter epoch constant](#snowflake-with-twitter-epoch-constant)\n    -   [Deconstructing snowflakes](#deconstructing-snowflakes)\n        -   [Snowflakes with custom epoch](#snowflakes-with-custom-epoch-1)\n        -   [Snowflake with Discord epoch constant](#snowflake-with-discord-epoch-constant-1)\n        -   [Snowflake with Twitter epoch constant](#snowflake-with-twitter-epoch-constant-1)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors ✨](#contributors-%E2%9C%A8)\n\n## Description\n\nThere is often a need to get a unique ID for entities, be that for Discord messages/channels/servers, keys in a database or many other similar examples. There are many ways to get such a unique ID, and one of those is using a so-called \"snowflake\". You can read more about snowflake IDs in [this Medium article](https://medium.com/better-programming/uuid-generation-snowflake-identifiers-unique-2aed8b1771bc).\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Offers predefined epochs for Discord and Twitter\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/snowflake\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Snowflake } = require('@sapphire/snowflake')` equals `import { Snowflake } from '@sapphire/snowflake'`.\n\n### Constructing snowflakes\n\n#### Snowflakes with custom epoch\n\n```typescript\n// Import the Snowflake class\nconst { Snowflake } = require('@sapphire/snowflake');\n\n// Define a custom epoch\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\n\n// Create an instance of Snowflake\nconst snowflake = new Snowflake(epoch);\n\n// Generate a snowflake with the given epoch\nconst uniqueId = snowflake.generate();\n```\n\n#### Snowflake with Discord epoch constant\n\n```typescript\n// Import the Snowflake class\nconst { DiscordSnowflake } = require('@sapphire/snowflake');\n\n// Generate a snowflake with Discord's epoch\nconst uniqueId = DiscordSnowflake.generate();\n\n// Alternatively, you can use the method directly\nconst uniqueId = DiscordSnowflake.generate();\n```\n\n#### Snowflake with Twitter epoch constant\n\n```typescript\n// Import the Snowflake class\nconst { TwitterSnowflake } = require('@sapphire/snowflake');\n\n// Generate a snowflake with Twitter's epoch\nconst uniqueId = TwitterSnowflake.generate();\n\n// Alternatively, you can use the method directly\nconst uniqueId = TwitterSnowflake.generate();\n```\n\n### Deconstructing snowflakes\n\n#### Snowflakes with custom epoch\n\n```typescript\n// Import the Snowflake class\nconst { Snowflake } = require('@sapphire/snowflake');\n\n// Define a custom epoch\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\n\n// Create an instance of Snowflake\nconst snowflake = new Snowflake(epoch);\n\n// Deconstruct a snowflake with the given epoch\nconst uniqueId = snowflake.deconstruct('3971046231244935168');\n```\n\n#### Snowflake with Discord epoch constant\n\n```typescript\n// Import the Snowflake class\nconst { DiscordSnowflake } = require('@sapphire/snowflake');\n\n// Deconstruct a snowflake with Discord's epoch\nconst uniqueId = DiscordSnowflake.deconstruct('3971046231244935168');\n\n// Alternatively, you can use the method directly\nconst uniqueId = DiscordSnowflake.deconstruct('3971046231244935168');\n```\n\n#### Snowflake with Twitter epoch constant\n\n```typescript\n// Import the Snowflake class\nconst { TwitterSnowflake } = require('@sapphire/snowflake');\n\n// Deconstruct a snowflake with Twitter's epoch\nconst uniqueId = TwitterSnowflake.deconstruct('3971046231244935168');\n\n// Alternatively, you can use the method directly\nconst uniqueId = TwitterSnowflake.deconstruct('3971046231244935168');\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/snowflake@3.5.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.5.0...@sapphire/snowflake@3.5.1) - (2023-05-12)\n\n## 🏠 Refactor\n\n- **snowflake:** Handle out-of-bounds `increment` correctly (#596) ([b5276d7](https://github.com/sapphiredev/utilities/commit/b5276d7372c33356975a302bafb5ae8aba604431))\n\n# [@sapphire/snowflake@3.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.4.3...@sapphire/snowflake@3.5.0) - (2023-05-10)\n\n## 🚀 Features\n\n- **snowflake:** Expose `processId` and `workerId` (#595) ([b873c1c](https://github.com/sapphiredev/utilities/commit/b873c1cc3b30cb54d710a49f7618e125ac1132ad))\n\n# [@sapphire/snowflake@3.4.2](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.4.1...@sapphire/snowflake@3.4.2) - (2023-04-12)\n\n## 🏠 Refactor\n\n- **Snowflake:** Simplify `compare` logic (#578) ([886254e](https://github.com/sapphiredev/utilities/commit/886254eea2f0cc5e8f63d015acffaf0e61489357))\n\n# [@sapphire/snowflake@3.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.4.0...@sapphire/snowflake@3.4.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **snowflake:** Ensure strings are never compared with bigints ([22199a5](https://github.com/sapphiredev/utilities/commit/22199a5aa0c6150f46e01bfbe328deecb9f818ba))\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n\n## 🧪 Testing\n\n- Cleanup tests ([aec1bb2](https://github.com/sapphiredev/utilities/commit/aec1bb290d0f3c00a1ae4f4c86302ebbb161d348))\n\n# [@sapphire/snowflake@3.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.3.0...@sapphire/snowflake@3.4.0) - (2022-12-27)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n\n## 🚀 Features\n\n- **snowflake:** Added `Snowflake.compare` (#531) ([6accd6d](https://github.com/sapphiredev/utilities/commit/6accd6d15eab12e312034f8ef43cff032835c972))\n\n# [@sapphire/snowflake@3.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.2.2...@sapphire/snowflake@3.3.0) - (2022-12-03)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **snowflake:** TwitterSnowflake using incorrect epoch (#522) ([4ad4117](https://github.com/sapphiredev/utilities/commit/4ad41170488161b2998bd72da5a8b7fea10539a0))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n\n## 🚀 Features\n\n- **utilities:** Add possibility to import single functions by appending them to the import path. (#454) ([374c145](https://github.com/sapphiredev/utilities/commit/374c145a5dd329cfc1a867ed6720abf408683a88))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n# [@sapphire/snowflake@3.2.2](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.2.1...@sapphire/snowflake@3.2.2) - (2022-04-24)\n\n## Bug Fixes\n\n- Fix typo (#333) ([ae2f257](https://github.com/sapphiredev/utilities/commit/ae2f25766d5985735f2d9b257eebd27cdc8a7c52))\n\n## Documentation\n\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## [3.2.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.2.0...@sapphire/snowflake@3.2.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n# [3.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.1.0...@sapphire/snowflake@3.2.0) (2022-03-06)\n\n### Bug Fixes\n\n-   **snowflake:** fixed the examples for `DiscordSnowflake` and `TwitterSnowflake` ([#282](https://github.com/sapphiredev/utilities/issues/282)) ([2e5ed7f](https://github.com/sapphiredev/utilities/commit/2e5ed7fdadccf261967c45f73d0dc78e2497eed3))\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [3.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.0.1...@sapphire/snowflake@3.1.0) (2022-01-28)\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n## [3.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@3.0.0...@sapphire/snowflake@3.0.1) (2022-01-10)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n# [3.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@2.1.4...@sapphire/snowflake@3.0.0) (2021-12-08)\n\n### Bug Fixes\n\n-   **snowflake:** remove env-based defaults ([#232](https://github.com/sapphiredev/utilities/issues/232)) ([10408e4](https://github.com/sapphiredev/utilities/commit/10408e4d3677e91490d967c3d89bf9575946090b))\n\n### Features\n\n-   **Snowflake:** rework entire package ([#231](https://github.com/sapphiredev/utilities/issues/231)) ([1d02f1a](https://github.com/sapphiredev/utilities/commit/1d02f1a2f520efcbc194c3992af593d0e493873b))\n\n### BREAKING CHANGES\n\n-   **Snowflake:** Renamed `processID` to `processId`\n-   **Snowflake:** Renamed `workerID` to `workerId`\n-   **Snowflake:** `workerId` now defaults to 0n instead of 1n\n-   **Snowflake:** `DiscordSnowflake` is not longer a class, but a constructed Snowflake\n-   **Snowflake:** `TwitterSnowflake` is not longer a class, but a constructed Snowflake\n\n## [2.1.4](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@2.1.3...@sapphire/snowflake@2.1.4) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [2.1.3](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@2.1.2...@sapphire/snowflake@2.1.3) (2021-10-26)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [2.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@2.1.1...@sapphire/snowflake@2.1.2) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [2.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@2.1.0...@sapphire/snowflake@2.1.1) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n# [2.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@2.0.0...@sapphire/snowflake@2.1.0) (2021-10-04)\n\n### Bug Fixes\n\n-   **snowflake:** fixed snowflake generating duplicate IDs ([#166](https://github.com/sapphiredev/utilities/issues/166)) ([f0cf4ad](https://github.com/sapphiredev/utilities/commit/f0cf4ad6bc0b8b2447499ca36581d2b453e52715))\n\n### Features\n\n-   **snowflake:** set minimum NodeJS to v14 ([11a61c7](https://github.com/sapphiredev/utilities/commit/11a61c72bc29e683f9a4492815db3db094103bbc))\n\n# [2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.6...@sapphire/snowflake@2.0.0) (2021-07-17)\n\n### Code Refactoring\n\n-   **rateLimits:** rewrite all of it ([#130](https://github.com/sapphiredev/utilities/issues/130)) ([320778c](https://github.com/sapphiredev/utilities/commit/320778ca65cbf3591bd1ce0b1f2eb430693eef9a))\n\n### BREAKING CHANGES\n\n-   **rateLimits:** Removed `Bucket`\n\n## [1.3.6](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.5...@sapphire/snowflake@1.3.6) (2021-07-11)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.3.5](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.4...@sapphire/snowflake@1.3.5) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.3.4](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.3...@sapphire/snowflake@1.3.4) (2021-06-19)\n\n### Bug Fixes\n\n-   **doc:** change `[@link](https://github.com/link)` to `[@linkplain](https://github.com/linkplain)` for support in VSCode IntelliSense ([703d460](https://github.com/sapphiredev/utilities/commit/703d4605b547a8787aff62d6f1054ea26dfd9d1c))\n-   **docs:** update-tsdoc-for-vscode-may-2021 ([#126](https://github.com/sapphiredev/utilities/issues/126)) ([f8581bf](https://github.com/sapphiredev/utilities/commit/f8581bfe97a1b2f8aac3a3d3ed342d8ba92d730b))\n\n## [1.3.3](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.2...@sapphire/snowflake@1.3.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n-   **snowflake:** fixed parsing for timestamps as Date objects ([c17a515](https://github.com/sapphiredev/utilities/commit/c17a515b02931cf778ca69913132e8d4558504a1))\n\n## [1.3.2](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.1...@sapphire/snowflake@1.3.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **snowflake:** mark package as side effect free ([6a9bafc](https://github.com/sapphiredev/utilities/commit/6a9bafc24caba4b0ebbdd6896ac245ae6d60dede))\n\n## [1.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.3.0...@sapphire/snowflake@1.3.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# [1.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.8...@sapphire/snowflake@1.3.0) (2021-04-21)\n\n### Features\n\n-   add @sapphire/embed-jsx ([#100](https://github.com/sapphiredev/utilities/issues/100)) ([7277a23](https://github.com/sapphiredev/utilities/commit/7277a236015236ed8e81b7882875410facc4ce17))\n\n## [1.2.8](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.7...@sapphire/snowflake@1.2.8) (2021-04-19)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#102](https://github.com/sapphiredev/utilities/issues/102)) ([835b408](https://github.com/sapphiredev/utilities/commit/835b408e8e57130c3787aca2e32613346ff23e4d))\n\n## [1.2.7](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.6...@sapphire/snowflake@1.2.7) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.2.6](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.5...@sapphire/snowflake@1.2.6) (2021-03-16)\n\n### Bug Fixes\n\n-   remove terser from all packages ([#79](https://github.com/sapphiredev/utilities/issues/79)) ([1cfe4e7](https://github.com/sapphiredev/utilities/commit/1cfe4e7c804e62c142495686d2b83b81d0026c02))\n\n## [1.2.5](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.4...@sapphire/snowflake@1.2.5) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.2.4](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.3...@sapphire/snowflake@1.2.4) (2021-01-16)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.2.3](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.2...@sapphire/snowflake@1.2.3) (2021-01-01)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.2.2](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.1...@sapphire/snowflake@1.2.2) (2020-12-26)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n## [1.2.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.2.0...@sapphire/snowflake@1.2.1) (2020-12-22)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n# [1.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.1.0...@sapphire/snowflake@1.2.0) (2020-11-15)\n\n### Bug Fixes\n\n-   **snowflake:** pass keep_classnames to terser ([76ea062](https://github.com/sapphiredev/utilities/commit/76ea062d07000b169d9781f1a199b85ad3db0ba6))\n-   **snowflake:** pass keep_fnames to terser ([b52aa76](https://github.com/sapphiredev/utilities/commit/b52aa764d8b02535496e0ceea3204a37552ce3d1))\n\n### Features\n\n-   added time-utilities package ([#26](https://github.com/sapphiredev/utilities/issues/26)) ([f17a333](https://github.com/sapphiredev/utilities/commit/f17a3339667a452e8745fad7884272176e5d65e8))\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.0.1...@sapphire/snowflake@1.1.0) (2020-11-04)\n\n### Bug Fixes\n\n-   **ratelimits,snowflake,utilities:** fixed esm output target ([9fdab3f](https://github.com/sapphiredev/utilities/commit/9fdab3fca283c8c0b47cc32661c5cf8e0a5e583c))\n-   **snowflake:** properly specify ESM and CommonJS exports ([e3278e6](https://github.com/sapphiredev/utilities/commit/e3278e6868a4f31d5b2a100710bcbce2b79bc218))\n\n### Features\n\n-   added ratelimits package ([#15](https://github.com/sapphiredev/utilities/issues/15)) ([e0ae18c](https://github.com/sapphiredev/utilities/commit/e0ae18c5e1d0ae4e68a982829f1cf251fddfc80d))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/snowflake@1.0.0...@sapphire/snowflake@1.0.1) (2020-09-20)\n\n**Note:** Version bump only for package @sapphire/snowflake\n\n# 1.0.0 (2020-09-05)\n\n### Features\n\n-   implement snowflake ([5ba4e2d](https://github.com/sapphiredev/utilities/commit/5ba4e2d82557dd4ff60ffe891a7b46e46373bea2))\n-   **decorators:** add decorators package ([#4](https://github.com/sapphiredev/utilities/issues/4)) ([677b3e5](https://github.com/sapphiredev/utilities/commit/677b3e59d5c6160cbe6fb410821cadd7c0f00e3c))\n",
+  "classes": [
+    {
+      "id": 5,
+      "name": "Snowflake",
+      "source": {
+        "line": 34,
+        "file": "Snowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L34"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "A class for generating and deconstructing Twitter snowflakes.\n\nA {@link Twitter snowflake}\nis a 64-bit unsigned integer with 4 fields that have a fixed epoch value.\n\nIf we have a snowflake `266241948824764416` we can represent it as binary:\n```\n64                                          22     17     12          0\n 000000111011000111100001101001000101000000  00001  00000  000000000000\n          number of ms since epoch           worker  pid    increment\n```",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "abstract": false,
+      "extendsType": null,
+      "implementsType": [],
+      "typeParameters": [],
+      "construct": {
+        "id": 10,
+        "name": "constructor",
+        "source": {
+          "line": 68,
+          "file": "Snowflake.ts",
+          "path": "lib",
+          "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L68"
+        },
+        "comment": {
+          "description": null,
+          "blockTags": [],
+          "modifierTags": []
+        },
+        "parentId": 5,
+        "accessibility": "public",
+        "parameters": [
+          {
+            "id": 12,
+            "name": "epoch",
+            "comment": {
+              "description": "the epoch to use",
+              "blockTags": [],
+              "modifierTags": []
+            },
+            "rest": false,
+            "optional": false,
+            "type": {
+              "kind": "union",
+              "types": [
+                {
+                  "kind": "intrinsic",
+                  "type": "number"
+                },
+                {
+                  "kind": "intrinsic",
+                  "type": "bigint"
+                },
+                {
+                  "kind": "reference",
+                  "id": null,
+                  "name": "Date",
+                  "packageName": "typescript",
+                  "typeArguments": []
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "id": 36,
+          "name": "[EpochSymbol]",
+          "source": {
+            "line": 45,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L45"
+          },
+          "comment": {
+            "description": "Internal reference of the epoch passed in the constructor",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "parentId": 5,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 37,
+          "name": "[IncrementSymbol]",
+          "source": {
+            "line": 51,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L51"
+          },
+          "comment": {
+            "description": "Internal incrementor for generating snowflakes",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "parentId": 5,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 38,
+          "name": "[ProcessIdSymbol]",
+          "source": {
+            "line": 57,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L57"
+          },
+          "comment": {
+            "description": "The process ID that will be used by default in the generate method",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "parentId": 5,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 39,
+          "name": "[WorkerIdSymbol]",
+          "source": {
+            "line": 63,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L63"
+          },
+          "comment": {
+            "description": "The worker ID that will be used by default in the generate method",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "parentId": 5,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 13,
+          "name": "decode",
+          "source": {
+            "line": 39,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L39"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reflection",
+            "reflection": {
+              "id": 14,
+              "name": "__type",
+              "variant": "declaration",
+              "kind": 65536,
+              "flags": {},
+              "sources": [
+                {
+                  "fileName": "lib/Snowflake.ts",
+                  "line": 157,
+                  "character": 8,
+                  "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L157"
+                }
+              ],
+              "signatures": [
+                {
+                  "id": 15,
+                  "name": "__type",
+                  "variant": "signature",
+                  "kind": 4096,
+                  "flags": {},
+                  "comment": {
+                    "summary": [
+                      {
+                        "kind": "text",
+                        "text": "Alias for "
+                      },
+                      {
+                        "kind": "inline-tag",
+                        "tag": "@link",
+                        "text": "__type",
+                        "target": 14,
+                        "tsLinkText": ""
+                      }
+                    ]
+                  },
+                  "sources": [
+                    {
+                      "fileName": "lib/Snowflake.ts",
+                      "line": 157,
+                      "character": 1,
+                      "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L157"
+                    }
+                  ],
+                  "parameters": [
+                    {
+                      "id": 16,
+                      "name": "id",
+                      "variant": "param",
+                      "kind": 32768,
+                      "flags": {},
+                      "type": {
+                        "type": "union",
+                        "types": [
+                          {
+                            "type": "intrinsic",
+                            "name": "string"
+                          },
+                          {
+                            "type": "intrinsic",
+                            "name": "bigint"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "type": {
+                    "type": "reference",
+                    "target": 45,
+                    "name": "DeconstructedSnowflake",
+                    "package": "@sapphire/snowflake"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": 18,
+          "name": "epoch",
+          "source": {
+            "line": 75,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L75"
+          },
+          "comment": {
+            "description": "The epoch for this snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 20,
+          "name": "processId",
+          "source": {
+            "line": 82,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L82"
+          },
+          "comment": {
+            "description": "Gets the configured process ID",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 24,
+          "name": "workerId",
+          "source": {
+            "line": 97,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L97"
+          },
+          "comment": {
+            "description": "Gets the configured worker ID",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": 30,
+          "name": "deconstruct",
+          "source": {
+            "line": 157,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L157"
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 31,
+              "name": "deconstruct",
+              "comment": {
+                "description": "Deconstructs a snowflake given a snowflake ID",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "a deconstructed snowflake"
+                  },
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\nconst snowflake = new Snowflake(epoch).deconstruct('3971046231244935168');\n```"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 32,
+                  "name": "id",
+                  "comment": {
+                    "description": "the snowflake to deconstruct",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "bigint"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "reference",
+                "id": 45,
+                "name": "DeconstructedSnowflake",
+                "packageName": "@sapphire/snowflake",
+                "typeArguments": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "generate",
+          "source": {
+            "line": 121,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L121"
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 28,
+              "name": "generate",
+              "comment": {
+                "description": "Generates a snowflake given an epoch and optionally a timestamp",
+                "blockTags": [
+                  {
+                    "name": "example",
+                    "text": "```typescript\nconst epoch = new Date('2000-01-01T00:00:00.000Z');\nconst snowflake = new Snowflake(epoch).generate();\n```"
+                  },
+                  {
+                    "name": "returns",
+                    "text": "A unique snowflake"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 29,
+                  "name": "options",
+                  "comment": {
+                    "description": "options to pass into the generator, see {@link SnowflakeGenerateOptions}\n\n**note** when `increment` is not provided it defaults to the private `increment` of the instance",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": 40,
+                    "name": "SnowflakeGenerateOptions",
+                    "packageName": "@sapphire/snowflake",
+                    "typeArguments": []
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "bigint"
+              }
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "name": "timestampFrom",
+          "source": {
+            "line": 175,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L175"
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 34,
+              "name": "timestampFrom",
+              "comment": {
+                "description": "Retrieves the timestamp field's value from a snowflake.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The UNIX timestamp that is stored in `id`."
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 35,
+                  "name": "id",
+                  "comment": {
+                    "description": "The snowflake to get the timestamp value from.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "bigint"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "number"
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "compare",
+          "source": {
+            "line": 198,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L198"
+          },
+          "parentId": 5,
+          "accessibility": "public",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 7,
+              "name": "compare",
+              "comment": {
+                "description": "Returns a number indicating whether a reference snowflake comes before, or after, or is same as the given\nsnowflake in sort order.",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "`-1` if `a` is older than `b`, `0` if `a` and `b` are equals, `1` if `a` is newer than `b`."
+                  },
+                  {
+                    "name": "example",
+                    "text": "Sort snowflakes in ascending order\n```typescript\nconst ids = ['737141877803057244', '1056191128120082432', '254360814063058944'];\nconsole.log(ids.sort((a, b) => Snowflake.compare(a, b)));\n// → ['254360814063058944', '737141877803057244', '1056191128120082432'];\n```"
+                  },
+                  {
+                    "name": "example",
+                    "text": "Sort snowflakes in descending order\n```typescript\nconst ids = ['737141877803057244', '1056191128120082432', '254360814063058944'];\nconsole.log(ids.sort((a, b) => -Snowflake.compare(a, b)));\n// → ['1056191128120082432', '737141877803057244', '254360814063058944'];\n```"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 8,
+                  "name": "a",
+                  "comment": {
+                    "description": "The first snowflake to compare.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "bigint"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": 9,
+                  "name": "b",
+                  "comment": {
+                    "description": "The second snowflake to compare.",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "union",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "bigint"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "union",
+                "types": [
+                  {
+                    "kind": "literal",
+                    "value": "0"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": "1"
+                  },
+                  {
+                    "kind": "literal",
+                    "value": "-1"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "functions": [],
+  "interfaces": [
+    {
+      "id": 45,
+      "name": "DeconstructedSnowflake",
+      "source": {
+        "line": 251,
+        "file": "Snowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L251"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "Object returned by Snowflake#deconstruct",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [],
+      "properties": [
+        {
+          "id": 51,
+          "name": "epoch",
+          "source": {
+            "line": 280,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L280"
+          },
+          "comment": {
+            "description": "The epoch to use in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 46,
+          "name": "id",
+          "source": {
+            "line": 255,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L255"
+          },
+          "comment": {
+            "description": "The id in BigInt form",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 50,
+          "name": "increment",
+          "source": {
+            "line": 275,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L275"
+          },
+          "comment": {
+            "description": "The increment stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 49,
+          "name": "processId",
+          "source": {
+            "line": 270,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L270"
+          },
+          "comment": {
+            "description": "The process id stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 47,
+          "name": "timestamp",
+          "source": {
+            "line": 260,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L260"
+          },
+          "comment": {
+            "description": "The timestamp stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 48,
+          "name": "workerId",
+          "source": {
+            "line": 265,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L265"
+          },
+          "comment": {
+            "description": "The worker id stored in the snowflake",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 45,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 40,
+      "name": "SnowflakeGenerateOptions",
+      "source": {
+        "line": 221,
+        "file": "Snowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L221"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "Options for Snowflake#generate",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [],
+      "properties": [
+        {
+          "id": 42,
+          "name": "increment",
+          "source": {
+            "line": 233,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L233"
+          },
+          "comment": {
+            "description": "The increment to use",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "```ts\n0n\n```"
+              },
+              {
+                "name": "remark",
+                "text": "keep in mind that this bigint is auto-incremented between generate calls"
+              }
+            ],
+            "modifierTags": []
+          },
+          "parentId": 40,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 44,
+          "name": "processId",
+          "source": {
+            "line": 245,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L245"
+          },
+          "comment": {
+            "description": "The process ID to use, will be truncated to 5 bits (0-31)",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "```ts\n1n\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "parentId": 40,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        },
+        {
+          "id": 41,
+          "name": "timestamp",
+          "source": {
+            "line": 226,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L226"
+          },
+          "comment": {
+            "description": "Timestamp or date of the snowflake to generate",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "```ts\nDate.now()\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "parentId": 40,
+          "readonly": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "intrinsic",
+                "type": "number"
+              },
+              {
+                "kind": "intrinsic",
+                "type": "bigint"
+              },
+              {
+                "kind": "reference",
+                "id": null,
+                "name": "Date",
+                "packageName": "typescript",
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 43,
+          "name": "workerId",
+          "source": {
+            "line": 239,
+            "file": "Snowflake.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L239"
+          },
+          "comment": {
+            "description": "The worker ID to use, will be truncated to 5 bits (0-31)",
+            "blockTags": [
+              {
+                "name": "default",
+                "text": "```ts\n0n\n```"
+              }
+            ],
+            "modifierTags": []
+          },
+          "parentId": 40,
+          "readonly": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "bigint"
+          }
+        }
+      ],
+      "methods": []
+    }
+  ],
+  "namespaces": [],
+  "typeAliases": [],
+  "variables": [
+    {
+      "id": 1,
+      "name": "DiscordSnowflake",
+      "source": {
+        "line": 8,
+        "file": "DiscordSnowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/DiscordSnowflake.ts#L8"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "A class for parsing snowflake ids using Discord's snowflake epoch\n\nWhich is 2015-01-01 at 00:00:00.000 UTC+0, {@linkplain https://discord.com/developers/docs/reference#snowflakes}",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 5,
+        "name": "Snowflake",
+        "packageName": "@sapphire/snowflake",
+        "typeArguments": []
+      },
+      "value": "..."
+    },
+    {
+      "id": 4,
+      "name": "MaximumIncrement",
+      "source": {
+        "line": 19,
+        "file": "Snowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L19"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "The maximum value the `increment` field accepts in snowflakes.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "literal",
+        "value": "4095"
+      },
+      "value": "..."
+    },
+    {
+      "id": 3,
+      "name": "MaximumProcessId",
+      "source": {
+        "line": 14,
+        "file": "Snowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L14"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "The maximum value the `processId` field accepts in snowflakes.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "literal",
+        "value": "31"
+      },
+      "value": "..."
+    },
+    {
+      "id": 2,
+      "name": "MaximumWorkerId",
+      "source": {
+        "line": 9,
+        "file": "Snowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/Snowflake.ts#L9"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "The maximum value the `workerId` field accepts in snowflakes.",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "literal",
+        "value": "31"
+      },
+      "value": "..."
+    },
+    {
+      "id": 52,
+      "name": "TwitterSnowflake",
+      "source": {
+        "line": 8,
+        "file": "TwitterSnowflake.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/bb8e3cf/packages/snowflake/src/lib/TwitterSnowflake.ts#L8"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "A class for parsing snowflake ids using Twitter's snowflake epoch\n\nWhich is 2010-11-04 at 01:42:54.657 UTC+0, found in the archived snowflake repository {@linkplain https://github.com/twitter-archive/snowflake/blob/b3f6a3c6ca8e1b6847baa6ff42bf72201e2c2231/src/main/scala/com/twitter/service/snowflake/IdWorker.scala#L25}",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 5,
+        "name": "Snowflake",
+        "packageName": "@sapphire/snowflake",
+        "typeArguments": []
+      },
+      "value": "..."
+    }
+  ]
+}
