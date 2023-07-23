@@ -5,6 +5,7 @@
 	"description": "Documentation files for the Sapphire website",
 	"author": "@sapphire",
 	"scripts": {
+		"prettier": "prettier --ignore-path=.prettierignore",
 		"migrate": "typedoc-json-parser -v --migrate docs",
 		"update": "yarn upgrade-interactive"
 	},
@@ -12,7 +13,7 @@
 		"typedoc-json-parser": "^8.2.0"
 	},
 	"devDependencies": {
-		"@sapphire/prettier-config": "^1.4.5",
+		"@sapphire/prettier-config": "^2.0.0",
 		"prettier": "^3.0.0"
 	},
 	"packageManager": "yarn@3.6.1",
