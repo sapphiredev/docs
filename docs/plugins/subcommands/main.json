@@ -2,9 +2,9 @@
   "typeDocJsonParserVersion": "8.2.0",
   "id": 0,
   "name": "@sapphire/plugin-subcommands",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/plugin-subcommands\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> so your commands can have subcommands.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-subcommands?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-subcommands)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-subcommands?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-subcommands)\n\n</div>\n\n## Description\n\nSubcommands are a way to split 1 command into multiple. This can in particular be very useful for configuration commands with subcommands such as `set`, `reset` and `remove`.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Type generics for easy extension in TypeScript\n-   Input/Output mapping\n\n## Installation\n\n`@sapphire/plugin-subcommands` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`@sapphire/utilities`](https://www.npmjs.com/package/@sapphire/utilities)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-subcommands @sapphire/framework @sapphire/utilities discord.js\n```\n\n---\n\n## Usage\n\nStart by importing the registration file in your project to use the plugins error loggers:\n\n**JavaScript**\n\n```js\nrequire('@sapphire/plugin-subcommands/register');\n```\n\n**TypeScript**\n\n```typescript\nimport '@sapphire/plugin-subcommands/register';\n```\n\nThen, you can create new subcommands by extending the Subcommand class.\n_With TypeScript:_\n\n```typescript\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport { ApplyOptions } from '@sapphire/decorators';\nimport type { Args } from '@sapphire/framework';\nimport type { Message, CommandInteraction } from 'discord.js';\n\n// Using ApplyOptions decorator makes it easy to configure\n@ApplyOptions<Subcommand.Options>({\n\tsubcommands: [\n\t\t{\n\t\t\tname: 'add',\n\t\t\tmessageRun: 'messageAdd',\n\t\t\tchatInputRun: 'chatInputAdd'\n\t\t},\n\t\t{\n\t\t\tname: 'remove',\n\t\t\tmessageRun: 'messageRemove',\n\t\t\tchatInputRun: 'chatInputRemove'\n\t\t},\n\t\t{\n\t\t\tname: 'list',\n\t\t\tmessageRun: 'messageList',\n\t\t\tchatInputRun: 'chatInputList'\n\t\t}\n\t]\n})\n// Extend `Subcommand` instead of `Command`\nexport class UserCommand extends Subcommand {\n\tpublic async messageAdd(message: Message, args: Args) {}\n\n\tpublic async messageRemove(message: Message, args: Args) {}\n\n\tpublic async messageList(message: Message, args: Args) {}\n\n\tpublic async chatInputAdd(interaction: Subcommand.ChatInputInteraction) {}\n\n\tpublic async chatInputRemove(interaction: Subcommand.ChatInputInteraction) {}\n\n\tpublic async chatInputList(interaction: Subcommand.ChatInputInteraction) {}\n}\n```\n\n_With JavaScript:_\n\n```javascript\nconst { Subcommand } = require('@sapphire/plugin-subcommands');\n\n// Extend `Subcommand` instead of `Command`\nmodule.exports = class UserCommand extends Subcommand {\n\tconstructor(context, options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tsubcommands: [\n\t\t\t\t{\n\t\t\t\t\tname: 'add',\n\t\t\t\t\tmessageRun: 'messageAdd',\n\t\t\t\t\tchatInputRun: 'chatInputAdd'\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tname: 'remove',\n\t\t\t\t\tmessageRun: 'messageRemove',\n\t\t\t\t\tchatInputRun: 'chatInputRemove'\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tname: 'list',\n\t\t\t\t\tmessageRun: 'messageList',\n\t\t\t\t\tchatInputRun: 'chatInputList'\n\t\t\t\t}\n\t\t\t]\n\t\t});\n\t}\n\n\tasync messageAdd(message, args) {}\n\n\tasync messageRemove(message, args) {}\n\n\tasync messageList(message, args) {}\n\n\tasync chatInputAdd(interaction) {}\n\n\tasync chatInputRemove(interaction) {}\n\n\tasync chatInputList(interaction) {}\n};\n```\n\nFor more documentation please refer to [guide](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started)\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
-  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-subcommands@4.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.0.2...@sapphire/plugin-subcommands@4.1.0) - (2023-08-21)\n\n## 🚀 Features\n\n- **subcommands:** Implement per-subcommand preconditions (#465) ([f5d5536](https://github.com/sapphiredev/plugins/commit/f5d55367e4833875a07438aa1cba435ed3889f27))\n\n# [@sapphire/plugin-subcommands@4.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.0.1...@sapphire/plugin-subcommands@4.0.2) - (2023-07-21)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Bump transitive @sapphire/utilities dependency ([bc57087](https://github.com/sapphiredev/plugins/commit/bc57087df4d52d691ab61332a987bfbe1bf34bfb))\n- **deps:** Update all non-major dependencies ([9bb6627](https://github.com/sapphiredev/plugins/commit/9bb6627c20999d37130537fce58241c12a795046))\n\n# [@sapphire/plugin-subcommands@4.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.0.0...@sapphire/plugin-subcommands@4.0.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Fixed compatibility with TS 5.x ([3340544](https://github.com/sapphiredev/plugins/commit/3340544241e7546b23fe050e7a45d9e2f399af8c))\n- **subcommands:** Update dependencies ([249e9df](https://github.com/sapphiredev/plugins/commit/249e9df1fbb37bcfaf4192284dbd7b4734163854))\n\n# [@sapphire/plugin-subcommands@4.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.4...@sapphire/plugin-subcommands@4.0.0) - (2023-01-08)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n\n## 🚀 Features\n\n- **deps:** Support for djs v14 (#403) ([7674782](https://github.com/sapphiredev/plugins/commit/76747829f4b3ec152ab888e57a56a138e7d527f5))\n\n# [@sapphire/plugin-subcommands@3.2.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.3...@sapphire/plugin-subcommands@3.2.4) - (2022-12-10)\n\n## 🐛 Bug Fixes\n\n- SupportsXCommands() methods now use SubcommandMappings (#398) ([3e7a45a](https://github.com/sapphiredev/plugins/commit/3e7a45a63899b9ff1ffa39afb7855e81515daceb))\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n\n# [@sapphire/plugin-subcommands@3.2.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.2...@sapphire/plugin-subcommands@3.2.3) - (2022-10-08)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Update dependencies ([3d4e93c](https://github.com/sapphiredev/plugins/commit/3d4e93c1a94a2869a6bd576097747403b29fda0c))\n- Default subcommand argument behavior (#365) ([6cef7c6](https://github.com/sapphiredev/plugins/commit/6cef7c66da57a319e0348d80dcbde49526c071be))\n\n# [@sapphire/plugin-subcommands@3.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.1...@sapphire/plugin-subcommands@3.2.2) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Bump dependencies ([1142524](https://github.com/sapphiredev/plugins/commit/1142524d89cec3a527867cf0527434bc5c38c39c))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n# [@sapphire/plugin-subcommands@3.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.0...@sapphire/plugin-subcommands@3.2.1) - (2022-09-02)\n\n## 🐛 Bug Fixes\n\n- Subcommands script (#346) ([4f5f06a](https://github.com/sapphiredev/plugins/commit/4f5f06a3b7df35c18d71d196bcda5abdb2b499b7))\n- **subcommands:** Fixed mismatch in `*SubcommandMissingHandler` built in errors (#345) ([4ab92be](https://github.com/sapphiredev/plugins/commit/4ab92bef58fbe81e3874740834ce7f592e7bde1e))\n\n# [@sapphire/plugin-subcommands@3.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.1.1...@sapphire/plugin-subcommands@3.2.0) - (2022-08-29)\n\n## 🚀 Features\n\n- **subcommands:** Add default error listeners (#343) ([7f36686](https://github.com/sapphiredev/plugins/commit/7f3668689e5c7e664bca16e3cd6a36ea803b6a9c))\n\n# [@sapphire/plugin-subcommands@3.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.1.0...@sapphire/plugin-subcommands@3.1.1) - (2022-08-21)\n\n## 🐛 Bug Fixes\n\n- Fixed arg parsing (#340) ([80c35c9](https://github.com/sapphiredev/plugins/commit/80c35c97f3d0a0663382accb61efd1530c9849ee))\n\n# [@sapphire/plugin-subcommands@3.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.0.0...@sapphire/plugin-subcommands@3.1.0) - (2022-08-21)\n\n## 🐛 Bug Fixes\n\n- Add missing messages to `UserError` throws ([59d5986](https://github.com/sapphiredev/plugins/commit/59d59869421af3d112793a60ff6633b4c70efbb7))\n- Fixed matching of message subcommand groups ([bb5a769](https://github.com/sapphiredev/plugins/commit/bb5a7698c8ee7637d076d8b827b458e148ac8baa))\n\n## 🚀 Features\n\n- Expose the `matchedSubcommandMapping` on `MessageSubcommandAcceptedPayload` and `ChatInputSubcommandAcceptedPayload` context ([273b740](https://github.com/sapphiredev/plugins/commit/273b7405392305d7e2f1324333906da4dc1ee8ed))\n\n# [@sapphire/plugin-subcommands@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.2.2...@sapphire/plugin-subcommands@3.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- **subcommands:** Lowercase subcommands and dashless aliases (#337) ([31ea70c](https://github.com/sapphiredev/plugins/commit/31ea70caae38988ca395dd3e934822c26e6df4f6))\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-subcommands@2.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.2.0...@sapphire/plugin-subcommands@2.2.2) - (2022-07-11)\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.3...@sapphire/plugin-subcommands@2.2.0) (2022-03-06)\n\n### Features\n\n-   add HMR plugin ([#209](https://github.com/sapphiredev/plugins/issues/209)) ([4a18bb1](https://github.com/sapphiredev/plugins/commit/4a18bb1377a8d506fddc5bb991430503902d393b))\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n## [2.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.2...@sapphire/plugin-subcommands@2.1.3) (2021-12-21)\n\n**Note:** Version bump only for package @sapphire/plugin-subcommands\n\n## [2.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.1...@sapphire/plugin-subcommands@2.1.2) (2021-12-06)\n\n### Bug Fixes\n\n-   **subcommands:** TS Only - Fixed type of re-export of SubCommandPluginCommand.Context ([39004ac](https://github.com/sapphiredev/plugins/commit/39004ac0d334dc68d9ad53258ba297f22fb8a7c9))\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.0...@sapphire/plugin-subcommands@2.1.1) (2021-11-30)\n\n### Bug Fixes\n\n-   expose `Context`, `JSON` and `RunInTypes` in the `SubCommandPluginCommand` namespace ([9af2b57](https://github.com/sapphiredev/plugins/commit/9af2b57f8b1cf6bc483a75a5d7b80de0dbb0dbdb))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.0.2...@sapphire/plugin-subcommands@2.1.0) (2021-11-21)\n\n### Features\n\n-   expose and use namespaces for options, context, etc ([#176](https://github.com/sapphiredev/plugins/issues/176)) ([33452da](https://github.com/sapphiredev/plugins/commit/33452da808d91313a5d3bf680e11b5208ac67442))\n\n## [2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.0.1...@sapphire/plugin-subcommands@2.0.2) (2021-11-06)\n\n### Bug Fixes\n\n-   **docs:** replace command usage of `run` to `messageRun` ([#160](https://github.com/sapphiredev/plugins/issues/160)) ([415adb8](https://github.com/sapphiredev/plugins/commit/415adb85b884da5d0f1f2ce07a9d46134f2bcb12))\n\n## [2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.0.0...@sapphire/plugin-subcommands@2.0.1) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([ce5b12f](https://github.com/sapphiredev/plugins/commit/ce5b12f8142297bceda49b85574a95a3cf9112ab))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.6...@sapphire/plugin-subcommands@2.0.0) (2021-10-16)\n\n### Code Refactoring\n\n-   **plugin-subcommands:** updated for discord.js@13 and framework@2 ([9ac515f](https://github.com/sapphiredev/plugins/commit/9ac515fa142d126a5448e092b0354d5f8a9bf5b8))\n\n### Features\n\n-   **i18next:** update i18next dependency ([#129](https://github.com/sapphiredev/plugins/issues/129)) ([96519de](https://github.com/sapphiredev/plugins/commit/96519de5de253db390ed9a76ed073ffe1eabd187))\n-   rename `Awaited` to `Awaitable` ([#152](https://github.com/sapphiredev/plugins/issues/152)) ([e8aabab](https://github.com/sapphiredev/plugins/commit/e8aababca760125fd3752a807ef26da16103dd65))\n-   **subcommands:** migrate `Command#run` to `Command#messageRun` ([#157](https://github.com/sapphiredev/plugins/issues/157)) ([2960711](https://github.com/sapphiredev/plugins/commit/29607111c4e4f61ece463e10854982f205879996))\n\n### BREAKING CHANGES\n\n-   **i18next:** i18next has been updated to v21.0.1. Please also seee the breaking changes for i18next [here](https://github.com/i18next/i18next/blob/master/CHANGELOG.md#2100) and their migration guide [here](https://www.i18next.com/misc/migration-guide#v-20-x-x-to-v-21-0-0)\n\n-   chore: activate renovate\n-   **plugin-subcommands:** Increase `@sapphire/framework` requirement to v2.\n\n## [1.0.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.5...@sapphire/plugin-subcommands@1.0.6) (2021-06-19)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#91](https://github.com/sapphiredev/plugins/issues/91)) ([3489b1d](https://github.com/sapphiredev/plugins/commit/3489b1dc1e8a7c64c255595b3d441cd0b5bac936))\n-   **subcommands:** fixed JavaScript usage in README ([#89](https://github.com/sapphiredev/plugins/issues/89)) ([73a35e9](https://github.com/sapphiredev/plugins/commit/73a35e98da56a27a05b2179188599fcaf1d87ff0))\n-   **subcommands:** mark package as side effect free ([7959288](https://github.com/sapphiredev/plugins/commit/7959288cb61131a75bd0692056e3764577cf5669))\n-   **subcommands:** respect caseInsensitive client option ([#84](https://github.com/sapphiredev/plugins/issues/84)) ([6fec28a](https://github.com/sapphiredev/plugins/commit/6fec28acdb2cd07013d4f7c64f2f985528727a53))\n\n## [1.0.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.4...@sapphire/plugin-subcommands@1.0.5) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([a86049f](https://github.com/sapphiredev/plugins/commit/a86049f185f0ccb12d61379dd82255b36d4fa145))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([c5fd156](https://github.com/sapphiredev/plugins/commit/c5fd15691abb9a9712dc4b8aebd8400f6d91f719))\n\n## [1.0.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.3...@sapphire/plugin-subcommands@1.0.4) (2021-04-21)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#75](https://github.com/sapphiredev/plugins/issues/75)) ([e437dc4](https://github.com/sapphiredev/plugins/commit/e437dc45fcd4d22ab2dcdb0e70c67cc5856883c0))\n\n## [1.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.2...@sapphire/plugin-subcommands@1.0.3) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/plugin-subcommands\n\n## [1.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.1...@sapphire/plugin-subcommands@1.0.2) (2021-03-16)\n\n### Bug Fixes\n\n-   update dependencies, add tslib, bump framework to v1.0.0 ([880b761](https://github.com/sapphiredev/plugins/commit/880b7614d857f23fcbcd351e69795c451a95f49c))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.0...@sapphire/plugin-subcommands@1.0.1) (2021-02-12)\n\n### Bug Fixes\n\n-   **subcommands:** mark subCommands as optional in SubCommandPluginCommandOptions ([51c433d](https://github.com/sapphiredev/plugins/commit/51c433d963e1cdcb797eddef8dbd4ad3e634ec05))\n\n# 1.0.0 (2021-02-12)\n\n### Features\n\n-   **subcommands:** type improvements & fix build ([#59](https://github.com/sapphiredev/plugins/issues/59)) ([1707d01](https://github.com/sapphiredev/plugins/commit/1707d013d06ae109ddcba83ead9e936a17ba56eb))\n-   add subcommands plugin ([#58](https://github.com/sapphiredev/plugins/issues/58)) ([74fa051](https://github.com/sapphiredev/plugins/commit/74fa05151a5267927ec1c792b9fd0b88a078c6fd))\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-subcommands@4.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.1.0...@sapphire/plugin-subcommands@4.1.1) - (2023-08-23)\n\n## 🏠 Refactor\n\n- ***:** Cleanup plugin registry files (#469) ([215b334](https://github.com/sapphiredev/plugins/commit/215b3348b30077238147dbc643769d960b856ba1))\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Ensure that `subcommand.type` always has a value ([6007a23](https://github.com/sapphiredev/plugins/commit/6007a23926cad34e15dd72d58fec90bb858ae6c1))\n\n# [@sapphire/plugin-subcommands@4.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.0.2...@sapphire/plugin-subcommands@4.1.0) - (2023-08-21)\n\n## 🚀 Features\n\n- **subcommands:** Implement per-subcommand preconditions (#465) ([f5d5536](https://github.com/sapphiredev/plugins/commit/f5d55367e4833875a07438aa1cba435ed3889f27))\n\n# [@sapphire/plugin-subcommands@4.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.0.1...@sapphire/plugin-subcommands@4.0.2) - (2023-07-21)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Bump transitive @sapphire/utilities dependency ([bc57087](https://github.com/sapphiredev/plugins/commit/bc57087df4d52d691ab61332a987bfbe1bf34bfb))\n- **deps:** Update all non-major dependencies ([9bb6627](https://github.com/sapphiredev/plugins/commit/9bb6627c20999d37130537fce58241c12a795046))\n\n# [@sapphire/plugin-subcommands@4.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@4.0.0...@sapphire/plugin-subcommands@4.0.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Fixed compatibility with TS 5.x ([3340544](https://github.com/sapphiredev/plugins/commit/3340544241e7546b23fe050e7a45d9e2f399af8c))\n- **subcommands:** Update dependencies ([249e9df](https://github.com/sapphiredev/plugins/commit/249e9df1fbb37bcfaf4192284dbd7b4734163854))\n\n# [@sapphire/plugin-subcommands@4.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.4...@sapphire/plugin-subcommands@4.0.0) - (2023-01-08)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n\n## 🚀 Features\n\n- **deps:** Support for djs v14 (#403) ([7674782](https://github.com/sapphiredev/plugins/commit/76747829f4b3ec152ab888e57a56a138e7d527f5))\n\n# [@sapphire/plugin-subcommands@3.2.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.3...@sapphire/plugin-subcommands@3.2.4) - (2022-12-10)\n\n## 🐛 Bug Fixes\n\n- SupportsXCommands() methods now use SubcommandMappings (#398) ([3e7a45a](https://github.com/sapphiredev/plugins/commit/3e7a45a63899b9ff1ffa39afb7855e81515daceb))\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n\n# [@sapphire/plugin-subcommands@3.2.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.2...@sapphire/plugin-subcommands@3.2.3) - (2022-10-08)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Update dependencies ([3d4e93c](https://github.com/sapphiredev/plugins/commit/3d4e93c1a94a2869a6bd576097747403b29fda0c))\n- Default subcommand argument behavior (#365) ([6cef7c6](https://github.com/sapphiredev/plugins/commit/6cef7c66da57a319e0348d80dcbde49526c071be))\n\n# [@sapphire/plugin-subcommands@3.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.1...@sapphire/plugin-subcommands@3.2.2) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **subcommands:** Bump dependencies ([1142524](https://github.com/sapphiredev/plugins/commit/1142524d89cec3a527867cf0527434bc5c38c39c))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n# [@sapphire/plugin-subcommands@3.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.2.0...@sapphire/plugin-subcommands@3.2.1) - (2022-09-02)\n\n## 🐛 Bug Fixes\n\n- Subcommands script (#346) ([4f5f06a](https://github.com/sapphiredev/plugins/commit/4f5f06a3b7df35c18d71d196bcda5abdb2b499b7))\n- **subcommands:** Fixed mismatch in `*SubcommandMissingHandler` built in errors (#345) ([4ab92be](https://github.com/sapphiredev/plugins/commit/4ab92bef58fbe81e3874740834ce7f592e7bde1e))\n\n# [@sapphire/plugin-subcommands@3.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.1.1...@sapphire/plugin-subcommands@3.2.0) - (2022-08-29)\n\n## 🚀 Features\n\n- **subcommands:** Add default error listeners (#343) ([7f36686](https://github.com/sapphiredev/plugins/commit/7f3668689e5c7e664bca16e3cd6a36ea803b6a9c))\n\n# [@sapphire/plugin-subcommands@3.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.1.0...@sapphire/plugin-subcommands@3.1.1) - (2022-08-21)\n\n## 🐛 Bug Fixes\n\n- Fixed arg parsing (#340) ([80c35c9](https://github.com/sapphiredev/plugins/commit/80c35c97f3d0a0663382accb61efd1530c9849ee))\n\n# [@sapphire/plugin-subcommands@3.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@3.0.0...@sapphire/plugin-subcommands@3.1.0) - (2022-08-21)\n\n## 🐛 Bug Fixes\n\n- Add missing messages to `UserError` throws ([59d5986](https://github.com/sapphiredev/plugins/commit/59d59869421af3d112793a60ff6633b4c70efbb7))\n- Fixed matching of message subcommand groups ([bb5a769](https://github.com/sapphiredev/plugins/commit/bb5a7698c8ee7637d076d8b827b458e148ac8baa))\n\n## 🚀 Features\n\n- Expose the `matchedSubcommandMapping` on `MessageSubcommandAcceptedPayload` and `ChatInputSubcommandAcceptedPayload` context ([273b740](https://github.com/sapphiredev/plugins/commit/273b7405392305d7e2f1324333906da4dc1ee8ed))\n\n# [@sapphire/plugin-subcommands@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.2.2...@sapphire/plugin-subcommands@3.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- **subcommands:** Lowercase subcommands and dashless aliases (#337) ([31ea70c](https://github.com/sapphiredev/plugins/commit/31ea70caae38988ca395dd3e934822c26e6df4f6))\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-subcommands@2.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.2.0...@sapphire/plugin-subcommands@2.2.2) - (2022-07-11)\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.3...@sapphire/plugin-subcommands@2.2.0) (2022-03-06)\n\n### Features\n\n-   add HMR plugin ([#209](https://github.com/sapphiredev/plugins/issues/209)) ([4a18bb1](https://github.com/sapphiredev/plugins/commit/4a18bb1377a8d506fddc5bb991430503902d393b))\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n## [2.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.2...@sapphire/plugin-subcommands@2.1.3) (2021-12-21)\n\n**Note:** Version bump only for package @sapphire/plugin-subcommands\n\n## [2.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.1...@sapphire/plugin-subcommands@2.1.2) (2021-12-06)\n\n### Bug Fixes\n\n-   **subcommands:** TS Only - Fixed type of re-export of SubCommandPluginCommand.Context ([39004ac](https://github.com/sapphiredev/plugins/commit/39004ac0d334dc68d9ad53258ba297f22fb8a7c9))\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.1.0...@sapphire/plugin-subcommands@2.1.1) (2021-11-30)\n\n### Bug Fixes\n\n-   expose `Context`, `JSON` and `RunInTypes` in the `SubCommandPluginCommand` namespace ([9af2b57](https://github.com/sapphiredev/plugins/commit/9af2b57f8b1cf6bc483a75a5d7b80de0dbb0dbdb))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.0.2...@sapphire/plugin-subcommands@2.1.0) (2021-11-21)\n\n### Features\n\n-   expose and use namespaces for options, context, etc ([#176](https://github.com/sapphiredev/plugins/issues/176)) ([33452da](https://github.com/sapphiredev/plugins/commit/33452da808d91313a5d3bf680e11b5208ac67442))\n\n## [2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.0.1...@sapphire/plugin-subcommands@2.0.2) (2021-11-06)\n\n### Bug Fixes\n\n-   **docs:** replace command usage of `run` to `messageRun` ([#160](https://github.com/sapphiredev/plugins/issues/160)) ([415adb8](https://github.com/sapphiredev/plugins/commit/415adb85b884da5d0f1f2ce07a9d46134f2bcb12))\n\n## [2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@2.0.0...@sapphire/plugin-subcommands@2.0.1) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([ce5b12f](https://github.com/sapphiredev/plugins/commit/ce5b12f8142297bceda49b85574a95a3cf9112ab))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.6...@sapphire/plugin-subcommands@2.0.0) (2021-10-16)\n\n### Code Refactoring\n\n-   **plugin-subcommands:** updated for discord.js@13 and framework@2 ([9ac515f](https://github.com/sapphiredev/plugins/commit/9ac515fa142d126a5448e092b0354d5f8a9bf5b8))\n\n### Features\n\n-   **i18next:** update i18next dependency ([#129](https://github.com/sapphiredev/plugins/issues/129)) ([96519de](https://github.com/sapphiredev/plugins/commit/96519de5de253db390ed9a76ed073ffe1eabd187))\n-   rename `Awaited` to `Awaitable` ([#152](https://github.com/sapphiredev/plugins/issues/152)) ([e8aabab](https://github.com/sapphiredev/plugins/commit/e8aababca760125fd3752a807ef26da16103dd65))\n-   **subcommands:** migrate `Command#run` to `Command#messageRun` ([#157](https://github.com/sapphiredev/plugins/issues/157)) ([2960711](https://github.com/sapphiredev/plugins/commit/29607111c4e4f61ece463e10854982f205879996))\n\n### BREAKING CHANGES\n\n-   **i18next:** i18next has been updated to v21.0.1. Please also seee the breaking changes for i18next [here](https://github.com/i18next/i18next/blob/master/CHANGELOG.md#2100) and their migration guide [here](https://www.i18next.com/misc/migration-guide#v-20-x-x-to-v-21-0-0)\n\n-   chore: activate renovate\n-   **plugin-subcommands:** Increase `@sapphire/framework` requirement to v2.\n\n## [1.0.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.5...@sapphire/plugin-subcommands@1.0.6) (2021-06-19)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#91](https://github.com/sapphiredev/plugins/issues/91)) ([3489b1d](https://github.com/sapphiredev/plugins/commit/3489b1dc1e8a7c64c255595b3d441cd0b5bac936))\n-   **subcommands:** fixed JavaScript usage in README ([#89](https://github.com/sapphiredev/plugins/issues/89)) ([73a35e9](https://github.com/sapphiredev/plugins/commit/73a35e98da56a27a05b2179188599fcaf1d87ff0))\n-   **subcommands:** mark package as side effect free ([7959288](https://github.com/sapphiredev/plugins/commit/7959288cb61131a75bd0692056e3764577cf5669))\n-   **subcommands:** respect caseInsensitive client option ([#84](https://github.com/sapphiredev/plugins/issues/84)) ([6fec28a](https://github.com/sapphiredev/plugins/commit/6fec28acdb2cd07013d4f7c64f2f985528727a53))\n\n## [1.0.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.4...@sapphire/plugin-subcommands@1.0.5) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([a86049f](https://github.com/sapphiredev/plugins/commit/a86049f185f0ccb12d61379dd82255b36d4fa145))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([c5fd156](https://github.com/sapphiredev/plugins/commit/c5fd15691abb9a9712dc4b8aebd8400f6d91f719))\n\n## [1.0.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.3...@sapphire/plugin-subcommands@1.0.4) (2021-04-21)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#75](https://github.com/sapphiredev/plugins/issues/75)) ([e437dc4](https://github.com/sapphiredev/plugins/commit/e437dc45fcd4d22ab2dcdb0e70c67cc5856883c0))\n\n## [1.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.2...@sapphire/plugin-subcommands@1.0.3) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/plugin-subcommands\n\n## [1.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.1...@sapphire/plugin-subcommands@1.0.2) (2021-03-16)\n\n### Bug Fixes\n\n-   update dependencies, add tslib, bump framework to v1.0.0 ([880b761](https://github.com/sapphiredev/plugins/commit/880b7614d857f23fcbcd351e69795c451a95f49c))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-subcommands@1.0.0...@sapphire/plugin-subcommands@1.0.1) (2021-02-12)\n\n### Bug Fixes\n\n-   **subcommands:** mark subCommands as optional in SubCommandPluginCommandOptions ([51c433d](https://github.com/sapphiredev/plugins/commit/51c433d963e1cdcb797eddef8dbd4ad3e634ec05))\n\n# 1.0.0 (2021-02-12)\n\n### Features\n\n-   **subcommands:** type improvements & fix build ([#59](https://github.com/sapphiredev/plugins/issues/59)) ([1707d01](https://github.com/sapphiredev/plugins/commit/1707d013d06ae109ddcba83ead9e936a17ba56eb))\n-   add subcommands plugin ([#58](https://github.com/sapphiredev/plugins/issues/58)) ([74fa051](https://github.com/sapphiredev/plugins/commit/74fa05151a5267927ec1c792b9fd0b88a078c6fd))\n",
   "classes": [
     {
       "id": 1,
@@ -13,7 +13,7 @@
         "line": 36,
         "file": "Subcommand.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L36"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L36"
       },
       "namespaceParentId": null,
       "comment": {
@@ -91,7 +91,7 @@
           "line": 55,
           "file": "Subcommand.ts",
           "path": "packages/subcommands/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L55"
+          "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L55"
         },
         "comment": {
           "description": null,
@@ -212,7 +212,7 @@
             "line": 53,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L53"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L53"
           },
           "comment": {
             "description": "Whether to use case insensitive subcommands. This is only relevant for message-command styled commands as\nchat input commands are always lowercase. This can be enabled through `clientOptions.caseInsensitiveCommands`.",
@@ -476,7 +476,7 @@
             "line": 47,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L47"
           },
           "comment": {
             "description": "The parsed subcommand mappings that were provided with the {@link subcommands} option.\nThis is built at construction time and is used to determine which subcommand to run.",
@@ -598,7 +598,7 @@
             "line": 41,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L41"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L41"
           },
           "comment": {
             "description": "The preconditions to be run for each specified subcommand.",
@@ -825,7 +825,7 @@
             "line": 470,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L470"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L470"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -983,7 +983,7 @@
             "line": 327,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L327"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L327"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -1064,7 +1064,7 @@
             "line": 407,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L407"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L407"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -1190,7 +1190,7 @@
             "line": 341,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L341"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L341"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -1331,7 +1331,7 @@
             "line": 488,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L488"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L488"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -1445,7 +1445,7 @@
             "line": 290,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L290"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L290"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1704,7 +1704,7 @@
             "line": 193,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L193"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L193"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1803,7 +1803,7 @@
             "line": 161,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L161"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L161"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2306,7 +2306,7 @@
             "line": 184,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L184"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L184"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2389,7 +2389,7 @@
             "line": 176,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L176"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L176"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2502,7 +2502,7 @@
         "line": 23,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L23"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2519,7 +2519,7 @@
             "line": 25,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L25"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L25"
           },
           "comment": {
             "description": null,
@@ -2536,7 +2536,7 @@
             "line": 24,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L24"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L24"
           },
           "comment": {
             "description": null,
@@ -2553,7 +2553,7 @@
             "line": 26,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L26"
           },
           "comment": {
             "description": null,
@@ -2575,7 +2575,7 @@
         "line": 63,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L63"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L63"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2593,7 +2593,7 @@
             "line": 60,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L60"
           },
           "comment": {
             "description": null,
@@ -2633,7 +2633,7 @@
             "line": 64,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L64"
           },
           "comment": {
             "description": null,
@@ -2658,7 +2658,7 @@
             "line": 59,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L59"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L59"
           },
           "comment": {
             "description": null,
@@ -2691,7 +2691,7 @@
             "line": 65,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L65"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L65"
           },
           "comment": {
             "description": null,
@@ -2719,7 +2719,7 @@
         "line": 68,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L68"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L68"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2737,7 +2737,7 @@
             "line": 60,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L60"
           },
           "comment": {
             "description": null,
@@ -2777,7 +2777,7 @@
             "line": 64,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L64"
           },
           "comment": {
             "description": null,
@@ -2802,7 +2802,7 @@
             "line": 59,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L59"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L59"
           },
           "comment": {
             "description": null,
@@ -2835,7 +2835,7 @@
             "line": 65,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L65"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L65"
           },
           "comment": {
             "description": null,
@@ -2863,7 +2863,7 @@
         "line": 72,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L72"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L72"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2881,7 +2881,7 @@
             "line": 60,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L60"
           },
           "comment": {
             "description": null,
@@ -2921,7 +2921,7 @@
             "line": 64,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L64"
           },
           "comment": {
             "description": null,
@@ -2946,7 +2946,7 @@
             "line": 59,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L59"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L59"
           },
           "comment": {
             "description": null,
@@ -2979,7 +2979,7 @@
             "line": 65,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L65"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L65"
           },
           "comment": {
             "description": null,
@@ -3007,7 +3007,7 @@
         "line": 70,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L70"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L70"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3025,7 +3025,7 @@
             "line": 60,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L60"
           },
           "comment": {
             "description": null,
@@ -3065,7 +3065,7 @@
             "line": 64,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L64"
           },
           "comment": {
             "description": null,
@@ -3090,7 +3090,7 @@
             "line": 59,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L59"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L59"
           },
           "comment": {
             "description": null,
@@ -3123,7 +3123,7 @@
             "line": 65,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L65"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L65"
           },
           "comment": {
             "description": null,
@@ -3151,7 +3151,7 @@
         "line": 74,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L74"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L74"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3169,7 +3169,7 @@
             "line": 60,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L60"
           },
           "comment": {
             "description": null,
@@ -3209,7 +3209,7 @@
             "line": 64,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L64"
           },
           "comment": {
             "description": null,
@@ -3234,7 +3234,7 @@
             "line": 59,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L59"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L59"
           },
           "comment": {
             "description": null,
@@ -3267,7 +3267,7 @@
             "line": 65,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L65"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L65"
           },
           "comment": {
             "description": null,
@@ -3292,7 +3292,7 @@
             "line": 75,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L75"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L75"
           },
           "comment": {
             "description": null,
@@ -3317,7 +3317,7 @@
         "line": 58,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L58"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L58"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3335,7 +3335,7 @@
             "line": 60,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L60"
           },
           "comment": {
             "description": null,
@@ -3375,7 +3375,7 @@
             "line": 59,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L59"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L59"
           },
           "comment": {
             "description": null,
@@ -3411,7 +3411,7 @@
         "line": 34,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L34"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L34"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3429,7 +3429,7 @@
             "line": 36,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L36"
           },
           "comment": {
             "description": null,
@@ -3469,7 +3469,7 @@
             "line": 35,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L35"
           },
           "comment": {
             "description": null,
@@ -3502,7 +3502,7 @@
         "line": 45,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L45"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L45"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3520,7 +3520,7 @@
             "line": 36,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L36"
           },
           "comment": {
             "description": null,
@@ -3560,7 +3560,7 @@
             "line": 46,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L46"
           },
           "comment": {
             "description": null,
@@ -3585,7 +3585,7 @@
             "line": 47,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L47"
           },
           "comment": {
             "description": null,
@@ -3610,7 +3610,7 @@
             "line": 35,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L35"
           },
           "comment": {
             "description": null,
@@ -3643,7 +3643,7 @@
         "line": 39,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L39"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L39"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3661,7 +3661,7 @@
             "line": 36,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L36"
           },
           "comment": {
             "description": null,
@@ -3726,7 +3726,7 @@
             "line": 47,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L47"
           },
           "comment": {
             "description": null,
@@ -3781,7 +3781,7 @@
             "line": 42,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L42"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L42"
           },
           "comment": {
             "description": null,
@@ -3806,7 +3806,7 @@
         "line": 52,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L52"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L52"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3824,7 +3824,7 @@
             "line": 36,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L36"
           },
           "comment": {
             "description": null,
@@ -3864,7 +3864,7 @@
             "line": 46,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L46"
           },
           "comment": {
             "description": null,
@@ -3889,7 +3889,7 @@
             "line": 47,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L47"
           },
           "comment": {
             "description": null,
@@ -3914,7 +3914,7 @@
             "line": 35,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L35"
           },
           "comment": {
             "description": null,
@@ -3947,7 +3947,7 @@
         "line": 29,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L29"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L29"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4009,7 +4009,7 @@
             "line": 31,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L31"
           },
           "comment": {
             "description": null,
@@ -4040,7 +4040,7 @@
             "line": 30,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L30"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L30"
           },
           "comment": {
             "description": null,
@@ -4108,7 +4108,7 @@
         "line": 50,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L50"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L50"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4126,7 +4126,7 @@
             "line": 36,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L36"
           },
           "comment": {
             "description": null,
@@ -4166,7 +4166,7 @@
             "line": 46,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L46"
           },
           "comment": {
             "description": null,
@@ -4191,7 +4191,7 @@
             "line": 47,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L47"
           },
           "comment": {
             "description": null,
@@ -4216,7 +4216,7 @@
             "line": 35,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L35"
           },
           "comment": {
             "description": null,
@@ -4249,7 +4249,7 @@
         "line": 54,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L54"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L54"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4267,7 +4267,7 @@
             "line": 36,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L36"
           },
           "comment": {
             "description": null,
@@ -4307,7 +4307,7 @@
             "line": 46,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L46"
           },
           "comment": {
             "description": null,
@@ -4332,7 +4332,7 @@
             "line": 47,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L47"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L47"
           },
           "comment": {
             "description": null,
@@ -4357,7 +4357,7 @@
             "line": 35,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L35"
           },
           "comment": {
             "description": null,
@@ -4387,7 +4387,7 @@
             "line": 55,
             "file": "Events.ts",
             "path": "packages/subcommands/src/lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L55"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L55"
           },
           "comment": {
             "description": null,
@@ -4412,7 +4412,7 @@
         "line": 90,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L90"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L90"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4430,7 +4430,7 @@
             "line": 98,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L98"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L98"
           },
           "comment": {
             "description": "The {@link SubcommandMappingMethod}s that are contained within this subcommand group.",
@@ -4458,7 +4458,7 @@
             "line": 14,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
           },
           "comment": {
             "description": "The name of this subcommand, or subcommand group",
@@ -4480,7 +4480,7 @@
             "line": 94,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L94"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L94"
           },
           "comment": {
             "description": "This subcommand mapping describes a subcommand group and can therefore only ever be `'group'`",
@@ -4505,7 +4505,7 @@
         "line": 25,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L25"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4523,7 +4523,7 @@
             "line": 79,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L79"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L79"
           },
           "comment": {
             "description": "The class method to call when invoking this subcommand through a **chat input command**,\nor a callback implementation of the subcommand.\n\nNote that when providing a string you have to first define the method that will be called within your function\nbefore this will allow any values. This is to ensure that the property is strictly typed to the context of the\nclass.",
@@ -4626,7 +4626,7 @@
             "line": 37,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L37"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L37"
           },
           "comment": {
             "description": "Whether this is the default subcommand when none is provided.\n\nNote that this is effectively only used for Message based subcommand\n(those implementing {@link messageRun})\nbecause the subcommand is always provided for chat input commands.",
@@ -4648,7 +4648,7 @@
             "line": 58,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L58"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L58"
           },
           "comment": {
             "description": "The class method to call when invoking this subcommand through a **message command**,\nor a callback implementation of the subcommand.\n\nNote that when providing a string you have to first define the method that will be called within your function\nbefore this will allow any values. This is to ensure that the property is strictly typed to the context of the\nclass.",
@@ -4766,7 +4766,7 @@
             "line": 14,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L14"
           },
           "comment": {
             "description": "The name of this subcommand, or subcommand group",
@@ -4788,7 +4788,7 @@
             "line": 87,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L87"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L87"
           },
           "comment": {
             "description": "The {@link Precondition}s to be run, accepts an array of their names.",
@@ -4833,7 +4833,7 @@
             "line": 29,
             "file": "SubcommandMappings.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L29"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L29"
           },
           "comment": {
             "description": "This subcommand mapping describes a subcommand method and can therefore only ever be `'method'`",
@@ -4858,7 +4858,7 @@
         "line": 498,
         "file": "Subcommand.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L498"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L498"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5213,7 +5213,7 @@
             "line": 510,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L510"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L510"
           },
           "comment": {
             "description": "Whether to add aliases for subcommands with dashes in them\n\nWhen this option is enabled *and* the subcommand implements `messageRun`, dashless aliases will be added.\n\nFor subcommands groups both the group itself and all subcommands within the group will have dashless aliases added.",
@@ -5682,7 +5682,7 @@
             "line": 499,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L499"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L499"
           },
           "comment": {
             "description": null,
@@ -5739,7 +5739,7 @@
         "line": 36,
         "file": "Subcommand.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L36"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L36"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5761,7 +5761,7 @@
             "line": 520,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L520"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L520"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -5813,7 +5813,7 @@
             "line": 518,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L518"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L518"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -5865,7 +5865,7 @@
             "line": 516,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L516"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L516"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -5890,7 +5890,7 @@
             "line": 519,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L519"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L519"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -5942,7 +5942,7 @@
             "line": 515,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L515"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L515"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -5967,7 +5967,7 @@
             "line": 514,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L514"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L514"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -5992,7 +5992,7 @@
             "line": 521,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L521"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L521"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -6017,7 +6017,7 @@
             "line": 517,
             "file": "Subcommand.ts",
             "path": "packages/subcommands/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/Subcommand.ts#L517"
+            "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/Subcommand.ts#L517"
           },
           "namespaceParentId": 124,
           "comment": {
@@ -6047,7 +6047,7 @@
         "line": 104,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L104"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L104"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6116,7 +6116,7 @@
         "line": 102,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L102"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L102"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6185,7 +6185,7 @@
         "line": 3,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L3"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6222,7 +6222,7 @@
         "line": 5,
         "file": "SubcommandMappings.ts",
         "path": "packages/subcommands/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/SubcommandMappings.ts#L5"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/SubcommandMappings.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6252,7 +6252,7 @@
         "line": 6,
         "file": "Events.ts",
         "path": "packages/subcommands/src/lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/d00a7d9/packages/subcommands/src/lib/types/Events.ts#L6"
+        "url": "https://github.com/sapphiredev/plugins/blob/ef1183c/packages/subcommands/src/lib/types/Events.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
