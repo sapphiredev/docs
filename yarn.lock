@@ -80,7 +80,7 @@ __metadata:
   dependencies:
     "@sapphire/prettier-config": ^2.0.0
     prettier: ^3.0.3
-    typedoc-json-parser: ^9.0.0
+    typedoc-json-parser: ^9.0.1
   languageName: unknown
   linkType: soft
 
@@ -155,9 +155,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc-json-parser@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "typedoc-json-parser@npm:9.0.0"
+"typedoc-json-parser@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "typedoc-json-parser@npm:9.0.1"
   dependencies:
     "@favware/colorette-spinner": ^1.0.1
     "@sapphire/node-utilities": ^1.0.0
@@ -166,9 +166,10 @@ __metadata:
     js-yaml: ^4.1.0
     tslib: ^2.6.2
     typedoc: ^0.25.1
+    typescript: ^5.2.2
   bin:
     typedoc-json-parser: ./dist/bin/index.js
-  checksum: d8bb945062c43a8c455ec4805041695a0baedfebf1d55cd9a84f5ee00bbea705dc22faf1eeea80f1c91fbc56652cc87d54e9d5f45f4cc66e62c215f8194fba33
+  checksum: 2de3614b23f667163c2e821fdf1c545253d40af737aeaa8269a946e35bd2bda21ad7b33e88c414dff9d298cbf2999bae81d11704b76f57f2b7b7f051081519c8
   languageName: node
   linkType: hard
 
@@ -185,6 +186,26 @@ __metadata:
   bin:
     typedoc: bin/typedoc
   checksum: 6c1c28cbf51b6ab1741429f58f540c5c12d6119ce30054866b879ef2a3a2120a6adbaf59919f7411d3bb51b9113fc926522c40934a3d8ef601785abdf0134eed
+  languageName: node
+  linkType: hard
+
+"typescript@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "typescript@npm:5.2.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 7912821dac4d962d315c36800fe387cdc0a6298dba7ec171b350b4a6e988b51d7b8f051317786db1094bd7431d526b648aba7da8236607febb26cf5b871d2d3c
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
+  version: 5.2.2
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 0f4da2f15e6f1245e49db15801dbee52f2bbfb267e1c39225afdab5afee1a72839cd86000e65ee9d7e4dfaff12239d28beaf5ee431357fcced15fb08583d72ca
   languageName: node
   linkType: hard
 
