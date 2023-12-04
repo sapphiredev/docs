@@ -9,7 +9,7 @@
   "enums": [],
   "functions": [
     {
-      "id": 2,
+      "id": 3,
       "name": "free",
       "source": {
         "line": 15,
@@ -26,7 +26,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 3,
+          "id": 4,
           "name": "free",
           "comment": {
             "description": "Removes the tracked response for `message`.",
@@ -41,7 +41,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 4,
+              "id": 5,
               "name": "message",
               "comment": {
                 "description": "The message to free from tracking.",
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "get",
       "source": {
         "line": 21,
@@ -89,7 +89,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 6,
+          "id": 7,
           "name": "get",
           "comment": {
             "description": "Gets the tracked response to `message`, if any was tracked and was not deleted.",
@@ -104,7 +104,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 7,
+              "id": 8,
               "name": "message",
               "comment": {
                 "description": "The message to get the reply from.",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "reply",
       "source": {
         "line": 35,
@@ -164,7 +164,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 9,
+          "id": 10,
           "name": "reply",
           "comment": {
             "description": "Sends a reply message as a response for `message`, and tracks it.",
@@ -179,7 +179,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 10,
+              "id": 11,
               "name": "message",
               "comment": {
                 "description": "The message to replies to.",
@@ -202,7 +202,7 @@
               }
             },
             {
-              "id": 11,
+              "id": 12,
               "name": "options",
               "comment": {
                 "description": "The options for the message sending, identical to `TextBasedChannel#send`'s options.",
@@ -220,7 +220,7 @@
                   },
                   {
                     "kind": "reference",
-                    "id": 1,
+                    "id": 2,
                     "name": "MessageOptions",
                     "packageName": "@skyra/editable-commands",
                     "typeArguments": []
@@ -248,7 +248,7 @@
       ]
     },
     {
-      "id": 12,
+      "id": 13,
       "name": "send",
       "source": {
         "line": 28,
@@ -265,7 +265,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 13,
+          "id": 14,
           "name": "send",
           "comment": {
             "description": "Sends a message as a response for `message`, and tracks it.",
@@ -280,7 +280,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 14,
+              "id": 15,
               "name": "message",
               "comment": {
                 "description": "The message to replies to.",
@@ -303,7 +303,7 @@
               }
             },
             {
-              "id": 15,
+              "id": 16,
               "name": "options",
               "comment": {
                 "description": "The options for the message sending, identical to `TextBasedChannel#send`'s options.",
@@ -321,7 +321,7 @@
                   },
                   {
                     "kind": "reference",
-                    "id": 1,
+                    "id": 2,
                     "name": "MessageOptions",
                     "packageName": "@skyra/editable-commands",
                     "typeArguments": []
@@ -349,7 +349,7 @@
       ]
     },
     {
-      "id": 16,
+      "id": 17,
       "name": "track",
       "source": {
         "line": 9,
@@ -366,7 +366,7 @@
       "external": true,
       "signatures": [
         {
-          "id": 17,
+          "id": 18,
           "name": "track",
           "comment": {
             "description": "Tracks a response with a message, in a way that if {@link send} is called with `message`, `response` will be edited.",
@@ -376,7 +376,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 18,
+              "id": 19,
               "name": "message",
               "comment": {
                 "description": "The message to track when editing.",
@@ -399,7 +399,7 @@
               }
             },
             {
-              "id": 19,
+              "id": 20,
               "name": "response",
               "comment": {
                 "description": "The response to edit when using send with `message`.",
@@ -434,7 +434,7 @@
   "namespaces": [],
   "typeAliases": [
     {
-      "id": 1,
+      "id": 2,
       "name": "MessageOptions",
       "source": {
         "line": 3,
@@ -478,5 +478,28 @@
       }
     }
   ],
-  "variables": []
+  "variables": [
+    {
+      "id": 1,
+      "name": "version",
+      "source": {
+        "line": 11,
+        "file": "index.ts",
+        "path": "packages/editable-commands/src",
+        "url": "https://github.com/sapphiredev/plugins/blob/d9aa006/packages/editable-commands/src/index.ts#L11"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": "The [@sapphire/plugin-editable-commands](https://github.com/sapphiredev/plugins/blob/main/packages/editable-commands)\nversion that you are currently using.\nAn example use of this is showing it of in a bot information command.\n\nNote to Sapphire developers: This needs to explicitly be `string` so it is not typed as the string that gets replaced by esbuild",
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "intrinsic",
+        "type": "string"
+      },
+      "value": "'[VI]{{inject}}[/VI]'"
+    }
+  ]
 }
