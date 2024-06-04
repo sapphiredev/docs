@@ -9,13 +9,13 @@
   "enums": [],
   "functions": [
     {
-      "id": 12,
+      "id": 1,
       "name": "checkDomain",
       "source": {
         "line": 20,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/Phisherman.ts#L20"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/Phisherman.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -26,7 +26,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 13,
+          "id": 2,
           "name": "checkDomain",
           "comment": {
             "description": "Checks if a link is detected as a scam or phishing link by phisherman.",
@@ -41,7 +41,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 14,
+              "id": 3,
               "name": "domain",
               "comment": {
                 "description": "The domain to check.",
@@ -56,7 +56,7 @@
               }
             },
             {
-              "id": 15,
+              "id": 4,
               "name": "apiKey",
               "comment": {
                 "description": "optionally pass a Phiserman API key for making this request. This will default to {@link storedApiKey}, which can be configured through {@link setApiKey}.",
@@ -81,7 +81,7 @@
                 "kind": "reflection",
                 "properties": [
                   {
-                    "id": 19,
+                    "id": 8,
                     "name": "classification",
                     "comment": {
                       "description": null,
@@ -113,7 +113,7 @@
                     }
                   },
                   {
-                    "id": 17,
+                    "id": 6,
                     "name": "isScam",
                     "comment": {
                       "description": null,
@@ -128,7 +128,7 @@
                     }
                   },
                   {
-                    "id": 18,
+                    "id": 7,
                     "name": "verifiedPhish",
                     "comment": {
                       "description": null,
@@ -152,13 +152,13 @@
       ]
     },
     {
-      "id": 24,
+      "id": 13,
       "name": "getDomainInfo",
       "source": {
         "line": 71,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/Phisherman.ts#L71"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/Phisherman.ts#L71"
       },
       "namespaceParentId": null,
       "comment": {
@@ -169,7 +169,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 25,
+          "id": 14,
           "name": "getDomainInfo",
           "comment": {
             "description": "Returns information for a domain.",
@@ -184,7 +184,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 26,
+              "id": 15,
               "name": "domain",
               "comment": {
                 "description": "The domain to get info about.",
@@ -199,7 +199,7 @@
               }
             },
             {
-              "id": 27,
+              "id": 16,
               "name": "apiKey",
               "comment": {
                 "description": "optionally pass a Phiserman API key for making this request. This will default to {@link storedApiKey}, which can be configured through {@link setApiKey}.",
@@ -222,7 +222,7 @@
             "typeArguments": [
               {
                 "kind": "reference",
-                "id": null,
+                "id": 36,
                 "name": "PhishermanInfo",
                 "packageName": "@sapphire/phisherman",
                 "typeArguments": []
@@ -233,13 +233,13 @@
       ]
     },
     {
-      "id": 28,
+      "id": 17,
       "name": "reportCaughtPhish",
       "source": {
         "line": 94,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/Phisherman.ts#L94"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/Phisherman.ts#L94"
       },
       "namespaceParentId": null,
       "comment": {
@@ -250,7 +250,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 29,
+          "id": 18,
           "name": "reportCaughtPhish",
           "comment": {
             "description": "Report a caught phish back to phisherman to improve their analytics.",
@@ -265,7 +265,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 30,
+              "id": 19,
               "name": "domain",
               "comment": {
                 "description": "The domain which was caught.",
@@ -280,7 +280,7 @@
               }
             },
             {
-              "id": 31,
+              "id": 20,
               "name": "apiKey",
               "comment": {
                 "description": null,
@@ -295,7 +295,7 @@
               }
             },
             {
-              "id": 32,
+              "id": 21,
               "name": "guildId",
               "comment": {
                 "description": "The id of the guild in which the domain was caught.",
@@ -327,7 +327,7 @@
             "typeArguments": [
               {
                 "kind": "reference",
-                "id": 6,
+                "id": 33,
                 "name": "PhishermanReportType",
                 "packageName": "@sapphire/phisherman",
                 "typeArguments": []
@@ -338,13 +338,13 @@
       ]
     },
     {
-      "id": 20,
+      "id": 9,
       "name": "reportDomain",
       "source": {
         "line": 46,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/Phisherman.ts#L46"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/Phisherman.ts#L46"
       },
       "namespaceParentId": null,
       "comment": {
@@ -355,7 +355,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 21,
+          "id": 10,
           "name": "reportDomain",
           "comment": {
             "description": "Report a domain that is confirmed to be a scam or phishing domain to phisherman, to enhance their API.",
@@ -370,7 +370,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 22,
+              "id": 11,
               "name": "domain",
               "comment": {
                 "description": "The domain to report.",
@@ -385,7 +385,7 @@
               }
             },
             {
-              "id": 23,
+              "id": 12,
               "name": "apiKey",
               "comment": {
                 "description": "optionally pass a Phiserman API key for making this request. This will default to {@link storedApiKey}, which can be configured through {@link setApiKey}.",
@@ -408,7 +408,7 @@
             "typeArguments": [
               {
                 "kind": "reference",
-                "id": 6,
+                "id": 33,
                 "name": "PhishermanReportType",
                 "packageName": "@sapphire/phisherman",
                 "typeArguments": []
@@ -419,13 +419,13 @@
       ]
     },
     {
-      "id": 33,
+      "id": 22,
       "name": "setApiKey",
       "source": {
         "line": 117,
         "file": "Phisherman.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/Phisherman.ts#L117"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/Phisherman.ts#L117"
       },
       "namespaceParentId": null,
       "comment": {
@@ -436,7 +436,7 @@
       "external": false,
       "signatures": [
         {
-          "id": 34,
+          "id": 23,
           "name": "setApiKey",
           "comment": {
             "description": "Set the phisherman's API key.",
@@ -451,7 +451,7 @@
           "typeParameters": [],
           "parameters": [
             {
-              "id": 35,
+              "id": 24,
               "name": "key",
               "comment": {
                 "description": "The API key to access the phisherman API and cache within the code of the wrapper.",
@@ -484,13 +484,13 @@
   ],
   "interfaces": [
     {
-      "id": 4,
-      "name": "PhishermanOptions",
+      "id": 36,
+      "name": "PhishermanInfo",
       "source": {
-        "line": 1,
+        "line": 19,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -502,63 +502,20 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 5,
-          "name": "apiKey",
+          "id": 41,
+          "name": "classification",
           "source": {
-            "line": 2,
+            "line": 24,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L24"
           },
           "comment": {
             "description": null,
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 4,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "string"
-          }
-        }
-      ],
-      "methods": []
-    },
-    {
-      "id": 6,
-      "name": "PhishermanReportType",
-      "source": {
-        "line": 14,
-        "file": "PhishermanTypes.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L14"
-      },
-      "namespaceParentId": null,
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "typeParameters": [],
-      "properties": [
-        {
-          "id": 8,
-          "name": "message",
-          "source": {
-            "line": 16,
-            "file": "PhishermanTypes.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L16"
-          },
-          "comment": {
-            "description": null,
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 6,
+          "parentId": 36,
           "readonly": false,
           "optional": false,
           "type": {
@@ -567,20 +524,199 @@
           }
         },
         {
-          "id": 7,
-          "name": "success",
+          "id": 38,
+          "name": "created",
           "source": {
-            "line": 15,
+            "line": 21,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L21"
           },
           "comment": {
             "description": null,
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 6,
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 46,
+          "name": "details",
+          "source": {
+            "line": 29,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L29"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Details",
+            "packageName": "@sapphire/phisherman",
+            "typeArguments": []
+          }
+        },
+        {
+          "id": 42,
+          "name": "firstSeen",
+          "source": {
+            "line": 25,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L25"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 39,
+          "name": "lastChecked",
+          "source": {
+            "line": 22,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L22"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 43,
+          "name": "lastSeen",
+          "source": {
+            "line": 26,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L26"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 45,
+          "name": "phishCaught",
+          "source": {
+            "line": 28,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L28"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 37,
+          "name": "status",
+          "source": {
+            "line": 20,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L20"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 44,
+          "name": "targetedBrand",
+          "source": {
+            "line": 27,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L27"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 40,
+          "name": "verifiedPhish",
+          "source": {
+            "line": 23,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L23"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 36,
           "readonly": false,
           "optional": false,
           "type": {
@@ -592,13 +728,33 @@
       "methods": []
     },
     {
-      "id": 9,
-      "name": "PhishermanReturnType",
+      "id": 47,
+      "name": "PhishermanInfoType",
       "source": {
-        "line": 5,
+        "line": 32,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L32"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [],
+      "properties": [],
+      "methods": []
+    },
+    {
+      "id": 25,
+      "name": "PhishermanOptions",
+      "source": {
+        "line": 1,
+        "file": "PhishermanTypes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -610,20 +766,128 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 11,
-          "name": "classification",
+          "id": 26,
+          "name": "apiKey",
           "source": {
-            "line": 7,
+            "line": 2,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L2"
           },
           "comment": {
             "description": null,
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 9,
+          "parentId": 25,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 33,
+      "name": "PhishermanReportType",
+      "source": {
+        "line": 14,
+        "file": "PhishermanTypes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L14"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [],
+      "properties": [
+        {
+          "id": 35,
+          "name": "message",
+          "source": {
+            "line": 16,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L16"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 33,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
+        },
+        {
+          "id": 34,
+          "name": "success",
+          "source": {
+            "line": 15,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L15"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 33,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "boolean"
+          }
+        }
+      ],
+      "methods": []
+    },
+    {
+      "id": 27,
+      "name": "PhishermanReturnType",
+      "source": {
+        "line": 5,
+        "file": "PhishermanTypes.ts",
+        "path": "lib",
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L5"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "typeParameters": [],
+      "properties": [
+        {
+          "id": 29,
+          "name": "classification",
+          "source": {
+            "line": 7,
+            "file": "PhishermanTypes.ts",
+            "path": "lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L7"
+          },
+          "comment": {
+            "description": null,
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 27,
           "readonly": false,
           "optional": false,
           "type": {
@@ -649,20 +913,20 @@
           }
         },
         {
-          "id": 10,
+          "id": 28,
           "name": "verifiedPhish",
           "source": {
             "line": 6,
             "file": "PhishermanTypes.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L6"
           },
           "comment": {
             "description": null,
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 9,
+          "parentId": 27,
           "readonly": false,
           "optional": false,
           "type": {
@@ -677,13 +941,13 @@
   "namespaces": [],
   "typeAliases": [
     {
-      "id": 1,
+      "id": 30,
       "name": "CheckReturnType",
       "source": {
         "line": 10,
         "file": "PhishermanTypes.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/68a65bbfcd4e1e4ec6341b90eb2fc3ba025548ac/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
+        "url": "https://github.com/sapphiredev/utilities/blob/56b377f1623cb2f4d215b5771c31bade23f61f5d/packages/phisherman/src/lib/PhishermanTypes.ts#L10"
       },
       "namespaceParentId": null,
       "comment": {
@@ -698,7 +962,7 @@
         "types": [
           {
             "kind": "reference",
-            "id": 9,
+            "id": 27,
             "name": "PhishermanReturnType",
             "packageName": "@sapphire/phisherman",
             "typeArguments": []
@@ -707,7 +971,7 @@
             "kind": "reflection",
             "properties": [
               {
-                "id": 3,
+                "id": 32,
                 "name": "isScam",
                 "comment": {
                   "description": null,
