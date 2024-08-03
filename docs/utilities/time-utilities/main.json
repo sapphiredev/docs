@@ -260,7 +260,7 @@
           "id": 3,
           "name": "normalize",
           "source": {
-            "line": 73,
+            "line": 79,
             "file": "index.d.mts",
             "path": "cron/dist/esm",
             "url": null
@@ -290,7 +290,7 @@
           "id": 5,
           "name": "parsePart",
           "source": {
-            "line": 84,
+            "line": 90,
             "file": "index.d.mts",
             "path": "cron/dist/esm",
             "url": null
@@ -324,7 +324,7 @@
           "id": 4,
           "name": "parseString",
           "source": {
-            "line": 78,
+            "line": 84,
             "file": "index.d.mts",
             "path": "cron/dist/esm",
             "url": null
@@ -419,11 +419,47 @@
               }
             }
           ]
+        },
+        {
+          "id": 20,
+          "name": "toString",
+          "source": {
+            "line": 74,
+            "file": "index.d.mts",
+            "path": "cron/dist/esm",
+            "url": null
+          },
+          "parentId": 2,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 21,
+              "name": "toString",
+              "comment": {
+                "description": "Returns the string that represents this cron pattern",
+                "blockTags": [
+                  {
+                    "name": "returns",
+                    "text": "The string that represents this cron pattern"
+                  }
+                ],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "id": 54,
+      "id": 56,
       "name": "Duration",
       "source": {
         "line": 58,
@@ -443,7 +479,7 @@
       "implementsType": [],
       "typeParameters": [],
       "construct": {
-        "id": 58,
+        "id": 60,
         "name": "constructor",
         "source": {
           "line": 107,
@@ -456,11 +492,11 @@
           "blockTags": [],
           "modifierTags": []
         },
-        "parentId": 54,
+        "parentId": 56,
         "accessibility": "public",
         "parameters": [
           {
-            "id": 60,
+            "id": 62,
             "name": "pattern",
             "comment": {
               "description": "The string to parse",
@@ -478,7 +514,7 @@
       },
       "properties": [
         {
-          "id": 68,
+          "id": 70,
           "name": "days",
           "source": {
             "line": 90,
@@ -491,207 +527,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 67,
-          "name": "hours",
-          "source": {
-            "line": 86,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of hours extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 63,
-          "name": "microseconds",
-          "source": {
-            "line": 70,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of microseconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 64,
-          "name": "milliseconds",
-          "source": {
-            "line": 74,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of milliseconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 66,
-          "name": "minutes",
-          "source": {
-            "line": 82,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of minutes extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 70,
-          "name": "months",
-          "source": {
-            "line": 98,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of months extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 62,
-          "name": "nanoseconds",
-          "source": {
-            "line": 66,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of nanoseconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 61,
-          "name": "offset",
-          "source": {
-            "line": 62,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The offset",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
-          "accessibility": "public",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "intrinsic",
-            "type": "number"
-          }
-        },
-        {
-          "id": 65,
-          "name": "seconds",
-          "source": {
-            "line": 78,
-            "file": "index.d.mts",
-            "path": "duration/dist/esm",
-            "url": null
-          },
-          "comment": {
-            "description": "The amount of seconds extracted from the text.",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -704,19 +540,194 @@
         },
         {
           "id": 69,
-          "name": "weeks",
+          "name": "hours",
           "source": {
-            "line": 94,
+            "line": 86,
             "file": "index.d.mts",
             "path": "duration/dist/esm",
             "url": null
           },
           "comment": {
-            "description": "The amount of weeks extracted from the text.",
+            "description": "The amount of hours extracted from the text.",
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 65,
+          "name": "microseconds",
+          "source": {
+            "line": 70,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of microseconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 66,
+          "name": "milliseconds",
+          "source": {
+            "line": 74,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of milliseconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 68,
+          "name": "minutes",
+          "source": {
+            "line": 82,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of minutes extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 72,
+          "name": "months",
+          "source": {
+            "line": 98,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of months extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 64,
+          "name": "nanoseconds",
+          "source": {
+            "line": 66,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of nanoseconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 63,
+          "name": "offset",
+          "source": {
+            "line": 62,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The offset",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 67,
+          "name": "seconds",
+          "source": {
+            "line": 78,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of seconds extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -729,6 +740,31 @@
         },
         {
           "id": 71,
+          "name": "weeks",
+          "source": {
+            "line": 94,
+            "file": "index.d.mts",
+            "path": "duration/dist/esm",
+            "url": null
+          },
+          "comment": {
+            "description": "The amount of weeks extracted from the text.",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 56,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "number"
+          }
+        },
+        {
+          "id": 73,
           "name": "years",
           "source": {
             "line": 102,
@@ -741,7 +777,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -753,7 +789,7 @@
           }
         },
         {
-          "id": 57,
+          "id": 59,
           "name": "aAndAnRegex",
           "source": {
             "line": 128,
@@ -766,7 +802,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -778,7 +814,7 @@
           }
         },
         {
-          "id": 56,
+          "id": 58,
           "name": "commaRegex",
           "source": {
             "line": 124,
@@ -791,7 +827,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -803,7 +839,7 @@
           }
         },
         {
-          "id": 55,
+          "id": 57,
           "name": "patternRegex",
           "source": {
             "line": 120,
@@ -816,7 +852,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -828,7 +864,7 @@
           }
         },
         {
-          "id": 73,
+          "id": 75,
           "name": "fromNow",
           "source": {
             "line": 111,
@@ -841,7 +877,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -858,7 +894,7 @@
       ],
       "methods": [
         {
-          "id": 74,
+          "id": 76,
           "name": "dateFrom",
           "source": {
             "line": 116,
@@ -866,13 +902,13 @@
             "path": "duration/dist/esm",
             "url": null
           },
-          "parentId": 54,
+          "parentId": 56,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 75,
+              "id": 77,
               "name": "dateFrom",
               "comment": {
                 "description": "Get the date from",
@@ -882,7 +918,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 76,
+                  "id": 78,
                   "name": "date",
                   "comment": {
                     "description": "The Date instance to get the date from",
@@ -913,7 +949,7 @@
       ]
     },
     {
-      "id": 77,
+      "id": 79,
       "name": "DurationFormatter",
       "source": {
         "line": 6,
@@ -942,7 +978,7 @@
       "implementsType": [],
       "typeParameters": [],
       "construct": {
-        "id": 78,
+        "id": 80,
         "name": "constructor",
         "source": {
           "line": 8,
@@ -955,11 +991,11 @@
           "blockTags": [],
           "modifierTags": []
         },
-        "parentId": 77,
+        "parentId": 79,
         "accessibility": "public",
         "parameters": [
           {
-            "id": 80,
+            "id": 82,
             "name": "units",
             "comment": {
               "description": null,
@@ -970,7 +1006,7 @@
             "optional": true,
             "type": {
               "kind": "reference",
-              "id": 106,
+              "id": 108,
               "name": "DurationFormatAssetsTime",
               "packageName": "@sapphire/duration",
               "typeArguments": []
@@ -980,7 +1016,7 @@
       },
       "properties": [
         {
-          "id": 81,
+          "id": 83,
           "name": "units",
           "source": {
             "line": 7,
@@ -993,7 +1029,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 77,
+          "parentId": 79,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1001,7 +1037,7 @@
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 106,
+            "id": 108,
             "name": "DurationFormatAssetsTime",
             "packageName": "@sapphire/duration",
             "typeArguments": []
@@ -1010,7 +1046,7 @@
       ],
       "methods": [
         {
-          "id": 82,
+          "id": 84,
           "name": "format",
           "source": {
             "line": 9,
@@ -1018,13 +1054,13 @@
             "path": "duration/dist/esm",
             "url": null
           },
-          "parentId": 77,
+          "parentId": 79,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 83,
+              "id": 85,
               "name": "format",
               "comment": {
                 "description": null,
@@ -1034,7 +1070,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 84,
+                  "id": 86,
                   "name": "duration",
                   "comment": {
                     "description": null,
@@ -1049,7 +1085,7 @@
                   }
                 },
                 {
-                  "id": 85,
+                  "id": 87,
                   "name": "precision",
                   "comment": {
                     "description": null,
@@ -1064,7 +1100,7 @@
                   }
                 },
                 {
-                  "id": 86,
+                  "id": 88,
                   "name": "__namedParameters",
                   "comment": {
                     "description": null,
@@ -1075,7 +1111,7 @@
                   "optional": true,
                   "type": {
                     "kind": "reference",
-                    "id": 116,
+                    "id": 118,
                     "name": "DurationFormatSeparators",
                     "packageName": "@sapphire/duration",
                     "typeArguments": []
@@ -1092,7 +1128,7 @@
       ]
     },
     {
-      "id": 119,
+      "id": 121,
       "name": "TimerManager",
       "source": {
         "line": 4,
@@ -1115,7 +1151,7 @@
       "implementsType": [],
       "typeParameters": [],
       "construct": {
-        "id": 148,
+        "id": 150,
         "name": "constructor",
         "source": null,
         "comment": {
@@ -1123,13 +1159,13 @@
           "blockTags": [],
           "modifierTags": []
         },
-        "parentId": 119,
+        "parentId": 121,
         "accessibility": "public",
         "parameters": []
       },
       "properties": [
         {
-          "id": 121,
+          "id": 123,
           "name": "storedIntervals",
           "source": {
             "line": 12,
@@ -1142,7 +1178,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1154,7 +1190,7 @@
           }
         },
         {
-          "id": 120,
+          "id": 122,
           "name": "storedTimeouts",
           "source": {
             "line": 8,
@@ -1167,7 +1203,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1181,7 +1217,7 @@
       ],
       "methods": [
         {
-          "id": 143,
+          "id": 145,
           "name": "clearInterval",
           "source": {
             "line": 36,
@@ -1189,13 +1225,13 @@
             "path": "timer-manager/dist/esm",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 144,
+              "id": 146,
               "name": "clearInterval",
               "comment": {
                 "description": "Clears an internal created through this class",
@@ -1205,7 +1241,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 145,
+                  "id": 147,
                   "name": "interval",
                   "comment": {
                     "description": "The interval to clear",
@@ -1231,7 +1267,7 @@
           ]
         },
         {
-          "id": 131,
+          "id": 133,
           "name": "clearTimeout",
           "source": {
             "line": 24,
@@ -1239,13 +1275,13 @@
             "path": "timer-manager/dist/esm",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 132,
+              "id": 134,
               "name": "clearTimeout",
               "comment": {
                 "description": "Clears a timeout created through this class",
@@ -1255,7 +1291,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 133,
+                  "id": 135,
                   "name": "timeout",
                   "comment": {
                     "description": "The timeout to clear",
@@ -1281,7 +1317,7 @@
           ]
         },
         {
-          "id": 146,
+          "id": 148,
           "name": "destroy",
           "source": {
             "line": 40,
@@ -1289,13 +1325,13 @@
             "path": "timer-manager/dist/esm",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 147,
+              "id": 149,
               "name": "destroy",
               "comment": {
                 "description": "Clears running timeouts and intervals created through this class so NodeJS can gracefully exit",
@@ -1312,7 +1348,7 @@
           ]
         },
         {
-          "id": 134,
+          "id": 136,
           "name": "setInterval",
           "source": {
             "line": 31,
@@ -1320,13 +1356,13 @@
             "path": "timer-manager/dist/esm",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 135,
+              "id": 137,
               "name": "setInterval",
               "comment": {
                 "description": "Creates an interval gets cleared when destroyed",
@@ -1335,7 +1371,7 @@
               },
               "typeParameters": [
                 {
-                  "id": 136,
+                  "id": 138,
                   "name": "A",
                   "constraint": null,
                   "default": {
@@ -1346,7 +1382,7 @@
               ],
               "parameters": [
                 {
-                  "id": 137,
+                  "id": 139,
                   "name": "fn",
                   "comment": {
                     "description": "callback function",
@@ -1360,7 +1396,7 @@
                     "properties": null,
                     "signatures": [
                       {
-                        "id": 139,
+                        "id": 141,
                         "name": "__type",
                         "comment": {
                           "description": null,
@@ -1370,7 +1406,7 @@
                         "typeParameters": [],
                         "parameters": [
                           {
-                            "id": 140,
+                            "id": 142,
                             "name": "args",
                             "comment": {
                               "description": null,
@@ -1383,7 +1419,7 @@
                               "kind": "array",
                               "type": {
                                 "kind": "reference",
-                                "id": 136,
+                                "id": 138,
                                 "name": "A",
                                 "packageName": "@sapphire/timer-manager",
                                 "typeArguments": []
@@ -1401,7 +1437,7 @@
                   }
                 },
                 {
-                  "id": 141,
+                  "id": 143,
                   "name": "delay",
                   "comment": {
                     "description": "amount of time before running the callback",
@@ -1416,7 +1452,7 @@
                   }
                 },
                 {
-                  "id": 142,
+                  "id": 144,
                   "name": "args",
                   "comment": {
                     "description": "additional arguments to pass back to the callback",
@@ -1429,7 +1465,7 @@
                     "kind": "array",
                     "type": {
                       "kind": "reference",
-                      "id": 136,
+                      "id": 138,
                       "name": "A",
                       "packageName": "@sapphire/timer-manager",
                       "typeArguments": []
@@ -1448,7 +1484,7 @@
           ]
         },
         {
-          "id": 122,
+          "id": 124,
           "name": "setTimeout",
           "source": {
             "line": 19,
@@ -1456,13 +1492,13 @@
             "path": "timer-manager/dist/esm",
             "url": null
           },
-          "parentId": 119,
+          "parentId": 121,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 123,
+              "id": 125,
               "name": "setTimeout",
               "comment": {
                 "description": "Creates a timeout gets cleared when destroyed",
@@ -1471,7 +1507,7 @@
               },
               "typeParameters": [
                 {
-                  "id": 124,
+                  "id": 126,
                   "name": "A",
                   "constraint": null,
                   "default": {
@@ -1482,7 +1518,7 @@
               ],
               "parameters": [
                 {
-                  "id": 125,
+                  "id": 127,
                   "name": "fn",
                   "comment": {
                     "description": "callback function",
@@ -1496,7 +1532,7 @@
                     "properties": null,
                     "signatures": [
                       {
-                        "id": 127,
+                        "id": 129,
                         "name": "__type",
                         "comment": {
                           "description": null,
@@ -1506,7 +1542,7 @@
                         "typeParameters": [],
                         "parameters": [
                           {
-                            "id": 128,
+                            "id": 130,
                             "name": "args",
                             "comment": {
                               "description": null,
@@ -1519,7 +1555,7 @@
                               "kind": "array",
                               "type": {
                                 "kind": "reference",
-                                "id": 124,
+                                "id": 126,
                                 "name": "A",
                                 "packageName": "@sapphire/timer-manager",
                                 "typeArguments": []
@@ -1537,7 +1573,7 @@
                   }
                 },
                 {
-                  "id": 129,
+                  "id": 131,
                   "name": "delay",
                   "comment": {
                     "description": "amount of time before running the callback",
@@ -1552,7 +1588,7 @@
                   }
                 },
                 {
-                  "id": 130,
+                  "id": 132,
                   "name": "args",
                   "comment": {
                     "description": "additional arguments to pass back to the callback",
@@ -1565,7 +1601,7 @@
                     "kind": "array",
                     "type": {
                       "kind": "reference",
-                      "id": 124,
+                      "id": 126,
                       "name": "A",
                       "packageName": "@sapphire/timer-manager",
                       "typeArguments": []
@@ -1586,7 +1622,7 @@
       ]
     },
     {
-      "id": 152,
+      "id": 154,
       "name": "Timestamp",
       "source": {
         "line": 25,
@@ -1606,7 +1642,7 @@
       "implementsType": [],
       "typeParameters": [],
       "construct": {
-        "id": 167,
+        "id": 169,
         "name": "constructor",
         "source": {
           "line": 40,
@@ -1619,11 +1655,11 @@
           "blockTags": [],
           "modifierTags": []
         },
-        "parentId": 152,
+        "parentId": 154,
         "accessibility": "public",
         "parameters": [
           {
-            "id": 169,
+            "id": 171,
             "name": "pattern",
             "comment": {
               "description": "The pattern to parse",
@@ -1641,7 +1677,7 @@
       },
       "properties": [
         {
-          "id": 170,
+          "id": 172,
           "name": "pattern",
           "source": {
             "line": 30,
@@ -1659,7 +1695,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": false,
@@ -1671,7 +1707,7 @@
           }
         },
         {
-          "id": 171,
+          "id": 173,
           "name": "template",
           "source": {
             "line": 34,
@@ -1689,7 +1725,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "private",
           "abstract": false,
           "static": false,
@@ -1701,7 +1737,7 @@
           }
         },
         {
-          "id": 164,
+          "id": 166,
           "name": "display",
           "source": {
             "line": 90,
@@ -1727,7 +1763,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1739,7 +1775,7 @@
           }
         },
         {
-          "id": 165,
+          "id": 167,
           "name": "parse",
           "source": {
             "line": 96,
@@ -1761,7 +1797,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1773,7 +1809,7 @@
           }
         },
         {
-          "id": 166,
+          "id": 168,
           "name": "resolveDate",
           "source": {
             "line": 102,
@@ -1795,7 +1831,7 @@
             ],
             "modifierTags": []
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "private",
           "abstract": false,
           "static": true,
@@ -1809,7 +1845,7 @@
       ],
       "methods": [
         {
-          "id": 172,
+          "id": 174,
           "name": "display",
           "source": {
             "line": 46,
@@ -1817,13 +1853,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 173,
+              "id": 175,
               "name": "display",
               "comment": {
                 "description": "Display the current date with the current pattern.",
@@ -1838,7 +1874,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 174,
+                  "id": 176,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -1849,7 +1885,7 @@
                   "optional": true,
                   "type": {
                     "kind": "reference",
-                    "id": 184,
+                    "id": 186,
                     "name": "TimeResolvable",
                     "packageName": "@sapphire/timestamp",
                     "typeArguments": []
@@ -1864,7 +1900,7 @@
           ]
         },
         {
-          "id": 175,
+          "id": 177,
           "name": "displayUTC",
           "source": {
             "line": 52,
@@ -1872,13 +1908,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 176,
+              "id": 178,
               "name": "displayUTC",
               "comment": {
                 "description": "Display the current date utc with the current pattern.",
@@ -1893,7 +1929,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 177,
+                  "id": 179,
                   "name": "time",
                   "comment": {
                     "description": "The time to display in utc",
@@ -1904,7 +1940,7 @@
                   "optional": true,
                   "type": {
                     "kind": "reference",
-                    "id": 184,
+                    "id": 186,
                     "name": "TimeResolvable",
                     "packageName": "@sapphire/timestamp",
                     "typeArguments": []
@@ -1919,7 +1955,7 @@
           ]
         },
         {
-          "id": 178,
+          "id": 180,
           "name": "edit",
           "source": {
             "line": 59,
@@ -1927,13 +1963,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 179,
+              "id": 181,
               "name": "edit",
               "comment": {
                 "description": "Edits the current pattern.",
@@ -1952,7 +1988,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 180,
+                  "id": 182,
                   "name": "pattern",
                   "comment": {
                     "description": "The new pattern for this instance",
@@ -1975,7 +2011,7 @@
           ]
         },
         {
-          "id": 181,
+          "id": 183,
           "name": "toString",
           "source": {
             "line": 63,
@@ -1983,13 +2019,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": false,
           "signatures": [
             {
-              "id": 182,
+              "id": 184,
               "name": "toString",
               "comment": {
                 "description": "Defines the toString behavior of Timestamp.",
@@ -2006,7 +2042,7 @@
           ]
         },
         {
-          "id": 153,
+          "id": 155,
           "name": "displayArbitrary",
           "source": {
             "line": 70,
@@ -2014,13 +2050,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 154,
+              "id": 156,
               "name": "displayArbitrary",
               "comment": {
                 "description": "Display the current date with the current pattern.",
@@ -2035,7 +2071,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 155,
+                  "id": 157,
                   "name": "pattern",
                   "comment": {
                     "description": "The pattern to parse",
@@ -2050,7 +2086,7 @@
                   }
                 },
                 {
-                  "id": 156,
+                  "id": 158,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -2061,7 +2097,7 @@
                   "optional": true,
                   "type": {
                     "kind": "reference",
-                    "id": 184,
+                    "id": 186,
                     "name": "TimeResolvable",
                     "packageName": "@sapphire/timestamp",
                     "typeArguments": []
@@ -2076,7 +2112,7 @@
           ]
         },
         {
-          "id": 157,
+          "id": 159,
           "name": "displayUTCArbitrary",
           "source": {
             "line": 77,
@@ -2084,13 +2120,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 158,
+              "id": 160,
               "name": "displayUTCArbitrary",
               "comment": {
                 "description": "Display the current date utc with the current pattern.",
@@ -2105,7 +2141,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 159,
+                  "id": 161,
                   "name": "pattern",
                   "comment": {
                     "description": "The pattern to parse",
@@ -2120,7 +2156,7 @@
                   }
                 },
                 {
-                  "id": 160,
+                  "id": 162,
                   "name": "time",
                   "comment": {
                     "description": "The time to display",
@@ -2131,7 +2167,7 @@
                   "optional": true,
                   "type": {
                     "kind": "reference",
-                    "id": 184,
+                    "id": 186,
                     "name": "TimeResolvable",
                     "packageName": "@sapphire/timestamp",
                     "typeArguments": []
@@ -2146,7 +2182,7 @@
           ]
         },
         {
-          "id": 161,
+          "id": 163,
           "name": "utc",
           "source": {
             "line": 83,
@@ -2154,13 +2190,13 @@
             "path": "timestamp/dist/esm",
             "url": null
           },
-          "parentId": 152,
+          "parentId": 154,
           "accessibility": "public",
           "abstract": false,
           "static": true,
           "signatures": [
             {
-              "id": 162,
+              "id": 164,
               "name": "utc",
               "comment": {
                 "description": "Creates a UTC Date object to work with.",
@@ -2175,7 +2211,7 @@
               "typeParameters": [],
               "parameters": [
                 {
-                  "id": 163,
+                  "id": 165,
                   "name": "time",
                   "comment": {
                     "description": "The date to convert to utc",
@@ -2221,7 +2257,7 @@
   ],
   "enums": [
     {
-      "id": 87,
+      "id": 89,
       "name": "Time",
       "source": {
         "line": 28,
@@ -2238,7 +2274,7 @@
       "external": false,
       "members": [
         {
-          "id": 94,
+          "id": 96,
           "name": "Day",
           "source": {
             "line": 35,
@@ -2251,11 +2287,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "86400000"
         },
         {
-          "id": 93,
+          "id": 95,
           "name": "Hour",
           "source": {
             "line": 34,
@@ -2268,11 +2304,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "3600000"
         },
         {
-          "id": 89,
+          "id": 91,
           "name": "Microsecond",
           "source": {
             "line": 30,
@@ -2285,11 +2321,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "0.001"
         },
         {
-          "id": 90,
+          "id": 92,
           "name": "Millisecond",
           "source": {
             "line": 31,
@@ -2302,11 +2338,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "1"
         },
         {
-          "id": 92,
+          "id": 94,
           "name": "Minute",
           "source": {
             "line": 33,
@@ -2319,11 +2355,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "60000"
         },
         {
-          "id": 96,
+          "id": 98,
           "name": "Month",
           "source": {
             "line": 37,
@@ -2336,11 +2372,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "2628000000"
         },
         {
-          "id": 88,
+          "id": 90,
           "name": "Nanosecond",
           "source": {
             "line": 29,
@@ -2353,11 +2389,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "0.000001"
         },
         {
-          "id": 91,
+          "id": 93,
           "name": "Second",
           "source": {
             "line": 32,
@@ -2370,11 +2406,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "1000"
         },
         {
-          "id": 95,
+          "id": 97,
           "name": "Week",
           "source": {
             "line": 36,
@@ -2387,11 +2423,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "604800000"
         },
         {
-          "id": 97,
+          "id": 99,
           "name": "Year",
           "source": {
             "line": 38,
@@ -2404,13 +2440,13 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 87,
+          "parentId": 89,
           "value": "31536000000"
         }
       ]
     },
     {
-      "id": 98,
+      "id": 100,
       "name": "TimeTypes",
       "source": {
         "line": 43,
@@ -2427,7 +2463,7 @@
       "external": false,
       "members": [
         {
-          "id": 102,
+          "id": 104,
           "name": "Day",
           "source": {
             "line": 47,
@@ -2440,11 +2476,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "day"
         },
         {
-          "id": 101,
+          "id": 103,
           "name": "Hour",
           "source": {
             "line": 46,
@@ -2457,11 +2493,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "hour"
         },
         {
-          "id": 100,
+          "id": 102,
           "name": "Minute",
           "source": {
             "line": 45,
@@ -2474,11 +2510,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "minute"
         },
         {
-          "id": 104,
+          "id": 106,
           "name": "Month",
           "source": {
             "line": 49,
@@ -2491,11 +2527,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "month"
         },
         {
-          "id": 99,
+          "id": 101,
           "name": "Second",
           "source": {
             "line": 44,
@@ -2508,11 +2544,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "second"
         },
         {
-          "id": 103,
+          "id": 105,
           "name": "Week",
           "source": {
             "line": 48,
@@ -2525,11 +2561,11 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "week"
         },
         {
-          "id": 105,
+          "id": 107,
           "name": "Year",
           "source": {
             "line": 50,
@@ -2542,7 +2578,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 98,
+          "parentId": 100,
           "value": "year"
         }
       ]
@@ -2551,7 +2587,7 @@
   "functions": [],
   "interfaces": [
     {
-      "id": 106,
+      "id": 108,
       "name": "DurationFormatAssetsTime",
       "source": {
         "line": 18,
@@ -2569,7 +2605,7 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 110,
+          "id": 112,
           "name": "day",
           "source": {
             "line": 22,
@@ -2582,19 +2618,19 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
         {
-          "id": 109,
+          "id": 111,
           "name": "hour",
           "source": {
             "line": 21,
@@ -2607,19 +2643,19 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
         {
-          "id": 108,
+          "id": 110,
           "name": "minute",
           "source": {
             "line": 20,
@@ -2632,19 +2668,19 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
         {
-          "id": 112,
+          "id": 114,
           "name": "month",
           "source": {
             "line": 24,
@@ -2657,19 +2693,19 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
         {
-          "id": 107,
+          "id": 109,
           "name": "second",
           "source": {
             "line": 19,
@@ -2682,19 +2718,19 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
         {
-          "id": 111,
+          "id": 113,
           "name": "week",
           "source": {
             "line": 23,
@@ -2707,19 +2743,19 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
           }
         },
         {
-          "id": 113,
+          "id": 115,
           "name": "year",
           "source": {
             "line": 25,
@@ -2732,12 +2768,12 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 106,
+          "parentId": 108,
           "readonly": false,
           "optional": false,
           "type": {
             "kind": "reference",
-            "id": 114,
+            "id": 116,
             "name": "DurationFormatAssetsUnit",
             "packageName": "@sapphire/duration",
             "typeArguments": []
@@ -2747,7 +2783,7 @@
       "methods": []
     },
     {
-      "id": 114,
+      "id": 116,
       "name": "DurationFormatAssetsUnit",
       "source": {
         "line": 15,
@@ -2765,7 +2801,7 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 115,
+          "id": 117,
           "name": "DEFAULT",
           "source": {
             "line": 16,
@@ -2778,7 +2814,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 114,
+          "parentId": 116,
           "readonly": false,
           "optional": false,
           "type": {
@@ -2790,7 +2826,7 @@
       "methods": []
     },
     {
-      "id": 116,
+      "id": 118,
       "name": "DurationFormatSeparators",
       "source": {
         "line": 11,
@@ -2808,7 +2844,7 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 117,
+          "id": 119,
           "name": "left",
           "source": {
             "line": 12,
@@ -2821,7 +2857,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 116,
+          "parentId": 118,
           "readonly": false,
           "optional": true,
           "type": {
@@ -2830,7 +2866,7 @@
           }
         },
         {
-          "id": 118,
+          "id": 120,
           "name": "right",
           "source": {
             "line": 13,
@@ -2843,7 +2879,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 116,
+          "parentId": 118,
           "readonly": false,
           "optional": true,
           "type": {
@@ -2855,7 +2891,7 @@
       "methods": []
     },
     {
-      "id": 185,
+      "id": 187,
       "name": "TimestampTemplateEntry",
       "source": {
         "line": 18,
@@ -2873,7 +2909,7 @@
       "typeParameters": [],
       "properties": [
         {
-          "id": 187,
+          "id": 189,
           "name": "content",
           "source": {
             "line": 20,
@@ -2886,7 +2922,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 185,
+          "parentId": 187,
           "readonly": false,
           "optional": false,
           "type": {
@@ -2904,7 +2940,7 @@
           }
         },
         {
-          "id": 186,
+          "id": 188,
           "name": "type",
           "source": {
             "line": 19,
@@ -2917,7 +2953,7 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "parentId": 185,
+          "parentId": 187,
           "readonly": false,
           "optional": false,
           "type": {
@@ -2932,7 +2968,7 @@
   "namespaces": [],
   "typeAliases": [
     {
-      "id": 184,
+      "id": 186,
       "name": "TimeResolvable",
       "source": {
         "line": 17,
@@ -2972,7 +3008,7 @@
   ],
   "variables": [
     {
-      "id": 52,
+      "id": 54,
       "name": "DEFAULT_SEPARATORS",
       "source": {
         "line": 53,
@@ -2989,14 +3025,14 @@
       "external": false,
       "type": {
         "kind": "reference",
-        "id": 116,
+        "id": 118,
         "name": "DurationFormatSeparators",
         "packageName": "@sapphire/duration",
         "typeArguments": []
       }
     },
     {
-      "id": 53,
+      "id": 55,
       "name": "DEFAULT_UNITS",
       "source": {
         "line": 52,
@@ -3013,7 +3049,7 @@
       "external": false,
       "type": {
         "kind": "reference",
-        "id": 106,
+        "id": 108,
         "name": "DurationFormatAssetsTime",
         "packageName": "@sapphire/duration",
         "typeArguments": []
@@ -3047,7 +3083,7 @@
       }
     },
     {
-      "id": 20,
+      "id": 22,
       "name": "cronTokens",
       "source": {
         "line": 24,
@@ -3066,7 +3102,7 @@
         "kind": "reflection",
         "properties": [
           {
-            "id": 25,
+            "id": 27,
             "name": "apr",
             "comment": {
               "description": null,
@@ -3081,7 +3117,7 @@
             }
           },
           {
-            "id": 29,
+            "id": 31,
             "name": "aug",
             "comment": {
               "description": null,
@@ -3096,7 +3132,7 @@
             }
           },
           {
-            "id": 33,
+            "id": 35,
             "name": "dec",
             "comment": {
               "description": null,
@@ -3111,7 +3147,7 @@
             }
           },
           {
-            "id": 23,
+            "id": 25,
             "name": "feb",
             "comment": {
               "description": null,
@@ -3126,7 +3162,7 @@
             }
           },
           {
-            "id": 39,
+            "id": 41,
             "name": "fri",
             "comment": {
               "description": null,
@@ -3141,7 +3177,7 @@
             }
           },
           {
-            "id": 22,
+            "id": 24,
             "name": "jan",
             "comment": {
               "description": null,
@@ -3156,7 +3192,7 @@
             }
           },
           {
-            "id": 28,
+            "id": 30,
             "name": "jul",
             "comment": {
               "description": null,
@@ -3171,7 +3207,7 @@
             }
           },
           {
-            "id": 27,
+            "id": 29,
             "name": "jun",
             "comment": {
               "description": null,
@@ -3186,7 +3222,7 @@
             }
           },
           {
-            "id": 24,
+            "id": 26,
             "name": "mar",
             "comment": {
               "description": null,
@@ -3201,7 +3237,7 @@
             }
           },
           {
-            "id": 26,
+            "id": 28,
             "name": "may",
             "comment": {
               "description": null,
@@ -3216,7 +3252,7 @@
             }
           },
           {
-            "id": 35,
+            "id": 37,
             "name": "mon",
             "comment": {
               "description": null,
@@ -3231,7 +3267,7 @@
             }
           },
           {
-            "id": 32,
+            "id": 34,
             "name": "nov",
             "comment": {
               "description": null,
@@ -3246,7 +3282,7 @@
             }
           },
           {
-            "id": 31,
+            "id": 33,
             "name": "oct",
             "comment": {
               "description": null,
@@ -3261,7 +3297,7 @@
             }
           },
           {
-            "id": 40,
+            "id": 42,
             "name": "sat",
             "comment": {
               "description": null,
@@ -3276,7 +3312,7 @@
             }
           },
           {
-            "id": 30,
+            "id": 32,
             "name": "sep",
             "comment": {
               "description": null,
@@ -3291,7 +3327,7 @@
             }
           },
           {
-            "id": 34,
+            "id": 36,
             "name": "sun",
             "comment": {
               "description": null,
@@ -3306,7 +3342,7 @@
             }
           },
           {
-            "id": 38,
+            "id": 40,
             "name": "thu",
             "comment": {
               "description": null,
@@ -3321,7 +3357,7 @@
             }
           },
           {
-            "id": 36,
+            "id": 38,
             "name": "tue",
             "comment": {
               "description": null,
@@ -3336,7 +3372,7 @@
             }
           },
           {
-            "id": 37,
+            "id": 39,
             "name": "wed",
             "comment": {
               "description": null,
@@ -3356,7 +3392,7 @@
       }
     },
     {
-      "id": 150,
+      "id": 152,
       "name": "days",
       "source": {
         "line": 13,
@@ -3380,7 +3416,7 @@
       }
     },
     {
-      "id": 151,
+      "id": 153,
       "name": "months",
       "source": {
         "line": 14,
@@ -3404,7 +3440,7 @@
       }
     },
     {
-      "id": 41,
+      "id": 43,
       "name": "partRegex",
       "source": {
         "line": 13,
@@ -3428,7 +3464,7 @@
       }
     },
     {
-      "id": 42,
+      "id": 44,
       "name": "predefined",
       "source": {
         "line": 16,
@@ -3447,7 +3483,7 @@
         "kind": "reflection",
         "properties": [
           {
-            "id": 44,
+            "id": 46,
             "name": "@annually",
             "comment": {
               "description": null,
@@ -3462,7 +3498,7 @@
             }
           },
           {
-            "id": 48,
+            "id": 50,
             "name": "@daily",
             "comment": {
               "description": null,
@@ -3477,7 +3513,7 @@
             }
           },
           {
-            "id": 49,
+            "id": 51,
             "name": "@hourly",
             "comment": {
               "description": null,
@@ -3492,7 +3528,7 @@
             }
           },
           {
-            "id": 46,
+            "id": 48,
             "name": "@monthly",
             "comment": {
               "description": null,
@@ -3507,7 +3543,7 @@
             }
           },
           {
-            "id": 47,
+            "id": 49,
             "name": "@weekly",
             "comment": {
               "description": null,
@@ -3522,7 +3558,7 @@
             }
           },
           {
-            "id": 45,
+            "id": 47,
             "name": "@yearly",
             "comment": {
               "description": null,
@@ -3542,7 +3578,7 @@
       }
     },
     {
-      "id": 183,
+      "id": 185,
       "name": "tokens",
       "source": {
         "line": 15,
@@ -3575,7 +3611,7 @@
       }
     },
     {
-      "id": 50,
+      "id": 52,
       "name": "tokensRegex",
       "source": {
         "line": 45,
@@ -3599,7 +3635,7 @@
       }
     },
     {
-      "id": 51,
+      "id": 53,
       "name": "wildcardRegex",
       "source": {
         "line": 14,
