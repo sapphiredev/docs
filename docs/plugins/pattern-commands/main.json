@@ -3,7 +3,7 @@
   "id": 0,
   "name": "@sapphire/plugin-pattern-commands",
   "version": "6.0.2",
-  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/plugin-pattern-commands\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> so you can have pattern commands.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![codecov](https://codecov.io/gh/sapphiredev/plugins/branch/main/graph/badge.svg?token=QWL8FB16BR)](https://codecov.io/gh/sapphiredev/plugins)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-pattern-commands?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-pattern-commands)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-pattern-commands?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-pattern-commands)\n\n</div>\n\n## Description\n\nWith pattern commands you can define rulesets to which the bot may respond.\n\n## Important notes\n\n-   Starting August 31, 2022 this plugin will only work with Message Intent. This is because this plugin relies on scanning messages, which is impossible without the intent.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Type generics for easy extension in TypeScript\n-   Input/Output mapping\n\n## Installation\n\n`@sapphire/plugin-pattern-commands` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`@sapphire/utilities`](https://www.npmjs.com/package/@sapphire/utilities)\n-   [`@sapphire/stopwatch`](https://www.npmjs.com/package/@sapphire/stopwatch)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-pattern-commands @sapphire/framework @sapphire/utilities @sapphire/stopwatch discord.js\n```\n\n---\n\n## Usage\n\n-   Paste this in your Bot.ts (or where you initiate your client)\n\n```typescript\nimport '@sapphire/plugin-pattern-commands/register';\n```\n\n-   Create a new `pattern-commands` directory under `/src`\n-   Make your first pattern command:\n\n```typescript\nimport type { Message } from 'discord.js';\nimport { PatternCommand } from '@sapphire/plugin-pattern-commands';\nimport { ApplyOptions } from '@sapphire/decorators';\n\n@ApplyOptions<PatternCommand.Options>({\n\taliases: ['cat', 'postman'],\n\tchance: 85\n})\nexport class AwooCommand extends PatternCommand {\n\tpublic messageRun(message: Message) {\n\t\tmessage.reply('Woof!');\n\t}\n}\n```\n\nIn this example there's a 85% chance when your bot will bark at someone who says cat or postman.\nThe matcher is case-insensitive and can match at substrings as well (so in the example above the word catnip also can trigger your bot)\nFor aliases you can use regexp as well, but you have to encapsulate them as a string. For example:\n\n```typescript\n@ApplyOptions<PatternCommand.Options>({\n    aliases: ['a{3,}'],\n})\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
+  "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/plugin-pattern-commands\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> so you can have pattern commands.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-pattern-commands?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-pattern-commands)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-pattern-commands?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-pattern-commands)\n\n</div>\n\n## Description\n\nWith pattern commands you can define rulesets to which the bot may respond.\n\n## Important notes\n\n-   Starting August 31, 2022 this plugin will only work with Message Intent. This is because this plugin relies on scanning messages, which is impossible without the intent.\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Type generics for easy extension in TypeScript\n-   Input/Output mapping\n\n## Installation\n\n`@sapphire/plugin-pattern-commands` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`@sapphire/utilities`](https://www.npmjs.com/package/@sapphire/utilities)\n-   [`@sapphire/stopwatch`](https://www.npmjs.com/package/@sapphire/stopwatch)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-pattern-commands @sapphire/framework @sapphire/utilities @sapphire/stopwatch discord.js\n```\n\n---\n\n## Usage\n\n-   Paste this in your Bot.ts (or where you initiate your client)\n\n```typescript\nimport '@sapphire/plugin-pattern-commands/register';\n```\n\n-   Create a new `pattern-commands` directory under `/src`\n-   Make your first pattern command:\n\n```typescript\nimport type { Message } from 'discord.js';\nimport { PatternCommand } from '@sapphire/plugin-pattern-commands';\nimport { ApplyOptions } from '@sapphire/decorators';\n\n@ApplyOptions<PatternCommand.Options>({\n\taliases: ['cat', 'postman'],\n\tchance: 85\n})\nexport class AwooCommand extends PatternCommand {\n\tpublic messageRun(message: Message) {\n\t\tmessage.reply('Woof!');\n\t}\n}\n```\n\nIn this example there's a 85% chance when your bot will bark at someone who says cat or postman.\nThe matcher is case-insensitive and can match at substrings as well (so in the example above the word catnip also can trigger your bot)\nFor aliases you can use regexp as well, but you have to encapsulate them as a string. For example:\n\n```typescript\n@ApplyOptions<PatternCommand.Options>({\n    aliases: ['a{3,}'],\n})\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-pattern-commands@6.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@6.0.2...@sapphire/plugin-pattern-commands@6.0.2) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Ensure cts file extensions in dist/cjs (#537) ([6f863f8](https://github.com/sapphiredev/plugins/commit/6f863f8187b7028cf6464dd04f197dd1be6ca1dd))\n\n# [@sapphire/plugin-pattern-commands@6.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@6.0.1...@sapphire/plugin-pattern-commands@6.0.1) - (2023-12-05)\n\n## ↩️ Revert\n\n- \"refactor(register): cleanup unnecessary side effect imports of index\" ([c2af242](https://github.com/sapphiredev/plugins/commit/c2af24269956132237988d94e4d94719b2cd442c))\n\n# [@sapphire/plugin-pattern-commands@6.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@6.0.0...@sapphire/plugin-pattern-commands@6.0.0) - (2023-12-05)\n\n## 🏠 Refactor\n\n- **register:** Cleanup unnecessary side effect imports of index ([dede596](https://github.com/sapphiredev/plugins/commit/dede596ae22ceec2700dd860287a1260f092b502))\n\n## 🐛 Bug Fixes\n\n- **pattern-commands:** Expose `load*` methods on the `index` level in case register isn't used ([b26d849](https://github.com/sapphiredev/plugins/commit/b26d84970d07e4fafd5d4b6d1f526a66d4b3cb3a))\n- **pattern-commands:** Fixed typo in file names and relative imports ([f4f1ed5](https://github.com/sapphiredev/plugins/commit/f4f1ed52cb7dd978bd9e6f9888c2db4404c5cb19))\n\n## 🚀 Features\n\n- Split ESM and CJS bundles for proper ESM and CJS loading (#512) ([d9aa006](https://github.com/sapphiredev/plugins/commit/d9aa006ff8c7f78a613dcca605d3353b992b7a46))\n  - 💥 **BREAKING CHANGE:** This ensures that the plugins will properly load the\neither only ESM or only CJS files. This is done by outputting\ndist/cjs and dist/esm folders. This requires @sapphire/framework v5.x!\n\n# [@sapphire/plugin-pattern-commands@5.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@5.1.0...@sapphire/plugin-pattern-commands@5.1.0) - (2023-11-16)\n\n## 🏠 Refactor\n\n- Support latest /framework ([9715b38](https://github.com/sapphiredev/plugins/commit/9715b385477960ed6c935d37408beb4e2f2308a1))\n\n## 🐛 Bug Fixes\n\n- Set `engines.node` to `>=v18` ([885a390](https://github.com/sapphiredev/plugins/commit/885a3908d59fd00f7214ef474f2c6a3c58e95af2))\n\n## 🚀 Features\n\n- Make all pieces virtual and remove useless `registerPath` call ([6781ec2](https://github.com/sapphiredev/plugins/commit/6781ec23c643c8f41f2b6b54e71a7ec442eea884))\n\n# [@sapphire/plugin-pattern-commands@5.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@5.0.1...@sapphire/plugin-pattern-commands@5.0.2) - (2023-08-23)\n\n## 🏠 Refactor\n\n- ***:** Cleanup plugin registry files (#469) ([215b334](https://github.com/sapphiredev/plugins/commit/215b3348b30077238147dbc643769d960b856ba1))\n\n# [@sapphire/plugin-pattern-commands@5.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@5.0.0...@sapphire/plugin-pattern-commands@5.0.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **pattern-commands:** Fixed compatibility with TS 5.x ([71214ab](https://github.com/sapphiredev/plugins/commit/71214ab2320914eee7ff90d33a1f7db7361f5992))\n\n# [@sapphire/plugin-pattern-commands@5.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@4.1.0...@sapphire/plugin-pattern-commands@5.0.0) - (2023-01-08)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n\n## 🚀 Features\n\n- **deps:** Support for djs v14 (#403) ([7674782](https://github.com/sapphiredev/plugins/commit/76747829f4b3ec152ab888e57a56a138e7d527f5))\n\n# [@sapphire/plugin-pattern-commands@4.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@4.0.1...@sapphire/plugin-pattern-commands@4.1.0) - (2022-11-19)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n## 🚀 Features\n\n- **plugin-patterncommands:** Add command weight and allow to run another patternCommand if one was caught by a precondition (#389) ([a0c72f4](https://github.com/sapphiredev/plugins/commit/a0c72f48ea532fa423030c6288a17df6f289edcc))\n\n# [@sapphire/plugin-pattern-commands@4.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@4.0.0...@sapphire/plugin-pattern-commands@4.0.1) - (2022-10-24)\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n# [@sapphire/plugin-pattern-commands@4.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@3.1.1...@sapphire/plugin-pattern-commands@4.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-pattern-commands@3.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@3.1.0...@sapphire/plugin-pattern-commands@3.1.1) - (2022-07-13)\n\n## 🐛 Bug Fixes\n\n- Resolve CommandNoLuck on 100% chance (#319) ([084b23d](https://github.com/sapphiredev/plugins/commit/084b23da7d87773e7c133d74595d47d3239020f4))\n\n# [@sapphire/plugin-pattern-commands@3.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@3.0.0...@sapphire/plugin-pattern-commands@3.1.0) - (2022-06-29)\n\n## 📝 Documentation\n\n- **pattern-commands:** Update message intent deadline (#310) ([28f2bf1](https://github.com/sapphiredev/plugins/commit/28f2bf1d3236196b252d84bd83e16a794e29fbcc))\n\n## 🚀 Features\n\n- **plugin-pattern-commands:** Add success property to finished payload (#314) ([3c3e7ca](https://github.com/sapphiredev/plugins/commit/3c3e7ca8379d29ea902b8bb14574d73e85f5fa66))\n\n# [@sapphire/plugin-pattern-commands@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@2.2.0...@sapphire/plugin-pattern-commands@3.0.0) - (2022-06-13)\n\n## 📝 Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n## 🚀 Features\n\n- **plugin-pattern-commands:** Event parameter standardisation (#307) ([87960e0](https://github.com/sapphiredev/plugins/commit/87960e01c4dd73d5930ee35b5e959e3487a3cf28))\n\n   ### 💥 Breaking Changes:\n   - The parameters of `PatternCommandEvents.CommandRun` have changed, they are now `message, command, payload`, respectively of the types `Message, PatternCommand, PatternCommandPayload`\n   - The parameters of `PatternCommandEvents.CommandSuccess` have changed. It is now an object of `PatternCommandSuccessPayload`. To access the respective properties of `result`, `command`, `alias`, and `duration` use `payload.<property>`\n   - The parameters of `PatternCommandEvents.CommandError` have changed. The second parameter is now an object of `PatternCommandErrorPayload`. To access the second parameter `command` use `payload.command`.\n   - The parameters of `PatternCommandEvents.CommandFinished` have changed. The parameters are now `message, command, payload`, respectively of the types `Message, PatternCommand, PatternCommandFinishedPayload`. The duration, which was previously the second parameter, is now available as `payload.duration`.\n\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@2.1.1...@sapphire/plugin-pattern-commands@2.2.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@2.1.0...@sapphire/plugin-pattern-commands@2.1.1) (2022-01-23)\n\n### Bug Fixes\n\n-   **pattern-commands:** ensure duration isn't destructured when not available ([8f16d02](https://github.com/sapphiredev/plugins/commit/8f16d02053c2d7338ce644cf23cd9446df1d9cc1))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@2.0.0...@sapphire/plugin-pattern-commands@2.1.0) (2022-01-13)\n\n### Bug Fixes\n\n-   **scheduled-tasks and pattern-commands:** Add params to event typedocs ([#222](https://github.com/sapphiredev/plugins/issues/222)) ([e18509f](https://github.com/sapphiredev/plugins/commit/e18509f2df3d3b1fd146e21c6dc199170d671b15))\n\n### Features\n\n-   **pattern-commands:** Add duration to `CommandSuccess` event ([#225](https://github.com/sapphiredev/plugins/issues/225)) ([8a58c46](https://github.com/sapphiredev/plugins/commit/8a58c462f3d198febab8a330ee5fac26911a0085))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@1.0.2...@sapphire/plugin-pattern-commands@2.0.0) (2022-01-10)\n\n### Features\n\n-   add HMR plugin ([#209](https://github.com/sapphiredev/plugins/issues/209)) ([4a18bb1](https://github.com/sapphiredev/plugins/commit/4a18bb1377a8d506fddc5bb991430503902d393b))\n-   **pattern-commands:** add duration to finished and error events ([#219](https://github.com/sapphiredev/plugins/issues/219)) ([654c32e](https://github.com/sapphiredev/plugins/commit/654c32e17ab55a60b4593e4825e02feab10ee803))\n-   **pattern-commands:** Option for full match of command name ([#220](https://github.com/sapphiredev/plugins/issues/220)) ([832decb](https://github.com/sapphiredev/plugins/commit/832decb947c500c3299212e4d352fa10940dba4a))\n\n## [1.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@1.0.1...@sapphire/plugin-pattern-commands@1.0.2) (2021-12-30)\n\n### Bug Fixes\n\n-   **pattern-commands:** resolve listener triggering twice in rare cases ([#203](https://github.com/sapphiredev/plugins/issues/203)) ([bf1ede1](https://github.com/sapphiredev/plugins/commit/bf1ede186bd85e6f135525ea5fdee8da08a94cf0))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-pattern-commands@1.0.0...@sapphire/plugin-pattern-commands@1.0.1) (2021-12-29)\n\n### Bug Fixes\n\n-   **pattern-commands:** fixed missing module augmentation for store ([e7d862b](https://github.com/sapphiredev/plugins/commit/e7d862b8d67d89caed5fec240f7dfc7746130210))\n\n# 1.0.0 (2021-12-29)\n\n### Features\n\n-   add pattern commands plugin ([#192](https://github.com/sapphiredev/plugins/issues/192)) ([0db56ac](https://github.com/sapphiredev/plugins/commit/0db56ac5391b6959ff6f2627623ae8ae6eef2541))\n",
   "classes": [
     {
@@ -13,7 +13,7 @@
         "line": 4,
         "file": "PatternCommand.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L4"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -54,7 +54,7 @@
           "line": 8,
           "file": "PatternCommand.ts",
           "path": "lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L8"
+          "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L8"
         },
         "comment": {
           "description": null,
@@ -110,7 +110,7 @@
             "line": 5,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L5"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L5"
           },
           "comment": {
             "description": null,
@@ -135,7 +135,7 @@
             "line": 7,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L7"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L7"
           },
           "comment": {
             "description": null,
@@ -160,7 +160,7 @@
             "line": 6,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L6"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L6"
           },
           "comment": {
             "description": null,
@@ -187,7 +187,7 @@
             "line": 29,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L29"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L29"
           },
           "parentId": 32,
           "accessibility": "public",
@@ -244,7 +244,7 @@
         "line": 4,
         "file": "PatternCommandStore.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommandStore.ts#L4"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommandStore.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -278,7 +278,7 @@
           "line": 5,
           "file": "PatternCommandStore.ts",
           "path": "lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommandStore.ts#L5"
+          "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommandStore.ts#L5"
         },
         "comment": {
           "description": null,
@@ -299,7 +299,7 @@
         "line": 6,
         "file": "PluginCommandAccepted.ts",
         "path": "listeners",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L6"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -336,7 +336,7 @@
           "line": 7,
           "file": "PluginCommandAccepted.ts",
           "path": "listeners",
-          "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L7"
+          "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L7"
         },
         "comment": {
           "description": null,
@@ -375,7 +375,7 @@
             "line": 11,
             "file": "PluginCommandAccepted.ts",
             "path": "listeners",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginCommandAccepted.ts#L11"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -435,7 +435,7 @@
         "line": 8,
         "file": "PluginMessageParse.ts",
         "path": "listeners",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L8"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -472,7 +472,7 @@
           "line": 10,
           "file": "PluginMessageParse.ts",
           "path": "listeners",
-          "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L10"
+          "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L10"
         },
         "comment": {
           "description": null,
@@ -510,7 +510,7 @@
             "line": 9,
             "file": "PluginMessageParse.ts",
             "path": "listeners",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L9"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L9"
           },
           "comment": {
             "description": null,
@@ -754,7 +754,7 @@
             "line": 88,
             "file": "PluginMessageParse.ts",
             "path": "listeners",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L88"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L88"
           },
           "parentId": 9,
           "accessibility": "private",
@@ -817,7 +817,7 @@
             "line": 14,
             "file": "PluginMessageParse.ts",
             "path": "listeners",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginMessageParse.ts#L14"
           },
           "parentId": 9,
           "accessibility": "public",
@@ -882,7 +882,7 @@
         "line": 5,
         "file": "PluginPreCommandRun.ts",
         "path": "listeners",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L5"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -919,7 +919,7 @@
           "line": 6,
           "file": "PluginPreCommandRun.ts",
           "path": "listeners",
-          "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L6"
+          "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L6"
         },
         "comment": {
           "description": null,
@@ -958,7 +958,7 @@
             "line": 10,
             "file": "PluginPreCommandRun.ts",
             "path": "listeners",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L10"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/PluginPreCommandRun.ts#L10"
           },
           "parentId": 20,
           "accessibility": "public",
@@ -1020,7 +1020,7 @@
         "line": 5,
         "file": "PatternCommandEvents.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L5"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1037,7 +1037,7 @@
             "line": 22,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L22"
           },
           "comment": {
             "description": "Event that is emitted after the preconditions if none of them denied the command",
@@ -1059,7 +1059,7 @@
             "line": 28,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L28"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L28"
           },
           "comment": {
             "description": "Event that is emitted after the preconditions if at least one of them denied the command",
@@ -1085,7 +1085,7 @@
             "line": 50,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L50"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L50"
           },
           "comment": {
             "description": "Event that is emitted if there's an error while running the command",
@@ -1115,7 +1115,7 @@
             "line": 57,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L57"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L57"
           },
           "comment": {
             "description": "Event that is emitted if the command has finished, regardless of whether an error occurred or not",
@@ -1145,7 +1145,7 @@
             "line": 12,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L12"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L12"
           },
           "comment": {
             "description": "Event that is emitted when the RNG doesn't love the command",
@@ -1175,7 +1175,7 @@
             "line": 35,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L35"
           },
           "comment": {
             "description": "Event that is emitted just before the command is ran",
@@ -1205,7 +1205,7 @@
             "line": 43,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L43"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L43"
           },
           "comment": {
             "description": "Event that is emitted if there's no error while running the command",
@@ -1239,7 +1239,7 @@
             "line": 17,
             "file": "PatternCommandEvents.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandEvents.ts#L17"
           },
           "comment": {
             "description": "Event that is emitted when an alias triggered the command but before parsing the preconditions",
@@ -1265,7 +1265,7 @@
         "line": 6,
         "file": "_load.ts",
         "path": "listeners",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/listeners/_load.ts#L6"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/listeners/_load.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1301,7 +1301,7 @@
         "line": 25,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L25"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1319,7 +1319,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -1341,7 +1341,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -1366,7 +1366,7 @@
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
           "comment": {
             "description": null,
@@ -1391,7 +1391,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -1421,7 +1421,7 @@
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
           "comment": {
             "description": null,
@@ -1446,7 +1446,7 @@
         "line": 20,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L20"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1464,7 +1464,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -1486,7 +1486,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -1511,7 +1511,7 @@
             "line": 22,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L22"
           },
           "comment": {
             "description": null,
@@ -1536,7 +1536,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -1566,7 +1566,7 @@
             "line": 21,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L21"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L21"
           },
           "comment": {
             "description": null,
@@ -1591,7 +1591,7 @@
         "line": 39,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L39"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L39"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1609,7 +1609,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -1631,7 +1631,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -1656,7 +1656,7 @@
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
           "comment": {
             "description": null,
@@ -1681,7 +1681,7 @@
             "line": 35,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
           },
           "comment": {
             "description": null,
@@ -1703,7 +1703,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -1733,7 +1733,7 @@
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
           "comment": {
             "description": null,
@@ -1755,7 +1755,7 @@
             "line": 36,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
           },
           "comment": {
             "description": null,
@@ -1780,7 +1780,7 @@
         "line": 34,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L34"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L34"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1798,7 +1798,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -1820,7 +1820,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -1845,7 +1845,7 @@
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
           "comment": {
             "description": null,
@@ -1870,7 +1870,7 @@
             "line": 35,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
           },
           "comment": {
             "description": null,
@@ -1892,7 +1892,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -1922,7 +1922,7 @@
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
           "comment": {
             "description": null,
@@ -1944,7 +1944,7 @@
             "line": 36,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
           },
           "comment": {
             "description": null,
@@ -1969,7 +1969,7 @@
         "line": 41,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L41"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L41"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1987,7 +1987,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -2009,7 +2009,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -2034,7 +2034,7 @@
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
           "comment": {
             "description": null,
@@ -2059,7 +2059,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -2089,7 +2089,7 @@
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
           "comment": {
             "description": null,
@@ -2114,7 +2114,7 @@
         "line": 32,
         "file": "PatternCommand.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L32"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2132,7 +2132,7 @@
             "line": 37,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L37"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L37"
           },
           "comment": {
             "description": "The chance that the pattern command is triggered.",
@@ -2159,7 +2159,7 @@
             "line": 48,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L48"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L48"
           },
           "comment": {
             "description": "If true it will only trigger on full matches (for example, explore won't trigger lore)\nNote: It will only change the behavior of the command's name and not for the command's aliasses",
@@ -2186,7 +2186,7 @@
             "line": 42,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L42"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L42"
           },
           "comment": {
             "description": "The matching weight of the command.",
@@ -2216,7 +2216,7 @@
         "line": 9,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L9"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L9"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2234,7 +2234,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -2256,7 +2256,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -2281,7 +2281,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -2314,7 +2314,7 @@
         "line": 4,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L4"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2332,7 +2332,7 @@
             "line": 5,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L5"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L5"
           },
           "comment": {
             "description": null,
@@ -2362,7 +2362,7 @@
             "line": 6,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L6"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L6"
           },
           "comment": {
             "description": null,
@@ -2393,7 +2393,7 @@
         "line": 30,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L30"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L30"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2411,7 +2411,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -2433,7 +2433,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -2458,7 +2458,7 @@
             "line": 27,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L27"
           },
           "comment": {
             "description": null,
@@ -2483,7 +2483,7 @@
             "line": 35,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L35"
           },
           "comment": {
             "description": null,
@@ -2505,7 +2505,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -2535,7 +2535,7 @@
             "line": 26,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L26"
           },
           "comment": {
             "description": null,
@@ -2557,7 +2557,7 @@
             "line": 31,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L31"
           },
           "comment": {
             "description": null,
@@ -2579,7 +2579,7 @@
             "line": 36,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L36"
           },
           "comment": {
             "description": null,
@@ -2604,7 +2604,7 @@
         "line": 18,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L18"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2622,7 +2622,7 @@
             "line": 15,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L15"
           },
           "comment": {
             "description": "The alias of this pattern command",
@@ -2644,7 +2644,7 @@
             "line": 13,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L13"
           },
           "comment": {
             "description": "The command that is triggered by this PatternCommand",
@@ -2669,7 +2669,7 @@
             "line": 22,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L22"
           },
           "comment": {
             "description": null,
@@ -2694,7 +2694,7 @@
             "line": 11,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L11"
           },
           "comment": {
             "description": "The message that triggered this PatternCommand",
@@ -2724,7 +2724,7 @@
             "line": 21,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L21"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L21"
           },
           "comment": {
             "description": null,
@@ -2749,7 +2749,7 @@
         "line": 43,
         "file": "PatternCommandInterfaces.ts",
         "path": "lib/utils",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L43"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L43"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2767,7 +2767,7 @@
             "line": 45,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L45"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L45"
           },
           "comment": {
             "description": null,
@@ -2789,7 +2789,7 @@
             "line": 44,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L44"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L44"
           },
           "comment": {
             "description": null,
@@ -2814,7 +2814,7 @@
             "line": 46,
             "file": "PatternCommandInterfaces.ts",
             "path": "lib/utils",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/utils/PatternCommandInterfaces.ts#L46"
           },
           "comment": {
             "description": null,
@@ -2841,7 +2841,7 @@
         "line": 4,
         "file": "PatternCommand.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L4"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2863,7 +2863,7 @@
             "line": 56,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L56"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L56"
           },
           "namespaceParentId": 43,
           "comment": {
@@ -2893,7 +2893,7 @@
             "line": 63,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L63"
           },
           "namespaceParentId": 43,
           "comment": {
@@ -2918,7 +2918,7 @@
             "line": 57,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L57"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L57"
           },
           "namespaceParentId": 43,
           "comment": {
@@ -2943,7 +2943,7 @@
             "line": 71,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L71"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L71"
           },
           "namespaceParentId": 43,
           "comment": {
@@ -2968,7 +2968,7 @@
             "line": 60,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L60"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L60"
           },
           "namespaceParentId": 43,
           "comment": {
@@ -2993,7 +2993,7 @@
             "line": 66,
             "file": "PatternCommand.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L66"
+            "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/lib/structures/PatternCommand.ts#L66"
           },
           "namespaceParentId": 43,
           "comment": {
@@ -3024,7 +3024,7 @@
         "line": 26,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/plugins/blob/49b6ce2fdeeb66560bde59f64b27055cdcb17c4a/packages/pattern-commands/src/index.ts#L26"
+        "url": "https://github.com/sapphiredev/plugins/blob/73121df365a3788df6d1a399f11fafd8a3815f78/packages/pattern-commands/src/index.ts#L26"
       },
       "namespaceParentId": null,
       "comment": {
