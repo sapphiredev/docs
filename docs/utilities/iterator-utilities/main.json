@@ -2,10 +2,10 @@
   "typeDocJsonParserVersion": "10.1.6",
   "id": 0,
   "name": "@sapphire/iterator-utilities",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "dependencies": {},
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/iterator-utilities\n\n**Iterator utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/iterator-utilities?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/iterator-utilities)\n[![npm](https://img.shields.io/npm/v/@sapphire/iterator-utilities?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/iterator-utilities)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [`append`](#append)\n    -   [`at`](#at)\n    -   [`average`](#average)\n    -   [`chain`](#chain)\n    -   [`chunk`](#chunk)\n    -   [`compact`](#compact)\n    -   [`compress`](#compress)\n    -   [`contains`](#contains)\n    -   [`count`](#count)\n    -   [`cycle`](#cycle)\n    -   [`difference`](#difference)\n    -   [`drop`](#drop)\n    -   [`dropLast`](#droplast)\n    -   [`dropWhile`](#dropwhile)\n    -   [`empty`](#empty)\n    -   [`enumerate`](#enumerate)\n    -   [`every`](#every)\n    -   [`filter`](#filter)\n    -   [`find`](#find)\n    -   [`findIndex`](#findindex)\n    -   [`first`](#first)\n    -   [`flat`](#flat)\n    -   [`flatMap`](#flatmap)\n    -   [`forEach`](#foreach)\n    -   [`from`](#from)\n    -   [`indexOf`](#indexof)\n    -   [`intersect`](#intersect)\n    -   [`isEmpty`](#isempty)\n    -   [`last`](#last)\n    -   [`map`](#map)\n    -   [`max`](#max)\n    -   [`min`](#min)\n    -   [`partition`](#partition)\n    -   [`peekable`](#peekable)\n    -   [`prepend`](#prepend)\n    -   [`product`](#product)\n    -   [`range`](#range)\n    -   [`reduce`](#reduce)\n    -   [`repeat`](#repeat)\n    -   [`reverse`](#reverse)\n    -   [`slice`](#slice)\n    -   [`some`](#some)\n    -   [`sorted`](#sorted)\n    -   [`starMap`](#starmap)\n    -   [`sum`](#sum)\n    -   [`take`](#take)\n    -   [`takeLast`](#takelast)\n    -   [`takeWhile`](#takewhile)\n    -   [`tee`](#tee)\n    -   [`toArray`](#toarray)\n    -   [`toIterableIterator`](#toiterableiterator)\n    -   [`union`](#union)\n    -   [`unique`](#unique)\n    -   [`unzip`](#unzip)\n    -   [`zip`](#zip)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors](#contributors)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/iterator-utilities\n```\n\n## Usage\n\nFor any of the following examples, you can import the utilities from the index file:\n\n```ts\nimport { append } from '@sapphire/iterator-utilities';\nconst { append } = require('@sapphire/iterator-utilities');\n```\n\nOr you can import the utilities directly:\n\n```ts\nimport { append } from '@sapphire/iterator-utilities/append';\nconst { append } = require('@sapphire/iterator-utilities/append');\n```\n\n### `append`\n\nAppends iterables to the end of the first iterable, returning a new iterable combining all of them. It's similar to concatenating arrays or doing `[...a, ...b, ...c]`.\n\n```typescript\nconst iterable = append([1, 2, 3], [4, 5, 6], [7, 8, 9]);\nconsole.log([...iterable]);\n// Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]\n```\n\n### `at`\n\nAdvances the iterable to the `n`th element and returns it. If the iterable is exhausted before reaching the `n`th element, it returns `undefined`.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(at(iterable, 2));\n// Output: 3\n```\n\n### `average`\n\nConsumes the iterable and returns the average value of all the elements. If the iterable is empty, it returns `null`.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(average(iterable));\n// Output: 3\n```\n\n### `chain`\n\nSimilar to `append`, but takes an iterable of iterables and chains them together.\n\n```typescript\nconst iterable = chain([1, 2, 3], [4, 5, 6], [7, 8, 9]);\nconsole.log([...iterable]);\n// Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]\n```\n\n### `chunk`\n\nChunks the iterable into arrays of at most `size` elements.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...chunk(iterable, 2)]);\n// Output: [[1, 2], [3, 4], [5]]\n```\n\n### `compact`\n\nCreates a new iterable that yields all the non-nullish values (`null` and `undefined`) from the iterable.\n\n```typescript\nconst iterable = [1, null, 2, undefined, 3];\nconsole.log([...compact(iterable)]);\n// Output: [1, 2, 3]\n```\n\n### `compress`\n\nCreates a new iterable of the first iterable based on the truthiness of the corresponding element in the second iterable.\n\n```typescript\nconst iterable = compress([1, 2, 3, 4, 5], [true, false, true, false, true]);\nconsole.log([...iterable]);\n// Output: [1, 3, 5]\n```\n\n### `contains`\n\nAdvances the iterable until it finds the element, returning `true` if it's found and `false` otherwise.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(contains(iterable, 3));\n// Output: true\n```\n\n### `count`\n\nConsumes the iterable and returns the number of elements.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(count(iterable));\n// Output: 5\n```\n\n### `cycle`\n\nCreates an infinite iterable by cycling through the elements of the input iterable.\n\n```typescript\nconst iterable = cycle([1, 2, 3]);\nfor (const element of iterable) {\n\tconsole.log(element);\n\t// Output: 1, 2, 3, 1, 2, 3, 1, 2, 3, ...\n}\n```\n\n### `difference`\n\nCreates an iterable with the elements of the first iterable that are not in the second iterable.\n\n```typescript\nconst first = [1, 2, 3, 4, 5];\nconst second = [3, 4, 5, 6, 7];\nconsole.log([...difference(first, second)]);\n// Output: [1, 2]\n```\n\n### `drop`\n\nAdvances the iterable by `count` elements from the iterable.\n\n```typescript\nconst iterable = drop(iterator, 2);\nconsole.log([...iterable]);\n// Output: [3, 4, 5]\n```\n\n### `dropLast`\n\nConsumes the iterable, creating a new iterator without the last `count` elements from the iterable.\n\n```typescript\nconst iterable = dropLast([1, 2, 3, 4, 5], 2);\nconsole.log([...iterable]);\n// Output: [1, 2, 3]\n```\n\n### `dropWhile`\n\nCreates a new iterator without the elements that satisfy the specified test.\n\n```typescript\nconst iterable = dropWhile([1, 2, 3, 4, 5], (value) => value < 3);\nconsole.log([...iterable]);\n// Output: [3, 4, 5]\n```\n\n### `empty`\n\nCreates an empty iterator.\n\n```typescript\nconst iterable = empty();\nconsole.log([...iterable]);\n// Output: []\n```\n\n### `enumerate`\n\nCreates a new iterable that yields the index and value of each element.\n\n```typescript\nconst iterable = ['a', 'b', 'c'];\nfor (const [index, value] of enumerate(iterable)) {\n\tconsole.log(`Index: ${index}, Value: ${value}`);\n\t// Output: Index: 0, Value: a\n\t// Output: Index: 1, Value: b\n\t// Output: Index: 2, Value: c\n}\n```\n\n### `every`\n\nTests whether all elements in the iterable pass the test implemented by the provided function.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(every(iterable, (value) => value < 10));\n// Output: true\nconsole.log(every(iterable, (value) => value < 3));\n// Output: false\n```\n\n### `filter`\n\nCreates an iterable with the elements that pass the test implemented by the provided function.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...filter(iterable, (value) => value % 2 === 0)]);\n// Output: [2, 4]\n```\n\n### `find`\n\nAdvances the iterable until it finds the element, returning it if it's found and `undefined` otherwise.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(find(iterable, (value) => value % 2 === 0));\n// Output: 2\n```\n\n### `findIndex`\n\nAdvances the iterable until it finds the element, returning its index if it's found and `-1` otherwise.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(findIndex(iterable, (value) => value % 2 === 0));\n// Output: 1\n```\n\n### `first`\n\nConsumes the first element of the iterable, returning it if it's found and `undefined` otherwise.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(first(iterable));\n// Output: 1\n```\n\n### `flat`\n\nCreates an iterable that yields the elements of each iterable in the input iterable.\n\n```typescript\nconst iterable = flat([\n\t[1, 2],\n\t[3, 4],\n\t[5, 6]\n]);\nconsole.log([...iterable]);\n// Output: [1, 2, 3, 4, 5, 6]\n```\n\n### `flatMap`\n\nCreates an iterable that yields the elements of each iterable returned by the provided function on each element of the input iterable.\n\n```typescript\nconst iterable = [1, 2, 3];\nconsole.log([...flatMap(iterable, (value) => [value, value * 2])]);\n// Output: [1, 2, 2, 4, 3, 6]\n```\n\n### `forEach`\n\nExecutes a provided function once for each iterable element.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nforEach(iterable, (value) => console.log(value));\n// Output: 1, 2, 3, 4, 5\n```\n\n### `from`\n\nResolves an iterable from an iterable or iterator-like object.\n\n```typescript\nconst iterable = from([1, 2, 3, 4, 5]);\nfor (const element of iterable) {\n\tconsole.log(element);\n\t// Output: 1, 2, 3, 4, 5\n}\n```\n\n### `indexOf`\n\nAdvances the iterable until it finds the element, returning its index if it's found and `-1` otherwise.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(indexOf(iterable, 3));\n// Output: 2\n```\n\n### `intersect`\n\nCreates an iterable with the elements that are in both input iterables.\n\n```typescript\nconst iterable = intersect([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]);\nconsole.log([...iterable]);\n// Output: [3, 4, 5]\n```\n\n### `isEmpty`\n\nAdvances the iterable once, returning `true` if it's exhausted and `false` otherwise.\n\n```typescript\nconsole.log(isEmpty([]));\n// Output: true\n\nconsole.log(isEmpty([1, 2, 3, 4, 5]));\n// Output: false\n```\n\n### `last`\n\nConsumes the iterable until it's exhausted, returning the last element.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(last(iterable));\n// Output: 5\n```\n\n### `map`\n\nCreates an iterable with the results of calling a provided function on each element.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...map(iterable, (value) => value * 2)]);\n// Output: [2, 4, 6, 8, 10]\n```\n\n### `max`\n\nConsumes the iterable and returns the highest number element. If the iterable is empty, or contains only non-number values, it returns `null`.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(max(iterable));\n// Output: 5\n```\n\n### `min`\n\nConsumes the iterable and returns the lowest number element. If the iterable is empty, or contains only non-number values, it returns `null`.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(min(iterable));\n// Output: 1\n```\n\n### `partition`\n\nConsumes the iterable and creates two arrays, one with the elements that pass the test and another with the elements that don't.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconst [even, odd] = partition(iterable, (value) => value % 2 === 0);\n\nconsole.log(even);\n// Output: [2, 4]\n\nconsole.log(odd);\n// Output: [1, 3, 5]\n```\n\n### `peekable`\n\nCreates an iterator that allows you to peek at the next element without advancing the iterator.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconst peekableIterator = peekable(iterable);\n\nconsole.log(peekableIterator.next());\n// Output: { value: 1, done: false }\n\nconsole.log(peekableIterator.peek());\n// Output: { value: 2, done: false }\n\nconsole.log(peekableIterator.next());\n// Output: { value: 2, done: false }\n\nconsole.log(peekableIterator.next());\n// Output: { value: 3, done: false }\n```\n\n### `prepend`\n\nCreates an iterator with the provided iterables prepended to the first iterable.\n\n```typescript\nconsole.log([...prepend([3, 4, 5], [1], [2])]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n### `product`\n\nConsumes the iterable and returns the product of all the elements. If the iterable is empty, it returns `1`.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(product(iterable));\n// Output: 120\n```\n\n### `range`\n\nCreates an iterable with the numbers from `start` to `stop` (exclusive) with an optional step.\n\n```typescript\nconst iterable = range(0, 5);\nconsole.log([...iterable]);\n// Output: [0, 1, 2, 3, 4]\n```\n\nIf `start` is greater than `stop`, the iterable will count down with a negative step.\n\n```typescript\nconst iterable = range(5, 0);\nconsole.log([...iterable]);\n// Output: [5, 4, 3, 2, 1]\n```\n\nYou can also specify a step.\n\n```typescript\nconst iterable = range(0, 5, 2);\nconsole.log([...iterable]);\n// Output: [0, 2, 4]\n```\n\n### `reduce`\n\nConsumes the iterable and reduces it to the reducer function's result.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(reduce(iterable, (accumulator, currentValue) => accumulator + currentValue));\n// Output: 15\n```\n\n### `repeat`\n\nCreates an iterable that repeats the input iterable `count` times.\n\n```typescript\nconst iterator = repeat('Hello, world!', 3);\nconsole.log([...iterator]);\n// Output: ['Hello, world!', 'Hello, world!', 'Hello, world!']\n```\n\n### `reverse`\n\nConsumes the iterable and returns a new iterable with the elements in reverse order.\n\n```typescript\nconsole.log([...reverse([1, 2, 3, 4, 5])]);\n// Output: [5, 4, 3, 2, 1]\n\nconsole.log([...reverse('hello')]);\n// Output: ['o', 'l', 'l', 'e', 'h']\n```\n\n### `slice`\n\nProduces an iterable with the elements from the `start` index to the `end` index (exclusive).\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...slice(iterable, 1, 3)]);\n// Output: [2, 3]\n```\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...slice(iterable, -2)]);\n// Output: [4, 5]\n```\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...slice(iterable, 2)]);\n// Output: [3, 4, 5]\n```\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...slice(iterable, 2, -1)]);\n// Output: [3, 4]\n```\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...slice(iterable, -2, -1)]);\n// Output: [4]\n```\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...slice(iterable, 2, 1)]);\n// Output: []\n```\n\n### `some`\n\nAdvances the iterable until it finds a matching element, returning `true` if it's found and `false` otherwise.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(some(iterable, (value) => value % 2 === 0));\n// Output: true\n```\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(some(iterable, (value) => value % 6 === 0));\n// Output: false\n```\n\n### `sorted`\n\nConsumes the iterable and returns a new iterable with the elements sorted.\n\n```typescript\nconst iterable = [5, 3, 1, 4, 2];\nconsole.log([...sorted(iterable)]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n### `starMap`\n\nCreates an iterable with the results of calling a provided function on each element of the input iterables as the function's parameters.\n\n```typescript\nconst iterable = [\n\t[1, 2],\n\t[3, 4],\n\t[5, 6]\n];\nconsole.log([...starMap(iterable, (a, b) => a + b)]);\n// Output: [3, 7, 11]\n```\n\n### `sum`\n\nConsumes the iterable and returns the sum of all the elements.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log(sum(iterable));\n// Output: 15\n```\n\n### `take`\n\nCreates an iterable with the first `count` elements.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...take(iterable, 2)]);\n// Output: [1, 2]\n```\n\n### `takeLast`\n\nConsumes the iterable and returns a new iterable with the last `count` elements.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconsole.log([...takeLast(iterable, 2)]);\n// Output: [4, 5]\n```\n\n### `takeWhile`\n\nAlias of [`filter`](#filter).\n\n### `tee`\n\nCreates `count` independent iterators from the input iterable.\n\n```typescript\nconst iterable = [1, 2, 3, 4, 5];\nconst [iter1, iter2] = tee(iterable, 2);\n\nconsole.log([...iter1]);\n// Output: [1, 2, 3, 4, 5]\n\nconsole.log([...iter2]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n### `toArray`\n\nConsumes the iterable and returns an array with all the elements.\n\n```typescript\nconst array = [1, 2, 3, 4, 5];\nconsole.log(toArray(array));\n// Output: [1, 2, 3, 4, 5]\n```\n\n```typescript\nconst set = new Set([1, 2, 3, 4, 5]);\nconsole.log(toArray(set));\n// Output: [1, 2, 3, 4, 5]\n```\n\n```typescript\nconst map = new Map([\n\t['a', 1],\n\t['b', 2],\n\t['c', 3]\n]);\nconsole.log(toArray(map));\n// Output: [['a', 1], ['b', 2], ['c', 3]]\n```\n\n```typescript\nconst string = 'hello';\nconsole.log(toArray(string));\n// Output: ['h', 'e', 'l', 'l', 'o']\n```\n\n### `toIterableIterator`\n\nCreates an iterable iterator from an iterable or iterator-like object.\n\n```typescript\nconst array = [1, 2, 3, 4, 5];\nconsole.log([...toIterableIterator(array)]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n```typescript\nconst set = new Set([1, 2, 3, 4, 5]);\nconsole.log([...toIterableIterator(set)]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n```typescript\nconst map = new Map([\n\t['a', 1],\n\t['b', 2],\n\t['c', 3]\n]);\nconsole.log([...toIterableIterator(map)]);\n// Output: [['a', 1], ['b', 2], ['c', 3]]\n```\n\n```typescript\nconst string = 'hello';\nconsole.log([...toIterableIterator(string)]);\n// Output: ['h', 'e', 'l', 'l', 'o']\n```\n\n### `union`\n\nCreates an iterable with the elements that are in either input iterable.\n\n```typescript\nconst iterable1 = [1, 2, 3];\nconst iterable2 = [3, 4, 5];\nconsole.log([...union(iterable1, iterable2)]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n### `unique`\n\nCreates an iterable with the unique elements of the input iterable. Under the hood, it calls [`union`](#union) with the iterable itself.\n\n```typescript\nconst iterable = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5];\nconsole.log([...unique(iterable)]);\n// Output: [1, 2, 3, 4, 5]\n```\n\n### `unzip`\n\nCreates an array for each element of the input iterable, transposing the input iterable. The opposite of [`zip`](#zip).\n\n```typescript\nconst iterable = [\n\t[1, 'a'],\n\t[2, 'b'],\n\t[3, 'c']\n];\nconst [numbers, letters] = unzip(iterable);\n\nconsole.log(numbers);\n// Output: [1, 2, 3]\n\nconsole.log(letters);\n// Output: ['a', 'b', 'c']\n```\n\n### `zip`\n\nCreates an iterable with the elements of the input iterables zipped together. The opposite of [`unzip`](#unzip).\n\n```typescript\nconst iterable1 = [1, 2, 3];\nconst iterable2 = ['a', 'b', 'c'];\nconst iterable3 = [true, false, true];\nconsole.log(zip(iterable1, iterable2, iterable3));\n// Output: [\n// \t[1, 'a', true],\n// \t[2, 'b', false],\n// \t[3, 'c', true]\n// ]\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
-  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/iterator-utilities@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/iterator-utilities@1.0.1...@sapphire/iterator-utilities@1.0.2) - (2024-06-03)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n- **iterator-utilities:** Export `NumberResolvable` ([dbc5c6c](https://github.com/sapphiredev/utilities/commit/dbc5c6c319857fd8c13d5c371276bd155f682c06))\n\n## 📝 Documentation\n\n- **readme:** Fix readme table of contents ([c60e8bd](https://github.com/sapphiredev/utilities/commit/c60e8bd9fc89156cf973871597ec3f0ef0308c08))\n- **iterator-utilities:** Update README formatting ([094baf0](https://github.com/sapphiredev/utilities/commit/094baf034193800267afcd1f6c764402b32c0794))\n\n# [@sapphire/iterator-utilities@1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/iterator-utilities@1.0.0...@sapphire/iterator-utilities@1.0.1) - (2024-05-02)\n\n## 🐛 Bug Fixes\n\n- **peekable:** Fix `peek()`'s return type (#741) ([c71b759](https://github.com/sapphiredev/utilities/commit/c71b759c22627b80e304d18361308fcf42458102))\n\n## 📝 Documentation\n\n- **iterator-utilities:** Fix `union` jsdoc (#740) ([22736fd](https://github.com/sapphiredev/utilities/commit/22736fdf9a84a97fda3670bf6a878ff00688fff2))\n\n# [@sapphire/iterator-utilities@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/iterator-utilities@1.0.0) - (2024-04-29)\n\n## 🚀 Features\n\n- Add `iterator-utilities` package (#737) ([a7ce2c6](https://github.com/sapphiredev/utilities/commit/a7ce2c6fceef67759e42ea5b4f957802c8e8df21))\n\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/iterator-utilities@2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/iterator-utilities@1.0.2...@sapphire/iterator-utilities@2.0.0) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- Move browser imports ([100ffb0](https://github.com/sapphiredev/utilities/commit/100ffb0a2471bb9f74cc580d282d11059e1a0a68)) ([#826](https://github.com/sapphiredev/utilities/pull/826) by @kyranet)\n- **deps:** Update all non-major dependencies ([083376a](https://github.com/sapphiredev/utilities/commit/083376aac55094dbeddb5194e8a8f0d794b8cceb)) ([#763](https://github.com/sapphiredev/utilities/pull/763) by @renovate[bot])\n\n## 🚀 Features\n\n- **iterator-utilities:** Add more methods ([65ad816](https://github.com/sapphiredev/utilities/commit/65ad8163b787db55ac67f58aa454e12f07753af5)) ([#809](https://github.com/sapphiredev/utilities/pull/809) by @kyranet)\n  - 💥 **BREAKING CHANGE:** `min` now uses a lexicographical comparison by default. Use `minBy` for custom comparisons.\n  - 💥 **BREAKING CHANGE:** `max` now uses a lexicographical comparison by default. Use `maxBy` for custom comparisons.\n\n# [@sapphire/iterator-utilities@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/iterator-utilities@1.0.1...@sapphire/iterator-utilities@1.0.2) - (2024-06-03)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n- **iterator-utilities:** Export `NumberResolvable` ([dbc5c6c](https://github.com/sapphiredev/utilities/commit/dbc5c6c319857fd8c13d5c371276bd155f682c06))\n\n## 📝 Documentation\n\n- **readme:** Fix readme table of contents ([c60e8bd](https://github.com/sapphiredev/utilities/commit/c60e8bd9fc89156cf973871597ec3f0ef0308c08))\n- **iterator-utilities:** Update README formatting ([094baf0](https://github.com/sapphiredev/utilities/commit/094baf034193800267afcd1f6c764402b32c0794))\n\n# [@sapphire/iterator-utilities@1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/iterator-utilities@1.0.0...@sapphire/iterator-utilities@1.0.1) - (2024-05-02)\n\n## 🐛 Bug Fixes\n\n- **peekable:** Fix `peek()`'s return type (#741) ([c71b759](https://github.com/sapphiredev/utilities/commit/c71b759c22627b80e304d18361308fcf42458102))\n\n## 📝 Documentation\n\n- **iterator-utilities:** Fix `union` jsdoc (#740) ([22736fd](https://github.com/sapphiredev/utilities/commit/22736fdf9a84a97fda3670bf6a878ff00688fff2))\n\n# [@sapphire/iterator-utilities@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/iterator-utilities@1.0.0) - (2024-04-29)\n\n## 🚀 Features\n\n- Add `iterator-utilities` package (#737) ([a7ce2c6](https://github.com/sapphiredev/utilities/commit/a7ce2c6fceef67759e42ea5b4f957802c8e8df21))\n\n",
   "classes": [],
   "enums": [],
   "functions": [
@@ -16,7 +16,7 @@
         "line": 28,
         "file": "every.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/every.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/every.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -299,7 +299,7 @@
         "line": 33,
         "file": "some.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/some.ts#L33"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/some.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -447,7 +447,7 @@
         "line": 20,
         "file": "append.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/append.ts#L20"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/append.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -563,7 +563,7 @@
         "line": 42,
         "file": "comparators.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/comparators.ts#L42"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/comparators.ts#L42"
       },
       "namespaceParentId": null,
       "comment": {
@@ -663,7 +663,7 @@
         "line": 27,
         "file": "at.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/at.ts#L27"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/at.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
@@ -767,7 +767,7 @@
         "line": 24,
         "file": "average.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/average.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/average.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -852,7 +852,7 @@
         "line": 19,
         "file": "chain.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/chain.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/chain.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -940,7 +940,7 @@
         "line": 21,
         "file": "chunk.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/chunk.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/chunk.ts#L21"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1039,7 +1039,7 @@
         "line": 35,
         "file": "toArray.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/toArray.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/toArray.ts#L35"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1122,7 +1122,7 @@
         "line": 28,
         "file": "collectInto.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/collectInto.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/collectInto.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1219,7 +1219,7 @@
         "line": 18,
         "file": "compact.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/compact.ts#L18"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/compact.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1313,7 +1313,7 @@
         "line": 32,
         "file": "compare.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/compare.ts#L32"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/compare.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1421,7 +1421,7 @@
         "line": 30,
         "file": "compareBy.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/compareBy.ts#L30"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/compareBy.ts#L30"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1575,7 +1575,7 @@
         "line": 25,
         "file": "compress.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/compress.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/compress.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1688,7 +1688,7 @@
         "line": 24,
         "file": "contains.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/contains.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/contains.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1783,7 +1783,7 @@
         "line": 22,
         "file": "count.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/count.ts#L22"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/count.ts#L22"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1859,7 +1859,7 @@
         "line": 20,
         "file": "cycle.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/cycle.ts#L20"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/cycle.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1940,7 +1940,7 @@
         "line": 19,
         "file": "comparators.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/comparators.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/comparators.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2030,7 +2030,7 @@
         "line": 46,
         "file": "comparators.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/comparators.ts#L46"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/comparators.ts#L46"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2121,7 +2121,7 @@
         "line": 27,
         "file": "comparators.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/comparators.ts#L27"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/comparators.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2220,7 +2220,7 @@
         "line": 25,
         "file": "difference.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/difference.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/difference.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2333,7 +2333,7 @@
         "line": 23,
         "file": "drop.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/drop.ts#L23"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/drop.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2433,7 +2433,7 @@
         "line": 28,
         "file": "dropLast.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/dropLast.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/dropLast.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2537,7 +2537,7 @@
         "line": 23,
         "file": "dropWhile.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/dropWhile.ts#L23"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/dropWhile.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2845,7 +2845,7 @@
         "line": 17,
         "file": "empty.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/empty.ts#L17"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/empty.ts#L17"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2901,7 +2901,7 @@
         "line": 23,
         "file": "enumerate.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/enumerate.ts#L23"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/enumerate.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2995,7 +2995,7 @@
         "line": 25,
         "file": "equal.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/equal.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/equal.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3099,7 +3099,7 @@
         "line": 27,
         "file": "equalBy.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/equalBy.ts#L27"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/equalBy.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3275,7 +3275,7 @@
         "line": 21,
         "file": "filter.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/filter.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/filter.ts#L21"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3562,7 +3562,7 @@
         "line": 25,
         "file": "find.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/find.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/find.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3853,7 +3853,7 @@
         "line": 25,
         "file": "findIndex.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/findIndex.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/findIndex.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3997,7 +3997,7 @@
         "line": 22,
         "file": "first.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/first.ts#L22"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/first.ts#L22"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4086,7 +4086,7 @@
         "line": 19,
         "file": "flat.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/flat.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/flat.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4180,7 +4180,7 @@
         "line": 21,
         "file": "flatMap.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/flatMap.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/flatMap.ts#L21"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4346,7 +4346,7 @@
         "line": 24,
         "file": "forEach.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/forEach.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/forEach.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4486,7 +4486,7 @@
         "line": 17,
         "file": "from.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/from.ts#L17"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/from.ts#L17"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4558,7 +4558,7 @@
         "line": 47,
         "file": "fuse.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/fuse.ts#L47"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/fuse.ts#L47"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4639,7 +4639,7 @@
         "line": 32,
         "file": "greaterOrEqualThan.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/greaterOrEqualThan.ts#L32"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/greaterOrEqualThan.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4739,7 +4739,7 @@
         "line": 32,
         "file": "greaterThan.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/greaterThan.ts#L32"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/greaterThan.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4839,7 +4839,7 @@
         "line": 24,
         "file": "indexOf.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/indexOf.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/indexOf.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4934,7 +4934,7 @@
         "line": 39,
         "file": "inspect.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/inspect.ts#L39"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/inspect.ts#L39"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5083,7 +5083,7 @@
         "line": 26,
         "file": "intersect.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/intersect.ts#L26"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/intersect.ts#L26"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5200,7 +5200,7 @@
         "line": 29,
         "file": "intersperse.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/intersperse.ts#L29"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/intersperse.ts#L29"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5304,7 +5304,7 @@
         "line": 24,
         "file": "isEmpty.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/isEmpty.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/isEmpty.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5380,7 +5380,7 @@
         "line": 36,
         "file": "isSorted.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/isSorted.ts#L36"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/isSorted.ts#L36"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5460,7 +5460,7 @@
         "line": 34,
         "file": "isSortedBy.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/isSortedBy.ts#L34"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/isSortedBy.ts#L34"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5568,7 +5568,7 @@
         "line": 33,
         "file": "isSortedByKey.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/isSortedByKey.ts#L33"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/isSortedByKey.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5748,7 +5748,7 @@
         "line": 23,
         "file": "last.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/last.ts#L23"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/last.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5837,7 +5837,7 @@
         "line": 32,
         "file": "lessOrEqualThan.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/lessOrEqualThan.ts#L32"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/lessOrEqualThan.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5937,7 +5937,7 @@
         "line": 32,
         "file": "lessThan.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/lessThan.ts#L32"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/lessThan.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6037,7 +6037,7 @@
         "line": 20,
         "file": "map.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/map.ts#L20"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/map.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6190,7 +6190,7 @@
         "line": 31,
         "file": "max.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/max.ts#L31"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/max.ts#L31"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6287,7 +6287,7 @@
         "line": 33,
         "file": "maxBy.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/maxBy.ts#L33"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/maxBy.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6412,7 +6412,7 @@
         "line": 35,
         "file": "maxByKey.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/maxByKey.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/maxByKey.ts#L35"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6609,7 +6609,7 @@
         "line": 31,
         "file": "min.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/min.ts#L31"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/min.ts#L31"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6706,7 +6706,7 @@
         "line": 33,
         "file": "minBy.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/minBy.ts#L33"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/minBy.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6831,7 +6831,7 @@
         "line": 34,
         "file": "minByKey.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/minByKey.ts#L34"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/minByKey.ts#L34"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7028,7 +7028,7 @@
         "line": 25,
         "file": "notEqual.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/notEqual.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/notEqual.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7132,7 +7132,7 @@
         "line": 32,
         "file": "partition.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/partition.ts#L32"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/partition.ts#L32"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7460,7 +7460,7 @@
         "line": 30,
         "file": "peekable.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/peekable.ts#L30"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/peekable.ts#L30"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7545,7 +7545,7 @@
         "line": 21,
         "file": "prepend.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/prepend.ts#L21"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/prepend.ts#L21"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7665,7 +7665,7 @@
         "line": 24,
         "file": "product.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/product.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/product.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7733,7 +7733,7 @@
         "line": 33,
         "file": "range.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/range.ts#L33"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/range.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7835,7 +7835,7 @@
         "line": 33,
         "file": "reduce.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/reduce.ts#L33"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/reduce.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8025,7 +8025,7 @@
         "line": 22,
         "file": "repeat.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/repeat.ts#L22"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/repeat.ts#L22"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8116,7 +8116,7 @@
         "line": 25,
         "file": "reverse.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/reverse.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/reverse.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8205,7 +8205,7 @@
         "line": 66,
         "file": "slice.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/slice.ts#L66"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/slice.ts#L66"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8344,7 +8344,7 @@
         "line": 24,
         "file": "sorted.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/sorted.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/sorted.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8505,7 +8505,7 @@
         "line": 27,
         "file": "starMap.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/starMap.ts#L27"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/starMap.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8660,7 +8660,7 @@
         "line": 25,
         "file": "stepBy.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/stepBy.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/stepBy.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8760,7 +8760,7 @@
         "line": 24,
         "file": "sum.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/sum.ts#L24"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/sum.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8836,7 +8836,7 @@
         "line": 23,
         "file": "take.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/take.ts#L23"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/take.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8936,7 +8936,7 @@
         "line": 29,
         "file": "takeLast.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/takeLast.ts#L29"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/takeLast.ts#L29"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9040,7 +9040,7 @@
         "line": 28,
         "file": "tee.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/tee.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/tee.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9143,7 +9143,7 @@
         "line": 31,
         "file": "toIterableIterator.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/toIterableIterator.ts#L31"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/toIterableIterator.ts#L31"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9228,7 +9228,7 @@
         "line": 20,
         "file": "union.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/union.ts#L20"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/union.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9316,7 +9316,7 @@
         "line": 19,
         "file": "unique.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/unique.ts#L19"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/unique.ts#L19"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9401,7 +9401,7 @@
         "line": 28,
         "file": "unzip.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/unzip.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/unzip.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9490,7 +9490,7 @@
         "line": 25,
         "file": "zip.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/zip.ts#L25"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/zip.ts#L25"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9568,7 +9568,7 @@
         "line": 52,
         "file": "peekable.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/peekable.ts#L52"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/peekable.ts#L52"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9710,7 +9710,7 @@
             "line": 53,
             "file": "peekable.ts",
             "path": "packages/iterator-utilities/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/peekable.ts#L53"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/peekable.ts#L53"
           },
           "parentId": 407,
           "signatures": [
@@ -9882,7 +9882,7 @@
         "line": 15,
         "file": "_compare.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/_compare.ts#L15"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/_compare.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9994,7 +9994,7 @@
         "line": 38,
         "file": "from.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/from.ts#L38"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/from.ts#L38"
       },
       "namespaceParentId": null,
       "comment": {
@@ -10075,7 +10075,7 @@
         "line": 40,
         "file": "from.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/from.ts#L40"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/from.ts#L40"
       },
       "namespaceParentId": null,
       "comment": {
@@ -10227,7 +10227,7 @@
         "line": 13,
         "file": "_compare.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/_compare.ts#L13"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/_compare.ts#L13"
       },
       "namespaceParentId": null,
       "comment": {
@@ -10262,7 +10262,7 @@
         "line": 18,
         "file": "_toNumberOrThrow.ts",
         "path": "packages/iterator-utilities/src/lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/shared/_toNumberOrThrow.ts#L18"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/shared/_toNumberOrThrow.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
@@ -10377,7 +10377,7 @@
         "line": 38,
         "file": "starMap.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/starMap.ts#L38"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/starMap.ts#L38"
       },
       "namespaceParentId": null,
       "comment": {
@@ -10476,7 +10476,7 @@
         "line": 59,
         "file": "unzip.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/unzip.ts#L59"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/unzip.ts#L59"
       },
       "namespaceParentId": null,
       "comment": {
@@ -10552,7 +10552,7 @@
         "line": 40,
         "file": "zip.ts",
         "path": "packages/iterator-utilities/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/iterator-utilities/src/lib/zip.ts#L40"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/iterator-utilities/src/lib/zip.ts#L40"
       },
       "namespaceParentId": null,
       "comment": {
