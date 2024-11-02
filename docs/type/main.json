@@ -18,7 +18,7 @@
         "line": 20,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L20"
+        "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -38,7 +38,7 @@
           "line": 50,
           "file": "index.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L50"
+          "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L50"
         },
         "comment": {
           "description": null,
@@ -95,13 +95,97 @@
       },
       "properties": [
         {
+          "id": 21,
+          "name": "childKeys",
+          "source": {
+            "line": 39,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L39"
+          },
+          "comment": {
+            "description": "The child keys of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "packageVersion": null,
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "reference",
+                "id": 7,
+                "name": "Type",
+                "packageName": "@sapphire/type",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
+          "id": 22,
+          "name": "childValues",
+          "source": {
+            "line": 44,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L44"
+          },
+          "comment": {
+            "description": "The child values of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": null,
+            "name": "Map",
+            "packageName": "typescript",
+            "packageVersion": null,
+            "typeArguments": [
+              {
+                "kind": "intrinsic",
+                "type": "string"
+              },
+              {
+                "kind": "reference",
+                "id": 7,
+                "name": "Type",
+                "packageName": "@sapphire/type",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
           "id": 19,
           "name": "is",
           "source": {
             "line": 29,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L29"
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L29"
           },
           "comment": {
             "description": "The shallow type of this",
@@ -120,13 +204,51 @@
           }
         },
         {
+          "id": 20,
+          "name": "parent",
+          "source": {
+            "line": 34,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L34"
+          },
+          "comment": {
+            "description": "The parent of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "readonly": true,
+          "optional": false,
+          "type": {
+            "kind": "union",
+            "types": [
+              {
+                "kind": "literal",
+                "value": "null"
+              },
+              {
+                "kind": "reference",
+                "id": 7,
+                "name": "Type",
+                "packageName": "@sapphire/type",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            ]
+          }
+        },
+        {
           "id": 18,
           "name": "value",
           "source": {
             "line": 24,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L24"
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L24"
           },
           "comment": {
             "description": "The value to generate a deep Type of",
@@ -143,9 +265,243 @@
             "kind": "intrinsic",
             "type": "unknown"
           }
+        },
+        {
+          "id": 24,
+          "name": "childTypes",
+          "source": {
+            "line": 59,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L59"
+          },
+          "comment": {
+            "description": "The type string for the children of this Type",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "parentId": 7,
+          "accessibility": "public",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "intrinsic",
+            "type": "string"
+          }
         }
       ],
       "methods": [
+        {
+          "id": 34,
+          "name": "addEntry",
+          "source": {
+            "line": 102,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L102"
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 35,
+              "name": "addEntry",
+              "comment": {
+                "description": "The subtype to create based on this.value's entries.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 36,
+                  "name": "entry",
+                  "comment": {
+                    "description": "The entry",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "tuple",
+                    "types": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "intrinsic",
+                        "type": "unknown"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "name": "addValue",
+          "source": {
+            "line": 93,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L93"
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 32,
+              "name": "addValue",
+              "comment": {
+                "description": "The subtype to create based on this.value's sub value.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 33,
+                  "name": "value",
+                  "comment": {
+                    "description": "The sub value",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "name": "check",
+          "source": {
+            "line": 111,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L111"
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 38,
+              "name": "check",
+              "comment": {
+                "description": "Get the deep type name that defines the input.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "void"
+              }
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "name": "isCircular",
+          "source": {
+            "line": 84,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L84"
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 30,
+              "name": "isCircular",
+              "comment": {
+                "description": "Checks if the value of this Type is a circular reference to any parent.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "boolean"
+              }
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "name": "parents",
+          "source": {
+            "line": 75,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L75"
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": false,
+          "signatures": [
+            {
+              "id": 28,
+              "name": "parents",
+              "comment": {
+                "description": "Walks the linked list backwards, for checking circulars.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [],
+              "returnType": {
+                "kind": "reference",
+                "id": null,
+                "name": "IterableIterator",
+                "packageName": "typescript",
+                "packageVersion": null,
+                "typeArguments": [
+                  {
+                    "kind": "reference",
+                    "id": 7,
+                    "name": "Type",
+                    "packageName": "@sapphire/type",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  }
+                ]
+              }
+            }
+          ]
+        },
         {
           "id": 25,
           "name": "toString",
@@ -153,7 +509,7 @@
             "line": 67,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L67"
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L67"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -178,13 +534,77 @@
           ]
         },
         {
+          "id": 11,
+          "name": "list",
+          "source": {
+            "line": 163,
+            "file": "index.ts",
+            "path": ".",
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L163"
+          },
+          "parentId": 7,
+          "accessibility": "private",
+          "abstract": false,
+          "static": true,
+          "signatures": [
+            {
+              "id": 12,
+              "name": "list",
+              "comment": {
+                "description": "Joins the list of child types.",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "typeParameters": [],
+              "parameters": [
+                {
+                  "id": 13,
+                  "name": "values",
+                  "comment": {
+                    "description": "The values to list",
+                    "blockTags": [],
+                    "modifierTags": []
+                  },
+                  "rest": false,
+                  "optional": false,
+                  "type": {
+                    "kind": "reference",
+                    "id": null,
+                    "name": "Map",
+                    "packageName": "typescript",
+                    "packageVersion": null,
+                    "typeArguments": [
+                      {
+                        "kind": "intrinsic",
+                        "type": "string"
+                      },
+                      {
+                        "kind": "reference",
+                        "id": 7,
+                        "name": "Type",
+                        "packageName": "@sapphire/type",
+                        "packageVersion": null,
+                        "typeArguments": []
+                      }
+                    ]
+                  }
+                }
+              ],
+              "returnType": {
+                "kind": "intrinsic",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
           "id": 8,
           "name": "resolve",
           "source": {
             "line": 140,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L140"
+            "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L140"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -236,7 +656,7 @@
         "line": 15,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L15"
+        "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -289,7 +709,7 @@
         "line": 15,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/915e9ca6ff38a99947cfb2a3c27116e7add735b7/src/lib/index.ts#L15"
+        "url": "https://github.com/sapphiredev/type/blob/1de90a0c9f959b39744aa9cd00c768e7b41afc97/src/lib/index.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
