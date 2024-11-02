@@ -1,8 +1,9 @@
 {
-  "typeDocJsonParserVersion": "10.0.0",
+  "typeDocJsonParserVersion": "10.1.6",
   "id": 0,
   "name": "@sapphire/fetch",
   "version": "3.0.3",
+  "dependencies": {},
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/fetch\n\n**Tiny wrapper around Node's global `fetch` for improved TypeScript and data type support**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/fetch?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/fetch)\n[![npm](https://img.shields.io/npm/v/@sapphire/fetch?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/fetch)\n\n</div>\n\n**Table of Contents**\n\n-   [Description](#description)\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [`GET`ting JSON data](#getting-json-data)\n    -   [`GET`ting Buffer data (images, etc.)](#getting-buffer-data-images-etc)\n    -   [`POST`ing JSON data](#posting-json-data)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors](#contributors)\n\n## Description\n\nNode has a great global `fetch` (powered by [undici]) for making API calls, but because it focuses solely on bringing the [Fetch API][fetch-mdn] to Node.js, it doesn't provide specific error messages and handling for different return types (JSON, Buffer, plain text, etc). This is where `@sapphire/fetch` comes in. The syntax is more restrictive than that of [undici], but that makes it consistent and easier to use in TypeScript.\n\n## Features\n\n-   Written in TypeScript\n-   Fully tested\n-   Exported `enum` for the common return data types\n-   Throws distinctive errors when the API returns a \"not ok\" status code to make them easier to understand\n-   Enforces casting the return type when requesting JSON data, to ensure your return data is strictly typed\n-   Uses global `fetch`, which for NodeJS is [undici] and for browsers is the [Fetch API][fetch-mdn]\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/fetch\n```\n\n## Usage\n\n> [!NOTE]\n> While this section uses `import`, it maps 1:1 with CommonJS' require syntax. For example,\n>\n> ```ts\n> import { fetch } from '@sapphire/fetch';\n> ```\n>\n> is the same as\n>\n> ```ts\n> const { fetch } = require('@sapphire/fetch');\n> ```\n\n> [!IMPORTANT]\n> When providing a serializable object to the `body` option, `@sapphire/fetch` will automatically call `JSON.stringify` on the object. This means you can pass an object directly to the `body` option without having to call `JSON.stringify` yourself.\n> If the body is _not_ serializable (such as a `File`, `Buffer`, or `Blob`), the body will be sent as-is.\n> Serializability is calculated based on:\n>\n> -   If the body is `null`\n> -   If the body's `.constructor` property is `undefined`\n> -   If the body's `.constructor.name` property is `Object`\n> -   If the body has a function property named `toJSON`\n\n> [!WARNING]\n> Because `@sapphire/fetch` aims to be as close to global fetch as possible, it doesn't support proxy options that a library like undici does. If you want to use a proxy, you should use undici directly.\n\n### `GET`ting JSON data\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes } from '@sapphire/fetch';\n\ninterface JsonPlaceholderResponse {\n\tuserId: number;\n\tid: number;\n\ttitle: string;\n\tcompleted: boolean;\n}\n\n// Fetch the data. No need to call `.json()` after making the request!\nconst data = await fetch<JsonPlaceholderResponse>('https://jsonplaceholder.typicode.com/todos/1', FetchResultTypes.JSON);\n\n// Do something with the data\nconsole.log(data.userId);\n```\n\n### `GET`ting Buffer data (images, etc.)\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes } from '@sapphire/fetch';\n\n// Fetch the data. No need to call `.buffer()` after making the request!\nconst sapphireLogo = await fetch('https://github.com/sapphiredev.png', FetchResultTypes.Buffer);\n\n// sapphireLogo is the `Buffer` of the image\nconsole.log(sapphireLogo);\n```\n\n### `POST`ing JSON data\n\n```typescript\n// Import the fetch function\nimport { fetch, FetchResultTypes, FetchMethods } from '@sapphire/fetch';\n\n// Post the data. No need to call `.json()` after making the request!\nconst responseData = await fetch(\n\t'https://jsonplaceholder.typicode.com/todos',\n\t{\n\t\tmethod: FetchMethods.Post,\n\t\theaders: {\n\t\t\t'Content-Type': 'application/json'\n\t\t},\n\t\tbody: { name: 'John Doe' }\n\t},\n\tFetchResultTypes.JSON\n);\n\n// Do something with the response data\nconsole.log(responseData);\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n\n<!-- LINKS -->\n\n[fetch-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API\n[undici]: https://github.com/nodejs/undici\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/fetch@3.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@3.0.2...@sapphire/fetch@3.0.3) - (2024-08-16)\n\n## 🐛 Bug Fixes\n\n- **fetch:** Handle non object bodies properly ([479de10](https://github.com/sapphiredev/utilities/commit/479de10880218eb789c1ad47622fbcd9335c019c)) ([#786](https://github.com/sapphiredev/utilities/pull/786) by @favna)\n- **deps:** Update all non-major dependencies ([083376a](https://github.com/sapphiredev/utilities/commit/083376aac55094dbeddb5194e8a8f0d794b8cceb)) ([#763](https://github.com/sapphiredev/utilities/pull/763) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n\n## 📝 Documentation\n\n- **readme:** Fix readme table of contents ([c60e8bd](https://github.com/sapphiredev/utilities/commit/c60e8bd9fc89156cf973871597ec3f0ef0308c08))\n- **fetch:** Fix tsdoc comments ([41517f3](https://github.com/sapphiredev/utilities/commit/41517f351dbc32f0dc0b47d724e62b4207981349))\n\n# [@sapphire/fetch@3.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@3.0.2...@sapphire/fetch@3.0.2) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Fixed commonjs typings export mapping (#707) ([216ff02](https://github.com/sapphiredev/utilities/commit/216ff0260d63a9590357f9a5069f1ae2b34eaf5d))\n\n# [@sapphire/fetch@3.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@3.0.1...@sapphire/fetch@3.0.1) - (2023-12-18)\n\n## 🐛 Bug Fixes\n\n- **fetch:** Add additional reference lib comment (#695) ([83400f3](https://github.com/sapphiredev/utilities/commit/83400f3330ae4bb47a8e8174164fb9141eaeeec8))\n\n## 📝 Documentation\n\n- **fetch:** README cleanup (#683) ([147b2d5](https://github.com/sapphiredev/utilities/commit/147b2d543ba26de6875f25e8800b4f02f7f505aa))\n\n# [@sapphire/fetch@3.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@3.0.0...@sapphire/fetch@3.0.0) - (2023-12-10)\n\n## 🚀 Features\n\n- **fetch:** Drop cross-fetch, always use global fetch ([c716bc2](https://github.com/sapphiredev/utilities/commit/c716bc2fba8f6e217113d9c13e5664753a2433a1))\n  - 💥 **BREAKING CHANGE:** This version and all subsequent versions require\nNodeJS v18 or above, or v16 with the `--experimental-fetch` flag\n\n## 🧪 Testing\n\n- Switch from nock to mfw ([5a5b3ff](https://github.com/sapphiredev/utilities/commit/5a5b3ff466e07edba6122705588ce5762a82ac31))\n\n# [@sapphire/fetch@2.4.2](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.4.2...@sapphire/fetch@2.4.2) - (2023-12-04)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **fetch:** Properly split CJS, ESM and IIFE ([4c6d808](https://github.com/sapphiredev/utilities/commit/4c6d808ebf89a93153c96919d00d1a36e644097a))\n- Update export mapping for proper ESM/CJS split ([dd0cff8](https://github.com/sapphiredev/utilities/commit/dd0cff8e9b03a15812f25f7a1180501a92422629))\n- **fetch:** Update cross-fetch to v4.0.0 ([e6ff4fc](https://github.com/sapphiredev/utilities/commit/e6ff4fc5ce90d6a21158e39b833e515833f968d0))\n- **deps:** Update all non-major dependencies (#607) ([9cc8bd0](https://github.com/sapphiredev/utilities/commit/9cc8bd0d4b5d650deab2c913e6c3d713861bae28))\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n\n## 🧪 Testing\n\n- Update vitest to coverage v8 ([a4bc6e4](https://github.com/sapphiredev/utilities/commit/a4bc6e4f24ea60143a150ecc76fda6484f172ab9))\n\n# [@sapphire/fetch@2.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.4.0...@sapphire/fetch@2.4.1) - (2022-07-13)\n\n## 🏠 Refactor\n\n- Change `const enum` for regular `enum` (#394) ([960e973](https://github.com/sapphiredev/utilities/commit/960e973dc63aeccdc0012d72a4fef052bbd37b6f))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n# [@sapphire/fetch@2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.3.1...@sapphire/fetch@2.4.0) - (2022-06-05)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🚀 Features\n\n- **fetch:** Accept JS objects for the request body (#365) ([a3eee88](https://github.com/sapphiredev/utilities/commit/a3eee88f36192655c50bbde05ecca1e7d07c464d))\n\n## 🧪 Testing\n\n- Fix fetch tests for Node 18 ([e92fb02](https://github.com/sapphiredev/utilities/commit/e92fb025cb1dcb5f33c1ea76fb25a4a1b5b37368))\n\n## [2.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.3.0...@sapphire/fetch@2.3.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n# [2.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.2.0...@sapphire/fetch@2.3.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n\n# [2.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.1.0...@sapphire/fetch@2.2.0) (2022-03-01)\n\n### Features\n\n-   **fetch:** add common media content types enum ([#303](https://github.com/sapphiredev/utilities/issues/303)) ([2f1c464](https://github.com/sapphiredev/utilities/commit/2f1c4640a9d4d12b1a22d0227172323d54eaed8f))\n-   **ts-config:** add multi-config structure ([#281](https://github.com/sapphiredev/utilities/issues/281)) ([b5191d7](https://github.com/sapphiredev/utilities/commit/b5191d7f2416dc5838590c4ff221454925553e37))\n\n# [2.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.4...@sapphire/fetch@2.1.0) (2022-01-28)\n\n### Features\n\n-   change build system to tsup ([#270](https://github.com/sapphiredev/utilities/issues/270)) ([365a53a](https://github.com/sapphiredev/utilities/commit/365a53a5517a01a0926cf28a83c96b63f32ed9f8))\n\n## [2.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.3...@sapphire/fetch@2.0.4) (2022-01-10)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [2.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.2...@sapphire/fetch@2.0.3) (2021-11-06)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [2.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.1...@sapphire/fetch@2.0.2) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([5977d2a](https://github.com/sapphiredev/utilities/commit/5977d2a30a4b2cfdf84aff3f33af03ffde1bbec5))\n\n## [2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@2.0.0...@sapphire/fetch@2.0.1) (2021-10-11)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n# [2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.5...@sapphire/fetch@2.0.0) (2021-10-04)\n\n### Features\n\n-   **fetch:** migrate to using cross-fetch ([#149](https://github.com/sapphiredev/utilities/issues/149)) ([a8baab9](https://github.com/sapphiredev/utilities/commit/a8baab978814ca3aa18992120af7ad004ceaee80))\n-   **fetch:** set minimum NodeJS to v14 ([56889ab](https://github.com/sapphiredev/utilities/commit/56889abce158119adf1afcc1ec4cee8cbb411c79))\n\n### BREAKING CHANGES\n\n-   **fetch:** `fetch` is no longer on the default export. Use a named import instead.\n-   **fetch:** This package no longer depends on `node-fetch`\n-   **fetch:** This package no longer depends on `@types/node-fetch` for TypeScript users\n\n## [1.0.5](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.4...@sapphire/fetch@1.0.5) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [1.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.3...@sapphire/fetch@1.0.4) (2021-06-27)\n\n**Note:** Version bump only for package @sapphire/fetch\n\n## [1.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.2...@sapphire/fetch@1.0.3) (2021-06-06)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#124](https://github.com/sapphiredev/utilities/issues/124)) ([67256ed](https://github.com/sapphiredev/utilities/commit/67256ed43b915b02a8b5c68230ba82d6210c5032))\n\n## [1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.1...@sapphire/fetch@1.0.2) (2021-05-20)\n\n### Bug Fixes\n\n-   **fetch:** mark package as side effect free ([8e3e470](https://github.com/sapphiredev/utilities/commit/8e3e470e7803f67593f18d2454cb1f95a8a35f18))\n\n## [1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/fetch@1.0.0...@sapphire/fetch@1.0.1) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([494d89f](https://github.com/sapphiredev/utilities/commit/494d89ffa04f78c195b93d7905b3232884f7d7e2))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([f59b46d](https://github.com/sapphiredev/utilities/commit/f59b46d1a0ebd39cad17b17d71cd3b9da808d5fd))\n\n# 1.0.0 (2021-04-21)\n\n### Features\n\n-   add fetch package ([#107](https://github.com/sapphiredev/utilities/issues/107)) ([891034c](https://github.com/sapphiredev/utilities/commit/891034cf5f9e6f2c700999fd39a71e490c5dc766))\n",
   "classes": [
@@ -13,7 +14,7 @@
         "line": 7,
         "file": "QueryError.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -28,6 +29,7 @@
         "id": null,
         "name": "Error",
         "packageName": "typescript",
+        "packageVersion": null,
         "typeArguments": []
       },
       "implementsType": [],
@@ -39,7 +41,7 @@
           "line": 19,
           "file": "QueryError.ts",
           "path": "packages/fetch/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L19"
+          "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L19"
         },
         "comment": {
           "description": null,
@@ -94,6 +96,7 @@
               "id": null,
               "name": "Response",
               "packageName": "typescript",
+              "packageVersion": null,
               "typeArguments": []
             }
           },
@@ -122,7 +125,7 @@
             "line": 17,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L17"
           },
           "comment": {
             "description": null,
@@ -147,7 +150,7 @@
             "line": 13,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L13"
           },
           "comment": {
             "description": "The returned response body as a string",
@@ -197,7 +200,7 @@
             "line": 11,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L11"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L11"
           },
           "comment": {
             "description": "The HTTP status code.",
@@ -272,7 +275,7 @@
             "line": 15,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L15"
           },
           "comment": {
             "description": "The original {@link Response} object",
@@ -290,6 +293,7 @@
             "id": null,
             "name": "Response",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -325,7 +329,7 @@
             "line": 9,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L9"
           },
           "comment": {
             "description": "The requested url.",
@@ -397,6 +401,7 @@
                       "id": null,
                       "name": "Error",
                       "packageName": "typescript",
+                      "packageVersion": null,
                       "typeArguments": []
                     }
                   },
@@ -417,6 +422,7 @@
                         "id": null,
                         "name": "__global.NodeJS.CallSite",
                         "packageName": "@types/node",
+                        "packageVersion": null,
                         "typeArguments": []
                       }
                     }
@@ -465,7 +471,7 @@
             "line": 28,
             "file": "QueryError.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/QueryError.ts#L28"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/QueryError.ts#L28"
           },
           "parentId": 44,
           "accessibility": "public",
@@ -543,6 +549,7 @@
                     "id": null,
                     "name": "Function",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 }
@@ -565,7 +572,7 @@
         "line": 92,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L92"
+        "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L92"
       },
       "namespaceParentId": null,
       "comment": {
@@ -582,7 +589,7 @@
             "line": 97,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L97"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L97"
           },
           "comment": {
             "description": "The `audio/aac` media content type.",
@@ -604,7 +611,7 @@
             "line": 103,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L103"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L103"
           },
           "comment": {
             "description": "The `audio/mp4` media content type.",
@@ -626,7 +633,7 @@
             "line": 109,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L109"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L109"
           },
           "comment": {
             "description": "The `audio/mpeg` media content type.",
@@ -648,7 +655,7 @@
             "line": 115,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L115"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L115"
           },
           "comment": {
             "description": "The `audio/ogg` media content type.",
@@ -670,7 +677,7 @@
             "line": 121,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L121"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L121"
           },
           "comment": {
             "description": "The `audio/opus` media content type.",
@@ -692,7 +699,7 @@
             "line": 127,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L127"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L127"
           },
           "comment": {
             "description": "The `audio/vorbis` media content type.",
@@ -714,7 +721,7 @@
             "line": 131,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L131"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L131"
           },
           "comment": {
             "description": "The `audio/wav` media content type.",
@@ -731,7 +738,7 @@
             "line": 135,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L135"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L135"
           },
           "comment": {
             "description": "The `audio/webm` media content type.",
@@ -748,7 +755,7 @@
             "line": 141,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L141"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L141"
           },
           "comment": {
             "description": "The `font/otf` media content type.",
@@ -770,7 +777,7 @@
             "line": 147,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L147"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L147"
           },
           "comment": {
             "description": "The `font/ttf` media content type.",
@@ -792,7 +799,7 @@
             "line": 153,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L153"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L153"
           },
           "comment": {
             "description": "The `font/woff` media content type.",
@@ -814,7 +821,7 @@
             "line": 159,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L159"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L159"
           },
           "comment": {
             "description": "The `font/woff2` media content type.",
@@ -836,7 +843,7 @@
             "line": 165,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L165"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L165"
           },
           "comment": {
             "description": "The `multipart/form-data` media content type.",
@@ -858,7 +865,7 @@
             "line": 170,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L170"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L170"
           },
           "comment": {
             "description": "The `x-www-form-urlencoded` media content type.",
@@ -880,7 +887,7 @@
             "line": 175,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L175"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L175"
           },
           "comment": {
             "description": "The `image/apng` media content type.",
@@ -902,7 +909,7 @@
             "line": 181,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L181"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L181"
           },
           "comment": {
             "description": "The `image/gif` media content type.",
@@ -924,7 +931,7 @@
             "line": 187,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L187"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L187"
           },
           "comment": {
             "description": "The `image/jpeg` media content type.",
@@ -946,7 +953,7 @@
             "line": 192,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L192"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L192"
           },
           "comment": {
             "description": "The `image/png` media content type.",
@@ -968,7 +975,7 @@
             "line": 197,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L197"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L197"
           },
           "comment": {
             "description": "The `image/webp` media content type.",
@@ -990,7 +997,7 @@
             "line": 203,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L203"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L203"
           },
           "comment": {
             "description": "The `application/json` media content type.",
@@ -1012,7 +1019,7 @@
             "line": 209,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L209"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L209"
           },
           "comment": {
             "description": "The `application/javascript` media content type.",
@@ -1034,7 +1041,7 @@
             "line": 215,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L215"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L215"
           },
           "comment": {
             "description": "The `application/octet-stream` media content type.",
@@ -1056,7 +1063,7 @@
             "line": 221,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L221"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L221"
           },
           "comment": {
             "description": "The `text/css` media content type.",
@@ -1078,7 +1085,7 @@
             "line": 226,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L226"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L226"
           },
           "comment": {
             "description": "The `text/HTML` media content type.",
@@ -1100,7 +1107,7 @@
             "line": 232,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L232"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L232"
           },
           "comment": {
             "description": "The `text/plain` media content type.",
@@ -1122,7 +1129,7 @@
             "line": 238,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L238"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L238"
           },
           "comment": {
             "description": "The `video/h264` media content type.",
@@ -1144,7 +1151,7 @@
             "line": 244,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L244"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L244"
           },
           "comment": {
             "description": "The `video/h265` media content type.",
@@ -1166,7 +1173,7 @@
             "line": 250,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L250"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L250"
           },
           "comment": {
             "description": "The `video/mp4` media content type.",
@@ -1188,7 +1195,7 @@
             "line": 256,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L256"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L256"
           },
           "comment": {
             "description": "The `video/ogg` media content type.",
@@ -1210,7 +1217,7 @@
             "line": 260,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L260"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L260"
           },
           "comment": {
             "description": "The `video/webm` media content type.",
@@ -1227,7 +1234,7 @@
             "line": 266,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L266"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L266"
           },
           "comment": {
             "description": "The `application/xml` media content type.",
@@ -1251,7 +1258,7 @@
         "line": 39,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L39"
+        "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L39"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1268,7 +1275,7 @@
             "line": 69,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L69"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L69"
           },
           "comment": {
             "description": "The `CONNECT` method establishes a tunnel to the server identified by the target resource",
@@ -1290,7 +1297,7 @@
             "line": 64,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L64"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L64"
           },
           "comment": {
             "description": "The `DELETE` method deletes the specified resource.",
@@ -1312,7 +1319,7 @@
             "line": 44,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L44"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L44"
           },
           "comment": {
             "description": "The `GET` method requests a representation of the specified resource. Requests using `GET` should only retrieve data.",
@@ -1334,7 +1341,7 @@
             "line": 49,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L49"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L49"
           },
           "comment": {
             "description": "The `HEAD` method asks for a response identical to that of a {@link `GET`} request, but without the response body.",
@@ -1356,7 +1363,7 @@
             "line": 74,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L74"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L74"
           },
           "comment": {
             "description": "The `OPTIONS` method is used to describe the communication options for the target resource.",
@@ -1378,7 +1385,7 @@
             "line": 84,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L84"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L84"
           },
           "comment": {
             "description": "The `PATCH` method is used to apply partial modifications to a resource.",
@@ -1400,7 +1407,7 @@
             "line": 54,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L54"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L54"
           },
           "comment": {
             "description": "The `POST` method is used to submit an entity to the specified resource, often causing a change in state or side effects on the server.",
@@ -1422,7 +1429,7 @@
             "line": 59,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L59"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L59"
           },
           "comment": {
             "description": "The `PUT` method replaces all current representations of the target resource with the request payload.",
@@ -1444,7 +1451,7 @@
             "line": 79,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L79"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L79"
           },
           "comment": {
             "description": "The `TRACE` method performs a message loop-back test along the path to the target resource.",
@@ -1468,7 +1475,7 @@
         "line": 7,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1485,7 +1492,7 @@
             "line": 25,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L25"
           },
           "comment": {
             "description": "Returns only the body, as a [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob).",
@@ -1507,7 +1514,7 @@
             "line": 20,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L20"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L20"
           },
           "comment": {
             "description": "Returns only the body, as a [Buffer](https://nodejs.org/api/buffer.html).",
@@ -1529,7 +1536,7 @@
             "line": 14,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L14"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L14"
           },
           "comment": {
             "description": "Returns only the body, as JSON. Similar to [`Body.json()`](https://developer.mozilla.org/en-US/docs/Web/API/Body/json).\n\nYou should provide your own type cast (either through the generic return type, or with `as <type>`) to the response to define\nthe JSON structure, otherwise the result will be `unknown`.",
@@ -1546,7 +1553,7 @@
             "line": 33,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L33"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L33"
           },
           "comment": {
             "description": "Returns the entire response and doesn't parse the `body` in any way.",
@@ -1563,7 +1570,7 @@
             "line": 29,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L29"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L29"
           },
           "comment": {
             "description": "Returns only the body, as plain text. Similar to [`Body.text()`](https://developer.mozilla.org/en-US/docs/Web/API/Body/text).",
@@ -1584,7 +1591,7 @@
         "line": 16,
         "file": "fetch.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/fetch.ts#L16"
+        "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/fetch.ts#L16"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1607,14 +1614,7 @@
             ],
             "modifierTags": []
           },
-          "typeParameters": [
-            {
-              "id": 3,
-              "name": "R",
-              "constraint": null,
-              "default": null
-            }
-          ],
+          "typeParameters": [],
           "parameters": [
             {
               "id": 4,
@@ -1638,6 +1638,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -1658,6 +1659,7 @@
                 "id": 73,
                 "name": "FetchResultTypes.JSON",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -1667,12 +1669,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": 3,
                 "name": "R",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -1691,14 +1695,7 @@
             ],
             "modifierTags": []
           },
-          "typeParameters": [
-            {
-              "id": 7,
-              "name": "R",
-              "constraint": null,
-              "default": null
-            }
-          ],
+          "typeParameters": [],
           "parameters": [
             {
               "id": 8,
@@ -1722,6 +1719,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -1742,6 +1740,7 @@
                 "id": 120,
                 "name": "RequestOptions",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             },
@@ -1760,6 +1759,7 @@
                 "id": 73,
                 "name": "FetchResultTypes.JSON",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -1769,12 +1769,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": 7,
                 "name": "R",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -1817,6 +1819,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -1837,6 +1840,7 @@
                 "id": 74,
                 "name": "FetchResultTypes.Buffer",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -1846,12 +1850,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": null,
                 "name": "__global.Buffer",
                 "packageName": "@types/node",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -1894,6 +1900,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -1914,6 +1921,7 @@
                 "id": 120,
                 "name": "RequestOptions",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             },
@@ -1932,6 +1940,7 @@
                 "id": 74,
                 "name": "FetchResultTypes.Buffer",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -1941,12 +1950,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": null,
                 "name": "__global.Buffer",
                 "packageName": "@types/node",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -1989,6 +2000,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2009,6 +2021,7 @@
                 "id": 75,
                 "name": "FetchResultTypes.Blob",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2018,12 +2031,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": null,
                 "name": "Blob",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -2066,6 +2081,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2086,6 +2102,7 @@
                 "id": 120,
                 "name": "RequestOptions",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             },
@@ -2104,6 +2121,7 @@
                 "id": 75,
                 "name": "FetchResultTypes.Blob",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2113,12 +2131,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": null,
                 "name": "Blob",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -2161,6 +2181,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2181,6 +2202,7 @@
                 "id": 76,
                 "name": "FetchResultTypes.Text",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2190,6 +2212,7 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "intrinsic",
@@ -2235,6 +2258,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2255,6 +2279,7 @@
                 "id": 120,
                 "name": "RequestOptions",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             },
@@ -2273,6 +2298,7 @@
                 "id": 76,
                 "name": "FetchResultTypes.Text",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2282,6 +2308,7 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "intrinsic",
@@ -2327,6 +2354,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2347,6 +2375,7 @@
                 "id": 77,
                 "name": "FetchResultTypes.Result",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2356,12 +2385,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": null,
                 "name": "Response",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -2404,6 +2435,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2424,6 +2456,7 @@
                 "id": 120,
                 "name": "RequestOptions",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             },
@@ -2442,6 +2475,7 @@
                 "id": 77,
                 "name": "FetchResultTypes.Result",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2451,12 +2485,14 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "reference",
                 "id": null,
                 "name": "Response",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
@@ -2475,14 +2511,7 @@
             ],
             "modifierTags": []
           },
-          "typeParameters": [
-            {
-              "id": 40,
-              "name": "R",
-              "constraint": null,
-              "default": null
-            }
-          ],
+          "typeParameters": [],
           "parameters": [
             {
               "id": 41,
@@ -2506,6 +2535,7 @@
                     "id": null,
                     "name": "URL",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2526,6 +2556,7 @@
                 "id": 120,
                 "name": "RequestOptions",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             },
@@ -2544,6 +2575,7 @@
                 "id": 72,
                 "name": "FetchResultTypes",
                 "packageName": "@sapphire/fetch",
+                "packageVersion": null,
                 "typeArguments": []
               }
             }
@@ -2553,6 +2585,7 @@
             "id": null,
             "name": "Promise",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "union",
@@ -2562,6 +2595,7 @@
                     "id": null,
                     "name": "Response",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   },
                   {
@@ -2569,6 +2603,7 @@
                     "id": null,
                     "name": "Blob",
                     "packageName": "typescript",
+                    "packageVersion": null,
                     "typeArguments": []
                   },
                   {
@@ -2576,6 +2611,7 @@
                     "id": null,
                     "name": "__global.Buffer",
                     "packageName": "@types/node",
+                    "packageVersion": null,
                     "typeArguments": []
                   },
                   {
@@ -2587,6 +2623,7 @@
                     "id": 40,
                     "name": "R",
                     "packageName": "@sapphire/fetch",
+                    "packageVersion": null,
                     "typeArguments": []
                   }
                 ]
@@ -2605,7 +2642,7 @@
         "line": 269,
         "file": "types.ts",
         "path": "packages/fetch/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L269"
+        "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L269"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2623,7 +2660,7 @@
             "line": 270,
             "file": "types.ts",
             "path": "packages/fetch/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/78c5a5bb01a3640b458f95726937a991c4f5bb69/packages/fetch/src/lib/types.ts#L270"
+            "url": "https://github.com/sapphiredev/utilities/blob/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca/packages/fetch/src/lib/types.ts#L270"
           },
           "comment": {
             "description": null,
@@ -2645,6 +2682,7 @@
                 "id": null,
                 "name": "BodyInit",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": []
               },
               {
@@ -2652,6 +2690,7 @@
                 "id": null,
                 "name": "Record",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": [
                   {
                     "kind": "intrinsic",
@@ -2688,6 +2727,7 @@
             "id": null,
             "name": "RequestCache",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2713,6 +2753,7 @@
             "id": null,
             "name": "RequestCredentials",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2738,6 +2779,7 @@
             "id": null,
             "name": "HeadersInit",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2829,6 +2871,7 @@
             "id": null,
             "name": "RequestMode",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2854,6 +2897,7 @@
             "id": null,
             "name": "RequestPriority",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2879,6 +2923,7 @@
             "id": null,
             "name": "RequestRedirect",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2926,6 +2971,7 @@
             "id": null,
             "name": "ReferrerPolicy",
             "packageName": "typescript",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -2958,6 +3004,7 @@
                 "id": null,
                 "name": "AbortSignal",
                 "packageName": "typescript",
+                "packageVersion": null,
                 "typeArguments": []
               }
             ]
