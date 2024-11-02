@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "dependencies": {},
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/string-store\n\n**High-capacity raw data storage in UTF-16 strings.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/string-store?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/string-store)\n[![npm](https://img.shields.io/npm/v/@sapphire/string-store?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/string-store)\n\n</div>\n\n## Description\n\nA package that can store large chunks of data in a short UTF-16 string, useful for storing data in length-limited\nlocations such as Discord's `custom_id` field in message components.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM, and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/string-store\n```\n\n## Usage\n\n**Note**: While this section uses `require`, the imports match 1:1 with ESM imports. For example, `const { SchemaStore } = require('@sapphire/string-store')` is equivalent to `import { SchemaStore } from '@sapphire/string-store'`.\n\n```ts\n// Require the store classes\nconst { SchemaStore, Schema, t } = require('@sapphire/string-store');\n\nconst Id = {\n\tAgeUpdate: 0,\n\tStrengthUpdate: 1,\n\tPlanet: 2,\n\tUser: 3\n};\n\n// Create the store\nconst store = new SchemaStore()\n\t// Add a schema with an age field stored as a int32:\n\t// Schema<Id.AgeUpdate, { age: number }>\n\t.add(new Schema(Id.AgeUpdate).int32('age'))\n\t// Add a schema with a strength field stored as a float32:\n\t// Schema<Id.StrengthUpdate, { strength: number }>\n\t.add(new Schema(Id.StrengthUpdate).float32('strength'));\n\n// Serialize an `Id.AgeUpdate` object into a string containing:\n// - The schema ID (0)\n// - The age field (20)\nconst buffer = store.serialize(Id.AgeUpdate, { age: 20 }).toString();\n```\n\n> [!Tip]\n> The serialized string is encoded in UTF-16, meaning it can store 16 bits per character. Each type stores a different number of bits, for example, a single character can store:\n>\n> -   16 booleans\n> -   8 2-bit unsigned integers (0-3)\n> -   4 4-bit unsigned integers (0-15)\n> -   2 8-bit unsigned integers (0-255)\n> -   1 16-bit integer (0-65535)\n>\n> As a use-case, Discord's `custom_id` field in message components can store up to **100** UTF-16 characters, which means it has a storage of **1600 bits**, below you can see the supported types and their storage in bits. Keep in mind that the schema ID is stored as a [16-bit](#int16) integer, and that the property names are **not** stored.\n\nThe schema can be defined using the following methods:\n\n### `array`\n\nAdds an array with a dynamic length to the schema.\n\n```ts\n// A schema with a single field `names` that is an array of strings:\n\nconst schema = new Schema(Id.Planets).array('names', t.string);\n// → Schema<Id.Planets, { names: string[] }>\n```\n\nTo track the length of the array, it will serialize a [16-bit](#int16) unsigned integer before the array.\n\n### `fixedLengthArray`\n\nAn alternative to [`array`](#array) that has a fixed length. This variant requires the exact number of elements to be\nserialized, but it will save space by not storing the length of the array.\n\n```ts\n// A schema with a single field `names` that is an array of exactly 3 strings:\n\nconst schema = new Schema(Id.Planets).fixedLengthArray('names', t.string, 3);\n// → Schema<Id.Planets, { names: [string, string, string] }>\n```\n\n### `string`\n\nAdds a string to the schema.\n\n```ts\n// A schema with a single field `name` that is a string:\n\nconst schema = new Schema(Id.Planet).string('name');\n// → Schema<Id.Planets, { name: string }>\n```\n\nThe string is serialized as UTF-8, and the length is serialized as a [16-bit](#int16) unsigned integer before the string.\n\n### `boolean`\n\nAdds a boolean (single bit) to the schema.\n\n```ts\n// A schema with a single field `isHabitable` that is a boolean:\n\nconst schema = new Schema(Id.Planet).boolean('isHabitable');\n// → Schema<Id.Planets, { isHabitable: boolean }>\n```\n\n### `bit`\n\nAdds a bit (0 or 1) to the schema. This is a numeric version of [`boolean`](#boolean).\n\n```ts\n// A schema with a single field `isHabitable` that is a bit:\n\nconst schema = new Schema(Id.Planet).bit('isHabitable');\n// → Schema<Id.Planets, { isHabitable: 0 | 1 }>\n```\n\n### `int2`\n\nAdds a 2-bit signed integer to the schema. It can store values from -2 to 1, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 2-bit signed integer:\n\nconst schema = new Schema(Id.Planet).int2('type');\n// → Schema<Id.Planets, { type: -2 | -1 | 0 | 1 }>\n```\n\n### `uint2`\n\nAdds a 2-bit unsigned integer to the schema. It can store values from 0 to 3, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 2-bit unsigned integer:\n\nconst schema = new Schema(Id.Planet).uint2('type');\n// → Schema<Id.Planets, { type: 0 | 1 | 2 | 3 }>\n```\n\n### `int4`\n\nAdds a 4-bit signed integer to the schema. It can store values from -8 to 7, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 4-bit signed integer:\n\nconst schema = new Schema(Id.Planet).int4('type');\n// → Schema<Id.Planets, { type: -8..=7 }>\n```\n\n### `uint4`\n\nAdds a 4-bit unsigned integer to the schema. It can store values from 0 to 15, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 4-bit unsigned integer:\n\nconst schema = new Schema(Id.Planet).uint4('type');\n// → Schema<Id.Planets, { type: 0..=15 }>\n```\n\n### `int8`\n\nAdds an 8-bit signed integer to the schema. It can store values from -128 to 127, inclusive.\n\n```ts\n// A schema with a single field `type` that is an 8-bit signed integer:\n\nconst schema = new Schema(Id.Planet).int8('type');\n// → Schema<Id.Planets, { type: -128..=127 }>\n```\n\n### `uint8`\n\nAdds an 8-bit unsigned integer to the schema. It can store values from 0 to 255, inclusive.\n\n```ts\n// A schema with a single field `type` that is an 8-bit unsigned integer:\n\nconst schema = new Schema(Id.Planet).uint8('type');\n// → Schema<Id.Planets, { type: 0..=255 }>\n```\n\n### `int16`\n\nAdds a 16-bit signed integer to the schema. It can store values from -32768 to 32767, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 16-bit signed integer:\n\nconst schema = new Schema(Id.Planet).int16('type');\n// → Schema<Id.Planets, { type: -32768..=32767 }>\n```\n\n### `uint16`\n\nAdds a 16-bit unsigned integer to the schema. It can store values from 0 to 65535, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 16-bit unsigned integer:\n\nconst schema = new Schema(Id.Planet).uint16('type');\n// → Schema<Id.Planets, { type: 0..=65535 }>\n```\n\n### `int32`\n\nAdds a 32-bit signed integer to the schema. It can store values from 2,147,483,648 to 2,147,483,647, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 32-bit signed integer:\n\nconst schema = new Schema(Id.Planet).int32('type');\n// → Schema<Id.Planets, { type: 2_147_483_648..=2_147_483_647 }>\n```\n\n### `uint32`\n\nAdds a 32-bit unsigned integer to the schema. It can store values from 0 to 4,294,967,295, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 32-bit unsigned integer:\n\nconst schema = new Schema(Id.Planet).uint32('type');\n// → Schema<Id.Planets, { type: 0..=4294967295 }>\n```\n\n### `int64`\n\nAdds a 64-bit signed integer to the schema. It can store values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807, inclusive.\n\n**Note**: values smaller than `Number.MIN_SAFE_INTEGER` or larger than `Number.MAX_SAFE_INTEGER` will lose precision, if you need to store larger numbers, consider using [`bigInt64`](#bigint64).\n\n```ts\n// A schema with a single field `type` that is a 64-bit signed integer:\n\nconst schema = new Schema(Id.Planet).int64('type');\n// → Schema<Id.Planets, { type: -9_223_372_036_854_775_808..=9_223_372_036_854_775_807 }>\n```\n\n### `uint64`\n\nAdds a 64-bit unsigned integer to the schema. It can store values from 0 to 18,446,744,073,709,551,615, inclusive.\n\n**Note**: values larger than 9,007,199,254,740,991 (`Number.MAX_SAFE_INTEGER`) will lose precision, if you need to store larger numbers, use [`bigUint64`](#bigUint64).\n\n```ts\n// A schema with a single field `type` that is a 64-bit unsigned integer:\n\nconst schema = new Schema(Id.Planet).uint64('type');\n// → Schema<Id.Planets, { type: 0..=18_446_744_073_709_551_615 }>\n```\n\n**Note**: values larger than `Number.MAX_SAFE_INTEGER` will be truncated.\n\n### `bigInt32`\n\nAlternative to [`int32`](#int32) that uses `BigInt`. It can store values from 2,147,483,648 to 2,147,483,647, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 32-bit integer:\n\nconst schema = new Schema(Id.Planet).bigInt32('type');\n// → Schema<Id.Planets, { type: 2_147_483_648n..=2_147_483_647n }>\n```\n\n### `bigUint32`\n\nAlternative to [`uint32`](#uint32) that uses `BigInt`. It can store values from 0 to 4,294,967,295, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 32-bit integer:\n\nconst schema = new Schema(Id.Planet).bigUint32('type');\n// → Schema<Id.Planets, { type: 0n..=4294967295n }>\n```\n\n### `bigInt64`\n\nAlternative to [`int64`](#int64) that uses `BigInt`. It can store values from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 64-bit integer:\n\nconst schema = new Schema(Id.Planet).bigInt64('type');\n// → Schema<Id.Planets, { type: -9_223_372_036_854_775_808n..=9_223_372_036_854_775_807n }>\n```\n\n### `bigUint64`\n\nAlternative to [`uint64`](#uint64) that uses `BigInt`. It can store values from 0 to 18,446,744,073,709,551,615, inclusive.\n\n```ts\n// A schema with a single field `type` that is a 64-bit integer:\n\nconst schema = new Schema(Id.Planet).bigUint64('type');\n// → Schema<Id.Planets, { type: 0n..=18_446_744_073_709_551_615n }>\n```\n\n### `float32`\n\nAdds a 32-bit floating-point number to the schema.\n\n```ts\n// A schema with a single field `radius` that is a 32-bit floating-point number:\n\nconst schema = new Schema(Id.Planet).float32('radius');\n// → Schema<Id.Planets, { radius: number }>\n```\n\n### `float64`\n\nAdds a 64-bit floating-point number to the schema.\n\n```ts\n// A schema with a single field `radius` that is a 64-bit floating-point number:\n\nconst schema = new Schema(Id.Planet).float64('radius');\n// → Schema<Id.Planets, { radius: number }>\n```\n\n### `snowflake`\n\nAdds a 64-bit snowflake to the schema.\n\n```ts\nconst schema = new Schema(Id.User).snowflake('id');\n// → Schema<Id.User, { id: bigint }>\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon, and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
-  "changelog": null,
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/string-store@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/string-store@1.0.0) - (2024-11-02)\n\n## 🏃 Performance\n\n- Implement fast word writing ([f63a9a1](https://github.com/sapphiredev/utilities/commit/f63a9a1165209c8367202d98233cea1837f01f1d)) ([#787](https://github.com/sapphiredev/utilities/pull/787) by @kyranet)\n\n## 🐛 Bug Fixes\n\n- Move browser imports ([100ffb0](https://github.com/sapphiredev/utilities/commit/100ffb0a2471bb9f74cc580d282d11059e1a0a68)) ([#826](https://github.com/sapphiredev/utilities/pull/826) by @kyranet)\n\n## 📝 Documentation\n\n- Grammar and use `t.type` ([6f32cac](https://github.com/sapphiredev/utilities/commit/6f32caca7ba5e1a9578e672c9e939f3855cf69e6)) ([#781](https://github.com/sapphiredev/utilities/pull/781) by @kyranet)\n\n## 🚀 Features\n\n- Add buffer utilities ([2e9590b](https://github.com/sapphiredev/utilities/commit/2e9590be59d57310b276365b372ba2602f3d665d)) ([#779](https://github.com/sapphiredev/utilities/pull/779) by @kyranet)\n- Add signed ints ([68ee882](https://github.com/sapphiredev/utilities/commit/68ee882a8b13efcfb8d5bd01fabc23600f711e46)) ([#778](https://github.com/sapphiredev/utilities/pull/778) by @kyranet)\n- Added string-store ([4c3de5e](https://github.com/sapphiredev/utilities/commit/4c3de5ebb8ced1a6b6d65fdee29caf731651a0fe)) ([#118](https://github.com/sapphiredev/utilities/pull/118) by @kyranet)\n\n",
   "classes": [
     {
       "id": 202,
@@ -14,7 +14,7 @@
         "line": 16,
         "file": "Pointer.ts",
         "path": "lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/shared/Pointer.ts#L16"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/shared/Pointer.ts#L16"
       },
       "namespaceParentId": null,
       "comment": {
@@ -48,7 +48,7 @@
             "line": 17,
             "file": "Pointer.ts",
             "path": "lib/shared",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/shared/Pointer.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/shared/Pointer.ts#L17"
           },
           "comment": {
             "description": null,
@@ -73,7 +73,7 @@
             "line": 19,
             "file": "Pointer.ts",
             "path": "lib/shared",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/shared/Pointer.ts#L19"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/shared/Pointer.ts#L19"
           },
           "comment": {
             "description": null,
@@ -100,7 +100,7 @@
             "line": 23,
             "file": "Pointer.ts",
             "path": "lib/shared",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/shared/Pointer.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/shared/Pointer.ts#L23"
           },
           "parentId": 202,
           "accessibility": "public",
@@ -151,7 +151,7 @@
             "line": 33,
             "file": "Pointer.ts",
             "path": "lib/shared",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/shared/Pointer.ts#L33"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/shared/Pointer.ts#L33"
           },
           "parentId": 202,
           "accessibility": "public",
@@ -208,7 +208,7 @@
         "line": 5,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -253,7 +253,7 @@
           "line": 15,
           "file": "Schema.ts",
           "path": "lib/schema",
-          "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L15"
+          "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L15"
         },
         "comment": {
           "description": null,
@@ -292,7 +292,7 @@
             "line": 8,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L8"
           },
           "comment": {
             "description": null,
@@ -326,7 +326,7 @@
             "line": 6,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L6"
           },
           "comment": {
             "description": null,
@@ -355,7 +355,7 @@
             "line": 7,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L7"
           },
           "comment": {
             "description": null,
@@ -415,7 +415,7 @@
             "line": 34,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L34"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L34"
           },
           "comment": {
             "description": "The total bit size of the schema.",
@@ -454,7 +454,7 @@
             "line": 22,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L22"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L22"
           },
           "comment": {
             "description": "The id of the schema.",
@@ -485,7 +485,7 @@
             "line": 464,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L464"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L464"
           },
           "parentId": 1,
           "accessibility": "private",
@@ -626,7 +626,7 @@
             "line": 460,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L460"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L460"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -742,7 +742,7 @@
             "line": 103,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L103"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L103"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -891,7 +891,7 @@
             "line": 340,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L340"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L340"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -997,7 +997,7 @@
             "line": 368,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L368"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L368"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1103,7 +1103,7 @@
             "line": 354,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L354"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L354"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1209,7 +1209,7 @@
             "line": 382,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L382"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L382"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1315,7 +1315,7 @@
             "line": 154,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L154"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L154"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1417,7 +1417,7 @@
             "line": 144,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L144"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L144"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1519,7 +1519,7 @@
             "line": 84,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L84"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L84"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1611,7 +1611,7 @@
             "line": 451,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L451"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L451"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1727,7 +1727,7 @@
             "line": 120,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L120"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L120"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1910,7 +1910,7 @@
             "line": 396,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L396"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L396"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2016,7 +2016,7 @@
             "line": 410,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L410"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L410"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2122,7 +2122,7 @@
             "line": 48,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L48"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L48"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2197,7 +2197,7 @@
             "line": 252,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L252"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L252"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2303,7 +2303,7 @@
             "line": 168,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L168"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L168"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2409,7 +2409,7 @@
             "line": 280,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L280"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L280"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2515,7 +2515,7 @@
             "line": 196,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L196"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L196"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2621,7 +2621,7 @@
             "line": 310,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L310"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L310"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2727,7 +2727,7 @@
             "line": 224,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L224"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L224"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2833,7 +2833,7 @@
             "line": 433,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L433"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L433"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2895,7 +2895,7 @@
             "line": 65,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L65"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2988,7 +2988,7 @@
             "line": 424,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L424"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L424"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3094,7 +3094,7 @@
             "line": 134,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L134"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L134"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3196,7 +3196,7 @@
             "line": 266,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L266"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L266"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3302,7 +3302,7 @@
             "line": 182,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L182"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L182"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3408,7 +3408,7 @@
             "line": 294,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L294"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L294"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3514,7 +3514,7 @@
             "line": 210,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L210"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L210"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3620,7 +3620,7 @@
             "line": 326,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L326"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L326"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3726,7 +3726,7 @@
             "line": 238,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L238"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L238"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3832,7 +3832,7 @@
             "line": 442,
             "file": "Schema.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L442"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L442"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3933,7 +3933,7 @@
         "line": 5,
         "file": "SchemaStore.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3966,7 +3966,7 @@
           "line": 18,
           "file": "SchemaStore.ts",
           "path": "lib/schema",
-          "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L18"
+          "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L18"
         },
         "comment": {
           "description": null,
@@ -4001,7 +4001,7 @@
             "line": 11,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L11"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L11"
           },
           "comment": {
             "description": null,
@@ -4052,7 +4052,7 @@
             "line": 9,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L9"
           },
           "comment": {
             "description": "The default maximum array length for schemas",
@@ -4079,7 +4079,7 @@
             "line": 117,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L117"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L117"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4204,7 +4204,7 @@
             "line": 32,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L32"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L32"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4327,7 +4327,7 @@
             "line": 77,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L77"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L77"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4405,7 +4405,7 @@
             "line": 108,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L108"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L108"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4530,7 +4530,7 @@
             "line": 51,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L51"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L51"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4605,7 +4605,7 @@
             "line": 90,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L90"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L90"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4667,7 +4667,7 @@
             "line": 64,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L64"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L64"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4784,7 +4784,7 @@
             "line": 99,
             "file": "SchemaStore.ts",
             "path": "lib/schema",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L99"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L99"
           },
           "parentId": 158,
           "accessibility": "public",
@@ -4859,7 +4859,7 @@
         "line": 14,
         "file": "UnalignedUint16Array.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L14"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4879,7 +4879,7 @@
           "line": 20,
           "file": "UnalignedUint16Array.ts",
           "path": "lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L20"
+          "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L20"
         },
         "comment": {
           "description": null,
@@ -4914,7 +4914,7 @@
             "line": 16,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L16"
           },
           "comment": {
             "description": null,
@@ -4939,7 +4939,7 @@
             "line": 15,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L15"
           },
           "comment": {
             "description": null,
@@ -4968,7 +4968,7 @@
             "line": 17,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L17"
           },
           "comment": {
             "description": null,
@@ -4993,7 +4993,7 @@
             "line": 18,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L18"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L18"
           },
           "comment": {
             "description": null,
@@ -5018,7 +5018,7 @@
             "line": 36,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L36"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L36"
           },
           "comment": {
             "description": null,
@@ -5043,7 +5043,7 @@
             "line": 32,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L32"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L32"
           },
           "comment": {
             "description": null,
@@ -5068,7 +5068,7 @@
             "line": 28,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L28"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L28"
           },
           "comment": {
             "description": null,
@@ -5093,7 +5093,7 @@
             "line": 24,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L24"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L24"
           },
           "comment": {
             "description": null,
@@ -5120,7 +5120,7 @@
             "line": 232,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L232"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L232"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5171,7 +5171,7 @@
             "line": 237,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L237"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L237"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5222,7 +5222,7 @@
             "line": 244,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L244"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L244"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5273,7 +5273,7 @@
             "line": 271,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L271"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L271"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5320,7 +5320,7 @@
             "line": 211,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L211"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L211"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5371,7 +5371,7 @@
             "line": 219,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L219"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L219"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5422,7 +5422,7 @@
             "line": 255,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L255"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L255"
           },
           "parentId": 315,
           "accessibility": "private",
@@ -5469,7 +5469,7 @@
             "line": 168,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L168"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L168"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5520,7 +5520,7 @@
             "line": 178,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L178"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L178"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5571,7 +5571,7 @@
             "line": 173,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L173"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L173"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5622,7 +5622,7 @@
             "line": 183,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L183"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L183"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5673,7 +5673,7 @@
             "line": 100,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L100"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L100"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5733,7 +5733,7 @@
             "line": 188,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L188"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L188"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5784,7 +5784,7 @@
             "line": 193,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L193"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L193"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5835,7 +5835,7 @@
             "line": 139,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L139"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L139"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5886,7 +5886,7 @@
             "line": 105,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L105"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L105"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5937,7 +5937,7 @@
             "line": 150,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L150"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L150"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -5988,7 +5988,7 @@
             "line": 117,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L117"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L117"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6039,7 +6039,7 @@
             "line": 160,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L160"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L160"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6090,7 +6090,7 @@
             "line": 128,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L128"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L128"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6141,7 +6141,7 @@
             "line": 145,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L145"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L145"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6192,7 +6192,7 @@
             "line": 112,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L112"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L112"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6243,7 +6243,7 @@
             "line": 155,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L155"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L155"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6294,7 +6294,7 @@
             "line": 123,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L123"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L123"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6345,7 +6345,7 @@
             "line": 164,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L164"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L164"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6396,7 +6396,7 @@
             "line": 134,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L134"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L134"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6447,7 +6447,7 @@
             "line": 207,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L207"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L207"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6482,7 +6482,7 @@
             "line": 198,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L198"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L198"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6513,7 +6513,7 @@
             "line": 72,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L72"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L72"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6560,7 +6560,7 @@
             "line": 78,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L78"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L78"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6607,7 +6607,7 @@
             "line": 40,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L40"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L40"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6654,7 +6654,7 @@
             "line": 86,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L86"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L86"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6701,7 +6701,7 @@
             "line": 92,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L92"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L92"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6748,7 +6748,7 @@
             "line": 59,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L59"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L59"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6795,7 +6795,7 @@
             "line": 44,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L44"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L44"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6842,7 +6842,7 @@
             "line": 63,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L63"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L63"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6889,7 +6889,7 @@
             "line": 49,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L49"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L49"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6936,7 +6936,7 @@
             "line": 68,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L68"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L68"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -6983,7 +6983,7 @@
             "line": 54,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L54"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L54"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -7030,7 +7030,7 @@
             "line": 299,
             "file": "UnalignedUint16Array.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/UnalignedUint16Array.ts#L299"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/UnalignedUint16Array.ts#L299"
           },
           "parentId": 315,
           "accessibility": "public",
@@ -7099,7 +7099,7 @@
         "line": 35,
         "file": "utilities.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/utilities.ts#L35"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/utilities.ts#L35"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7158,7 +7158,7 @@
         "line": 20,
         "file": "utilities.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/utilities.ts#L20"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/utilities.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7219,7 +7219,7 @@
         "line": 4,
         "file": "IType.ts",
         "path": "lib/types/base",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/base/IType.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/base/IType.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7262,7 +7262,7 @@
             "line": 24,
             "file": "IType.ts",
             "path": "lib/types/base",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/base/IType.ts#L24"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/base/IType.ts#L24"
           },
           "comment": {
             "description": "The size of the value in bits, or `null` if the size is variable.",
@@ -7290,7 +7290,7 @@
             "line": 19,
             "file": "IType.ts",
             "path": "lib/types/base",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/base/IType.ts#L19"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/base/IType.ts#L19"
           },
           "parentId": 303,
           "signatures": [
@@ -7361,7 +7361,7 @@
             "line": 11,
             "file": "IType.ts",
             "path": "lib/types/base",
-            "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/base/IType.ts#L11"
+            "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/base/IType.ts#L11"
           },
           "parentId": 303,
           "signatures": [
@@ -7442,7 +7442,7 @@
         "line": 132,
         "file": "SchemaStore.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L132"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L132"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7578,7 +7578,7 @@
         "line": 494,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L494"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L494"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7708,7 +7708,7 @@
         "line": 129,
         "file": "SchemaStore.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L129"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L129"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7843,7 +7843,7 @@
         "line": 491,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L491"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L491"
       },
       "namespaceParentId": null,
       "comment": {
@@ -7924,7 +7924,7 @@
         "line": 126,
         "file": "SchemaStore.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L126"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L126"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8001,7 +8001,7 @@
         "line": 44,
         "file": "Pointer.ts",
         "path": "lib/shared",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/shared/Pointer.ts#L44"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/shared/Pointer.ts#L44"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8102,7 +8102,7 @@
         "line": 1,
         "file": "utilities.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/utilities.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/utilities.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8213,7 +8213,7 @@
         "line": 499,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L499"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L499"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8290,7 +8290,7 @@
         "line": 498,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L498"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L498"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8383,7 +8383,7 @@
         "line": 497,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L497"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L497"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8451,7 +8451,7 @@
         "line": 492,
         "file": "Schema.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/Schema.ts#L492"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/Schema.ts#L492"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8564,7 +8564,7 @@
         "line": 127,
         "file": "SchemaStore.ts",
         "path": "lib/schema",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/schema/SchemaStore.ts#L127"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/schema/SchemaStore.ts#L127"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8654,7 +8654,7 @@
         "line": 3,
         "file": "BigInt32.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/BigInt32.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/BigInt32.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8689,7 +8689,7 @@
         "line": 3,
         "file": "BigInt64.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/BigInt64.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/BigInt64.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8724,7 +8724,7 @@
         "line": 3,
         "file": "BigUint32.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/BigUint32.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/BigUint32.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8759,7 +8759,7 @@
         "line": 3,
         "file": "BigUint64.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/BigUint64.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/BigUint64.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8794,7 +8794,7 @@
         "line": 3,
         "file": "Bit.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Bit.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Bit.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8829,7 +8829,7 @@
         "line": 3,
         "file": "Boolean.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Boolean.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Boolean.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8864,7 +8864,7 @@
         "line": 3,
         "file": "Float32.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Float32.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Float32.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8899,7 +8899,7 @@
         "line": 3,
         "file": "Float64.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Float64.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Float64.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8934,7 +8934,7 @@
         "line": 3,
         "file": "Int16.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Int16.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Int16.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -8969,7 +8969,7 @@
         "line": 3,
         "file": "Int2.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Int2.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Int2.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9004,7 +9004,7 @@
         "line": 3,
         "file": "Int32.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Int32.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Int32.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9039,7 +9039,7 @@
         "line": 3,
         "file": "Int4.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Int4.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Int4.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9074,7 +9074,7 @@
         "line": 3,
         "file": "Int64.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Int64.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Int64.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9109,7 +9109,7 @@
         "line": 3,
         "file": "Int8.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Int8.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Int8.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9144,7 +9144,7 @@
         "line": 3,
         "file": "Snowflake.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Snowflake.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Snowflake.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9308,7 +9308,7 @@
         "line": 5,
         "file": "String.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/String.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/String.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9343,7 +9343,7 @@
         "line": 3,
         "file": "Uint16.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Uint16.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Uint16.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9378,7 +9378,7 @@
         "line": 3,
         "file": "Uint2.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Uint2.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Uint2.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9413,7 +9413,7 @@
         "line": 3,
         "file": "Uint32.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Uint32.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Uint32.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9448,7 +9448,7 @@
         "line": 3,
         "file": "Uint4.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Uint4.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Uint4.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9483,7 +9483,7 @@
         "line": 3,
         "file": "Uint64.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Uint64.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Uint64.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9518,7 +9518,7 @@
         "line": 3,
         "file": "Uint8.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/Uint8.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/Uint8.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -9553,7 +9553,7 @@
         "line": 27,
         "file": "index.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/utilities/blob/ba915f93ce0907828ba17b2d5ae009631ceb860d/packages/string-store/src/lib/types/index.ts#L27"
+        "url": "https://github.com/sapphiredev/utilities/blob/8490b4d9cd44858d6c2759660b712bdb25b23b57/packages/string-store/src/lib/types/index.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
