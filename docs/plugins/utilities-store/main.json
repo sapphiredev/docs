@@ -1,8 +1,9 @@
 {
-  "typeDocJsonParserVersion": "10.0.0",
+  "typeDocJsonParserVersion": "10.2.0",
   "id": 0,
   "name": "@sapphire/plugin-utilities-store",
   "version": "2.0.2",
+  "dependencies": {},
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/plugin-utilities-store\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to have a Sapphire store which you can fill with utility functions available through the container.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-api?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-api)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-api?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-api)\n\n</div>\n\n## Description\n\nWhen writing a bot you often have many external utility functions and to have some centralized place to access them from it is useful to have an automatically imported utilities store. This plugin provides a store that you can fill with utility functions and access them from the container.\n\n**Please note that utility functions are available on the Sapphire `container` only after the bot has logged in, any functions required before logging in should be exported through normal module loading means.**\n\n## Installation\n\n`@sapphire/plugin-utilities-store` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-utilities-store\n```\n\n---\n\n## Usage\n\nStart by importing the registration file in your project to use the plugin:\n\n**JavaScript**\n\n```javascript\nrequire('@sapphire/plugin-utilities-store/register');\n```\n\n**TypeScript**\n\n```typescript\nimport '@sapphire/plugin-utilities-store/register';\n```\n\n-   Create a new `utilities` directory under `/src`\n-   Make your first utility piece:\n\n```typescript\nimport { Utility } from '@sapphire/plugin-utilities-store';\n\nexport class SumUtility extends Utility {\n\tpublic constructor(context: Utility.LoaderContext, options: Utility.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tname: 'sum'\n\t\t});\n\t}\n\n\tpublic add(numberOne: number, numberTwo: number) {\n\t\treturn numberOne + numberTwo;\n\t}\n\n\tpublic subtract(numberOne: number, numberTwo: number) {\n\t\treturn numberOne - numberTwo;\n\t}\n}\n```\n\nIn this example we simply add and subtract two numbers. You can pass any arguments you wish to the utility function, and it will execute as written.\n\nIn order for TypeScript to know about your utility functions and their arguments you need to do leverage module augmentation. `SumUtility` here is the piece class as defined in the example above.\n\n```typescript\ndeclare module '@sapphire/plugin-utilities-store' {\n\texport interface Utilities {\n\t\tsum: SumUtility;\n\t}\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-utilities-store@2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-utilities-store@2.0.2...@sapphire/plugin-utilities-store@2.0.2) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Ensure cts file extensions in dist/cjs (#537) ([6f863f8](https://github.com/sapphiredev/plugins/commit/6f863f8187b7028cf6464dd04f197dd1be6ca1dd))\n\n# [@sapphire/plugin-utilities-store@2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-utilities-store@2.0.1...@sapphire/plugin-utilities-store@2.0.1) - (2023-12-05)\n\n## ↩️ Revert\n\n- \"refactor(register): cleanup unnecessary side effect imports of index\" ([c2af242](https://github.com/sapphiredev/plugins/commit/c2af24269956132237988d94e4d94719b2cd442c))\n\n# [@sapphire/plugin-utilities-store@2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-utilities-store@2.0.0...@sapphire/plugin-utilities-store@2.0.0) - (2023-12-05)\n\n## 🏠 Refactor\n\n- **register:** Cleanup unnecessary side effect imports of index ([dede596](https://github.com/sapphiredev/plugins/commit/dede596ae22ceec2700dd860287a1260f092b502))\n\n## 🚀 Features\n\n- Split ESM and CJS bundles for proper ESM and CJS loading (#512) ([d9aa006](https://github.com/sapphiredev/plugins/commit/d9aa006ff8c7f78a613dcca605d3353b992b7a46))\n  - 💥 **BREAKING CHANGE:** This ensures that the plugins will properly load the\neither only ESM or only CJS files. This is done by outputting\ndist/cjs and dist/esm folders. This requires @sapphire/framework v5.x!\n\n# [@sapphire/plugin-utilities-store@1.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-utilities-store@1.0.3...@sapphire/plugin-utilities-store@1.0.3) - (2023-11-16)\n\n## 🏠 Refactor\n\n- Support latest /framework ([3ac929f](https://github.com/sapphiredev/plugins/commit/3ac929f1c38c2edbf00fa68d5ffef055d697e602))\n- Remove useless `registerPath` call ([8cfecaf](https://github.com/sapphiredev/plugins/commit/8cfecaf51e0fbf9f92c9f63415a8c10889b11b70))\n\n## 🐛 Bug Fixes\n\n- Set `engines.node` to `>=v18` ([885a390](https://github.com/sapphiredev/plugins/commit/885a3908d59fd00f7214ef474f2c6a3c58e95af2))\n\n# [@sapphire/plugin-utilities-store@1.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-utilities-store@1.0.1...@sapphire/plugin-utilities-store@1.0.2) - (2023-08-23)\n\n## 🏠 Refactor\n\n- ***:** Cleanup plugin registry files (#469) ([215b334](https://github.com/sapphiredev/plugins/commit/215b3348b30077238147dbc643769d960b856ba1))\n\n# [@sapphire/plugin-utilities-store@1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-utilities-store@1.0.0...@sapphire/plugin-utilities-store@1.0.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **utilities-store:** Fixed compatibility with TS 5.x ([b5177b8](https://github.com/sapphiredev/plugins/commit/b5177b86da803deefbdd2421fd4bf50fb97211e1))\n\n# [@sapphire/plugin-utilities-store@1.0.0](https://github.com/sapphiredev/plugins/tree/@sapphire/plugin-utilities-store@1.0.0) - (2023-02-18)\n\n## 🚀 Features\n\n- Add utilities-store plugin (#415) ([7766f29](https://github.com/sapphiredev/plugins/commit/7766f2997e7d0f52db30d2184c944076060f7033))\n\n",
   "classes": [
@@ -13,7 +14,7 @@
         "line": 8,
         "file": "Utilities.ts",
         "path": "packages/utilities-store/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utilities.ts#L8"
+        "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utilities.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -38,7 +39,7 @@
           "line": 18,
           "file": "Utilities.ts",
           "path": "packages/utilities-store/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utilities.ts#L18"
+          "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utilities.ts#L18"
         },
         "comment": {
           "description": null,
@@ -57,7 +58,7 @@
             "line": 13,
             "file": "Utilities.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utilities.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utilities.ts#L13"
           },
           "comment": {
             "description": "The utilities this store holds.",
@@ -80,6 +81,7 @@
             "id": 10,
             "name": "UtilitiesStore",
             "packageName": "@sapphire/plugin-utilities-store",
+            "packageVersion": null,
             "typeArguments": []
           }
         }
@@ -92,7 +94,7 @@
             "line": 28,
             "file": "Utilities.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utilities.ts#L28"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utilities.ts#L28"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -139,12 +141,14 @@
                     "id": 13,
                     "name": "Utility",
                     "packageName": "@sapphire/plugin-utilities-store",
+                    "packageVersion": null,
                     "typeArguments": [
                       {
                         "kind": "reference",
                         "id": null,
                         "name": "PieceOptions",
                         "packageName": "@sapphire/pieces",
+                        "packageVersion": null,
                         "typeArguments": []
                       }
                     ]
@@ -167,7 +171,7 @@
         "line": 7,
         "file": "UtilitiesStore.ts",
         "path": "packages/utilities-store/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/UtilitiesStore.ts#L7"
+        "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/UtilitiesStore.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -187,12 +191,14 @@
         "id": null,
         "name": "Store",
         "packageName": "@sapphire/pieces",
+        "packageVersion": null,
         "typeArguments": [
           {
             "kind": "reference",
             "id": 13,
             "name": "Utility",
             "packageName": "@sapphire/plugin-utilities-store",
+            "packageVersion": null,
             "typeArguments": []
           },
           {
@@ -210,7 +216,7 @@
           "line": 8,
           "file": "UtilitiesStore.ts",
           "path": "packages/utilities-store/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/UtilitiesStore.ts#L8"
+          "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/UtilitiesStore.ts#L8"
         },
         "comment": {
           "description": null,
@@ -231,7 +237,7 @@
         "line": 6,
         "file": "Utility.ts",
         "path": "packages/utilities-store/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L6"
+        "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -251,12 +257,14 @@
         "id": null,
         "name": "Piece",
         "packageName": "@sapphire/pieces",
+        "packageVersion": null,
         "typeArguments": [
           {
             "kind": "reference",
             "id": 16,
             "name": "Utility.Options",
             "packageName": "@sapphire/plugin-utilities-store",
+            "packageVersion": null,
             "typeArguments": []
           },
           {
@@ -275,6 +283,7 @@
             "id": 23,
             "name": "Utility.Options",
             "packageName": "@sapphire/plugin-utilities-store",
+            "packageVersion": null,
             "typeArguments": []
           },
           "default": {
@@ -282,6 +291,7 @@
             "id": 23,
             "name": "Utility.Options",
             "packageName": "@sapphire/plugin-utilities-store",
+            "packageVersion": null,
             "typeArguments": []
           }
         }
@@ -318,6 +328,7 @@
               "id": null,
               "name": "Piece.LoaderContext",
               "packageName": "@sapphire/pieces",
+              "packageVersion": null,
               "typeArguments": [
                 {
                   "kind": "literal",
@@ -341,6 +352,7 @@
               "id": null,
               "name": "PieceOptions",
               "packageName": "@sapphire/pieces",
+              "packageVersion": null,
               "typeArguments": []
             }
           }
@@ -361,7 +373,7 @@
         "line": 6,
         "file": "Utility.ts",
         "path": "packages/utilities-store/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L6"
+        "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -383,7 +395,7 @@
             "line": 10,
             "file": "Utility.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L10"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L10"
           },
           "namespaceParentId": 20,
           "comment": {
@@ -403,6 +415,7 @@
             "id": 22,
             "name": "Utility.LoaderContext",
             "packageName": "@sapphire/plugin-utilities-store",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -413,7 +426,7 @@
             "line": 13,
             "file": "Utility.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L13"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L13"
           },
           "namespaceParentId": 20,
           "comment": {
@@ -428,6 +441,7 @@
             "id": null,
             "name": "Piece.JSON",
             "packageName": "@sapphire/pieces",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -438,7 +452,7 @@
             "line": 11,
             "file": "Utility.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L11"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L11"
           },
           "namespaceParentId": 20,
           "comment": {
@@ -453,6 +467,7 @@
             "id": null,
             "name": "Piece.LoaderContext",
             "packageName": "@sapphire/pieces",
+            "packageVersion": null,
             "typeArguments": [
               {
                 "kind": "literal",
@@ -468,7 +483,7 @@
             "line": 14,
             "file": "Utility.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L14"
           },
           "namespaceParentId": 20,
           "comment": {
@@ -483,6 +498,7 @@
             "id": null,
             "name": "Piece.LocationJSON",
             "packageName": "@sapphire/pieces",
+            "packageVersion": null,
             "typeArguments": []
           }
         },
@@ -493,7 +509,7 @@
             "line": 12,
             "file": "Utility.ts",
             "path": "packages/utilities-store/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/lib/Utility.ts#L12"
+            "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/lib/Utility.ts#L12"
           },
           "namespaceParentId": 20,
           "comment": {
@@ -508,6 +524,7 @@
             "id": null,
             "name": "Piece.Options",
             "packageName": "@sapphire/pieces",
+            "packageVersion": null,
             "typeArguments": []
           }
         }
@@ -524,7 +541,7 @@
         "line": 31,
         "file": "index.ts",
         "path": "packages/utilities-store/src",
-        "url": "https://github.com/sapphiredev/plugins/blob/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3/packages/utilities-store/src/index.ts#L31"
+        "url": "https://github.com/sapphiredev/plugins/blob/21d90cf42c4fcf17bd12d27198221634e2f15017/packages/utilities-store/src/index.ts#L31"
       },
       "namespaceParentId": null,
       "comment": {
