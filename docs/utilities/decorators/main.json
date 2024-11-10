@@ -1,5 +1,5 @@
 {
-  "typeDocJsonParserVersion": "10.1.6",
+  "typeDocJsonParserVersion": "10.2.0",
   "id": 0,
   "name": "@sapphire/decorators",
   "version": "6.1.1",
@@ -17,7 +17,7 @@
         "line": 7,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -34,7 +34,7 @@
             "line": 8,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L8"
           },
           "comment": {
             "description": null,
@@ -51,7 +51,7 @@
             "line": 9,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L9"
           },
           "comment": {
             "description": null,
@@ -68,7 +68,7 @@
             "line": 10,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L10"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L10"
           },
           "comment": {
             "description": null,
@@ -85,7 +85,7 @@
             "line": 11,
             "file": "djs-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L11"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L11"
           },
           "comment": {
             "description": null,
@@ -106,7 +106,7 @@
         "line": 52,
         "file": "piece-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/piece-decorators.ts#L52"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/piece-decorators.ts#L52"
       },
       "namespaceParentId": null,
       "comment": {
@@ -133,7 +133,21 @@
             ],
             "modifierTags": []
           },
-          "typeParameters": [],
+          "typeParameters": [
+            {
+              "id": 30,
+              "name": "T",
+              "constraint": {
+                "kind": "reference",
+                "id": null,
+                "name": "PieceOptions",
+                "packageName": "@sapphire/pieces",
+                "packageVersion": null,
+                "typeArguments": []
+              },
+              "default": null
+            }
+          ],
           "parameters": [
             {
               "id": 31,
@@ -218,13 +232,263 @@
       ]
     },
     {
+      "id": 41,
+      "name": "createClassDecorator",
+      "source": {
+        "line": 43,
+        "file": "utils.ts",
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/utils.ts#L43"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 42,
+          "name": "createClassDecorator",
+          "comment": {
+            "description": "Utility to make a class decorator with lighter syntax and inferred types.",
+            "blockTags": [
+              {
+                "name": "see",
+                "text": "{@link ApplyOptions}"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [
+            {
+              "id": 43,
+              "name": "TFunction",
+              "constraint": {
+                "kind": "reflection",
+                "properties": null,
+                "signatures": [
+                  {
+                    "id": 45,
+                    "name": "__type",
+                    "comment": {
+                      "description": null,
+                      "blockTags": [],
+                      "modifierTags": []
+                    },
+                    "typeParameters": [],
+                    "parameters": [
+                      {
+                        "id": 46,
+                        "name": "args",
+                        "comment": {
+                          "description": null,
+                          "blockTags": [],
+                          "modifierTags": []
+                        },
+                        "rest": true,
+                        "optional": false,
+                        "type": {
+                          "kind": "array",
+                          "type": {
+                            "kind": "intrinsic",
+                            "type": "any"
+                          }
+                        }
+                      }
+                    ],
+                    "returnType": {
+                      "kind": "intrinsic",
+                      "type": "void"
+                    }
+                  }
+                ],
+                "methods": null
+              },
+              "default": null
+            }
+          ],
+          "parameters": [
+            {
+              "id": 47,
+              "name": "fn",
+              "comment": {
+                "description": "The class to decorate",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "rest": false,
+              "optional": false,
+              "type": {
+                "kind": "reference",
+                "id": 43,
+                "name": "TFunction",
+                "packageName": "@sapphire/decorators",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "ClassDecorator",
+            "packageName": "typescript",
+            "packageVersion": null,
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "name": "createFunctionPrecondition",
+      "source": {
+        "line": 73,
+        "file": "utils.ts",
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/utils.ts#L73"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 49,
+          "name": "createFunctionPrecondition",
+          "comment": {
+            "description": "Utility to make function preconditions.\n\n```typescript\n// No fallback (returns undefined)\nfunction requireGuild(value: number) {\n  return createFunctionPrecondition((message: Message) =>\n    message.guild !== null\n  );\n}\n\n// With fallback\nfunction requireGuild(\n  value: number,\n  fallback: () => unknown = () => undefined\n) {\n  return createFunctionPrecondition(\n    (message: Message) => message.guild !== null,\n    fallback\n  );\n}\n```",
+            "blockTags": [
+              {
+                "name": "since",
+                "text": "1.0.0"
+              }
+            ],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 50,
+              "name": "precondition",
+              "comment": {
+                "description": "The function that defines whether or not the function should be run, returning the returned value from fallback",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "rest": false,
+              "optional": false,
+              "type": {
+                "kind": "reference",
+                "id": 57,
+                "name": "FunctionPrecondition",
+                "packageName": "@sapphire/decorators",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            },
+            {
+              "id": 51,
+              "name": "fallback",
+              "comment": {
+                "description": "The fallback value that defines what the method should return in case the precondition fails",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "rest": false,
+              "optional": false,
+              "type": {
+                "kind": "reference",
+                "id": 60,
+                "name": "FunctionFallback",
+                "packageName": "@sapphire/decorators",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "packageVersion": null,
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "name": "createMethodDecorator",
+      "source": {
+        "line": 34,
+        "file": "utils.ts",
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/utils.ts#L34"
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "signatures": [
+        {
+          "id": 39,
+          "name": "createMethodDecorator",
+          "comment": {
+            "description": "Utility to make a method decorator with lighter syntax and inferred types.\n\n```typescript\n// Enumerable function\n\tfunction enumerableMethod(value: boolean) {\n\t\treturn createMethodDecorator((_target, _propertyKey, descriptor) => {\n\t\t\tdescriptor.enumerable = value;\n\t\t});\n\t}\n```",
+            "blockTags": [],
+            "modifierTags": []
+          },
+          "typeParameters": [],
+          "parameters": [
+            {
+              "id": 40,
+              "name": "fn",
+              "comment": {
+                "description": "The method to decorate",
+                "blockTags": [],
+                "modifierTags": []
+              },
+              "rest": false,
+              "optional": false,
+              "type": {
+                "kind": "reference",
+                "id": null,
+                "name": "MethodDecorator",
+                "packageName": "typescript",
+                "packageVersion": null,
+                "typeArguments": []
+              }
+            }
+          ],
+          "returnType": {
+            "kind": "reference",
+            "id": null,
+            "name": "MethodDecorator",
+            "packageName": "typescript",
+            "packageVersion": null,
+            "typeArguments": []
+          }
+        }
+      ]
+    },
+    {
       "id": 1,
       "name": "Enumerable",
       "source": {
         "line": 7,
         "file": "base-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/base-decorators.ts#L7"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/base-decorators.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -323,7 +587,7 @@
         "line": 27,
         "file": "base-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/base-decorators.ts#L27"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/base-decorators.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
@@ -377,12 +641,25 @@
         "line": 80,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L80"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L80"
       },
       "namespaceParentId": null,
       "comment": {
-        "description": null,
-        "blockTags": [],
+        "description": "Allows you to set permissions required for individual methods. This is particularly useful for subcommands that require specific permissions.",
+        "blockTags": [
+          {
+            "name": "remark",
+            "text": "This decorator applies to the client that is to execute the command. For setting permissions required user of the command see {@link RequiresUserPermissions}"
+          },
+          {
+            "name": "remark",
+            "text": "This decorator makes the decorated function asynchronous, so any result should be `await`ed."
+          },
+          {
+            "name": "example",
+            "text": "```typescript\nimport { ApplyOptions, RequiresClientPermissions } from '@sapphire/decorators';\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<Subcommand.Options>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends Subcommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
+          }
+        ],
         "modifierTags": []
       },
       "external": false,
@@ -391,21 +668,8 @@
           "id": 23,
           "name": "RequiresClientPermissions",
           "comment": {
-            "description": "Allows you to set permissions required for individual methods. This is particularly useful for subcommands that require specific permissions.",
-            "blockTags": [
-              {
-                "name": "remark",
-                "text": "This decorator applies to the client that is to execute the command. For setting permissions required user of the command see {@link RequiresUserPermissions}"
-              },
-              {
-                "name": "remark",
-                "text": "This decorator makes the decorated function asynchronous, so any result should be `await`ed."
-              },
-              {
-                "name": "example",
-                "text": "```typescript\nimport { ApplyOptions, RequiresClientPermissions } from '@sapphire/decorators';\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<Subcommand.Options>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends Subcommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresClientPermissions('BAN_MEMBERS') // This subcommand requires the client to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
-              }
-            ],
+            "description": null,
+            "blockTags": [],
             "modifierTags": []
           },
           "typeParameters": [],
@@ -451,7 +715,7 @@
         "line": 199,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L199"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L199"
       },
       "namespaceParentId": null,
       "comment": {
@@ -514,7 +778,7 @@
         "line": 190,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L190"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L190"
       },
       "namespaceParentId": null,
       "comment": {
@@ -577,12 +841,25 @@
         "line": 152,
         "file": "djs-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/djs-decorators.ts#L152"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/djs-decorators.ts#L152"
       },
       "namespaceParentId": null,
       "comment": {
-        "description": null,
-        "blockTags": [],
+        "description": "Allows you to set permissions required for individual methods. This is particularly useful for subcommands that require specific permissions.",
+        "blockTags": [
+          {
+            "name": "remark",
+            "text": "This decorator applies to the user of the command. For setting permissions required for the client see {@link RequiresClientPermissions}"
+          },
+          {
+            "name": "remark",
+            "text": "This decorator makes the decorated function asynchronous, so any result should be `await`ed."
+          },
+          {
+            "name": "example",
+            "text": "```typescript\nimport { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<Subcommand.Options>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends Subcommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
+          }
+        ],
         "modifierTags": []
       },
       "external": false,
@@ -591,21 +868,8 @@
           "id": 26,
           "name": "RequiresUserPermissions",
           "comment": {
-            "description": "Allows you to set permissions required for individual methods. This is particularly useful for subcommands that require specific permissions.",
-            "blockTags": [
-              {
-                "name": "remark",
-                "text": "This decorator applies to the user of the command. For setting permissions required for the client see {@link RequiresClientPermissions}"
-              },
-              {
-                "name": "remark",
-                "text": "This decorator makes the decorated function asynchronous, so any result should be `await`ed."
-              },
-              {
-                "name": "example",
-                "text": "```typescript\nimport { ApplyOptions, RequiresUserPermissions } from '@sapphire/decorators';\nimport { Subcommand } from '@sapphire/plugin-subcommands';\nimport type { Message } from 'discord.js';\n\n(at)ApplyOptions<Subcommand.Options>({\n\taliases: ['cws'],\n\tdescription: 'A basic command with some subcommands',\n\tsubCommands: ['add', 'remove', 'reset', { input: 'show', default: true }]\n})\nexport default class extends Subcommand {\n    // Anyone should be able to view the result, but not modify\n\tpublic async show(message: Message) {\n\t\treturn message.channel.send('Showing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async add(message: Message) {\n\t\treturn message.channel.send('Adding!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async remove(message: Message) {\n\t\treturn message.channel.send('Removing!');\n\t}\n\n\t(at)RequiresUserPermissions('BAN_MEMBERS') // This subcommand requires the user of the command to be able to ban members.\n\tpublic async reset(message: Message) {\n\t\treturn message.channel.send('Resetting!');\n\t}\n}\n```"
-              }
-            ],
+            "description": null,
+            "blockTags": [],
             "modifierTags": []
           },
           "typeParameters": [],
@@ -643,209 +907,6 @@
           }
         }
       ]
-    },
-    {
-      "id": 41,
-      "name": "createClassDecorator",
-      "source": {
-        "line": 43,
-        "file": "utils.ts",
-        "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/utils.ts#L43"
-      },
-      "namespaceParentId": null,
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "signatures": [
-        {
-          "id": 42,
-          "name": "createClassDecorator",
-          "comment": {
-            "description": "Utility to make a class decorator with lighter syntax and inferred types.",
-            "blockTags": [
-              {
-                "name": "see",
-                "text": "{@link ApplyOptions}"
-              }
-            ],
-            "modifierTags": []
-          },
-          "typeParameters": [],
-          "parameters": [
-            {
-              "id": 47,
-              "name": "fn",
-              "comment": {
-                "description": "The class to decorate",
-                "blockTags": [],
-                "modifierTags": []
-              },
-              "rest": false,
-              "optional": false,
-              "type": {
-                "kind": "reference",
-                "id": 43,
-                "name": "TFunction",
-                "packageName": "@sapphire/decorators",
-                "packageVersion": null,
-                "typeArguments": []
-              }
-            }
-          ],
-          "returnType": {
-            "kind": "reference",
-            "id": null,
-            "name": "ClassDecorator",
-            "packageName": "typescript",
-            "packageVersion": null,
-            "typeArguments": []
-          }
-        }
-      ]
-    },
-    {
-      "id": 48,
-      "name": "createFunctionPrecondition",
-      "source": {
-        "line": 73,
-        "file": "utils.ts",
-        "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/utils.ts#L73"
-      },
-      "namespaceParentId": null,
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "signatures": [
-        {
-          "id": 49,
-          "name": "createFunctionPrecondition",
-          "comment": {
-            "description": "Utility to make function preconditions.\n\n```typescript\n// No fallback (returns undefined)\nfunction requireGuild(value: number) {\n  return createFunctionPrecondition((message: Message) =>\n    message.guild !== null\n  );\n}\n\n// With fallback\nfunction requireGuild(\n  value: number,\n  fallback: () => unknown = () => undefined\n) {\n  return createFunctionPrecondition(\n    (message: Message) => message.guild !== null,\n    fallback\n  );\n}\n```",
-            "blockTags": [
-              {
-                "name": "since",
-                "text": "1.0.0"
-              }
-            ],
-            "modifierTags": []
-          },
-          "typeParameters": [],
-          "parameters": [
-            {
-              "id": 50,
-              "name": "precondition",
-              "comment": {
-                "description": "The function that defines whether or not the function should be run, returning the returned value from fallback",
-                "blockTags": [],
-                "modifierTags": []
-              },
-              "rest": false,
-              "optional": false,
-              "type": {
-                "kind": "reference",
-                "id": 57,
-                "name": "FunctionPrecondition",
-                "packageName": "@sapphire/decorators",
-                "packageVersion": null,
-                "typeArguments": []
-              }
-            },
-            {
-              "id": 51,
-              "name": "fallback",
-              "comment": {
-                "description": "The fallback value that defines what the method should return in case the precondition fails",
-                "blockTags": [],
-                "modifierTags": []
-              },
-              "rest": false,
-              "optional": false,
-              "type": {
-                "kind": "reference",
-                "id": 60,
-                "name": "FunctionFallback",
-                "packageName": "@sapphire/decorators",
-                "packageVersion": null,
-                "typeArguments": []
-              }
-            }
-          ],
-          "returnType": {
-            "kind": "reference",
-            "id": null,
-            "name": "MethodDecorator",
-            "packageName": "typescript",
-            "packageVersion": null,
-            "typeArguments": []
-          }
-        }
-      ]
-    },
-    {
-      "id": 38,
-      "name": "createMethodDecorator",
-      "source": {
-        "line": 34,
-        "file": "utils.ts",
-        "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/utils.ts#L34"
-      },
-      "namespaceParentId": null,
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "signatures": [
-        {
-          "id": 39,
-          "name": "createMethodDecorator",
-          "comment": {
-            "description": "Utility to make a method decorator with lighter syntax and inferred types.\n\n```typescript\n// Enumerable function\n\tfunction enumerableMethod(value: boolean) {\n\t\treturn createMethodDecorator((_target, _propertyKey, descriptor) => {\n\t\t\tdescriptor.enumerable = value;\n\t\t});\n\t}\n```",
-            "blockTags": [],
-            "modifierTags": []
-          },
-          "typeParameters": [],
-          "parameters": [
-            {
-              "id": 40,
-              "name": "fn",
-              "comment": {
-                "description": "The method to decorate",
-                "blockTags": [],
-                "modifierTags": []
-              },
-              "rest": false,
-              "optional": false,
-              "type": {
-                "kind": "reference",
-                "id": null,
-                "name": "MethodDecorator",
-                "packageName": "typescript",
-                "packageVersion": null,
-                "typeArguments": []
-              }
-            }
-          ],
-          "returnType": {
-            "kind": "reference",
-            "id": null,
-            "name": "MethodDecorator",
-            "packageName": "typescript",
-            "packageVersion": null,
-            "typeArguments": []
-          }
-        }
-      ]
     }
   ],
   "interfaces": [
@@ -856,7 +917,7 @@
         "line": 64,
         "file": "piece-decorators.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/piece-decorators.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/piece-decorators.ts#L64"
       },
       "namespaceParentId": null,
       "comment": {
@@ -874,7 +935,7 @@
             "line": 65,
             "file": "piece-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/piece-decorators.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/piece-decorators.ts#L65"
           },
           "comment": {
             "description": null,
@@ -900,7 +961,7 @@
             "line": 66,
             "file": "piece-decorators.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/piece-decorators.ts#L66"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/piece-decorators.ts#L66"
           },
           "comment": {
             "description": null,
@@ -942,7 +1003,7 @@
         "line": 14,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/utils.ts#L14"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/utils.ts#L14"
       },
       "namespaceParentId": null,
       "comment": {
@@ -962,7 +1023,7 @@
         "line": 4,
         "file": "utils.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/decorators/src/utils.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/decorators/src/utils.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
