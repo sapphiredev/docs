@@ -1,8 +1,8 @@
 {
-  "typeDocJsonParserVersion": "10.1.6",
+  "typeDocJsonParserVersion": "10.2.0",
   "id": 0,
   "name": "@sapphire/timestamp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "dependencies": {},
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/timestamp\n\n**Timestamp utilities for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/timestamp?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/timestamp)\n[![npm](https://img.shields.io/npm/v/@sapphire/timestamp?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/timestamp)\n\n</div>\n\n**Table of Contents**\n\n-   [Features](#features)\n-   [Installation](#installation)\n-   [Usage](#usage)\n    -   [Human Readable Milliseconds](#human-readable-milliseconds)\n    -   [Formatting a Date](#formatting-a-date)\n-   [Buy us some doughnuts](#buy-us-some-doughnuts)\n-   [Contributors](#contributors)\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/timestamp\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Timestamp } = require('@sapphire/timestamp')` equals `import { Timestamp } from '@sapphire/timestamp'`.\n\n### Human Readable Milliseconds\n\nMilliseconds are often hard for humans to quickly parse, so it's nice to use\nnamed Enum members to make it easier to read.\n\n```typescript\n// Import the Time enum\nconst { Time } = require('@sapphire/timestamp');\n\nsetTimeout(() => {\n\t// Do something in half a second\n}, Time.Second / 2 /* 500 */);\n\nsetTimeout(() => {\n\t// Do something in 6 hours\n}, Time.Hour * 6 /* 21600000 */);\n\nsetTimeout(() => {\n\t// Do something in 1 day\n}, Time.Day /* 86400000 */);\n```\n\n### Formatting a Date\n\n```typescript\n// Import the Timestamp class\nconst { Timestamp } = require('@sapphire/timestamp');\n\n// Saturday 9th March 2019, at 16:20:35:500\nconst date = new Date(2019, 2, 9, 16, 20, 35, 1);\n\n// Format the date with tokens (use square brackets to escape)\nconst timestamp = new Timestamp('MMMM d YYYY[, at ]HH:mm:ss:SSS');\ntimestamp.display(date); // March 9th 2019, at 16:20:35:001\n```\n\n<details>\n\t<summary>\n\t\t<b>View all available tokens</b>\n\t</summary>\n\n```typescript\n// Saturday 9th March 2019, at 16:20:35:500\nconst date = new Date(2019, 2, 9, 16, 20, 35, 1);\n\nnew Timestamp('Y').display(date); // 19\nnew Timestamp('YY').display(date); // 19\nnew Timestamp('YYY').display(date); // 2019\nnew Timestamp('YYYY').display(date); // 2019\nnew Timestamp('Q').display(date); // 1\nnew Timestamp('M').display(date); // 3\nnew Timestamp('MM').display(date); // 03\nnew Timestamp('MMM').display(date); // March\nnew Timestamp('MMMM').display(date); // March\nnew Timestamp('D').display(date); // 9\nnew Timestamp('DD').display(date); // 09\nnew Timestamp('DDD').display(date); // 68\nnew Timestamp('DDDD').display(date); // 68\nnew Timestamp('d').display(date); // 9th\nnew Timestamp('dd').display(date); // Sa\nnew Timestamp('ddd').display(date); // Sat\nnew Timestamp('dddd').display(date); // Saturday\nnew Timestamp('X').display(date); // 1552168835\nnew Timestamp('x').display(date); // 1552168835001\nnew Timestamp('H').display(date); // 16\nnew Timestamp('HH').display(date); // 16\nnew Timestamp('h').display(date); // 4\nnew Timestamp('hh').display(date); // 04\nnew Timestamp('a').display(date); // pm\nnew Timestamp('A').display(date); // PM\nnew Timestamp('m').display(date); // 20\nnew Timestamp('mm').display(date); // 20\nnew Timestamp('s').display(date); // 35\nnew Timestamp('ss').display(date); // 35\nnew Timestamp('S').display(date); // 0\nnew Timestamp('SS').display(date); // 00\nnew Timestamp('SSS').display(date); // 001\nnew Timestamp('t').display(date); // 4:20:35 PM\nnew Timestamp('T').display(date); // 4:20 PM\nnew Timestamp('L').display(date); // 03/09/2019\nnew Timestamp('LL').display(date); // March 09, 2019\nnew Timestamp('LLL').display(date); // March 09, 2019 4:20 PM\nnew Timestamp('LLLL').display(date); // Saturday, March 09, 2019 4:20 PM\nnew Timestamp('l').display(date); // 3/9/2019\nnew Timestamp('ll').display(date); // Mar 09, 2019\nnew Timestamp('lll').display(date); // Mar 09, 2019 4:20 PM\nnew Timestamp('llll').display(date); // Sat, Mar 09, 2019 4:20 PM\nnew Timestamp('Z').display(date); // -05:00\nnew Timestamp('ZZ').display(date); // -05:00\n```\n\n</details>\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/timestamp@1.0.4](https://github.com/sapphiredev/utilities/compare/@sapphire/timestamp@1.0.3...@sapphire/timestamp@1.0.4) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- Move browser imports ([100ffb0](https://github.com/sapphiredev/utilities/commit/100ffb0a2471bb9f74cc580d282d11059e1a0a68)) ([#826](https://github.com/sapphiredev/utilities/pull/826) by @kyranet)\n- **deps:** Update all non-major dependencies ([083376a](https://github.com/sapphiredev/utilities/commit/083376aac55094dbeddb5194e8a8f0d794b8cceb)) ([#763](https://github.com/sapphiredev/utilities/pull/763) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n\n## 📝 Documentation\n\n- **readme:** Fix readme table of contents ([c60e8bd](https://github.com/sapphiredev/utilities/commit/c60e8bd9fc89156cf973871597ec3f0ef0308c08))\n\n# [@sapphire/timestamp@1.0.3](https://github.com/sapphiredev/utilities/compare/@sapphire/timestamp@1.0.3...@sapphire/timestamp@1.0.3) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Fixed commonjs typings export mapping (#707) ([216ff02](https://github.com/sapphiredev/utilities/commit/216ff0260d63a9590357f9a5069f1ae2b34eaf5d))\n\n# [@sapphire/timestamp@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/timestamp@1.0.2...@sapphire/timestamp@1.0.2) - (2023-12-04)\n\n## 🐛 Bug Fixes\n\n- **timestamp:** Properly split CJS, ESM and IIFE ([faf881a](https://github.com/sapphiredev/utilities/commit/faf881a6eec5a6698121a8012dd31462b629fc3d))\n- Update export mapping for proper ESM/CJS split ([dd0cff8](https://github.com/sapphiredev/utilities/commit/dd0cff8e9b03a15812f25f7a1180501a92422629))\n- **deps:** Update all non-major dependencies (#607) ([9cc8bd0](https://github.com/sapphiredev/utilities/commit/9cc8bd0d4b5d650deab2c913e6c3d713861bae28))\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n\n## 🧪 Testing\n\n- Update vitest to coverage v8 ([a4bc6e4](https://github.com/sapphiredev/utilities/commit/a4bc6e4f24ea60143a150ecc76fda6484f172ab9))\n- Cleanup tests ([aec1bb2](https://github.com/sapphiredev/utilities/commit/aec1bb290d0f3c00a1ae4f4c86302ebbb161d348))\n\n# [@sapphire/timestamp@1.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/timestamp@1.0.0...@sapphire/timestamp@1.0.1) - (2023-03-15)\n\n## 🏠 Refactor\n\n- **timestamp:** Update Time enum ([5a1e7fe](https://github.com/sapphiredev/utilities/commit/5a1e7fec0699fb1de35faec1d77f5ae548fa6d31))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n- **timestamp:** Add usage (#489) ([7ea90f6](https://github.com/sapphiredev/utilities/commit/7ea90f64e4f9b9a33b11c77837ba17e6128b37af))\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/timestamp@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/timestamp@1.0.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n",
@@ -13,8 +13,8 @@
       "source": {
         "line": 125,
         "file": "Timestamp.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L125"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L125"
       },
       "namespaceParentId": null,
       "comment": {
@@ -33,8 +33,8 @@
         "source": {
           "line": 142,
           "file": "Timestamp.ts",
-          "path": "lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L142"
+          "path": ".",
+          "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L142"
         },
         "comment": {
           "description": null,
@@ -68,8 +68,8 @@
           "source": {
             "line": 130,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L130"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L130"
           },
           "comment": {
             "description": "The raw pattern",
@@ -98,8 +98,8 @@
           "source": {
             "line": 135,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L135"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L135"
           },
           "comment": {
             "description": null,
@@ -137,8 +137,8 @@
           "source": {
             "line": 152,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L152"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L152"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -193,8 +193,8 @@
           "source": {
             "line": 161,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L161"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L161"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -249,8 +249,8 @@
           "source": {
             "line": 171,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L171"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L171"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -305,8 +305,8 @@
           "source": {
             "line": 180,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L180"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L180"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -336,8 +336,8 @@
           "source": {
             "line": 220,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L220"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L220"
           },
           "parentId": 19,
           "accessibility": "private",
@@ -427,8 +427,8 @@
           "source": {
             "line": 190,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L190"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L190"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -498,8 +498,8 @@
           "source": {
             "line": 200,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L200"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L200"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -569,8 +569,8 @@
           "source": {
             "line": 232,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L232"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L232"
           },
           "parentId": 19,
           "accessibility": "private",
@@ -628,8 +628,8 @@
           "source": {
             "line": 261,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L261"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L261"
           },
           "parentId": 19,
           "accessibility": "private",
@@ -688,8 +688,8 @@
           "source": {
             "line": 209,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L209"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L209"
           },
           "parentId": 19,
           "accessibility": "public",
@@ -765,8 +765,8 @@
       "source": {
         "line": 1,
         "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L1"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -782,8 +782,8 @@
           "source": {
             "line": 8,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L8"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L8"
           },
           "comment": {
             "description": null,
@@ -799,8 +799,8 @@
           "source": {
             "line": 7,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L7"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L7"
           },
           "comment": {
             "description": null,
@@ -816,8 +816,8 @@
           "source": {
             "line": 3,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L3"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L3"
           },
           "comment": {
             "description": null,
@@ -833,8 +833,8 @@
           "source": {
             "line": 4,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L4"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L4"
           },
           "comment": {
             "description": null,
@@ -850,8 +850,8 @@
           "source": {
             "line": 6,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L6"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L6"
           },
           "comment": {
             "description": null,
@@ -867,8 +867,8 @@
           "source": {
             "line": 10,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L10"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L10"
           },
           "comment": {
             "description": null,
@@ -884,8 +884,8 @@
           "source": {
             "line": 2,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L2"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L2"
           },
           "comment": {
             "description": null,
@@ -901,8 +901,8 @@
           "source": {
             "line": 5,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L5"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L5"
           },
           "comment": {
             "description": null,
@@ -918,8 +918,8 @@
           "source": {
             "line": 9,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L9"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L9"
           },
           "comment": {
             "description": null,
@@ -935,8 +935,8 @@
           "source": {
             "line": 11,
             "file": "constants.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L11"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L11"
           },
           "comment": {
             "description": null,
@@ -957,8 +957,8 @@
       "source": {
         "line": 117,
         "file": "Timestamp.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L117"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L117"
       },
       "namespaceParentId": null,
       "comment": {
@@ -975,8 +975,8 @@
           "source": {
             "line": 119,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L119"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L119"
           },
           "comment": {
             "description": null,
@@ -1006,8 +1006,8 @@
           "source": {
             "line": 118,
             "file": "Timestamp.ts",
-            "path": "lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L118"
+            "path": ".",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L118"
           },
           "comment": {
             "description": null,
@@ -1034,8 +1034,8 @@
       "source": {
         "line": 115,
         "file": "Timestamp.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/Timestamp.ts#L115"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/Timestamp.ts#L115"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1075,8 +1075,8 @@
       "source": {
         "line": 14,
         "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L14"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L14"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1100,8 +1100,8 @@
       "source": {
         "line": 16,
         "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L16"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L16"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1125,8 +1125,8 @@
       "source": {
         "line": 18,
         "file": "constants.ts",
-        "path": "lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/timestamp/src/lib/constants.ts#L18"
+        "path": ".",
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/timestamp/src/lib/constants.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
