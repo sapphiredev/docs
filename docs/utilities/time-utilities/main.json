@@ -1,8 +1,8 @@
 {
-  "typeDocJsonParserVersion": "10.1.6",
+  "typeDocJsonParserVersion": "10.2.0",
   "id": 0,
   "name": "@sapphire/time-utilities",
-  "version": "1.7.13",
+  "version": "1.7.14",
   "dependencies": {
     "@sapphire/cron": "workspace:^",
     "@sapphire/duration": "workspace:^",
@@ -1385,7 +1385,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 138,
+                  "name": "A",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 139,
@@ -1514,7 +1524,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 126,
+                  "name": "A",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 127,
@@ -3024,56 +3044,6 @@
   ],
   "variables": [
     {
-      "id": 54,
-      "name": "DEFAULT_SEPARATORS",
-      "source": {
-        "line": 53,
-        "file": "index.d.mts",
-        "path": "duration/dist/esm",
-        "url": null
-      },
-      "namespaceParentId": null,
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "type": {
-        "kind": "reference",
-        "id": 118,
-        "name": "DurationFormatSeparators",
-        "packageName": "@sapphire/duration",
-        "packageVersion": null,
-        "typeArguments": []
-      }
-    },
-    {
-      "id": 55,
-      "name": "DEFAULT_UNITS",
-      "source": {
-        "line": 52,
-        "file": "index.d.mts",
-        "path": "duration/dist/esm",
-        "url": null
-      },
-      "namespaceParentId": null,
-      "comment": {
-        "description": null,
-        "blockTags": [],
-        "modifierTags": []
-      },
-      "external": false,
-      "type": {
-        "kind": "reference",
-        "id": 108,
-        "name": "DurationFormatAssetsTime",
-        "packageName": "@sapphire/duration",
-        "packageVersion": null,
-        "typeArguments": []
-      }
-    },
-    {
       "id": 1,
       "name": "allowedNum",
       "source": {
@@ -3431,6 +3401,56 @@
           "kind": "intrinsic",
           "type": "string"
         }
+      }
+    },
+    {
+      "id": 54,
+      "name": "DEFAULT_SEPARATORS",
+      "source": {
+        "line": 53,
+        "file": "index.d.mts",
+        "path": "duration/dist/esm",
+        "url": null
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 118,
+        "name": "DurationFormatSeparators",
+        "packageName": "@sapphire/duration",
+        "packageVersion": null,
+        "typeArguments": []
+      }
+    },
+    {
+      "id": 55,
+      "name": "DEFAULT_UNITS",
+      "source": {
+        "line": 52,
+        "file": "index.d.mts",
+        "path": "duration/dist/esm",
+        "url": null
+      },
+      "namespaceParentId": null,
+      "comment": {
+        "description": null,
+        "blockTags": [],
+        "modifierTags": []
+      },
+      "external": false,
+      "type": {
+        "kind": "reference",
+        "id": 108,
+        "name": "DurationFormatAssetsTime",
+        "packageName": "@sapphire/duration",
+        "packageVersion": null,
+        "typeArguments": []
       }
     },
     {
