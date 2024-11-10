@@ -1,8 +1,8 @@
 {
-  "typeDocJsonParserVersion": "10.1.6",
+  "typeDocJsonParserVersion": "10.2.0",
   "id": 0,
   "name": "@sapphire/result",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "dependencies": {},
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/result\n\n**A TypeScript port of Nightly Rust's Result and Option structs**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/result?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/result)\n[![npm](https://img.shields.io/npm/v/@sapphire/result?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/result)\n\n</div>\n\n## Description\n\nWhen having many `try-catch` blocks after one another, or multiple `try-catch` blocks nested in one another then code can become very chaotic very quickly. To alleviate that issue we have made the `@sapphire/result` which offers two structures based on Rust's [`Result<T, E>`](https://doc.rust-lang.org/std/result/index.html) and [`Option<T>`](https://doc.rust-lang.org/std/option/enum.Option.html) with full Nightly coverage and extra convenience methods. This code has been branched off of `@sapphire/framework` into its own package after we saw great success with the code there.\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Full feature parity with Nightly Rust's `Result<T, E>` and `Option<T>`\n-   Fully tested\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/result\n```\n\n## Usage\n\n**Note 1:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Result } = require('@sapphire/result')` equals `import { Result } from '@sapphire/result'`.\n\n**Note 2:** For more thorough examples check out the generated documentation on [our website here](https://www.sapphirejs.dev/docs/Documentation/api-utilities/@sapphire/result/interfaces/IResult)\n\n### Wrapping synchronous `try-catch` blocks\n\n**Old code without `Result.from`:**\n\n```typescript\ntry {\n\tconst returnCode = someFunctionThatMightThrow();\n\n\treturn returnCode;\n} catch (error) {\n\t// Handle the error:\n\tconsole.error(error);\n\treturn null;\n}\n```\n\n**New Code with `Result.from`:**\n\n```typescript\nconst { Result } = require('@sapphire/result');\n\nconst returnCode = Result.from(() => someFunctionThatMightThrow());\n\nreturn returnCode.unwrapOrElse((error) => {\n\tconsole.error(error);\n\treturn null;\n});\n```\n\n### Wrapping asynchronous `try-catch` blocks\n\n**Old code without `Result.fromAsync`:**\n\n```typescript\ntry {\n\tconst returnCode = await someFunctionThatReturnsAPromiseAndMightReject();\n\n\treturn returnCode;\n} catch (error) {\n\t// Handle the error:\n\tconsole.error(error);\n\treturn null;\n}\n```\n\n**New Code with `Result.fromAsync`:**\n\n```typescript\nconst { Result } = require('@sapphire/result');\n\nconst returnCode = await Result.fromAsync(async () => someFunctionThatReturnsAPromiseAndMightReject());\n\nreturn returnCode.unwrapOrElse((error) => {\n\tconsole.error(error);\n\treturn null;\n});\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n[lexure]: https://github.com/1Computer1/lexure\n[1computer1]: https://github.com/1Computer1\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/result@2.7.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.7.0...@sapphire/result@2.7.1) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- **types:** Resolve regression ([a29026e](https://github.com/sapphiredev/utilities/commit/a29026e85a54bdfb36899c7b58ec1fc1e11987e8)) ([#827](https://github.com/sapphiredev/utilities/pull/827) by @kyranet)\n\n# [@sapphire/result@2.7.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.6...@sapphire/result@2.7.0) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- Move browser imports ([100ffb0](https://github.com/sapphiredev/utilities/commit/100ffb0a2471bb9f74cc580d282d11059e1a0a68)) ([#826](https://github.com/sapphiredev/utilities/pull/826) by @kyranet)\n- Resolve build errors ([809c41c](https://github.com/sapphiredev/utilities/commit/809c41cef869bb9095cd630a416981be6870e83a)) ([#806](https://github.com/sapphiredev/utilities/pull/806) by @kyranet)\n- **deps:** Update all non-major dependencies ([083376a](https://github.com/sapphiredev/utilities/commit/083376aac55094dbeddb5194e8a8f0d794b8cceb)) ([#763](https://github.com/sapphiredev/utilities/pull/763) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n\n## 📝 Documentation\n\n- **result:** Update readme url for website ([804cc21](https://github.com/sapphiredev/utilities/commit/804cc21e4f71a528b36bcce7ed58d038d3e8ff87))\n\n## 🚀 Features\n\n- **Option:** Add `isNoneOr` ([bb6c889](https://github.com/sapphiredev/utilities/commit/bb6c889127063e8e9eaa6d5808b4bd2fa38cbe92)) ([#824](https://github.com/sapphiredev/utilities/pull/824) by @kyranet)\n- Rewrite `/result` ([4b7c3e6](https://github.com/sapphiredev/utilities/commit/4b7c3e6c354797a2f166a5b97cadd33f1a4a11ca)) ([#808](https://github.com/sapphiredev/utilities/pull/808) by @kyranet)\n\n## 🧪 Testing\n\n- **result:** Update test case ([5932a43](https://github.com/sapphiredev/utilities/commit/5932a4375a5b980a4ff91f744941c0463bbe0d66))\n\n# [@sapphire/result@2.6.6](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.6...@sapphire/result@2.6.6) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Fixed commonjs typings export mapping (#707) ([216ff02](https://github.com/sapphiredev/utilities/commit/216ff0260d63a9590357f9a5069f1ae2b34eaf5d))\n\n# [@sapphire/result@2.6.5](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.5...@sapphire/result@2.6.5) - (2023-12-04)\n\n## 🐛 Bug Fixes\n\n- **result:** Properly split CJS, ESM and IIFE ([1f8f52e](https://github.com/sapphiredev/utilities/commit/1f8f52efd78a76553bd3c0a516c4a629f098496e))\n- Update export mapping for proper ESM/CJS split ([dd0cff8](https://github.com/sapphiredev/utilities/commit/dd0cff8e9b03a15812f25f7a1180501a92422629))\n- **deps:** Update all non-major dependencies (#607) ([9cc8bd0](https://github.com/sapphiredev/utilities/commit/9cc8bd0d4b5d650deab2c913e6c3d713861bae28))\n\n## 📝 Documentation\n\n- **readme:** Add link to examples ([e33b5b9](https://github.com/sapphiredev/utilities/commit/e33b5b9408bf0f48f427291de5bd56bfc4250644))\n\n## 🧪 Testing\n\n- Update vitest to coverage v8 ([a4bc6e4](https://github.com/sapphiredev/utilities/commit/a4bc6e4f24ea60143a150ecc76fda6484f172ab9))\n\n# [@sapphire/result@2.6.4](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.3...@sapphire/result@2.6.4) - (2023-05-12)\n\n## 🐛 Bug Fixes\n\n- **result:** Remove unnecessary tslib import ([ec40daa](https://github.com/sapphiredev/utilities/commit/ec40daa55fce58202f06401bb1a8ee0414f28962))\n\n# [@sapphire/result@2.6.3](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.2...@sapphire/result@2.6.3) - (2023-05-02)\n\n## 🏠 Refactor\n\n- **result:** Internally rework code to ensure typings can be generated without conflicts ([83d698e](https://github.com/sapphiredev/utilities/commit/83d698e5b0f3e552a3c97e1d9146fc74426b7609))\n\n# [@sapphire/result@2.6.2](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.1...@sapphire/result@2.6.2) - (2023-04-17)\n\n## 🐛 Bug Fixes\n\n- **result:** Add tslib dependency to fix __exportStar not being defined ([4c51387](https://github.com/sapphiredev/utilities/commit/4c51387b83ce363752528d45da9ca9772ed80552))\n\n# [@sapphire/result@2.6.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.6.0...@sapphire/result@2.6.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **result:** Add missing type modifier ([deb93b7](https://github.com/sapphiredev/utilities/commit/deb93b7a27d8f0646544bd6b9e5135903f7b94a7))\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n\n# [@sapphire/result@2.6.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.5.0...@sapphire/result@2.6.0) - (2022-10-16)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n## 🚀 Features\n\n- Add `{Option,Result}.{any,all}` (#501) ([4c349bf](https://github.com/sapphiredev/utilities/commit/4c349bf6b3577ad85a1895f90c775c92c4016fa3))\n\n# [@sapphire/result@2.5.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.4.1...@sapphire/result@2.5.0) - (2022-10-01)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n## 🚀 Features\n\n- **result:** Add `Result.unwrapRaw` (#475) ([82fe79e](https://github.com/sapphiredev/utilities/commit/82fe79ec6bff4979be615f322b6d1392016d9622))\n\n# [@sapphire/result@2.4.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.4.0...@sapphire/result@2.4.1) - (2022-08-29)\n\n## 🧪 Testing\n\n- **result:** Add full coverage (#436) ([3f06ac5](https://github.com/sapphiredev/utilities/commit/3f06ac500b8e96312a5fe04be2817753ce219d37))\n\n# [@sapphire/result@2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.3...@sapphire/result@2.4.0) - (2022-08-19)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 🚀 Features\n\n- Add `intoPromise` (#430) ([715315e](https://github.com/sapphiredev/utilities/commit/715315eb8c3e6bc8e47379a486bac7c737620f92))\n\n# [@sapphire/result@2.4.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.3...@sapphire/result@2.4.0) - (2022-08-19)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n## 🚀 Features\n\n- Add `intoPromise` (#430) ([715315e](https://github.com/sapphiredev/utilities/commit/715315eb8c3e6bc8e47379a486bac7c737620f92))\n\n# [@sapphire/result@2.3.3](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.2...@sapphire/result@2.3.3) - (2022-08-06)\n\n## 🐛 Bug Fixes\n\n- **result:** Better `unwrapOr*`, added more tests (#416) ([ec088a8](https://github.com/sapphiredev/utilities/commit/ec088a88a878c7d230c51b148593a85d258075f9))\n\n# [@sapphire/result@2.3.2](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.1...@sapphire/result@2.3.2) - (2022-08-05)\n\n## 🐛 Bug Fixes\n\n- Revert \"make unwrap methods generic (#415) (v2.3.1)\" ([a963396](https://github.com/sapphiredev/utilities/commit/a9633967d5c4659f26c54fa660796bae18fdaf07))\n\n# [@sapphire/result@2.3.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.3.0...@sapphire/result@2.3.1) - (2022-08-05)\n\n## 🐛 Bug Fixes\n\n- **result:** Make unwrap methods generic (#415) ([76e95b3](https://github.com/sapphiredev/utilities/commit/76e95b3c18ecdff53bfa07d541ed1bc1809c7f72))\n\n# [@sapphire/result@2.3.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.2.0...@sapphire/result@2.3.0) - (2022-08-05)\n\n## 🚀 Features\n\n- **result:** Add `inspect*Async` methods (#414) ([fca7a80](https://github.com/sapphiredev/utilities/commit/fca7a8010ae8c368513de2eca56f9f5bfe2756a3))\n\n# [@sapphire/result@2.2.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.1.1...@sapphire/result@2.2.0) - (2022-08-04)\n\n## 🐛 Bug Fixes\n\n- **result:** Resolve Unwrap type issues (#411) ([3c2159c](https://github.com/sapphiredev/utilities/commit/3c2159cac18df0925cd71393698ed7d9f98fd6ef))\n\n## 🚀 Features\n\n- **result:** Export `ok`, `err`, `some`, `none`, and improve docs (#412) ([c978864](https://github.com/sapphiredev/utilities/commit/c978864d91d950c611c073a5c34ef01311e9d8f0))\n\n# [@sapphire/result@2.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.1.0...@sapphire/result@2.1.1) - (2022-07-29)\n\n## 🐛 Bug Fixes\n\n- **Result:** Type `IResult.mapInto`'s return correctly (#405) ([14ddf5f](https://github.com/sapphiredev/utilities/commit/14ddf5fc35d1186f9fdc78a3d2b3b465acbd36ac))\n\n# [@sapphire/result@2.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.0.1...@sapphire/result@2.1.0) - (2022-07-29)\n\n## 📝 Documentation\n\n- Add @muchnameless as a contributor ([a1221fe](https://github.com/sapphiredev/utilities/commit/a1221fea68506e99591d5d00ec552a07c26833f9))\n- Add @enxg as a contributor ([d2382f0](https://github.com/sapphiredev/utilities/commit/d2382f04e3909cb4ad11798a0a10e683f6cf5383))\n- Add @EvolutionX-10 as a contributor ([efc3a32](https://github.com/sapphiredev/utilities/commit/efc3a320a72ae258996dd62866d206c33f8d4961))\n\n## 🚀 Features\n\n- **Result:** Add new convenience methods (#404) ([7c3ec61](https://github.com/sapphiredev/utilities/commit/7c3ec6168dde544578e5016120c9975009889391))\n\n# [@sapphire/result@2.0.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@2.0.0...@sapphire/result@2.0.1) - (2022-07-03)\n\n## 🏠 Refactor\n\n- **result:** Fixed types (#391) ([a1934e1](https://github.com/sapphiredev/utilities/commit/a1934e10cc7d81c71354deb153a4f3bb83e50e65))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([84af0db](https://github.com/sapphiredev/utilities/commit/84af0db2db749223b036aa99fe19a2e9af5681c6))\n\n# [@sapphire/result@2.0.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@1.1.1...@sapphire/result@2.0.0) - (2022-06-26)\n\n## 🏠 Refactor\n\n- Rewrite @sapphire/result from scratch (#364) ([d5b57ff](https://github.com/sapphiredev/utilities/commit/d5b57ff52402bfd261372bf4486e46f39bb41b6d))\n\n   ### 💥 Breaking Changes:\n   - Removed `Maybe` type, the substitute is `Option`\n   - Removed `maybe` function, the substitute is `Option.from`\n   - Removed `some` function, the substitute is `Option.some`\n   - Removed `none` function, the substitute is `Option.none`\n   - Removed `isSome` function, the substitute is `option.isSome`\n   - Removed `isNone` function, the substitute is `option.isNone`\n   - Removed `isMaybe` function, the substitute is `Option.is`\n   - Removed `UnwrapMaybeValue` type, the substitute is `Option.UnwrapSome`\n   - Removed `None` type, the substitute is `Option.None`\n   - Removed `Some` type, the substitute is `Option.Some`\n   - Removed `Err` type, the substitute is `Result.Err`\n   - Removed `Ok` type, the substitute is `Result.Ok`\n   - Removed `from` function, the substitute is `Result.from`\n   - Removed `fromAsync` function, the substitute is `Result.fromAsync`\n\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([50cd8de](https://github.com/sapphiredev/utilities/commit/50cd8dea593b6f5ae75571209456b3421e2ca59a))\n\n## 📝 Documentation\n\n- Add @MajesticString as a contributor ([295b3e9](https://github.com/sapphiredev/utilities/commit/295b3e9849a4b0fe64074bae02f6426378a303c3))\n- Add @Mzato0001 as a contributor ([c790ef2](https://github.com/sapphiredev/utilities/commit/c790ef25df2d7e22888fa9f8169167aa555e9e19))\n- Add @NotKaskus as a contributor ([00da8f1](https://github.com/sapphiredev/utilities/commit/00da8f199137b9277119823f322d1f2d168d928a))\n- Add @imranbarbhuiya as a contributor ([fb674c2](https://github.com/sapphiredev/utilities/commit/fb674c2c5594d41e71662263553dcb4bac9e37f4))\n- Add @axisiscool as a contributor ([ce1aa31](https://github.com/sapphiredev/utilities/commit/ce1aa316871a88d3663efbdf2a42d3d8dfe6a27f))\n- Add @dhruv-kaushikk as a contributor ([ebbf43f](https://github.com/sapphiredev/utilities/commit/ebbf43f63617daba96e72c50a234bf8b64f6ddc4))\n- Add @Commandtechno as a contributor ([f1d69fa](https://github.com/sapphiredev/utilities/commit/f1d69fabe1ee0abe4be08b19e63dbec03102f7ce))\n- Fix typedoc causing OOM crashes ([63ba41c](https://github.com/sapphiredev/utilities/commit/63ba41c4b6678554b1c7043a22d3296db4f59360))\n\n## 🧪 Testing\n\n- Migrate to vitest (#380) ([075ec73](https://github.com/sapphiredev/utilities/commit/075ec73c7a8e3374fad3ada612d37eb4ac36ec8d))\n\n## [1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/result@1.1.0...@sapphire/result@1.1.1) (2022-04-01)\n\n**Note:** Version bump only for package @sapphire/result\n\n# [1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/result@1.0.0...@sapphire/result@1.1.0) (2022-03-06)\n\n### Features\n\n-   allow module: NodeNext ([#306](https://github.com/sapphiredev/utilities/issues/306)) ([9dc6dd6](https://github.com/sapphiredev/utilities/commit/9dc6dd619efab879bb2b0b3c9e64304e10a67ed6))\n\n# 1.0.0 (2022-02-06)\n\n### Features\n\n-   **package:** add @sapphire/result package ([#274](https://github.com/sapphiredev/utilities/issues/274)) ([8a86826](https://github.com/sapphiredev/utilities/commit/8a8682607c2aa4c845e814816fa2b4478c23aa84))\n",
@@ -14,7 +14,7 @@
         "line": 8,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -53,7 +53,7 @@
           "line": 18,
           "file": "Option.ts",
           "path": "packages/result/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L18"
+          "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L18"
         },
         "comment": {
           "description": null,
@@ -126,13 +126,44 @@
       },
       "properties": [
         {
+          "id": 47,
+          "name": "__STATUS__",
+          "source": {
+            "line": 13,
+            "file": "Option.ts",
+            "path": "packages/result/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L13"
+          },
+          "comment": {
+            "description": "Branded value to ensure `Success` is typed correctly.",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "parentId": 1,
+          "accessibility": "protected",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": 44,
+            "name": "Option.Exists",
+            "packageName": "@sapphire/result",
+            "packageVersion": null,
+            "typeArguments": []
+          }
+        },
+        {
           "id": 257,
           "name": "[ExistsProperty]",
           "source": {
             "line": 16,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L16"
           },
           "comment": {
             "description": null,
@@ -161,7 +192,7 @@
             "line": 15,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L15"
           },
           "comment": {
             "description": null,
@@ -205,44 +236,13 @@
           }
         },
         {
-          "id": 47,
-          "name": "__STATUS__",
-          "source": {
-            "line": 13,
-            "file": "Option.ts",
-            "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L13"
-          },
-          "comment": {
-            "description": "Branded value to ensure `Success` is typed correctly.",
-            "blockTags": [],
-            "modifierTags": [
-              "@internal"
-            ]
-          },
-          "parentId": 1,
-          "accessibility": "protected",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "reference",
-            "id": 44,
-            "name": "Option.Exists",
-            "packageName": "@sapphire/result",
-            "packageVersion": null,
-            "typeArguments": []
-          }
-        },
-        {
           "id": 2,
           "name": "none",
           "source": {
             "line": 902,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L902"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L902"
           },
           "comment": {
             "description": null,
@@ -280,7 +280,7 @@
             "line": 898,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L898"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L898"
           },
           "comment": {
             "description": null,
@@ -328,7 +328,7 @@
             "line": 894,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L894"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L894"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -393,7 +393,7 @@
             "line": 484,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L484"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L484"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -429,7 +429,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 159,
+                  "name": "OutputOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 160,
@@ -499,7 +513,7 @@
             "line": 507,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L507"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L507"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -523,7 +537,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 163,
+                  "name": "OutputOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 164,
@@ -631,7 +659,7 @@
             "line": 658,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L658"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L658"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -663,7 +691,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 197,
+                  "name": "Value",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 198,
@@ -738,7 +773,7 @@
             "line": 825,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L825"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L825"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -758,7 +793,23 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 237,
+                  "name": "OtherValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 238,
+                  "name": "OtherExists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 239,
@@ -837,7 +888,7 @@
             "line": 139,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L139"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L139"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -922,7 +973,7 @@
             "line": 630,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L630"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L630"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -946,7 +997,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 185,
+                  "name": "R",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 186,
@@ -1128,7 +1186,7 @@
             "line": 796,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L796"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L796"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1160,7 +1218,30 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 230,
+                  "name": "InnerOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                },
+                {
+                  "id": 231,
+                  "name": "Exists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 232,
@@ -1247,7 +1328,7 @@
             "line": 351,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L351"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L351"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1349,7 +1430,7 @@
             "line": 374,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L374"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L374"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1481,7 +1562,7 @@
             "line": 811,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L811"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L811"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1560,7 +1641,7 @@
             "line": 87,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L87"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L87"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1618,7 +1699,7 @@
             "line": 112,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L112"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L112"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1650,7 +1731,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 67,
+                  "name": "R",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 68,
@@ -1764,7 +1852,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 73,
+                  "name": "R",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 74,
@@ -1863,7 +1961,7 @@
             "line": 39,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L39"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L39"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1925,7 +2023,7 @@
             "line": 65,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L65"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L65"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1957,7 +2055,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 52,
+                  "name": "R",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 53,
@@ -2053,7 +2158,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 58,
+                  "name": "R",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 59,
@@ -2158,7 +2273,7 @@
             "line": 449,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L449"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L449"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2223,7 +2338,7 @@
             "line": 227,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L227"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L227"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2247,7 +2362,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 95,
+                  "name": "U",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 96,
@@ -2364,7 +2486,7 @@
             "line": 253,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L253"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L253"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2392,7 +2514,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 102,
+                  "name": "OutputOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 103,
@@ -2500,7 +2636,7 @@
             "line": 329,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L329"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L329"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2528,7 +2664,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 129,
+                  "name": "OutputOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 130,
@@ -2620,7 +2770,7 @@
             "line": 278,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L278"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L278"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2648,7 +2798,20 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 109,
+                  "name": "MappedOutputValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 110,
+                  "name": "DefaultOutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 111,
@@ -2770,7 +2933,7 @@
             "line": 303,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L303"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L303"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2798,7 +2961,20 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 118,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 119,
+                  "name": "OutputNone",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 120,
@@ -2938,7 +3114,7 @@
             "line": 861,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L861"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L861"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2962,7 +3138,20 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 245,
+                  "name": "SomeValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 246,
+                  "name": "NoneValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 247,
@@ -3147,7 +3336,7 @@
             "line": 836,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L836"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L836"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3216,7 +3405,7 @@
             "line": 399,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L399"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L399"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3244,7 +3433,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 147,
+                  "name": "ErrorValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 148,
@@ -3327,7 +3523,7 @@
             "line": 420,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L420"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L420"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3355,7 +3551,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 151,
+                  "name": "ErrorValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 152,
@@ -3456,7 +3659,7 @@
             "line": 542,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L542"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L542"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3492,7 +3695,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 170,
+                  "name": "OutputOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 171,
@@ -3566,7 +3783,7 @@
             "line": 564,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L564"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L564"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3590,7 +3807,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 174,
+                  "name": "OutputOption",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 269,
+                    "name": "Option.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 175,
@@ -3682,7 +3913,7 @@
             "line": 765,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L765"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L765"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3706,7 +3937,38 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 223,
+                  "name": "ResultValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 224,
+                  "name": "ResultError",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 225,
+                  "name": "ResultSuccess",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                },
+                {
+                  "id": 226,
+                  "name": "Exists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 227,
@@ -3861,7 +4123,7 @@
             "line": 168,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L168"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L168"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3938,7 +4200,7 @@
             "line": 191,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L191"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L191"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -3966,7 +4228,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 85,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 86,
@@ -4031,7 +4300,7 @@
             "line": 209,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L209"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L209"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4059,7 +4328,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 89,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 90,
@@ -4142,7 +4418,7 @@
             "line": 741,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L741"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L741"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4170,7 +4446,29 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 217,
+                  "name": "Value0",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 218,
+                  "name": "Value1",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 219,
+                  "name": "Exists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 220,
@@ -4291,7 +4589,7 @@
             "line": 599,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L599"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L599"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4327,7 +4625,23 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 180,
+                  "name": "OtherValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 181,
+                  "name": "OtherExists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 182,
@@ -4465,7 +4779,7 @@
             "line": 680,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L680"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L680"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4489,7 +4803,23 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 201,
+                  "name": "OtherValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 202,
+                  "name": "OtherExists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 203,
@@ -4597,7 +4927,7 @@
             "line": 715,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L715"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L715"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4621,7 +4951,29 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 206,
+                  "name": "OtherValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 207,
+                  "name": "OtherExists",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                },
+                {
+                  "id": 208,
+                  "name": "ReturnValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 209,
@@ -4792,7 +5144,7 @@
             "line": 927,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L927"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L927"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4848,7 +5200,7 @@
             "line": 1007,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1007"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1007"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4868,7 +5220,28 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 30,
+                  "name": "Entries",
+                  "constraint": {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "reference",
+                        "id": 269,
+                        "name": "Option.Any",
+                        "packageName": "@sapphire/result",
+                        "packageVersion": null,
+                        "typeArguments": []
+                      }
+                    }
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 31,
@@ -4945,7 +5318,7 @@
             "line": 1025,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1025"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1025"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -4965,7 +5338,28 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 35,
+                  "name": "Entries",
+                  "constraint": {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "reference",
+                        "id": 269,
+                        "name": "Option.Any",
+                        "packageName": "@sapphire/result",
+                        "packageVersion": null,
+                        "typeArguments": []
+                      }
+                    }
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 36,
@@ -5049,7 +5443,7 @@
             "line": 976,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L976"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L976"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -5073,7 +5467,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 16,
+                  "name": "T",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 17,
@@ -5198,7 +5599,7 @@
             "line": 991,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L991"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L991"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -5222,7 +5623,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 23,
+                  "name": "T",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 24,
@@ -5374,7 +5782,7 @@
             "line": 947,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L947"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L947"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -5443,7 +5851,7 @@
             "line": 965,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L965"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L965"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -5508,7 +5916,7 @@
             "line": 905,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L905"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L905"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -5523,7 +5931,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 5,
+                  "name": "T",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "undefined"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 6,
@@ -5589,7 +6007,7 @@
         "line": 1,
         "file": "OptionError.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/OptionError.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/OptionError.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5841,7 +6259,7 @@
             "line": 2,
             "file": "OptionError.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/OptionError.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/OptionError.ts#L2"
           },
           "comment": {
             "description": null,
@@ -5936,7 +6354,7 @@
         "line": 18,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L18"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5994,7 +6412,7 @@
           "line": 28,
           "file": "Result.ts",
           "path": "packages/result/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L28"
+          "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L28"
         },
         "comment": {
           "description": null,
@@ -6071,13 +6489,44 @@
       },
       "properties": [
         {
+          "id": 372,
+          "name": "__STATUS__",
+          "source": {
+            "line": 23,
+            "file": "Result.ts",
+            "path": "packages/result/src/lib",
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L23"
+          },
+          "comment": {
+            "description": "Branded value to ensure `Success` is typed correctly.",
+            "blockTags": [],
+            "modifierTags": [
+              "@internal"
+            ]
+          },
+          "parentId": 317,
+          "accessibility": "protected",
+          "abstract": false,
+          "static": false,
+          "readonly": false,
+          "optional": false,
+          "type": {
+            "kind": "reference",
+            "id": 369,
+            "name": "Result.Success",
+            "packageName": "@sapphire/result",
+            "packageVersion": null,
+            "typeArguments": []
+          }
+        },
+        {
           "id": 579,
           "name": "[SuccessProperty]",
           "source": {
             "line": 26,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L26"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L26"
           },
           "comment": {
             "description": null,
@@ -6106,7 +6555,7 @@
             "line": 25,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L25"
           },
           "comment": {
             "description": null,
@@ -6154,44 +6603,13 @@
           }
         },
         {
-          "id": 372,
-          "name": "__STATUS__",
-          "source": {
-            "line": 23,
-            "file": "Result.ts",
-            "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L23"
-          },
-          "comment": {
-            "description": "Branded value to ensure `Success` is typed correctly.",
-            "blockTags": [],
-            "modifierTags": [
-              "@internal"
-            ]
-          },
-          "parentId": 317,
-          "accessibility": "protected",
-          "abstract": false,
-          "static": false,
-          "readonly": false,
-          "optional": false,
-          "type": {
-            "kind": "reference",
-            "id": 369,
-            "name": "Result.Success",
-            "packageName": "@sapphire/result",
-            "packageVersion": null,
-            "typeArguments": []
-          }
-        },
-        {
           "id": 583,
           "name": "[toStringTag]",
           "source": {
             "line": 993,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L993"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L993"
           },
           "comment": {
             "description": null,
@@ -6239,7 +6657,7 @@
             "line": 989,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L989"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L989"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -6304,7 +6722,7 @@
             "line": 682,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L682"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L682"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -6336,7 +6754,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 507,
+                  "name": "OutputResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 508,
@@ -6414,7 +6846,7 @@
             "line": 705,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L705"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L705"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -6438,7 +6870,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 511,
+                  "name": "OutputResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 512,
@@ -6554,7 +7000,7 @@
             "line": 792,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L792"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L792"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -6586,7 +7032,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 529,
+                  "name": "Value",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 530,
@@ -6743,7 +7196,7 @@
             "line": 820,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L820"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L820"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -6842,7 +7295,14 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 540,
+                  "name": "Value",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 541,
@@ -6932,7 +7392,7 @@
             "line": 918,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L918"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L918"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -6952,7 +7412,29 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 557,
+                  "name": "OtherValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 558,
+                  "name": "OtherError",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 559,
+                  "name": "OtherSuccess",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 560,
@@ -7047,7 +7529,7 @@
             "line": 168,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L168"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L168"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7129,7 +7611,7 @@
             "line": 479,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L479"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L479"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7214,7 +7696,7 @@
             "line": 507,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L507"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L507"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7299,7 +7781,7 @@
             "line": 870,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L870"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L870"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7331,7 +7813,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 549,
+                  "name": "InnerResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 550,
@@ -7434,7 +7930,7 @@
             "line": 354,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L354"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L354"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7536,7 +8032,7 @@
             "line": 377,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L377"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L377"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7676,7 +8172,7 @@
             "line": 400,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L400"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L400"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7778,7 +8274,7 @@
             "line": 423,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L423"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L423"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7918,7 +8414,7 @@
             "line": 890,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L890"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L890"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -7991,7 +8487,7 @@
             "line": 905,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L905"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L905"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8122,7 +8618,7 @@
             "line": 96,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L96"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L96"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8192,7 +8688,7 @@
             "line": 122,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L122"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L122"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8224,7 +8720,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 392,
+                  "name": "R",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 393,
@@ -8328,7 +8831,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 398,
+                  "name": "R",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 399,
@@ -8441,7 +8954,7 @@
             "line": 49,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L49"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L49"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8511,7 +9024,7 @@
             "line": 74,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L74"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L74"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8543,7 +9056,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 377,
+                  "name": "R",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 378,
@@ -8647,7 +9167,17 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 383,
+                  "name": "R",
+                  "constraint": {
+                    "kind": "intrinsic",
+                    "type": "boolean"
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 384,
@@ -8760,7 +9290,7 @@
             "line": 452,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L452"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L452"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8825,7 +9355,7 @@
             "line": 190,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L190"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L190"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -8853,7 +9383,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 409,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 410,
@@ -8986,7 +9523,7 @@
             "line": 300,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L300"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L300"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -9014,7 +9551,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 444,
+                  "name": "OutputError",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 445,
@@ -9143,7 +9687,7 @@
             "line": 332,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L332"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L332"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -9175,7 +9719,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 451,
+                  "name": "OutputResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 452,
@@ -9291,7 +9849,7 @@
             "line": 223,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L223"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L223"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -9323,7 +9881,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 416,
+                  "name": "OutputResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 417,
@@ -9439,7 +10011,7 @@
             "line": 248,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L248"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L248"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -9467,7 +10039,20 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 423,
+                  "name": "MappedOutputValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 424,
+                  "name": "DefaultOutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 425,
@@ -9589,7 +10174,7 @@
             "line": 276,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L276"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L276"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -9617,7 +10202,20 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 432,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 433,
+                  "name": "OutputError",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 434,
@@ -9777,7 +10375,7 @@
             "line": 956,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L956"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L956"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -9801,7 +10399,20 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 566,
+                  "name": "OkValue",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 567,
+                  "name": "ErrValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 568,
@@ -10017,7 +10628,7 @@
             "line": 931,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L931"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L931"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10094,7 +10705,7 @@
             "line": 146,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L146"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L146"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10176,7 +10787,7 @@
             "line": 743,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L743"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L743"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10212,7 +10823,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 518,
+                  "name": "OutputResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 519,
@@ -10290,7 +10915,7 @@
             "line": 766,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L766"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L766"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10314,7 +10939,21 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 522,
+                  "name": "OutputResult",
+                  "constraint": {
+                    "kind": "reference",
+                    "id": 594,
+                    "name": "Result.Any",
+                    "packageName": "@sapphire/result",
+                    "packageVersion": null,
+                    "typeArguments": []
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 523,
@@ -10430,7 +11069,7 @@
             "line": 840,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L840"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L840"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10454,7 +11093,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 545,
+                  "name": "InnerValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 546,
@@ -10605,7 +11251,7 @@
             "line": 538,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L538"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L538"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10690,7 +11336,7 @@
             "line": 569,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L569"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L569"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10775,7 +11421,7 @@
             "line": 599,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L599"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L599"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10819,7 +11465,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 494,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 495,
@@ -10884,7 +11537,7 @@
             "line": 622,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L622"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L622"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -10924,7 +11577,14 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 498,
+                  "name": "OutputValue",
+                  "constraint": null,
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 499,
@@ -11027,7 +11687,7 @@
             "line": 650,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L650"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L650"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11108,7 +11768,7 @@
             "line": 1027,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1027"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1027"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11164,7 +11824,7 @@
             "line": 1109,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1109"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1109"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11184,7 +11844,28 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 354,
+                  "name": "Entries",
+                  "constraint": {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "reference",
+                        "id": 594,
+                        "name": "Result.Any",
+                        "packageName": "@sapphire/result",
+                        "packageVersion": null,
+                        "typeArguments": []
+                      }
+                    }
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 355,
@@ -11285,7 +11966,7 @@
             "line": 1130,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1130"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1130"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11305,7 +11986,28 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 359,
+                  "name": "Entries",
+                  "constraint": {
+                    "kind": "typeOperator",
+                    "operator": "readonly",
+                    "type": {
+                      "kind": "array",
+                      "type": {
+                        "kind": "reference",
+                        "id": 594,
+                        "name": "Result.Any",
+                        "packageName": "@sapphire/result",
+                        "packageVersion": null,
+                        "typeArguments": []
+                      }
+                    }
+                  },
+                  "default": null
+                }
+              ],
               "parameters": [
                 {
                   "id": 360,
@@ -11406,7 +12108,7 @@
             "line": 1005,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1005"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1005"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11421,7 +12123,26 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 326,
+                  "name": "E",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "undefined"
+                  }
+                },
+                {
+                  "id": 327,
+                  "name": "T",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 328,
@@ -11493,7 +12214,7 @@
             "line": 1076,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1076"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1076"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11517,7 +12238,23 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 338,
+                  "name": "T",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 339,
+                  "name": "E",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 340,
@@ -11666,7 +12403,7 @@
             "line": 1090,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1090"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1090"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11690,7 +12427,23 @@
                 ],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 346,
+                  "name": "T",
+                  "constraint": null,
+                  "default": null
+                },
+                {
+                  "id": 347,
+                  "name": "E",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "unknown"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 348,
@@ -11866,7 +12619,7 @@
             "line": 1047,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1047"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1047"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -11935,7 +12688,7 @@
             "line": 1065,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1065"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1065"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -12000,7 +12753,7 @@
             "line": 998,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L998"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L998"
           },
           "parentId": 317,
           "accessibility": "public",
@@ -12015,7 +12768,26 @@
                 "blockTags": [],
                 "modifierTags": []
               },
-              "typeParameters": [],
+              "typeParameters": [
+                {
+                  "id": 320,
+                  "name": "T",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "undefined"
+                  }
+                },
+                {
+                  "id": 321,
+                  "name": "E",
+                  "constraint": null,
+                  "default": {
+                    "kind": "intrinsic",
+                    "type": "any"
+                  }
+                }
+              ],
               "parameters": [
                 {
                   "id": 322,
@@ -12089,7 +12861,7 @@
         "line": 1,
         "file": "ResultError.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/ResultError.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/ResultError.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -12123,7 +12895,7 @@
           "line": 4,
           "file": "ResultError.ts",
           "path": "packages/result/src/lib",
-          "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/ResultError.ts#L4"
+          "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/ResultError.ts#L4"
         },
         "comment": {
           "description": null,
@@ -12252,7 +13024,7 @@
             "line": 2,
             "file": "ResultError.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/ResultError.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/ResultError.ts#L2"
           },
           "comment": {
             "description": null,
@@ -12396,7 +13168,7 @@
             "line": 9,
             "file": "ResultError.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/ResultError.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/ResultError.ts#L9"
           },
           "comment": {
             "description": null,
@@ -12494,7 +13266,7 @@
         "line": 1162,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1162"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1162"
       },
       "namespaceParentId": null,
       "comment": {
@@ -12512,7 +13284,26 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "typeParameters": [],
+          "typeParameters": [
+            {
+              "id": 615,
+              "name": "E",
+              "constraint": null,
+              "default": {
+                "kind": "intrinsic",
+                "type": "undefined"
+              }
+            },
+            {
+              "id": 616,
+              "name": "T",
+              "constraint": null,
+              "default": {
+                "kind": "intrinsic",
+                "type": "any"
+              }
+            }
+          ],
           "parameters": [
             {
               "id": 617,
@@ -12584,7 +13375,7 @@
         "line": 1162,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1162"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1162"
       },
       "namespaceParentId": null,
       "comment": {
@@ -12602,7 +13393,26 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "typeParameters": [],
+          "typeParameters": [
+            {
+              "id": 609,
+              "name": "T",
+              "constraint": null,
+              "default": {
+                "kind": "intrinsic",
+                "type": "undefined"
+              }
+            },
+            {
+              "id": 610,
+              "name": "E",
+              "constraint": null,
+              "default": {
+                "kind": "intrinsic",
+                "type": "any"
+              }
+            }
+          ],
           "parameters": [
             {
               "id": 611,
@@ -12674,7 +13484,7 @@
         "line": 1045,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1045"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1045"
       },
       "namespaceParentId": null,
       "comment": {
@@ -12692,7 +13502,17 @@
             "blockTags": [],
             "modifierTags": []
           },
-          "typeParameters": [],
+          "typeParameters": [
+            {
+              "id": 279,
+              "name": "T",
+              "constraint": null,
+              "default": {
+                "kind": "intrinsic",
+                "type": "undefined"
+              }
+            }
+          ],
           "parameters": [
             {
               "id": 280,
@@ -12759,7 +13579,7 @@
         "line": 8,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L8"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -12781,7 +13601,7 @@
             "line": 1037,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1037"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1037"
           },
           "namespaceParentId": 264,
           "comment": {
@@ -12812,7 +13632,7 @@
             "line": 1036,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1036"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1036"
           },
           "namespaceParentId": 264,
           "comment": {
@@ -12861,7 +13681,7 @@
             "line": 1038,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1038"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1038"
           },
           "namespaceParentId": 264,
           "comment": {
@@ -12944,7 +13764,7 @@
             "line": 1035,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1035"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1035"
           },
           "namespaceParentId": 264,
           "comment": {
@@ -12990,7 +13810,7 @@
             "line": 1039,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1039"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1039"
           },
           "namespaceParentId": 264,
           "comment": {
@@ -13058,7 +13878,7 @@
             "line": 1040,
             "file": "Option.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1040"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1040"
           },
           "namespaceParentId": 264,
           "comment": {
@@ -13156,7 +13976,7 @@
         "line": 18,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L18"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L18"
       },
       "namespaceParentId": null,
       "comment": {
@@ -13178,7 +13998,7 @@
             "line": 1149,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1149"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1149"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13213,7 +14033,7 @@
             "line": 1148,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1148"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1148"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13276,7 +14096,7 @@
             "line": 1147,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1147"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1147"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13339,7 +14159,7 @@
             "line": 1150,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1150"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1150"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13431,7 +14251,7 @@
             "line": 1152,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1152"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1152"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13499,7 +14319,7 @@
             "line": 1157,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1157"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1157"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13594,7 +14414,7 @@
             "line": 1151,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1151"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1151"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13662,7 +14482,7 @@
             "line": 1154,
             "file": "Result.ts",
             "path": "packages/result/src/lib",
-            "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1154"
+            "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1154"
           },
           "namespaceParentId": 587,
           "comment": {
@@ -13762,7 +14582,7 @@
         "line": 1057,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1057"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1057"
       },
       "namespaceParentId": null,
       "comment": {
@@ -13788,7 +14608,7 @@
         "line": 1172,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1172"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1172"
       },
       "namespaceParentId": null,
       "comment": {
@@ -13814,7 +14634,7 @@
         "line": 1171,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1171"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1171"
       },
       "namespaceParentId": null,
       "comment": {
@@ -13873,7 +14693,7 @@
         "line": 1056,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1056"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1056"
       },
       "namespaceParentId": null,
       "comment": {
@@ -13918,7 +14738,7 @@
         "line": 1170,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1170"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1170"
       },
       "namespaceParentId": null,
       "comment": {
@@ -13977,7 +14797,7 @@
         "line": 1053,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1053"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1053"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14039,7 +14859,7 @@
         "line": 1168,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1168"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1168"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14118,7 +14938,7 @@
         "line": 1055,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1055"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1055"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14160,7 +14980,7 @@
         "line": 1175,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1175"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1175"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14209,7 +15029,7 @@
         "line": 1178,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1178"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1178"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14274,7 +15094,7 @@
         "line": 1174,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1174"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1174"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14323,7 +15143,7 @@
         "line": 1177,
         "file": "Result.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Result.ts#L1177"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Result.ts#L1177"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14388,7 +15208,7 @@
         "line": 1059,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1059"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1059"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14437,7 +15257,7 @@
         "line": 1060,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1060"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1060"
       },
       "namespaceParentId": null,
       "comment": {
@@ -14504,7 +15324,7 @@
         "line": 1045,
         "file": "Option.ts",
         "path": "packages/result/src/lib",
-        "url": "https://github.com/sapphiredev/utilities/blob/79db3048b761e57aea31ad569e144b830f5e6446/packages/result/src/lib/Option.ts#L1045"
+        "url": "https://github.com/sapphiredev/utilities/blob/bc456c311f273efcb8150d4e33d614c9889c3ed7/packages/result/src/lib/Option.ts#L1045"
       },
       "namespaceParentId": null,
       "comment": {
