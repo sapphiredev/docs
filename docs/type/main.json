@@ -5,7 +5,7 @@
   "version": "2.6.0",
   "dependencies": {
     "@discordjs/node-pre-gyp": "^0.4.5",
-    "nan": "^2.22.0",
+    "nan": "^2.22.1",
     "tslib": "^2.8.1"
   },
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/type\n\n**A type detection utility for JavaScript.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/type)](https://github.com/sapphiredev/type/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/type?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/type)\n[![npm](https://img.shields.io/npm/v/@sapphire/type?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/type)\n\n</div>\n\n---\n\n**Table of Contents**\n\n- [Description](#description)\n- [Features](#features)\n- [Installation](#installation)\n- [Usage](#usage)\n  - [Basic Usage](#basic-usage)\n- [Buy us some doughnuts](#buy-us-some-doughnuts)\n- [Contributors](#contributors)\n\n## Description\n\nSometimes there is a need to know what a value's type of something is, this package exists to satisfy those needs by\nimplementing a parser that can retrieve the type of the value recursively and process a string similar to TypeScript's\ntypes.\n\n## Features\n\n- Written in TypeScript\n- Bundled with Rollup so it can be used in NodeJS and browsers\n- Offers CommonJS, ESM and UMD bundles\n- Fully tested\n\n## Installation\n\n```sh\nyarn add @sapphire/type\n# npm install @sapphire/type\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example\n`const { Type } = require('@sapphire/type')` equals `import { Type } from '@sapphire/type'`.\n\n**Note:** When using ESM syntax you can also default-import `Type` class: `import Type from '@sapphire/type'`.\n\n**Note:** The internal functions of `getPromiseDetails` and `getProxyDetails` are also exported. If you don't know what\nthese are, then you need not be concerned about this.\n\n### Basic Usage\n\n```typescript\n// Import the Type class\nconst { Type } = require('@sapphire/type');\n\n// Define a Type with an array of two numbers\nconst type = new Type([1, 2]);\n\nconsole.log(type.toString());\n// Logs: Array<number>\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are\namazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, PayPal, Patreon and GitHub Sponsorships. You can use the buttons\nbelow to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/type/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/type\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
@@ -18,7 +18,7 @@
         "line": 20,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L20"
+        "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L20"
       },
       "namespaceParentId": null,
       "comment": {
@@ -38,7 +38,7 @@
           "line": 50,
           "file": "index.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L50"
+          "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L50"
         },
         "comment": {
           "description": null,
@@ -101,7 +101,7 @@
             "line": 39,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L39"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L39"
           },
           "comment": {
             "description": "The child keys of this Type",
@@ -143,7 +143,7 @@
             "line": 44,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L44"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L44"
           },
           "comment": {
             "description": "The child values of this Type",
@@ -185,7 +185,7 @@
             "line": 29,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L29"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L29"
           },
           "comment": {
             "description": "The shallow type of this",
@@ -210,7 +210,7 @@
             "line": 34,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L34"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L34"
           },
           "comment": {
             "description": "The parent of this Type",
@@ -248,7 +248,7 @@
             "line": 24,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L24"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L24"
           },
           "comment": {
             "description": "The value to generate a deep Type of",
@@ -273,7 +273,7 @@
             "line": 59,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L59"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L59"
           },
           "comment": {
             "description": "The type string for the children of this Type",
@@ -300,7 +300,7 @@
             "line": 102,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L102"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L102"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -356,7 +356,7 @@
             "line": 93,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L93"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L93"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -403,7 +403,7 @@
             "line": 111,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L111"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L111"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -434,7 +434,7 @@
             "line": 84,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L84"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L84"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -465,7 +465,7 @@
             "line": 75,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L75"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L75"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -509,7 +509,7 @@
             "line": 67,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L67"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L67"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -540,7 +540,7 @@
             "line": 163,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L163"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L163"
           },
           "parentId": 7,
           "accessibility": "private",
@@ -604,7 +604,7 @@
             "line": 140,
             "file": "index.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L140"
+            "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L140"
           },
           "parentId": 7,
           "accessibility": "public",
@@ -656,7 +656,7 @@
         "line": 15,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L15"
+        "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -709,7 +709,7 @@
         "line": 15,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/type/blob/b6a52987879ea88eedfb9bb5ed2648cfe1ef2a4a/src/lib/index.ts#L15"
+        "url": "https://github.com/sapphiredev/type/blob/028986989405135e0e179daac54e3721290f54eb/src/lib/index.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
