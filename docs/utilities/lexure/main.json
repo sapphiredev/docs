@@ -2,12 +2,12 @@
   "typeDocJsonParserVersion": "10.2.0",
   "id": 0,
   "name": "@sapphire/lexure",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "dependencies": {
     "@sapphire/result": "workspace:^"
   },
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/lexure\n\n**A powerful and fast parser for non-technical user input**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/utilities)](https://github.com/sapphiredev/utilities/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/lexure?logo=webpack&style=flat-square)](https://bundlephobia.com/lexure?p=@sapphire/lexure)\n[![npm](https://img.shields.io/npm/v/@sapphire/lexure?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/lexure)\n\n</div>\n\n## Description\n\nA powerful and fast parser and utilities for non-technical user input, inspired by [`lexure`](https://www.npmjs.com/package/lexure), powered by [`@sapphire/result`](https://www.npmjs.com/package/@sapphire/result).\n\nThe code in this package has been greatly inspired by [lexure] from [1Computer1].\n\n## Features\n\n-   Written in TypeScript\n-   Bundled with esbuild so it can be used in NodeJS and browsers\n-   Offers CommonJS, ESM and UMD bundles\n-   Fully tested\n-   Parses quoted input with multiple quote styles\n-   Parses flags and options with a customizable strategy system\n-   Keeps leading whitespace\n-   Includes a convenient wrapper to retrieve the parsed arguments\n-   Includes custom argument delimiter\n\n## Installation\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/lexure\n```\n\n## Usage\n\n**Note:** While this section uses `require`, the imports match 1:1 with ESM imports. For example `const { Parser } = require('@sapphire/lexure')` equals `import { Parser } from '@sapphire/lexure'`.\n\n```typescript\nconst parser = new Parser(new PrefixedStrategy(['--', '/'], ['=', ':']));\nconst lexer = new Lexer({\n\tquotes: [\n\t\t['\"', '\"'],\n\t\t['“', '”'],\n\t\t['「', '」']\n\t]\n});\n\nconst content = 'foo bar';\nconst stream = new ArgumentStream(parser.run(lexer.run(content)));\n\nconsole.log(stream.single()); // Some { value: 'foo' }\nconsole.log(stream.single()); // Some { value: 'bar' }\nconsole.log(stream.single()); // None\n```\n\n---\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/utilities/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/utilities\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n[lexure]: https://github.com/1Computer1/lexure\n[1computer1]: https://github.com/1Computer1\n",
-  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/lexure@1.1.8](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.7...@sapphire/lexure@1.1.8) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- Move browser imports ([100ffb0](https://github.com/sapphiredev/utilities/commit/100ffb0a2471bb9f74cc580d282d11059e1a0a68)) ([#826](https://github.com/sapphiredev/utilities/pull/826) by @kyranet)\n- **deps:** Update all non-major dependencies ([083376a](https://github.com/sapphiredev/utilities/commit/083376aac55094dbeddb5194e8a8f0d794b8cceb)) ([#763](https://github.com/sapphiredev/utilities/pull/763) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n\n# [@sapphire/lexure@1.1.7](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.7...@sapphire/lexure@1.1.7) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Fixed commonjs typings export mapping (#707) ([216ff02](https://github.com/sapphiredev/utilities/commit/216ff0260d63a9590357f9a5069f1ae2b34eaf5d))\n\n# [@sapphire/lexure@1.1.6](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.6...@sapphire/lexure@1.1.6) - (2023-12-04)\n\n## 🐛 Bug Fixes\n\n- **lexure:** Properly split CJS, ESM and IIFE ([d218a22](https://github.com/sapphiredev/utilities/commit/d218a22a3ca997151963e5abb97aa79146a20e29))\n- Update export mapping for proper ESM/CJS split ([dd0cff8](https://github.com/sapphiredev/utilities/commit/dd0cff8e9b03a15812f25f7a1180501a92422629))\n- **deps:** Update all non-major dependencies (#607) ([9cc8bd0](https://github.com/sapphiredev/utilities/commit/9cc8bd0d4b5d650deab2c913e6c3d713861bae28))\n\n## 🧪 Testing\n\n- Update vitest to coverage v8 ([a4bc6e4](https://github.com/sapphiredev/utilities/commit/a4bc6e4f24ea60143a150ecc76fda6484f172ab9))\n\n# [@sapphire/lexure@1.1.3](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.2...@sapphire/lexure@1.1.3) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n\n## 🧪 Testing\n\n- Cleanup tests ([aec1bb2](https://github.com/sapphiredev/utilities/commit/aec1bb290d0f3c00a1ae4f4c86302ebbb161d348))\n\n# [@sapphire/lexure@1.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.1...@sapphire/lexure@1.1.2) - (2022-10-16)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/lexure@1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.0...@sapphire/lexure@1.1.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n\n# [@sapphire/lexure@1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.2...@sapphire/lexure@1.1.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n## 🚀 Features\n\n- Add `join` and `joinRaw` (#458) ([4dc8e53](https://github.com/sapphiredev/utilities/commit/4dc8e533cae7fc89faaf972aef0047638c696ff4))\n\n# [@sapphire/lexure@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.1...@sapphire/lexure@1.0.2) - (2022-08-29)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n# [@sapphire/lexure@1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.2...@sapphire/lexure@1.1.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n## 🚀 Features\n\n- Add `join` and `joinRaw` (#458) ([4dc8e53](https://github.com/sapphiredev/utilities/commit/4dc8e533cae7fc89faaf972aef0047638c696ff4))\n\n# [@sapphire/lexure@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.1...@sapphire/lexure@1.0.2) - (2022-08-29)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n# [@sapphire/lexure@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/lexure@1.0.0) - (2022-07-22)\n\n## 🚀 Features\n\n- Add `@sapphire/lexure` package (#388) ([1fec581](https://github.com/sapphiredev/utilities/commit/1fec581dedca26aa07766b57b9724011320a2b8b))\n\n",
+  "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/lexure@1.1.11](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.10...@sapphire/lexure@1.1.11) - (2025-09-24)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([636a5ee](https://github.com/sapphiredev/utilities/commit/636a5eed0939fd96a82213bf8459846aedd54037)) ([#897](https://github.com/sapphiredev/utilities/pull/897) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([4bc5591](https://github.com/sapphiredev/utilities/commit/4bc55911f95456a2caee10a3588c7b5f1542fb00)) ([#879](https://github.com/sapphiredev/utilities/pull/879) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([bc2f01c](https://github.com/sapphiredev/utilities/commit/bc2f01ce7d6932c9a0e02faa7cc081ecbae9640d)) ([#869](https://github.com/sapphiredev/utilities/pull/869) by @renovate[bot])\n\n# [@sapphire/lexure@1.1.8](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.7...@sapphire/lexure@1.1.8) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- Move browser imports ([100ffb0](https://github.com/sapphiredev/utilities/commit/100ffb0a2471bb9f74cc580d282d11059e1a0a68)) ([#826](https://github.com/sapphiredev/utilities/pull/826) by @kyranet)\n- **deps:** Update all non-major dependencies ([083376a](https://github.com/sapphiredev/utilities/commit/083376aac55094dbeddb5194e8a8f0d794b8cceb)) ([#763](https://github.com/sapphiredev/utilities/pull/763) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e7fdc5d](https://github.com/sapphiredev/utilities/commit/e7fdc5db3632a7f90292ef3978898da32730343a)) ([#752](https://github.com/sapphiredev/utilities/pull/752) by @renovate[bot])\n\n# [@sapphire/lexure@1.1.7](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.7...@sapphire/lexure@1.1.7) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Fixed commonjs typings export mapping (#707) ([216ff02](https://github.com/sapphiredev/utilities/commit/216ff0260d63a9590357f9a5069f1ae2b34eaf5d))\n\n# [@sapphire/lexure@1.1.6](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.6...@sapphire/lexure@1.1.6) - (2023-12-04)\n\n## 🐛 Bug Fixes\n\n- **lexure:** Properly split CJS, ESM and IIFE ([d218a22](https://github.com/sapphiredev/utilities/commit/d218a22a3ca997151963e5abb97aa79146a20e29))\n- Update export mapping for proper ESM/CJS split ([dd0cff8](https://github.com/sapphiredev/utilities/commit/dd0cff8e9b03a15812f25f7a1180501a92422629))\n- **deps:** Update all non-major dependencies (#607) ([9cc8bd0](https://github.com/sapphiredev/utilities/commit/9cc8bd0d4b5d650deab2c913e6c3d713861bae28))\n\n## 🧪 Testing\n\n- Update vitest to coverage v8 ([a4bc6e4](https://github.com/sapphiredev/utilities/commit/a4bc6e4f24ea60143a150ecc76fda6484f172ab9))\n\n# [@sapphire/lexure@1.1.3](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.2...@sapphire/lexure@1.1.3) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#577) ([291dd67](https://github.com/sapphiredev/utilities/commit/291dd6783e57d8f075ce566218ba076ef6c4bbbd))\n- **deps:** Update all non-major dependencies (#545) ([40ca040](https://github.com/sapphiredev/utilities/commit/40ca040a21d8a0949682051a3a974538183a400e))\n- **deps:** Update all non-major dependencies (#544) ([cc78f17](https://github.com/sapphiredev/utilities/commit/cc78f17390c7f3db08af92bf46a5a70a9c11dd5f))\n- **deps:** Update all non-major dependencies (#532) ([8033d1f](https://github.com/sapphiredev/utilities/commit/8033d1ff7a5a1974134c61f424f171cccb2915e1))\n- **deps:** Update all non-major dependencies (#514) ([21b07d5](https://github.com/sapphiredev/utilities/commit/21b07d5db529a0d982647a60de98e46f36f1ac93))\n\n## 📝 Documentation\n\n- Add @06000208 as a contributor ([fa3349e](https://github.com/sapphiredev/utilities/commit/fa3349e55ce4ad008785211dec7bf8e2b5d933df))\n- Add @didinele as a contributor ([42ef7b6](https://github.com/sapphiredev/utilities/commit/42ef7b656c48fd0e720119db1d622c8bba2791e9))\n- Add @goestav as a contributor ([0e56a92](https://github.com/sapphiredev/utilities/commit/0e56a92a4e2d0942bfa207f81a8cb03b32312034))\n- Add @CitTheDev as a contributor ([34169ea](https://github.com/sapphiredev/utilities/commit/34169eae1dc0476ccf5a6c4f36e28602a204829e))\n- Add @legendhimslef as a contributor ([059b6f1](https://github.com/sapphiredev/utilities/commit/059b6f1ab5362d46d58624d06c1aa39192b0716f))\n\n## 🧪 Testing\n\n- Cleanup tests ([aec1bb2](https://github.com/sapphiredev/utilities/commit/aec1bb290d0f3c00a1ae4f4c86302ebbb161d348))\n\n# [@sapphire/lexure@1.1.2](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.1...@sapphire/lexure@1.1.2) - (2022-10-16)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#505) ([6178296](https://github.com/sapphiredev/utilities/commit/617829649e1e4deeee02b14533b5377cd5bc1fb3))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([fb278ba](https://github.com/sapphiredev/utilities/commit/fb278bacf627ec6fc88752eafeb12df5f3177a2c))\n\n# [@sapphire/lexure@1.1.1](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.1.0...@sapphire/lexure@1.1.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#466) ([dc08606](https://github.com/sapphiredev/utilities/commit/dc08606a97154e47c65536123ac5f8b1262f7bd2))\n\n# [@sapphire/lexure@1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.2...@sapphire/lexure@1.1.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n## 🚀 Features\n\n- Add `join` and `joinRaw` (#458) ([4dc8e53](https://github.com/sapphiredev/utilities/commit/4dc8e533cae7fc89faaf972aef0047638c696ff4))\n\n# [@sapphire/lexure@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.1...@sapphire/lexure@1.0.2) - (2022-08-29)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n# [@sapphire/lexure@1.1.0](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.2...@sapphire/lexure@1.1.0) - (2022-09-18)\n\n## 🏠 Refactor\n\n- Split `@sapphire/time-utilities` into 4 sub-packages (#462) ([574299a](https://github.com/sapphiredev/utilities/commit/574299a99e658f6500a2a7efa587a0919b2d1313))\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([e20f299](https://github.com/sapphiredev/utilities/commit/e20f29906e83cee000aaba9c6827e3bec5173d28))\n\n## 📝 Documentation\n\n- Change name of @kyranet (#451) ([df4fdef](https://github.com/sapphiredev/utilities/commit/df4fdefce18659975a4ebc224723638507d02d35))\n- Update @RealShadowNova as a contributor ([a869ba0](https://github.com/sapphiredev/utilities/commit/a869ba0abfad041610b9115187d426aebe671af6))\n\n## 🚀 Features\n\n- Add `join` and `joinRaw` (#458) ([4dc8e53](https://github.com/sapphiredev/utilities/commit/4dc8e533cae7fc89faaf972aef0047638c696ff4))\n\n# [@sapphire/lexure@1.0.2](https://github.com/sapphiredev/utilities/compare/@sapphire/lexure@1.0.1...@sapphire/lexure@1.0.2) - (2022-08-29)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies ([2308bd7](https://github.com/sapphiredev/utilities/commit/2308bd74356b6b2e0c12995b25f4d8ade4803fe9))\n\n# [@sapphire/lexure@1.0.0](https://github.com/sapphiredev/utilities/tree/@sapphire/lexure@1.0.0) - (2022-07-22)\n\n## 🚀 Features\n\n- Add `@sapphire/lexure` package (#388) ([1fec581](https://github.com/sapphiredev/utilities/commit/1fec581dedca26aa07766b57b9724011320a2b8b))\n\n",
   "classes": [
     {
       "id": 1,
@@ -16,7 +16,7 @@
         "line": 5,
         "file": "ArgumentStream.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -36,7 +36,7 @@
           "line": 9,
           "file": "ArgumentStream.ts",
           "path": ".",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L9"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L9"
         },
         "comment": {
           "description": null,
@@ -75,7 +75,7 @@
             "line": 6,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L6"
           },
           "comment": {
             "description": null,
@@ -104,7 +104,7 @@
             "line": 7,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L7"
           },
           "comment": {
             "description": null,
@@ -133,7 +133,7 @@
             "line": 17,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L17"
           },
           "comment": {
             "description": "Whether or not all ordered parameters were used.",
@@ -158,7 +158,7 @@
             "line": 24,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L24"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L24"
           },
           "comment": {
             "description": "The amount of ordered parameters.",
@@ -183,7 +183,7 @@
             "line": 31,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L31"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L31"
           },
           "comment": {
             "description": "The remaining amount of ordered parameters.",
@@ -208,7 +208,7 @@
             "line": 38,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L38"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L38"
           },
           "comment": {
             "description": "The amount of ordered parameters that have been used.",
@@ -235,7 +235,7 @@
             "line": 497,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L497"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L497"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -347,7 +347,7 @@
             "line": 514,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L514"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L514"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -477,7 +477,7 @@
             "line": 531,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L531"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L531"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -617,7 +617,7 @@
             "line": 549,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L549"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L549"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -775,7 +775,7 @@
             "line": 248,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L248"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L248"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -897,7 +897,7 @@
             "line": 282,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L282"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L282"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1037,7 +1037,7 @@
             "line": 317,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L317"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L317"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1191,7 +1191,7 @@
             "line": 353,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L353"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L353"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1363,7 +1363,7 @@
             "line": 405,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L405"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L405"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1550,7 +1550,7 @@
             "line": 437,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L437"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L437"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1751,7 +1751,7 @@
             "line": 587,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L587"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L587"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1814,7 +1814,7 @@
             "line": 478,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L478"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L478"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1909,7 +1909,7 @@
             "line": 610,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L610"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L610"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -1985,7 +1985,7 @@
             "line": 633,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L633"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L633"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2068,7 +2068,7 @@
             "line": 654,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L654"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L654"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2099,7 +2099,7 @@
             "line": 650,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L650"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L650"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2150,7 +2150,7 @@
             "line": 643,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L643"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L643"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2185,7 +2185,7 @@
             "line": 64,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L64"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L64"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2238,7 +2238,7 @@
             "line": 107,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L107"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L107"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2392,7 +2392,7 @@
             "line": 133,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L133"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L133"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2560,7 +2560,7 @@
             "line": 185,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L185"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L185"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2753,7 +2753,7 @@
             "line": 212,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L212"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L212"
           },
           "parentId": 1,
           "accessibility": "public",
@@ -2958,7 +2958,7 @@
         "line": 1,
         "file": "BaseParameter.ts",
         "path": "lexer/streams/parameters",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L1"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L1"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2978,7 +2978,7 @@
           "line": 4,
           "file": "BaseParameter.ts",
           "path": "lexer/streams/parameters",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L4"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L4"
         },
         "comment": {
           "description": null,
@@ -3020,7 +3020,7 @@
             "line": 2,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L2"
           },
           "comment": {
             "description": null,
@@ -3052,7 +3052,7 @@
             "line": 8,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L8"
           },
           "comment": {
             "description": null,
@@ -3077,7 +3077,7 @@
             "line": 12,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L12"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L12"
           },
           "comment": {
             "description": null,
@@ -3105,7 +3105,7 @@
         "line": 4,
         "file": "EmptyStrategy.ts",
         "path": "parser/strategies",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/EmptyStrategy.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/EmptyStrategy.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3149,7 +3149,7 @@
             "line": 5,
             "file": "EmptyStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/EmptyStrategy.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/EmptyStrategy.ts#L5"
           },
           "parentId": 277,
           "accessibility": "public",
@@ -3193,7 +3193,7 @@
             "line": 9,
             "file": "EmptyStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/EmptyStrategy.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/EmptyStrategy.ts#L9"
           },
           "parentId": 277,
           "accessibility": "public",
@@ -3252,7 +3252,7 @@
         "line": 4,
         "file": "Lexer.ts",
         "path": "lexer",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3272,7 +3272,7 @@
           "line": 8,
           "file": "Lexer.ts",
           "path": "lexer",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L8"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L8"
         },
         "comment": {
           "description": null,
@@ -3311,7 +3311,7 @@
             "line": 5,
             "file": "Lexer.ts",
             "path": "lexer",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L5"
           },
           "comment": {
             "description": null,
@@ -3362,7 +3362,7 @@
             "line": 6,
             "file": "Lexer.ts",
             "path": "lexer",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L6"
           },
           "comment": {
             "description": null,
@@ -3389,7 +3389,7 @@
             "line": 17,
             "file": "Lexer.ts",
             "path": "lexer",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L17"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L17"
           },
           "parentId": 153,
           "accessibility": "public",
@@ -3440,7 +3440,7 @@
             "line": 13,
             "file": "Lexer.ts",
             "path": "lexer",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L13"
           },
           "parentId": 153,
           "accessibility": "public",
@@ -3493,7 +3493,7 @@
         "line": 5,
         "file": "ParameterStream.ts",
         "path": "lexer/streams",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3513,7 +3513,7 @@
           "line": 9,
           "file": "ParameterStream.ts",
           "path": "lexer/streams",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L9"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L9"
         },
         "comment": {
           "description": null,
@@ -3561,7 +3561,7 @@
             "line": 7,
             "file": "ParameterStream.ts",
             "path": "lexer/streams",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L7"
           },
           "comment": {
             "description": null,
@@ -3589,7 +3589,7 @@
             "line": 6,
             "file": "ParameterStream.ts",
             "path": "lexer/streams",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L6"
           },
           "comment": {
             "description": null,
@@ -3629,7 +3629,7 @@
             "line": 13,
             "file": "ParameterStream.ts",
             "path": "lexer/streams",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L13"
           },
           "parentId": 202,
           "accessibility": "public",
@@ -3686,7 +3686,7 @@
         "line": 6,
         "file": "Parser.ts",
         "path": "parser",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/Parser.ts#L6"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/Parser.ts#L6"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3706,7 +3706,7 @@
           "line": 9,
           "file": "Parser.ts",
           "path": "parser",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/Parser.ts#L9"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/Parser.ts#L9"
         },
         "comment": {
           "description": null,
@@ -3745,7 +3745,7 @@
             "line": 7,
             "file": "Parser.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/Parser.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/Parser.ts#L7"
           },
           "comment": {
             "description": null,
@@ -3776,7 +3776,7 @@
             "line": 18,
             "file": "Parser.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/Parser.ts#L18"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/Parser.ts#L18"
           },
           "parentId": 246,
           "accessibility": "public",
@@ -3840,7 +3840,7 @@
             "line": 13,
             "file": "Parser.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/Parser.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/Parser.ts#L13"
           },
           "parentId": 246,
           "accessibility": "public",
@@ -3897,7 +3897,7 @@
         "line": 5,
         "file": "ParserResult.ts",
         "path": "parser",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3917,7 +3917,7 @@
           "line": 11,
           "file": "ParserResult.ts",
           "path": "parser",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L11"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L11"
         },
         "comment": {
           "description": null,
@@ -3956,7 +3956,7 @@
             "line": 7,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L7"
           },
           "comment": {
             "description": null,
@@ -3990,7 +3990,7 @@
             "line": 8,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L8"
           },
           "comment": {
             "description": null,
@@ -4031,7 +4031,7 @@
             "line": 6,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L6"
           },
           "comment": {
             "description": null,
@@ -4063,7 +4063,7 @@
             "line": 9,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L9"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L9"
           },
           "comment": {
             "description": null,
@@ -4094,7 +4094,7 @@
             "line": 15,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L15"
           },
           "parentId": 257,
           "accessibility": "public",
@@ -4158,7 +4158,7 @@
             "line": 41,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L41"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L41"
           },
           "parentId": 257,
           "accessibility": "private",
@@ -4209,7 +4209,7 @@
             "line": 23,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L23"
           },
           "parentId": 257,
           "accessibility": "private",
@@ -4260,7 +4260,7 @@
             "line": 30,
             "file": "ParserResult.ts",
             "path": "parser",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/ParserResult.ts#L30"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/ParserResult.ts#L30"
           },
           "parentId": 257,
           "accessibility": "private",
@@ -4313,7 +4313,7 @@
         "line": 4,
         "file": "PrefixedStrategy.ts",
         "path": "parser/strategies",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4342,7 +4342,7 @@
           "line": 8,
           "file": "PrefixedStrategy.ts",
           "path": "parser/strategies",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L8"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L8"
         },
         "comment": {
           "description": null,
@@ -4406,7 +4406,7 @@
             "line": 5,
             "file": "PrefixedStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L5"
           },
           "comment": {
             "description": null,
@@ -4438,7 +4438,7 @@
             "line": 6,
             "file": "PrefixedStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L6"
           },
           "comment": {
             "description": null,
@@ -4472,7 +4472,7 @@
             "line": 13,
             "file": "PrefixedStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L13"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L13"
           },
           "parentId": 291,
           "accessibility": "public",
@@ -4532,7 +4532,7 @@
             "line": 25,
             "file": "PrefixedStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/PrefixedStrategy.ts#L25"
           },
           "parentId": 291,
           "accessibility": "public",
@@ -4607,7 +4607,7 @@
         "line": 4,
         "file": "QuotedParameter.ts",
         "path": "lexer/streams/parameters",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4634,7 +4634,7 @@
           "line": 9,
           "file": "QuotedParameter.ts",
           "path": "lexer/streams/parameters",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L9"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L9"
         },
         "comment": {
           "description": null,
@@ -4708,7 +4708,7 @@
             "line": 7,
             "file": "QuotedParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L7"
           },
           "comment": {
             "description": null,
@@ -4733,7 +4733,7 @@
             "line": 6,
             "file": "QuotedParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L6"
           },
           "comment": {
             "description": null,
@@ -4758,7 +4758,7 @@
             "line": 2,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L2"
           },
           "comment": {
             "description": null,
@@ -4790,7 +4790,7 @@
             "line": 5,
             "file": "QuotedParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L5"
           },
           "comment": {
             "description": null,
@@ -4815,7 +4815,7 @@
             "line": 8,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L8"
           },
           "comment": {
             "description": null,
@@ -4840,7 +4840,7 @@
             "line": 16,
             "file": "QuotedParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L16"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/QuotedParameter.ts#L16"
           },
           "comment": {
             "description": null,
@@ -4868,7 +4868,7 @@
         "line": 3,
         "file": "TokenStream.ts",
         "path": "lexer/streams/raw",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4906,7 +4906,7 @@
           "line": 9,
           "file": "TokenStream.ts",
           "path": "lexer/streams/raw",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L9"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L9"
         },
         "comment": {
           "description": null,
@@ -4960,7 +4960,7 @@
             "line": 4,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L4"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L4"
           },
           "comment": {
             "description": null,
@@ -4985,7 +4985,7 @@
             "line": 7,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L7"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L7"
           },
           "comment": {
             "description": null,
@@ -5010,7 +5010,7 @@
             "line": 5,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L5"
           },
           "comment": {
             "description": null,
@@ -5051,7 +5051,7 @@
             "line": 6,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L6"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L6"
           },
           "comment": {
             "description": null,
@@ -5076,7 +5076,7 @@
             "line": 15,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L15"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L15"
           },
           "comment": {
             "description": null,
@@ -5103,7 +5103,7 @@
             "line": 19,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L19"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L19"
           },
           "parentId": 211,
           "accessibility": "public",
@@ -5155,7 +5155,7 @@
             "line": 50,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L50"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L50"
           },
           "parentId": 211,
           "accessibility": "private",
@@ -5190,7 +5190,7 @@
             "line": 34,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L34"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L34"
           },
           "parentId": 211,
           "accessibility": "private",
@@ -5234,7 +5234,7 @@
             "line": 25,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L25"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L25"
           },
           "parentId": 211,
           "accessibility": "private",
@@ -5280,7 +5280,7 @@
         "line": 4,
         "file": "WordParameter.ts",
         "path": "lexer/streams/parameters",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5307,7 +5307,7 @@
           "line": 7,
           "file": "WordParameter.ts",
           "path": "lexer/streams/parameters",
-          "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L7"
+          "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L7"
         },
         "comment": {
           "description": null,
@@ -5381,7 +5381,7 @@
             "line": 2,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L2"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L2"
           },
           "comment": {
             "description": null,
@@ -5413,7 +5413,7 @@
             "line": 5,
             "file": "WordParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L5"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L5"
           },
           "comment": {
             "description": null,
@@ -5438,7 +5438,7 @@
             "line": 8,
             "file": "BaseParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/BaseParameter.ts#L8"
           },
           "comment": {
             "description": null,
@@ -5463,7 +5463,7 @@
             "line": 12,
             "file": "WordParameter.ts",
             "path": "lexer/streams/parameters",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L12"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/parameters/WordParameter.ts#L12"
           },
           "comment": {
             "description": null,
@@ -5493,7 +5493,7 @@
         "line": 58,
         "file": "TokenStream.ts",
         "path": "lexer/streams/raw",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L58"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L58"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5510,7 +5510,7 @@
             "line": 59,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L59"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L59"
           },
           "comment": {
             "description": null,
@@ -5527,7 +5527,7 @@
             "line": 60,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L60"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L60"
           },
           "comment": {
             "description": null,
@@ -5544,7 +5544,7 @@
             "line": 61,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L61"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L61"
           },
           "comment": {
             "description": null,
@@ -5565,7 +5565,7 @@
         "line": 9,
         "file": "util.ts",
         "path": "util",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/util/util.ts#L9"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/util/util.ts#L9"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5635,7 +5635,7 @@
         "line": 28,
         "file": "util.ts",
         "path": "util",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/util/util.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/util/util.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5707,7 +5707,7 @@
         "line": 3,
         "file": "IUnorderedStrategy.ts",
         "path": "parser/strategies",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/IUnorderedStrategy.ts#L3"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/IUnorderedStrategy.ts#L3"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5726,7 +5726,7 @@
             "line": 8,
             "file": "IUnorderedStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/IUnorderedStrategy.ts#L8"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/IUnorderedStrategy.ts#L8"
           },
           "parentId": 284,
           "signatures": [
@@ -5783,7 +5783,7 @@
             "line": 14,
             "file": "IUnorderedStrategy.ts",
             "path": "parser/strategies",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/parser/strategies/IUnorderedStrategy.ts#L14"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/parser/strategies/IUnorderedStrategy.ts#L14"
           },
           "parentId": 284,
           "signatures": [
@@ -5855,7 +5855,7 @@
         "line": 71,
         "file": "TokenStream.ts",
         "path": "lexer/streams/raw",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L71"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L71"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5873,7 +5873,7 @@
             "line": 75,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L75"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L75"
           },
           "comment": {
             "description": null,
@@ -5895,7 +5895,7 @@
             "line": 74,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L74"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L74"
           },
           "comment": {
             "description": null,
@@ -5917,7 +5917,7 @@
             "line": 72,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L72"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L72"
           },
           "comment": {
             "description": null,
@@ -5943,7 +5943,7 @@
             "line": 73,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L73"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L73"
           },
           "comment": {
             "description": null,
@@ -5968,7 +5968,7 @@
         "line": 78,
         "file": "TokenStream.ts",
         "path": "lexer/streams/raw",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L78"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L78"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5986,7 +5986,7 @@
             "line": 79,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L79"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L79"
           },
           "comment": {
             "description": null,
@@ -6012,7 +6012,7 @@
             "line": 80,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L80"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L80"
           },
           "comment": {
             "description": null,
@@ -6037,7 +6037,7 @@
         "line": 66,
         "file": "TokenStream.ts",
         "path": "lexer/streams/raw",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L66"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L66"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6055,7 +6055,7 @@
             "line": 67,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L67"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L67"
           },
           "comment": {
             "description": null,
@@ -6081,7 +6081,7 @@
             "line": 68,
             "file": "TokenStream.ts",
             "path": "lexer/streams/raw",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L68"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L68"
           },
           "comment": {
             "description": null,
@@ -6108,7 +6108,7 @@
         "line": 5,
         "file": "ArgumentStream.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L5"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L5"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6128,7 +6128,7 @@
             "line": 660,
             "file": "ArgumentStream.ts",
             "path": ".",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L660"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L660"
           },
           "namespaceParentId": 149,
           "comment": {
@@ -6146,7 +6146,7 @@
                 "line": 662,
                 "file": "ArgumentStream.ts",
                 "path": ".",
-                "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L662"
+                "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L662"
               },
               "comment": {
                 "description": null,
@@ -6168,7 +6168,7 @@
                 "line": 661,
                 "file": "ArgumentStream.ts",
                 "path": ".",
-                "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/ArgumentStream.ts#L661"
+                "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/ArgumentStream.ts#L661"
               },
               "comment": {
                 "description": null,
@@ -6207,7 +6207,7 @@
         "line": 4,
         "file": "Lexer.ts",
         "path": "lexer",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L4"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L4"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6227,7 +6227,7 @@
             "line": 23,
             "file": "Lexer.ts",
             "path": "lexer",
-            "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L23"
+            "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L23"
           },
           "namespaceParentId": 165,
           "comment": {
@@ -6245,7 +6245,7 @@
                 "line": 25,
                 "file": "Lexer.ts",
                 "path": "lexer",
-                "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L25"
+                "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L25"
               },
               "comment": {
                 "description": null,
@@ -6293,7 +6293,7 @@
                 "line": 24,
                 "file": "Lexer.ts",
                 "path": "lexer",
-                "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/Lexer.ts#L24"
+                "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/Lexer.ts#L24"
               },
               "comment": {
                 "description": null,
@@ -6325,7 +6325,7 @@
         "line": 28,
         "file": "ParameterStream.ts",
         "path": "lexer/streams",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L28"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/ParameterStream.ts#L28"
       },
       "namespaceParentId": null,
       "comment": {
@@ -6364,7 +6364,7 @@
         "line": 64,
         "file": "TokenStream.ts",
         "path": "lexer/streams/raw",
-        "url": "https://github.com/sapphiredev/utilities/blob/9f2d7c850c1265b26d91840e21b520a0109719c3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L64"
+        "url": "https://github.com/sapphiredev/utilities/blob/5d289ffbc475295e107c9d8e6f61058e423c1be3/packages/lexure/src/lib/lexer/streams/raw/TokenStream.ts#L64"
       },
       "namespaceParentId": null,
       "comment": {
