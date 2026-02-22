@@ -6,7 +6,7 @@
   "dependencies": {
     "@sapphire/stopwatch": "^1.5.4",
     "@sapphire/utilities": "^3.18.2",
-    "bullmq": "5.69.2"
+    "bullmq": "5.70.0"
   },
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/plugin-scheduled-tasks\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to add support for scheduled tasks using <a href=\"https://github.com/taskforcesh/bullmq\">bullmq</a>.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-scheduled-tasks?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-scheduled-tasks)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-scheduled-tasks?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-scheduled-tasks)\n\n</div>\n\n## Description\n\nMany bots have features that need to run periodically, such as uploading analytics data, reminders for users, birthdays, scheduled giveaways, undoing moderation actions, and more. Several implemented solutions exist for this, but as with many time-based processing attempts, they are often flawed and unreliable. This plugin is our solution, enabling you to schedule tasks and save them in Redis with ease.\n\n## Features\n\n-   Full TypeScript support\n-   Includes ESM entrypoint\n\n## Installation\n\n`@sapphire/plugin-scheduled-tasks` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n\nYou can use the following command to install this package along with `bullmq`, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-scheduled-tasks @sapphire/framework\n```\n\n---\n\n## Usage\n\nThis registers the necessary options and methods in the Sapphire client to be able to use the schedule plugin.\n\n```typescript\n// Main bot file\n// Be sure to register the plugin before instantiating the client.\nimport '@sapphire/plugin-scheduled-tasks/register';\n```\n\nThen, you can configure the plugin in the configuration options in your SapphireClient extension class or initializer. This will either be located in your new SapphireClient constructor call, or super in your constructor method if you use an extension class.\n\n```typescript\nconst options = {\n\t...otherClientOptionsGoHere,\n\ttasks: {\n\t\t/* You can add your Bull options here, for example we can configure custom Redis connection options: */\n\t\tbull: {\n\t\t\tconnection: {\n\t\t\t\tport: 8888, // Defaults to 6379, but if your Redis server runs on another port configure it here\n\t\t\t\tpassword: 'very-strong-password', // If your Redis server requires a password configure it here\n\t\t\t\thost: 'localhost', // The host at which the redis server is found\n\t\t\t\tdb: 2 // Redis database number, defaults to 0 but can be any value between 0 and 15\n\t\t\t}\n\t\t}\n\t}\n};\n```\n\nIn order to use the scheduled tasks anywhere other than a piece (commands, arguments, preconditions, etc.), you must first import the `container` property of `@sapphire/framework`. For pieces, you can simply use `this.container.tasks` to access this plugin's methods.\n\nThis is a simple example that creates a task to be run in 2 seconds from a service.\n\n```typescript\nimport { container } from '@sapphire/framework';\n\nexport class MyAwesomeService {\n\tpublic createAwesomeTask() {\n\t\tconst payload = { awesome: true };\n\t\tcontainer.tasks.create({ name: 'awesome', payload }, 2000);\n\t}\n}\n```\n\nHere is an example mute command, demonstrating the use of `this.container.tasks` from within a piece by omitting the explicit import.\n\n```typescript\n// mute command\n\nimport { Command, CommandOptions } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\nexport class MuteCommand extends Command {\n\tpublic constructor(context: Command.LoaderContext) {\n\t\tsuper(context, {\n\t\t\tdescription: 'Mute a user'\n\t\t});\n\t}\n\n\tpublic async run(message: Message) {\n\t\t// create a task to unmute the user in 1 minute\n\t\tconst payload = { authorId: message.author.id };\n\t\tthis.container.tasks.create({ name: 'unmute', payload }, 60_000);\n\t}\n}\n```\n\n### Create a task handler\n\nScheduled tasks use their own store, like other types of pieces. You can create a directory alongside your commands directory named `scheduled-tasks` and place your tasks there, but they must inherit from `ScheduledTask`, like so.\n\n#### Manual task example\n\n##### Creating the Piece:\n\n```typescript\nimport { ScheduledTask } from '@sapphire/plugin-scheduled-tasks';\n\nexport class ManualTask extends ScheduledTask {\n\tpublic constructor(context: ScheduledTask.LoaderContext, options: ScheduledTask.Options) {\n\t\tsuper(context, options);\n\t}\n\n\tpublic async run(payload: unknown) {\n\t\tthis.container.logger.info('I ran!', payload);\n\t}\n}\n\ndeclare module '@sapphire/plugin-scheduled-tasks' {\n\tinterface ScheduledTasks {\n\t\tmanual: never;\n\t}\n}\n```\n\n##### Using Manual Tasks\n\n```typescript\nconst payload = { awesome: true };\ncontainer.tasks.create({ name: 'manual', payload }, 5000);\n```\n\n#### Pattern Task Example\n\nPattern jobs are currently only supported by the Redis strategy.\n\n##### Creating the Piece\n\n```typescript\nimport { ScheduledTask } from '@sapphire/plugin-scheduled-tasks';\n\nexport class PatternTask extends ScheduledTask {\n\tpublic constructor(context: ScheduledTask.LoaderContext, options: ScheduledTask.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tpattern: '0 * * * *'\n\t\t});\n\t}\n\n\tpublic async run() {\n\t\tthis.container.logger.info('I run every hour at *:00');\n\t}\n}\n\ndeclare module '@sapphire/plugin-scheduled-tasks' {\n\tinterface ScheduledTasks {\n\t\tpattern: never;\n\t}\n}\n```\n\n##### Using Pattern tasks\n\nPattern & Interval tasks are loaded automatically.\n\n#### Interval task example\n\n##### Creating the Piece:\n\n```typescript\nimport { ScheduledTask } from '@sapphire/plugin-scheduled-tasks';\n\nexport class IntervalTask extends ScheduledTask {\n\tpublic constructor(context: ScheduledTask.LoaderContext, options: ScheduledTask.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tinterval: 60_000 // 60 seconds\n\t\t});\n\t}\n\n\tpublic async run() {\n\t\tthis.container.logger.info('I run every minute');\n\t}\n}\n\ndeclare module '@sapphire/plugin-scheduled-tasks' {\n\tinterface ScheduledTasks {\n\t\tinterval: never;\n\t}\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-scheduled-tasks@10.0.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@10.0.3...@sapphire/plugin-scheduled-tasks@10.0.4) - (2025-09-24)\n\n## 🐛 Bug Fixes\n\n- **ScheduledTaskHandler:** Throw task error on run if present ([1753289](https://github.com/sapphiredev/plugins/commit/1753289ea744691116c006bc3687667a6c2d8d7d)) ([#773](https://github.com/sapphiredev/plugins/pull/773) by @DemonWayne)\n- **deps:** Update all non-major dependencies ([e6f8e31](https://github.com/sapphiredev/plugins/commit/e6f8e3115cca722c508899edbf7d02b008a3907f)) ([#772](https://github.com/sapphiredev/plugins/pull/772) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([58d318a](https://github.com/sapphiredev/plugins/commit/58d318a5566f9ee6072b17adb6b4476e2b4fd5c7)) ([#768](https://github.com/sapphiredev/plugins/pull/768) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([8db2053](https://github.com/sapphiredev/plugins/commit/8db2053a156b94574167fbe6f1a74f41cd33b65a)) ([#767](https://github.com/sapphiredev/plugins/pull/767) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([3024e3e](https://github.com/sapphiredev/plugins/commit/3024e3ef4e11bd15ee72ef0d2e55d6158f3e5526)) ([#765](https://github.com/sapphiredev/plugins/pull/765) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([f9d9e4d](https://github.com/sapphiredev/plugins/commit/f9d9e4db412d00f04fc1bd9777d53b421a6e1691)) ([#764](https://github.com/sapphiredev/plugins/pull/764) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([8bfa062](https://github.com/sapphiredev/plugins/commit/8bfa0621ac00351e51a496abb27b836b2e7d5355)) ([#763](https://github.com/sapphiredev/plugins/pull/763) by @renovate[bot])\n- **deps:** Update dependency bullmq to v5.56.8 ([83a86a1](https://github.com/sapphiredev/plugins/commit/83a86a15ec5ad8af750da73ebfb2e879e7e5e793)) ([#762](https://github.com/sapphiredev/plugins/pull/762) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([29d9fa9](https://github.com/sapphiredev/plugins/commit/29d9fa9661c574e8c20483fa0ab501851ad4846b)) ([#761](https://github.com/sapphiredev/plugins/pull/761) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([46b6c27](https://github.com/sapphiredev/plugins/commit/46b6c27f69dd178a62e39883e45af8d1e9c367b6)) ([#760](https://github.com/sapphiredev/plugins/pull/760) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([4c40aed](https://github.com/sapphiredev/plugins/commit/4c40aedfff7d4ba0aeb96cf19335b27ad012858e)) ([#759](https://github.com/sapphiredev/plugins/pull/759) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([276da8c](https://github.com/sapphiredev/plugins/commit/276da8c06afa992133f0f57587575b0e008481e7)) ([#758](https://github.com/sapphiredev/plugins/pull/758) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([4c42df2](https://github.com/sapphiredev/plugins/commit/4c42df2a7ec779aa20b039ead15a7a5e586a2211)) ([#756](https://github.com/sapphiredev/plugins/pull/756) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([ae08934](https://github.com/sapphiredev/plugins/commit/ae089340f9e923b9e1d3a8373d703dfcfaff0183)) ([#754](https://github.com/sapphiredev/plugins/pull/754) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([d23894e](https://github.com/sapphiredev/plugins/commit/d23894e01c8ca84f8ff06b6921cbdc350b668f21)) ([#752](https://github.com/sapphiredev/plugins/pull/752) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e18dc27](https://github.com/sapphiredev/plugins/commit/e18dc277f008fdb1935c24f549e5347bb3f79872)) ([#750](https://github.com/sapphiredev/plugins/pull/750) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([ae90958](https://github.com/sapphiredev/plugins/commit/ae90958bcead612768260afdb49ac1730f4c9186)) ([#748](https://github.com/sapphiredev/plugins/pull/748) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([0d9024f](https://github.com/sapphiredev/plugins/commit/0d9024f61a8eb43f6af9d3fbaec4a1271f9e919a)) ([#744](https://github.com/sapphiredev/plugins/pull/744) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([5106865](https://github.com/sapphiredev/plugins/commit/5106865eadcdece085cc00003100845d1e3a372a)) ([#742](https://github.com/sapphiredev/plugins/pull/742) by @renovate[bot])\n\n# [@sapphire/plugin-scheduled-tasks@10.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@10.0.2...@sapphire/plugin-scheduled-tasks@10.0.3) - (2025-05-12)\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Bump bullmq ([2497ce9](https://github.com/sapphiredev/plugins/commit/2497ce93f8cf1190435be240d78188fd07984baf))\n- **scheduled-tasks:** Bump bullmq ([147893c](https://github.com/sapphiredev/plugins/commit/147893c2a295fb588b4ae61988cc6ef512452fcf))\n- **deps:** Update all non-major dependencies ([1fc0c36](https://github.com/sapphiredev/plugins/commit/1fc0c36ed68ea90def7f172c0a0e8e5254a8b643)) ([#727](https://github.com/sapphiredev/plugins/pull/727) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([c246384](https://github.com/sapphiredev/plugins/commit/c246384416e7d80326aa11a83a40a9a253d5cb2a)) ([#723](https://github.com/sapphiredev/plugins/pull/723) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([7a67b07](https://github.com/sapphiredev/plugins/commit/7a67b070e800700d344e2b0192a41cf2f67746c0)) ([#716](https://github.com/sapphiredev/plugins/pull/716) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([c1fcec2](https://github.com/sapphiredev/plugins/commit/c1fcec227cd5b369e74025c966c794952f755904)) ([#712](https://github.com/sapphiredev/plugins/pull/712) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([214f8ce](https://github.com/sapphiredev/plugins/commit/214f8cec2dd7964fb08402a07fdd646c3a837493)) ([#710](https://github.com/sapphiredev/plugins/pull/710) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([e879702](https://github.com/sapphiredev/plugins/commit/e8797028bd02dcc33b8f60dd07547a73ac4f4125)) ([#709](https://github.com/sapphiredev/plugins/pull/709) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([cc47e19](https://github.com/sapphiredev/plugins/commit/cc47e198df63b90ae64fd9d945ba2d521d17a8f2)) ([#705](https://github.com/sapphiredev/plugins/pull/705) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([fb563e8](https://github.com/sapphiredev/plugins/commit/fb563e8d6b9bc7e3594563ab99838a6abea9032c)) ([#704](https://github.com/sapphiredev/plugins/pull/704) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([0260b3d](https://github.com/sapphiredev/plugins/commit/0260b3db74d58768732eea448e04b81d1f6befa9)) ([#701](https://github.com/sapphiredev/plugins/pull/701) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([a7d24b1](https://github.com/sapphiredev/plugins/commit/a7d24b13d77c311c4b33c99d1aec6457504e553c)) ([#697](https://github.com/sapphiredev/plugins/pull/697) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([689cfd8](https://github.com/sapphiredev/plugins/commit/689cfd8be9e0dccce1aac838e07b77d56e5cc0fa)) ([#695](https://github.com/sapphiredev/plugins/pull/695) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([48a1e26](https://github.com/sapphiredev/plugins/commit/48a1e26ca064fcfe666b6826dacaa2c8bc7714bb)) ([#694](https://github.com/sapphiredev/plugins/pull/694) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([ebf804c](https://github.com/sapphiredev/plugins/commit/ebf804c63c55d8eb4986f70350612b0c714e79ea)) ([#688](https://github.com/sapphiredev/plugins/pull/688) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([aa2ed66](https://github.com/sapphiredev/plugins/commit/aa2ed66e38e2cae79bd9585149896205c009dd1b)) ([#684](https://github.com/sapphiredev/plugins/pull/684) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([a6eeff6](https://github.com/sapphiredev/plugins/commit/a6eeff668d57c995335e02466eb48fbcb699f3ea))\n- **deps:** Update all non-major dependencies ([c74b327](https://github.com/sapphiredev/plugins/commit/c74b327f7e9beea3d5164f8f5e17fbd8e61f74d7)) ([#678](https://github.com/sapphiredev/plugins/pull/678) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([7c80885](https://github.com/sapphiredev/plugins/commit/7c80885f4798348b0c077d9b87117782f7af67d8)) ([#673](https://github.com/sapphiredev/plugins/pull/673) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([2f82767](https://github.com/sapphiredev/plugins/commit/2f8276724338631c4d6d8c7b553d268d5990cc74)) ([#672](https://github.com/sapphiredev/plugins/pull/672) by @renovate[bot])\n- **deps:** Update dependency bullmq to v5.23.0 ([5dff388](https://github.com/sapphiredev/plugins/commit/5dff3882b287b69db71a752df1dea8036a77092f)) ([#652](https://github.com/sapphiredev/plugins/pull/652) by @renovate[bot])\n\n# [@sapphire/plugin-scheduled-tasks@10.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@10.0.1...@sapphire/plugin-scheduled-tasks@10.0.2) - (2024-11-02)\n\n## 🐛 Bug Fixes\n\n- Update sapphire dependencies ([a837459](https://github.com/sapphiredev/plugins/commit/a83745920f0b6eb896c7b9b5c9624dad662f5186))\n- **scheduled-tasks:** Bump `bullmq` dependency ([80d26ac](https://github.com/sapphiredev/plugins/commit/80d26ac632fef3f2b914e9dfbc32f80cedfe92c3))\n- **deps:** Update dependency bullmq to v5.20.0 ([5ea63b2](https://github.com/sapphiredev/plugins/commit/5ea63b29cbd65bfc6e076c0b35648bda3283cf6d)) ([#639](https://github.com/sapphiredev/plugins/pull/639) by @renovate[bot])\n- **deps:** Update dependency bullmq to v5.16.0 ([fa73a83](https://github.com/sapphiredev/plugins/commit/fa73a83bf043ba74be60929badec91d2c7c64df8)) ([#636](https://github.com/sapphiredev/plugins/pull/636) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([43df709](https://github.com/sapphiredev/plugins/commit/43df70954d837f7b14d62ea9123aca4b1da9ae36)) ([#574](https://github.com/sapphiredev/plugins/pull/574) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([7909d16](https://github.com/sapphiredev/plugins/commit/7909d16fcec9a8e5e9a3f8816c90a26fbc7d1284)) ([#573](https://github.com/sapphiredev/plugins/pull/573) by @renovate[bot])\n- **scheduled-tasks:** Export `ScheduledTasksResolvableNoPayload` ([ec27a29](https://github.com/sapphiredev/plugins/commit/ec27a2976c2a6e7c9af9ee02f1f93d8e11c975a6))\n- **deps:** Update dependency bullmq to v5.5.3 ([73f41bb](https://github.com/sapphiredev/plugins/commit/73f41bb0afcc766314db5e2d2789e7b04a536a11)) ([#563](https://github.com/sapphiredev/plugins/pull/563) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([ee64834](https://github.com/sapphiredev/plugins/commit/ee64834c799a5ac28b1ae172cb19f77a1887f3d4)) ([#546](https://github.com/sapphiredev/plugins/pull/546) by @renovate[bot])\n- **scheduled-tasks:** Update transitive dependencies ([0b7d28c](https://github.com/sapphiredev/plugins/commit/0b7d28c0fb133c5467a0867096e2fcb0a0f1ed72))\n- Update transitive dependencies ([c708be7](https://github.com/sapphiredev/plugins/commit/c708be73f0c137a25cb2a6c8e4f8da2c301a9c26))\n\n## 📝 Documentation\n\n- Update create task function type ([f730be1](https://github.com/sapphiredev/plugins/commit/f730be14bea3976f317b679bfc0daf28b4829a05)) ([#623](https://github.com/sapphiredev/plugins/pull/623) by @Swiizyy)\n- **readme:** Remove duplication in Scheduled Tasks README ([5193167](https://github.com/sapphiredev/plugins/commit/51931673394313f8504d6ef4e27923ef5aec846e)) ([#604](https://github.com/sapphiredev/plugins/pull/604) by @feelthatvib3)\n- **ScheduledTaskHandler:** Remove unused tsdoc parameters ([f9230eb](https://github.com/sapphiredev/plugins/commit/f9230eb3d9929fb78dd5ee7158684263df5f742c))\n- **typedoc:** Exclude externals to exclude Collection and Map methods from Store ([c3e54a4](https://github.com/sapphiredev/plugins/commit/c3e54a4e412a150f57f5795ae9c2a26974cfd0a6))\n\n# [@sapphire/plugin-scheduled-tasks@10.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@10.0.1...@sapphire/plugin-scheduled-tasks@10.0.1) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Update transitive sapphire dependencies ([c78017c](https://github.com/sapphiredev/plugins/commit/c78017c090b04f6380103b4ae4cd97767796eeb6))\n- Update bullmq transitive dependency ([43dd84c](https://github.com/sapphiredev/plugins/commit/43dd84c8e1331d71be69c6b0e279796a2bfa41b9))\n- Ensure cts file extensions in dist/cjs (#537) ([6f863f8](https://github.com/sapphiredev/plugins/commit/6f863f8187b7028cf6464dd04f197dd1be6ca1dd))\n- **scheduled-tasks:** Bump transitive dependencies ([834119e](https://github.com/sapphiredev/plugins/commit/834119e0423c7e046975d8e320b0515c00971714))\n- **scheduled-tasks:** Bump bullmq transitive dependency ([8efcaee](https://github.com/sapphiredev/plugins/commit/8efcaee5802a2203288089ce79fcae9ee9c7b086))\n- **scheduled-tasks:** Bump transitive dependencies ([30116e2](https://github.com/sapphiredev/plugins/commit/30116e2fe9e7fb523c9805afc150f5725395ef96))\n\n# [@sapphire/plugin-scheduled-tasks@10.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@10.0.0...@sapphire/plugin-scheduled-tasks@10.0.0) - (2023-12-27)\n\n## 🚀 Features\n\n- Bullmq v5 (#529) ([4278ab0](https://github.com/sapphiredev/plugins/commit/4278ab035989ec99bf0f7233f98e4ff75b57f71d))\n  - 💥 **BREAKING CHANGE:** This plugin now uses bullmq v5.1.0 (previously v3.15.8). Refer to the bullmq breaking changes from v4.0.0 onwards for any breaking changes that they have included https://github.com/taskforcesh/bullmq/blob/master/docs/gitbook/changelog.md#400-2023-06-21\n- **scheduled-tasks:** Enforce payload types, clearer Redis/BullMQ errors (#509) ([9fbf980](https://github.com/sapphiredev/plugins/commit/9fbf980e603022c3e1cd61a9ad742cd43a60e7fa))\n  - 💥 **BREAKING CHANGE:** Refer to https://github.com/sapphiredev/plugins/blob/main/packages/scheduled-tasks/UPGRADING-v9-v10.md for upgrading instructions.\n  - 💥 **BREAKING CHANGE:** payload types are now enforced, you may need to update your code to match.\n  - 💥 **BREAKING CHANGE:** The `ScheduledTaskJob` interface has been removed in favor of defining types on `ScheduledTasks`.\n  - 💥 **BREAKING CHANGE:** Due to the removal of `ScheduledTaskJob`, the `BullClient` will now be typed as `unknown` since the Job types in the Queue can not _really_ be known. So you will need to do validation when interacting directly with the client.\n  - 💥 **BREAKING CHANGE:** The included error listeners are now enabled by default. If you want them to be disabled, just set `loadScheduledTaskErrorListeners` to false in the `SapphireClient` options.\n  - 💥 **BREAKING CHANGE:** The internal BullMQ client does not actually throw any errors, it just emits them from the client. As such, those error events will now be sent to the corresponding error listener registered by the plugin.\n  - 💥 **BREAKING CHANGE:** The error listeners previously only returned the name of the task when an error was emitted, but now the event will provide the associated Piece.\n\n# [@sapphire/plugin-scheduled-tasks@9.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@9.1.0...@sapphire/plugin-scheduled-tasks@9.1.0) - (2023-12-18)\n\n## 🚀 Features\n\n- **scheduled-tasks:** Add timezone for tasks with pattern (#518) ([f3396a1](https://github.com/sapphiredev/plugins/commit/f3396a170f2b3cb921652360264a201a1075e57a))\n\n# [@sapphire/plugin-scheduled-tasks@9.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@9.0.1...@sapphire/plugin-scheduled-tasks@9.0.1) - (2023-12-05)\n\n## ↩️ Revert\n\n- \"refactor(register): cleanup unnecessary side effect imports of index\" ([c2af242](https://github.com/sapphiredev/plugins/commit/c2af24269956132237988d94e4d94719b2cd442c))\n\n# [@sapphire/plugin-scheduled-tasks@9.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@9.0.0...@sapphire/plugin-scheduled-tasks@9.0.0) - (2023-12-05)\n\n## 🏠 Refactor\n\n- **register:** Cleanup unnecessary side effect imports of index ([dede596](https://github.com/sapphiredev/plugins/commit/dede596ae22ceec2700dd860287a1260f092b502))\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Expose `load*` methods on the `index` level in case register isn't used ([d7f380b](https://github.com/sapphiredev/plugins/commit/d7f380b9126f48616de3657f949ac583c63a3f34))\n- Update transitive dependencies ([9fd4cfa](https://github.com/sapphiredev/plugins/commit/9fd4cfae031b20044aad8ae1051ade3dd29c69dd))\n\n## 🚀 Features\n\n- Split ESM and CJS bundles for proper ESM and CJS loading (#512) ([d9aa006](https://github.com/sapphiredev/plugins/commit/d9aa006ff8c7f78a613dcca605d3353b992b7a46))\n  - 💥 **BREAKING CHANGE:** This ensures that the plugins will properly load the\neither only ESM or only CJS files. This is done by outputting\ndist/cjs and dist/esm folders. This requires @sapphire/framework v5.x!\n\n# [@sapphire/plugin-scheduled-tasks@8.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@8.1.0...@sapphire/plugin-scheduled-tasks@8.1.0) - (2023-11-16)\n\n## 🏠 Refactor\n\n- Support latest /framework ([0625d4d](https://github.com/sapphiredev/plugins/commit/0625d4db01573ae02d05fe5b4dfcf679c25a94ba))\n\n## 🚀 Features\n\n- Make all pieces virtual ([847288b](https://github.com/sapphiredev/plugins/commit/847288b3f5149dc8f0abf0263104e635079f2f8f))\n- **scheduled-tasks:** Add error listeners (#499) ([ccbe75e](https://github.com/sapphiredev/plugins/commit/ccbe75e6eb30f5918773c4daccc7ce013666b35e))\n\n# [@sapphire/plugin-scheduled-tasks@8.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@8.0.0...@sapphire/plugin-scheduled-tasks@8.0.0) - (2023-10-26)\n\n## 🐛 Bug Fixes\n\n- Fixed mismatch between `customJobOptions` and `bullJobsOptions` ([5bc7fbc](https://github.com/sapphiredev/plugins/commit/5bc7fbc2bc53fea3721e8d16d22e52eb59f04499))\n  - 💥 **BREAKING CHANGE:** `bullJobsOptions` has been removed. The 1:1 replacement is `customJobOptions`\n- **scheduled-tasks:** Set `engines.node` to `>=18` ([d0df8aa](https://github.com/sapphiredev/plugins/commit/d0df8aa0d97d68e7bbbad4c9ad808168dd5b11a2))\n\n# [@sapphire/plugin-scheduled-tasks@7.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@7.1.1...@sapphire/plugin-scheduled-tasks@7.1.2) - (2023-08-23)\n\n## 🏠 Refactor\n\n- ***:** Cleanup plugin registry files (#469) ([215b334](https://github.com/sapphiredev/plugins/commit/215b3348b30077238147dbc643769d960b856ba1))\n\n# [@sapphire/plugin-scheduled-tasks@7.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@7.1.0...@sapphire/plugin-scheduled-tasks@7.1.1) - (2023-07-21)\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Bump transitive @sapphire/utilities and bullmq dependencies ([4497403](https://github.com/sapphiredev/plugins/commit/449740360e06caf98998c6f8b54e2f1750cb07b1))\n- **scheduled-tasks:** Bump bullmq transitive dependency ([7140c34](https://github.com/sapphiredev/plugins/commit/7140c3498de7ed3572c82c19cad9fbaa9584d7c1))\n\n# [@sapphire/plugin-scheduled-tasks@7.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@7.0.0...@sapphire/plugin-scheduled-tasks@7.1.0) - (2023-05-24)\n\n## 🐛 Bug Fixes\n\n- Update bullmq dependency ([5ccf732](https://github.com/sapphiredev/plugins/commit/5ccf732ef3a5a7ce1d8fb71a3e540b259589a9a8))\n- **deps:** Update all non-major dependencies ([9bb6627](https://github.com/sapphiredev/plugins/commit/9bb6627c20999d37130537fce58241c12a795046))\n- **scheduled-tasks:** Bump bullmq ([35fa66a](https://github.com/sapphiredev/plugins/commit/35fa66ad1dd6a275994834fc92b42a34ef17f31f))\n\n## 🚀 Features\n\n- **scheduled-tasks:** Add typings for listener events (#443) ([5ee1814](https://github.com/sapphiredev/plugins/commit/5ee18141634d40d6b211304f74c82a6f439cf980))\n\n# [@sapphire/plugin-scheduled-tasks@7.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@6.0.1...@sapphire/plugin-scheduled-tasks@7.0.0) - (2023-05-05)\n\n## 🏠 Refactor\n\n- **scheduled-tasks:** Remove sqs support (#437) ([332f25d](https://github.com/sapphiredev/plugins/commit/332f25db960ec4047ca7b6b97bbeb63a6ad7e991))\n  - 💥 **BREAKING CHANGE:** sqs support has been removed as it was no longer maintained and used version has been deprecated\n  - 💥 **BREAKING CHANGE:** redis strategy is now default and the naming scheme of all types and classes have been changed to match\n  - 💥 **BREAKING CHANGE:** The options passed to `clientOptions.tasks` can be flattened to remove the `new ScheduledTaskRedisStrategy` and just provide options directly.\n\n# [@sapphire/plugin-scheduled-tasks@6.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@6.0.0...@sapphire/plugin-scheduled-tasks@6.0.1) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Fixed compatibility with TS 5.x ([ddb942e](https://github.com/sapphiredev/plugins/commit/ddb942e2ba1f1b0de39b7acd9b84395e5dec91fe))\n- **scheduled-tasks:** Update dependencies ([2fe31a0](https://github.com/sapphiredev/plugins/commit/2fe31a0cb821059215c098bab60a0ecc56518a3c))\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n# [@sapphire/plugin-scheduled-tasks@6.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@5.0.1...@sapphire/plugin-scheduled-tasks@6.0.0) - (2022-10-29)\n\n## 🏠 Refactor\n\n- **scheduled-tasks:** Support for bullmq v3 (#386) ([4b37938](https://github.com/sapphiredev/plugins/commit/4b37938b857260a9a34587c27c37ed2c204c10b3))\n  - 💥 **BREAKING CHANGE:** This plugin now depends on bullmq version 3.x. This means `cron` has been changed to `pattern`, see also https://github.com/taskforcesh/bullmq/pull/1456 and the full changelog https://github.com/taskforcesh/bullmq/blob/master/docs/gitbook/changelog.md#300-2022-10-25\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Update dependencies ([0a6cabf](https://github.com/sapphiredev/plugins/commit/0a6cabf486618ee8092406a66e8501f981207cbb))\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n\n# [@sapphire/plugin-scheduled-tasks@5.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@5.0.0...@sapphire/plugin-scheduled-tasks@5.0.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Bump dependencies ([3b7fd06](https://github.com/sapphiredev/plugins/commit/3b7fd06dbf14e19a2a767395a5bfdacf6068769d))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n# [@sapphire/plugin-scheduled-tasks@5.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@4.0.1...@sapphire/plugin-scheduled-tasks@5.0.0) - (2022-09-25)\n\n## 🚀 Features\n\n- **scheduled-tasks:** Update dependency bullmq to v2 (#363) ([8e27891](https://github.com/sapphiredev/plugins/commit/8e2789132829eeeab3b52529d4ecefedbbc78ace))\n  - 💥 **BREAKING CHANGE:** scheduled-tasks plugin now depends on BullMQ v2, please update your dependency.\n\n# [@sapphire/plugin-scheduled-tasks@4.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@4.0.0...@sapphire/plugin-scheduled-tasks@4.0.1) - (2022-09-18)\n\n## 🏠 Refactor\n\n- **scheduled-task:** Remove `@types/ioredis`, require ioredis v5, and bump bullmq (#359) ([50fa969](https://github.com/sapphiredev/plugins/commit/50fa9699a0f9d0cbb676efd0eb02c4253413c558))\n\n## 🐛 Bug Fixes\n\n- **scheduled-tasks:** Fix dependencies ([738fb7f](https://github.com/sapphiredev/plugins/commit/738fb7f18bca305725fde7b7b8c3c1ad92f45e7c))\n- **scheduled-tasks:** Various register fixes (#355) ([9ab3cc6](https://github.com/sapphiredev/plugins/commit/9ab3cc67669684f79f788dc3825bb8c04b39f96b))\n\n# [@sapphire/plugin-scheduled-tasks@4.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@3.0.0...@sapphire/plugin-scheduled-tasks@4.0.0) - (2022-08-20)\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n\n## 🚀 Features\n\n- **subcommands:** Lowercase subcommands and dashless aliases (#337) ([31ea70c](https://github.com/sapphiredev/plugins/commit/31ea70caae38988ca395dd3e934822c26e6df4f6))\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-scheduled-tasks@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.3.5...@sapphire/plugin-scheduled-tasks@3.0.0) - (2022-07-21)\n\n## 🏠 Refactor\n\n- **scheduled-task:** Migrate from bull to bullmq (#326) ([c6a09d9](https://github.com/sapphiredev/plugins/commit/c6a09d946f2b33eb07adac4e3aec3050cf4dd6a3))\n  - 💥 **BREAKING CHANGE:** `bull` optional dependency has been changed for `bullmq`\n  - 💥 **BREAKING CHANGE:** The interface for the options parameter for a new `ScheduledTask` piece has been changed to have a key of `bullJobsOptions` instead of the old `bullJobOptions`. The same rename has also been applied to the public property on the `ScheduledTask` class.\n  - 💥 **BREAKING CHANGE:** When creating a new scheduled task the third argument (`options`) the required interface has changed. See the following changes for details.\n  - 💥 **BREAKING CHANGE:** `ScheduledTasksTaskOptions.type` has been renamed to `ScheduledTasksTaskOptions.repeated`. `type: 'default'` is equal to `repeated: false` and `type: 'repeated'` is equal to `repeated: true`\n  - 💥 **BREAKING CHANGE:** `bullJobOptions` has been renamed to `customJobOptions`\n  - 💥 **BREAKING CHANGE:** The private property of `ScheduledTaskRedisStrategy.bullClient` is now `ScheduledTaskRedisStrategy.queueClient` (note: the public getter `client` is unchanged).\n\n## 🐛 Bug Fixes\n\n- **deps:** Update dependency @sapphire/time-utilities to ^1.7.5 ([e43644d](https://github.com/sapphiredev/plugins/commit/e43644d22dc5440c6c5dede05211fd648b07cf99))\n\n# [@sapphire/plugin-scheduled-tasks@2.3.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.3.3...@sapphire/plugin-scheduled-tasks@2.3.5) - (2022-07-11)\n\n## 🏃 Performance\n\n- **i18next:** Switch to new backend library ([21cd166](https://github.com/sapphiredev/plugins/commit/21cd1665c3bcba9c3dbc9711e9d57153ad768276))\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n\n# [@sapphire/plugin-scheduled-tasks@2.3.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.3.2...@sapphire/plugin-scheduled-tasks@2.3.3) - (2022-04-24)\n\n## Bug Fixes\n\n- **ScheduledTaskRedisStrategy:** Bull job options not being passed when adding task (#279) ([9f3dc42](https://github.com/sapphiredev/plugins/commit/9f3dc42a42c528b65ca04906add6db08a7b99227))\n\n## Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n## [2.3.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.3.1...@sapphire/plugin-scheduled-tasks@2.3.2) (2022-04-02)\n\n### Bug Fixes\n\n-   **schedules-tasks:** processor name on bull ([#264](https://github.com/sapphiredev/plugins/issues/264)) ([d0f7d5b](https://github.com/sapphiredev/plugins/commit/d0f7d5ba57131b68216f7c9d2964c49c81ca09d6))\n\n## [2.3.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.3.0...@sapphire/plugin-scheduled-tasks@2.3.1) (2022-04-01)\n\n### Bug Fixes\n\n-   **schedules-tasks:** create cron scheduled tasks with unique names to avoid name conflicts, causing tasks to be ignored ([#263](https://github.com/sapphiredev/plugins/issues/263)) ([44c4b94](https://github.com/sapphiredev/plugins/commit/44c4b94b88ad945771df81d1dbb514081606459c))\n\n# [2.3.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.2.0...@sapphire/plugin-scheduled-tasks@2.3.0) (2022-03-06)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2016134](https://github.com/sapphiredev/plugins/commit/201613418babe93748e74064cf66d4ea0582725c))\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.1.0...@sapphire/plugin-scheduled-tasks@2.2.0) (2022-01-23)\n\n### Bug Fixes\n\n-   **scheduled-tasks:** fix the flow of running repeated tasks ([b614a9a](https://github.com/sapphiredev/plugins/commit/b614a9a5664482fae79148162dac4eed9afe0e5a))\n\n### Features\n\n-   **scheduled-tasks:** make it possible to configure additional Job options when using Redis strategy ([#232](https://github.com/sapphiredev/plugins/issues/232)) ([cb90edc](https://github.com/sapphiredev/plugins/commit/cb90edce16dbff9280e88f6f18a4adf91cef28af))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@2.0.0...@sapphire/plugin-scheduled-tasks@2.1.0) (2022-01-13)\n\n### Bug Fixes\n\n-   **scheduled-tasks and pattern-commands:** Add params to event typedocs ([#222](https://github.com/sapphiredev/plugins/issues/222)) ([e18509f](https://github.com/sapphiredev/plugins/commit/e18509f2df3d3b1fd146e21c6dc199170d671b15))\n\n### Features\n\n-   **scheduled-tasks:** add duration to `ScheduledTaskSuccess` event ([#226](https://github.com/sapphiredev/plugins/issues/226)) ([6ab6493](https://github.com/sapphiredev/plugins/commit/6ab6493918bb7979a83d8beefc169329ee0bd5dd))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@1.2.1...@sapphire/plugin-scheduled-tasks@2.0.0) (2022-01-10)\n\n### Bug Fixes\n\n-   **scheduled-task:** Return result ([#221](https://github.com/sapphiredev/plugins/issues/221)) ([1cf6d92](https://github.com/sapphiredev/plugins/commit/1cf6d92bf90bc74b921aa6445af177632bdde5c6))\n\n### Features\n\n-   **scheduled-task:** add duration to finished and error events ([#218](https://github.com/sapphiredev/plugins/issues/218)) ([8d7d3a6](https://github.com/sapphiredev/plugins/commit/8d7d3a6a9a8c23963832144d10971133135a035f))\n\n## [1.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@1.2.0...@sapphire/plugin-scheduled-tasks@1.2.1) (2022-01-09)\n\n### Bug Fixes\n\n-   **scheduled-task:** SQS type error when using Redis ([#217](https://github.com/sapphiredev/plugins/issues/217)) ([513aee6](https://github.com/sapphiredev/plugins/commit/513aee6520e6f6b322fb85e7cdd36a8ed40aed9d))\n\n### Features\n\n-   add HMR plugin ([#209](https://github.com/sapphiredev/plugins/issues/209)) ([4a18bb1](https://github.com/sapphiredev/plugins/commit/4a18bb1377a8d506fddc5bb991430503902d393b))\n\n# [1.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@1.1.1...@sapphire/plugin-scheduled-tasks@1.2.0) (2022-01-06)\n\n### Bug Fixes\n\n-   **scheduled-tasks:** added tsdoc for `ScheduledTaskEvents` ([17fff64](https://github.com/sapphiredev/plugins/commit/17fff647f3a8613be7750ca62c2675398bf3aa7a))\n-   **scheduled-tasks:** fixed export of events enum not being on top level ([caf2d54](https://github.com/sapphiredev/plugins/commit/caf2d5465edbe7466734c283229b78ba2ea715c6))\n-   **scheduled-tasks:** fixed the return types for the strategy methods ([3d8ec44](https://github.com/sapphiredev/plugins/commit/3d8ec44ca515b49eac2a1062875bc063a4e62982))\n\n### Features\n\n-   **scheduled-tasks:** add `delete`, `list`, `listRepeated` & `get` methods ([#207](https://github.com/sapphiredev/plugins/issues/207)) ([13c767b](https://github.com/sapphiredev/plugins/commit/13c767b4f241842f2f759ab0667bec329a6291c3))\n-   **scheduled-tasks:** add getter for the client ([878e187](https://github.com/sapphiredev/plugins/commit/878e187241056bfbe8ce53d85dc8fa2f77bcb78c))\n\n## [1.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@1.1.0...@sapphire/plugin-scheduled-tasks@1.1.1) (2021-12-29)\n\n### Bug Fixes\n\n-   **scheduled-tasks:** no async/await for connect ([#201](https://github.com/sapphiredev/plugins/issues/201)) ([6c3b9b1](https://github.com/sapphiredev/plugins/commit/6c3b9b1b32fb8aa006e9bc1e88074d17cb315fa1))\n\n# [1.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@1.0.1...@sapphire/plugin-scheduled-tasks@1.1.0) (2021-12-29)\n\n### Features\n\n-   **scheduled-tasks:** emit various events in the process of handling scheduled tasks ([#200](https://github.com/sapphiredev/plugins/issues/200)) ([68a5e2a](https://github.com/sapphiredev/plugins/commit/68a5e2a4ca9b806ddbf38cee8b1331fb9aa1b46f))\n\n## [1.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-scheduled-tasks@1.0.0...@sapphire/plugin-scheduled-tasks@1.0.1) (2021-12-28)\n\n### Bug Fixes\n\n-   **scheduled-task:** bump `bull` and `@sapphire/time-utilities` dependencies ([f12a285](https://github.com/sapphiredev/plugins/commit/f12a2851bc57b49b5c716d9974e269c1723d8c2d))\n\n# 1.0.0 (2021-12-26)\n\n### Features\n\n-   Scheduled tasks plugin ([#148](https://github.com/sapphiredev/plugins/issues/148)) ([65d5f04](https://github.com/sapphiredev/plugins/commit/65d5f04bdaf9f1b8df0bc3a2ddf0413ca7a4a631))\n",
@@ -18,7 +18,7 @@
         "line": 10,
         "file": "ScheduledTask.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L10"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L10"
       },
       "namespaceParentId": null,
       "comment": {
@@ -99,7 +99,7 @@
           "line": 19,
           "file": "ScheduledTask.ts",
           "path": "lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L19"
+          "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L19"
         },
         "comment": {
           "description": null,
@@ -157,7 +157,7 @@
             "line": 17,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L17"
           },
           "comment": {
             "description": null,
@@ -186,7 +186,7 @@
             "line": 14,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L14"
           },
           "comment": {
             "description": null,
@@ -220,7 +220,7 @@
             "line": 15,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L15"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L15"
           },
           "comment": {
             "description": null,
@@ -254,7 +254,7 @@
             "line": 16,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L16"
           },
           "comment": {
             "description": null,
@@ -281,7 +281,7 @@
             "line": 27,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L27"
           },
           "parentId": 43,
           "accessibility": "public",
@@ -330,7 +330,7 @@
         "line": 23,
         "file": "ScheduledTaskHandler.ts",
         "path": "lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L23"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L23"
       },
       "namespaceParentId": null,
       "comment": {
@@ -350,7 +350,7 @@
           "line": 37,
           "file": "ScheduledTaskHandler.ts",
           "path": "lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L37"
+          "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L37"
         },
         "comment": {
           "description": null,
@@ -389,7 +389,7 @@
             "line": 27,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L27"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L27"
           },
           "comment": {
             "description": "The queue options for the scheduled task handler.",
@@ -418,7 +418,7 @@
             "line": 32,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L32"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L32"
           },
           "comment": {
             "description": "The name of the queue associated with the scheduled task handler.",
@@ -443,7 +443,7 @@
             "line": 64,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L64"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L64"
           },
           "comment": {
             "description": null,
@@ -472,7 +472,7 @@
             "line": 237,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L237"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L237"
           },
           "comment": {
             "description": null,
@@ -503,7 +503,7 @@
             "line": 71,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L71"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L71"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -543,7 +543,7 @@
             "line": 84,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L84"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L84"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -658,7 +658,7 @@
             "line": 124,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L124"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L124"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -721,7 +721,7 @@
             "line": 156,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L156"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L156"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -777,7 +777,7 @@
             "line": 188,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L188"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L188"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -873,7 +873,7 @@
             "line": 166,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L166"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L166"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -953,7 +953,7 @@
             "line": 177,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L177"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L177"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1020,7 +1020,7 @@
             "line": 241,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L241"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L241"
           },
           "parentId": 2,
           "accessibility": "private",
@@ -1075,7 +1075,7 @@
             "line": 202,
             "file": "ScheduledTaskHandler.ts",
             "path": "lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L202"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L202"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1155,7 +1155,7 @@
         "line": 7,
         "file": "ScheduledTaskStore.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L7"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1195,7 +1195,7 @@
           "line": 10,
           "file": "ScheduledTaskStore.ts",
           "path": "lib/structures",
-          "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L10"
+          "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L10"
         },
         "comment": {
           "description": null,
@@ -1214,7 +1214,7 @@
             "line": 8,
             "file": "ScheduledTaskStore.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L8"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L8"
           },
           "comment": {
             "description": null,
@@ -1261,7 +1261,7 @@
             "line": 31,
             "file": "ScheduledTaskStore.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L31"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L31"
           },
           "parentId": 71,
           "accessibility": "public",
@@ -1292,7 +1292,7 @@
             "line": 22,
             "file": "ScheduledTaskStore.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L22"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L22"
           },
           "parentId": 71,
           "accessibility": "public",
@@ -1344,7 +1344,7 @@
             "line": 14,
             "file": "ScheduledTaskStore.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L14"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L14"
           },
           "parentId": 71,
           "accessibility": "public",
@@ -1415,7 +1415,7 @@
         "line": 8,
         "file": "_load.ts",
         "path": "listeners",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/listeners/_load.ts#L8"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/listeners/_load.ts#L8"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1451,7 +1451,7 @@
         "line": 53,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L53"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L53"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1469,7 +1469,7 @@
             "line": 54,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L54"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L54"
           },
           "comment": {
             "description": null,
@@ -1491,7 +1491,7 @@
             "line": 55,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L55"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L55"
           },
           "comment": {
             "description": null,
@@ -1520,7 +1520,7 @@
         "line": 7,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L7"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1538,7 +1538,7 @@
             "line": 9,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L9"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L9"
           },
           "comment": {
             "description": null,
@@ -1564,7 +1564,7 @@
             "line": 8,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L8"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L8"
           },
           "comment": {
             "description": null,
@@ -1589,7 +1589,7 @@
         "line": 24,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L24"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L24"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1607,7 +1607,7 @@
             "line": 18,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L18"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L18"
           },
           "comment": {
             "description": null,
@@ -1629,7 +1629,7 @@
             "line": 17,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L17"
           },
           "comment": {
             "description": null,
@@ -1651,7 +1651,7 @@
             "line": 16,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L16"
           },
           "comment": {
             "description": null,
@@ -1673,7 +1673,7 @@
             "line": 25,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L25"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L25"
           },
           "comment": {
             "description": null,
@@ -1705,7 +1705,7 @@
         "line": 15,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L15"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1723,7 +1723,7 @@
             "line": 18,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L18"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L18"
           },
           "comment": {
             "description": null,
@@ -1745,7 +1745,7 @@
             "line": 17,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L17"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L17"
           },
           "comment": {
             "description": null,
@@ -1767,7 +1767,7 @@
             "line": 16,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L16"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L16"
           },
           "comment": {
             "description": null,
@@ -1792,7 +1792,7 @@
         "line": 33,
         "file": "ScheduledTask.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L33"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L33"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1810,7 +1810,7 @@
             "line": 45,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L45"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L45"
           },
           "comment": {
             "description": "Custom options to pass to the job scheduler.",
@@ -1836,7 +1836,7 @@
             "line": 37,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L37"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L37"
           },
           "comment": {
             "description": "The interval (in milliseconds) at which the task should run.",
@@ -1867,7 +1867,7 @@
             "line": 41,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L41"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L41"
           },
           "comment": {
             "description": "A cron pattern specifying when the task should run.",
@@ -1898,7 +1898,7 @@
             "line": 51,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L51"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L51"
           },
           "comment": {
             "description": "The timezone to use for the task.",
@@ -1937,7 +1937,7 @@
         "line": 87,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L87"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L87"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1966,7 +1966,7 @@
         "line": 119,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L119"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L119"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2005,7 +2005,7 @@
             "line": 122,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L122"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L122"
           },
           "comment": {
             "description": null,
@@ -2034,7 +2034,7 @@
         "line": 128,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L128"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L128"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2073,7 +2073,7 @@
             "line": 131,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L131"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L131"
           },
           "comment": {
             "description": null,
@@ -2099,7 +2099,7 @@
             "line": 132,
             "file": "ScheduledTaskTypes.ts",
             "path": "lib/types",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L132"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L132"
           },
           "comment": {
             "description": null,
@@ -2126,7 +2126,7 @@
         "line": 10,
         "file": "ScheduledTask.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L10"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L10"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2148,7 +2148,7 @@
             "line": 72,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L72"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L72"
           },
           "namespaceParentId": 59,
           "comment": {
@@ -2179,7 +2179,7 @@
             "line": 74,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L74"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L74"
           },
           "namespaceParentId": 59,
           "comment": {
@@ -2205,7 +2205,7 @@
             "line": 73,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L73"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L73"
           },
           "namespaceParentId": 59,
           "comment": {
@@ -2236,7 +2236,7 @@
             "line": 75,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L75"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L75"
           },
           "namespaceParentId": 59,
           "comment": {
@@ -2262,7 +2262,7 @@
             "line": 66,
             "file": "ScheduledTask.ts",
             "path": "lib/structures",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L66"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L66"
           },
           "namespaceParentId": 59,
           "comment": {
@@ -2293,7 +2293,7 @@
         "line": 31,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L31"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L31"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2324,7 +2324,7 @@
         "line": 57,
         "file": "ScheduledTask.ts",
         "path": "lib/structures",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L57"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/structures/ScheduledTask.ts#L57"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2363,7 +2363,7 @@
         "line": 37,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L37"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L37"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2433,7 +2433,7 @@
         "line": 140,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L140"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L140"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2571,7 +2571,7 @@
         "line": 92,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L92"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L92"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2601,7 +2601,7 @@
         "line": 97,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L97"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L97"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2717,7 +2717,7 @@
         "line": 108,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L108"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L108"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2824,7 +2824,7 @@
         "line": 135,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L135"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L135"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2871,7 +2871,7 @@
         "line": 42,
         "file": "ScheduledTaskTypes.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L42"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L42"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3181,7 +3181,7 @@
         "line": 7,
         "file": "ScheduledTaskEvents.ts",
         "path": "lib/types",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/lib/types/ScheduledTaskEvents.ts#L7"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/lib/types/ScheduledTaskEvents.ts#L7"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3326,7 +3326,7 @@
         "line": 41,
         "file": "index.ts",
         "path": ".",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/scheduled-tasks/src/index.ts#L41"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/scheduled-tasks/src/index.ts#L41"
       },
       "namespaceParentId": null,
       "comment": {
