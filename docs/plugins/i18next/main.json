@@ -7,7 +7,7 @@
     "@sapphire/utilities": "^3.18.2",
     "@skyra/i18next-backend": "^2.0.6",
     "chokidar": "^4.0.3",
-    "i18next": "^25.8.7"
+    "i18next": "^25.8.13"
   },
   "readme": "<div align=\"center\">\n\n![Sapphire Logo](https://raw.githubusercontent.com/sapphiredev/assets/main/banners/SapphireCommunity.png)\n\n# @sapphire/plugin-i18next\n\n**Plugin for <a href=\"https://github.com/sapphiredev/framework\">@sapphire/framework</a> to support i18next based internationalization.**\n\n[![GitHub](https://img.shields.io/github/license/sapphiredev/plugins)](https://github.com/sapphiredev/plugins/blob/main/LICENSE.md)\n[![npm bundle size](https://img.shields.io/bundlephobia/min/@sapphire/plugin-in17n?logo=webpack&style=flat-square)](https://bundlephobia.com/result?p=@sapphire/plugin-in17n)\n[![npm](https://img.shields.io/npm/v/@sapphire/plugin-in17n?color=crimson&logo=npm&style=flat-square)](https://www.npmjs.com/package/@sapphire/plugin-in17n)\n\n</div>\n\n## Description\n\nAn implementation of i18next's [filesystem backend] for Sapphire. It allows you to use a JSON-based `languages` directory to add internationalization for your bot using `SapphireClient`'s `fetchLanguage` hook and a custom message extension, adding features such as `sendTranslated` and `resolveKey`.\n\n[filesystem backend]: https://github.com/i18next/i18next-fs-backend\n\n## Features\n\n-   Fully ready for TypeScript!\n-   Includes ESM ready entrypoint\n-   Framework agnostic\n-   Includes convenience register for discord.js\n\n## Installation\n\n`@sapphire/plugin-i18next` depends on the following packages. Be sure to install these along with this package!\n\n-   [`@sapphire/framework`](https://www.npmjs.com/package/@sapphire/framework)\n-   [`discord.js`](https://www.npmjs.com/package/discord.js)\n\nYou can use the following command to install this package, or replace `npm install` with your package manager of choice.\n\n```sh\nnpm install @sapphire/plugin-i18next @sapphire/framework discord.js\n```\n\n---\n\n## Usage\n\nThis registers the methods and options necessary for message translations in the Sapphire client.\n\n```typescript\n// Main bot file\n// Be sure to register the plugin before instantiating the client.\nimport '@sapphire/plugin-i18next/register';\n```\n\nThe basic structure of a translation file is as follows:\n\n```jsonc\n// languages/en-US/commands/ping.json\n{\n\t\"success\": \"Pong!\",\n\t\"success_with_args\": \"Pong! Took me {{latency}}ms to reply\"\n}\n```\n\nThe `resolveKey` function can be used anywhere to get translated text by its key. In this example, it is used in a method to send a message.\n\n```typescript\nimport { resolveKey } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.LoaderContext, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait message.channel.send(await resolveKey('commands/ping:success'));\n\t}\n}\n```\n\n`sendLocalized` will send translated text resolved from a key to a specified channel.\n\n```typescript\nimport { sendLocalized } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.LoaderContext, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait sendLocalized(message, 'commands/ping:success');\n\t}\n}\n```\n\n`editLocalized` edits a message, replacing its content with translated text resolved from its key.\n\n```typescript\nimport { editLocalized } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.LoaderContext, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\tawait editLocalized(message, 'commands/ping:success_args', { latency: ws.ping });\n\t}\n}\n```\n\n`fetchLanguage` returns the guild-specific language that the client is using.\n\n```typescript\nimport { fetchLanguage } from '@sapphire/plugin-i18next';\nimport { Command } from '@sapphire/framework';\n\nimport type { Message } from 'discord.js';\n\nexport class PingCommand extends Command {\n\tpublic constructor(context: Command.LoaderContext, options: Command.Options) {\n\t\tsuper(context, {\n\t\t\t...options,\n\t\t\tdescription: 'ping pong'\n\t\t});\n\t}\n\n\tpublic async messageRun(message: Message) {\n\t\treturn message.channel.send(await fetchLanguage(message));\n\t\t// ===> en-US\n\t}\n}\n```\n\n## Buy us some doughnuts\n\nSapphire Community is and always will be open source, even if we don't get donations. That being said, we know there are amazing people who may still want to donate just to show their appreciation. Thank you very much in advance!\n\nWe accept donations through Open Collective, Ko-fi, Paypal, Patreon and GitHub Sponsorships. You can use the buttons below to donate through your method of choice.\n\n|   Donate With   |                       Address                       |\n| :-------------: | :-------------------------------------------------: |\n| Open Collective | [Click Here](https://sapphirejs.dev/opencollective) |\n|      Ko-fi      |      [Click Here](https://sapphirejs.dev/kofi)      |\n|     Patreon     |    [Click Here](https://sapphirejs.dev/patreon)     |\n|     PayPal      |     [Click Here](https://sapphirejs.dev/paypal)     |\n\n## Contributors\n\nPlease make sure to read the [Contributing Guide][contributing] before making a pull request.\n\nThank you to all the people who already contributed to Sapphire!\n\n<a href=\"https://github.com/sapphiredev/plugins/graphs/contributors\">\n  <img src=\"https://contrib.rocks/image?repo=sapphiredev/plugins\" />\n</a>\n\n[contributing]: https://github.com/sapphiredev/.github/blob/main/.github/CONTRIBUTING.md\n",
   "changelog": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\n# [@sapphire/plugin-i18next@8.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.1.3...@sapphire/plugin-i18next@8.0.0) - (2025-05-12)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update dependency i18next to v25 ([b4041d6](https://github.com/sapphiredev/plugins/commit/b4041d680c9946ef38e663de2caf00f218b78a03)) ([#738](https://github.com/sapphiredev/plugins/pull/738) by @renovate[bot])\n  - 💥 **Co-authored-by:** renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>\n- **deps:** Update all non-major dependencies ([214f8ce](https://github.com/sapphiredev/plugins/commit/214f8cec2dd7964fb08402a07fdd646c3a837493)) ([#710](https://github.com/sapphiredev/plugins/pull/710) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([cc47e19](https://github.com/sapphiredev/plugins/commit/cc47e198df63b90ae64fd9d945ba2d521d17a8f2)) ([#705](https://github.com/sapphiredev/plugins/pull/705) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([fb563e8](https://github.com/sapphiredev/plugins/commit/fb563e8d6b9bc7e3594563ab99838a6abea9032c)) ([#704](https://github.com/sapphiredev/plugins/pull/704) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([689cfd8](https://github.com/sapphiredev/plugins/commit/689cfd8be9e0dccce1aac838e07b77d56e5cc0fa)) ([#695](https://github.com/sapphiredev/plugins/pull/695) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([48a1e26](https://github.com/sapphiredev/plugins/commit/48a1e26ca064fcfe666b6826dacaa2c8bc7714bb)) ([#694](https://github.com/sapphiredev/plugins/pull/694) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([aa2ed66](https://github.com/sapphiredev/plugins/commit/aa2ed66e38e2cae79bd9585149896205c009dd1b)) ([#684](https://github.com/sapphiredev/plugins/pull/684) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([a6eeff6](https://github.com/sapphiredev/plugins/commit/a6eeff668d57c995335e02466eb48fbcb699f3ea))\n- **deps:** Update all non-major dependencies ([c74b327](https://github.com/sapphiredev/plugins/commit/c74b327f7e9beea3d5164f8f5e17fbd8e61f74d7)) ([#678](https://github.com/sapphiredev/plugins/pull/678) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([7c80885](https://github.com/sapphiredev/plugins/commit/7c80885f4798348b0c077d9b87117782f7af67d8)) ([#673](https://github.com/sapphiredev/plugins/pull/673) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([2f82767](https://github.com/sapphiredev/plugins/commit/2f8276724338631c4d6d8c7b553d268d5990cc74)) ([#672](https://github.com/sapphiredev/plugins/pull/672) by @renovate[bot])\n- **deps:** Update dependency i18next to v24 ([f7c0c49](https://github.com/sapphiredev/plugins/commit/f7c0c498cfdddd2970e6a2ef828c97ecf3fdfec4)) ([#664](https://github.com/sapphiredev/plugins/pull/664) by @renovate[bot])\n  - 💥 **BREAKING CHANGE:** i18next has been upgraded to v24. Please refer to the i18next migration guide: https://www.i18next.com/misc/migration-guide#v23.x.x-to-v24.0.0. Most importantly you may need to update your JSON files and the Intl API is now mandatory (no problem with NodeJS v18 and above)\n\n# [@sapphire/plugin-i18next@7.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.1.2...@sapphire/plugin-i18next@7.1.3) - (2024-11-02)\n\n## 🏠 Refactor\n\n- **i18next:** Update the dependency to 23.15.1 accounting for typescript changes ([f8b2f60](https://github.com/sapphiredev/plugins/commit/f8b2f608af2119c4419c20089debb9d543ce564d)) ([#629](https://github.com/sapphiredev/plugins/pull/629) by @favna)\n\n## 🐛 Bug Fixes\n\n- Update sapphire dependencies ([a837459](https://github.com/sapphiredev/plugins/commit/a83745920f0b6eb896c7b9b5c9624dad662f5186))\n- **deps:** Update dependency chokidar to v4 ([e6fdc84](https://github.com/sapphiredev/plugins/commit/e6fdc8494268eec4aba7f06f54e48454b2fabbc0)) ([#626](https://github.com/sapphiredev/plugins/pull/626) by @renovate[bot])\n- Update for latest discord.js ([821ff70](https://github.com/sapphiredev/plugins/commit/821ff705c078888c91cac57a724b3d2f2ed89a82)) ([#622](https://github.com/sapphiredev/plugins/pull/622) by @favna)\n- **deps:** Update all non-major dependencies ([43df709](https://github.com/sapphiredev/plugins/commit/43df70954d837f7b14d62ea9123aca4b1da9ae36)) ([#574](https://github.com/sapphiredev/plugins/pull/574) by @renovate[bot])\n- **deps:** Update all non-major dependencies ([7909d16](https://github.com/sapphiredev/plugins/commit/7909d16fcec9a8e5e9a3f8816c90a26fbc7d1284)) ([#573](https://github.com/sapphiredev/plugins/pull/573) by @renovate[bot])\n- **i18next:** Add overloaded methods and fix tsdoc for those ([5fc4ae9](https://github.com/sapphiredev/plugins/commit/5fc4ae9e908a2453f01634f193dc8db7ed6fd032))\n- **deps:** Update all non-major dependencies ([ee64834](https://github.com/sapphiredev/plugins/commit/ee64834c799a5ac28b1ae172cb19f77a1887f3d4)) ([#546](https://github.com/sapphiredev/plugins/pull/546) by @renovate[bot])\n\n# [@sapphire/plugin-i18next@7.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.1.2...@sapphire/plugin-i18next@7.1.2) - (2024-02-09)\n\n## 🐛 Bug Fixes\n\n- Fixed container.format not processing variables correctly (#545) ([9d57b2f](https://github.com/sapphiredev/plugins/commit/9d57b2fc62133ba4dc02b1c27d8f32a5c9beb8bb))\n- **i18next:** Update transitive dependencies ([caef3d5](https://github.com/sapphiredev/plugins/commit/caef3d5f3b511950570e020b553b34cc0189d031))\n- Update transitive dependencies ([f375166](https://github.com/sapphiredev/plugins/commit/f375166292979c6ef076b768374ed932fcb83609))\n- **deps:** Update all non-major dependencies ([8b2085c](https://github.com/sapphiredev/plugins/commit/8b2085c46ccc398a2a3713b85c204fd68f79aceb))\n\n# [@sapphire/plugin-i18next@7.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.1.1...@sapphire/plugin-i18next@7.1.1) - (2024-01-19)\n\n## 🐛 Bug Fixes\n\n- Update transitive sapphire dependencies ([c78017c](https://github.com/sapphiredev/plugins/commit/c78017c090b04f6380103b4ae4cd97767796eeb6))\n- Ensure cts file extensions in dist/cjs (#537) ([6f863f8](https://github.com/sapphiredev/plugins/commit/6f863f8187b7028cf6464dd04f197dd1be6ca1dd))\n- **i18next:** Bump transitive dependencies ([2e13369](https://github.com/sapphiredev/plugins/commit/2e1336953a8fcafb770294f4c77c1b57d67c5236))\n- **i18next:** Fixed docs link ([8638659](https://github.com/sapphiredev/plugins/commit/86386593516f14d1b8008ce92bb38425f74047d1))\n\n# [@sapphire/plugin-i18next@7.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.1.0...@sapphire/plugin-i18next@7.1.0) - (2024-01-02)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Bump i18next transitive dependency ([296296a](https://github.com/sapphiredev/plugins/commit/296296adff689aef68b45c741e733a4831a57acf))\n- **i18next:** Bump transitive dependencies ([98ec315](https://github.com/sapphiredev/plugins/commit/98ec315b37827eb59f120cc2735e6c80dbedba6f))\n- **deps:** Update dependency @skyra/i18next-backend to ^2.0.5 (#517) ([bf7bc8b](https://github.com/sapphiredev/plugins/commit/bf7bc8b369d9c03676f486ec668092c29f61bd3e))\n\n## 🚀 Features\n\n- **i18next:** Add support for cached formatters (#533) ([7f5b169](https://github.com/sapphiredev/plugins/commit/7f5b169af586265bd5d0df3d70ada593298fccde))\n\n# [@sapphire/plugin-i18next@7.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.0.1...@sapphire/plugin-i18next@7.0.1) - (2023-12-05)\n\n## ↩️ Revert\n\n- \"refactor(register): cleanup unnecessary side effect imports of index\" ([c2af242](https://github.com/sapphiredev/plugins/commit/c2af24269956132237988d94e4d94719b2cd442c))\n\n# [@sapphire/plugin-i18next@7.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@7.0.0...@sapphire/plugin-i18next@7.0.0) - (2023-12-05)\n\n## 🏠 Refactor\n\n- **register:** Cleanup unnecessary side effect imports of index ([dede596](https://github.com/sapphiredev/plugins/commit/dede596ae22ceec2700dd860287a1260f092b502))\n\n## 🐛 Bug Fixes\n\n- Update transitive dependencies ([9fd4cfa](https://github.com/sapphiredev/plugins/commit/9fd4cfae031b20044aad8ae1051ade3dd29c69dd))\n\n## 🚀 Features\n\n- Split ESM and CJS bundles for proper ESM and CJS loading (#512) ([d9aa006](https://github.com/sapphiredev/plugins/commit/d9aa006ff8c7f78a613dcca605d3353b992b7a46))\n  - 💥 **BREAKING CHANGE:** This ensures that the plugins will properly load the\neither only ESM or only CJS files. This is done by outputting\ndist/cjs and dist/esm folders. This requires @sapphire/framework v5.x!\n\n# [@sapphire/plugin-i18next@6.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@6.1.0...@sapphire/plugin-i18next@6.1.0) - (2023-11-16)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Update i18next dependency ([3230518](https://github.com/sapphiredev/plugins/commit/3230518c869d3f69a9d14e66e93d2328515e82b0))\n- **deps:** Update all non-major dependencies ([98df6c7](https://github.com/sapphiredev/plugins/commit/98df6c7ccb5d312af2e25522225e84798d3e7ac5))\n- **i18next:** Update transitive dependencies ([6e804d4](https://github.com/sapphiredev/plugins/commit/6e804d4017e153b0bca32332b1c4f1b7288dc12d))\n- **i18next:** Set `engines.node` to `>=18` ([924bf71](https://github.com/sapphiredev/plugins/commit/924bf71107b5702b581509d8a9a8afe9a208e5e2))\n\n## 📝 Documentation\n\n- Reference updated types in README ([dde535e](https://github.com/sapphiredev/plugins/commit/dde535ee79062d2e9076a27d04099c8902d5e577))\n\n## 🚀 Features\n\n- Re-export `i18next` instance (#500) ([d849ee0](https://github.com/sapphiredev/plugins/commit/d849ee046b22470768e46c1431207b24a6e1710c))\n\n# [@sapphire/plugin-i18next@6.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@6.0.0...@sapphire/plugin-i18next@6.0.1) - (2023-09-09)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Bump transitive i18next dependency ([c1e993f](https://github.com/sapphiredev/plugins/commit/c1e993ff57988bcdc93be2217f0329ff6e81663f))\n- **i18next:** Fixed `resolveKey` using incorrect paramater when no default value is passed through (#478) ([850691d](https://github.com/sapphiredev/plugins/commit/850691d3d32fbfedd1f296bf3ec822523399d420))\n\n# [@sapphire/plugin-i18next@6.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@6.0.0...@sapphire/plugin-i18next@6.0.0) - (2023-09-06)\n\n## 🚀 Features\n\n- **i18next:** Update to i18next v23 (#475) ([4030137](https://github.com/sapphiredev/plugins/commit/403013750da1b00228d5b0ff0db1111566d11c62))\n  - 💥 **BREAKING CHANGE:** This library now depends on i18next v23. See their migration guide as well: https://www.i18next.com/misc/migration-guide#v22.x.x-to-v23.0.0\n\n# [@sapphire/plugin-i18next@5.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@5.1.1...@sapphire/plugin-i18next@5.1.1) - (2023-09-06)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Move module augmentations to `index` and import in `register` (#477) ([9c098d6](https://github.com/sapphiredev/plugins/commit/9c098d60bb3b2be116d44a547768e7e7c9054c00))\n\n# [@sapphire/plugin-i18next@5.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@5.0.5...@sapphire/plugin-i18next@5.1.0) - (2023-08-29)\n\n## 🚀 Features\n\n- **i18next:** Support ModalSubmitInteraction (#473) ([15e1712](https://github.com/sapphiredev/plugins/commit/15e1712cdb7083d6bdea8b01c500f7b191fd99ab))\n\n# [@sapphire/plugin-i18next@5.0.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@5.0.4...@sapphire/plugin-i18next@5.0.5) - (2023-08-23)\n\n## 🏠 Refactor\n\n- ***:** Cleanup plugin registry files (#469) ([215b334](https://github.com/sapphiredev/plugins/commit/215b3348b30077238147dbc643769d960b856ba1))\n\n# [@sapphire/plugin-i18next@5.0.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@5.0.3...@sapphire/plugin-i18next@5.0.4) - (2023-07-21)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Bump transitive @sapphire/utilities dependency ([c93db25](https://github.com/sapphiredev/plugins/commit/c93db25655f483850a4b508410440859f9146998))\n- **deps:** Update all non-major dependencies ([9bb6627](https://github.com/sapphiredev/plugins/commit/9bb6627c20999d37130537fce58241c12a795046))\n- **i18next:** Update i18next-backend ([af0a0a6](https://github.com/sapphiredev/plugins/commit/af0a0a61e401fc203d2cdd8f398931dbacf69353))\n\n# [@sapphire/plugin-i18next@5.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@5.0.2...@sapphire/plugin-i18next@5.0.3) - (2023-04-10)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Fixed compatibility with TS 5.x ([957ca68](https://github.com/sapphiredev/plugins/commit/957ca6800999992f66c8a96201dca84285fa69e4))\n- **i18next:** Update dependencies ([c921515](https://github.com/sapphiredev/plugins/commit/c9215156faf411273788314099742f7d18f686d8))\n\n# [@sapphire/plugin-i18next@5.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@5.0.0...@sapphire/plugin-i18next@5.0.1) - (2023-02-18)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Bump i18next patch version ([7fb11e7](https://github.com/sapphiredev/plugins/commit/7fb11e779b98e916cdbe88c0c75626b6d7fd292f))\n\n# [@sapphire/plugin-i18next@5.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@4.0.3...@sapphire/plugin-i18next@5.0.0) - (2023-01-08)\n\n## 🚀 Features\n\n- **deps:** Support for djs v14 (#403) ([7674782](https://github.com/sapphiredev/plugins/commit/76747829f4b3ec152ab888e57a56a138e7d527f5))\n\n# [@sapphire/plugin-i18next@4.0.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@4.0.2...@sapphire/plugin-i18next@4.0.3) - (2022-12-17)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Fixed type compatibility with latest i18next changes ([38367da](https://github.com/sapphiredev/plugins/commit/38367dae1dd7c6538139accba929fa1e486c800a))\n\n# [@sapphire/plugin-i18next@4.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@4.0.1...@sapphire/plugin-i18next@4.0.2) - (2022-12-11)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Update dependencies to fix build issues with latest i18next ([cd1a792](https://github.com/sapphiredev/plugins/commit/cd1a7929a035edbc19b919f63213ae6b07d4e3f0))\n- **deps:** Update all non-major dependencies (#399) ([953d57b](https://github.com/sapphiredev/plugins/commit/953d57b06ea624baa89ba1d03131c5fb10cecbfb))\n\n# [@sapphire/plugin-i18next@4.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@4.0.0...@sapphire/plugin-i18next@4.0.1) - (2022-10-30)\n\n## 🐛 Bug Fixes\n\n- **deps:** Update all non-major dependencies (#387) ([e31f714](https://github.com/sapphiredev/plugins/commit/e31f7140c8bb7c34086540912eb595dd04adaef5))\n\n## 📝 Documentation\n\n- Add @Arcadia148 as a contributor ([3a28c2f](https://github.com/sapphiredev/plugins/commit/3a28c2fc9a08be5e66026b7468a304c8b83203e6))\n\n# [@sapphire/plugin-i18next@4.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@3.1.0...@sapphire/plugin-i18next@4.0.0) - (2022-10-23)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Update dependency i18next to v22 (#383) ([f958106](https://github.com/sapphiredev/plugins/commit/f95810618fbfbabe1ab342a6931bdda0e3121dc6))\n  - 💥 **BREAKING CHANGE:** This package now depends on i18next v22, please refer to https://github.com/i18next/i18next/blob/HEAD/CHANGELOG.md#2200 for further breaking changes\n\n# [@sapphire/plugin-i18next@3.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@3.0.1...@sapphire/plugin-i18next@3.1.0) - (2022-10-16)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Update dependencies ([98e3313](https://github.com/sapphiredev/plugins/commit/98e3313c6bdf279d8301a4d6705a4b40f6767929))\n\n## 🚀 Features\n\n- **plugin-i18next:** Add `applyLocalizedBuilder` and `createSelectMenuChoiceName` to help registering localized commands (#372) ([6deee87](https://github.com/sapphiredev/plugins/commit/6deee87c6dee3af2d5f7c02d39d9aa03b480d65f))\n\n# [@sapphire/plugin-i18next@3.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@3.0.0...@sapphire/plugin-i18next@3.0.1) - (2022-10-02)\n\n## 🐛 Bug Fixes\n\n- **i18next:** Bump dependencies ([666b0f4](https://github.com/sapphiredev/plugins/commit/666b0f4418ead5f29ea124bb61c4c5550c33cf1d))\n\n## 📝 Documentation\n\n- Add @r-priyam as a contributor ([2d97019](https://github.com/sapphiredev/plugins/commit/2d970198717285c0f1652340ce87b1a4780179f3))\n- Add @BenSegal855 as a contributor ([66553df](https://github.com/sapphiredev/plugins/commit/66553dfbb4bc7332c295277ffa4a8f720401bc89))\n- Add @yuansheng1549 as a contributor ([c36ac65](https://github.com/sapphiredev/plugins/commit/c36ac65cd0a1a3e266a8a3679a58404177e0bb6b))\n- Add @RealShadowNova as a contributor ([6cfa76f](https://github.com/sapphiredev/plugins/commit/6cfa76f793a16c6d11aa057e66e3fb41a9f4fb6d))\n\n## 🧪 Testing\n\n- Migrate to vitest ([94a182e](https://github.com/sapphiredev/plugins/commit/94a182ea0d03f79616c66983695caf64e93cb6c3))\n\n# [@sapphire/plugin-i18next@3.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.4...@sapphire/plugin-i18next@3.0.0) - (2022-08-20)\n\n## 🏠 Refactor\n\n- **i18next:** Remove `sendLocalized`, `replyLocalized`, and `editLocalized` (#335) ([e53558f](https://github.com/sapphiredev/plugins/commit/e53558f4982d1afad74dd3239d078f0013855242))\n  - 💥 **BREAKING CHANGE:** `sendLocalized`, `replyLocalized`, and `editLocalized` have been removed as these methods never properly supported all i18next and DiscordJS options and were extremely hard to maintain. The replacement is using either `fetchT` or `resolveKey` and implementing your own `message.channel.send` / `interaction.reply`\n  - 💥 **BREAKING CHANGE:** `InternationalizationContext.author` has been removed as per the deprecation notice in the previous version. Please switch to `InternationalizationContext.user`.\n\n## 🐛 Bug Fixes\n\n- **i18next:** Fixed replyLocalized types (#334) ([d55295f](https://github.com/sapphiredev/plugins/commit/d55295f1364265ac9777d117df301cd663868272))\n- **i18next:** Bump sapphire utilities ([41237ec](https://github.com/sapphiredev/plugins/commit/41237ec5fda671166e1fc0cee908521a0460a85d))\n\n## 📝 Documentation\n\n- Add @ricardooow as a contributor ([15d7f9b](https://github.com/sapphiredev/plugins/commit/15d7f9b0d7428559441550aba1918d068565baa6))\n- Add @imranbarbhuiya as a contributor ([e3d8fdc](https://github.com/sapphiredev/plugins/commit/e3d8fdc433a6c89389b2e1c574245e8140d1c47a))\n- Add @KrishAgarwal2811 as a contributor ([875dda0](https://github.com/sapphiredev/plugins/commit/875dda0756f1b5302e77993e44a1ac9ab1a065d0))\n- Add @jczstudios as a contributor ([c9126bc](https://github.com/sapphiredev/plugins/commit/c9126bc2bb454989c006864293ef99a47369dc38))\n- Add @MajesticString as a contributor ([2743c8d](https://github.com/sapphiredev/plugins/commit/2743c8d5b9abe1b554ac7d776cb827d6a1e9db7b))\n- Add @Mzato0001 as a contributor ([06626cd](https://github.com/sapphiredev/plugins/commit/06626cd7ff94d3bc8ce75da6383e1b77b6109a3d))\n- Type cast `baseUserDirectory` ([c76b008](https://github.com/sapphiredev/plugins/commit/c76b0087aa99d3643109e1399bef94d7e94c0cb8))\n\n## 🚀 Features\n\n- **subcommands:** Lowercase subcommands and dashless aliases (#337) ([31ea70c](https://github.com/sapphiredev/plugins/commit/31ea70caae38988ca395dd3e934822c26e6df4f6))\n- ***:** Subcommands v3 & update plugins to Sapphire Result v2 (#271) ([1cfc32a](https://github.com/sapphiredev/plugins/commit/1cfc32a9cb568d1031a35c5e0628a67bc082ff21))\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-subcommands has been completely rewritten from scratch for version 3. Please refer to the [README](https://github.com/sapphiredev/plugins/blob/main/packages/subcommands/README.md) or [the website](https://www.sapphirejs.dev/docs/Guide/plugins/Subcommands/getting-started) for updated usage.\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-hmr has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-pattern-commands has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-i18next has been updated to use @sapphire/result v2 and @sapphire/framework v3\n  - 💥 **BREAKING CHANGE:** @sapphire/plugin-scheduled-tasks has been updated to use @sapphire/result v2 and @sapphire/framework v3\n\n# [@sapphire/plugin-i18next@2.5.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.2...@sapphire/plugin-i18next@2.5.4) - (2022-07-11)\n\n## 🐛 Bug Fixes\n\n- Manually set version ([117d5a6](https://github.com/sapphiredev/plugins/commit/117d5a6256af7e01b420b28f95abec36f3feb0af))\n- **deps:** Update dependency @sapphire/utilities to ^3.7.0 ([6ec8b75](https://github.com/sapphiredev/plugins/commit/6ec8b75dbd09d70f1015f1a032eb105a42b9e0f4))\n- **deps:** Update dependency i18next to ^21.8.5 (#301) ([be8f6ed](https://github.com/sapphiredev/plugins/commit/be8f6ed3ef3aada738531ca26d44d61e023c1b64))\n\n# [@sapphire/plugin-i18next@2.5.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.1...@sapphire/plugin-i18next@2.5.2) - (2022-05-18)\n\n## 🏠 Refactor\n\n- **i18next:** Improve language discovery (#291) ([ece5a46](https://github.com/sapphiredev/plugins/commit/ece5a467d212da318558898f251a2dd6a821e0ac))\n\n# [@sapphire/plugin-i18next@2.5.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.5.0...@sapphire/plugin-i18next@2.5.1) - (2022-05-15)\n\n## 🏃 Performance\n\n- **i18next:** Switch to new backend library ([21cd166](https://github.com/sapphiredev/plugins/commit/21cd1665c3bcba9c3dbc9711e9d57153ad768276))\n- **i18next:** Skip fetch language if locale is provided (#284) ([3bc645f](https://github.com/sapphiredev/plugins/commit/3bc645f02a7d8cb6fbfef7577ba0eb1ffd6a61db))\n\n# [@sapphire/plugin-i18next@2.5.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.4.2...@sapphire/plugin-i18next@2.5.0) - (2022-04-19)\n\n## Bug Fixes\n\n- **i18next:** Edit a reply when an already deferred or edited reply is passed into `replyLocalized` ([fab3db9](https://github.com/sapphiredev/plugins/commit/fab3db9212d19ddeda2cec1e92ded7dfa561385d))\n- **i18next:** Ensure an interaction is deferred or replied before editing ([34f6057](https://github.com/sapphiredev/plugins/commit/34f605739ec335f205a6ddbb36fd811eac2f7a77))\n\n## Features\n\n- **i18next:** Add `guildLocale` and `locale` to `fetchLanguage` context ([d1e09f4](https://github.com/sapphiredev/plugins/commit/d1e09f47e659c1b296e07dd6805606af302ee6ed))\n\n# [@sapphire/plugin-i18next@2.4.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.4.1...@sapphire/plugin-i18next@2.4.2) - (2022-04-18)\n\n## Bug Fixes\n\n- **i18next:** Actually fix files array ([81debfc](https://github.com/sapphiredev/plugins/commit/81debfc53bfa7e16ba429d74276ebd531aeae8d9))\n\n# [@sapphire/plugin-i18next@2.4.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.4.0...@sapphire/plugin-i18next@2.4.1) - (2022-04-18)\n\n## Bug Fixes\n\n- Fixed files array ([1e13a35](https://github.com/sapphiredev/plugins/commit/1e13a3502b9d909ba9c349ab078a763d2bee0c58))\n\n# [@sapphire/plugin-i18next@2.4.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.3.1...@sapphire/plugin-i18next@2.4.0) - (2022-04-18)\n\n## Bug Fixes\n\n- **deps:** Update dependency i18next to ^21.6.15 ([5a5995c](https://github.com/sapphiredev/plugins/commit/5a5995cb7afa7691a889968519abf716c8e2f5ec))\n\n## Documentation\n\n- Update typedoc setup ([5c855bd](https://github.com/sapphiredev/plugins/commit/5c855bd8341f155a41c9b85738541f1f47ac837a))\n\n## Features\n\n- **i18next:** Support interaction (#272) ([8681e7d](https://github.com/sapphiredev/plugins/commit/8681e7d4f649216ae63a24a3f18a45d78279bd50))\n\n## [2.3.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.3.0...@sapphire/plugin-i18next@2.3.1) (2022-04-01)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2377eb9](https://github.com/sapphiredev/plugins/commit/2377eb90c7a5efb65e2be242d492f06bd4841a2e))\n\n# [2.3.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.3...@sapphire/plugin-i18next@2.3.0) (2022-03-06)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([2016134](https://github.com/sapphiredev/plugins/commit/201613418babe93748e74064cf66d4ea0582725c))\n\n### Features\n\n-   allow module: NodeNext ([#251](https://github.com/sapphiredev/plugins/issues/251)) ([31bab09](https://github.com/sapphiredev/plugins/commit/31bab09834ebc1bc646e4a2849dbd24c65f08c0e))\n\n## [2.2.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.2...@sapphire/plugin-i18next@2.2.3) (2022-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.2.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.1...@sapphire/plugin-i18next@2.2.2) (2022-01-16)\n\n### Performance Improvements\n\n-   **i18next:** \"add\" event is not necessary in chokidar ([#229](https://github.com/sapphiredev/plugins/issues/229)) ([138764c](https://github.com/sapphiredev/plugins/commit/138764cc140f74d2f2b3745ed838cac63ea97e4c))\n\n## [2.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.2.0...@sapphire/plugin-i18next@2.2.1) (2022-01-14)\n\n### Bug Fixes\n\n-   **i18next:** postLogin hook register ([#228](https://github.com/sapphiredev/plugins/issues/228)) ([c67035e](https://github.com/sapphiredev/plugins/commit/c67035ef457ff390edfb30b8e2a664d4daeb7d9d))\n\n# [2.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.6...@sapphire/plugin-i18next@2.2.0) (2022-01-13)\n\n### Features\n\n-   **i18next:** add hot-module-replacement to reload i18next resources ([#224](https://github.com/sapphiredev/plugins/issues/224)) ([26a8c41](https://github.com/sapphiredev/plugins/commit/26a8c41bfcee9a2be9fc319df2ec8e542d8cb370))\n\n## [2.1.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.5...@sapphire/plugin-i18next@2.1.6) (2022-01-09)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.4...@sapphire/plugin-i18next@2.1.5) (2021-12-29)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.3...@sapphire/plugin-i18next@2.1.4) (2021-12-28)\n\n### Bug Fixes\n\n-   **i18next:** bump i18next dependency ([ebc32b0](https://github.com/sapphiredev/plugins/commit/ebc32b03288260359744810d8905b77fd7fc458c))\n\n## [2.1.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.2...@sapphire/plugin-i18next@2.1.3) (2021-12-21)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.1...@sapphire/plugin-i18next@2.1.2) (2021-12-06)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [2.1.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.1.0...@sapphire/plugin-i18next@2.1.1) (2021-11-25)\n\n### Bug Fixes\n\n-   **i18next:** bumped i18next dependendency to ensure transient dependency has latest fixes ([7cafdfc](https://github.com/sapphiredev/plugins/commit/7cafdfc1876d9d28af3c1b8decf047ab75f3f0bf))\n\n# [2.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.0.2...@sapphire/plugin-i18next@2.1.0) (2021-11-21)\n\n### Features\n\n-   expose and use namespaces for options, context, etc ([#176](https://github.com/sapphiredev/plugins/issues/176)) ([33452da](https://github.com/sapphiredev/plugins/commit/33452da808d91313a5d3bf680e11b5208ac67442))\n-   **i18n:** add `replyLocalized` ([#168](https://github.com/sapphiredev/plugins/issues/168)) ([4c51f52](https://github.com/sapphiredev/plugins/commit/4c51f52411d3a4f368db912dd840504622e4a373))\n-   **plugin-i18n:** add new syntax for formatters in i18next ([#167](https://github.com/sapphiredev/plugins/issues/167)) ([d0f01d9](https://github.com/sapphiredev/plugins/commit/d0f01d99a8e25929a819ae0d210596afdd208b62))\n\n## [2.0.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.0.1...@sapphire/plugin-i18next@2.0.2) (2021-11-06)\n\n### Bug Fixes\n\n-   **docs:** replace command usage of `run` to `messageRun` ([#160](https://github.com/sapphiredev/plugins/issues/160)) ([415adb8](https://github.com/sapphiredev/plugins/commit/415adb85b884da5d0f1f2ce07a9d46134f2bcb12))\n\n## [2.0.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@2.0.0...@sapphire/plugin-i18next@2.0.1) (2021-10-17)\n\n### Bug Fixes\n\n-   allow more node & npm versions in engines field ([ce5b12f](https://github.com/sapphiredev/plugins/commit/ce5b12f8142297bceda49b85574a95a3cf9112ab))\n\n# [2.0.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.7...@sapphire/plugin-i18next@2.0.0) (2021-10-16)\n\n### Bug Fixes\n\n-   **deps:** update all non-major dependencies ([#149](https://github.com/sapphiredev/plugins/issues/149)) ([1fe5598](https://github.com/sapphiredev/plugins/commit/1fe55980434b19bb024773a1878366320fa96004))\n-   **deps:** update dependency i18next to ^21.2.0 ([#146](https://github.com/sapphiredev/plugins/issues/146)) ([2509ee4](https://github.com/sapphiredev/plugins/commit/2509ee4c8d53cc8bf23f7b7b618d5a4be3f7c24b))\n-   **i18next:** change `Awaited` for `Awaitable` ([0e2e6ef](https://github.com/sapphiredev/plugins/commit/0e2e6ef104e66344608ca62f779829411122e84c))\n-   **i18next:** change how `fetchLanguage` is implemented ([#107](https://github.com/sapphiredev/plugins/issues/107)) ([30c8f7f](https://github.com/sapphiredev/plugins/commit/30c8f7f2ea4911c79ecb241e182500516e958fc5))\n-   **i18next:** remove @sapphire/pieces from install instructions ([7c17a92](https://github.com/sapphiredev/plugins/commit/7c17a925b7c66fdd5422d75a3674e420ddc474ce))\n-   **plugin-i18next:** re-added support for guild target ([#103](https://github.com/sapphiredev/plugins/issues/103)) ([a7152a8](https://github.com/sapphiredev/plugins/commit/a7152a8ba3baf0a5bee10e80bc7c33e11b03d4d3))\n\n### Code Refactoring\n\n-   **plugin-i18next:** updated for discord.js@13 and framework@2 ([e041864](https://github.com/sapphiredev/plugins/commit/e04186461071179b96b918294b3f3085c328ede6))\n\n### Features\n\n-   bump to discordjs v13.2.0 ([3d0e484](https://github.com/sapphiredev/plugins/commit/3d0e484eb9a5adb7fef3bb642e304e27072ed2b1))\n-   **i18next:** add `baseUserDirectory` as alternative path for the `languages` directory (takes precedence over root scan) ([#159](https://github.com/sapphiredev/plugins/issues/159)) ([f8621b0](https://github.com/sapphiredev/plugins/commit/f8621b088f0382221968dfefe4a48092c83cd73f))\n-   **i18next:** bump i18next dependency to v20 ([#125](https://github.com/sapphiredev/plugins/issues/125)) ([0023809](https://github.com/sapphiredev/plugins/commit/0023809ee73fd2cee6828d30a782d67a44e31bbf))\n-   **i18next:** update i18next dependency ([#129](https://github.com/sapphiredev/plugins/issues/129)) ([96519de](https://github.com/sapphiredev/plugins/commit/96519de5de253db390ed9a76ed073ffe1eabd187))\n-   **plugin-editable-commands:** added first version ([#106](https://github.com/sapphiredev/plugins/issues/106)) ([9af3e85](https://github.com/sapphiredev/plugins/commit/9af3e85a8641f852eaf114679ceed1e71034d16c))\n-   **subcommands:** migrate `Command#run` to `Command#messageRun` ([#157](https://github.com/sapphiredev/plugins/issues/157)) ([2960711](https://github.com/sapphiredev/plugins/commit/29607111c4e4f61ece463e10854982f205879996))\n\n### BREAKING CHANGES\n\n-   **i18next:** i18next has been updated to v21.0.1. Please also seee the breaking changes for i18next [here](https://github.com/i18next/i18next/blob/master/CHANGELOG.md#2100) and their migration guide [here](https://www.i18next.com/misc/migration-guide#v-20-x-x-to-v-21-0-0)\n\n-   chore: activate renovate\n-   **i18next:** i18next dependency has been bumped to v20.x. As opposed to what the library does, this plugin will default the new option `ignoreJSONStructure` to `false`\n-   **i18next:** `fetchLanguage` has been moved from `ClientOptions` to `ClientOptions.i18n`\n-   **plugin-i18next:** Changed `InternationalizationHandler#options` to not be optional.\n-   **plugin-i18next:** Increase `@sapphire/framework` requirement to v2.\n-   **plugin-i18next:** Increase `discord.js` requirement to v13.\n-   **plugin-i18next:** Removed `I18nextClient#fetchLanguage` in favor of `InternationalizationHandler#fetchLanguage`.\n-   **plugin-i18next:** Removed `I18nextClient#i18n` in favor of `Context#i18n`.\n-   **plugin-i18next:** Removed `I18nextClient`.\n-   **plugin-i18next:** Removed `Message#editLocalized` in favor of `editLocalized(message, options)`.\n-   **plugin-i18next:** Removed `Structure#fetchLanguage` in favor of `fetchLanguage(structure)`.\n-   **plugin-i18next:** Removed `Structure#fetchT` in favor of `fetchT(structure)`.\n-   **plugin-i18next:** Removed `Structure#resolveKey` in favor of `resolveKey(structure, keys, options)`.\n-   **plugin-i18next:** Removed `Structure#sendLocalized` in favor of `sendLocalized(structure, options)`.\n-   **plugin-i18next:** Renamed `I18nextClientOptions` to `InternationalizationClientOptions`.\n-   **plugin-i18next:** Renamed `I18nextHandler` to `InternationalizationHandler`.\n-   **plugin-i18next:** Renamed `InternationalizationHandler.fetchLocale` to `format`.\n-   **plugin-i18next:** Renamed `InternationalizationHandler.fetchT` to `getT`.\n-   **plugin-i18next:** Require `discord.js` in `/register`.\n-   **plugin-i18next:** Simplified `editLocalized`'s overloads.\n-   **plugin-i18next:** Simplified `sendLocalized`'s overloads.\n\n## [1.3.7](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.6...@sapphire/plugin-i18next@1.3.7) (2021-06-19)\n\n### Bug Fixes\n\n-   remove peer deps, update dev deps, update READMEs ([#91](https://github.com/sapphiredev/plugins/issues/91)) ([3489b1d](https://github.com/sapphiredev/plugins/commit/3489b1dc1e8a7c64c255595b3d441cd0b5bac936))\n-   **i18next:** specify package side effects ([33fd1ec](https://github.com/sapphiredev/plugins/commit/33fd1ec86c671ef7419c709793d28c326d21ada7))\n\n## [1.3.6](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.5...@sapphire/plugin-i18next@1.3.6) (2021-05-02)\n\n### Bug Fixes\n\n-   drop the `www.` from the SapphireJS URL ([a86049f](https://github.com/sapphiredev/plugins/commit/a86049f185f0ccb12d61379dd82255b36d4fa145))\n-   update all the SapphireJS URLs from `.com` to `.dev` ([c5fd156](https://github.com/sapphiredev/plugins/commit/c5fd15691abb9a9712dc4b8aebd8400f6d91f719))\n\n## [1.3.5](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.4...@sapphire/plugin-i18next@1.3.5) (2021-04-21)\n\n### Bug Fixes\n\n-   change all Sapphire URLs from \"project\"->\"community\" & use our domain where applicable 👨‍🌾🚜 ([#75](https://github.com/sapphiredev/plugins/issues/75)) ([e437dc4](https://github.com/sapphiredev/plugins/commit/e437dc45fcd4d22ab2dcdb0e70c67cc5856883c0))\n\n## [1.3.4](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.3...@sapphire/plugin-i18next@1.3.4) (2021-04-03)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [1.3.3](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.2...@sapphire/plugin-i18next@1.3.3) (2021-03-16)\n\n### Bug Fixes\n\n-   update dependencies, add tslib, bump framework to v1.0.0 ([880b761](https://github.com/sapphiredev/plugins/commit/880b7614d857f23fcbcd351e69795c451a95f49c))\n\n## [1.3.2](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.1...@sapphire/plugin-i18next@1.3.2) (2021-02-16)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n## [1.3.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.3.0...@sapphire/plugin-i18next@1.3.1) (2021-02-07)\n\n### Bug Fixes\n\n-   **i18n:** update dependencies in package.json ([8d0381b](https://github.com/sapphiredev/plugins/commit/8d0381be7b5ecc837fd9883c6035d4a16c065448))\n-   **i18next:** properly augment Discord.js extensions ([#56](https://github.com/sapphiredev/plugins/issues/56)) ([6f5b1a9](https://github.com/sapphiredev/plugins/commit/6f5b1a9a05a6d0508e05a33ef23ec1027160df79))\n\n# [1.3.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.2.1...@sapphire/plugin-i18next@1.3.0) (2021-02-03)\n\n### Features\n\n-   **i18next:** respect alternative default handling ([#54](https://github.com/sapphiredev/plugins/issues/54)) ([5b12ba8](https://github.com/sapphiredev/plugins/commit/5b12ba8b4a321f73dd6b93c57ddd92143b796f08))\n\n## [1.2.1](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.2.0...@sapphire/plugin-i18next@1.2.1) (2021-01-23)\n\n**Note:** Version bump only for package @sapphire/plugin-i18next\n\n# [1.2.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.1.0...@sapphire/plugin-i18next@1.2.0) (2021-01-12)\n\n### Features\n\n-   **i18next:** store loaded namespaces ([#42](https://github.com/sapphiredev/plugins/issues/42)) ([978f0ad](https://github.com/sapphiredev/plugins/commit/978f0ad59a708ffabc02dda3f82fc84a69abf54d))\n\n# [1.1.0](https://github.com/sapphiredev/plugins/compare/@sapphire/plugin-i18next@1.0.0...@sapphire/plugin-i18next@1.1.0) (2021-01-11)\n\n### Features\n\n-   **i18next:** allow creating i18next options using namespaces and languages ([#41](https://github.com/sapphiredev/plugins/issues/41)) ([3efa231](https://github.com/sapphiredev/plugins/commit/3efa231421c590d8706afba5b066daaa51b5d175))\n\n# 1.0.0 (2021-01-09)\n\n### Bug Fixes\n\n-   **i18next:** add missing tslib dependency ([5687397](https://github.com/sapphiredev/plugins/commit/568739718dd028ba713f022404b94374729e398a))\n\n### Features\n\n-   **i18next:** implement context and editing ([#35](https://github.com/sapphiredev/plugins/issues/35)) ([1849831](https://github.com/sapphiredev/plugins/commit/18498311766433bc6d2ad9956ca73b39d11b9139)), closes [#29](https://github.com/sapphiredev/plugins/issues/29) [#29](https://github.com/sapphiredev/plugins/issues/29)\n-   add plugin-i18next ([#29](https://github.com/sapphiredev/plugins/issues/29)) ([41e6581](https://github.com/sapphiredev/plugins/commit/41e6581199c971db4422fbc6fb411dfca2614dec))\n\n### BREAKING CHANGES\n\n-   **i18next:** All aforementioned changes are breaking.\n",
@@ -19,7 +19,7 @@
         "line": 27,
         "file": "InternationalizationHandler.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L27"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L27"
       },
       "namespaceParentId": null,
       "comment": {
@@ -44,7 +44,7 @@
           "line": 70,
           "file": "InternationalizationHandler.ts",
           "path": "packages/i18next/src/lib",
-          "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L70"
+          "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L70"
         },
         "comment": {
           "description": null,
@@ -83,7 +83,7 @@
             "line": 63,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L63"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L63"
           },
           "comment": {
             "description": "The backend options for `@skyra/i18next-backend` used by `i18next`.",
@@ -117,7 +117,7 @@
             "line": 132,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L132"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L132"
           },
           "comment": {
             "description": "The method to be overridden by the developer.",
@@ -232,7 +232,7 @@
             "line": 44,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L44"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L44"
           },
           "comment": {
             "description": "A `Map` of `i18next` language functions keyed by their language code.",
@@ -288,7 +288,7 @@
             "line": 57,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L57"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L57"
           },
           "comment": {
             "description": "The director passed to `@skyra/i18next-backend`.\nAlso used in {@link InternationalizationHandler.walkLanguageDirectory}.",
@@ -318,7 +318,7 @@
             "line": 32,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L32"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L32"
           },
           "comment": {
             "description": "Describes whether {@link InternationalizationHandler.init} has been run and languages are loaded in {@link InternationalizationHandler.languages}.",
@@ -348,7 +348,7 @@
             "line": 38,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L38"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L38"
           },
           "comment": {
             "description": "A `Set` of initially loaded namespaces.",
@@ -387,7 +387,7 @@
             "line": 50,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L50"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L50"
           },
           "comment": {
             "description": "The options InternationalizationHandler was initialized with in the client.",
@@ -423,7 +423,7 @@
             "line": 199,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L199"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L199"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1320,7 +1320,7 @@
             "line": 182,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L182"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L182"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1385,7 +1385,7 @@
             "line": 138,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L138"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L138"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1430,7 +1430,7 @@
             "line": 315,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L315"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L315"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1470,7 +1470,7 @@
             "line": 338,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L338"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L338"
           },
           "parentId": 2,
           "accessibility": "private",
@@ -1550,7 +1550,7 @@
             "line": 295,
             "file": "InternationalizationHandler.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/InternationalizationHandler.ts#L295"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/InternationalizationHandler.ts#L295"
           },
           "parentId": 2,
           "accessibility": "public",
@@ -1659,7 +1659,7 @@
         "line": 250,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L250"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L250"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1796,7 +1796,7 @@
         "line": 312,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L312"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L312"
       },
       "namespaceParentId": null,
       "comment": {
@@ -1983,7 +1983,7 @@
         "line": 234,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L234"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L234"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2120,7 +2120,7 @@
         "line": 356,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L356"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L356"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2306,7 +2306,7 @@
         "line": 37,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L37"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L37"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2382,7 +2382,7 @@
         "line": 74,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L74"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L74"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2467,7 +2467,7 @@
         "line": 216,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L216"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L216"
       },
       "namespaceParentId": null,
       "comment": {
@@ -2576,7 +2576,7 @@
         "line": 86,
         "file": "functions.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/functions.ts#L86"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/functions.ts#L86"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3513,7 +3513,7 @@
         "line": 21,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L21"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L21"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3533,7 +3533,7 @@
         "line": 208,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L208"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L208"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3552,7 +3552,7 @@
             "line": 209,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L209"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L209"
           },
           "parentId": 219,
           "signatures": [
@@ -3596,7 +3596,7 @@
             "line": 210,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L210"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L210"
           },
           "parentId": 219,
           "signatures": [
@@ -3686,7 +3686,7 @@
         "line": 203,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L203"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L203"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3705,7 +3705,7 @@
             "line": 204,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L204"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L204"
           },
           "parentId": 212,
           "signatures": [
@@ -3749,7 +3749,7 @@
             "line": 205,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L205"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L205"
           },
           "parentId": 212,
           "signatures": [
@@ -3839,7 +3839,7 @@
         "line": 35,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L35"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L35"
       },
       "namespaceParentId": null,
       "comment": {
@@ -3862,7 +3862,7 @@
             "line": 40,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L40"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L40"
           },
           "comment": {
             "description": "HMR status for the i18next plugin.",
@@ -3889,7 +3889,7 @@
             "line": 46,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L46"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L46"
           },
           "comment": {
             "description": "Languages that will be reloaded when updating the languages directory.",
@@ -3928,7 +3928,7 @@
             "line": 52,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L52"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L52"
           },
           "comment": {
             "description": "Namespaces that will be reloaded when updating the languages directory.",
@@ -3967,7 +3967,7 @@
             "line": 57,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L57"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L57"
           },
           "comment": {
             "description": "HMR options",
@@ -4089,7 +4089,7 @@
         "line": 163,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L163"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L163"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4112,7 +4112,7 @@
             "line": 181,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L181"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L181"
           },
           "comment": {
             "description": null,
@@ -4134,7 +4134,7 @@
             "line": 182,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L182"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L182"
           },
           "comment": {
             "description": null,
@@ -4158,7 +4158,7 @@
             "line": 183,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L183"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L183"
           },
           "parentId": 182,
           "signatures": [
@@ -4243,7 +4243,7 @@
         "line": 192,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L192"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L192"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4270,7 +4270,7 @@
             "line": 193,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L193"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L193"
           },
           "comment": {
             "description": null,
@@ -4292,7 +4292,7 @@
             "line": 194,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L194"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L194"
           },
           "comment": {
             "description": null,
@@ -4316,7 +4316,7 @@
             "line": 195,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L195"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L195"
           },
           "parentId": 199,
           "signatures": [
@@ -4420,7 +4420,7 @@
         "line": 180,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L180"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L180"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4447,7 +4447,7 @@
             "line": 181,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L181"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L181"
           },
           "comment": {
             "description": null,
@@ -4469,7 +4469,7 @@
             "line": 182,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L182"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L182"
           },
           "comment": {
             "description": null,
@@ -4493,7 +4493,7 @@
             "line": 183,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L183"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L183"
           },
           "parentId": 191,
           "signatures": [
@@ -4578,7 +4578,7 @@
         "line": 158,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L158"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L158"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4596,7 +4596,7 @@
             "line": 159,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L159"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L159"
           },
           "comment": {
             "description": null,
@@ -4625,7 +4625,7 @@
         "line": 147,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L147"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L147"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4643,7 +4643,7 @@
             "line": 151,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L151"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L151"
           },
           "comment": {
             "description": "The {@link DiscordChannel} object to fetch the preferred language for.",
@@ -4678,7 +4678,7 @@
             "line": 149,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L149"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L149"
           },
           "comment": {
             "description": "The {@link Guild} object to fetch the preferred language for, or `null` if the language is to be fetched in a DM.",
@@ -4713,7 +4713,7 @@
             "line": 154,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L154"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L154"
           },
           "comment": {
             "description": null,
@@ -4748,7 +4748,7 @@
             "line": 155,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L155"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L155"
           },
           "comment": {
             "description": null,
@@ -4774,7 +4774,7 @@
             "line": 153,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L153"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L153"
           },
           "comment": {
             "description": "The user to fetch the preferred language for.",
@@ -4812,7 +4812,7 @@
         "line": 71,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L71"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L71"
       },
       "namespaceParentId": null,
       "comment": {
@@ -4835,7 +4835,7 @@
             "line": 83,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L83"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L83"
           },
           "comment": {
             "description": "The options passed to `backend` in `i18next.init`.",
@@ -4871,7 +4871,7 @@
             "line": 96,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L96"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L96"
           },
           "comment": {
             "description": "The directory in which \"i18next-fs-backend\" should search for files.",
@@ -4902,7 +4902,7 @@
             "line": 103,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L103"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L103"
           },
           "comment": {
             "description": "The default value to be used if a specific language key isn't found.\nDefaults to \"default:default\".",
@@ -4929,7 +4929,7 @@
             "line": 77,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L77"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L77"
           },
           "comment": {
             "description": "Used as the default 2nd to last fallback locale if no other is found.\nIt's only followed by \"en-US\".",
@@ -4956,7 +4956,7 @@
             "line": 110,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L110"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L110"
           },
           "comment": {
             "description": "The default NS that is prefixed to all keys that don't specify it.\nDefaults to \"default\".",
@@ -4983,7 +4983,7 @@
             "line": 137,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L137"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L137"
           },
           "comment": {
             "description": "A function that is to be used to retrieve the language for the current context.\nContext exists of a {@link Guild `guild`}, a {@link `channel`} and a {@link User `user`}.\n\nIf this is not set, then the language will always be the default language.\n\nThis will be inserted for {@link InternationalizationHandler.fetchLanguage}.",
@@ -5070,7 +5070,7 @@
             "line": 118,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L118"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L118"
           },
           "comment": {
             "description": "Array of formatters to add to i18n.",
@@ -5108,7 +5108,7 @@
             "line": 125,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L125"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L125"
           },
           "comment": {
             "description": "Reload languages and namespaces when updating the languages directory.",
@@ -5139,7 +5139,7 @@
             "line": 89,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L89"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L89"
           },
           "comment": {
             "description": "The options passed to `i18next.init`.",
@@ -5205,7 +5205,7 @@
         "line": 198,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L198"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L198"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5223,7 +5223,7 @@
             "line": 200,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L200"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L200"
           },
           "comment": {
             "description": null,
@@ -5249,7 +5249,7 @@
             "line": 199,
             "file": "types.ts",
             "path": "packages/i18next/src/lib",
-            "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L199"
+            "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L199"
           },
           "comment": {
             "description": null,
@@ -5350,7 +5350,7 @@
         "line": 15,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L15"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L15"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5419,7 +5419,7 @@
         "line": 29,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L29"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L29"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5470,7 +5470,7 @@
         "line": 213,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L213"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L213"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5509,7 +5509,7 @@
         "line": 214,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L214"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L214"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5548,7 +5548,7 @@
         "line": 141,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L141"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L141"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5595,7 +5595,7 @@
         "line": 65,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L65"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L65"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5695,7 +5695,7 @@
         "line": 172,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L172"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L172"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5743,7 +5743,7 @@
         "line": 215,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L215"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L215"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5790,7 +5790,7 @@
         "line": 140,
         "file": "types.ts",
         "path": "packages/i18next/src/lib",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/lib/types.ts#L140"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/lib/types.ts#L140"
       },
       "namespaceParentId": null,
       "comment": {
@@ -5906,7 +5906,7 @@
         "line": 26,
         "file": "index.ts",
         "path": "packages/i18next/src",
-        "url": "https://github.com/sapphiredev/plugins/blob/2b9f42fd24ca170b0c7f21cace7cd354ff266534/packages/i18next/src/index.ts#L26"
+        "url": "https://github.com/sapphiredev/plugins/blob/6139d631cd39c312c184d0a5873753346d15d68c/packages/i18next/src/index.ts#L26"
       },
       "namespaceParentId": null,
       "comment": {
